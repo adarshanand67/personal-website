@@ -14,7 +14,6 @@ const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
       <Skeleton className="h-24 w-full rounded-xl" />
     </div>
   ),
-  ssr: false,
 });
 const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
   loading: () => (
@@ -23,7 +22,6 @@ const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
       <Skeleton className="h-20 w-full rounded-xl" />
     </div>
   ),
-  ssr: false,
 });
 const GitHubStats = dynamic(() => import("@/components/GitHubStats"), {
   loading: () => <p>Loading stats...</p>,
