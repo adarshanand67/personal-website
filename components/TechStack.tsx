@@ -15,7 +15,17 @@ const techs = [
     {
         name: "C++",
         icon: <Code2 className="w-6 h-6" />,
-        description: "Systems Programming",
+        description: "Modern & Secure",
+    },
+    {
+        name: "Internal SGX/TDX",
+        icon: <ShieldCheck className="w-6 h-6" />,
+        description: "Confidential Computing",
+    },
+    {
+        name: "Fuzzing",
+        icon: <Terminal className="w-6 h-6" />,
+        description: "libFuzzer & Sanitizers",
     },
     {
         name: "Rust",
@@ -23,34 +33,24 @@ const techs = [
         description: "Memory Safety",
     },
     {
+        name: "Windows Internals",
+        icon: <Layers className="w-6 h-6" />,
+        description: "DLP & Kernel",
+    },
+    {
+        name: "Cryptography",
+        icon: <ShieldCheck className="w-6 h-6" />,
+        description: "PQC & OpenSSL",
+    },
+    {
         name: "Python",
         icon: <Terminal className="w-6 h-6" />,
         description: "Automation & AI",
     },
     {
-        name: "System Design",
-        icon: <Layers className="w-6 h-6" />,
-        description: "Scalable Architecture",
-    },
-    {
-        name: "Security",
-        icon: <ShieldCheck className="w-6 h-6" />,
-        description: "Intel SGX/TDX",
-    },
-    {
-        name: "Docker",
+        name: "Linux Drivers",
         icon: <Container className="w-6 h-6" />,
-        description: "Containerization",
-    },
-    {
-        name: "Linux",
-        icon: <Terminal className="w-6 h-6" />,
-        description: "Kernel & Shell",
-    },
-    {
-        name: "Git",
-        icon: <GitBranch className="w-6 h-6" />,
-        description: "Version Control",
+        description: "Gramine & Virtualization",
     },
 ];
 

@@ -14,11 +14,13 @@
 :root {
   --background: #fef7ec;
   --foreground: #333333;
+  --spotlight-color: rgba(0, 0, 0, 0.05); /* Subtle dark shadow for light mode */
 }
 
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --spotlight-color: rgba(255, 255, 255, 0.15); /* Subtle light glow for dark mode */
 }
 
 body {

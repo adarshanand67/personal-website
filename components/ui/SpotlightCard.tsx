@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export const SpotlightCard = ({
     children,
     className = "",
-    spotlightColor = "rgba(255, 255, 255, 0.25)",
+    spotlightColor = "var(--spotlight-color)",
 }: {
     children: React.ReactNode;
     className?: string;
