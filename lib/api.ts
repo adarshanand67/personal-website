@@ -39,11 +39,7 @@ export interface Experience {
   highlights: string[];
 }
 
-export interface Volunteering {
-  organization: string;
-  role: string;
-  additionalInfo: string;
-}
+
 
 export interface Paper {
   title: string;
@@ -78,9 +74,7 @@ export async function getExperiences(): Promise<Experience[]> {
   return readData<Experience[]>("experiences.json");
 }
 
-export async function getVolunteering(): Promise<Volunteering[]> {
-  return readData<Volunteering[]>("volunteering.json");
-}
+
 
 export async function getPapers(): Promise<Paper[]> {
   return readData<Paper[]>("papers.json");

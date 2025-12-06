@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import SectionHeader from "@/components/SectionHeader";
-import { getExperiences, getVolunteering } from "@/lib/api";
+import { getExperiences } from "@/lib/api";
 import dynamic from "next/dynamic";
 
 const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
@@ -12,7 +12,7 @@ const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
 
 export default async function Home() {
   const experiences = await getExperiences();
-  const volunteerings = await getVolunteering();
+
 
   return (
     <main className="min-h-screen">
@@ -50,29 +50,7 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Volunteering Section */}
-        {volunteerings.length > 0 && (
-          <div className="mb-16">
-            <h2 className="title text-3xl font-bold font-serif mb-8 border-b border-gray-200 dark:border-gray-800 pb-4">
-              Volunteering
-            </h2>
-            <div className="grid grid-cols-1 gap-6">
-              {volunteerings.map((vol, index) => (
-                <div
-                  key={index}
-                  className="card border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all bg-white dark:bg-zinc-900"
-                >
-                  <SectionHeader title={vol.organization} subtitle={vol.role} />
-                  {vol.additionalInfo && (
-                    <p className="text-gray-600 dark:text-gray-400 mt-2">
-                      {vol.additionalInfo}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <RecentBlogs />
