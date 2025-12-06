@@ -1,12 +1,10 @@
-import fs from "fs/promises";
+import { promises as fs } from "fs";
 import path from "path";
+import { readData } from "@/lib/utils/file-ops";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 
-async function readData<T>(filename: string): Promise<T> {
-  const filePath = path.join(DATA_DIR, filename);
-  const fileContent = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(fileContent);
+return JSON.parse(fileContent);
 }
 
 export interface Profile {
