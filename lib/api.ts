@@ -97,3 +97,14 @@ export async function getBlogs(): Promise<Blog[]> {
 export async function getEntertainment(): Promise<EntertainmentItem[]> {
   return readData<EntertainmentItem[]>("entertainment.json");
 }
+
+export async function getPost(slug: string): Promise<string | null> {
+  try {
+    const postsDirectory = path.join(process.cwd(), "posts");
+    const fullPath = path.join(postsDirectory, `${slug}.md`);
+    const fileContents = await fs.readFile(fullPath, "utf8");
+    return fileContents;
+  } catch (error) {
+    return null;
+  }
+}
