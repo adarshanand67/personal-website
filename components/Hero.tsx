@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getProfile } from "@/lib/api";
 import { Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "@/assets/dp.jpg";
+import Terminal from "./Terminal";
 
 export default async function Hero() {
   const profile = await getProfile();
@@ -49,7 +50,7 @@ export default async function Hero() {
                 />
               ))}
             </div>
-            <ul className="buttons flex flex-wrap gap-4">
+            <ul className="buttons flex flex-wrap gap-4 mb-8">
               <Link
                 className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={profile.socials.linkedin}
@@ -85,6 +86,10 @@ export default async function Hero() {
                 </Link>
               )}
             </ul>
+
+            <div className="hidden md:block">
+              <Terminal />
+            </div>
           </section>
         </div>
         <div className="column is-1 hidden md:block"></div>
