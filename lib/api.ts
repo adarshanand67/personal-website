@@ -81,7 +81,7 @@ export async function getBlogs(): Promise<Blog[]> {
 }
 
 export async function getEntertainment(): Promise<EntertainmentItem[]> {
-  return readData<EntertainmentItem[]>("entertainment.json");
+  return readData<EntertainmentItem[]>("anime.json");
 }
 
 export async function getPost(slug: string): Promise<string | null> {
