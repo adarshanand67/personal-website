@@ -38,8 +38,6 @@ export default async function Home() {
         <Hero />
       </FadeIn>
 
-      <TechStack />
-
       <div className="section container mx-auto px-4 mb-24">
         {/* Experience Section */}
         <div className="mb-16" id="experience">
@@ -88,6 +86,8 @@ export default async function Home() {
             ))}
           </div>
         </div>
+
+        <TechStack />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <FadeIn delay={0.2}>
