@@ -4,6 +4,7 @@
     "role": "Software Development Engineer (Full-time)",
     "duration": "Jul 2025 - Present",
     "location": "Bengaluru, Karnataka, India",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Trellix_logo.svg/1024px-Trellix_logo.svg.png",
     "description": "Preventing unauthorized exfiltration of sensitive corporate data as part of the Data Loss Prevention (Windows) team.",
     "highlights": []
   },
@@ -12,6 +13,7 @@
     "role": "Software Development Engineer (Full-time)",
     "duration": "Jun 2024 - Jul 2025",
     "location": "Bengaluru, Karnataka, India",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Intel_logo_2023.svg/1024px-Intel_logo_2023.svg.png",
     "description": "Team - Confidential Computing (Intel SGX/TDX), Platform Engineering Group",
     "highlights": [
       "Contributed to Intel SGX Gramine to secure confidential computing workloads (PyTorch, OpenVINO, MySQL, Redis), addressing memory faults and expanding distro support (Ubuntu 24.04, CentOS Stream 9, RHEL 9, and SUSE).",
@@ -28,6 +30,7 @@
     "role": "Graduate Technical Intern",
     "duration": "Jun 2023 - Dec 2023",
     "location": "Bengaluru, Karnataka, India",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Intel_logo_2023.svg/1024px-Intel_logo_2023.svg.png",
     "description": "Team - FIDO Device Onboarding, Intel Product Assurance & Security",
     "highlights": [
       "Collaborated with FIDO Device Onboarding (FDO) team to help implement robust security measures for Zero-Touch Provisioning (ZTP) of Intel Edge Devices including Intel NUCs, IoT Gateways, and Edge Servers.",

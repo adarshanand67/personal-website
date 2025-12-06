@@ -32,6 +32,7 @@ export interface Experience {
   location: string;
   description: string;
   highlights: string[];
+  logo?: string;
 }
 
 export interface Paper {
