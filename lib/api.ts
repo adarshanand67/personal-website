@@ -2,10 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { readData } from "@/lib/utils/file-ops";
 
-const DATA_DIR = path.join(process.cwd(), "data");
 
-return JSON.parse(fileContent);
-}
 
 export interface Profile {
   name: string;

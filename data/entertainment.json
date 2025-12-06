@@ -473,5 +473,35 @@
     "title": "The Eminence in Shadow",
     "type": "Movie",
     "status": "Planning"
+  },
+  {
+    "title": "Kaguya-sama: Love Is War",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1,2,3 + Movie"
+  },
+  {
+    "title": "Re:Zero",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "S1,2"
+  },
+  {
+    "title": "Dandadan",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "S1"
+  },
+  {
+    "title": "Mushoku Tensei: Jobless Reincarnation",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "S1,2"
+  },
+  {
+    "title": "Cyberpunk: Edgerunners",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1"
   }
 ]
