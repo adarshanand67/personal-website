@@ -5,6 +5,7 @@ import { getProfile } from "@/lib/api";
 
 export default async function Hero() {
   const profile = await getProfile();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
@@ -12,7 +13,7 @@ export default async function Hero() {
         <div className="column is-5 is-hidden-tablet md:hidden">
           <div className="image is-256x256 w-64 h-64 relative rounded-full overflow-hidden mx-auto">
             <Image
-              src="/personal-website/assets/dp.jpg"
+              src={`${basePath}/assets/dp.jpg`}
               alt={profile.name}
               fill
               className="object-cover"
@@ -78,7 +79,7 @@ export default async function Hero() {
           <div className="image section">
             <div className="w-[300px] h-[300px] bg-gray-200 dark:bg-gray-800 rounded-[2em] flex items-center justify-center mx-auto overflow-hidden relative">
               <Image
-                src="/personal-website/assets/dp.jpg"
+                src={`${basePath}/assets/dp.jpg`}
                 alt={profile.name}
                 fill
                 className="object-cover"
