@@ -2,6 +2,7 @@ import { getEntertainment } from "@/lib/api";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 export default async function AnimeShelf() {
   const items = await getEntertainment();
@@ -16,7 +17,7 @@ export default async function AnimeShelf() {
 
   const Card = ({ item, index }: { item: any, index: number }) => (
     <FadeIn delay={index * 0.05} className="h-full">
-      <div className="box rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col h-full">
+      <SpotlightCard className="h-full flex flex-col p-0">
         {item.image ? (
           <div className="relative w-full aspect-[2/3]">
             <Image
@@ -54,7 +55,7 @@ export default async function AnimeShelf() {
             </span>
           </div>
         </div>
-      </div>
+      </SpotlightCard>
     </FadeIn>
   );
 

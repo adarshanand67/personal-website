@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import FadeIn from "@/components/FadeIn";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import TechStack from "@/components/TechStack";
 
 const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
   loading: () => (
@@ -36,7 +38,9 @@ export default async function Home() {
         <Hero />
       </FadeIn>
 
-      <div className="section container mx-auto px-4 mb-12">
+      <TechStack />
+
+      <div className="section container mx-auto px-4 mb-24">
         {/* Experience Section */}
         <div className="mb-16" id="experience">
           <FadeIn>
@@ -47,9 +51,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 gap-6">
             {experiences.map((exp, index) => (
               <FadeIn key={index} delay={index * 0.1}>
-                <div
-                  className="card border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-all bg-white dark:bg-zinc-900"
-                >
+                <SpotlightCard className="p-6">
                   <div className="flex items-start gap-4 mb-4">
                     {exp.logo && (
                       <div className="relative w-12 h-12 md:w-16 md:h-16 flex-shrink-0 bg-white dark:bg-white rounded-lg p-2 border border-gray-100 overflow-hidden">
@@ -81,7 +83,7 @@ export default async function Home() {
                       ))}
                     </ul>
                   )}
-                </div>
+                </SpotlightCard>
               </FadeIn>
             ))}
           </div>
