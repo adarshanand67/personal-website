@@ -18,7 +18,6 @@ const skills = [
   "vLLM",
   "PyTorch",
   "OpenVINO",
-  "Docker",
   "Redis",
   "MySQL",
   "Ubuntu",

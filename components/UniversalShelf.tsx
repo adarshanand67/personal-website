@@ -3,38 +3,21 @@
 import { useState, useMemo } from "react";
 import { ShelfHeader } from "@/components/ShelfHeader";
 import { ShelfConfig } from "@/config/shelves";
-import { container } from "@/lib/di";
-import { ShelfItemStrategy } from "@/lib/shelf-strategies";
+import { ShelfStrategyFactory } from "@/lib/shelf-strategies";
 
 interface UniversalShelfProps {
   config: ShelfConfig;
-  initialData?: unknown[]; // For keys like 'blog' where data comes from getStaticProps equivalent
+  items: unknown[];
 }
 
-export default function UniversalShelf({ config, initialData }: UniversalShelfProps) {
-  // Dependency Injection: Get Strategy
-  const strategy = useMemo(
-    () => container.getStrategy(config.type) as unknown as ShelfItemStrategy<unknown>,
-    [config.type]
-  );
-
-  // Dependency Injection: Get Repository (if not provided via initialData)
-  // Blogs usually pass data from server, others might too.
-  // If initialData is present, use it. Else fetch from Repo.
-  const allItems = useMemo(() => {
-    if (initialData) return initialData;
-    const repo = container.getRepository(config.type);
-    if (repo) return repo.getAll();
-    return [];
-  }, [initialData, config.type]);
+export default function UniversalShelf({ config, items }: UniversalShelfProps) {
+  // Strategy Pattern
+  const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
 
   const [query, setQuery] = useState("");
 
   // Polymorphic Filtering
-  const filteredItems = useMemo(
-    () => strategy.filter(allItems, query),
-    [allItems, query, strategy]
-  );
+  const filteredItems = useMemo(() => strategy.filter(items, query), [items, query, strategy]);
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">

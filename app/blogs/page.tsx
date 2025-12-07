@@ -1,8 +1,9 @@
 import { getBlogs } from "@/lib/api";
-import BlogsClient from "@/components/BlogsClient";
+import UniversalShelf from "@/components/UniversalShelf";
+import { shelfConfigs } from "@/config/shelves";
 
 export default async function BlogsPage() {
   const blogs = await getBlogs();
 
-  return <BlogsClient blogs={blogs} />;
+  return <UniversalShelf config={shelfConfigs.blogs} items={blogs} />;
 }

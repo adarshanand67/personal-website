@@ -23,8 +23,8 @@ export default function Terminal() {
   const introLines = [
     "> ./adarsh_profile.sh",
     "> Initializing SDE protocol...",
-    "> Loading modules: C++, Make, ",
-    `> ${toLeetSpeak("Access granted. Type 'help' for commands.")}`,
+    "> Loading modules: C++, Make, Git...",
+    `> Access granted :${toLeetSpeak("Type 'help' for commands.")}`,
   ];
 
   const commands = [
