@@ -1,9 +1,9 @@
-import { getExperiences, getVolunteering } from "@/lib/api";
+import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
 
 export default async function Experience() {
   const experiences = await getExperiences();
-  const volunteerings = await getVolunteering();
+
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
@@ -58,34 +58,6 @@ export default async function Experience() {
           )
         )}
       </div>
-
-      {volunteerings.length > 0 && (
-        <>
-          <h2 className="text-2xl font-bold mb-2">
-            <span className="text-gray-500">##</span> Volunteering
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
-            $ cat ~/community/roles.txt
-          </p>
-
-          <div className="space-y-4">
-            {volunteerings.map(
-              (
-                vol: { organization: string; role: string; additionalInfo?: string },
-                index: number
-              ) => (
-                <div key={index} className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-                  <h3 className="font-bold">{vol.organization}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{vol.role}</p>
-                  {vol.additionalInfo && (
-                    <p className="text-gray-500 text-xs mt-1">{vol.additionalInfo}</p>
-                  )}
-                </div>
-              )
-            )}
-          </div>
-        </>
-      )}
     </div>
   );
 }

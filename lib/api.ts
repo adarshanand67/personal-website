@@ -6,7 +6,6 @@ import experiencesData from "@/data/experiences.json";
 import papersData from "@/data/papers.json";
 import booksData from "@/data/books.json";
 import entertainmentData from "@/data/entertainment.json";
-import volunteeringData from "@/data/volunteering.json";
 
 // Shared Types
 import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem } from "@/types";
@@ -18,10 +17,6 @@ export async function getProfile() {
 
 export async function getExperiences() {
   return experiencesData;
-}
-
-export async function getVolunteering() {
-  return volunteeringData;
 }
 
 export async function getPapers() {

@@ -103,7 +103,7 @@ export default function Terminal() {
         if (args.length === 0) {
           newLines.push("usage: cd [directory]");
         } else {
-          const dir = args[0].replace(/\/$/, "").replace("shelf", ""); // relaxed matching
+          const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", ""); // relaxed matching
           const map: Record<string, string> = {
             blog: "/blogs",
             blogs: "/blogs",
@@ -115,6 +115,7 @@ export default function Terminal() {
             animes: "/animeshelf",
             home: "/",
             "~": "/",
+            ".": "/",
           };
 
           if (map[dir]) {
