@@ -1,10 +1,10 @@
 "use client";
 
-import { getBooks } from "@/lib/api";
+import booksData from "@/data/books.json";
 import Link from "next/link";
 import { ExternalLink, Star, Search } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 interface Book {
   title: string;
@@ -17,31 +17,16 @@ interface Book {
 }
 
 export default function Bookshelf() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [filteredBooks, setFilteredBooks] = useState<Book[]>([]);
+  const books: Book[] = booksData;
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    async function loadBooks() {
-      const data = await getBooks();
-      setBooks(data);
-      setFilteredBooks(data);
-    }
-    loadBooks();
-  }, []);
-
-  useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setFilteredBooks(books);
-    } else {
-      const query = searchQuery.toLowerCase();
-      setFilteredBooks(
-        books.filter(
-          (book) =>
-            book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)
-        )
-      );
-    }
+  const filteredBooks = useMemo(() => {
+    if (searchQuery.trim() === "") return books;
+    const query = searchQuery.toLowerCase();
+    return books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)
+    );
   }, [searchQuery, books]);
 
   const getAmazonSearchUrl = (title: string, author: string) => {
@@ -108,7 +93,9 @@ export default function Bookshelf() {
       </div>
 
       {filteredBooks.length === 0 ? (
-        <p className="text-gray-500 text-center py-8">No books found matching "{searchQuery}"</p>
+        <p className="text-gray-500 text-center py-8">
+          No books found matching &quot;{searchQuery}&quot;
+        </p>
       ) : (
         <div className="grid grid-cols-4 gap-3">
           {filteredBooks.map((book, index) => (
