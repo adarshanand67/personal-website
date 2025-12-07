@@ -1,106 +1,132 @@
 [
   {
     "title": "48 Laws of Power",
-    "author": "Robert Greene"
+    "author": "Robert Greene",
+    "image": "https://books.google.com/books/content?id=6yl_C-KmZa0C&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Chip War",
-    "author": "Chris Miller"
+    "author": "Chris Miller",
+    "image": "https://books.google.com/books/content?id=x-lgEAAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Deep Work",
-    "author": "Cal Newport"
+    "author": "Cal Newport",
+    "image": "https://books.google.com/books/content?id=lZpFCgAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Don't Shut Up",
-    "author": "Prakhar Gupta"
+    "author": "Prakhar Gupta",
+    "image": "https://m.media-amazon.com/images/I/61Sd-YiXDVL._SY466_.jpg"
   },
   {
     "title": "Don't Take It Personal",
-    "author": "Elayne Savage"
+    "author": "Elayne Savage",
+    "image": "https://books.google.com/books/content?id=8QLQCgAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Emotional Intelligence",
-    "author": "Daniel Goleman"
+    "author": "Daniel Goleman",
+    "image": "https://books.google.com/books/content?id=XP5GAAAAMAAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Games People Play",
-    "author": "Eric Berne"
+    "author": "Eric Berne",
+    "image": "https://books.google.com/books/content?id=NQoGDgAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "How to Win Friends and Influence People",
-    "author": "Dale Carnegie"
+    "author": "Dale Carnegie",
+    "image": "https://books.google.com/books/content?id=1rW-QpIAs8UC&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "12 Rules for Life",
-    "author": "Jordan Peterson"
+    "author": "Jordan Peterson",
+    "image": "https://books.google.com/books/content?id=vptHDwAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Rudest Book Ever",
-    "author": "Shwetabh Gangwar"
+    "author": "Shwetabh Gangwar",
+    "image": "https://m.media-amazon.com/images/I/71JB4XkK76L._SY466_.jpg"
   },
   {
     "title": "Stillness is the Key",
-    "author": "Ryan Holiday"
+    "author": "Ryan Holiday",
+    "image": "https://books.google.com/books/content?id=vDCaDwAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "System Design Interview",
-    "author": "Alex Xu"
+    "author": "Alex Xu",
+    "image": "https://m.media-amazon.com/images/I/61GmMJEkU-L._SY466_.jpg"
   },
   {
     "title": "The 5 AM Club",
-    "author": "Robin Sharma"
+    "author": "Robin Sharma",
+    "image": "https://books.google.com/books/content?id=u6pVDwAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The 7 Habits of Highly Effective People",
-    "author": "Stephen R. Covey"
+    "author": "Stephen R. Covey",
+    "image": "https://books.google.com/books/content?id=upUxaNWSaRIC&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Compound Effect",
-    "author": "Darren Hardy"
+    "author": "Darren Hardy",
+    "image": "https://books.google.com/books/content?id=MvdqPgAACAAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Definitive Book of Body Language",
-    "author": "Allan & Barbara Pease"
+    "author": "Allan & Barbara Pease",
+    "image": "https://books.google.com/books/content?id=PYThPcVvhpYC&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Happiness Hypothesis",
-    "author": "Jonathan Haidt"
+    "author": "Jonathan Haidt",
+    "image": "https://books.google.com/books/content?id=DUBREurT3gEC&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Happiness Trap",
-    "author": "Russ Harris"
+    "author": "Russ Harris",
+    "image": "https://books.google.com/books/content?id=xBVqKAKMjJ8C&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Let Them Theory",
-    "author": "Mel Robbins"
+    "author": "Mel Robbins",
+    "image": "https://m.media-amazon.com/images/I/71Yz1mVCmhL._SY466_.jpg"
   },
   {
     "title": "The Mountain Is You",
-    "author": "Brianna Wiest"
+    "author": "Brianna Wiest",
+    "image": "https://books.google.com/books/content?id=X7jZDwAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Subtle Art of Not Giving a F*ck",
-    "author": "Mark Manson"
+    "author": "Mark Manson",
+    "image": "https://books.google.com/books/content?id=yGToswEACAAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "The Way of the Superior Man",
-    "author": "David Deida"
+    "author": "David Deida",
+    "image": "https://books.google.com/books/content?id=aVk_DQAAQBAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Thinking, Fast and Slow",
-    "author": "Daniel Kahneman"
+    "author": "Daniel Kahneman",
+    "image": "https://books.google.com/books/content?id=ZuKTvERuPG8C&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Who Will Cry When You Die?",
-    "author": "Robin Sharma"
+    "author": "Robin Sharma",
+    "image": "https://books.google.com/books/content?id=b_K0mAEACAAJ&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "Why We Sleep",
-    "author": "Matthew Walker"
+    "author": "Matthew Walker",
+    "image": "https://books.google.com/books/content?id=ZlMG0qfn8tEC&printsec=frontcover&img=1&zoom=1"
   },
   {
     "title": "You Are a Badass",
-    "author": "Jen Sincero"
+    "author": "Jen Sincero",
+    "image": "https://books.google.com/books/content?id=dxjnAgAAQBAJ&printsec=frontcover&img=1&zoom=1"
   }
 ]
