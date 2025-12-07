@@ -54,7 +54,7 @@ export default function Navbar() {
             {/* Desktop Nav */}
             <div className="hidden md:flex md:items-center md:ml-auto gap-0">
               <Link
-                href="/blogs"
+                href="/blogshelf"
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Blogshelf
@@ -76,6 +76,12 @@ export default function Navbar() {
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Bookshelf
+              </Link>
+              <Link
+                href="/experience"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              >
+                Experience
               </Link>
 
               <span className="text-gray-400 mx-1">|</span>
@@ -96,13 +102,12 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <div
             id="menu"
-            className={`md:hidden overflow-hidden transition-all duration-200 ${
-              isActive ? "max-h-64 pb-4" : "max-h-0"
-            }`}
+            className={`md:hidden overflow-hidden transition-all duration-200 ${isActive ? "max-h-64 pb-4" : "max-h-0"
+              }`}
           >
             <div className="flex flex-col gap-1 text-sm">
               <Link
-                href="/blogs"
+                href="/blogshelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
@@ -128,6 +133,13 @@ export default function Navbar() {
                 onClick={() => setIsActive(false)}
               >
                 Bookshelf
+              </Link>
+              <Link
+                href="/experience"
+                className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
+              >
+                Experience
               </Link>
               <div className="flex items-center gap-4 pt-2 border-t border-gray-200 dark:border-gray-800">
                 <button

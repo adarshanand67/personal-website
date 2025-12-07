@@ -34,5 +34,5 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     command: 'find ~/blog -type f -name "*.md"',
     searchPlaceholder: "Search blogs...",
     type: "blog",
-  },
+  }
 };

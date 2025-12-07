@@ -21,7 +21,7 @@ export default async function RecentBlogs() {
             <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
               <span className="text-gray-500 text-xs">{post.date}</span>
               <Link
-                href={`/blogs/${post.slug}`}
+                href={`/blogshelf/${post.slug}`}
                 className="text-green-700 dark:text-green-400 hover:underline"
               >
                 {post.title}
@@ -33,7 +33,7 @@ export default async function RecentBlogs() {
 
       <p className="mt-4 text-sm text-gray-500">
         →{" "}
-        <Link href="/blogs" className="text-green-700 dark:text-green-400 hover:underline">
+        <Link href="/blogshelf" className="text-green-700 dark:text-green-400 hover:underline">
           Full archive
         </Link>
       </p>

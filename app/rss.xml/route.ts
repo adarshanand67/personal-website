@@ -21,8 +21,8 @@ export async function GET() {
         (post: any) => `
     <item>
       <title><![CDATA[${post.title}]]></title>
-      <link>${baseUrl}/blogs/${post.slug}</link>
-      <guid isPermaLink="true">${baseUrl}/blogs/${post.slug}</guid>
+      <link>${baseUrl}/blogshelf/${post.slug}</link>
+      <guid isPermaLink="true">${baseUrl}/blogshelf/${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description><![CDATA[${post.excerpt || post.title}]]></description>
     </item>`

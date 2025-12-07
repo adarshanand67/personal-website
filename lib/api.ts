@@ -61,7 +61,7 @@ function parseFrontmatter(fileContent: string) {
 
 export async function getBlogs() {
   try {
-    const postsDirectory = path.join(process.cwd(), "data", "posts");
+    const postsDirectory = path.join(process.cwd(), "data", "blogs");
 
     // Check if directory exists
     try {
@@ -100,7 +100,7 @@ export async function getBlogs() {
 
 export async function getPost(slug: string): Promise<string | null> {
   try {
-    const postsDirectory = path.join(process.cwd(), "data", "posts");
+    const postsDirectory = path.join(process.cwd(), "data", "blogs");
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = await fs.readFile(fullPath, "utf8");
     const { content } = parseFrontmatter(fileContents);

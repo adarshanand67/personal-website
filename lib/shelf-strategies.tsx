@@ -195,7 +195,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
         <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
           <span className="text-gray-500 text-xs min-w-[80px]">{blog.date}</span>
           <Link
-            href={`/blogs/${blog.slug}`}
+            href={`/blogshelf/${blog.slug}`}
             className="text-green-700 dark:text-green-400 hover:underline"
           >
             {blog.title}

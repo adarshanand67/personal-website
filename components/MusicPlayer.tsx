@@ -13,11 +13,15 @@ export default function MusicPlayer() {
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
     const PLAYLIST = [
         "https://archive.org/download/tvtunes_30971/One%20Punch%20Man.mp3",
+        "https://archive.org/download/fav-mikezillak/Pokemon%20Theme%20-%20Billy%20Crawford.mp3",
+        "https://archive.org/download/cowboy-bebop-tank-the-best/Tank!%20(TV%20stretch).mp3",
         "https://archive.org/download/mythium/JLS_ATI.mp3",
     ];
 
     const TRACK_NAMES = [
-        "One Punch Man Theme",
+        "A Cruel Angel's Thesis",
+        "THE HERO!! (One Punch Man)",
+        "Tank! (Cowboy Bebop)",
         "Lofi Chill Session",
     ];
 

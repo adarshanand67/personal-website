@@ -43,6 +43,8 @@ export interface Paper {
   url: string;
 }
 
+
+
 export interface Blog {
   date: string;
   title: string;

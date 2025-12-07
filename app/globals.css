@@ -57,48 +57,28 @@
 
   @keyframes glitch-2 {
     0% {
-      clip-path: inset(80% 0 0 0);
-      transform: translate(2px, 2px);
+      transform: translate(0);
     }
 
     20% {
-      clip-path: inset(10% 0 60% 0);
-      transform: translate(-2px, 2px);
-    }
-
-    40% {
-      clip-path: inset(50% 0 30% 0);
       transform: translate(2px, -2px);
     }
 
+    40% {
+      transform: translate(2px, 2px);
+    }
+
     60% {
-      clip-path: inset(20% 0 70% 0);
       transform: translate(-2px, -2px);
     }
 
     80% {
-      clip-path: inset(70% 0 10% 0);
-      transform: translate(2px, 2px);
+      transform: translate(-2px, 2px);
     }
 
     100% {
-      clip-path: inset(0 0 0 0);
-      transform: translate(0, 0);
+      transform: translate(0);
     }
-  }
-}
-
-.animate-spin-slow {
-  animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
 
@@ -118,4 +98,36 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-assistant), sans-serif;
+  cursor: text;
+  /* Fallback */
+}
+
+/* Custom Block Cursorish feel for links */
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Custom Scrollbar - Retro Terminal Style */
+::-webkit-scrollbar {
+  width: 14px;
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #16a34a;
+  /* Green-600 */
+  border: 2px solid #1a1a1a;
+  border-radius: 0;
+  /* Square blocky look */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+  /* Green-500 */
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a1a;
 }
