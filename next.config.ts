@@ -4,9 +4,8 @@ const isProd = process.env.NODE_ENV === "production";
 const repoName = "personal-website";
 
 const nextConfig: NextConfig = {
-  output: "export", // Changed to export for static site
+  output: "export",
   basePath: isProd ? `/${repoName}` : undefined,
-  assetPrefix: isProd ? `/${repoName}/` : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
