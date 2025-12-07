@@ -3,7 +3,6 @@ import SectionHeader from "@/components/SectionHeader";
 import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import TechStack from "@/components/TechStack";
@@ -43,53 +42,32 @@ export default async function Home() {
             Experience
           </h2>
 
-          {/* Timeline */}
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-800" />
-
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <div className="relative flex gap-6">
-                  {/* Timeline dot */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500 rounded-full flex items-center justify-center">
-                      <span className="text-white font-bold text-lg text-center">
-                        {exp.company[0]}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-grow pb-8">
-                    <div className="mb-2">
-                      <h3 className="text-xl font-bold">{exp.company}</h3>
-                      <p className="text-gray-800 dark:text-white font-medium">{exp.role}</p>
-                      <p className="text-gray-500 text-sm font-mono mt-1">
-                        {exp.duration} • {exp.location}
-                      </p>
-                    </div>
-
-                    {exp.description && (
-                      <p
-                        className="mb-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
-                        dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }}
-                      />
-                    )}
-                    {exp.highlights.length > 0 && (
-                      <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
-                        {exp.highlights.map((highlight: string, idx: number) => (
-                          <li
-                            key={idx}
-                            dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }}
-                          />
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <div key={index} className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
+                <div className="mb-2">
+                  <h3 className="text-xl font-bold">{exp.company}</h3>
+                  <p className="text-gray-800 dark:text-white font-medium">{exp.role}</p>
+                  <p className="text-gray-500 text-sm font-mono mt-1">
+                    {exp.duration} • {exp.location}
+                  </p>
                 </div>
-              ))}
-            </div>
+
+                {exp.description && (
+                  <p
+                    className="mb-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }}
+                  />
+                )}
+                {exp.highlights.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
+                    {exp.highlights.map((highlight: string, idx: number) => (
+                      <li key={idx} dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 
