@@ -87,7 +87,7 @@ export default async function Bookshelf() {
             Read <span className="text-gray-400 text-lg">({readBooks.length})</span>
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {readBooks.map((book: any, index: number) => (
               <BookCard key={index} book={book} index={index} />
             ))}
@@ -102,7 +102,7 @@ export default async function Bookshelf() {
             Reading <span className="text-gray-400 text-lg">({readingBooks.length})</span>
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {readingBooks.map((book: any, index: number) => (
               <BookCard key={index} book={book} index={index} />
             ))}
@@ -117,7 +117,7 @@ export default async function Bookshelf() {
             Planning <span className="text-gray-400 text-lg">({plannedBooks.length})</span>
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {plannedBooks.map((book: any, index: number) => (
               <BookCard key={index} book={book} index={index} />
             ))}

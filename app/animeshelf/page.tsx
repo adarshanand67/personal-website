@@ -75,7 +75,7 @@ export default async function AnimeShelf() {
         <div className="mb-8">
           <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {watchedAnime.map((item, index) => (
               <Card key={index} item={item} index={index} />
             ))}
@@ -86,7 +86,7 @@ export default async function AnimeShelf() {
         <div>
           <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Planning</h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {plannedAnime.map((item, index) => (
               <Card key={index} item={item} index={index} />
             ))}
@@ -104,7 +104,7 @@ export default async function AnimeShelf() {
         <div className="mb-8">
           <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Watched</h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {watchedMovies.map((item, index) => (
               <Card key={index} item={item} index={index} />
             ))}
@@ -115,7 +115,7 @@ export default async function AnimeShelf() {
         <div>
           <h3 className="text-xl font-bold text-gray-700 dark:text-gray-300 mb-4">Planning</h3>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-4 gap-3">
             {plannedMovies.map((item, index) => (
               <Card key={index} item={item} index={index} />
             ))}
