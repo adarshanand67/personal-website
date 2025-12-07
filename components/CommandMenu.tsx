@@ -94,6 +94,13 @@ export function CommandMenu() {
                 Blogshelf
               </Command.Item>
               <Command.Item
+                onSelect={() => runCommand(() => router.push("/papershelf"))}
+                className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
+              >
+                <FileText className="w-4 h-4" />
+                Papershelf
+              </Command.Item>
+              <Command.Item
                 onSelect={() => runCommand(() => router.push("/animeshelf"))}
                 className="flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer aria-selected:bg-gray-100 dark:aria-selected:bg-zinc-800 transition-colors"
               >
