@@ -57,28 +57,48 @@
 
   @keyframes glitch-2 {
     0% {
-      transform: translate(0);
-    }
-
-    20% {
-      transform: translate(2px, -2px);
-    }
-
-    40% {
+      clip-path: inset(80% 0 0 0);
       transform: translate(2px, 2px);
     }
 
+    20% {
+      clip-path: inset(10% 0 60% 0);
+      transform: translate(-2px, 2px);
+    }
+
+    40% {
+      clip-path: inset(50% 0 30% 0);
+      transform: translate(2px, -2px);
+    }
+
     60% {
+      clip-path: inset(20% 0 70% 0);
       transform: translate(-2px, -2px);
     }
 
     80% {
-      transform: translate(-2px, 2px);
+      clip-path: inset(70% 0 10% 0);
+      transform: translate(2px, 2px);
     }
 
     100% {
-      transform: translate(0);
+      clip-path: inset(0 0 0 0);
+      transform: translate(0, 0);
     }
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
 

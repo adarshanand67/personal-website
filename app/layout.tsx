@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { CommandMenu } from "@/components/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
 import BackToTop from "@/components/BackToTop";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -91,6 +92,7 @@ export default function RootLayout({
           <MatrixRain />
           <CommandMenu />
           {children}
+          <MusicPlayer />
           <BackToTop />
           <Footer />
         </ThemeProvider>
