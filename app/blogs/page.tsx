@@ -29,24 +29,33 @@ export default async function BlogsPage() {
         <span className="text-gray-500">#</span> Blogshelf
         <span className="text-gray-500 text-lg ml-2">({blogs.length})</span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/blog --all</p>
+      <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm">
+        $ find ~/blog -type f -name "*.md"
+      </p>
 
       {years.map((year) => (
         <div key={year} className="mb-8">
-          <h2 className="text-xl font-bold mb-4 text-gray-500">## {year}</h2>
-          <ul className="space-y-2 text-sm">
+          <h2 className="text-xl font-bold mb-4">
+            <span className="text-gray-500">##</span> {year}
+          </h2>
+          <div className="space-y-2">
             {blogsByYear[year].map((post) => (
-              <li key={post.slug} className="flex items-baseline gap-2">
-                <span className="text-gray-500 min-w-[80px]">{post.date}</span>
-                <Link
-                  href={`/blogs/${post.slug}`}
-                  className="text-green-700 dark:text-green-400 hover:underline"
-                >
-                  {post.title}
-                </Link>
-              </li>
+              <div
+                key={post.slug}
+                className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+              >
+                <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
+                  <span className="text-gray-500 text-xs min-w-[80px]">{post.date}</span>
+                  <Link
+                    href={`/blogs/${post.slug}`}
+                    className="text-green-700 dark:text-green-400 hover:underline"
+                  >
+                    {post.title}
+                  </Link>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>

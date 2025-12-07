@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SectionHeader from "./SectionHeader";
 import { getPapers } from "@/lib/api";
 
 export default async function RecentPapers() {
@@ -7,27 +6,35 @@ export default async function RecentPapers() {
   const recentPapers = papers.slice(0, 5);
 
   return (
-    <div>
-      <SectionHeader
-        title="Recent papers"
-        linkText="Papershelf ➔"
-        linkHref="/papershelf"
-        subtitle="Papers I have read recently."
-      />
-      <ul className="space-y-2">
-        {recentPapers.map((paper, index) => (
-          <li key={index} className="flex items-start">
-            <span className="mr-2 text-gray-400">•</span>
+    <section className="font-mono">
+      <h2 className="text-2xl font-bold mb-2">
+        <span className="text-gray-500">##</span> Recent Papers
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">$ ls ~/papers --recent</p>
+
+      <div className="space-y-2">
+        {recentPapers.map((paper: { title: string; url: string }, index: number) => (
+          <div
+            key={index}
+            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+          >
             <Link
               href={paper.url}
               target="_blank"
-              className="text-green-700 dark:text-green-400 hover:underline"
+              className="text-green-700 dark:text-green-400 hover:underline text-sm"
             >
               {paper.title}
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+
+      <p className="mt-4 text-sm text-gray-500">
+        →{" "}
+        <Link href="/papershelf" className="text-green-700 dark:text-green-400 hover:underline">
+          Papershelf
+        </Link>
+      </p>
+    </section>
   );
 }

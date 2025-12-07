@@ -15,14 +15,14 @@ export default async function Papershelf() {
         <span className="text-gray-500">#</span> Papershelf
         <span className="text-gray-500 text-lg ml-2">({papers.length})</span>
       </h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">
-        $ cat ~/papers/reading_list.md
-      </p>
+      <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm">$ find ~/papers -name "*.pdf"</p>
 
-      <ul className="space-y-2 text-sm">
+      <div className="space-y-2">
         {papers.map((paper: Paper, index: number) => (
-          <li key={index} className="flex items-start">
-            <span className="mr-2 text-gray-500">-</span>
+          <div
+            key={index}
+            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+          >
             <Link
               href={paper.url}
               target="_blank"
@@ -30,9 +30,9 @@ export default async function Papershelf() {
             >
               {paper.title}
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
