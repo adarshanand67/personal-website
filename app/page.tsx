@@ -126,26 +126,31 @@ export default async function Home() {
         </FadeIn>
       </div>
 
-      <div className="section container mx-auto px-4 mb-24">
+      <div className="section container mx-auto px-4 mb-24 font-mono">
         <FadeIn delay={0.5}>
-          <h2 className="title mb-8 font-bold text-3xl font-serif">Let&apos;s talk</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+          <h2 className="text-2xl font-bold mb-2">
+            <span className="text-gray-500">##</span> Let&apos;s Talk
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">$ echo $CONTACT_INFO</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm max-w-2xl">
             I&apos;m always open to discussing new opportunities, interesting projects, or just
-            chatting about tech. Feel free to reach out via LinkedIn or email.
+            chatting about tech.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="text-sm">
+            <span className="text-gray-500">→</span>{" "}
             <a
               href="https://linkedin.com/in/adarshanand67"
               target="_blank"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+              className="text-green-700 dark:text-green-400 hover:underline"
             >
-              Connect on LinkedIn
+              linkedin.com/in/adarshanand67
             </a>
+            <span className="text-gray-500 mx-2">•</span>
             <a
               href="mailto:adarshan20302@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-zinc-800 text-black dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors"
+              className="text-green-700 dark:text-green-400 hover:underline"
             >
-              Email Me
+              adarshan20302@gmail.com
             </a>
           </div>
         </FadeIn>
