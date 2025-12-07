@@ -15,7 +15,12 @@ describe("Zod Schema Validation", () => {
                 title: "Engineer",
                 pronouns: "he/him",
                 location: "SF",
-                education: { degree: "BS" },
+                education: {
+                    university: "Test University",
+                    degree: "BS Computer Science",
+                    years: "2020-2024",
+                    grade: "3.8 GPA",
+                },
                 socials: {
                     linkedin: "https://linkedin.com",
                     github: "https://github.com",
