@@ -54,28 +54,13 @@ export default function Terminal() {
     }
   }, [lines, currentText, isIntroDone]);
 
-  // Intro Typing Effect
+  // Intro Typing Effect (DISABLED)
   useEffect(() => {
-    if (currentLineIndex >= introLines.length) {
+    if (!isIntroDone) {
+      setLines(introLines);
       setIsIntroDone(true);
-      return;
     }
-
-    const targetLine = introLines[currentLineIndex];
-    if (currentText.length < targetLine.length) {
-      const timeout = setTimeout(() => {
-        setCurrentText(targetLine.slice(0, currentText.length + 1));
-      }, 30);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
-        setLines((prev) => [...prev, targetLine]);
-        setCurrentText("");
-        setCurrentLineIndex((prev) => prev + 1);
-      }, 400);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentText, currentLineIndex, introLines]);
+  }, [isIntroDone]);
 
   const executeCommand = (cmd: string) => {
     const parts = cmd.trim().split(/\s+/);
