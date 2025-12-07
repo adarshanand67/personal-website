@@ -12,6 +12,10 @@ export default async function Hero() {
     <section className="section container mx-auto px-4 mt-12 mb-12">
       <div className="flex flex-col gap-8">
         <div className="flex-1">
+          <div className="font-mono mb-4">
+            <span className="text-gray-500">$</span>{" "}
+            <span className="text-gray-700 dark:text-gray-300">whoami</span>
+          </div>
           <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
             Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
           </h1>
