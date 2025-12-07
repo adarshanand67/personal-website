@@ -37,20 +37,17 @@ export default function TechStack() {
 
       <div className="text-sm leading-relaxed">
         {skills.map((skill, index) => {
-          const url = techLinks[skill];
+          const url =
+            techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
           return (
             <span key={index}>
-              {url ? (
-                <Link
-                  href={url}
-                  target="_blank"
-                  className="text-green-700 dark:text-green-400 hover:underline"
-                >
-                  {skill}
-                </Link>
-              ) : (
-                <span>{skill}</span>
-              )}
+              <Link
+                href={url}
+                target="_blank"
+                className="text-green-700 dark:text-green-400 hover:underline"
+              >
+                {skill}
+              </Link>
               {index < skills.length - 1 && <span className="text-gray-500"> • </span>}
             </span>
           );
