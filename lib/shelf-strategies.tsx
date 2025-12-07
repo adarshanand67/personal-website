@@ -7,6 +7,7 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 // Abstract Strategy Interface
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
+  renderList(items: T[]): ReactNode; // Polymorphic List Rendering
   filter(items: T[], query: string): T[];
 }
 
@@ -42,6 +43,13 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     );
   }
 
+  renderList(items: Book[]): ReactNode {
+    if (items.length === 0) return null;
+    return (
+      <div className="space-y-2">{items.map((book, index) => this.renderItem(book, index))}</div>
+    );
+  }
+
   filter(items: Book[], query: string): Book[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -69,6 +77,13 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
           {paper.title}
         </Link>
       </div>
+    );
+  }
+
+  renderList(items: Paper[]): ReactNode {
+    if (items.length === 0) return null;
+    return (
+      <div className="space-y-2">{items.map((paper, index) => this.renderItem(paper, index))}</div>
     );
   }
 
@@ -105,6 +120,51 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
     );
   }
 
+  renderList(items: EntertainmentItem[]): ReactNode {
+    const filterItems = (
+      items: EntertainmentItem[],
+      type: "Anime" | "Movie",
+      status: "Completed" | "Planning"
+    ) => {
+      return items.filter((item) => item.type === type && item.status === status);
+    };
+
+    const animeCompleted = filterItems(items, "Anime", "Completed");
+    const animePlanning = filterItems(items, "Anime", "Planning");
+    const movieCompleted = filterItems(items, "Movie", "Completed");
+    const moviePlanning = filterItems(items, "Movie", "Planning");
+
+    const Section = ({
+      title,
+      sectionItems,
+    }: {
+      title: string;
+      sectionItems: EntertainmentItem[];
+    }) => {
+      if (sectionItems.length === 0) return null;
+      return (
+        <div className="mb-12">
+          <h2 className="text-xl font-bold mb-4 font-mono">
+            <span className="text-gray-500">##</span> {title}
+            <span className="text-gray-500 text-sm ml-2">({sectionItems.length})</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {sectionItems.map((item, index) => this.renderItem(item, index))}
+          </div>
+        </div>
+      );
+    };
+
+    return (
+      <>
+        <Section title="Anime - Watched" sectionItems={animeCompleted} />
+        <Section title="Anime - Planning" sectionItems={animePlanning} />
+        <Section title="Movies - Watched" sectionItems={movieCompleted} />
+        <Section title="Movies - Planning" sectionItems={moviePlanning} />
+      </>
+    );
+  }
+
   filter(items: EntertainmentItem[], query: string): EntertainmentItem[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -134,6 +194,35 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
           </Link>
         </div>
       </div>
+    );
+  }
+
+  renderList(items: Blog[]): ReactNode {
+    const blogsByYear = items.reduce(
+      (acc: Record<string, Blog[]>, blog: Blog) => {
+        const year = blog.date.split("-")[0];
+        if (!acc[year]) acc[year] = [];
+        acc[year].push(blog);
+        return acc;
+      },
+      {} as Record<string, Blog[]>
+    );
+
+    const years = Object.keys(blogsByYear).sort((a, b) => Number(b) - Number(a));
+
+    return (
+      <>
+        {years.map((year) => (
+          <div key={year} className="mb-8">
+            <h2 className="text-xl font-bold mb-4">
+              <span className="text-gray-500">##</span> {year}
+            </h2>
+            <div className="space-y-2">
+              {blogsByYear[year].map((post, index) => this.renderItem(post, index))}
+            </div>
+          </div>
+        ))}
+      </>
     );
   }
 

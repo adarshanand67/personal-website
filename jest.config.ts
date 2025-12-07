@@ -11,10 +11,7 @@ const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-  moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/$1",
-  },
-  testPathIgnorePatterns: ["/node_modules/", "/.next/", "/out/", "/coverage/", "\\.mock\\."],
+  collectCoverage: true,
   collectCoverageFrom: [
     "app/**/*.{js,jsx,ts,tsx}",
     "components/**/*.{js,jsx,ts,tsx}",

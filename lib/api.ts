@@ -113,3 +113,14 @@ export async function getPost(slug: string): Promise<string | null> {
     return null;
   }
 }
+
+export async function getVolunteering() {
+  try {
+    const filePath = path.join(process.cwd(), "data", "volunteering.json");
+    const fileContents = await fs.readFile(filePath, "utf8");
+    return JSON.parse(fileContents);
+  } catch (error) {
+    console.error("[API] Error fetching volunteering:", error);
+    return [];
+  }
+}

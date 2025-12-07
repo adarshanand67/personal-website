@@ -21,7 +21,7 @@ export default async function Experience() {
               role: string;
               duration: string;
               location: string;
-              logo?: string;
+              logo?: string | null;
               description?: string;
               highlights: string[];
             },
