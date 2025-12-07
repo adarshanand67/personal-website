@@ -21,9 +21,9 @@ export default function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const introLines = [
-    "> ./adarsh_profile.exe",
+    "> ./adarsh_profile.sh",
     "> Initializing SDE protocol...",
-    "> Loading modules: C++, Rust...",
+    "> Loading modules: C++, Make, ",
     `> ${toLeetSpeak("Access granted. Type 'help' for commands.")}`,
   ];
 
@@ -210,10 +210,12 @@ export default function Terminal() {
       setInput("");
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (history.length > 0 && historyIndex < history.length - 1) {
+      if (history.length > 0) {
         const newIndex = historyIndex + 1;
-        setHistoryIndex(newIndex);
-        setInput(history[newIndex]);
+        if (newIndex < history.length) {
+          setHistoryIndex(newIndex);
+          setInput(history[newIndex]);
+        }
       }
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -228,19 +230,39 @@ export default function Terminal() {
     } else if (e.key === "Tab") {
       e.preventDefault();
       const parts = input.split(" ");
-      const currentWord = parts[parts.length - 1].toLowerCase();
 
-      if (currentWord) {
-        // Find matches in commands or directories
-        const matches = [...commands, ...directories].filter((c) => c.startsWith(currentWord));
+      // If we are at the command part (first word, no space yet or just started typing it)
+      const isCommand = parts.length === 1;
+      const currentToken = parts[parts.length - 1]; // keep case for replacement?? actually commands are mostly lower
+
+      let candidates: string[] = [];
+      const cmd = parts[0].toLowerCase();
+
+      if (isCommand) {
+        candidates = commands;
+      } else if ((cmd === "cd" || cmd === "open") && parts.length === 2) {
+        candidates = directories;
+      }
+
+      if (candidates.length > 0) {
+        const matches = candidates.filter((c) => c.startsWith(currentToken.toLowerCase()));
 
         if (matches.length === 1) {
-          // Auto-complete
-          if (parts.length === 1) {
-            setInput(matches[0] + " ");
-          } else {
-            parts[parts.length - 1] = matches[0];
-            setInput(parts.join(" ") + " ");
+          parts[parts.length - 1] = matches[0];
+          setInput(parts.join(" ") + " ");
+        } else if (matches.length > 1) {
+          // Find common prefix
+          let prefix = matches[0];
+          for (let i = 1; i < matches.length; i++) {
+            while (!matches[i].startsWith(prefix)) {
+              prefix = prefix.substring(0, prefix.length - 1);
+              if (prefix === "") break;
+            }
+          }
+
+          if (prefix.length > currentToken.length) {
+            parts[parts.length - 1] = prefix;
+            setInput(parts.join(" "));
           }
         }
       }
