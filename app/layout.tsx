@@ -6,7 +6,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CommandMenu } from "@/components/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
-import { GodMode } from "@/components/GodMode";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -42,7 +41,6 @@ export default function RootLayout({
           <Navbar />
           <MatrixRain />
           <CommandMenu />
-          <GodMode />
           {children}
           <Footer />
         </ThemeProvider>
