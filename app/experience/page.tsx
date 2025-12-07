@@ -29,11 +29,9 @@ export default async function Experience() {
           ) => (
             <div key={index} className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
               <div className="flex items-center gap-3 mb-2">
-                {exp.logo && (
-                  <div className="relative w-8 h-8 bg-white rounded overflow-hidden flex-shrink-0">
-                    <Image src={exp.logo} alt={exp.company} fill className="object-contain" />
-                  </div>
-                )}
+                <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-sm text-center">{exp.company[0]}</span>
+                </div>
                 <div>
                   <h3 className="font-bold text-lg">{exp.company}</h3>
                   <p className="text-gray-600 dark:text-gray-400">{exp.role}</p>
