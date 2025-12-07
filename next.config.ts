@@ -4,7 +4,9 @@ const isProd = process.env.NODE_ENV === "production";
 const repoName = "personal-website";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export", // Changed to export for static site
+  basePath: isProd ? `/${repoName}` : undefined,
+  assetPrefix: isProd ? `/${repoName}/` : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -15,6 +17,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "upload.wikimedia.org",
+      },
+      {
+        protocol: "https",
+        hostname: "m.media-amazon.com",
       },
     ],
   },

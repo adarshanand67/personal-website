@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Singleton profile table (row with id=1)
+model Profile {
+  id        Int      @id @default(autoincrement())
+  name      String
+  title     String
+  pronouns  String
+  location  String
+  
+  // Education (Json type is easiest for nested simple objects, or could be separate table)
+  education Json 
+  
+  // Socials
+  linkedin  String
+  github    String
+  email     String?
+
+  // Bio
+  shortBio  String
+  bioParagraphs String[] 
+}
+
+model Experience {
+  id          Int      @id @default(autoincrement())
+  company     String
+  role        String
+  duration    String
+  location    String
+  description String
+  highlights  String[]
+  logo        String?
+}
+
+model Book {
+  id        Int     @id @default(autoincrement())
+  title     String
+  author    String
+  notes     Boolean @default(false)
+  amazonUrl String?
+  image     String?
+  recommended Boolean @default(false)
+}
+
+model Paper {
+  id    Int    @id @default(autoincrement())
+  title String
+  url   String
+}
+
+model Blog {
+  id    Int    @id @default(autoincrement())
+  date  String // YYYY-MM-DD
+  title String
+  slug  String @unique
+}
+
+enum EntertainmentType {
+  Anime
+  Movie
+  Web_Series @map("Web Series")
+}
+
+enum WatchStatus {
+  Watching
+  Completed
+  Planning
+}
+
+model Entertainment {
+  id          Int               @id @default(autoincrement())
+  title       String
+  type        EntertainmentType
+  status      WatchStatus
+  notes       String?
+  image       String?
+  recommended Boolean           @default(false)
+}
