@@ -37,6 +37,7 @@ export const techLinks: Record<string, string> = {
   Ubuntu: "https://ubuntu.com/",
   CentOS: "https://www.centos.org/",
   RHEL: "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
+  SUSE: "https://www.suse.com/",
 };
 
 // Function to add hyperlinks to text - simplified to avoid conflicts
