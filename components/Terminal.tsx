@@ -255,18 +255,18 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-lg bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-sm my-6 cursor-text"
+      className="w-full max-w-2xl bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-base my-8 cursor-text"
       onClick={handleTerminalClick}
     >
       <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
         <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        <span className="ml-2 text-gray-400 text-xs">adarsh@linux:~</span>
+        <span className="ml-2 text-gray-400 text-sm">adarsh@linux:~</span>
       </div>
       <div
         ref={containerRef}
-        className="p-4 text-green-400 h-[220px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className="p-6 text-green-400 h-[320px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
