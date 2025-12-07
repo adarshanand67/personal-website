@@ -6,7 +6,9 @@ export default async function Papershelf() {
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
-      <h1 className="title text-4xl font-bold font-serif mb-2">Papershelf</h1>
+      <h1 className="title text-4xl font-bold font-serif mb-2">
+        Papershelf <span className="text-gray-400 text-2xl">({papers.length})</span>
+      </h1>
       <p className="text-gray-600 mb-8">Papers I have read recently.</p>
 
       <ul className="space-y-4">

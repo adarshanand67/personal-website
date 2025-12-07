@@ -62,7 +62,10 @@ export default async function AnimeShelf() {
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
       <FadeIn>
-        <h1 className="title text-4xl font-bold font-serif mb-8">Anime Shelf</h1>
+        <h1 className="title text-4xl font-bold font-serif mb-8">
+          Anime Shelf{" "}
+          <span className="text-gray-400 text-2xl">({items.length})</span>
+        </h1>
         <p className="text-gray-600 mb-8">
           A collection of anime and movies I&apos;ve watched and enjoyed.
         </p>
@@ -72,7 +75,7 @@ export default async function AnimeShelf() {
       <div className="mb-12">
         <FadeIn>
           <h2 className="text-3xl font-bold font-serif mb-8 border-b border-gray-200 pb-2">
-            Anime
+            Anime <span className="text-gray-400 text-xl">({anime.length})</span>
           </h2>
         </FadeIn>
 
@@ -109,7 +112,7 @@ export default async function AnimeShelf() {
       <div className="mb-12">
         <FadeIn>
           <h2 className="text-3xl font-bold font-serif mb-8 border-b border-gray-200 pb-2">
-            Movies
+            Movies <span className="text-gray-400 text-xl">({movies.length})</span>
           </h2>
         </FadeIn>
 

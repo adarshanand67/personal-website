@@ -24,7 +24,9 @@ export default async function Blogs() {
 
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12">
-      <h1 className="title text-4xl font-bold font-serif mb-8">Writings</h1>
+      <h1 className="title text-4xl font-bold font-serif mb-8">
+        Writings <span className="text-gray-400 text-2xl">({blogs.length})</span>
+      </h1>
 
       {blogs.length === 0 ? (
         <p className="text-gray-500 italic">No writings found.</p>
