@@ -40,10 +40,11 @@ model Experience {
 }
 
 model Book {
-  id     Int     @id @default(autoincrement())
-  title  String
-  author String
-  notes  Boolean @default(false)
+  id        Int     @id @default(autoincrement())
+  title     String
+  author    String
+  notes     Boolean @default(false)
+  amazonUrl String?
 }
 
 model Paper {

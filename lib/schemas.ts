@@ -41,6 +41,7 @@ export const BookSchema = z.object({
     title: z.string(),
     author: z.string(),
     notes: z.boolean().optional(),
+    amazonUrl: z.string().url().optional(),
 });
 
 export const BlogSchema = z.object({
