@@ -17,7 +17,6 @@
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   },
   "dependencies": {
-    "@prisma/client": "5.22.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "cobe": "^0.6.5",
@@ -50,10 +49,7 @@
     "jest-mock-extended": "^4.0.0",
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
-    "prisma": "5.22.0",
     "tailwindcss": "^4",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

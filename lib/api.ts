@@ -38,7 +38,7 @@ export async function getEntertainment() {
     type: item.type === "Web_Series" ? "Web Series" : item.type,
     image: item.image || null, // Ensure compatibility
     notes: item.notes || null,
-  })) as any; // Type assertion to bypass strict prisma mismatches if any
+  })) as any; // Type assertion to bypass strict type mismatches if any
 }
 
 function parseFrontmatter(fileContent: string) {
