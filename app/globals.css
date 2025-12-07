@@ -83,8 +83,8 @@
 }
 
 :root {
-  --background: #fef9c3;
-  --foreground: #000000;
+  --background: #f5f0e6;
+  --foreground: #1a1a1a;
   --spotlight-color: rgba(0, 0, 0, 0.05);
 }
 
