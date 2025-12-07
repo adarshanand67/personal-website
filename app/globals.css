@@ -13,6 +13,21 @@
 
   --animate-glitch-1: glitch-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
   --animate-glitch-2: glitch-2 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  --animate-flicker: flicker 0.15s infinite;
+
+  @keyframes flicker {
+    0% {
+      opacity: 0.02;
+    }
+
+    50% {
+      opacity: 0.05;
+    }
+
+    100% {
+      opacity: 0.02;
+    }
+  }
 
   @keyframes glitch-1 {
     0% {
