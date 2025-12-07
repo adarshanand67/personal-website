@@ -5,12 +5,10 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import profilePic from "@/assets/dp.jpg";
 import Terminal from "./Terminal";
 import { GlitchText } from "@/components/ui/GlitchText";
-import { GlitchText } from "@/components/ui/GlitchText";
 
 export default async function Hero() {
   const profile = await getProfile();
 
-  return (
   return (
     <div className="section container mx-auto px-4 mt-12 mb-12 relative">
       <div className="columns is-vcentered flex flex-col md:flex-row items-center gap-8 relative z-10">
