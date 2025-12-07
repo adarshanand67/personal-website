@@ -96,9 +96,8 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <div
             id="menu"
-            className={`md:hidden overflow-hidden transition-all duration-200 ${
-              isActive ? "max-h-64 pb-4" : "max-h-0"
-            }`}
+            className={`md:hidden overflow-hidden transition-all duration-200 ${isActive ? "max-h-64 pb-4" : "max-h-0"
+              }`}
           >
             <div className="flex flex-col gap-1 text-sm">
               <Link href="/blogs" className="py-2 hover:text-green-600 dark:hover:text-green-400">
@@ -129,7 +128,6 @@ export default function Navbar() {
                 >
                   <Search className="w-4 h-4" /> Search
                 </button>
-                <ThemeToggle />
               </div>
             </div>
           </div>
