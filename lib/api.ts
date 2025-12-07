@@ -9,14 +9,7 @@ import entertainmentData from "@/data/entertainment.json";
 import volunteeringData from "@/data/volunteering.json";
 
 // Shared Types
-export type {
-  Profile,
-  Experience,
-  Book,
-  Paper,
-  Blog,
-  Entertainment as EntertainmentItem,
-} from "@prisma/client"; // Keep types if generated, or replace with local types if prisma validation fails without DB
+import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem } from "@/types";
 
 // Wrapper to match existing async API
 export async function getProfile() {

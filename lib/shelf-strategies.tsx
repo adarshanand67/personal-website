@@ -1,7 +1,7 @@
 import { Book, Paper, Blog, EntertainmentItem } from "@/types";
 import { ReactNode } from "react";
 import Link from "next/link";
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink, Star, Check } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 // Abstract Strategy Interface
@@ -112,7 +112,15 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
             <span className="text-gray-400 text-sm text-center">{item.title}</span>
           </div>
         )}
-        <h3 className="font-bold text-lg leading-tight mb-2">{item.title}</h3>
+        <h3 className="font-bold text-lg leading-tight mb-2 flex items-center gap-2">
+          {item.title}
+          {item.status === "Completed" && (
+            <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-0.5">
+              <Check className="w-3 h-3 text-green-600 dark:text-green-400" strokeWidth={3} />
+            </div>
+          )}
+          {item.recommended && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
+        </h3>
         {item.notes && (
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono">{item.notes}</p>
         )}

@@ -16,9 +16,6 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
   },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
-  },
   "dependencies": {
     "@prisma/client": "5.22.0",
     "clsx": "^2.1.1",
