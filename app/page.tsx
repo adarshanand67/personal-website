@@ -2,31 +2,10 @@ import Hero from "@/components/Hero";
 import SectionHeader from "@/components/SectionHeader";
 import { getExperiences } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
-import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui/Skeleton";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import TechStack from "@/components/TechStack";
-
-const RecentBlogs = dynamic(() => import("@/components/RecentBlogs"), {
-  loading: () => (
-    <div className="space-y-4">
-      <Skeleton className="h-24 w-full rounded-xl" />
-      <Skeleton className="h-24 w-full rounded-xl" />
-      <Skeleton className="h-24 w-full rounded-xl" />
-    </div>
-  ),
-});
-const RecentPapers = dynamic(() => import("@/components/RecentPapers"), {
-  loading: () => (
-    <div className="space-y-4">
-      <Skeleton className="h-20 w-full rounded-xl" />
-      <Skeleton className="h-20 w-full rounded-xl" />
-    </div>
-  ),
-});
-const GitHubStats = dynamic(() => import("@/components/GitHubStats"), {
-  loading: () => <p>Loading stats...</p>,
-});
+import RecentBlogs from "@/components/RecentBlogs";
+import RecentPapers from "@/components/RecentPapers";
+import GitHubStats from "@/components/GitHubStats";
 
 export default async function Home() {
   const experiences = await getExperiences();
