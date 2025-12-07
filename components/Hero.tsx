@@ -4,7 +4,6 @@ import { getProfile } from "@/lib/api";
 import Terminal from "@/components/Terminal";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { GlitchText } from "@/components/ui/GlitchText";
-import { LeetText } from "@/components/ui/LeetText";
 
 export default async function Hero() {
   const profile = await getProfile();
@@ -13,96 +12,79 @@ export default async function Hero() {
     <section className="section container mx-auto px-4 mt-12 mb-12">
       <div className="flex flex-col gap-8">
         <div className="flex-1">
-          <section>
-            <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
-              Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
-            </h1>
-            <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif mb-6">
-              {profile.bio.short}
-            </h3>
-            <div className="content text-lg leading-relaxed mb-8">
-              {profile.bio.paragraphs.map((paragraph, index) => (
-                <p
-                  key={index}
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      paragraph
-                        .replace(
-                          "Trellix",
-                          `<a href="https://trellix.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Trellix</a>`,
-                        )
-                        .replace(
-                          "Intel Corporation",
-                          `<a href="https://intel.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Intel Corporation</a>`,
-                        ),
-                    ),
-                  }}
-                  className="mb-4"
-                />
-              ))}
-            </div>
-            <ul className="buttons flex flex-wrap gap-4 mb-8">
-              <Link
-                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
-                href={profile.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`Follow ${profile.name} on LinkedIn`}
-              >
-                <span className="icon">
-                  <Linkedin className="w-5 h-5" />
-                </span>
-                <span>LinkedIn</span>
-              </Link>
-              <Link
-                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
-                href={profile.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`Follow ${profile.name} on GitHub`}
-              >
-                <span className="icon">
-                  <Github className="w-5 h-5" />
-                </span>
-                <span>GitHub</span>
-              </Link>
-              {profile.socials.email && (
-                <Link
-                  className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
-                  href={`mailto:${profile.socials.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`Email ${profile.name}`}
-                >
-                  <span className="icon">
-                    <Mail className="w-5 h-5" />
-                  </span>
-                  <span>Email</span>
-                </Link>
-              )}
-            </ul>
-
-            <div className="hidden md:block">
-              <Terminal />
-            </div>
-          </section>
-        </div>
-        <div className="column is-1 hidden md:block"></div>
-        <div className="column is-4 is-hidden-mobile hidden md:block w-4/12">
-          <div className="image section">
-            <div className="w-[300px] h-[300px] bg-gray-200 dark:bg-gray-800 rounded-[2em] flex items-center justify-center mx-auto overflow-hidden relative">
-              <Image
-                src={profilePic}
-                alt={profile.name}
-                fill
-                className="object-cover"
-                priority
-                placeholder="blur"
+          <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
+            Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
+          </h1>
+          <h3 className="title text-xl md:text-2xl font-bold text-primary font-serif mb-6">
+            {profile.bio.short}
+          </h3>
+          <div className="content text-lg leading-relaxed mb-8">
+            {profile.bio.paragraphs.map((paragraph: string, index: number) => (
+              <p
+                key={index}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(
+                    paragraph
+                      .replace(
+                        "Trellix",
+                        `<a href="https://trellix.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Trellix</a>`,
+                      )
+                      .replace(
+                        "Intel Corporation",
+                        `<a href="https://intel.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Intel Corporation</a>`,
+                      ),
+                  ),
+                }}
+                className="mb-4"
               />
-            </div>
+            ))}
+          </div>
+          <ul className="buttons flex flex-wrap gap-4 mb-8">
+            <Link
+              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+              href={profile.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Follow ${profile.name} on LinkedIn`}
+            >
+              <span className="icon">
+                <Linkedin className="w-5 h-5" />
+              </span>
+              <span>LinkedIn</span>
+            </Link>
+            <Link
+              className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+              href={profile.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Follow ${profile.name} on GitHub`}
+            >
+              <span className="icon">
+                <Github className="w-5 h-5" />
+              </span>
+              <span>GitHub</span>
+            </Link>
+            {profile.socials.email && (
+              <Link
+                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                href={`mailto:${profile.socials.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Email ${profile.name}`}
+              >
+                <span className="icon">
+                  <Mail className="w-5 h-5" />
+                </span>
+                <span>Email</span>
+              </Link>
+            )}
+          </ul>
+
+          <div className="hidden md:block">
+            <Terminal />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
