@@ -9,7 +9,7 @@ export default function Terminal() {
   const [currentText, setCurrentText] = useState("");
   const [isIntroDone, setIsIntroDone] = useState(false);
   const [input, setInput] = useState("");
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const introLines = [
@@ -21,8 +21,10 @@ export default function Terminal() {
 
   // Auto-scroll
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [lines, currentText]);
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [lines, currentText, isIntroDone]);
 
   // Focus input on click
   const handleTerminalClick = () => {
@@ -110,7 +112,10 @@ export default function Terminal() {
         <div className="w-3 h-3 rounded-full bg-green-500"></div>
         <span className="ml-2 text-gray-400 text-xs">adarsh@linux:~</span>
       </div>
-      <div className="p-4 text-green-400 h-[200px] overflow-y-auto">
+      <div
+        ref={containerRef}
+        className="p-4 text-green-400 h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+      >
         {lines.map((line, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
             {line}
@@ -138,7 +143,6 @@ export default function Terminal() {
             />
           </div>
         )}
-        <div ref={bottomRef} />
       </div>
     </div>
   );
