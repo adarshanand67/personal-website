@@ -5,11 +5,10 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-primary: #fa0000;
-  --color-banner: #79102a;
+  --color-primary: #00ff00;
+  --color-accent: #22c55e;
   --font-sans: var(--font-assistant);
   --font-serif: var(--font-mono);
-  /* Hack: Map serif classes to Mono for Hacker vibe */
 
   --animate-glitch-1: glitch-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
   --animate-glitch-2: glitch-2 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
@@ -83,17 +82,15 @@
 }
 
 :root {
-  --background: #fef7ec;
-  --foreground: #050505;
+  --background: #ffffff;
+  --foreground: #000000;
   --spotlight-color: rgba(0, 0, 0, 0.05);
-  /* Subtle dark shadow for light mode */
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background: #000000;
   --foreground: #ffffff;
-  --spotlight-color: rgba(255, 255, 255, 0.15);
-  /* Subtle light glow for dark mode */
+  --spotlight-color: rgba(0, 255, 0, 0.1);
 }
 
 body {

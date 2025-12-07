@@ -21,7 +21,7 @@ export default async function RecentPapers() {
             <Link
               href={paper.url}
               target="_blank"
-              className="text-blue-600 dark:text-blue-400 hover:underline"
+              className="text-green-600 dark:text-green-400 hover:underline"
             >
               {paper.title}
             </Link>

@@ -1,11 +1,8 @@
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-import createGlobe from "cobe";
-import Image from "next/image";
 import { getProfile } from "@/lib/api";
+import Terminal from "@/components/Terminal";
 import { Github, Linkedin, Mail } from "lucide-react";
-import profilePic from "@/assets/dp.jpg";
-import Terminal from "./Terminal";
 import { GlitchText } from "@/components/ui/GlitchText";
 import { LeetText } from "@/components/ui/LeetText";
 
@@ -13,21 +10,9 @@ export default async function Hero() {
   const profile = await getProfile();
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12 relative">
-      <div className="columns is-vcentered flex flex-col md:flex-row items-center gap-8 relative z-10">
-        <div className="column is-5 is-hidden-tablet md:hidden">
-          <div className="image is-256x256 w-64 h-64 relative rounded-full overflow-hidden mx-auto">
-            <Image
-              src={profilePic}
-              alt={profile.name}
-              fill
-              className="object-cover"
-              priority
-              placeholder="blur"
-            />
-          </div>
-        </div>
-        <div className="column is-7 w-full md:w-7/12">
+    <section className="section container mx-auto px-4 mt-12 mb-12">
+      <div className="flex flex-col gap-8">
+        <div className="flex-1">
           <section>
             <h1 className="title text-4xl md:text-5xl font-bold font-serif mb-4 flex items-center gap-2">
               Hey, I am <GlitchText text={profile.name.split(" ")[0]} className="text-primary" />
@@ -44,11 +29,11 @@ export default async function Hero() {
                       paragraph
                         .replace(
                           "Trellix",
-                          `<a href="https://trellix.com" target="_blank" class="text-blue-600 hover:underline">Trellix</a>`,
+                          `<a href="https://trellix.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Trellix</a>`,
                         )
                         .replace(
                           "Intel Corporation",
-                          `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`,
+                          `<a href="https://intel.com" target="_blank" class="text-green-600 dark:text-green-400 hover:underline">Intel Corporation</a>`,
                         ),
                     ),
                   }}
@@ -58,9 +43,10 @@ export default async function Hero() {
             </div>
             <ul className="buttons flex flex-wrap gap-4 mb-8">
               <Link
-                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={profile.socials.linkedin}
                 target="_blank"
+                rel="noopener noreferrer"
                 title={`Follow ${profile.name} on LinkedIn`}
               >
                 <span className="icon">
@@ -69,9 +55,10 @@ export default async function Hero() {
                 <span>LinkedIn</span>
               </Link>
               <Link
-                className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                 href={profile.socials.github}
                 target="_blank"
+                rel="noopener noreferrer"
                 title={`Follow ${profile.name} on GitHub`}
               >
                 <span className="icon">
@@ -81,8 +68,10 @@ export default async function Hero() {
               </Link>
               {profile.socials.email && (
                 <Link
-                  className="button bg-white dark:bg-zinc-900 border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-blue-600 hover:text-blue-600 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
+                  className="button bg-white dark:bg-black border border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 transition-colors rounded-md px-4 py-2 flex items-center gap-2"
                   href={`mailto:${profile.socials.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   title={`Email ${profile.name}`}
                 >
                   <span className="icon">

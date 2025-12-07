@@ -24,7 +24,7 @@ export default async function Bookshelf() {
             <span className="mr-2 text-gray-400">•</span>
             <div className="flex-1 flex items-baseline flex-wrap gap-x-2">
               {book.notes && <span className="text-red-600">[notes]</span>}
-              <span className="text-blue-600 font-medium">{book.title}</span>
+              <span className="text-green-600 dark:text-green-400 font-medium">{book.title}</span>
               <span className="text-gray-500">by {book.author}</span>
               <Link
                 href={getAmazonSearchUrl(book.title, book.author)}

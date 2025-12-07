@@ -21,7 +21,7 @@ export default function SectionHeader({
           <>
             <span className="font-normal mx-1 text-gray-400 dark:text-gray-600">•</span>
             <span className="text-base font-normal">
-              <Link href={linkHref} className="text-blue-600 dark:text-blue-400 hover:underline">
+              <Link href={linkHref} className="text-green-600 dark:text-green-400 hover:underline">
                 {linkText}
               </Link>
             </span>

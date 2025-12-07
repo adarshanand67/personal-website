@@ -25,7 +25,7 @@ export default async function RecentBlogs() {
             </span>
             <Link
               href={`/blogs/${post.slug}`}
-              className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+              className="text-green-600 dark:text-green-400 hover:underline font-medium"
             >
               {post.title}
             </Link>
