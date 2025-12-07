@@ -1,4 +1,4 @@
-import { prismaMock } from "../mocks/prisma";
+import { prismaMock } from "../mocks/prisma.mock";
 import {
     getProfile,
     getExperiences,
