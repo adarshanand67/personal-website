@@ -20,12 +20,12 @@ export default async function RecentBlogs() {
             key={post.slug}
             className="flex flex-col md:flex-row md:items-baseline"
           >
-            <span className="text-gray-500 font-mono text-sm min-w-[120px] md:mr-2">
+            <span className="text-gray-500 dark:text-gray-400 font-mono text-sm min-w-[120px] md:mr-2">
               {post.date} :
             </span>
             <Link
               href={`/blogs/${post.slug}`}
-              className="text-blue-600 hover:underline font-medium"
+              className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
             >
               {post.title}
             </Link>

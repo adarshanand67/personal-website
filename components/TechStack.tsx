@@ -70,8 +70,8 @@ export default function TechStack() {
                             <div className="mb-3 p-3 rounded-full bg-white dark:bg-zinc-700 shadow-sm group-hover:scale-110 transition-transform text-primary">
                                 {tech.icon}
                             </div>
-                            <span className="font-bold text-sm mb-1">{tech.name}</span>
-                            <span className="text-xs text-gray-500 dark:text-gray-400 font-mono text-center">
+                            <span className="font-bold text-sm mb-1 text-gray-900 dark:text-gray-100">{tech.name}</span>
+                            <span className="text-xs text-gray-600 dark:text-gray-400 font-mono text-center">
                                 {tech.description}
                             </span>
                         </div>
