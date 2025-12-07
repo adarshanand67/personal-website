@@ -29,7 +29,6 @@ export const useKonamiCode = () => {
                     // Full code entered!
                     setTriggered((prev) => !prev);
                     setInputIndex(0);
-                    console.log("GOD MODE ACTIVATED");
                 } else {
                     // Advance to next key
                     setInputIndex(nextIndex);

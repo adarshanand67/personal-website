@@ -4,86 +4,45 @@ import { readData } from "@/lib/utils/file-ops";
 
 
 
-export interface Profile {
-  name: string;
-  title: string;
-  pronouns: string;
-  location: string;
-  education: {
-    university: string;
-    degree: string;
-    years: string;
-    grade: string;
-  };
-  socials: {
-    linkedin: string;
-    github: string;
-    email?: string;
-  };
-  bio: {
-    short: string;
-    paragraphs: string[];
-  };
-}
+import {
+  ProfileSchema,
+  ExperiencesSchema,
+  PapersSchema,
+  BooksSchema,
+  BlogsSchema,
+  AnimeSchema,
+} from "@/lib/schemas";
+import { z } from "zod";
 
-export interface Experience {
-  company: string;
-  role: string;
-  duration: string;
-  location: string;
-  description: string;
-  highlights: string[];
-  logo?: string;
-}
-
-export interface Paper {
-  title: string;
-  url: string;
-}
-
-export interface Book {
-  title: string;
-  author: string;
-  notes?: boolean;
-}
-
-export interface Blog {
-  date: string;
-  title: string;
-  slug: string;
-}
-
-export interface EntertainmentItem {
-  title: string;
-  type: "Anime" | "Movie" | "Web Series";
-  status: "Watching" | "Completed" | "Planning";
-  notes?: string;
-  image?: string;
-  recommended?: boolean;
-}
+export type Profile = z.infer<typeof ProfileSchema>;
+export type Experience = z.infer<typeof ExperiencesSchema>[number];
+export type Paper = z.infer<typeof PapersSchema>[number];
+export type Book = z.infer<typeof BooksSchema>[number];
+export type Blog = z.infer<typeof BlogsSchema>[number];
+export type EntertainmentItem = z.infer<typeof AnimeSchema>[number];
 
 export async function getProfile(): Promise<Profile> {
-  return readData<Profile>("profile.json");
+  return readData<Profile>("profile.json", ProfileSchema);
 }
 
 export async function getExperiences(): Promise<Experience[]> {
-  return readData<Experience[]>("experiences.json");
+  return readData<Experience[]>("experiences.json", ExperiencesSchema);
 }
 
 export async function getPapers(): Promise<Paper[]> {
-  return readData<Paper[]>("papers.json");
+  return readData<Paper[]>("papers.json", PapersSchema);
 }
 
 export async function getBooks(): Promise<Book[]> {
-  return readData<Book[]>("books.json");
+  return readData<Book[]>("books.json", BooksSchema);
 }
 
 export async function getBlogs(): Promise<Blog[]> {
-  return readData<Blog[]>("blogs.json");
+  return readData<Blog[]>("blogs.json", BlogsSchema);
 }
 
 export async function getEntertainment(): Promise<EntertainmentItem[]> {
-  return readData<EntertainmentItem[]>("anime.json");
+  return readData<EntertainmentItem[]>("anime.json", AnimeSchema);
 }
 
 export async function getPost(slug: string): Promise<string | null> {

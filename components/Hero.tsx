@@ -1,4 +1,6 @@
 import Link from "next/link";
+import DOMPurify from "isomorphic-dompurify";
+import createGlobe from "cobe";
 import Image from "next/image";
 import { getProfile } from "@/lib/api";
 import { Github, Linkedin, Mail } from "lucide-react";
@@ -38,13 +40,6 @@ export default async function Hero() {
                   key={index}
                   className="mb-4"
                   dangerouslySetInnerHTML={{
-                    __html: paragraph
-                      .replace(
-                        "Trellix",
-                        `<a href="https://trellix.com" target="_blank" class="text-blue-600 hover:underline">Trellix</a>`,
-                      )
-                      .replace(
-                        "Intel Corporation",
                         `<a href="https://intel.com" target="_blank" class="text-blue-600 hover:underline">Intel Corporation</a>`,
                       ),
                   }}
