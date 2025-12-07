@@ -101,24 +101,31 @@ export default function Navbar() {
             }`}
           >
             <div className="flex flex-col gap-1 text-sm">
-              <Link href="/blogs" className="py-2 hover:text-green-600 dark:hover:text-green-400">
+              <Link
+                href="/blogs"
+                className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
+              >
                 Blogshelf
               </Link>
               <Link
                 href="/papershelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
               >
                 Papershelf
               </Link>
               <Link
                 href="/animeshelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
               >
                 Animeshelf
               </Link>
               <Link
                 href="/bookshelf"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
+                onClick={() => setIsActive(false)}
               >
                 Bookshelf
               </Link>
