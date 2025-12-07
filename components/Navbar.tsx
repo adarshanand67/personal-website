@@ -55,25 +55,25 @@ export default function Navbar() {
             <div className="hidden md:flex md:items-center md:ml-auto gap-0">
               <Link
                 href="/blogs"
-                className="px-4 py-3 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Blogshelf
               </Link>
               <Link
                 href="/papershelf"
-                className="px-4 py-3 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Papershelf
               </Link>
               <Link
                 href="/animeshelf"
-                className="px-4 py-3 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Animeshelf
               </Link>
               <Link
                 href="/bookshelf"
-                className="px-4 py-3 text-sm text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
                 Bookshelf
               </Link>
