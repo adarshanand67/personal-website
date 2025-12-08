@@ -12,24 +12,31 @@ const primarySkills = [
 ];
 
 const otherSkills = [
-  "Rust",
-  "Python",
-  "TypeScript",
-  "libFuzzer",
-  "RESTler",
-  "OpenSSL",
+  // Data Privacy & Security (Current Focus)
   "Data Loss Prevention",
+  "Trellix ePO", // Renamed for modern branding, user asked for ePO
+  "Endpoint Security",
+  "Windows Internals",
+  "PowerShell",
+  "Boldon James",
   "Full-Disk Encryption",
   "Hashicorp Vault",
+  "OpenSSL",
+  "Post-Quantum Cryptography",
+  "libFuzzer",
+  "RESTler",
+
+  // AI & Data
   "vLLM",
   "PyTorch",
   "OpenVINO",
   "Redis",
   "MySQL",
+
+  // Platforms
   "Ubuntu",
   "CentOS",
   "RHEL",
-  "React",
 ];
 
 export default function TechStack() {
