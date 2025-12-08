@@ -11,73 +11,54 @@
   --font-sans: var(--font-assistant);
   --font-serif: var(--font-mono);
 
-  --animate-glitch-1: glitch-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-  --animate-glitch-2: glitch-2 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  --animate-glitch-1: glitch-1 2s infinite linear alternate-reverse;
+  --animate-glitch-2: glitch-2 2s infinite linear alternate-reverse;
   --animate-flicker: flicker 0.15s infinite;
+  --animate-scanline: scanline 8s linear infinite;
 
   @keyframes flicker {
-    0% {
+
+    0%,
+    100% {
       opacity: 0.02;
     }
 
     50% {
       opacity: 0.05;
     }
-
-    100% {
-      opacity: 0.02;
-    }
   }
 
   @keyframes glitch-1 {
     0% {
-      transform: translate(0);
-    }
-
-    20% {
-      transform: translate(-2px, 2px);
-    }
-
-    40% {
-      transform: translate(-2px, -2px);
-    }
-
-    60% {
-      transform: translate(2px, 2px);
-    }
-
-    80% {
-      transform: translate(2px, -2px);
+      clip-path: inset(20% 0 80% 0);
+      transform: translate(-2px, 1px);
     }
 
     100% {
-      transform: translate(0);
+      clip-path: inset(10% 0 10% 0);
+      transform: translate(2px, -1px);
     }
   }
 
   @keyframes glitch-2 {
     0% {
-      transform: translate(0);
-    }
-
-    20% {
-      transform: translate(2px, -2px);
-    }
-
-    40% {
-      transform: translate(2px, 2px);
-    }
-
-    60% {
-      transform: translate(-2px, -2px);
-    }
-
-    80% {
-      transform: translate(-2px, 2px);
+      clip-path: inset(60% 0 10% 0);
+      transform: translate(2px, -1px);
     }
 
     100% {
-      transform: translate(0);
+      clip-path: inset(40% 0 50% 0);
+      transform: translate(-2px, 2px);
+    }
+  }
+
+  @keyframes scanline {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: 0 100%;
     }
   }
 }

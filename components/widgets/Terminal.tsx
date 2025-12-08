@@ -4,10 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
+import { useGlobalState } from "@/components/common/GlobalProvider";
 
 export default function Terminal() {
   const router = useRouter();
   const { setTheme } = useTheme();
+  const { toggleMatrix, isMatrixEnabled } = useGlobalState();
 
   const [lines, setLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
@@ -16,9 +18,16 @@ export default function Terminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [passwordMode, setPasswordMode] = useState(false); // For sudo
 
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isMatrixEnabled) {
+      setLines(prev => [...prev, "Matrix: Activated."]);
+    }
+  }, [isMatrixEnabled]);
 
   const introLines = [
     "> ./adarsh_profile.sh",
@@ -64,13 +73,33 @@ export default function Terminal() {
   }, [isIntroDone]);
 
   const executeCommand = (cmd: string) => {
+    // Password mode handling
+    if (passwordMode) {
+      setPasswordMode(false);
+      setLines((prev) => [...prev, "Checking permissions..."]);
+
+      if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") { // Simple hardcoded passwords
+        setTimeout(() => {
+          setLines((prev) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
+          if (!isMatrixEnabled) toggleMatrix();
+        }, 800);
+      } else {
+        setTimeout(() => {
+          setLines((prev) => [...prev, "Access Denied."]);
+        }, 800);
+      }
+      return;
+    }
+
     const parts = cmd.trim().split(/\s+/);
     const command = parts[0].toLowerCase();
     const args = parts.slice(1);
 
-    // Add to history
-    setHistory((prev) => [cmd, ...prev]);
-    setHistoryIndex(-1);
+    // Add to history if not empty
+    if (cmd.trim()) {
+      setHistory((prev) => [cmd, ...prev]);
+      setHistoryIndex(-1);
+    }
 
     const newLines = [...lines, `$ ${cmd}`];
 
@@ -79,14 +108,16 @@ export default function Terminal() {
         newLines.push(
           "Available commands:",
           "  ls              - List directories",
-          "  cd [dir]        - Change directory (navigates site)",
+          "  cd [dir]        - Change directory",
           "  open [dir]      - Open directory",
           "  whoami          - Display profile info",
           "  theme [mode]    - Set theme (light/dark/system)",
           "  date            - Show current date/time",
-          "  clean / clear   - Clear terminal",
+          "  clear / cls     - Clear terminal",
           "  sudo            - Execute with superuser privileges",
-          "  contact         - Show contact info"
+          "  contact         - Show contact info",
+          "  fetch           - Display system information",
+          "  matrix          - Toggle Matrix Rain effect"
         );
         break;
 
@@ -105,7 +136,7 @@ export default function Terminal() {
         if (args.length === 0) {
           newLines.push("usage: cd [directory]");
         } else {
-          const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", ""); // relaxed matching
+          const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", "");
           const map: Record<string, string> = {
             blog: "/blogshelf",
             blogs: "/blogshelf",
@@ -160,7 +191,26 @@ export default function Terminal() {
         break;
 
       case "sudo":
-        newLines.push("Permission denied: You are not categorized as admin.");
+        setPasswordMode(true);
+        newLines.push("Password:");
+        break;
+
+      case "matrix":
+        toggleMatrix();
+        // Feedback is handled by useEffect
+        break;
+
+      case "fetch":
+        newLines.push(
+          "       Adarsh's Portfolio",
+          "       ------------------",
+          "OS:     Mac OS X (simulated)",
+          "Host:   Personal Website",
+          "Kernel: Next.js 16",
+          "Uptime: Forever",
+          "Shell:  Zsh (React)",
+          "Theme:  Cyberpunk"
+        );
         break;
 
       case "rm":
@@ -175,7 +225,7 @@ export default function Terminal() {
       case "cls":
         setLines([]);
         setInput("");
-        return; // Early return to avoid setting lines
+        return;
 
       case "contact":
         newLines.push(
@@ -268,9 +318,11 @@ export default function Terminal() {
 
   return (
     <div
-      className="w-full max-w-2xl bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-base my-8 cursor-text"
+      className="w-full max-w-2xl bg-[#1e1e1e] rounded-lg shadow-xl overflow-hidden border border-gray-800 font-mono text-base my-8 cursor-text relative group"
       onClick={handleTerminalClick}
     >
+      <div className="absolute inset-0 pointer-events-none z-10 bg-[url('/assets/scanline.png')] opacity-5 animate-scanline" style={{ backgroundSize: '100% 4px' }}></div>
+      <div className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-b from-transparent to-black/10"></div>
       <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
         <div className="w-3 h-3 rounded-full bg-red-500"></div>
         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -297,7 +349,7 @@ export default function Terminal() {
             <span className="mr-2">$</span>
             <input
               ref={inputRef}
-              type="text"
+              type={passwordMode ? "password" : "text"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}

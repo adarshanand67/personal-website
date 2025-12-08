@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useGlobalState } from "@/components/common/GlobalProvider";
 
 export const MatrixRain = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const { isMatrixEnabled } = useGlobalState();
 
     useEffect(() => {
+        if (!isMatrixEnabled) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -57,7 +61,9 @@ export const MatrixRain = () => {
             window.removeEventListener("resize", resizeCanvas);
             cancelAnimationFrame(animationId);
         };
-    }, []);
+    }, [isMatrixEnabled]); // Re-run when enabled change
+
+    if (!isMatrixEnabled) return null;
 
     return (
         <canvas
