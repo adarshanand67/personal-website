@@ -1,14 +1,28 @@
 import Hero from "@/components/home/Hero";
-import SectionHeader from "@/components/layout/SectionHeader";
-import { getExperiences } from "@/lib/api";
+
+import { getExperiences, getBlogs, getPapers } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
 import TechStack from "@/components/home/TechStack";
-import RecentBlogs from "@/components/home/RecentBlogs";
-import RecentPapers from "@/components/home/RecentPapers";
+import RecentSection from "@/components/home/RecentSection";
 import GitHubStats from "@/components/widgets/GitHubStats";
 
 export default async function Home() {
   const experiences = await getExperiences();
+  const blogs = await getBlogs();
+  const papers = await getPapers();
+
+  const recentPosts = blogs.slice(0, 4).map((post) => ({
+    title: post.title,
+    url: `/blogshelf/${post.slug}`,
+    date: post.date,
+    isExternal: false,
+  }));
+
+  const recentPapers = papers.slice(0, 5).map((paper: { title: string; url: string }) => ({
+    title: paper.title,
+    url: paper.url,
+    isExternal: true,
+  }));
 
   return (
     <main className="min-h-screen">
@@ -54,9 +68,21 @@ export default async function Home() {
         <TechStack />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <RecentBlogs />
+          <RecentSection
+            title="Recent Blog Posts"
+            command="cat ~/blog/recent.md"
+            items={recentPosts}
+            linkText="Full archive"
+            linkUrl="/blogshelf"
+          />
 
-          <RecentPapers />
+          <RecentSection
+            title="Recent Papers"
+            command="ls ~/papers --recent"
+            items={recentPapers}
+            linkText="Papershelf"
+            linkUrl="/papershelf"
+          />
         </div>
       </div>
       <div className="mb-24">

@@ -1,0 +1,87 @@
+[
+    {
+        "name": "Gym",
+        "description": "Hypertrophy and strength training.",
+        "icon": "Dumbbell"
+    },
+    {
+        "name": "Table Tennis",
+        "description": "Fast-paced rallies and spin control.",
+        "icon": "Trophy"
+    },
+    {
+        "name": "Badminton",
+        "description": "Smashing shuttlecocks and court agility.",
+        "icon": "Trophy"
+    },
+    {
+        "name": "Pickleball",
+        "description": "Combining elements of tennis, badminton, and ping-pong.",
+        "icon": "Trophy"
+    },
+    {
+        "name": "Meditation & Yoga",
+        "description": "Vipassana and mindfulness practices.",
+        "icon": "Flower2"
+    },
+    {
+        "name": "Cycling",
+        "description": "Urban exploration on two wheels.",
+        "icon": "Bike"
+    },
+    {
+        "name": "Trekking & Hiking",
+        "description": "Exploring nature trails and mountains.",
+        "icon": "Mountain"
+    },
+    {
+        "name": "Bowling",
+        "description": "Aiming for strikes and spares.",
+        "icon": "Trophy"
+    },
+    {
+        "name": "Anime",
+        "description": "Appreciating storytelling and animation.",
+        "icon": "Tv"
+    },
+    {
+        "name": "Board Games",
+        "description": "Strategy and social deduction games.",
+        "icon": "Dices"
+    },
+    {
+        "name": "Surfing",
+        "description": "Riding waves and ocean connection.",
+        "icon": "Waves"
+    },
+    {
+        "name": "Travelling",
+        "description": "Experiencing new cultures and places.",
+        "icon": "Plane"
+    },
+    {
+        "name": "Standup Comedy",
+        "description": "Enjoying humor and wit.",
+        "icon": "Mic"
+    },
+    {
+        "name": "Pottery",
+        "description": "Creating art with clay.",
+        "icon": "Palette"
+    },
+    {
+        "name": "Origami",
+        "description": "The art of paper folding.",
+        "icon": "Shapes"
+    },
+    {
+        "name": "Cafe Hopping",
+        "description": "Finding the best coffee spots.",
+        "icon": "Coffee"
+    },
+    {
+        "name": "Cooking",
+        "description": "Culinary experiments in the kitchen.",
+        "icon": "ChefHat"
+    }
+]

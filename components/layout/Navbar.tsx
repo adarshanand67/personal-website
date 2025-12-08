@@ -83,22 +83,10 @@ export default function Navbar() {
                 Bookshelf
               </Link>
               <Link
-                href="/projectshelf"
+                href="/hobbies"
                 className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
               >
-                Projects
-              </Link>
-              <Link
-                href="/uses"
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-              >
-                Uses
-              </Link>
-              <Link
-                href="/experience"
-                className="px-4 py-3 text-base text-foreground/80 hover:text-green-600 dark:hover:text-green-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-              >
-                Experience
+                Hobbies
               </Link>
 
               <span className="text-gray-400 mx-1">|</span>
@@ -152,26 +140,13 @@ export default function Navbar() {
                 Bookshelf
               </Link>
               <Link
-                href="/projectshelf"
+                href="/hobbies"
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
                 onClick={() => setIsActive(false)}
               >
-                Projects
+                Hobbies
               </Link>
-              <Link
-                href="/uses"
-                className="py-2 hover:text-green-600 dark:hover:text-green-400"
-                onClick={() => setIsActive(false)}
-              >
-                Uses
-              </Link>
-              <Link
-                href="/experience"
-                className="py-2 hover:text-green-600 dark:hover:text-green-400"
-                onClick={() => setIsActive(false)}
-              >
-                Experience
-              </Link>
+
               <div className="flex items-center gap-4 pt-2 border-t border-gray-200 dark:border-gray-800">
                 <button
                   onClick={() => document.dispatchEvent(new Event("open-command-menu"))}

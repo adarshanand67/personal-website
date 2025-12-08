@@ -1,9 +1,11 @@
+export type ShelfType = "book" | "paper" | "anime" | "blog" | "project" | "hobby";
+
 export interface ShelfConfig {
   title: string;
   description: string;
   command: string; // CLI command like "ls ~/books"
   searchPlaceholder: string;
-  type: "book" | "paper" | "anime" | "blog" | "project";
+  type: ShelfType;
 }
 
 export const shelfConfigs: Record<string, ShelfConfig> = {
@@ -37,9 +39,16 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
   },
   projects: {
     title: "Projects",
-    description: "Open source contributions and personal projects.",
+    description: "Things I've built and worked on.",
     command: "ls -la ~/projects",
     searchPlaceholder: "Search projects...",
     type: "project",
-  }
+  },
+  hobbies: {
+    title: "Hobbies & Interests",
+    description: "What I do when I'm not coding.",
+    command: "ls -la ~/freetime",
+    searchPlaceholder: "Search hobbies...",
+    type: "hobby",
+  },
 };

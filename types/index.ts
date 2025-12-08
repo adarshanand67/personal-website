@@ -27,6 +27,12 @@ export interface Project {
   link: string;
 }
 
+export interface Hobby {
+  name: string;
+  description: string;
+  icon: string;
+}
+
 export interface Experience {
   company: string;
   role: string;

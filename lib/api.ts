@@ -6,11 +6,12 @@ import experiencesData from "@/data/experiences.json";
 import papersData from "@/data/papers.json";
 import booksData from "@/data/books.json";
 import entertainmentData from "@/data/entertainment.json";
+import hobbiesData from "@/data/hobbies.json";
 import projectsData from "@/data/projects.json";
 import usesData from "@/data/uses.json";
 
 // Shared Types
-import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem } from "@/types";
+import type { Profile, Experience, Book, Paper, Blog, EntertainmentItem, Hobby } from "@/types";
 
 // Wrapper to match existing async API
 export async function getProfile() {
@@ -35,6 +36,10 @@ export async function getProjects() {
 
 export async function getUses() {
   return usesData;
+}
+
+export async function getHobbies() {
+  return hobbiesData;
 }
 
 export async function getEntertainment() {

@@ -1,7 +1,7 @@
-import { Book, Paper, Blog, EntertainmentItem, Project } from "@/types";
+import { Book, Paper, Blog, EntertainmentItem, Project, Hobby } from "@/types";
 import { ReactNode } from "react";
 import Link from "next/link";
-import { ExternalLink, Star, Check } from "lucide-react";
+import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 
 // Abstract Strategy Interface
@@ -294,6 +294,90 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   }
 }
 
+// Concrete Strategy: Hobby List Item
+export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
+  private getIcon(iconName: string): ReactNode {
+    const props = { className: "w-6 h-6 text-green-600 dark:text-green-400" };
+    switch (iconName) {
+      case "Camera":
+        return <Camera {...props} />;
+      case "BookOpen":
+        return <BookOpen {...props} />;
+      case "Gamepad2":
+        return <Gamepad2 {...props} />;
+      case "Dumbbell":
+        return <Dumbbell {...props} />;
+      case "Flower2":
+        return <Flower2 {...props} />;
+      case "Bike":
+        return <Bike {...props} />;
+      case "Mountain":
+        return <Mountain {...props} />;
+      case "ChefHat":
+        return <ChefHat {...props} />;
+      case "Plane":
+        return <Plane {...props} />;
+      case "Dices":
+        return <Dices {...props} />;
+      case "Tv":
+        return <Tv {...props} />;
+      case "Mic":
+        return <Mic {...props} />;
+      case "Palette":
+        return <Palette {...props} />;
+      case "Shapes":
+        return <Shapes {...props} />;
+      case "Trophy":
+        return <Trophy {...props} />;
+      case "Waves":
+        return <Waves {...props} />;
+      case "Coffee":
+        return <Coffee {...props} />;
+      default:
+        return <Activity {...props} />;
+    }
+  }
+
+  renderItem(hobby: Hobby, index: number): ReactNode {
+    return (
+      <div
+        key={index}
+        className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        <div className="shrink-0 p-2 bg-white dark:bg-gray-900 rounded-md shadow-sm">
+          {this.getIcon(hobby.icon)}
+        </div>
+        <div>
+          <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-1">{hobby.name}</h3>
+          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            {hobby.description}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  renderList(items: Hobby[]): ReactNode {
+    if (items.length === 0) return null;
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {items.map((hobby, index) => this.renderItem(hobby, index))}
+      </div>
+    );
+  }
+
+  filter(items: Hobby[], query: string): Hobby[] {
+    if (!query) return items;
+    const lowerQuery = query.toLowerCase();
+    return items.filter(
+      (hobby) =>
+        hobby.name.toLowerCase().includes(lowerQuery) ||
+        hobby.description.toLowerCase().includes(lowerQuery)
+    );
+  }
+}
+
+
 // Factory to create strategies
 export class ShelfStrategyFactory {
   static getStrategy(type: string): ShelfItemStrategy<any> {
@@ -308,6 +392,8 @@ export class ShelfStrategyFactory {
         return new BlogListStrategy();
       case "project":
         return new ProjectListStrategy();
+      case "hobby":
+        return new HobbyListStrategy();
       default:
         throw new Error(`Unknown shelf type: ${type}`);
     }
