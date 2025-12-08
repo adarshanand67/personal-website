@@ -6,7 +6,7 @@ export default async function Experience() {
 
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
+    <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
       <h1 className="text-3xl font-bold mb-2">
         <span className="text-gray-500">#</span> Experience
       </h1>

@@ -34,11 +34,15 @@ const otherSkills = [
 
 export default function TechStack() {
   return (
-    <section className="section container mx-auto px-4 mb-16 font-mono">
-      <h2 className="text-2xl font-bold mb-2">
-        <span className="text-gray-500">##</span> Tech Stack
+    <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
+      <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+        <span className="text-primary">##</span> Tech Stack
       </h2>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ cat ~/.skills</p>
+      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-6 text-sm">
+        <span className="text-green-500 font-bold">$</span>
+        <span>cat ~/.skills</span>
+        <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+      </div>
 
       <div className="mb-6">
         <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Primary Focus</h3>

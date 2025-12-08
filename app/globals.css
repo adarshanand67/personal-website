@@ -98,15 +98,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-assistant), sans-serif;
-  cursor: text;
-  /* Fallback */
+  cursor: none;
 }
 
 /* Custom Block Cursorish feel for links */
 a,
 button,
 [role="button"] {
-  cursor: pointer;
+  cursor: none;
 }
 
 /* Custom Scrollbar - Retro Terminal Style */
@@ -134,6 +133,7 @@ button,
 
 /* Custom Text Highlighting */
 ::selection {
-  background-color: #16a34a; /* Green-600 */
+  background-color: #16a34a;
+  /* Green-600 */
   color: #ffffff;
 }

@@ -4,7 +4,7 @@ import WeatherWidget from "@/components/widgets/WeatherWidget";
 export default function Footer() {
   return (
     <footer className="py-8 border-t border-gray-200 dark:border-gray-800 mt-auto font-mono">
-      <div className="container mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4">
         <div className="text-sm text-gray-600 dark:text-gray-400">
           <p className="mb-2">
             <span className="text-gray-500">$</span> cat ~/footer.txt
@@ -27,6 +27,17 @@ export default function Footer() {
             >
               LinkedIn
             </Link>
+            <span className="text-gray-500">•</span>
+            <span className="text-gray-500 text-xs">
+              Inspired by{" "}
+              <Link
+                href="https://arpitbhayani.me"
+                target="_blank"
+                className="text-green-700 dark:text-green-400 hover:underline"
+              >
+                arpitbhayani.me
+              </Link>
+            </span>
             <span className="text-gray-500">•</span>
             <WeatherWidget />
           </div>

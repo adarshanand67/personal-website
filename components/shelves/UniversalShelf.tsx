@@ -20,7 +20,7 @@ export default function UniversalShelf({ config, items }: UniversalShelfProps) {
   const filteredItems = useMemo(() => strategy.filter(items, query), [items, query, strategy]);
 
   return (
-    <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
+    <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
       <ShelfHeader
         title={config.title}
         description={config.description}

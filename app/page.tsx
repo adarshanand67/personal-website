@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import { getExperiences, getBlogs, getPapers } from "@/lib/api";
 import { linkifyTech } from "@/lib/tech-links";
 import TechStack from "@/components/home/TechStack";
+import Experience from "@/components/home/Experience";
 import RecentSection from "@/components/home/RecentSection";
 import GitHubStats from "@/components/widgets/GitHubStats";
 
@@ -28,42 +29,9 @@ export default async function Home() {
     <main className="min-h-screen">
       <Hero />
 
-      <div className="section container mx-auto px-4 mb-24">
+      <div className="section max-w-4xl mx-auto px-4 mb-24">
         {/* Experience Section */}
-        <div className="mb-16 font-mono" id="experience">
-          <h2 className="text-2xl font-bold mb-2">
-            <span className="text-gray-500">##</span> Experience
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 text-sm">$ cat ~/work/history.log</p>
-
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="border-l-2 border-gray-300 dark:border-gray-700 pl-4">
-                <div className="mb-2">
-                  <h3 className="text-xl font-bold">{exp.company}</h3>
-                  <p className="text-gray-800 dark:text-white font-medium">{exp.role}</p>
-                  <p className="text-gray-500 text-sm font-mono mt-1">
-                    {exp.duration} • {exp.location}
-                  </p>
-                </div>
-
-                {exp.description && (
-                  <p
-                    className="mb-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }}
-                  />
-                )}
-                {exp.highlights.length > 0 && (
-                  <ul className="list-disc pl-5 space-y-3 text-gray-600 dark:text-gray-400">
-                    {exp.highlights.map((highlight: string, idx: number) => (
-                      <li key={idx} dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }} />
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+        <Experience items={experiences} />
 
         <TechStack />
 
@@ -89,11 +57,15 @@ export default async function Home() {
         <GitHubStats />
       </div>
 
-      <div className="section container mx-auto px-4 mb-24 font-mono">
-        <h2 className="text-2xl font-bold mb-2">
-          <span className="text-gray-500">##</span> Let&apos;s Talk
+      <div className="section max-w-4xl mx-auto px-4 mb-24 font-mono">
+        <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+          <span className="text-primary">##</span> Let&apos;s Talk
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">$ echo $CONTACT_INFO</p>
+        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4 text-sm">
+          <span className="text-green-500 font-bold">$</span>
+          <span>echo $CONTACT_INFO</span>
+          <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+        </div>
         <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm max-w-2xl">
           I&apos;m always open to discussing new opportunities, interesting projects, or just
           chatting about tech.

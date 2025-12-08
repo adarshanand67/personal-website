@@ -26,10 +26,14 @@ export default function RecentSection({
 }: RecentSectionProps) {
     return (
         <section className="font-mono">
-            <h2 className="text-2xl font-bold mb-2">
-                <span className="text-gray-500">##</span> {title}
+            <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <span className="text-primary">##</span> {title}
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm">$ {command}</p>
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4 text-sm">
+                <span className="text-green-500 font-bold">$</span>
+                <span>{command}</span>
+                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+            </div>
 
             <div className="space-y-2">
                 {items.map((item, index) => (

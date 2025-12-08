@@ -34,7 +34,7 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
     const totalCount = filteredHardware.length + filteredSoftware.length;
 
     return (
-        <div className="section container mx-auto px-4 mt-12 mb-12 font-mono">
+        <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
             <ShelfHeader
                 title="Uses"
                 description="The hardware, software, and gear I use daily."

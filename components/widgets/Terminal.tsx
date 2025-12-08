@@ -46,7 +46,7 @@ export default function Terminal() {
     "hobbies",
   ];
 
-  const directories = ["blogs", "papers", "books", "anime", "hobbies"];
+  const directories = ["blogs", "papers", "books", "anime", "hobbieshelf"];
 
   // Auto-scroll
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function Terminal() {
           "drwxr-xr-x  papers/",
           "drwxr-xr-x  bookshelf/",
           "drwxr-xr-x  animeshelf/",
-          "drwxr-xr-x  hobbies/"
+          "drwxr-xr-x  hobbieshelf/"
         );
         break;
 
@@ -115,8 +115,9 @@ export default function Terminal() {
             books: "/bookshelf",
             anime: "/animeshelf",
             animes: "/animeshelf",
-            hobby: "/hobbies",
-            hobbies: "/hobbies",
+            hobby: "/hobbieshelf",
+            hobbies: "/hobbieshelf",
+            hobbieshelf: "/hobbieshelf",
             home: "/",
             "~": "/",
             ".": "/",

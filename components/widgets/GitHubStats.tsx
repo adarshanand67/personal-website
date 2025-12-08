@@ -7,7 +7,7 @@ export default async function GitHubStats() {
   if (repos.length === 0) return null;
 
   return (
-    <section className="section container mx-auto px-4 mb-16 font-mono">
+    <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
       <h2 className="text-2xl font-bold mb-2">
         <span className="text-gray-500">##</span> Open Source
       </h2>

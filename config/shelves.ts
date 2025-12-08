@@ -45,7 +45,7 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     type: "project",
   },
   hobbies: {
-    title: "Hobbies & Interests",
+    title: "Hobbieshelf",
     description: "What I do when I'm not coding.",
     command: "ls -la ~/freetime",
     searchPlaceholder: "Search hobbies...",
