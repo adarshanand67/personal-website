@@ -9,7 +9,7 @@ export default async function GitHubStats() {
   return (
     <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
       <h2 className="text-2xl font-bold mb-2">
-        <span className="text-gray-500">##</span> Open Source
+        <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Open Source</span>
       </h2>
       <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/repos --sort=stars</p>
 
