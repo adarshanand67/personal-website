@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
 import { useGlobalState } from "@/components/common/GlobalProvider";
+import { commands } from "@/lib/terminal/commands";
+import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
 
 export default function Terminal() {
   const router = useRouter();
@@ -33,34 +35,6 @@ export default function Terminal() {
     }
   }, [isMatrixEnabled]);
 
-  const introLines = [
-    "> ./adarsh_profile.sh",
-    "> Initializing SDE protocol...",
-    "> Loading modules: C++, Make, Git...",
-    `> Access granted :${toLeetSpeak("Type 'help' for commands.")}`,
-  ];
-
-  const commands = [
-    "help",
-    "ls",
-    "cd",
-    "open",
-    "clear",
-    "whoami",
-    "date",
-    "theme",
-    "sudo",
-    "rm",
-    "contact",
-    "blogs",
-    "papers",
-    "books",
-    "anime",
-    "hobbies",
-  ];
-
-  const directories = ["blogs", "papers", "books", "anime", "hobbieshelf"];
-
   // Auto-scroll
   useEffect(() => {
     if (containerRef.current) {
@@ -68,21 +42,21 @@ export default function Terminal() {
     }
   }, [lines, currentText, isIntroDone]);
 
-  // Intro Typing Effect (DISABLED)
+  // Intro Typing Effect
   useEffect(() => {
     if (!isIntroDone) {
-      setLines(introLines);
+      setLines(INTRO_LINES(toLeetSpeak));
       setIsIntroDone(true);
     }
   }, [isIntroDone]);
 
   const executeCommand = (cmd: string) => {
-    // Password mode handling
+    // Password mode handling (KEEPING IN COMPONENT FOR NOW for simplicity of state)
     if (passwordMode) {
       setPasswordMode(false);
       setLines((prev) => [...prev, "Checking permissions..."]);
 
-      if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") { // Simple hardcoded passwords
+      if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") {
         setTimeout(() => {
           setLines((prev) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
           if (!isMatrixEnabled) toggleMatrix();
@@ -95,191 +69,41 @@ export default function Terminal() {
       return;
     }
 
-    const parts = cmd.trim().split(/\s+/);
-    const command = parts[0].toLowerCase();
-    const args = parts.slice(1);
-
-    // Add to history if not empty
+    // Add to history
     if (cmd.trim()) {
       setHistory((prev) => [cmd, ...prev]);
       setHistoryIndex(-1);
     }
 
+    const parts = cmd.trim().split(/\s+/);
+    const commandName = parts[0].toLowerCase();
+    const args = parts.slice(1);
+
+    if (!commandName) return;
+
     const newLines = [...lines, `$ ${cmd}`];
-
-    switch (command) {
-      case "help":
-        newLines.push(
-          "Available commands:",
-          "  ls              - List directories",
-          "  cd [dir]        - Change directory",
-          "  open [dir]      - Open directory",
-          "  whoami          - Display profile info",
-          "  theme [mode]    - Set theme (light/dark/system)",
-          "  date            - Show current date/time",
-          "  clear / cls     - Clear terminal",
-          "  sudo            - Execute with superuser privileges",
-          "  contact         - Show contact info",
-          "  fetch           - Display system information",
-          "  matrix          - Toggle Matrix Rain effect",
-          "  music [cmd]     - Control music (play/pause/next/prev)"
-        );
-        break;
-
-      case "ls":
-        newLines.push(
-          "drwxr-xr-x  blogs/",
-          "drwxr-xr-x  papers/",
-          "drwxr-xr-x  bookshelf/",
-          "drwxr-xr-x  animeshelf/",
-          "drwxr-xr-x  hobbieshelf/"
-        );
-        break;
-
-      case "cd":
-      case "open":
-        if (args.length === 0) {
-          newLines.push("usage: cd [directory]");
-        } else {
-          const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", "");
-          const map: Record<string, string> = {
-            blog: "/blogshelf",
-            blogs: "/blogshelf",
-            paper: "/papershelf",
-            papers: "/papershelf",
-            book: "/bookshelf",
-            books: "/bookshelf",
-            anime: "/animeshelf",
-            animes: "/animeshelf",
-            hobby: "/hobbieshelf",
-            hobbies: "/hobbieshelf",
-            hobbieshelf: "/hobbieshelf",
-            home: "/",
-            "~": "/",
-            ".": "/",
-          };
-
-          if (map[dir]) {
-            newLines.push(`Navigating to ${map[dir]}...`);
-            router.push(map[dir]);
-          } else {
-            newLines.push(`Directory not found: ${args[0]}`);
-          }
-        }
-        break;
-
-      case "whoami":
-        newLines.push(
-          "User: Adarsh Anand",
-          "Role: SDE @ Trellix",
-          "Expertise: C++, System Design, Security",
-          "Status: Online"
-        );
-        break;
-
-      case "date":
-        newLines.push(new Date().toString());
-        break;
-
-      case "theme":
-        if (args.length === 0) {
-          newLines.push("usage: theme [light|dark|system]");
-        } else {
-          const mode = args[0].toLowerCase();
-          if (["light", "dark", "system"].includes(mode)) {
-            setTheme(mode);
-            newLines.push(`Theme set to ${mode}`);
-          } else {
-            newLines.push(`Invalid theme: ${mode}. Use light, dark, or system.`);
-          }
-        }
-        break;
-
-      case "sudo":
-        setPasswordMode(true);
-        newLines.push("Password:");
-        break;
-
-      case "matrix":
-        toggleMatrix();
-        break;
-
-      case "music":
-        if (args.length === 0) {
-          newLines.push("usage: music [play|pause|next|prev|mute]");
-        } else {
-          const action = args[0].toLowerCase();
-          switch (action) {
-            case "play":
-              setIsPlaying(true);
-              newLines.push("Music: Playing");
-              break;
-            case "pause":
-              setIsPlaying(false);
-              newLines.push("Music: Paused");
-              break;
-            case "next":
-              nextTrack();
-              newLines.push("Music: Next Track");
-              break;
-            case "prev":
-              prevTrack();
-              newLines.push("Music: Previous Track");
-              break;
-            case "mute":
-              toggleMute();
-              newLines.push("Music: Mute Toggled");
-              break;
-            default:
-              newLines.push(`Invalid music command: ${action}`);
-          }
-        }
-        break;
-
-      case "fetch":
-        newLines.push(
-          "       Adarsh's Portfolio",
-          "       ------------------",
-          "OS:     Mac OS X (simulated)",
-          "Host:   Personal Website",
-          "Kernel: Next.js 16",
-          "Uptime: Forever",
-          "Shell:  Zsh (React)",
-          "Theme:  Cyberpunk",
-          `Matrix: ${isMatrixEnabled ? "Active" : "Disabled"}`
-        );
-        break;
-
-      case "rm":
-        if (args.includes("-rf") && args.includes("/")) {
-          newLines.push("Nice try, but I need this website.");
-        } else {
-          newLines.push("Permission denied.");
-        }
-        break;
-
-      case "clear":
-      case "cls":
-        setLines([]);
-        setInput("");
-        return;
-
-      case "contact":
-        newLines.push(
-          "Email: adarshan20302@gmail.com",
-          "LinkedIn: linkedin.com/in/adarshanand67",
-          "GitHub: github.com/adarshanand67"
-        );
-        break;
-
-      case "":
-        break;
-
-      default:
-        newLines.push(`Command not found: ${command}. Type 'help' for options.`);
-    }
-
+    // Immediate state update for the command echo, then let command logic append more
     setLines(newLines);
+
+    const command = commands[commandName];
+    if (command) {
+      // Execute command
+      command.execute(args, {
+        setLines,
+        setPasswordMode,
+        router,
+        setTheme,
+        isMatrixEnabled,
+        toggleMatrix,
+        setIsPlaying,
+        nextTrack,
+        prevTrack,
+        toggleMute,
+        setInput
+      });
+    } else {
+      setLines(prev => [...prev, `Command not found: ${commandName}. Type 'help' for options.`]);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -311,15 +135,15 @@ export default function Terminal() {
 
       // If we are at the command part (first word, no space yet or just started typing it)
       const isCommand = parts.length === 1;
-      const currentToken = parts[parts.length - 1]; // keep case for replacement?? actually commands are mostly lower
+      const currentToken = parts[parts.length - 1];
 
       let candidates: string[] = [];
       const cmd = parts[0].toLowerCase();
 
       if (isCommand) {
-        candidates = commands;
+        candidates = Object.keys(commands);
       } else if ((cmd === "cd" || cmd === "open") && parts.length === 2) {
-        candidates = directories;
+        candidates = DIRECTORIES;
       }
 
       if (candidates.length > 0) {

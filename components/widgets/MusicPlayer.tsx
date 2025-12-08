@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "lucide-react";
-import { useGlobalState, PLAYLIST, TRACK_NAMES } from "@/components/common/GlobalProvider";
+import { useGlobalState } from "@/components/common/GlobalProvider";
+import { PLAYLIST, TRACK_NAMES } from "@/lib/constants";
 
 export default function MusicPlayer() {
     const {
@@ -96,15 +97,9 @@ export default function MusicPlayer() {
 
                     <div className="flex items-center gap-3 mt-1">
                         <button
-                            onClick={prevTrack}
-                            className="hover:text-green-400 text-gray-300 transition-colors"
-                        >
-                            <SkipBack size={16} />
-                        </button>
-
-                        <button
                             onClick={togglePlay}
                             className="hover:text-green-400 text-gray-300 transition-colors"
+                            aria-label={isPlaying ? "Pause" : "Play"}
                         >
                             {isPlaying ? <Pause size={16} /> : <Play size={16} />}
                         </button>
@@ -112,6 +107,7 @@ export default function MusicPlayer() {
                         <button
                             onClick={nextTrack}
                             className="hover:text-green-400 text-gray-300 transition-colors"
+                            aria-label="Next Track"
                         >
                             <SkipForward size={16} />
                         </button>
@@ -119,6 +115,7 @@ export default function MusicPlayer() {
                         <button
                             onClick={handleMute}
                             className="hover:text-green-400 text-gray-300 transition-colors"
+                            aria-label={isMuted ? "Unmute" : "Mute"}
                         >
                             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
                         </button>
@@ -131,6 +128,7 @@ export default function MusicPlayer() {
                             value={volume}
                             onChange={(e) => setVolume(parseFloat(e.target.value))}
                             className="w-16 h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-2 [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:bg-green-500 [&::-webkit-slider-thumb]:rounded-full"
+                            aria-label="Volume Control"
                         />
                     </div>
                 </div>
