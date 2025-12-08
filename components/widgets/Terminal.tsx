@@ -43,9 +43,10 @@ export default function Terminal() {
     "papers",
     "books",
     "anime",
+    "hobbies",
   ];
 
-  const directories = ["blogs", "papers", "books", "anime"];
+  const directories = ["blogs", "papers", "books", "anime", "hobbies"];
 
   // Auto-scroll
   useEffect(() => {
@@ -94,7 +95,8 @@ export default function Terminal() {
           "drwxr-xr-x  blogs/",
           "drwxr-xr-x  papers/",
           "drwxr-xr-x  bookshelf/",
-          "drwxr-xr-x  animeshelf/"
+          "drwxr-xr-x  animeshelf/",
+          "drwxr-xr-x  hobbies/"
         );
         break;
 
@@ -105,14 +107,16 @@ export default function Terminal() {
         } else {
           const dir = args[0].replace(/^\.\//, "").replace(/\/$/, "").replace("shelf", ""); // relaxed matching
           const map: Record<string, string> = {
-            blog: "/blogs",
-            blogs: "/blogs",
+            blog: "/blogshelf",
+            blogs: "/blogshelf",
             paper: "/papershelf",
             papers: "/papershelf",
             book: "/bookshelf",
             books: "/bookshelf",
             anime: "/animeshelf",
             animes: "/animeshelf",
+            hobby: "/hobbies",
+            hobbies: "/hobbies",
             home: "/",
             "~": "/",
             ".": "/",
