@@ -131,3 +131,9 @@ button,
 ::-webkit-scrollbar-corner {
   background: #1a1a1a;
 }
+
+/* Custom Text Highlighting */
+::selection {
+  background-color: #16a34a; /* Green-600 */
+  color: #ffffff;
+}
