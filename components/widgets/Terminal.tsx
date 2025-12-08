@@ -9,7 +9,11 @@ import { useGlobalState } from "@/components/common/GlobalProvider";
 export default function Terminal() {
   const router = useRouter();
   const { setTheme } = useTheme();
-  const { toggleMatrix, isMatrixEnabled } = useGlobalState();
+  // Import audio controls
+  const {
+    toggleMatrix, isMatrixEnabled,
+    setIsPlaying, nextTrack, prevTrack, toggleMute
+  } = useGlobalState();
 
   const [lines, setLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
@@ -117,7 +121,8 @@ export default function Terminal() {
           "  sudo            - Execute with superuser privileges",
           "  contact         - Show contact info",
           "  fetch           - Display system information",
-          "  matrix          - Toggle Matrix Rain effect"
+          "  matrix          - Toggle Matrix Rain effect",
+          "  music [cmd]     - Control music (play/pause/next/prev)"
         );
         break;
 
@@ -197,7 +202,38 @@ export default function Terminal() {
 
       case "matrix":
         toggleMatrix();
-        // Feedback is handled by useEffect
+        break;
+
+      case "music":
+        if (args.length === 0) {
+          newLines.push("usage: music [play|pause|next|prev|mute]");
+        } else {
+          const action = args[0].toLowerCase();
+          switch (action) {
+            case "play":
+              setIsPlaying(true);
+              newLines.push("Music: Playing");
+              break;
+            case "pause":
+              setIsPlaying(false);
+              newLines.push("Music: Paused");
+              break;
+            case "next":
+              nextTrack();
+              newLines.push("Music: Next Track");
+              break;
+            case "prev":
+              prevTrack();
+              newLines.push("Music: Previous Track");
+              break;
+            case "mute":
+              toggleMute();
+              newLines.push("Music: Mute Toggled");
+              break;
+            default:
+              newLines.push(`Invalid music command: ${action}`);
+          }
+        }
         break;
 
       case "fetch":
@@ -209,7 +245,8 @@ export default function Terminal() {
           "Kernel: Next.js 16",
           "Uptime: Forever",
           "Shell:  Zsh (React)",
-          "Theme:  Cyberpunk"
+          "Theme:  Cyberpunk",
+          `Matrix: ${isMatrixEnabled ? "Active" : "Disabled"}`
         );
         break;
 

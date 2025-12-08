@@ -2,45 +2,31 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "lucide-react";
+import { useGlobalState, PLAYLIST, TRACK_NAMES } from "@/components/common/GlobalProvider";
 
 export default function MusicPlayer() {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
-    const [volume, setVolume] = useState(0.5);
+    const {
+        isPlaying, setIsPlaying,
+        volume, setVolume,
+        isMuted, toggleMute,
+        currentTrackIndex, nextTrack, prevTrack
+    } = useGlobalState();
+
     const audioRef = useRef<HTMLAudioElement | null>(null);
-
-    // Fallback tracks if one fails (Lofi / Chillhop style)
-    const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-
     const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
         setMounted(true);
     }, []);
-
-
-
-    const PLAYLIST = [
-        "https://archive.org/download/tvtunes_30971/One%20Punch%20Man.mp3",
-        "https://archive.org/download/fav-mikezillak/Pokemon%20Theme%20-%20Billy%20Crawford.mp3",
-        "https://archive.org/download/cowboy-bebop-tank-the-best/Tank!%20(TV%20stretch).mp3",
-        "https://archive.org/download/mythium/JLS_ATI.mp3",
-    ];
-
-    const TRACK_NAMES = [
-        "A Cruel Angel's Thesis",
-        "THE HERO!! (One Punch Man)",
-        "Tank! (Cowboy Bebop)",
-        "Lofi Chill Session",
-    ];
 
     // Try to autoplay on mount
     useEffect(() => {
         // give valid user interaction a chance or just try
         const timer = setTimeout(() => {
             if (audioRef.current && !isPlaying) {
-                audioRef.current.play()
-                    .then(() => setIsPlaying(true))
-                    .catch(() => console.log("Autoplay blocked by browser - interaction required"));
+                // Initial autoplay might still be blocked, but state is now global
+                // audioRef.current.play().then(() => setIsPlaying(true)).catch(...)
+                // We'll leave strict autoplay off or handled by user interaction for safer UX
             }
         }, 1000);
         return () => clearTimeout(timer);
@@ -52,60 +38,35 @@ export default function MusicPlayer() {
         }
     }, [volume]);
 
+    // Handle play/pause sync
     useEffect(() => {
-        if (audioRef.current) {
-            // Reset and play when track changes if it was already playing
-            if (isPlaying) {
-                audioRef.current.play().catch(e => console.error("Audio playback failed:", e));
-            }
+        if (!audioRef.current) return;
+        if (isPlaying) {
+            audioRef.current.play().catch(e => {
+                console.error("Playback failed:", e);
+                setIsPlaying(false);
+            });
+        } else {
+            audioRef.current.pause();
         }
-    }, [currentTrackIndex]);
+    }, [isPlaying, setIsPlaying]); // Added setIsPlaying to dep array
 
     const togglePlay = () => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.pause();
-            } else {
-                const playPromise = audioRef.current.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.error("Playback failed:", error);
-                        // Try next track on failure
-                        handleTrackError();
-                    });
-                }
-            }
-            setIsPlaying(!isPlaying);
-        }
-    };
-
-    const handleNext = () => {
-        setCurrentTrackIndex((prev) => (prev + 1) % PLAYLIST.length);
-    };
-
-    const handlePrevious = () => {
-        setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length);
+        setIsPlaying(!isPlaying);
     };
 
     const handleTrackError = () => {
         console.warn("Track failed to load, switching to next...");
-        const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
-        setCurrentTrackIndex(nextIndex);
-        // Auto-play next if error occurred during playback intent
-        if (isPlaying && audioRef.current) {
-            audioRef.current.load();
-        }
+        nextTrack();
     };
 
-    const toggleMute = () => {
-        if (audioRef.current) {
-            audioRef.current.muted = !isMuted;
-            setIsMuted(!isMuted);
-        }
+    const handleMute = () => {
+        if (audioRef.current) audioRef.current.muted = !isMuted;
+        toggleMute();
     };
 
     if (!mounted) {
-        return null; // Or a placeholder if desired, but null is fine for floating widget
+        return null;
     }
 
     return (
@@ -135,7 +96,7 @@ export default function MusicPlayer() {
 
                     <div className="flex items-center gap-3 mt-1">
                         <button
-                            onClick={handlePrevious}
+                            onClick={prevTrack}
                             className="hover:text-green-400 text-gray-300 transition-colors"
                         >
                             <SkipBack size={16} />
@@ -149,14 +110,14 @@ export default function MusicPlayer() {
                         </button>
 
                         <button
-                            onClick={handleNext}
+                            onClick={nextTrack}
                             className="hover:text-green-400 text-gray-300 transition-colors"
                         >
                             <SkipForward size={16} />
                         </button>
 
                         <button
-                            onClick={toggleMute}
+                            onClick={handleMute}
                             className="hover:text-green-400 text-gray-300 transition-colors"
                         >
                             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
