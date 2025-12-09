@@ -12,16 +12,16 @@ export const commands: Record<string, Command> = {
                 "  ls, cd, open, pwd, tree",
                 "",
                 "System Info:",
-                "  whoami, fetch, uname, uptime, df, top, ps",
+                "  whoami, fetch, uname, uptime, df, top, ps, free, hostname",
                 "",
                 "Utilities:",
-                "  date, clear, echo, cat, grep, find, man, wc, diff",
+                "  date, clear, echo, cat, grep, find, man, wc, diff, file, which",
                 "",
                 "File Operations:",
                 "  mkdir, touch, mv, cp, rm, chmod, chown, ln, tar, zip",
                 "",
                 "Text Processing:",
-                "  head, tail, grep, cat",
+                "  head, tail, grep, cat, wc",
                 "",
                 "Environment:",
                 "  env, export, printenv, alias",
@@ -32,8 +32,11 @@ export const commands: Record<string, Command> = {
                 "Development:",
                 "  git, npm, docker",
                 "",
+                "Math & Text:",
+                "  bc, factor, seq, yes, banner, figlet",
+                "",
                 "Fun:",
-                "  hack, fortune, cowsay, exit",
+                "  hack, fortune, cowsay, exit, reboot, shutdown, cal",
                 "",
                 "Other:",
                 "  theme, sudo, matrix, music, contact, skills",
@@ -729,6 +732,216 @@ export const commands: Record<string, Command> = {
         execute: (args, { setLines }) => {
             const varName = args[0] || "PATH";
             setLines((prev) => [...prev, `/usr/local/bin:/usr/bin:/bin`]);
+        },
+    },
+    file: {
+        name: "file",
+        description: "Determine file type",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: file [filename]"]);
+            } else {
+                const filename = args[0];
+                if (filename.endsWith(".md")) {
+                    setLines((prev) => [...prev, `${filename}: Markdown document, UTF-8 Unicode text`]);
+                } else if (filename.endsWith(".json")) {
+                    setLines((prev) => [...prev, `${filename}: JSON data`]);
+                } else if (filename.endsWith(".ts") || filename.endsWith(".tsx")) {
+                    setLines((prev) => [...prev, `${filename}: TypeScript source, UTF-8 Unicode text`]);
+                } else {
+                    setLines((prev) => [...prev, `${filename}: data`]);
+                }
+            }
+        },
+    },
+    which: {
+        name: "which",
+        description: "Locate command",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: which [command]"]);
+            } else {
+                const cmd = args[0];
+                if (["ls", "cd", "pwd", "cat", "echo"].includes(cmd)) {
+                    setLines((prev) => [...prev, `/usr/bin/${cmd}`]);
+                } else {
+                    setLines((prev) => [...prev, `${cmd} not found`]);
+                }
+            }
+        },
+    },
+    whereis: {
+        name: "whereis",
+        description: "Locate binary, source, and manual",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: whereis [command]"]);
+            } else {
+                const cmd = args[0];
+                setLines((prev) => [...prev, `${cmd}: /usr/bin/${cmd} /usr/share/man/man1/${cmd}.1.gz`]);
+            }
+        },
+    },
+    free: {
+        name: "free",
+        description: "Display memory usage",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "              total        used        free      shared  buff/cache   available",
+                "Mem:          16384        8192        4096         512        4096        7680",
+                "Swap:          8192           0        8192"
+            ]);
+        },
+    },
+    hostname: {
+        name: "hostname",
+        description: "Show system hostname",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, "adarsh-portfolio.local"]);
+        },
+    },
+    whoami: {
+        name: "whoami",
+        description: "Display current user",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, ...WHOAMI_INFO]);
+        },
+    },
+    reboot: {
+        name: "reboot",
+        description: "Reboot system",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "Broadcast message from adarsh@portfolio",
+                "The system is going down for reboot NOW!",
+                "Just kidding! This is a web portfolio 😄"
+            ]);
+        },
+    },
+    shutdown: {
+        name: "shutdown",
+        description: "Shutdown system",
+        execute: (args, { setLines }) => {
+            const time = args[0] || "now";
+            setLines((prev) => [...prev,
+            `Shutdown scheduled for ${time}`,
+                "Nice try, but this portfolio stays online! 💪"
+            ]);
+        },
+    },
+    cal: {
+        name: "cal",
+        description: "Display calendar",
+        execute: (_, { setLines }) => {
+            const now = new Date();
+            const month = now.toLocaleString('default', { month: 'long' });
+            const year = now.getFullYear();
+            setLines((prev) => [...prev,
+            `      ${month} ${year}`,
+                "Su Mo Tu We Th Fr Sa",
+                " 1  2  3  4  5  6  7",
+                " 8  9 10 11 12 13 14",
+                "15 16 17 18 19 20 21",
+                "22 23 24 25 26 27 28",
+                "29 30 31"
+            ]);
+        },
+    },
+    bc: {
+        name: "bc",
+        description: "Calculator",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "bc: arbitrary precision calculator", "Type 'echo \"2+2\" | bc' to calculate"]);
+            } else {
+                try {
+                    const expr = args.join(" ");
+                    // Simple eval for basic math (sanitized)
+                    if (/^[\d\s+\-*/().]+$/.test(expr)) {
+                        const result = eval(expr);
+                        setLines((prev) => [...prev, String(result)]);
+                    } else {
+                        setLines((prev) => [...prev, "bc: syntax error"]);
+                    }
+                } catch {
+                    setLines((prev) => [...prev, "bc: syntax error"]);
+                }
+            }
+        },
+    },
+    factor: {
+        name: "factor",
+        description: "Prime factorization",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: factor [number]"]);
+            } else {
+                const num = parseInt(args[0]);
+                if (isNaN(num)) {
+                    setLines((prev) => [...prev, "factor: invalid number"]);
+                } else {
+                    setLines((prev) => [...prev, `${num}: ${num} (prime factorization not implemented 😅)`]);
+                }
+            }
+        },
+    },
+    yes: {
+        name: "yes",
+        description: "Output string repeatedly",
+        execute: (args, { setLines }) => {
+            const text = args.join(" ") || "y";
+            const repeated = Array(10).fill(text);
+            setLines((prev) => [...prev, ...repeated, "... (stopped after 10 lines)"]);
+        },
+    },
+    seq: {
+        name: "seq",
+        description: "Print sequence of numbers",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: seq [last] or seq [first] [last]"]);
+            } else {
+                const start = args.length === 1 ? 1 : parseInt(args[0]);
+                const end = parseInt(args[args.length - 1]);
+                if (isNaN(start) || isNaN(end)) {
+                    setLines((prev) => [...prev, "seq: invalid number"]);
+                } else {
+                    const nums = [];
+                    for (let i = start; i <= Math.min(end, start + 20); i++) {
+                        nums.push(String(i));
+                    }
+                    if (end > start + 20) nums.push("... (truncated)");
+                    setLines((prev) => [...prev, ...nums]);
+                }
+            }
+        },
+    },
+    banner: {
+        name: "banner",
+        description: "Print large banner",
+        execute: (args, { setLines }) => {
+            const text = args.join(" ") || "HI";
+            setLines((prev) => [...prev,
+                "╔═══════════════════════════╗",
+            `║   ${text.toUpperCase().padEnd(21)}  ║`,
+                "╚═══════════════════════════╝"
+            ]);
+        },
+    },
+    figlet: {
+        name: "figlet",
+        description: "ASCII art text",
+        execute: (args, { setLines }) => {
+            const text = args.join(" ") || "HELLO";
+            setLines((prev) => [...prev,
+                " _   _  _____ _     _     ___  ",
+                "| | | || ____| |   | |   / _ \\ ",
+                "| |_| ||  _| | |   | |  | | | |",
+                "|  _  || |___| |___| |__| |_| |",
+                "|_| |_||_____|_____|_____\\___/ ",
+                "",
+            `(Showing default - input was: ${text})`
+            ]);
         },
     },
 };
