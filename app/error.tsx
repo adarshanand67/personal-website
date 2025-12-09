@@ -26,17 +26,6 @@ export default function Error({
         <p className="text-red-700 dark:text-red-300 mb-4">
           We encountered an unexpected error. Please try again.
         </p>
-        {process.env.NODE_ENV === "development" && (
-          <details className="mt-4">
-            <summary className="cursor-pointer text-sm text-red-600 dark:text-red-400 font-mono">
-              Error details (dev only)
-            </summary>
-            <pre className="mt-2 text-xs bg-red-100 dark:bg-red-950 p-2 rounded overflow-auto max-h-40">
-              {error.message}
-              {error.digest && `\nDigest: ${error.digest}`}
-            </pre>
-          </details>
-        )}
         <div className="flex gap-2 mt-4">
           <button
             onClick={reset}

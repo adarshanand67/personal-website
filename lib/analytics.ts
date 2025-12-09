@@ -12,7 +12,8 @@ class Analytics {
     private enabled: boolean;
 
     constructor() {
-        this.enabled = typeof window !== 'undefined' && process.env.NODE_ENV === 'production';
+        // Analytics disabled - set to true to enable in production
+        this.enabled = false;
     }
 
     /**
