@@ -27,7 +27,7 @@ export const commands: Record<string, Command> = {
                 "  hack, fortune, cowsay, exit",
                 "",
                 "Other:",
-                "  theme, sudo, matrix, music, contact, skills, projects",
+                "  theme, sudo, matrix, music, contact, skills",
                 "",
                 "Type 'help' anytime to see this list again!"
             ];
@@ -249,20 +249,6 @@ export const commands: Record<string, Command> = {
                 "Systems:      Linux | Docker | LLVM | Fuzzing",
                 "Web:          Next.js | React | Node.js",
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-            ]);
-        },
-    },
-    projects: {
-        name: "projects",
-        description: "View featured projects",
-        execute: (_, { setLines, router }) => {
-            setLines((prev) => [...prev,
-                "Featured Projects:",
-                "  • Intel SGX Gramine - Confidential Computing",
-                "  • Intel TDX FDE - Full Disk Encryption",
-                "  • Trellix DLP - Data Loss Prevention",
-                "",
-                "Type 'cd projects' to see all projects"
             ]);
         },
     },
