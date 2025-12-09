@@ -8,24 +8,28 @@ export const commands: Record<string, Command> = {
         execute: (_, { setLines }) => {
             const helpText = [
                 "Available commands:",
-                "  ls              - List directories",
-                "  cd [dir]        - Change directory",
-                "  open [dir]      - Open directory",
-                "  whoami          - Display profile info",
-                "  theme [mode]    - Set theme (light/dark/system)",
-                "  date            - Show current date/time",
-                "  clear / cls     - Clear terminal",
-                "  sudo            - Execute with superuser privileges",
-                "  contact         - Show contact info",
-                "  fetch           - Display system information",
-                "  matrix          - Toggle Matrix Rain effect",
-                "  music [cmd]     - Control music (play/pause/next/prev)",
-                "  echo [text]     - Print text to terminal",
-                "  pwd             - Print working directory",
-                "  cat [file]      - Display file contents",
-                "  skills          - Display technical skills",
-                "  projects        - View featured projects",
-                "  hack            - Initiate hacking sequence 😎",
+                "Navigation:",
+                "  ls, cd, open, pwd, tree",
+                "",
+                "System Info:",
+                "  whoami, fetch, uname, uptime, df, top, ps",
+                "",
+                "Utilities:",
+                "  date, clear, echo, cat, grep, find, man",
+                "",
+                "Network:",
+                "  ping, curl, wget, ssh",
+                "",
+                "Development:",
+                "  git, npm, docker",
+                "",
+                "Fun:",
+                "  hack, fortune, cowsay, exit",
+                "",
+                "Other:",
+                "  theme, sudo, matrix, music, contact, skills, projects",
+                "",
+                "Type 'help' anytime to see this list again!"
             ];
             setLines((prev) => [...prev, ...helpText]);
         },
@@ -286,6 +290,240 @@ export const commands: Record<string, Command> = {
                 "Just kidding! Try 'sudo' for real power 😄"
             ]);
             setTimeout(() => toggleMatrix(), 1000);
+        },
+    },
+    uptime: {
+        name: "uptime",
+        description: "Show system uptime",
+        execute: (_, { setLines }) => {
+            const uptime = Math.floor(performance.now() / 1000);
+            const hours = Math.floor(uptime / 3600);
+            const minutes = Math.floor((uptime % 3600) / 60);
+            setLines((prev) => [...prev, `up ${hours}h ${minutes}m`]);
+        },
+    },
+    uname: {
+        name: "uname",
+        description: "Print system information",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev, "Portfolio OS 1.0.0 (Next.js 16.0.7)"]);
+        },
+    },
+    ping: {
+        name: "ping",
+        description: "Ping a host",
+        execute: (args, { setLines }) => {
+            const host = args[0] || "localhost";
+            setLines((prev) => [...prev,
+            `PING ${host} (127.0.0.1): 56 data bytes`,
+            `64 bytes from ${host}: icmp_seq=0 ttl=64 time=0.042 ms`,
+            `64 bytes from ${host}: icmp_seq=1 ttl=64 time=0.037 ms`,
+            `--- ${host} ping statistics ---`,
+                `2 packets transmitted, 2 packets received, 0.0% packet loss`
+            ]);
+        },
+    },
+    curl: {
+        name: "curl",
+        description: "Transfer data from URL",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: curl [url]"]);
+            } else {
+                setLines((prev) => [...prev, `Fetching ${args[0]}...`, "200 OK - Portfolio loaded successfully!"]);
+            }
+        },
+    },
+    tree: {
+        name: "tree",
+        description: "List directory tree",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                ".",
+                "├── blogshelf/",
+                "├── papershelf/",
+                "├── bookshelf/",
+                "├── animeshelf/",
+                "└── HobbyShelf/"
+            ]);
+        },
+    },
+    df: {
+        name: "df",
+        description: "Display disk space",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "Filesystem     Size  Used  Avail  Use%",
+                "/dev/sda1      100G   42G    58G   42%",
+                "tmpfs          8.0G  1.2G   6.8G   15%"
+            ]);
+        },
+    },
+    top: {
+        name: "top",
+        description: "Display running processes",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "PID    COMMAND          %CPU   %MEM",
+                "1      next-server      12.3   256M",
+                "42     music-player     2.1    64M",
+                "69     matrix-rain      5.4    128M"
+            ]);
+        },
+    },
+    ps: {
+        name: "ps",
+        description: "List processes",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "PID TTY      TIME CMD",
+                "  1 pts/0    00:00:01 portfolio",
+                " 42 pts/0    00:00:00 music",
+                " 69 pts/0    00:00:02 matrix"
+            ]);
+        },
+    },
+    kill: {
+        name: "kill",
+        description: "Terminate process",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: kill [pid]"]);
+            } else {
+                setLines((prev) => [...prev, `kill: (${args[0]}) - Operation not permitted 😅`]);
+            }
+        },
+    },
+    grep: {
+        name: "grep",
+        description: "Search for patterns",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: grep [pattern] [file]"]);
+            } else {
+                setLines((prev) => [...prev, `Searching for '${args[0]}' in ${args[1]}...`, "No matches found (or maybe I'm just lazy 😴)"]);
+            }
+        },
+    },
+    find: {
+        name: "find",
+        description: "Search for files",
+        execute: (args, { setLines }) => {
+            const query = args.join(" ") || "files";
+            setLines((prev) => [...prev, `Searching for ${query}...`, "./blogshelf/hello-world.md", "./papershelf/research.pdf"]);
+        },
+    },
+    man: {
+        name: "man",
+        description: "Display manual pages",
+        execute: (args, { setLines }) => {
+            const cmd = args[0] || "help";
+            setLines((prev) => [...prev,
+                `MAN(1)                    User Commands                    MAN(1)`,
+                "",
+                `NAME`,
+            `       ${cmd} - try typing 'help' instead!`,
+                "",
+                `DESCRIPTION`,
+                `       This is a portfolio website, not a real terminal 😄`
+            ]);
+        },
+    },
+    wget: {
+        name: "wget",
+        description: "Download files",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: wget [url]"]);
+            } else {
+                setLines((prev) => [...prev,
+                `--2024-12-09 22:16:00--  ${args[0]}`,
+                `Resolving ${args[0]}... done.`,
+                `Connecting to ${args[0]}... connected.`,
+                    `HTTP request sent, awaiting response... 200 OK`,
+                    `Download complete! (Just kidding, this is a portfolio 😉)`
+                ]);
+            }
+        },
+    },
+    ssh: {
+        name: "ssh",
+        description: "Connect via SSH",
+        execute: (args, { setLines }) => {
+            const host = args[0] || "localhost";
+            setLines((prev) => [...prev,
+            `ssh: connect to host ${host} port 22: Connection refused`,
+                `(This is a web portfolio, not a real SSH client! 🔒)`
+            ]);
+        },
+    },
+    git: {
+        name: "git",
+        description: "Version control",
+        execute: (args, { setLines }) => {
+            const subcommand = args[0] || "status";
+            if (subcommand === "status") {
+                setLines((prev) => [...prev,
+                    "On branch main",
+                    "Your branch is up to date with 'origin/main'.",
+                    "",
+                    "nothing to commit, working tree clean ✨"
+                ]);
+            } else {
+                setLines((prev) => [...prev, `git ${subcommand}: Check out the real repo on GitHub! 🚀`]);
+            }
+        },
+    },
+    npm: {
+        name: "npm",
+        description: "Node package manager",
+        execute: (args, { setLines }) => {
+            const cmd = args[0] || "help";
+            setLines((prev) => [...prev, `npm ${cmd} - This portfolio uses pnpm actually! 📦`]);
+        },
+    },
+    docker: {
+        name: "docker",
+        description: "Container management",
+        execute: (args, { setLines }) => {
+            setLines((prev) => [...prev,
+                "CONTAINER ID   IMAGE              STATUS",
+                "a1b2c3d4e5f6   portfolio:latest   Up 42 minutes",
+                "🐳 Containers running smoothly!"
+            ]);
+        },
+    },
+    fortune: {
+        name: "fortune",
+        description: "Display random quote",
+        execute: (_, { setLines }) => {
+            const fortunes = [
+                "Code is like humor. When you have to explain it, it's bad.",
+                "The best error message is the one that never shows up.",
+                "Debugging is twice as hard as writing the code in the first place.",
+                "Talk is cheap. Show me the code. - Linus Torvalds",
+                "First, solve the problem. Then, write the code.",
+                "Any fool can write code that a computer can understand. Good programmers write code that humans can understand."
+            ];
+            const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+            setLines((prev) => [...prev, `💭 ${fortune}`]);
+        },
+    },
+    cowsay: {
+        name: "cowsay",
+        description: "ASCII cow says something",
+        execute: (args, { setLines }) => {
+            const message = args.join(" ") || "Hello!";
+            setLines((prev) => [...prev,
+            ` ${"_".repeat(message.length + 2)}`,
+            `< ${message} >`,
+            ` ${"-".repeat(message.length + 2)}`,
+                "        \\   ^__^",
+                "         \\  (oo)\\_______",
+                "            (__)\\       )\\/\\",
+                "                ||----w |",
+                "                ||     ||"
+            ]);
         },
     },
 };
