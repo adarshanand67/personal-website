@@ -1,6 +1,6 @@
 [
   {
-    "title": "Pokémon",
+    "title": "Pok\u00e9mon",
     "type": "Anime",
     "status": "Completed",
     "notes": "too many to count (20+ seasons across regions)",
@@ -10,14 +10,14 @@
     "title": "Dragon Ball Z",
     "type": "Anime",
     "status": "Completed",
-    "notes": "S1-9 / Dragon Ball Super – S1",
+    "notes": "S1-9 / Dragon Ball Super \u2013 S1",
     "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg"
   },
   {
     "title": "Naruto",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2,3,4,5 / Naruto Shippuden – S1-21",
+    "notes": "S1,2,3,4,5 / Naruto Shippuden \u2013 S1-21",
     "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg"
   },
   {
@@ -120,7 +120,7 @@
     "title": "Tokyo Ghoul",
     "type": "Anime",
     "status": "Planning",
-    "notes": "S1,2 + √A + :re (4 seasons)",
+    "notes": "S1,2 + \u221aA + :re (4 seasons)",
     "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg"
   },
   {
@@ -201,7 +201,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/11/39717l.jpg"
   },
   {
-    "title": "Frieren: Beyond Journey’s End",
+    "title": "Frieren: Beyond Journey\u2019s End",
     "type": "Anime",
     "status": "Planning",
     "notes": "1 season",
@@ -277,7 +277,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg"
   },
   {
-    "title": "Spy × Family",
+    "title": "Spy \u00d7 Family",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3",
@@ -489,7 +489,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1410/112994l.jpg"
   },
   {
-    "title": "Howl’s Moving Castle",
+    "title": "Howl\u2019s Moving Castle",
     "type": "Movie",
     "status": "Planning",
     "image": "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg"
@@ -582,5 +582,245 @@
     "status": "Planning",
     "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg"
+  },
+  {
+    "title": "Clannad: After Story",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Highly rated drama"
+  },
+  {
+    "title": "Fruits Basket (2019)",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Complete adaptation"
+  },
+  {
+    "title": "Oshi no Ko",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Idol industry drama"
+  },
+  {
+    "title": "Ranking of Kings",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Fantasy adventure"
+  },
+  {
+    "title": "Odd Taxi",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Mystery anthropomorphic"
+  },
+  {
+    "title": "86 (Eighty-Six)",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Mecha war drama"
+  },
+  {
+    "title": "Bocchi the Rock!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Music slice of life"
+  },
+  {
+    "title": "Chihayafuru",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Karuta sports"
+  },
+  {
+    "title": "Natsume's Book of Friends",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Supernatural slice of life"
+  },
+  {
+    "title": "Bakemonogatari",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Monogatari Series"
+  },
+  {
+    "title": "Mushishi",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Atmospheric supernatural"
+  },
+  {
+    "title": "Great Teacher Onizuka",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Classic comedy drama"
+  },
+  {
+    "title": "Yu Yu Hakusho",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Classic battle shonen"
+  },
+  {
+    "title": "Rurouni Kenshin",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Historical samurai"
+  },
+  {
+    "title": "Inuyasha",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Isekai fantasy classic"
+  },
+  {
+    "title": "Nana",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Music romance drama"
+  },
+  {
+    "title": "Beck: Mongolian Chop Squad",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Rock band journey"
+  },
+  {
+    "title": "Black Lagoon",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Action crime"
+  },
+  {
+    "title": "Trigun",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Sci-fi western"
+  },
+  {
+    "title": "Hellsing Ultimate",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Vampire action horror"
+  },
+  {
+    "title": "Psycho-Pass",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Cyberpunk psychological"
+  },
+  {
+    "title": "Darker than Black",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Supernatural abilities"
+  },
+  {
+    "title": "Baccano!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Non-linear storytelling"
+  },
+  {
+    "title": "Durarara!!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Urban fantasy"
+  },
+  {
+    "title": "Noragami",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Gods and phantoms"
+  },
+  {
+    "title": "Soul Eater",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Stylized action"
+  },
+  {
+    "title": "Akame ga Kill!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Dark fantasy action"
+  },
+  {
+    "title": "No Game No Life",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Isekai games"
+  },
+  {
+    "title": "KonoSuba",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Isekai comedy"
+  },
+  {
+    "title": "Toradora!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Romcom classic"
+  },
+  {
+    "title": "Angel Beats!",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Afterlife drama"
+  },
+  {
+    "title": "Anohana: The Flower We Saw That Day",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Emotional drama"
+  },
+  {
+    "title": "Another",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Horror mystery"
+  },
+  {
+    "title": "Mirai Nikki",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Survival game thriller"
+  },
+  {
+    "title": "Golden Kamuy",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Historical adventure"
+  },
+  {
+    "title": "Dorohedoro",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Gritty fantasy comedy"
+  },
+  {
+    "title": "Land of the Lustrous",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Gem people CGI masterpiece"
+  },
+  {
+    "title": "Beastars",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Anthropomorphic drama"
+  },
+  {
+    "title": "The Apothecary Diaries",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Historical mystery"
+  },
+  {
+    "title": "Bungo Stray Dogs",
+    "type": "Anime",
+    "status": "Planning",
+    "notes": "Literary superpowers"
   }
 ]
