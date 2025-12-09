@@ -15,7 +15,16 @@ export const commands: Record<string, Command> = {
                 "  whoami, fetch, uname, uptime, df, top, ps",
                 "",
                 "Utilities:",
-                "  date, clear, echo, cat, grep, find, man",
+                "  date, clear, echo, cat, grep, find, man, wc, diff",
+                "",
+                "File Operations:",
+                "  mkdir, touch, mv, cp, rm, chmod, chown, ln, tar, zip",
+                "",
+                "Text Processing:",
+                "  head, tail, grep, cat",
+                "",
+                "Environment:",
+                "  env, export, printenv, alias",
                 "",
                 "Network:",
                 "  ping, curl, wget, ssh",
@@ -510,6 +519,216 @@ export const commands: Record<string, Command> = {
                 "                ||----w |",
                 "                ||     ||"
             ]);
+        },
+    },
+    mkdir: {
+        name: "mkdir",
+        description: "Make directory",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: mkdir [directory]"]);
+            } else {
+                setLines((prev) => [...prev, `mkdir: cannot create directory '${args[0]}': Read-only file system 😅`]);
+            }
+        },
+    },
+    touch: {
+        name: "touch",
+        description: "Create empty file",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: touch [file]"]);
+            } else {
+                setLines((prev) => [...prev, `touch: cannot touch '${args[0]}': Read-only file system`]);
+            }
+        },
+    },
+    chmod: {
+        name: "chmod",
+        description: "Change file permissions",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: chmod [mode] [file]"]);
+            } else {
+                setLines((prev) => [...prev, `chmod: changing permissions of '${args[1]}': Operation not permitted`]);
+            }
+        },
+    },
+    chown: {
+        name: "chown",
+        description: "Change file owner",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: chown [owner] [file]"]);
+            } else {
+                setLines((prev) => [...prev, `chown: changing ownership of '${args[1]}': Operation not permitted`]);
+            }
+        },
+    },
+    mv: {
+        name: "mv",
+        description: "Move/rename files",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: mv [source] [destination]"]);
+            } else {
+                setLines((prev) => [...prev, `mv: cannot move '${args[0]}': Permission denied`]);
+            }
+        },
+    },
+    cp: {
+        name: "cp",
+        description: "Copy files",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: cp [source] [destination]"]);
+            } else {
+                setLines((prev) => [...prev, `cp: cannot create regular file '${args[1]}': Permission denied`]);
+            }
+        },
+    },
+    ln: {
+        name: "ln",
+        description: "Create links",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: ln [-s] [target] [link]"]);
+            } else {
+                setLines((prev) => [...prev, `ln: failed to create link: Operation not permitted`]);
+            }
+        },
+    },
+    head: {
+        name: "head",
+        description: "Output first part of files",
+        execute: (args, { setLines }) => {
+            const file = args[0] || "file";
+            setLines((prev) => [...prev,
+            `==> ${file} <==`,
+                "Line 1: Welcome to my portfolio!",
+                "Line 2: Built with Next.js and TypeScript",
+                "Line 3: Featuring a terminal interface",
+                "Line 4: Type 'help' for available commands",
+                "Line 5: Enjoy exploring! 🚀"
+            ]);
+        },
+    },
+    tail: {
+        name: "tail",
+        description: "Output last part of files",
+        execute: (args, { setLines }) => {
+            const file = args[0] || "file";
+            setLines((prev) => [...prev,
+            `==> ${file} <==`,
+                "...",
+                "Last line: Thanks for visiting!",
+                "EOF"
+            ]);
+        },
+    },
+    wc: {
+        name: "wc",
+        description: "Word count",
+        execute: (args, { setLines }) => {
+            const file = args[0] || "file";
+            setLines((prev) => [...prev, `  42  256  1337 ${file}`]);
+        },
+    },
+    diff: {
+        name: "diff",
+        description: "Compare files",
+        execute: (args, { setLines }) => {
+            if (args.length < 2) {
+                setLines((prev) => [...prev, "usage: diff [file1] [file2]"]);
+            } else {
+                setLines((prev) => [...prev, `Files ${args[0]} and ${args[1]} are identical (probably) ✓`]);
+            }
+        },
+    },
+    tar: {
+        name: "tar",
+        description: "Archive utility",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: tar [options] [file]"]);
+            } else {
+                setLines((prev) => [...prev, `tar: This is a web portfolio, not a real filesystem! 📦`]);
+            }
+        },
+    },
+    zip: {
+        name: "zip",
+        description: "Package files",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: zip [archive] [files...]"]);
+            } else {
+                setLines((prev) => [...prev, `  adding: ${args[0]} (deflated 42%)`]);
+            }
+        },
+    },
+    unzip: {
+        name: "unzip",
+        description: "Extract files",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: unzip [archive]"]);
+            } else {
+                setLines((prev) => [...prev,
+                `Archive:  ${args[0]}`,
+                    "  inflating: portfolio.html",
+                    "  inflating: styles.css",
+                    "Done! 📂"
+                ]);
+            }
+        },
+    },
+    alias: {
+        name: "alias",
+        description: "Create command alias",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev,
+                    "alias ll='ls -la'",
+                    "alias ..='cd ..'",
+                    "alias please='sudo'"
+                ]);
+            } else {
+                setLines((prev) => [...prev, `alias: ${args.join(" ")} - Aliases are temporary in this session`]);
+            }
+        },
+    },
+    env: {
+        name: "env",
+        description: "Display environment",
+        execute: (_, { setLines }) => {
+            setLines((prev) => [...prev,
+                "USER=adarsh",
+                "HOME=/home/adarsh",
+                "SHELL=/bin/zsh",
+                "PATH=/usr/local/bin:/usr/bin:/bin",
+                "LANG=en_US.UTF-8",
+                "PORTFOLIO=awesome"
+            ]);
+        },
+    },
+    export: {
+        name: "export",
+        description: "Set environment variable",
+        execute: (args, { setLines }) => {
+            if (args.length === 0) {
+                setLines((prev) => [...prev, "usage: export VAR=value"]);
+            } else {
+                setLines((prev) => [...prev, `export: ${args[0]} - Variable set (temporarily)`]);
+            }
+        },
+    },
+    printenv: {
+        name: "printenv",
+        description: "Print environment",
+        execute: (args, { setLines }) => {
+            const varName = args[0] || "PATH";
+            setLines((prev) => [...prev, `/usr/local/bin:/usr/bin:/bin`]);
         },
     },
 };

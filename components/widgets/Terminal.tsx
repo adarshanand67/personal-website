@@ -211,6 +211,7 @@ export default function Terminal() {
               className="bg-transparent border-none outline-none text-green-400 flex-grow"
               autoFocus
               spellCheck={false}
+              
               autoComplete="off"
               placeholder={passwordMode ? "●●●●●●●●" : ""}
             />
