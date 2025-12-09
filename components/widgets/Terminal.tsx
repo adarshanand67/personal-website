@@ -188,7 +188,7 @@ export default function Terminal() {
       </div>
       <div
         ref={containerRef}
-        className="p-6 text-gray-300 dark:text-gray-200 h-[320px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className="p-6 text-gray-300 dark:text-gray-200 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
           <div
