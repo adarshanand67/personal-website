@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { linkifyTech } from "@/lib/tech-links";
+import { getAssetPath } from "@/lib/utils/asset-path";
 
 interface ExperienceItem {
     company: string;
@@ -36,7 +37,7 @@ export default function Experience({ items }: ExperienceProps) {
                                     {exp.logo && (
                                         <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white border border-gray-200 dark:border-gray-700">
                                             <Image
-                                                src={exp.logo}
+                                                src={getAssetPath(exp.logo)}
                                                 alt={`${exp.company} logo`}
                                                 fill
                                                 className="object-contain p-1"
