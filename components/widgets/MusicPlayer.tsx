@@ -5,6 +5,7 @@ import { Play, Pause, Volume2, VolumeX, Disc, SkipBack, SkipForward } from "luci
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
+import { POSITION_STYLES, BUTTON_STYLES } from "@/lib/styles";
 
 export default function MusicPlayer() {
     const {
@@ -68,7 +69,7 @@ export default function MusicPlayer() {
     }
 
     return (
-        <div className="fixed bottom-4 right-4 z-50 font-mono">
+        <div className={`${POSITION_STYLES.FIXED_BOTTOM_RIGHT} z-50 font-mono`}>
             <audio
                 ref={audioRef}
                 src={PLAYLIST[currentTrackIndex]}
@@ -95,7 +96,7 @@ export default function MusicPlayer() {
                     <div className="flex items-center gap-3 mt-1">
                         <button
                             onClick={togglePlay}
-                            className="hover:text-green-400 text-gray-300 transition-colors"
+                            className={BUTTON_STYLES.ICON_BUTTON}
                             aria-label={isPlaying ? "Pause" : "Play"}
                         >
                             {isPlaying ? <Pause size={16} /> : <Play size={16} />}
@@ -103,7 +104,7 @@ export default function MusicPlayer() {
 
                         <button
                             onClick={nextTrack}
-                            className="hover:text-green-400 text-gray-300 transition-colors"
+                            className={BUTTON_STYLES.ICON_BUTTON}
                             aria-label="Next Track"
                         >
                             <SkipForward size={16} />
@@ -111,7 +112,7 @@ export default function MusicPlayer() {
 
                         <button
                             onClick={handleMute}
-                            className="hover:text-green-400 text-gray-300 transition-colors"
+                            className={BUTTON_STYLES.ICON_BUTTON}
                             aria-label={isMuted ? "Unmute" : "Mute"}
                         >
                             {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
