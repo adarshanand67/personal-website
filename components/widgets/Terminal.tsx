@@ -188,7 +188,7 @@ export default function Terminal() {
       </div>
       <div
         ref={containerRef}
-        className="p-6 text-green-400 h-[320px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        className="p-6 text-gray-300 dark:text-gray-200 h-[320px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
       >
         {lines.map((line, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
@@ -198,14 +198,14 @@ export default function Terminal() {
 
         {isIntroDone && (
           <div className="flex items-center">
-            <span className="mr-2">$</span>
+            <span className="mr-2 text-green-400">$</span>
             <input
               ref={inputRef}
               type={passwordMode ? "password" : "text"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="bg-transparent border-none outline-none text-green-400 flex-grow"
+              className="bg-transparent border-none outline-none text-gray-300 dark:text-gray-200 flex-grow"
               autoFocus
               spellCheck={false}
               autoComplete="off"
