@@ -76,9 +76,3 @@ export interface EntertainmentItem {
   image?: string;
   recommended?: boolean;
 }
-
-export interface Volunteering {
-  organization: string;
-  role: string;
-  additionalInfo?: string;
-}

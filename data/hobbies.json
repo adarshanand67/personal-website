@@ -5,6 +5,21 @@
         "icon": "Dumbbell"
     },
     {
+        "name": "Cinephile",
+        "description": "Loves movies and documentaries.",
+        "icon": "Tv"
+    },
+    {
+        "name": "Anime",
+        "description": "Appreciating storytelling and animation.",
+        "icon": "Tv"
+    },
+    {
+        "name": "Book Reading",
+        "description": "Understanding the world from different eyes",
+        "icon": "Book"
+    },
+    {   
         "name": "Table Tennis",
         "description": "Fast-paced rallies and spin control.",
         "icon": "Trophy"
@@ -38,11 +53,6 @@
         "name": "Bowling",
         "description": "Aiming for strikes and spares.",
         "icon": "Trophy"
-    },
-    {
-        "name": "Anime",
-        "description": "Appreciating storytelling and animation.",
-        "icon": "Tv"
     },
     {
         "name": "Board Games",
