@@ -277,26 +277,42 @@ export const commands: Record<string, Command> = {
                 setLines((prev) => [...prev, "usage: cat [file]"]);
                 return;
             }
-            const file = args[0]?.toLowerCase();
-            if (file === "readme.md" || file === "readme") {
-                setLines((prev) => [...prev,
-                    "# Adarsh Anand - Portfolio",
-                    "",
-                    "Software Development Engineer @Trellix",
-                    "Specializing in C++, Data Security, and System Programming",
-                    "",
-                    "Type 'help' for available commands"
-                ]);
-            } else if (file === "skills.txt" || file === "skills") {
-                setLines((prev) => [...prev,
-                    "Languages: C++, Python, JavaScript, TypeScript, Rust",
-                    "Technologies: Next.js, React, Node.js, Docker",
-                    "Security: Intel SGX, TDX, Cryptography, DLP",
-                    "Tools: Git, Linux, LLVM, Fuzzing"
-                ]);
-            } else {
-                setLines((prev) => [...prev, `cat: ${args[0]}: No such file or directory`]);
-            }
+
+            const showLineNumbers = args.includes("-n");
+            const files = args.filter(arg => !arg.startsWith("-"));
+
+            files.forEach(file => {
+                const filename = file.toLowerCase();
+                if (filename === "readme.md" || filename === "readme") {
+                    const content = [
+                        "# Adarsh Anand - Portfolio",
+                        "",
+                        "Software Development Engineer @Trellix",
+                        "Specializing in C++, Data Security, and System Programming",
+                        "",
+                        "Type 'help' for available commands"
+                    ];
+                    if (showLineNumbers) {
+                        setLines((prev) => [...prev, ...content.map((line, i) => `     ${i + 1}  ${line}`)]);
+                    } else {
+                        setLines((prev) => [...prev, ...content]);
+                    }
+                } else if (filename === "skills.txt" || filename === "skills") {
+                    const content = [
+                        "Languages: C++, Python, JavaScript, TypeScript, Rust",
+                        "Technologies: Next.js, React, Node.js, Docker",
+                        "Security: Intel SGX, TDX, Cryptography, DLP",
+                        "Tools: Git, Linux, LLVM, Fuzzing"
+                    ];
+                    if (showLineNumbers) {
+                        setLines((prev) => [...prev, ...content.map((line, i) => `     ${i + 1}  ${line}`)]);
+                    } else {
+                        setLines((prev) => [...prev, ...content]);
+                    }
+                } else {
+                    setLines((prev) => [...prev, `cat: ${file}: No such file or directory`]);
+                }
+            });
         },
     },
     history: {
@@ -458,9 +474,46 @@ export const commands: Record<string, Command> = {
         description: "Search for patterns",
         execute: (args, { setLines }) => {
             if (args.length < 2) {
-                setLines((prev) => [...prev, "usage: grep [pattern] [file]"]);
+                setLines((prev) => [...prev, "usage: grep [options] pattern [file]"]);
+                return;
+            }
+
+            const caseInsensitive = args.includes("-i");
+            const showLineNumbers = args.includes("-n");
+            const invertMatch = args.includes("-v");
+            const recursive = args.includes("-r");
+
+            const nonFlagArgs = args.filter(arg => !arg.startsWith("-"));
+            const pattern = nonFlagArgs[0];
+            const file = nonFlagArgs[1] || "stdin";
+
+            // Sample content to search
+            const sampleContent = [
+                "Welcome to my portfolio",
+                "Built with Next.js and TypeScript",
+                "Featuring a terminal interface",
+                "Type 'help' for available commands",
+                "Enjoy exploring!"
+            ];
+
+            const regex = new RegExp(pattern, caseInsensitive ? "i" : "");
+            const matches: string[] = [];
+
+            sampleContent.forEach((line, index) => {
+                const isMatch = regex.test(line);
+                if ((isMatch && !invertMatch) || (!isMatch && invertMatch)) {
+                    if (showLineNumbers) {
+                        matches.push(`${index + 1}:${line}`);
+                    } else {
+                        matches.push(line);
+                    }
+                }
+            });
+
+            if (matches.length > 0) {
+                setLines((prev) => [...prev, ...matches]);
             } else {
-                setLines((prev) => [...prev, `Searching for '${args[0]}' in ${args[1]}...`, "No matches found (or maybe I'm just lazy 😴)"]);
+                setLines((prev) => [...prev, `grep: no matches found for '${pattern}'`]);
             }
         },
     },
@@ -468,8 +521,44 @@ export const commands: Record<string, Command> = {
         name: "find",
         description: "Search for files",
         execute: (args, { setLines }) => {
-            const query = args.join(" ") || "files";
-            setLines((prev) => [...prev, `Searching for ${query}...`, "./blogshelf/hello-world.md", "./papershelf/research.pdf"]);
+            const nameIndex = args.indexOf("-name");
+            const typeIndex = args.indexOf("-type");
+
+            let pattern = "*";
+            let fileType = "all";
+
+            if (nameIndex !== -1 && args[nameIndex + 1]) {
+                pattern = args[nameIndex + 1].replace(/[*]/g, "");
+            }
+
+            if (typeIndex !== -1 && args[typeIndex + 1]) {
+                fileType = args[typeIndex + 1]; // f for file, d for directory
+            }
+
+            const results: string[] = [];
+
+            if (fileType === "d" || fileType === "all") {
+                DIRECTORIES.forEach(dir => {
+                    if (pattern === "" || dir.toLowerCase().includes(pattern.toLowerCase())) {
+                        results.push(`./${dir}`);
+                    }
+                });
+            }
+
+            if (fileType === "f" || fileType === "all") {
+                const files = ["README.md", "package.json", ".gitignore", ".env.example"];
+                files.forEach(file => {
+                    if (pattern === "" || file.toLowerCase().includes(pattern.toLowerCase())) {
+                        results.push(`./${file}`);
+                    }
+                });
+            }
+
+            if (results.length > 0) {
+                setLines((prev) => [...prev, ...results]);
+            } else {
+                setLines((prev) => [...prev, `find: no files matching '${pattern}'`]);
+            }
         },
     },
     man: {
