@@ -32,7 +32,7 @@ export const TRACK_NAMES = [
 
 export const INTRO_LINES = (toLeet: (t: string) => string) => [
     `> ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
-    "> Initializing SDE protocol...", And there is a possibility that some orders came from there.Like in Ranvier's plan there might have been changes. He thought that something might have to be done 
+    "> Initializing SDE protocol...",
     "> Loading modules: C++, Make, Git...",
     `> Access granted :${toLeet("Type 'help' for commands.")}`,
 ] as const;
