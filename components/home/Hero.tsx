@@ -26,7 +26,7 @@ export default async function Hero() {
             {profile.avatar && (
               <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0">
                 <Image
-                  src={`${BASE_PATH}${profile.avatar}`}
+                  src={profile.avatar}
                   alt={profile.name}
                   fill
                   className="object-cover"
