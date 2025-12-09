@@ -449,13 +449,25 @@ export const commands: Record<string, Command> = {
     ps: {
         name: "ps",
         description: "List processes",
-        execute: (_, { setLines }) => {
-            setLines((prev) => [...prev,
-                "PID TTY      TIME CMD",
-                "  1 pts/0    00:00:01 portfolio",
-                " 42 pts/0    00:00:00 music",
-                " 69 pts/0    00:00:02 matrix"
-            ]);
+        execute: (args, { setLines }) => {
+            const showAll = args.includes("aux") || args.includes("-aux") || args.includes("-ef");
+
+            if (showAll) {
+                setLines((prev) => [...prev,
+                    "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND",
+                    "adarsh       1  0.5  1.2 256000 16384 pts/0    Ss   22:00   0:01 /usr/bin/portfolio",
+                    "adarsh      42  2.1  0.4  64000  8192 pts/0    S    22:05   0:00 music-player",
+                    "adarsh      69  5.4  0.8 128000 12288 pts/0    S    22:10   0:02 matrix-rain",
+                    "adarsh     100  0.1  0.2  32000  4096 pts/0    R    22:30   0:00 ps aux"
+                ]);
+            } else {
+                setLines((prev) => [...prev,
+                    "PID TTY      TIME CMD",
+                    "  1 pts/0    00:00:01 portfolio",
+                    " 42 pts/0    00:00:00 music",
+                    " 69 pts/0    00:00:02 matrix"
+                ]);
+            }
         },
     },
     kill: {
@@ -610,15 +622,67 @@ export const commands: Record<string, Command> = {
         description: "Version control",
         execute: (args, { setLines }) => {
             const subcommand = args[0] || "status";
-            if (subcommand === "status") {
-                setLines((prev) => [...prev,
-                    "On branch main",
-                    "Your branch is up to date with 'origin/main'.",
-                    "",
-                    "nothing to commit, working tree clean ✨"
-                ]);
-            } else {
-                setLines((prev) => [...prev, `git ${subcommand}: Check out the real repo on GitHub! 🚀`]);
+
+            switch (subcommand) {
+                case "status":
+                    setLines((prev) => [...prev,
+                        "On branch main",
+                        "Your branch is up to date with 'origin/main'.",
+                        "",
+                        "nothing to commit, working tree clean ✨"
+                    ]);
+                    break;
+                case "log":
+                    const limit = args.includes("-n") || args.includes("--oneline") ? 5 : 10;
+                    const oneline = args.includes("--oneline");
+                    if (oneline) {
+                        setLines((prev) => [...prev,
+                            "2c91128 feat: enhance cat, grep, find commands",
+                            "9485061 feat: enhance ls, echo, date commands",
+                            "d8e7d15 feat: implement proper history command",
+                            "a9223b7 revert: fix syntax errors",
+                            "3675873 feat: add more commands"
+                        ]);
+                    } else {
+                        setLines((prev) => [...prev,
+                            "commit 2c91128 (HEAD -> main, origin/main)",
+                            "Author: Adarsh Anand <adarsh@example.com>",
+                            "Date:   Mon Dec 9 22:31:00 2024",
+                            "",
+                            "    feat: enhance cat, grep, find commands",
+                            ""
+                        ]);
+                    }
+                    break;
+                case "branch":
+                    const showAll = args.includes("-a");
+                    setLines((prev) => [...prev,
+                        "* main",
+                    ...(showAll ? ["  remotes/origin/main", "  remotes/origin/HEAD -> origin/main"] : [])
+                    ]);
+                    break;
+                case "diff":
+                    setLines((prev) => [...prev,
+                        "diff --git a/lib/terminal/commands.ts b/lib/terminal/commands.ts",
+                        "index 614c91d..859ce83 100644",
+                        "--- a/lib/terminal/commands.ts",
+                        "+++ b/lib/terminal/commands.ts",
+                        "@@ -49,7 +49,36 @@",
+                        " (showing sample diff output)"
+                    ]);
+                    break;
+                case "remote":
+                    if (args[1] === "-v") {
+                        setLines((prev) => [...prev,
+                            "origin  https://github.com/adarshanand67/adarshanand67.github.io.git (fetch)",
+                            "origin  https://github.com/adarshanand67/adarshanand67.github.io.git (push)"
+                        ]);
+                    } else {
+                        setLines((prev) => [...prev, "origin"]);
+                    }
+                    break;
+                default:
+                    setLines((prev) => [...prev, `git ${subcommand}: Check out the real repo on GitHub! 🚀`]);
             }
         },
     },
