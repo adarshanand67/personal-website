@@ -1,8 +1,8 @@
 import { siteConfig } from "@/config";
 
-// For GitHub Pages deployment at /personal-website
-// Change this if deploying to root (set to "")
-export const BASE_PATH = "/personal-website";
+// For root deployment (adarshanand67.github.io)
+// Set to "/repo-name" if deploying to a subdirectory
+export const BASE_PATH = "";
 
 export const PLAYLIST = [
     `${BASE_PATH}/assets/music/cruel_angels_thesis.mp3`,
@@ -32,7 +32,7 @@ export const TRACK_NAMES = [
 
 export const INTRO_LINES = (toLeet: (t: string) => string) => [
     `> ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
-    "> Initializing SDE protocol...",
+    "> Initializing SDE protocol...", And there is a possibility that some orders came from there.Like in Ranvier's plan there might have been changes. He thought that something might have to be done 
     "> Loading modules: C++, Make, Git...",
     `> Access granted :${toLeet("Type 'help' for commands.")}`,
 ] as const;
