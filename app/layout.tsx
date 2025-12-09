@@ -11,6 +11,8 @@ import { TerminalCursor } from "@/components/ui/TerminalCursor";
 import BackToTop from "@/components/layout/BackToTop";
 import MusicPlayer from "@/components/widgets/MusicPlayer";
 import { siteConfig } from "@/config";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -79,6 +81,9 @@ export default function RootLayout({
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
+        {/* SEO Structured Data */}
+        <StructuredData data={generatePersonSchema()} />
+        <StructuredData data={generateWebSiteSchema()} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="pointer-events-none fixed inset-0 z-50 bg-[url('/assets/scanline.png')] opacity-[0.03] animate-scanline mix-blend-overlay" style={{ backgroundSize: '100% 4px' }}></div>
           {/* Subtle vignette */}

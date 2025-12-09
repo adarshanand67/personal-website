@@ -1,26 +1,4 @@
 {
-    "hardware": [
-        {
-            "name": "MacBook Pro M1",
-            "description": "My daily driver for everything."
-        },
-        {
-            "name": "Keychron K2 V2",
-            "description": "Mechanical keyboard with Brown switches."
-        }
-    ],
-    "software": [
-        {
-            "name": "VS Code",
-            "description": "Editor of choice. Extensions: Vim, Tailwind, ESLint."
-        },
-        {
-            "name": "iTerm2",
-            "description": "Terminal emulator with Oh My Zsh."
-        },
-        {
-            "name": "Obsidian",
-            "description": "For note-taking and knowledge management."
-        }
-    ]
+    "hardware": [],
+    "software": []
 }
