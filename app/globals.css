@@ -95,14 +95,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-assistant), sans-serif;
-  cursor: none;
-}
-
-/* Custom Block Cursorish feel for links */
-a,
-button,
-[role="button"] {
-  cursor: none;
 }
 
 /* Custom Scrollbar - Retro Terminal Style */
