@@ -15,7 +15,7 @@ export const commands: Record<string, Command> = {
                 "  whoami, fetch, uname, uptime, df, top, ps, free, hostname",
                 "",
                 "Utilities:",
-                "  date, clear, echo, cat, grep, find, man, wc, diff, file, which",
+                "  date, clear, echo, cat, grep, find, man, wc, diff, file, which, time",
                 "",
                 "File Operations:",
                 "  mkdir, touch, mv, cp, rm, chmod, chown, ln, tar, zip",
@@ -935,13 +935,82 @@ export const commands: Record<string, Command> = {
             const text = args.join(" ") || "HELLO";
             setLines((prev) => [...prev,
                 " _   _  _____ _     _     ___  ",
-                "| | | || ____| |   | |   / _ \\ ",
-                "| |_| ||  _| | |   | |  | | | |",
-                "|  _  || |___| |___| |__| |_| |",
-                "|_| |_||_____|_____|_____\\___/ ",
-                "",
-            `(Showing default - input was: ${text})`
-            ]);
+            }
+    },
+},
+    time: {
+        name: "time",
+        description: "Time command execution",
+        execute: (args, { setLines }) => {
+            if(args.length === 0) {
+    setLines((prev) => [...prev, "usage: time [command]"]);
+} else {
+    const cmd = args[0];
+    const startTime = performance.now();
+
+    // Simulate command execution
+    const command = commands[cmd];
+    if (command) {
+        // Execute the command
+        const remainingArgs = args.slice(1);
+        command.execute(remainingArgs, { setLines, setPasswordMode: () => { }, router: {} as any, setTheme: () => { }, isMatrixEnabled: false, toggleMatrix: () => { }, setIsPlaying: () => { }, nextTrack: () => { }, prevTrack: () => { }, toggleMute: () => { }, setInput: () => { } });
+
+        const endTime = performance.now();
+        const elapsed = ((endTime - startTime) / 1000).toFixed(3);
+
+        setLines((prev) => [...prev,
+            "",
+        `real    0m${elapsed}s`,
+        `user    0m${elapsed}s`,
+            `sys     0m0.000s`
+        ]);
+    } else {
+        setLines((prev) => [...prev, `time: ${cmd}: command not found`]);
+    }
+}
         },
+    },
+sleep: {
+    name: "sleep",
+        description: "Delay for specified time",
+            execute: (args, { setLines }) => {
+                if (args.length === 0) {
+                    setLines((prev) => [...prev, "usage: sleep [seconds]"]);
+                } else {
+                    const seconds = parseInt(args[0]);
+                    if (isNaN(seconds)) {
+                        setLines((prev) => [...prev, "sleep: invalid time interval"]);
+                    } else {
+                        setLines((prev) => [...prev, `Sleeping for ${seconds} seconds... (just kidding, this is instant! ⚡)`]);
+                    }
+                }
+            },
+    },
+watch: {
+    name: "watch",
+        description: "Execute command periodically",
+            execute: (args, { setLines }) => {
+                if (args.length === 0) {
+                    setLines((prev) => [...prev, "usage: watch [command]"]);
+                } else {
+                    setLines((prev) => [...prev,
+                    `Every 2.0s: ${args.join(" ")}`,
+                        "",
+                        "This would normally refresh every 2 seconds...",
+                        "But this is a static terminal! 😄"
+                    ]);
+                }
+            },
+    },
+timeout: {
+    name: "timeout",
+        description: "Run command with time limit",
+            execute: (args, { setLines }) => {
+                if (args.length < 2) {
+                    setLines((prev) => [...prev, "usage: timeout [duration] [command]"]);
+                } else {
+                    setLines((prev) => [...prev, `timeout: running ${args.slice(1).join(" ")} with ${args[0]}s timeout`]);
+                }
+            },
     },
 };
