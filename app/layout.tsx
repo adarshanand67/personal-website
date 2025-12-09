@@ -10,6 +10,7 @@ import { MatrixRain } from "@/components/ui/MatrixRain";
 import { TerminalCursor } from "@/components/ui/TerminalCursor";
 import BackToTop from "@/components/layout/BackToTop";
 import MusicPlayer from "@/components/widgets/MusicPlayer";
+import { siteConfig } from "@/config";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -25,37 +26,26 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Adarsh Anand",
-    template: "%s | Adarsh Anand",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Software Development Engineer @Trellix focusing on data security, C++, and secure systems. Ex-Intel. IIT Goa graduate.",
-  keywords: [
-    "Adarsh Anand",
-    "Software Engineer",
-    "C++",
-    "Rust",
-    "Data Security",
-    "Intel SGX",
-    "Trellix",
-    "IIT Goa",
-  ],
-  authors: [{ name: "Adarsh Anand" }],
-  creator: "Adarsh Anand",
+  description: siteConfig.description,
+  keywords: [...siteConfig.seo.keywords], // Convert readonly to mutable
+  authors: [{ name: siteConfig.author.name }],
+  creator: siteConfig.author.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adarshanand.dev",
-    siteName: "Adarsh Anand",
-    title: "Adarsh Anand - SDE @Trellix | C++ | Ex-Intel",
-    description:
-      "Software Development Engineer focusing on data security, confidential computing, and secure systems development.",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: [
       {
-        url: "/og-image.png",
+        url: siteConfig.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: "Adarsh Anand",
+        alt: siteConfig.name,
       },
     ],
   },

@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config";
+
 export const PLAYLIST = [
     "https://archive.org/download/tvtunes_30971/One%20Punch%20Man.mp3",
     "https://archive.org/download/fav-mikezillak/Pokemon%20Theme%20-%20Billy%20Crawford.mp3",
@@ -13,7 +15,7 @@ export const TRACK_NAMES = [
 ] as const;
 
 export const INTRO_LINES = (toLeet: (t: string) => string) => [
-    "> ./adarsh_profile.sh",
+    `> ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
     "> Initializing SDE protocol...",
     "> Loading modules: C++, Make, Git...",
     `> Access granted :${toLeet("Type 'help' for commands.")}`,
@@ -47,14 +49,15 @@ export const DIRECTORY_MAP: Record<string, string> = {
     ".": ROUTES.HOME,
 };
 
+// Contact info from config
 export const CONTACT_INFO = [
-    "Email: adarshan20302@gmail.com",
-    "LinkedIn: linkedin.com/in/adarshanand67",
-    "GitHub: github.com/adarshanand67"
+    `Email: ${siteConfig.contact.email}`,
+    `LinkedIn: ${siteConfig.contact.linkedin}`,
+    `GitHub: ${siteConfig.contact.github}`
 ] as const;
 
 export const SYSTEM_STATS = (isMatrix: boolean) => [
-    "       Adarsh's Portfolio",
+    `       ${siteConfig.name}'s Portfolio`,
     "       ------------------",
     "OS:     Mac OS X (simulated)",
     "Host:   Personal Website",
@@ -65,9 +68,10 @@ export const SYSTEM_STATS = (isMatrix: boolean) => [
     `Matrix: ${isMatrix ? "Active" : "Disabled"}`
 ] as const;
 
+// Whoami info from config
 export const WHOAMI_INFO = [
-    "User: Adarsh Anand",
-    "Role: SDE @ Trellix",
-    "Expertise: C++, System Design, Security",
-    "Status: Online"
+    `User: ${siteConfig.whoami.user}`,
+    `Role: ${siteConfig.whoami.role}`,
+    `Expertise: ${siteConfig.whoami.expertise}`,
+    `Status: ${siteConfig.whoami.status}`
 ] as const;
