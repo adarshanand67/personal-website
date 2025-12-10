@@ -215,11 +215,20 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                     {selectedItem.title}
                                     {selectedItem.recommended && <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />}
                                 </h2>
-                                <div className="flex flex-wrap gap-2 text-sm text-gray-500">
+                                <div className="flex flex-wrap gap-2 text-sm text-gray-500 mb-4">
                                     {selectedItem.year && <span className="flex items-center gap-1"><Calendar size={14} /> {selectedItem.year}</span>}
                                     {selectedItem.rating && <span className="font-semibold text-green-600">{selectedItem.rating}</span>}
                                     <span>{selectedItem.type}</span>
                                 </div>
+                                <a
+                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " trailer")}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-semibold transition-colors shadow-sm"
+                                >
+                                    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-0.5"></div>
+                                    Watch Trailer
+                                </a>
                             </div>
 
                             <div className="space-y-6">
