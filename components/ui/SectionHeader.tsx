@@ -19,7 +19,10 @@ export default function SectionHeader({
     rightElement,
 }: SectionHeaderProps) {
     return (
-        <div className="w-full text-left group mb-3">
+        <div
+            className="w-full text-left group mb-3 cursor-pointer"
+            onClick={onToggle}
+        >
             <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
                 <span className="text-primary">##</span> {title}
                 <ChevronDown

@@ -26,17 +26,12 @@ export default function Experience({ items }: ExperienceProps) {
 
     return (
         <div className="mb-4 font-mono" id="experience">
-            <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full text-left group"
-            >
-                <SectionHeader
-                    title="Experience"
-                    command="cat ~/work/history.log"
-                    isExpanded={isExpanded}
-                    onToggle={() => setIsExpanded(!isExpanded)}
-                />
-            </button>
+            <SectionHeader
+                title="Experience"
+                command="cat ~/work/history.log"
+                isExpanded={isExpanded}
+                onToggle={() => setIsExpanded(!isExpanded)}
+            />
 
             {/* Timeline Container */}
             <div

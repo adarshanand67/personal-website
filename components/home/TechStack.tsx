@@ -56,17 +56,12 @@ export default function TechStack() {
 
   return (
     <div className="font-mono">
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full text-left group"
-      >
-        <SectionHeader
-          title="Tech Stack"
-          command="cat ~/.skills"
-          isExpanded={isExpanded}
-          onToggle={() => setIsExpanded(!isExpanded)}
-        />
-      </button>
+      <SectionHeader
+        title="Tech Stack"
+        command="cat ~/.skills"
+        isExpanded={isExpanded}
+        onToggle={() => setIsExpanded(!isExpanded)}
+      />
 
       <div
         className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
