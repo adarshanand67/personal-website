@@ -29,7 +29,7 @@ export default async function Home() {
       <Hero />
 
       {/* Main content with enhanced spacing */}
-      <div className="section max-w-4xl mx-auto px-4 mb-24 space-y-24">
+      <div className="section max-w-4xl mx-auto px-4 mb-24 space-y-12">
         {/* Experience Section with gradient border */}
         <div className="group relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
