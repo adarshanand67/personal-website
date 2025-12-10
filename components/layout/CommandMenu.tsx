@@ -1,8 +1,6 @@
 "use client";
-
 import * as React from "react";
 import { Command } from "cmdk";
-
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useGlobalState } from "@/components/common/GlobalProvider";
@@ -25,7 +23,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useUISound } from "@/hooks/useUISound";
-
 export function CommandMenu() {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
@@ -40,24 +37,21 @@ export function CommandMenu() {
     isSoundEnabled,
   } = useGlobalState();
   const { playSound } = useUISound(isSoundEnabled);
-
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setOpen((open) => !open);
-        if (!open) playSound('hover'); // Play sound on open
+        if (!open) playSound('hover'); 
       }
       if (e.key === "Escape") {
         setOpen(false);
       }
     };
-
     const openEvent = () => {
       setOpen(true);
       playSound('hover');
     };
-
     document.addEventListener("keydown", down);
     document.addEventListener("open-command-menu", openEvent);
     return () => {
@@ -65,15 +59,12 @@ export function CommandMenu() {
       document.removeEventListener("open-command-menu", openEvent);
     };
   }, [open, playSound]);
-
   const runCommand = React.useCallback((command: () => unknown) => {
     playSound('click');
     setOpen(false);
     command();
   }, [playSound]);
-
   if (!open) return null;
-
   return (
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
@@ -92,12 +83,10 @@ export function CommandMenu() {
               autoFocus
             />
           </div>
-
           <Command.List className="max-h-[300px] overflow-y-auto overflow-x-hidden px-1 scroll-py-1">
             <Command.Empty className="py-6 text-center text-sm text-gray-700 dark:text-gray-300">
               No results found.
             </Command.Empty>
-
             <Command.Group
               heading="Navigation"
               className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2"
@@ -138,9 +127,7 @@ export function CommandMenu() {
                 Bookshelf
               </Command.Item>
             </Command.Group>
-
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
-
             <Command.Group heading="Media Control" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
               <Command.Item
                 onSelect={() => runCommand(() => setIsPlaying(!isPlaying))}
@@ -164,9 +151,7 @@ export function CommandMenu() {
                 Previous Track
               </Command.Item>
             </Command.Group>
-
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
-
             <Command.Group heading="System Actions" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
               <Command.Item
                 onSelect={() => runCommand(toggleMatrix)}
@@ -176,9 +161,7 @@ export function CommandMenu() {
                 Toggle Matrix Rain
               </Command.Item>
             </Command.Group>
-
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
-
             <Command.Group heading="Theme" className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2">
               <Command.Item
                 onSelect={() => runCommand(() => setTheme("light"))}
@@ -202,9 +185,7 @@ export function CommandMenu() {
                 System Theme
               </Command.Item>
             </Command.Group>
-
             <Command.Separator className="h-px bg-gray-100 dark:bg-gray-800 my-2" />
-
             <Command.Group
               heading="Socials"
               className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2 px-2"
@@ -240,7 +221,6 @@ export function CommandMenu() {
               </Command.Item>
             </Command.Group>
           </Command.List>
-
           <div className="border-t border-gray-100 dark:border-gray-800 mt-2 pt-2 px-2 flex justify-between items-center text-[10px] text-gray-400">
             <span>Open with ⌘ K</span>
             <span>Select with ↵</span>

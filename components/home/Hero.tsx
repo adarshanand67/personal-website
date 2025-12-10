@@ -5,29 +5,21 @@ import { getProfile } from "@/lib/api";
 import Terminal from "@/components/widgets/Terminal";
 import { ClientGithub as Github, ClientLinkedin as Linkedin, ClientMail as Mail } from "@/components/common/ClientIcons";
 import { GlitchText } from "@/components/ui/GlitchText";
-
 export default async function Hero() {
   const profile = await getProfile();
-
   return (
     <section className="section max-w-6xl mx-auto px-4 mt-8 mb-8 relative">
-      {/* Gradient background effect */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center">
-        {/* Left Column - Description */}
         <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center glass p-8 rounded-2xl">
-          {/* Terminal prompt with enhanced styling */}
           <div className="font-mono mb-1 flex items-center gap-2 group">
             <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
             <span className="text-gray-700 dark:text-gray-300">whoami</span>
             <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
           </div>
-
-          {/* Profile Picture and Name with enhanced design */}
           <div className="flex items-center gap-5">
             {profile.avatar && (
               <div className="relative group">
@@ -47,16 +39,12 @@ export default async function Hero() {
               <GlitchText text={profile.name} className="text-primary" />
             </h1>
           </div>
-
-          {/* Bio with gradient underline */}
           <div className="relative inline-block">
             <h3 className="title text-lg md:text-2xl font-bold text-primary font-serif">
               <GlitchText text={profile.bio.short} className="text-primary" />
             </h3>
             <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
           </div>
-
-          {/* Content with better typography */}
           <div className="content text-lg leading-relaxed space-y-3">
             {profile.bio.paragraphs.map((paragraph: string, index: number) => (
               <p
@@ -79,10 +67,7 @@ export default async function Hero() {
             ))}
           </div>
         </div>
-
-        {/* Right Column - Terminal */}
         <div className="lg:sticky lg:top-20 max-lg:flex max-lg:flex-col max-lg:justify-center w-full">
-          {/* CTF Challenge hint */}
           <div className="flex justify-center lg:justify-end mb-4 pr-4">
             <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help">
               <span className="text-xs text-green-700 dark:text-green-400">🔐</span>

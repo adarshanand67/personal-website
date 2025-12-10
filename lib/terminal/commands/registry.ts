@@ -4,9 +4,6 @@ import { navigationCommands } from './navigation';
 import { systemCommands } from './system';
 import { fileCommands } from './fileOps';
 import { utilityCommands } from './utilities';
-import { networkCommands } from './network';
-import { developmentCommands } from './development';
-import { environmentCommands } from './environment';
 import { funCommands } from './fun';
 import { personalCommands } from './personal';
 export const commands: Record<string, Command> = {
@@ -15,9 +12,6 @@ export const commands: Record<string, Command> = {
     ...systemCommands,
     ...fileCommands,
     ...utilityCommands,
-    ...networkCommands,
-    ...developmentCommands,
-    ...environmentCommands,
     ...funCommands,
     ...personalCommands,
 };

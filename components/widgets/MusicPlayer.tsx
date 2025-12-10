@@ -2,8 +2,8 @@
 import { useRef, useEffect, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Minus, Maximize2, Music } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
-import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
-import { useMounted } from "@/lib/hooks";
+import { useMounted } from "@/lib/hooks/useMounted";
+import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG } from "@/lib/constants";
 import Image from "next/image";
 export default function MusicPlayer() {
     const {
@@ -17,8 +17,8 @@ export default function MusicPlayer() {
     const mounted = useMounted();
     const [offset, setOffset] = useState({ x: 24, y: 24 });
     const [isDragging, setIsDragging] = useState(false);
-    const [dragStart, setDragStart] = useState({ x: 0, y: 0 }); 
-    const [initialOffset, setInitialOffset] = useState({ x: 0, y: 0 }); 
+    const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+    const [initialOffset, setInitialOffset] = useState({ x: 0, y: 0 });
     const playerRef = useRef<HTMLDivElement>(null);
     const [isMinimized, setIsMinimized] = useState(false);
     const hasMoved = useRef(false);
@@ -60,7 +60,7 @@ export default function MusicPlayer() {
     };
     const handleTouchMove = (e: TouchEvent) => {
         if (isDragging) {
-            e.preventDefault(); 
+            e.preventDefault();
             hasMoved.current = true;
             const touch = e.touches[0];
             const dx = touch.clientX - dragStart.x;
@@ -145,7 +145,7 @@ export default function MusicPlayer() {
             const playPromise = audioRef.current.play();
             if (playPromise !== undefined) {
                 playPromise.catch(e => {
-                    console.error(ERROR_MESSAGES.AUDIO.PLAYBACK_FAILED, e);
+                    console.error('Playback failed:', e);
                     setIsPlaying(false);
                 });
             }
@@ -166,7 +166,7 @@ export default function MusicPlayer() {
     const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const handleTrackError = () => {
         if (errorTimeoutRef.current) return;
-        console.warn(ERROR_MESSAGES.AUDIO.TRACK_LOAD_FAILED);
+        console.warn('Track load failed');
         errorTimeoutRef.current = setTimeout(() => {
             nextTrack();
             errorTimeoutRef.current = null;
@@ -215,9 +215,9 @@ export default function MusicPlayer() {
                 onLoadedMetadata={handleLoadedMetadata}
                 crossOrigin="anonymous"
             />
-            {}
+            { }
             <div className={`relative bg-black/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10 group active:scale-[0.99] transition-transform duration-200`}>
-                {}
+                { }
                 <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
                 <div className="relative bg-black/80 backdrop-blur-xl rounded-2xl overflow-hidden h-full">
                     {isMinimized ? (
@@ -256,7 +256,7 @@ export default function MusicPlayer() {
                         </div>
                     ) : (
                         <>
-                            {}
+                            { }
                             <div className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2.5 h-2.5 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
@@ -287,7 +287,7 @@ export default function MusicPlayer() {
                                     </button>
                                 </div>
                             </div>
-                            {}
+                            { }
                             <div className="relative h-40 md:h-72 overflow-hidden bg-gray-900">
                                 <Image
                                     src={TRACK_IMAGES[currentTrackIndex]}
@@ -296,9 +296,9 @@ export default function MusicPlayer() {
                                     className="object-cover"
                                     priority
                                 />
-                                {}
+                                { }
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                                {}
+                                { }
                                 {isPlaying && (
                                     <div className="absolute bottom-3 right-3 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
                                         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
@@ -306,14 +306,14 @@ export default function MusicPlayer() {
                                     </div>
                                 )}
                             </div>
-                            {}
+                            { }
                             <div className="px-4 py-3 bg-black/20">
                                 <h3 className="text-base font-bold text-white truncate mb-1">
                                     {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
                                 </h3>
                                 <p className="text-sm text-gray-400">Track {currentTrackIndex + 1}/{PLAYLIST.length}</p>
                             </div>
-                            {}
+                            { }
                             <div className="px-4 py-2 bg-black/20">
                                 <div className="flex items-center gap-2 mb-1">
                                     <span className="text-sm text-gray-400 w-10 text-right">{formatTime(currentTime)}</span>
@@ -344,9 +344,9 @@ export default function MusicPlayer() {
                                     <span className="text-sm text-gray-400 w-10">{formatTime(duration)}</span>
                                 </div>
                             </div>
-                            {}
+                            { }
                             <div className="px-3 py-3 bg-black/30 flex flex-col gap-3">
-                                {}
+                                { }
                                 <div className="flex items-center justify-center gap-3">
                                     <button
                                         onClick={(e) => { e.stopPropagation(); prevTrack(); }}
@@ -373,7 +373,7 @@ export default function MusicPlayer() {
                                         <SkipForward size={16} className="text-gray-300" fill="currentColor" />
                                     </button>
                                 </div>
-                                {}
+                                { }
                                 <div className="flex items-center gap-2 px-4 pb-1">
                                     <button onClick={(e) => { e.stopPropagation(); handleMute(); }} className="p-1 hover:text-white text-gray-400">
                                         {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}

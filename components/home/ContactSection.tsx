@@ -1,12 +1,9 @@
 "use client";
-
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
-
 export default function ContactSection() {
     const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <div className="font-mono">
             <SectionHeader
@@ -15,7 +12,6 @@ export default function ContactSection() {
                 isExpanded={isExpanded}
                 onToggle={() => setIsExpanded(!isExpanded)}
             />
-
             <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
@@ -24,10 +20,7 @@ export default function ContactSection() {
                     I&apos;m always open to discussing new opportunities, interesting projects, collaborations,
                     or just chatting about tech, security, and system programming. Feel free to reach out!
                 </p>
-
-                {/* Contact Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* LinkedIn Card */}
                     <a
                         href="https://linkedin.com/in/adarshanand67"
                         target="_blank"
@@ -49,8 +42,6 @@ export default function ContactSection() {
                             </svg>
                         </div>
                     </a>
-
-                    {/* Email Card */}
                     <a
                         href="mailto:adarshan20302@gmail.com"
                         className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
@@ -70,8 +61,6 @@ export default function ContactSection() {
                             </svg>
                         </div>
                     </a>
-
-                    {/* GitHub Card */}
                     <a
                         href="https://github.com/adarshanand67"
                         target="_blank"

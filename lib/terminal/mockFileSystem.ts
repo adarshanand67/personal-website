@@ -1,8 +1,3 @@
-/**
- * Mock file system for terminal commands
- * Provides realistic file metadata and content
- */
-
 export interface MockFile {
     type: 'file';
     size: number;
@@ -12,7 +7,6 @@ export interface MockFile {
     modified: string;
     content: string[];
 }
-
 export interface MockDirectory {
     type: 'directory';
     size: number;
@@ -21,12 +15,7 @@ export interface MockDirectory {
     group: string;
     modified: string;
 }
-
 export type MockFileSystemEntry = MockFile | MockDirectory;
-
-/**
- * Mock files available in the terminal
- */
 export const MOCK_FILES: Record<string, MockFile> = {
     'readme.md': {
         type: 'file',
@@ -208,10 +197,6 @@ export const MOCK_FILES: Record<string, MockFile> = {
         ]
     }
 };
-
-/**
- * Sample content for text processing commands
- */
 export const SAMPLE_TEXT_CONTENT = [
     'Welcome to my portfolio',
     'Built with Next.js and TypeScript',
@@ -219,10 +204,6 @@ export const SAMPLE_TEXT_CONTENT = [
     "Type 'help' for available commands",
     'Enjoy exploring!'
 ];
-
-/**
- * Sample content for head/tail commands
- */
 export const SAMPLE_FILE_LINES = {
     head: [
         'Line 1: Welcome to my portfolio!',
@@ -249,45 +230,25 @@ export const SAMPLE_FILE_LINES = {
         'Line 100: EOF'
     ]
 };
-
-/**
- * Archive file contents for tar/zip commands
- */
 export const ARCHIVE_FILES = [
     'portfolio.html',
     'styles.css',
     'script.js',
     'README.md'
 ];
-
-/**
- * Gets file content by filename (case-insensitive)
- */
 export const getFileContent = (filename: string): string[] | null => {
     const normalizedName = filename.toLowerCase();
     const file = MOCK_FILES[normalizedName];
     return file?.content || null;
 };
-
-/**
- * Gets file metadata
- */
 export const getFileMetadata = (filename: string): MockFile | null => {
     const normalizedName = filename.toLowerCase();
     return MOCK_FILES[normalizedName] || null;
 };
-
-/**
- * Checks if a file exists
- */
 export const fileExists = (filename: string): boolean => {
     const normalizedName = filename.toLowerCase();
     return normalizedName in MOCK_FILES;
 };
-
-/**
- * Gets file type description for the 'file' command
- */
 export const getFileType = (filename: string): string => {
     if (filename.endsWith('.md')) {
         return 'Markdown document, UTF-8 Unicode text';
@@ -306,20 +267,11 @@ export const getFileType = (filename: string): string => {
     }
     return 'data';
 };
-
-/**
- * Gets files in a directory
- */
 export const getDirectoryContent = (path: string): string[] => {
-    // Normalize path
-    const normalizedPath = path.toLowerCase().replace(/\/$/, '').replace(/^~\//, '').replace(/^\.\//, '');
-
-    // Root directory
+    const normalizedPath = path.toLowerCase().replace(/\/$/, '').replace(/^~\//, '');
     if (normalizedPath === '' || normalizedPath === '.' || normalizedPath === '~') {
         return Object.keys(MOCK_FILES).sort();
     }
-
-    // Mock contents for subdirectories
     switch (normalizedPath) {
         case 'blogs':
             return ['optimizing-react.md', 'security-best-practices.md', 'understanding-sgx.md'];

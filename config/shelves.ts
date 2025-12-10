@@ -1,4 +1,4 @@
-import { ShelfType } from "@/types";
+import { ShelfType } from "@/types/definitions";
 export interface ShelfConfig {
   title: string;
   description: string;

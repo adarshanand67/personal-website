@@ -1,25 +1,21 @@
-import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType, WatchStatus, ShelfType } from "@/types";
+import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType, WatchStatus, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import { AnimeShelf } from "@/components/shelves/AnimeShelf";
-
 export type ShelfItem = Book | Paper | EntertainmentItem | Blog | Project | Hobby;
-
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
   renderList(items: T[]): ReactNode;
   filter(items: T[], query: string): T[];
 }
-
 export class BookListStrategy implements ShelfItemStrategy<Book> {
   renderItem(book: Book, index: number): ReactNode {
     const getAmazonSearchUrl = (title: string, author: string) => {
       const searchQuery = encodeURIComponent(`${title} ${author}`);
       return `https://www.amazon.in/s?k=${searchQuery}`;
     };
-
     return (
       <div
         key={index}
@@ -43,14 +39,12 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
       </div>
     );
   }
-
   renderList(items: Book[]): ReactNode {
     if (items.length === 0) return null;
     return (
       <div className="space-y-2">{items.map((book, index) => this.renderItem(book, index))}</div>
     );
   }
-
   filter(items: Book[], query: string): Book[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -61,7 +55,6 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     );
   }
 }
-
 export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   renderItem(paper: Paper, index: number): ReactNode {
     return (
@@ -79,29 +72,24 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
       </div>
     );
   }
-
   renderList(items: Paper[]): ReactNode {
     if (items.length === 0) return null;
     return (
       <div className="space-y-2">{items.map((paper, index) => this.renderItem(paper, index))}</div>
     );
   }
-
   filter(items: Paper[], query: string): Paper[] {
     if (!query) return items;
     return items.filter((paper) => paper.title.toLowerCase().includes(query.toLowerCase()));
   }
 }
-
 export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   renderItem(item: EntertainmentItem, index: number): ReactNode {
     return null;
   }
-
   renderList(items: EntertainmentItem[]): ReactNode {
     return <AnimeShelf items={items} />;
   }
-
   filter(items: EntertainmentItem[], query: string): EntertainmentItem[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -114,7 +102,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
     );
   }
 }
-
 export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   renderItem(blog: Blog, _index: number): ReactNode {
     return (
@@ -134,7 +121,6 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
       </div>
     );
   }
-
   renderList(items: Blog[]): ReactNode {
     const blogsByYear = items.reduce(
       (acc: Record<string, Blog[]>, blog: Blog) => {
@@ -145,9 +131,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
       },
       {} as Record<string, Blog[]>
     );
-
     const years = Object.keys(blogsByYear).sort((a, b) => Number(b) - Number(a));
-
     return (
       <>
         {years.map((year) => (
@@ -163,7 +147,6 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
       </>
     );
   }
-
   filter(items: Blog[], query: string): Blog[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -172,7 +155,6 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
     );
   }
 }
-
 export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   renderItem(project: Project, index: number): ReactNode {
     return (
@@ -201,7 +183,6 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
       </div>
     );
   }
-
   renderList(items: Project[]): ReactNode {
     if (items.length === 0) return null;
     return (
@@ -210,7 +191,6 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
       </div>
     );
   }
-
   filter(items: Project[], query: string): Project[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -222,12 +202,10 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
     );
   }
 }
-
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
     return null;
   }
-
   renderItem(hobby: Hobby, index: number): ReactNode {
     return (
       <div
@@ -246,7 +224,6 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
       </div>
     );
   }
-
   renderList(items: Hobby[]): ReactNode {
     if (items.length === 0) return null;
     return (
@@ -255,7 +232,6 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
       </div>
     );
   }
-
   filter(items: Hobby[], query: string): Hobby[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
@@ -266,7 +242,6 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     );
   }
 }
-
 export class ShelfStrategyFactory {
   static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
     switch (type) {

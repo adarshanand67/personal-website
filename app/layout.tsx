@@ -11,26 +11,23 @@ import MusicPlayer from "@/components/widgets/MusicPlayer";
 import { siteConfig } from "@/config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
-
 const assistant = Assistant({
   variable: "--font-assistant",
   subsets: ["latin"],
   display: "swap",
 });
-
 const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
-
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.seo.keywords], // Convert readonly to mutable
+  keywords: [...siteConfig.seo.keywords], 
   authors: [{ name: siteConfig.author.name }],
   creator: siteConfig.author.name,
   openGraph: {
@@ -67,7 +64,6 @@ export const metadata: Metadata = {
     },
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -79,20 +75,19 @@ export default function RootLayout({
         className={`${assistant.variable} ${jetbrains.variable} antialiased`}
         suppressHydrationWarning
       >
-        {/* SEO Structured Data */}
+        {}
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-
           <GlobalProvider>
             <Navbar />
             <MatrixRain />
             <CommandMenu />
             {children}
             <MusicPlayer />
-            {/* <MusicToggleButton /> - Merged into MusicPlayer */}
-            {/* <ChatWidget /> */}
-            {/* // TODO: Implement Chatbot later */}
+            {}
+            {}
+            {}
             <Footer />
             <script
               type="application/ld+json"

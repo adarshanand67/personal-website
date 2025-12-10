@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 export interface CommandContext {
     setLines: Dispatch<SetStateAction<string[]>>;
     setPasswordMode: (mode: boolean) => void;
-    router: any; 
+    router: any;
     setTheme: (theme: ThemeMode) => void;
     isMatrixEnabled: boolean;
     toggleMatrix: () => void;
@@ -14,7 +14,7 @@ export interface CommandContext {
     commandHistory: readonly string[];
     toggleMusicPlayer: () => void;
     setShowMusicPlayer: (show: boolean) => void;
-    startSnakeGame?: () => void;
+
 }
 export type CommandArgs = readonly string[];
 export type CommandFn = (

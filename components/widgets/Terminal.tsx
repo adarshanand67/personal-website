@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
 import { useGlobalState } from "@/components/common/GlobalProvider";
-import { commands } from "@/lib/terminal/commands";
+import { commands } from "@/lib/terminal/commands/registry";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
 import { MOCK_FILES } from "@/lib/terminal/mockFileSystem";
 import { ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
-import SnakeGame from "./SnakeGame";
+
 export default function Terminal() {
   const router = useRouter();
   const { setTheme } = useTheme();
@@ -23,13 +23,13 @@ export default function Terminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [passwordMode, setPasswordMode] = useState(false); 
-  const [snakeGameActive, setSnakeGameActive] = useState(false);
+  const [passwordMode, setPasswordMode] = useState(false);
+
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    if (window.innerWidth < 1024) { 
+    if (window.innerWidth < 1024) {
       setIsExpanded(false);
     }
   }, []);
@@ -87,7 +87,7 @@ export default function Terminal() {
       commandHistory: history,
       toggleMusicPlayer,
       setShowMusicPlayer,
-      startSnakeGame: () => setSnakeGameActive(true),
+
     };
     try {
       for (let i = 0; i < pipeParts.length; i++) {
@@ -326,12 +326,7 @@ export default function Terminal() {
                   </div>
                 )}
               </div>
-              {snakeGameActive && (
-                <SnakeGame onExit={() => {
-                  setSnakeGameActive(false);
-                  setTimeout(() => inputRef.current?.focus(), 10);
-                }} />
-              )}
+
             </div>
           </div>
         </section>

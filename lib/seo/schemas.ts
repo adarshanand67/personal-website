@@ -1,8 +1,4 @@
 import { siteConfig } from "@/config";
-
-/**
- * Generate Person schema for structured data
- */
 export function generatePersonSchema() {
     return {
         "@context": "https://schema.org",
@@ -28,10 +24,6 @@ export function generatePersonSchema() {
         knowsAbout: siteConfig.seo.keywords,
     };
 }
-
-/**
- * Generate BlogPosting schema for blog posts
- */
 export function generateBlogPostSchema(post: {
     title: string;
     date: string;
@@ -62,10 +54,6 @@ export function generateBlogPostSchema(post: {
         },
     };
 }
-
-/**
- * Generate WebSite schema
- */
 export function generateWebSiteSchema() {
     return {
         "@context": "https://schema.org",
@@ -80,10 +68,6 @@ export function generateWebSiteSchema() {
         inLanguage: "en-US",
     };
 }
-
-/**
- * Generate Organization schema for work experience
- */
 export function generateOrganizationSchema(org: {
     name: string;
     role: string;
