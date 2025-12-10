@@ -250,7 +250,7 @@ export default function Terminal() {
             }}
           >
             <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
-              <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Terminal</span>
+              <span className="text-primary">##</span> Terminal
               <ChevronDown
                 size={20}
                 className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
