@@ -22,6 +22,9 @@ const skillCategories = {
     "Data Loss Prevention",
     "Trellix ePO",
     "Endpoint Security",
+    "Metrelic CPU",
+    "EDR (Endpoint Detection & Response)",
+    "XDR (Extended Detection & Response)",
     "PowerShell",
     "Boldon James",
     "Full-Disk Encryption",
@@ -30,6 +33,8 @@ const skillCategories = {
     "Post-Quantum Cryptography",
     "libFuzzer",
     "RESTler",
+    "SIEM",
+    "Threat Intelligence",
   ],
   "AI & Machine Learning": [
     "vLLM",
