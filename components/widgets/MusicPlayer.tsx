@@ -170,7 +170,7 @@ export default function MusicPlayer() {
             style={{
                 left: `${position.x}px`,
                 top: `${position.y}px`,
-                width: '280px'
+                width: '320px'
             }}
             onMouseDown={handleMouseDown}
         >
@@ -192,10 +192,10 @@ export default function MusicPlayer() {
                 {/* Main player container */}
                 <div className="relative bg-black/60 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden border border-white/10">
                     {/* Header */}
-                    <div className="flex items-center justify-between px-3 py-2 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
+                    <div className="flex items-center justify-between px-4 py-3 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
                         <div className="flex items-center gap-2">
-                            <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
-                            <span className="text-xs text-gray-400 font-medium">
+                            <div className={`w-2.5 h-2.5 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
+                            <span className="text-sm text-gray-300 font-medium">
                                 {isPlaying ? 'Playing' : 'Paused'}
                             </span>
                         </div>
@@ -204,15 +204,15 @@ export default function MusicPlayer() {
                                 e.stopPropagation();
                                 toggleMusicPlayer();
                             }}
-                            className="p-1 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer"
+                            className="p-1.5 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer"
                             aria-label="Close"
                         >
-                            <X size={14} className="text-gray-400 hover:text-red-400" />
+                            <X size={16} className="text-gray-400 hover:text-red-400" />
                         </button>
                     </div>
 
                     {/* Anime Image */}
-                    <div className="relative h-64 overflow-hidden bg-gray-900">
+                    <div className="relative h-72 overflow-hidden bg-gray-900">
                         <Image
                             src={TRACK_IMAGES[currentTrackIndex]}
                             alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
@@ -224,25 +224,25 @@ export default function MusicPlayer() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
                         {/* Playing indicator */}
                         {isPlaying && (
-                            <div className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full">
-                                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                                <span className="text-xs text-white font-medium">Playing</span>
+                            <div className="absolute bottom-3 right-3 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                                <span className="text-sm text-white font-medium">Playing</span>
                             </div>
                         )}
                     </div>
 
                     {/* Track info */}
-                    <div className="px-3 py-2 bg-black/20">
-                        <h3 className="text-xs font-semibold text-white truncate">
+                    <div className="px-4 py-3 bg-black/20">
+                        <h3 className="text-base font-bold text-white truncate mb-1">
                             {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
                         </h3>
-                        <p className="text-xs text-gray-400 mt-0.5">Track {currentTrackIndex + 1}/{PLAYLIST.length}</p>
+                        <p className="text-sm text-gray-400">Track {currentTrackIndex + 1}/{PLAYLIST.length}</p>
                     </div>
 
                     {/* Progress bar */}
-                    <div className="px-3 py-2 bg-black/20">
-                        <div className="flex items-center gap-1.5 mb-1">
-                            <span className="text-xs text-gray-500 w-8 text-right">{formatTime(currentTime)}</span>
+                    <div className="px-4 py-2 bg-black/20">
+                        <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm text-gray-400 w-10 text-right">{formatTime(currentTime)}</span>
                             <div className="flex-1 group/progress">
                                 <input
                                     type="range"
@@ -250,10 +250,10 @@ export default function MusicPlayer() {
                                     max={duration || 100}
                                     value={currentTime}
                                     onChange={handleSeek}
-                                    className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
+                                    className="w-full h-1.5 bg-gray-700 rounded-full appearance-none cursor-pointer
                                         [&::-webkit-slider-thumb]:appearance-none 
-                                        [&::-webkit-slider-thumb]:w-2.5 
-                                        [&::-webkit-slider-thumb]:h-2.5 
+                                        [&::-webkit-slider-thumb]:w-3.5 
+                                        [&::-webkit-slider-thumb]:h-3.5 
                                         [&::-webkit-slider-thumb]:bg-white 
                                         [&::-webkit-slider-thumb]:rounded-full
                                         [&::-webkit-slider-thumb]:shadow-lg
@@ -267,7 +267,7 @@ export default function MusicPlayer() {
                                     }}
                                 />
                             </div>
-                            <span className="text-xs text-gray-500 w-8">{formatTime(duration)}</span>
+                            <span className="text-sm text-gray-400 w-10">{formatTime(duration)}</span>
                         </div>
                     </div>
 
