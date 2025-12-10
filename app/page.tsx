@@ -1,9 +1,8 @@
 import Hero from "@/components/home/Hero";
 
-import { getExperiences, getBlogs, getPapers } from "@/lib/api";
+import { getExperiences } from "@/lib/api";
 import TechStack from "@/components/home/TechStack";
 import Experience from "@/components/home/Experience";
-import RecentSection from "@/components/home/RecentSection";
 import GitHubStats from "@/components/widgets/GitHubStats";
 import ContactSection from "@/components/home/ContactSection";
 import ShelvesSection from "@/components/home/ShelvesSection";
@@ -11,21 +10,6 @@ import NewsSection from "@/components/home/NewsSection";
 
 export default async function Home() {
   const experiences = await getExperiences();
-  const blogs = await getBlogs();
-  const papers = await getPapers();
-
-  const recentPosts = blogs.slice(0, 4).map((post) => ({
-    title: post.title,
-    url: `/blogshelf/${post.slug}`,
-    date: post.date,
-    isExternal: false,
-  }));
-
-  const recentPapers = papers.slice(0, 4).map((paper: { title: string; url: string }) => ({
-    title: paper.title,
-    url: paper.url,
-    isExternal: true,
-  }));
 
   return (
     <main className="min-h-screen">
@@ -46,35 +30,6 @@ export default async function Home() {
           <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
           <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
             <TechStack />
-          </div>
-        </div>
-
-        {/* Recent Posts Grid with enhanced cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
-              <RecentSection
-                title="Recent Blog Posts"
-                command="cat ~/blog/recent.md"
-                items={recentPosts}
-                linkText="Full archive"
-                linkUrl="/blogshelf"
-              />
-            </div>
-          </div>
-
-          <div className="group relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-green-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
-              <RecentSection
-                title="Recent Papers"
-                command="ls ~/papers --recent"
-                items={recentPapers}
-                linkText="Papershelf"
-                linkUrl="/papershelf"
-              />
-            </div>
           </div>
         </div>
 

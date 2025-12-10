@@ -29,8 +29,9 @@ export default function NewsSection() {
     const [activeCategory, setActiveCategory] = useState("technology");
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState(true);
-    const [isExpanded, setIsExpanded] = useState(true);
+    const [isExpanded, setIsExpanded] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
     useEffect(() => {
         fetchNews(activeCategory);
@@ -71,6 +72,7 @@ export default function NewsSection() {
             }
 
             setArticles(fetchedArticles.slice(0, 6)); // Limit to 6 items
+            setLastUpdated(new Date());
         } catch (err) {
             console.error(err);
             setError("Unable to load headlines at this moment.");
@@ -90,6 +92,14 @@ export default function NewsSection() {
         } catch (e) {
             return dateStr;
         }
+    };
+
+    const formatLastUpdated = () => {
+        if (!lastUpdated) return '';
+        return lastUpdated.toLocaleTimeString(undefined, {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     };
 
     return (
@@ -114,13 +124,28 @@ export default function NewsSection() {
                                 <span className="text-green-500">##</span> Daily Headlines
                             </h2>
                             <span className="text-xs text-gray-500 font-mono hidden sm:block">
-                                Fetching from open-source news feed...
+                                {lastUpdated ? `Updated at ${formatLastUpdated()}` : 'Fetching from open-source news feed...'}
+                                <span className="ml-2 text-gray-400">• Updates periodically</span>
                             </span>
                         </div>
                     </div>
-                    <ChevronDown
-                        className={`text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                    />
+                    <div className="flex items-center gap-2">
+                        {lastUpdated && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    fetchNews(activeCategory);
+                                }}
+                                className="p-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/20 transition-colors"
+                                title="Refresh"
+                            >
+                                <RefreshCw size={16} className={`text-gray-400 hover:text-green-500 ${loading ? 'animate-spin' : ''}`} />
+                            </button>
+                        )}
+                        <ChevronDown
+                            className={`text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                        />
+                    </div>
                 </div>
 
                 {/* Expanded Content */}
@@ -133,8 +158,8 @@ export default function NewsSection() {
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id)}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeCategory === cat.id
-                                            ? "bg-green-600 text-white shadow-lg shadow-green-500/20 scale-105"
-                                            : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+                                        ? "bg-green-600 text-white shadow-lg shadow-green-500/20 scale-105"
+                                        : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
                                         }`}
                                 >
                                     {cat.label}
