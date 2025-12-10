@@ -142,10 +142,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
       return items.filter((item) => item.type === type && item.status === status);
     };
 
-    const animeWatching = filterItems(items, EntertainmentType.Anime, WatchStatus.Watching);
     const animeCompleted = filterItems(items, EntertainmentType.Anime, WatchStatus.Completed);
     const animePlanning = filterItems(items, EntertainmentType.Anime, WatchStatus.Planning);
-    const movieWatching = filterItems(items, EntertainmentType.Movie, WatchStatus.Watching);
     const movieCompleted = filterItems(items, EntertainmentType.Movie, WatchStatus.Completed);
     const moviePlanning = filterItems(items, EntertainmentType.Movie, WatchStatus.Planning);
 
@@ -172,10 +170,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
 
     return (
       <>
-        <Section title="Anime - Watching" sectionItems={animeWatching} />
         <Section title="Anime - Watched" sectionItems={animeCompleted} />
         <Section title="Anime - Planning" sectionItems={animePlanning} />
-        <Section title="Movies - Watching" sectionItems={movieWatching} />
         <Section title="Movies - Watched" sectionItems={movieCompleted} />
         <Section title="Movies - Planning" sectionItems={moviePlanning} />
       </>

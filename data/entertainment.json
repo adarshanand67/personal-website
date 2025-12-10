@@ -1,37 +1,5 @@
 [
   {
-    "title": "Death Note",
-    "type": "Anime",
-    "status": "Watching",
-    "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
-    "recommended": true
-  },
-  {
-    "title": "Haikyu",
-    "type": "Anime",
-    "status": "Watching",
-    "notes": "S1,2,3,4",
-    "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
-    "recommended": true
-  },
-  {
-    "title": "Code Geass",
-    "type": "Anime",
-    "status": "Watching",
-    "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
-    "recommended": true
-  },
-  {
-    "title": "Solo Leveling",
-    "type": "Anime",
-    "status": "Watching",
-    "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
-    "recommended": true
-  },
-  {
     "title": "Pokémon",
     "type": "Anime",
     "status": "Completed",
@@ -53,6 +21,14 @@
     "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg"
   },
   {
+    "title": "Death Note",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1",
+    "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
+    "recommended": true
+  },
+  {
     "title": "One Punch Man",
     "type": "Anime",
     "status": "Completed",
@@ -60,11 +36,27 @@
     "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg"
   },
   {
+    "title": "Haikyu",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1,2,3,4",
+    "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
+    "recommended": true
+  },
+  {
     "title": "Haikyuu!! The Dumpster Battle",
     "type": "Movie",
     "status": "Completed",
     "notes": "",
     "image": "https://cdn.myanimelist.net/images/anime/1665/140360l.jpg"
+  },
+  {
+    "title": "Code Geass",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
+    "recommended": true
   },
   {
     "title": "Cowboy Bebop",
@@ -107,6 +99,14 @@
     "status": "Completed",
     "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg"
+  },
+  {
+    "title": "Solo Leveling",
+    "type": "Anime",
+    "status": "Completed",
+    "notes": "S1,2",
+    "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
+    "recommended": true
   },
   {
     "title": "Demon Slayer",
