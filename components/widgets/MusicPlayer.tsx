@@ -217,7 +217,7 @@ export default function MusicPlayer() {
                             src={TRACK_IMAGES[currentTrackIndex]}
                             alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
                             fill
-                            className="object-contain"
+                            className="object-cover"
                             priority
                         />
                         {/* Overlay gradient */}
