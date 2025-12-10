@@ -1,40 +1,43 @@
 import Link from "next/link";
 import { techLinks } from "@/lib/tech-links";
 
-const primarySkills = [
-  "C++",
-  "Intel SGX/TDX",
-  "Kernel Development",
-  "System Programming",
-];
-
-const otherSkills = [
-  // Data Privacy & Security (Current Focus)
-  "Data Loss Prevention",
-  "Trellix ePO", // Renamed for modern branding, user asked for ePO
-  "Endpoint Security",
-  "Windows Internals",
-  "PowerShell",
-  "Boldon James",
-  "Full-Disk Encryption",
-  "Hashicorp Vault",
-  "OpenSSL",
-  "Post-Quantum Cryptography",
-  "libFuzzer",
-  "RESTler",
-
-  // AI & Data
-  "vLLM",
-  "PyTorch",
-  "OpenVINO",
-  "Redis",
-  "MySQL",
-
-  // Platforms
-  "Ubuntu",
-  "CentOS",
-  "RHEL",
-];
+const skillCategories = {
+  "Languages": [
+    "C++",
+    "Python",
+    "PowerShell",
+  ],
+  "System & Kernel": [
+    "Intel SGX/TDX",
+    "Kernel Development",
+    "System Programming",
+    "Windows Internals",
+    "Ubuntu",
+    "CentOS",
+    "RHEL",
+  ],
+  "Security & Privacy": [
+    "Data Loss Prevention",
+    "Trellix ePO",
+    "Endpoint Security",
+    "Boldon James",
+    "Full-Disk Encryption",
+    "Hashicorp Vault",
+    "OpenSSL",
+    "Post-Quantum Cryptography",
+    "libFuzzer",
+    "RESTler",
+  ],
+  "AI & Machine Learning": [
+    "vLLM",
+    "PyTorch",
+    "OpenVINO",
+  ],
+  "Databases & Tools": [
+    "Redis",
+    "MySQL",
+  ],
+};
 
 export default function TechStack() {
   return (
@@ -48,46 +51,30 @@ export default function TechStack() {
         <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
       </div>
 
-      <div className="mb-6">
-        <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Primary Focus</h3>
-        <div className="flex flex-wrap gap-2">
-          {primarySkills.map((skill) => {
-            const url =
-              techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
-            return (
-              <Link
-                key={skill}
-                href={url}
-                target="_blank"
-                className="px-3 py-1 bg-green-50 dark:bg-green-900/10 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 rounded text-sm font-semibold hover:bg-green-100 dark:hover:bg-green-900/30 hover:border-green-500 hover:shadow-[0_0_10px_rgba(34,197,94,0.4)] transition-all duration-300 transform hover:-translate-y-0.5"
-              >
-                {skill}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Other Skills</h3>
-        <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 flex flex-wrap items-center">
-          {otherSkills.map((skill, index) => {
-            const url =
-              techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
-            return (
-              <span key={index} className="inline-flex items-center">
-                <Link
-                  href={url}
-                  target="_blank"
-                  className="hover:text-green-600 transition-colors"
-                >
-                  {skill}
-                </Link>
-                {index < otherSkills.length - 1 && <span className="text-gray-400 mx-2">•</span>}
-              </span>
-            );
-          })}
-        </div>
+      <div className="space-y-6">
+        {Object.entries(skillCategories).map(([category, skills]) => (
+          <div key={category}>
+            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">
+              {category}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => {
+                const url =
+                  techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                return (
+                  <Link
+                    key={skill}
+                    href={url}
+                    target="_blank"
+                    className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded text-sm hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-700 dark:hover:text-green-400 hover:border-green-500/50 transition-all duration-200"
+                  >
+                    {skill}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
