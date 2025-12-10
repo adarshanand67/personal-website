@@ -5,7 +5,6 @@ import TechStack from "@/components/home/TechStack";
 import Experience from "@/components/home/Experience";
 import GitHubStats from "@/components/widgets/GitHubStats";
 import ContactSection from "@/components/home/ContactSection";
-import ShelvesSection from "@/components/home/ShelvesSection";
 import NewsSection from "@/components/home/NewsSection";
 
 export default async function Home() {
@@ -46,9 +45,6 @@ export default async function Home() {
       <div className="section max-w-4xl mx-auto px-4 mb-8">
         <ContactSection />
       </div>
-
-      {/* Directory / Shelves Section */}
-      <ShelvesSection />
     </main>
   );
 }

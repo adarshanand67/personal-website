@@ -40,6 +40,45 @@ export default function Footer() {
           </div>
 
           <div className="space-y-6">
+            {/* Navigation Links */}
+            <div className="mb-8">
+              <h3 className="text-center text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                Explore
+              </h3>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="/blogshelf"
+                  className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
+                >
+                  📝 Blogs
+                </Link>
+                <Link
+                  href="/papershelf"
+                  className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
+                >
+                  📄 Papers
+                </Link>
+                <Link
+                  href="/bookshelf"
+                  className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
+                >
+                  📚 Books
+                </Link>
+                <Link
+                  href="/animeshelf"
+                  className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
+                >
+                  📺 Anime
+                </Link>
+                <Link
+                  href="/hobbyshelf"
+                  className="px-4 py-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400 border border-gray-200 dark:border-gray-700 hover:border-green-500/50 transition-all duration-200 text-sm font-medium"
+                >
+                  🎮 Hobbies
+                </Link>
+              </div>
+            </div>
+
             {/* Weather Widget */}
             <div className="flex justify-center">
               <WeatherWidget />
