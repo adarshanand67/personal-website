@@ -29,12 +29,15 @@ export default function RecentSection({
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <section className="font-mono group/section">
-            <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="w-full text-left group"
-            >
-                <h2 className="text-xl font-bold mb-1 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+        <section
+            className="font-mono group/section cursor-pointer"
+            onClick={(e) => {
+                if ((e.target as HTMLElement).closest('a')) return;
+                setIsExpanded(!isExpanded);
+            }}
+        >
+            <div className="w-full text-left group">
+                <h2 className="text-xl font-bold mb-1 flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                     <span className="text-primary text-glow">##</span>
                     <span className="group-hover/section:text-green-400 transition-colors duration-300">{title}</span>
                     <ChevronDown
@@ -42,7 +45,7 @@ export default function RecentSection({
                         className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
                     />
                 </h2>
-            </button>
+            </div>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3 text-xs">
                 <span className="text-green-500 font-bold">$</span>
                 <span className="opacity-75">{command}</span>
