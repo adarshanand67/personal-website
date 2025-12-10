@@ -54,7 +54,7 @@ export default function TechStack() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
+    <section className="section max-w-4xl mx-auto px-4 mb-8 font-mono">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full text-left group"

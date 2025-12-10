@@ -24,8 +24,8 @@ export default function Experience({ items }: ExperienceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className="section max-w-4xl mx-auto px-4 mb-24">
-            <div className="mb-16 font-mono" id="experience">
+        <div className="section max-w-4xl mx-auto px-4 mb-12">
+            <div className="mb-8 font-mono" id="experience">
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="w-full text-left group"
