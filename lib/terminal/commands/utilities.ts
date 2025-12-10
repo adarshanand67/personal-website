@@ -256,20 +256,7 @@ export const cls: Command = createAliasCommand(
     () => clear
 );
 
-export const utilityCommands = {
-    date,
-    clear,
-    cls,
-    echo,
-    history,
-    skills,
-    contact,
-    which,
-    whereis,
-    find,
-    man,
-    theme
-};
+
 
 export const theme: Command = createCommand(
     'theme',
@@ -297,3 +284,18 @@ export const theme: Command = createCommand(
         ]
     }
 );
+
+export const utilityCommands = {
+    date,
+    clear,
+    cls,
+    echo,
+    history,
+    skills,
+    contact,
+    which,
+    whereis,
+    find,
+    man,
+    theme
+};
