@@ -112,39 +112,34 @@ export default function NewsSection() {
             >
                 {/* Header */}
                 <div
-                    className="px-6 py-4 border-b border-gray-200/50 dark:border-gray-800/50 flex items-center justify-between cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                    className="px-6 py-4 border-b border-gray-200/50 dark:border-gray-800/50 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                     onClick={() => setIsExpanded(!isExpanded)}
                 >
-                    <div className="flex items-center gap-3">
-                        <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
-                            <Newspaper size={20} />
+                    <div className="w-full text-left group mb-3">
+                        <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
+                            <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Daily Headlines</span>
+                            <ChevronDown
+                                size={20}
+                                className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+                            />
+                            {lastUpdated && (
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        fetchNews(activeCategory);
+                                    }}
+                                    className="ml-auto p-1.5 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/20 transition-colors"
+                                    title="Refresh"
+                                >
+                                    <RefreshCw size={16} className={`text-gray-400 hover:text-green-500 ${loading ? 'animate-spin' : ''}`} />
+                                </button>
+                            )}
+                        </h2>
+                        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                            <span className="text-green-500 font-bold">$</span>
+                            <span>curl -s news.api/headlines | jq '.articles'</span>
+                            <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
                         </div>
-                        <div className="flex flex-col">
-                            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 font-mono flex items-center gap-2">
-                                <span className="text-green-500">##</span> Daily Headlines
-                            </h2>
-                            <span className="text-xs text-gray-500 font-mono hidden sm:block">
-                                {lastUpdated ? `Updated at ${formatLastUpdated()}` : 'Fetching from open-source news feed...'}
-                                <span className="ml-2 text-gray-400">• Updates periodically</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        {lastUpdated && (
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    fetchNews(activeCategory);
-                                }}
-                                className="p-2 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/20 transition-colors"
-                                title="Refresh"
-                            >
-                                <RefreshCw size={16} className={`text-gray-400 hover:text-green-500 ${loading ? 'animate-spin' : ''}`} />
-                            </button>
-                        )}
-                        <ChevronDown
-                            className={`text-gray-400 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                        />
                     </div>
                 </div>
 
