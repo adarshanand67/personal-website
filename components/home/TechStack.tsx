@@ -3,9 +3,11 @@ import { techLinks } from "@/lib/tech-links";
 
 const skillCategories = {
   "Languages": [
+    "C",
     "C++",
     "Python",
-    "PowerShell",
+    "Java",
+    "JavaScript",
   ],
   "System & Kernel": [
     "Intel SGX/TDX",
@@ -20,6 +22,7 @@ const skillCategories = {
     "Data Loss Prevention",
     "Trellix ePO",
     "Endpoint Security",
+    "PowerShell",
     "Boldon James",
     "Full-Disk Encryption",
     "Hashicorp Vault",
