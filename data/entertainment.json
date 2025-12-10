@@ -8,8 +8,7 @@
     "description": "Ash Ketchum and his partner Pikachu travel the world to become the greatest Pokémon Master.",
     "tags": [
       "Adventure",
-      "Fantasy",
-      "Kids"
+      "Fantasy"
     ]
   },
   {
@@ -20,9 +19,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg",
     "description": "Goku and his friends defend Earth from intergalactic threats including Saiyans, Androids, and magical creatures.",
     "tags": [
-      "Action",
-      "Martial Arts",
-      "Super Power"
+      "Action"
     ],
     "year": "1989",
     "rating": "8.8/10"
@@ -35,9 +32,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "description": "A young ninja seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.",
     "tags": [
-      "Action",
-      "Ninja",
-      "Shounen"
+      "Action"
     ],
     "year": "2002",
     "rating": "8.3/10"
@@ -51,9 +46,8 @@
     "recommended": true,
     "description": "A high school student discovers a supernatural notebook that grants him the ability to kill anyone by writing their name.",
     "tags": [
-      "Psychological",
-      "Thriller",
-      "Supernatural"
+      "Supernatural",
+      "Thriller"
     ],
     "year": "2006",
     "rating": "9.0/10"
@@ -67,8 +61,7 @@
     "description": "A hero who can defeat any opponent with a single punch seeks a worthy challenge.",
     "tags": [
       "Action",
-      "Comedy",
-      "Parody"
+      "Comedy"
     ],
     "year": "2015",
     "rating": "8.7/10"
@@ -82,9 +75,8 @@
     "recommended": true,
     "description": "A short volleyball player with high jumping ability joins a former rival to revive their school's volleyball club.",
     "tags": [
-      "Sports",
-      "School",
-      "Teamwork"
+      "Slice of Life",
+      "Sports"
     ],
     "year": "2014",
     "rating": "8.7/10"
@@ -97,9 +89,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1665/140360l.jpg",
     "description": "The long-awaited showdown between Karasuno and Nekoma High School at the nationals.",
     "tags": [
-      "Sports",
-      "Movie",
-      "Tournament"
+      "Sports"
     ]
   },
   {
@@ -111,9 +101,8 @@
     "recommended": true,
     "description": "An exiled prince gains the power of absolute obedience and leads a rebellion against a global empire.",
     "tags": [
-      "Mecha",
-      "Military",
-      "Psychological"
+      "Sci-Fi",
+      "Thriller"
     ],
     "year": "2006",
     "rating": "8.7/10"
@@ -126,9 +115,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
     "description": "A crew of bounty hunters travels the solar system chasing criminals and escaping their pasts.",
     "tags": [
-      "Sci-Fi",
-      "Space",
-      "Noir"
+      "Sci-Fi"
     ],
     "year": "1998",
     "rating": "8.9/10"
@@ -142,7 +129,6 @@
     "description": "A group of friends accidentally invent a time machine and face the consequences of altering the past.",
     "tags": [
       "Sci-Fi",
-      "Time Travel",
       "Thriller"
     ],
     "year": "2011",
@@ -172,8 +158,8 @@
     "description": "A student swallows a cursed finger to save his friends and becomes involved in the world of Jujutsu Sorcery.",
     "tags": [
       "Action",
-      "Supernatural",
-      "School"
+      "Slice of Life",
+      "Supernatural"
     ],
     "year": "2020",
     "rating": "8.6/10"
@@ -187,8 +173,7 @@
     "description": "A prequel following Yuta Okkotsu who is haunted by the spirit of his childhood friend.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Movie"
+      "Supernatural"
     ]
   },
   {
@@ -200,8 +185,7 @@
     "description": "A controversial project to create the world's greatest egoist striker for the Japanese national soccer team.",
     "tags": [
       "Sports",
-      "Thriller",
-      "Psychological"
+      "Thriller"
     ],
     "year": "2022",
     "rating": "8.3/10"
@@ -216,8 +200,8 @@
     "description": "The weakest hunter in the world gains the unique ability to level up and become the strongest.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Adventure"
+      "Adventure",
+      "Fantasy"
     ],
     "year": "2024",
     "rating": "8.5/10"
@@ -245,8 +229,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
     "description": "A college student becomes a half-ghoul and must navigate the world of flesh-eating monsters living among humans.",
     "tags": [
-      "Horror",
       "Action",
+      "Horror",
       "Supernatural"
     ]
   },
@@ -259,8 +243,8 @@
     "description": "A young Viking warrior seeks revenge against his father's killer while caught in a war for the English throne.",
     "tags": [
       "Action",
-      "Historical",
-      "Drama"
+      "Drama",
+      "Historical"
     ],
     "year": "2019",
     "rating": "8.8/10"
@@ -274,8 +258,7 @@
     "description": "Humanity fights for survival against man-eating giants safe within massive walls.",
     "tags": [
       "Action",
-      "Dark Fantasy",
-      "Military"
+      "Fantasy"
     ],
     "year": "2013",
     "rating": "9.0/10"
@@ -289,8 +272,7 @@
     "description": "Two brothers search for the Philosopher's Stone to restore their bodies after a failed alchemical experiment.",
     "tags": [
       "Adventure",
-      "Fantasy",
-      "Steampunk"
+      "Fantasy"
     ],
     "year": "2009",
     "rating": "9.1/10"
@@ -303,8 +285,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg",
     "description": "A young boy sets out to become a Hunter to find his father, facing dangerous trials along the way.",
     "tags": [
-      "Adventure",
       "Action",
+      "Adventure",
       "Fantasy"
     ],
     "year": "2011",
@@ -319,8 +301,8 @@
     "description": "The Joestar family battles supernatural foes across generations using unique powers.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Adventure"
+      "Adventure",
+      "Supernatural"
     ]
   },
   {
@@ -332,8 +314,7 @@
     "description": "A powerless boy inherits the power of the world's greatest hero and attends a high school for heroes.",
     "tags": [
       "Action",
-      "School",
-      "Super Power"
+      "Slice of Life"
     ]
   },
   {
@@ -345,8 +326,8 @@
     "description": "A teenager gains the powers of a Soul Reaper and protects the living from evil spirits.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Adventure"
+      "Adventure",
+      "Supernatural"
     ],
     "year": "2004",
     "rating": "8.2/10"
@@ -360,8 +341,8 @@
     "description": "A man who cleans up after monster battles gains the power to turn into a Kaiju himself.",
     "tags": [
       "Action",
-      "Sci-Fi",
-      "Monsters"
+      "Fantasy",
+      "Sci-Fi"
     ]
   },
   {
@@ -372,9 +353,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
     "description": "A rubber-bodied pirate and his crew search for the ultimate treasure to become the Pirate King.",
     "tags": [
+      "Action",
       "Adventure",
-      "Fantasy",
-      "Action"
+      "Fantasy"
     ],
     "year": "1999",
     "rating": "9.0/10"
@@ -388,8 +369,7 @@
     "description": "A wizard joins a famous guild and goes on adventures with her new friends.",
     "tags": [
       "Adventure",
-      "Fantasy",
-      "Magic"
+      "Fantasy"
     ]
   },
   {
@@ -402,7 +382,7 @@
     "tags": [
       "Action",
       "Fantasy",
-      "Game"
+      "Sci-Fi"
     ]
   },
   {
@@ -429,8 +409,7 @@
     "description": "A boy with no magic strives to become the Wizard King in a world where magic is everything.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Magic"
+      "Fantasy"
     ]
   },
   {
@@ -442,8 +421,7 @@
     "description": "Asta faces a returned Wizard King who aims to destroy the Clover Kingdom.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Movie"
+      "Fantasy"
     ]
   },
   {
@@ -454,8 +432,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg",
     "description": "A spy, an assassin, and a telepath form a fake family to uphold world peace.",
     "tags": [
-      "Comedy",
       "Action",
+      "Comedy",
       "Slice of Life"
     ],
     "year": "2022",
@@ -469,8 +447,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/10/79352l.jpg",
     "description": "A wandering mercenary joins a charismatic leader's band, leading to a dark and tragic fate.",
     "tags": [
-      "Dark Fantasy",
       "Action",
+      "Fantasy",
       "Horror"
     ],
     "year": "1997",
@@ -484,9 +462,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/11/50453l.jpg",
     "description": "A shadow player helps a new light defeat his former teammates, the Generation of Miracles.",
     "tags": [
-      "Sports",
-      "School",
-      "Basketball"
+      "Slice of Life",
+      "Sports"
     ]
   },
   {
@@ -497,9 +474,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1613/102576l.jpg",
     "description": "A genius boy wakes up thousands of years after humanity was petrified and aims to rebuild civilization with science.",
     "tags": [
-      "Sci-Fi",
       "Adventure",
-      "Survival"
+      "Sci-Fi",
+      "Thriller"
     ]
   },
   {
@@ -511,8 +488,8 @@
     "description": "A young man merges with his pet devil to become a chainsaw-wielding devil hunter.",
     "tags": [
       "Action",
-      "Horror",
-      "Dark Fantasy"
+      "Fantasy",
+      "Horror"
     ],
     "year": "2022",
     "rating": "8.5/10"
@@ -538,9 +515,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1586/146565l.jpg",
     "description": "Two friends with different attitudes toward ping pong navigate high school competition.",
     "tags": [
+      "Drama",
       "Sports",
-      "Psychological",
-      "Drama"
+      "Thriller"
     ]
   },
   {
@@ -551,9 +528,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
     "description": "A talented but raw young soccer player is recruited for a professional youth team.",
     "tags": [
-      "Sports",
-      "Seinen",
-      "Soccer"
+      "Drama",
+      "Sports"
     ]
   },
   {
@@ -565,8 +541,8 @@
     "description": "A princess seeks a group of disbanded knights to help her take back her kingdom.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Adventure"
+      "Adventure",
+      "Fantasy"
     ]
   },
   {
@@ -616,9 +592,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
     "description": "Teenagers pilot giant bio-machines to fight mysterious entities known as Angels.",
     "tags": [
-      "Mecha",
-      "Psychological",
-      "Sci-Fi"
+      "Sci-Fi",
+      "Thriller"
     ],
     "year": "1995",
     "rating": "8.5/10"
@@ -631,9 +606,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/4/5123l.jpg",
     "description": "Two friends emerge from an underground village to fight beastmen in giant robots.",
     "tags": [
-      "Mecha",
       "Action",
-      "Adventure"
+      "Adventure",
+      "Sci-Fi"
     ]
   },
   {
@@ -644,9 +619,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/3/73178l.jpg",
     "description": "A teenager coexists with an alien parasite that took over his right hand.",
     "tags": [
-      "Sci-Fi",
       "Horror",
-      "Psychological"
+      "Sci-Fi",
+      "Thriller"
     ]
   },
   {
@@ -658,8 +633,8 @@
     "description": "A man travels back in time to his childhood to prevent a series of murders.",
     "tags": [
       "Mystery",
-      "Thriller",
-      "Supernatural"
+      "Supernatural",
+      "Thriller"
     ]
   },
   {
@@ -684,8 +659,8 @@
     "description": "A former soldier works as a ghostwriter to understand the meaning of love and emotions.",
     "tags": [
       "Drama",
-      "Slice of Life",
-      "Fantasy"
+      "Fantasy",
+      "Slice of Life"
     ]
   },
   {
@@ -696,8 +671,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1405/143284l.jpg",
     "description": "A piano prodigy who lost his ability to play meets a violinist who brings color back to his life.",
     "tags": [
-      "Music",
       "Drama",
+      "Music",
       "Romance"
     ]
   },
@@ -710,8 +685,7 @@
     "description": "High school students solve mundane mysteries in their Classic Literature Club.",
     "tags": [
       "Mystery",
-      "Slice of Life",
-      "School"
+      "Slice of Life"
     ]
   },
   {
@@ -723,8 +697,7 @@
     "description": "Five boys enrolled in an all-girls school are imprisoned after peeping.",
     "tags": [
       "Comedy",
-      "Ecchi",
-      "School"
+      "Slice of Life"
     ]
   },
   {
@@ -736,8 +709,7 @@
     "description": "A college student joins a diving club that is mostly about drinking and partying.",
     "tags": [
       "Comedy",
-      "Slice of Life",
-      "College"
+      "Slice of Life"
     ]
   },
   {
@@ -748,9 +720,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg",
     "description": "A doctor hunts down a former patient who has become a serial killer.",
     "tags": [
-      "Thriller",
       "Mystery",
-      "Psychological"
+      "Thriller"
     ],
     "year": "2004",
     "rating": "8.8/10"
@@ -763,9 +734,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/3/82899l.jpg",
     "description": "A teen shogi player deals with loneliness and finding his place in the world.",
     "tags": [
-      "game",
-      "Slice of Life",
-      "Drama"
+      "Drama",
+      "Slice of Life"
     ]
   },
   {
@@ -777,8 +747,7 @@
     "description": "A cyborg police officer leads a special ops unit against cyber criminals.",
     "tags": [
       "Sci-Fi",
-      "Cyberpunk",
-      "Police"
+      "Thriller"
     ]
   },
   {
@@ -789,9 +758,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1830/118780l.jpg",
     "description": "Orphans discover their orphanage is a farm raising them as food for demons.",
     "tags": [
-      "Thriller",
+      "Horror",
       "Mystery",
-      "Horror"
+      "Thriller"
     ]
   },
   {
@@ -802,9 +771,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1826/147276l.jpg",
     "description": "Teens with temporary superpowers are gathered to protect them from experimentation.",
     "tags": [
-      "Super Power",
-      "School",
-      "Drama"
+      "Action",
+      "Drama",
+      "Slice of Life"
     ]
   },
   {
@@ -815,9 +784,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1301/93586l.jpg",
     "description": "A student solves 'Adolescence Syndrome' mysteries affecting girls around him.",
     "tags": [
-      "Supernatural",
       "Romance",
-      "Psychological"
+      "Supernatural",
+      "Thriller"
     ]
   },
   {
@@ -828,8 +797,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg",
     "description": "A samurai works odd jobs in an Edo-period Japan conquered by aliens.",
     "tags": [
-      "Comedy",
       "Action",
+      "Comedy",
       "Sci-Fi"
     ]
   },
@@ -843,7 +812,7 @@
     "tags": [
       "Action",
       "Comedy",
-      "School"
+      "Slice of Life"
     ]
   },
   {
@@ -855,8 +824,8 @@
     "description": "A mixed-race master of the sword seeks revenge in Edo-period Japan.",
     "tags": [
       "Action",
-      "Historical",
-      "Drama"
+      "Drama",
+      "Historical"
     ]
   },
   {
@@ -879,9 +848,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/4/86334l.jpg",
     "description": "A bullied boy discovers a talent for boxing and aims for the championship.",
     "tags": [
-      "Sports",
-      "Boxing",
-      "Shounen"
+      "Action",
+      "Sports"
     ]
   },
   {
@@ -905,8 +873,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg",
     "description": "Two siblings struggle to survive in Japan during the final months of World War II.",
     "tags": [
+      "Action",
       "Drama",
-      "War",
       "Historical"
     ]
   },
@@ -918,9 +886,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/6/79597l.jpg",
     "description": "A young girl is trapped in a spirit world and must work to free her parents.",
     "tags": [
-      "Fantasy",
       "Adventure",
-      "Ghibli"
+      "Fantasy"
     ]
   },
   {
@@ -931,9 +898,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/5/87048l.jpg",
     "description": "Two teenagers share a profound connection after discovering they are swapping bodies.",
     "tags": [
+      "Drama",
       "Romance",
-      "Supernatural",
-      "Drama"
+      "Supernatural"
     ]
   },
   {
@@ -944,8 +911,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1410/112994l.jpg",
     "description": "A story of two friends drifting apart as they grow older.",
     "tags": [
-      "Romance",
       "Drama",
+      "Romance",
       "Slice of Life"
     ]
   },
@@ -957,8 +924,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg",
     "description": "A cursed young woman seeks the help of a wizard in his walking castle.",
     "tags": [
-      "Fantasy",
       "Adventure",
+      "Fantasy",
       "Romance"
     ]
   },
@@ -970,9 +937,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1355/147277l.jpg",
     "description": "A prince becomes involved in a struggle between forest gods and humans consuming nature.",
     "tags": [
-      "Fantasy",
       "Action",
-      "Adventure"
+      "Adventure",
+      "Fantasy"
     ]
   },
   {
@@ -983,9 +950,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1598/128450l.jpg",
     "description": "A girl travels across Japan closing mysterious doors to prevent disasters.",
     "tags": [
-      "Fantasy",
       "Adventure",
-      "Road Trip"
+      "Fantasy"
     ]
   },
   {
@@ -996,9 +962,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg",
     "description": "A runaway boy befriends a girl who can manipulate the weather.",
     "tags": [
+      "Drama",
       "Fantasy",
-      "Romance",
-      "Drama"
+      "Romance"
     ]
   },
   {
@@ -1010,8 +976,7 @@
     "description": "A former bully seeks redemption by reconnecting with the deaf girl he bullied.",
     "tags": [
       "Drama",
-      "School",
-      "Redemption"
+      "Slice of Life"
     ]
   },
   {
@@ -1022,9 +987,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1/2432l.jpg",
     "description": "A girl gains the ability to time travel and uses it to fix minor inconveniences.",
     "tags": [
-      "Sci-Fi",
+      "Drama",
       "Romance",
-      "Drama"
+      "Sci-Fi"
     ]
   },
   {
@@ -1035,8 +1000,7 @@
     "image": "https://cdn.myanimelist.net/images/anime/1069/123309l.jpg",
     "description": "A corporate worker is reborn as a powerful slime in a fantasy world.",
     "tags": [
-      "Fantasy",
-      "Isekai"
+      "Fantasy"
     ]
   },
   {
@@ -1047,9 +1011,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1091/128729l.jpg",
     "description": "A boy obsessed with being a mastermind in the shadows gets reincarnated.",
     "tags": [
-      "Fantasy",
       "Action",
-      "Comedy"
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -1062,7 +1026,7 @@
     "tags": [
       "Comedy",
       "Romance",
-      "School"
+      "Slice of Life"
     ]
   },
   {
@@ -1073,9 +1037,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1040/153636l.jpg",
     "description": "A boy transported to a fantasy world gains the ability to rewind time upon death.",
     "tags": [
+      "Drama",
       "Fantasy",
-      "Psychological",
-      "Drama"
+      "Thriller"
     ]
   },
   {
@@ -1087,8 +1051,8 @@
     "description": "Two students face off against spirits and aliens in high-speed occult battles.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Comedy"
+      "Comedy",
+      "Supernatural"
     ]
   },
   {
@@ -1099,9 +1063,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1530/117776l.jpg",
     "description": "A jobless man is reincarnated in a fantasy world and vows to live his new life to the fullest.",
     "tags": [
-      "Fantasy",
-      "Isekai",
-      "Adventure"
+      "Adventure",
+      "Fantasy"
     ]
   },
   {
@@ -1112,9 +1075,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg",
     "description": "A street kid becomes an edgerunner in a tech-obsessed dystopian city.",
     "tags": [
-      "Sci-Fi",
       "Action",
-      "Cyberpunk"
+      "Sci-Fi"
     ],
     "year": "2022",
     "rating": "8.6/10"
@@ -1141,8 +1103,7 @@
     "description": "A doctor is reborn as the child of an idol and enters the entertainment industry.",
     "tags": [
       "Drama",
-      "Mystery",
-      "Showbiz"
+      "Mystery"
     ],
     "year": "2023",
     "rating": "8.7/10"
@@ -1155,8 +1116,6 @@
     "image": "https://cdn.myanimelist.net/images/anime/1987/117507.jpg",
     "description": "Soldiers pilot drones in a war against autonomous machines, treated as non-humans.",
     "tags": [
-      "Mecha",
-      "Military",
       "Sci-Fi"
     ]
   },
@@ -1168,8 +1127,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
     "description": "A socially anxious girl joins a band and discovers the joy of performing.",
     "tags": [
-      "Music",
       "Comedy",
+      "Music",
       "Slice of Life"
     ]
   },
@@ -1181,9 +1140,8 @@
     "image": "https://cdn.myanimelist.net/images/anime/3/35749.jpg",
     "description": "A girl aims to become the queen of Karuta, a competitive card game.",
     "tags": [
-      "Sports",
-      "Josei",
-      "Drama"
+      "Drama",
+      "Sports"
     ]
   },
   {
@@ -1195,8 +1153,7 @@
     "description": "A boy who sees spirits returns their names to free them from a contract book.",
     "tags": [
       "Slice of Life",
-      "Supernatural",
-      "Iyashikei"
+      "Supernatural"
     ]
   },
   {
@@ -1207,9 +1164,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/11/75274.jpg",
     "description": "A student helps girls dealing with supernatural afflictions ('oddities').",
     "tags": [
+      "Drama",
       "Mystery",
-      "Supernatural",
-      "Dialogue"
+      "Supernatural"
     ]
   },
   {
@@ -1220,9 +1177,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/2/73862.jpg",
     "description": "A traveler investigates primeval lifeforms known as Mushi and their effects on people.",
     "tags": [
-      "Supernatural",
-      "Iyashikei",
-      "Mystery"
+      "Mystery",
+      "Slice of Life",
+      "Supernatural"
     ]
   },
   {
@@ -1234,8 +1191,8 @@
     "description": "An ex-gangster becomes a teacher to reform a class of delinquents.",
     "tags": [
       "Comedy",
-      "School",
-      "Drama"
+      "Drama",
+      "Slice of Life"
     ]
   },
   {
@@ -1247,8 +1204,8 @@
     "description": "A delinquent dies saving a child and returns as a Spirit Detective.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Tournament"
+      "Sports",
+      "Supernatural"
     ]
   },
   {
@@ -1260,8 +1217,7 @@
     "description": "A former assassin wanders Japan offering protection to atone for his past.",
     "tags": [
       "Action",
-      "Historical",
-      "Samurai"
+      "Historical"
     ]
   },
   {
@@ -1286,8 +1242,8 @@
     "description": "Two women named Nana meet on a train and navigate life and love in Tokyo.",
     "tags": [
       "Drama",
-      "Romance",
-      "Music"
+      "Music",
+      "Romance"
     ]
   },
   {
@@ -1298,9 +1254,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/11/11636.jpg",
     "description": "A teenager discovers rock music and joins a band striving for fame.",
     "tags": [
+      "Drama",
       "Music",
-      "Slice of Life",
-      "Drama"
+      "Slice of Life"
     ]
   },
   {
@@ -1312,8 +1268,8 @@
     "description": "A businessman is kidnapped by pirates and joins their crew in a lawless city.",
     "tags": [
       "Action",
-      "Seinen",
-      "Crime"
+      "Drama",
+      "Thriller"
     ]
   },
   {
@@ -1325,8 +1281,8 @@
     "description": "A pacifist gunman with a huge bounty travels a desert planet.",
     "tags": [
       "Action",
-      "Sci-Fi",
-      "Comedy"
+      "Comedy",
+      "Sci-Fi"
     ]
   },
   {
@@ -1339,7 +1295,7 @@
     "tags": [
       "Action",
       "Horror",
-      "Vampire"
+      "Supernatural"
     ]
   },
   {
@@ -1351,8 +1307,7 @@
     "description": "Police enforce the Sibyl System, which measures mental state and crime potential.",
     "tags": [
       "Sci-Fi",
-      "Psychological",
-      "Police"
+      "Thriller"
     ]
   },
   {
@@ -1364,8 +1319,8 @@
     "description": "Contractors with supernatural powers perform missions in a world with a fake sky.",
     "tags": [
       "Action",
-      "Sci-Fi",
-      "Mystery"
+      "Mystery",
+      "Sci-Fi"
     ]
   },
   {
@@ -1377,8 +1332,8 @@
     "description": "The lives of unique characters intersect in Tokyo's Ikebukuro district.",
     "tags": [
       "Action",
-      "Mystery",
-      "Urban Fantasy"
+      "Fantasy",
+      "Mystery"
     ]
   },
   {
@@ -1390,8 +1345,8 @@
     "description": "A minor god seeks followers and battles phantoms with his Regalia.",
     "tags": [
       "Action",
-      "Supernatural",
-      "Comedy"
+      "Comedy",
+      "Supernatural"
     ]
   },
   {
@@ -1403,8 +1358,8 @@
     "description": "Students at a weapon meister academy hunt souls to create a Death Scythe.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Comedy"
+      "Comedy",
+      "Fantasy"
     ]
   },
   {
@@ -1416,8 +1371,7 @@
     "description": "A fighter joins a group of assassins planning to overthrow a corrupt empire.",
     "tags": [
       "Action",
-      "Fantasy",
-      "Dark Fantasy"
+      "Fantasy"
     ]
   },
   {
@@ -1428,9 +1382,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/1074/111944.jpg",
     "description": "Sibling gamers are transported to a world where everything is decided by games.",
     "tags": [
+      "Adventure",
       "Fantasy",
-      "Game",
-      "Adventure"
+      "Sci-Fi"
     ]
   },
   {
@@ -1442,8 +1396,7 @@
     "description": "A boy dies and forms a dysfunctional party in a fantasy world.",
     "tags": [
       "Comedy",
-      "Fantasy",
-      "Parody"
+      "Fantasy"
     ]
   },
   {
@@ -1454,9 +1407,9 @@
     "image": "https://cdn.myanimelist.net/images/anime/13/22128.jpg",
     "description": "Two students agree to help each other pursue their crushes.",
     "tags": [
-      "Romance",
       "Comedy",
-      "School"
+      "Romance",
+      "Slice of Life"
     ]
   },
   {
@@ -1495,7 +1448,7 @@
     "tags": [
       "Horror",
       "Mystery",
-      "School"
+      "Slice of Life"
     ]
   },
   {
@@ -1507,8 +1460,7 @@
     "description": "Participants fight in a survival game to become the next God using future diaries.",
     "tags": [
       "Action",
-      "Thriller",
-      "Survival"
+      "Thriller"
     ]
   }
 ]

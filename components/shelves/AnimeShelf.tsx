@@ -33,21 +33,19 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
     };
 
     // Tag Filtering Logic
-    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+    const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
     // Extract unique tags from all items
     const allTags = Array.from(new Set(items.flatMap(item => item.tags || []))).sort();
 
     // Apply filters
     const filteredItems = items.filter(item => {
-        if (selectedTags.length === 0) return true;
-        return selectedTags.every(tag => item.tags?.includes(tag));
+        if (!selectedTag) return true;
+        return item.tags?.includes(selectedTag);
     });
 
     const toggleTag = (tag: string) => {
-        setSelectedTags(prev =>
-            prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
-        );
+        setSelectedTag(prev => (prev === tag ? null : tag));
     };
 
     const animeWatching = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Watching);
@@ -135,18 +133,18 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                     <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 flex items-center gap-2">
                         <Tag size={16} /> Filter by Tags
                     </h3>
-                    {selectedTags.length > 0 && (
+                    {selectedTag && (
                         <button
-                            onClick={() => setSelectedTags([])}
+                            onClick={() => setSelectedTag(null)}
                             className="text-xs text-red-500 hover:text-red-600 font-medium"
                         >
-                            Clear Filters
+                            Clear Filter
                         </button>
                     )}
                 </div>
                 <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto p-1">
                     {allTags.map(tag => {
-                        const isSelected = selectedTags.includes(tag);
+                        const isSelected = selectedTag === tag;
                         return (
                             <button
                                 key={tag}
