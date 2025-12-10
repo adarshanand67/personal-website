@@ -126,7 +126,7 @@ export default async function Hero() {
         </div>
 
         {/* Right Column - Terminal */}
-        <div className="lg:sticky lg:top-20">
+        <div className="lg:sticky lg:top-20 max-lg:flex max-lg:justify-center">
           <Terminal />
         </div>
       </div>
