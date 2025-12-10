@@ -301,48 +301,6 @@ export default function MusicPlayer() {
                                 <SkipForward size={16} className="text-gray-300" fill="currentColor" />
                             </button>
                         </div>
-
-                        {/* Volume control */}
-                        <div className="flex items-center gap-2">
-                            <button
-                                onClick={handleMute}
-                                className="p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                                aria-label={isMuted ? "Unmute" : "Mute"}
-                            >
-                                {isMuted ?
-                                    <VolumeX size={14} className="text-gray-400" /> :
-                                    <Volume2 size={14} className="text-gray-400" />
-                                }
-                            </button>
-
-                            <div className="flex-1 group/volume">
-                                <input
-                                    type="range"
-                                    min={AUDIO_CONFIG.MIN_VOLUME}
-                                    max={AUDIO_CONFIG.MAX_VOLUME}
-                                    step={AUDIO_CONFIG.VOLUME_STEP}
-                                    value={volume}
-                                    onChange={(e) => setVolume(parseFloat(e.target.value))}
-                                    className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
-                                        [&::-webkit-slider-thumb]:appearance-none 
-                                        [&::-webkit-slider-thumb]:w-2.5 
-                                        [&::-webkit-slider-thumb]:h-2.5 
-                                        [&::-webkit-slider-thumb]:bg-white 
-                                        [&::-webkit-slider-thumb]:rounded-full
-                                        [&::-webkit-slider-thumb]:shadow-lg
-                                        [&::-webkit-slider-thumb]:opacity-0
-                                        group-hover/volume:[&::-webkit-slider-thumb]:opacity-100
-                                        [&::-webkit-slider-thumb]:transition-opacity
-                                        hover:bg-green-600/50
-                                        transition-colors"
-                                    style={{
-                                        background: `linear-gradient(to right, rgb(34, 197, 94) 0%, rgb(34, 197, 94) ${volume * 100}%, rgb(55, 65, 81) ${volume * 100}%, rgb(55, 65, 81) 100%)`
-                                    }}
-                                    aria-label="Volume"
-                                />
-                            </div>
-                            <span className="text-xs text-gray-500 w-6 text-right">{Math.round(volume * 100)}</span>
-                        </div>
                     </div>
                 </div>
             </div>
