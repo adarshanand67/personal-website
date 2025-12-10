@@ -50,14 +50,14 @@ export const INTRO_LINES = (toLeet: (t: string) => string) => [
     `Last login: ${new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`,
     "",
 ] as const;
-export const DIRECTORIES = ["blogs", "papers", "books", "anime", "HobbyShelf"] as const;
+export const DIRECTORIES = ["blogs", "papers", "books", "anime", "hobbieshelf"] as const;
 export const ROUTES = {
     HOME: "/",
     BLOG_SHELF: "/blogshelf",
     PAPER_SHELF: "/papershelf",
     BOOK_SHELF: "/bookshelf",
     ANIME_SHELF: "/animeshelf",
-    HOBBY_SHELF: "/HobbyShelf",
+    HOBBY_SHELF: "/hobbieshelf",
 } as const;
 export const DIRECTORY_MAP: Record<string, string> = {
     blog: ROUTES.BLOG_SHELF,
@@ -70,7 +70,7 @@ export const DIRECTORY_MAP: Record<string, string> = {
     animes: ROUTES.ANIME_SHELF,
     hobby: ROUTES.HOBBY_SHELF,
     hobbies: ROUTES.HOBBY_SHELF,
-    HobbyShelf: ROUTES.HOBBY_SHELF,
+    hobbieshelf: ROUTES.HOBBY_SHELF,
     home: ROUTES.HOME,
     "~": ROUTES.HOME,
     ".": ROUTES.HOME,
