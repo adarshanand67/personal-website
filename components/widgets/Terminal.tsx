@@ -197,7 +197,7 @@ export default function Terminal() {
       }
 
       if (candidates.length > 0) {
-        const matches = [...DIRECTORIES].filter((dir) => dir.startsWith(currentToken.toLowerCase()));
+        const matches = candidates.filter((c) => c.startsWith(currentToken.toLowerCase()));
 
         if (matches.length === 1) {
           parts[parts.length - 1] = matches[0]!;

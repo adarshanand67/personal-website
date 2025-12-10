@@ -9,6 +9,7 @@ import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
 import MusicPlayer from "@/components/widgets/MusicPlayer";
 import MusicToggleButton from "@/components/widgets/MusicToggleButton";
+import ChatWidget from "@/components/widgets/ChatWidget";
 import { siteConfig } from "@/config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
@@ -92,6 +93,7 @@ export default function RootLayout({
             {children}
             <MusicPlayer />
             <MusicToggleButton />
+            <ChatWidget />
             <Footer />
             <script
               type="application/ld+json"
