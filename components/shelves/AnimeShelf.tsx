@@ -22,8 +22,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
         return items.filter((item) => item.type === type && item.status === status);
     };
 
-    const animeWatching = filterItems(items, EntertainmentType.Anime, WatchStatus.Watching);
-    const animeCompleted = filterItems(items, EntertainmentType.Anime, WatchStatus.Completed);
+
     const formatSeasons = (notes: string | undefined) => {
         if (!notes) return null;
         // Robust regex to collapse long sequences of "S1,2,3...N" into "S1-N"
