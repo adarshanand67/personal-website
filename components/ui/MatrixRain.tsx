@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef } from "react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { useTheme } from "next-themes";
