@@ -3,10 +3,6 @@ import { createCommand, addLine, addLines, showUsage, showPermissionDenied, show
 import { getFileContent, fileExists, SAMPLE_FILE_LINES, ARCHIVE_FILES, getFileType } from '../mockFileSystem';
 import { TERMINAL_MESSAGES } from '../messages';
 
-/**
- * File operation commands: cat, mkdir, touch, rm, mv, cp, chmod, chown, ln, tar, zip, unzip, file
- */
-
 export const cat: Command = createCommand(
     'cat',
     'Display file contents',
@@ -21,7 +17,6 @@ export const cat: Command = createCommand(
         const files = nonFlagArgs;
 
         files.forEach(file => {
-            // Handle ~/ prefix
             const normalizedFile = file.replace(/^~\//, '');
             const content = getFileContent(normalizedFile);
 

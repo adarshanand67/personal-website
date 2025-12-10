@@ -3,10 +3,6 @@ import { createCommand, createAliasCommand, parseFlags, addLines, addLine, showU
 import { DIRECTORIES, DIRECTORY_MAP } from '@/lib/constants';
 import { getDirectoryContent } from '../mockFileSystem';
 
-/**
- * Navigation commands: ls, cd, pwd, tree, open
- */
-
 export const ls: Command = createCommand(
     'ls',
     'List directories',
@@ -32,14 +28,12 @@ export const ls: Command = createCommand(
             }
 
             content.forEach(item => {
-                // Simple heuristic for directory detection in ls output
                 const isDir = item.endsWith('/') || !item.includes('.');
                 output.push(formatLongListing(item, isDir, isDir ? 4096 : 1024, 'Dec  9 22:30'));
             });
 
             addLines(setLines, output);
         } else {
-            // For root, maybe show hidden files if requested
             let items = [...content];
             if (showHidden && (path === '.' || path === './' || path === '~')) {
                 items = ['.env.example', '.gitignore', '.secret', ...items];
@@ -122,7 +116,6 @@ export const tree: Command = createCommand(
     }
 );
 
-// Alias: open -> cd
 export const open: Command = createAliasCommand(
     'open',
     'Open directory',

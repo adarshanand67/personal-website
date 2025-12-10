@@ -5,17 +5,14 @@ import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import { AnimeShelf } from "@/components/shelves/AnimeShelf";
 
-// Union type for all shelf items
 export type ShelfItem = Book | Paper | EntertainmentItem | Blog | Project | Hobby;
 
-// Abstract Strategy Interface
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
-  renderList(items: T[]): ReactNode; // Polymorphic List Rendering
+  renderList(items: T[]): ReactNode;
   filter(items: T[], query: string): T[];
 }
 
-// Concrete Strategy: Book List Item
 export class BookListStrategy implements ShelfItemStrategy<Book> {
   renderItem(book: Book, index: number): ReactNode {
     const getAmazonSearchUrl = (title: string, author: string) => {
@@ -65,7 +62,6 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
   }
 }
 
-// Concrete Strategy: Paper List Item
 export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   renderItem(paper: Paper, index: number): ReactNode {
     return (
@@ -97,10 +93,8 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   }
 }
 
-// Concrete Strategy: Anime Card Item
 export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   renderItem(item: EntertainmentItem, index: number): ReactNode {
-    // Unused by AnimeShelf, but required by interface
     return null;
   }
 
@@ -121,7 +115,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   }
 }
 
-// Concrete Strategy: Blog List Item
 export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   renderItem(blog: Blog, _index: number): ReactNode {
     return (
@@ -180,7 +173,6 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   }
 }
 
-// Concrete Strategy: Project List Item
 export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   renderItem(project: Project, index: number): ReactNode {
     return (
@@ -231,7 +223,6 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   }
 }
 
-// Concrete Strategy: Hobby List Item
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
     return null;
@@ -276,8 +267,6 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   }
 }
 
-
-// Factory to create strategies
 export class ShelfStrategyFactory {
   static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
     switch (type) {
