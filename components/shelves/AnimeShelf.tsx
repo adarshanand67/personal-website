@@ -24,11 +24,6 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
 
     const animeWatching = filterItems(items, EntertainmentType.Anime, WatchStatus.Watching);
     const animeCompleted = filterItems(items, EntertainmentType.Anime, WatchStatus.Completed);
-    const animePlanning = filterItems(items, EntertainmentType.Anime, WatchStatus.Planning);
-    const movieWatching = filterItems(items, EntertainmentType.Movie, WatchStatus.Watching);
-    const movieCompleted = filterItems(items, EntertainmentType.Movie, WatchStatus.Completed);
-    const moviePlanning = filterItems(items, EntertainmentType.Movie, WatchStatus.Planning);
-
     const formatSeasons = (notes: string | undefined) => {
         if (!notes) return null;
         // Robust regex to collapse long sequences of "S1,2,3...N" into "S1-N"
@@ -37,6 +32,31 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
         // Example: "S1,2,3,4,5,6,7,8,9, Super S1" -> "S1-9, Super S1"
         return notes.replace(/(S\d+)(?:,\s*\d+){7,},\s*(\d+)/g, "$1-$2");
     };
+
+    // Tag Filtering Logic
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+    // Extract unique tags from all items
+    const allTags = Array.from(new Set(items.flatMap(item => item.tags || []))).sort();
+
+    // Apply filters
+    const filteredItems = items.filter(item => {
+        if (selectedTags.length === 0) return true;
+        return selectedTags.every(tag => item.tags?.includes(tag));
+    });
+
+    const toggleTag = (tag: string) => {
+        setSelectedTags(prev =>
+            prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+        );
+    };
+
+    const animeWatching = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Watching);
+    const animeCompleted = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Completed);
+    const animePlanning = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Planning);
+    const movieWatching = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Watching);
+    const movieCompleted = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Completed);
+    const moviePlanning = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Planning);
 
     const AnimeCard = ({ item }: { item: EntertainmentItem }) => (
         <div onClick={() => setSelectedItem(item)} className="cursor-pointer h-full">
@@ -110,8 +130,45 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
 
     return (
         <>
+            {/* Tag Filter Grid */}
+            <div className="mb-8">
+                <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 flex items-center gap-2">
+                        <Tag size={16} /> Filter by Tags
+                    </h3>
+                    {selectedTags.length > 0 && (
+                        <button
+                            onClick={() => setSelectedTags([])}
+                            className="text-xs text-red-500 hover:text-red-600 font-medium"
+                        >
+                            Clear Filters
+                        </button>
+                    )}
+                </div>
+                <div className="flex flex-wrap gap-2 max-h-40 overflow-y-auto p-1">
+                    {allTags.map(tag => {
+                        const isSelected = selectedTags.includes(tag);
+                        return (
+                            <button
+                                key={tag}
+                                onClick={() => toggleTag(tag)}
+                                className={`text-xs px-2.5 py-1.5 rounded-full border transition-all duration-200 
+                                    ${isSelected
+                                        ? 'bg-green-600 text-white border-green-600 shadow-md transform scale-105'
+                                        : 'bg-gray-50 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-green-500 hover:text-green-500'
+                                    }`}
+                            >
+                                {tag}
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
+
+            <Section title="Anime - Watching" sectionItems={animeWatching} />
             <Section title="Anime - Watched" sectionItems={animeCompleted} />
             <Section title="Anime - Planning" sectionItems={animePlanning} />
+            <Section title="Movies - Watching" sectionItems={movieWatching} />
             <Section title="Movies - Watched" sectionItems={movieCompleted} />
             <Section title="Movies - Planning" sectionItems={moviePlanning} />
 
@@ -192,7 +249,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                 {selectedItem.notes && (
                                     <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
                                         <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-2">
-                                            <Layers size={14} /> Seasons / Progress
+                                            <Layers size={14} /> Seasons
                                         </h4>
                                         <p className="font-mono text-sm text-gray-600 dark:text-gray-400">
                                             {formatSeasons(selectedItem.notes)}
