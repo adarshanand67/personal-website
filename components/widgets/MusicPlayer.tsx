@@ -212,7 +212,7 @@ export default function MusicPlayer() {
                     </div>
 
                     {/* Anime Image */}
-                    <div className="relative h-32 overflow-hidden bg-gray-900">
+                    <div className="relative h-64 overflow-hidden bg-gray-900">
                         <Image
                             src={TRACK_IMAGES[currentTrackIndex]}
                             alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
