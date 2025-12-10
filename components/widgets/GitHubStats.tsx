@@ -16,12 +16,12 @@ export default function GitHubStats() {
   if (repos.length === 0) return null;
 
   return (
-    <section className="section max-w-4xl mx-auto px-4 mb-8 font-mono">
+    <section className="section max-w-4xl mx-auto px-4 mb-6 font-mono">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full text-left group mb-2"
       >
-        <h2 className="text-2xl font-bold flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+        <h2 className="text-xl font-bold flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
           <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Open Source</span>
           <ChevronDown
             size={20}
@@ -29,7 +29,7 @@ export default function GitHubStats() {
           />
         </h2>
       </button>
-      <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm">$ ls ~/repos --sort=stars</p>
+      <p className="text-gray-600 dark:text-gray-400 mb-3 text-xs">$ ls ~/repos --sort=stars</p>
 
       <div
         className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'

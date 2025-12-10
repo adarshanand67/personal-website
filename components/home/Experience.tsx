@@ -24,13 +24,13 @@ export default function Experience({ items }: ExperienceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className="section max-w-4xl mx-auto px-4 mb-12">
-            <div className="mb-8 font-mono" id="experience">
+        <div className="section max-w-4xl mx-auto px-4 mb-6">
+            <div className="mb-4 font-mono" id="experience">
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="w-full text-left group"
                 >
-                    <h2 className="text-2xl font-bold mb-2 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                    <h2 className="text-xl font-bold mb-1 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
                         <span className="text-primary">##</span> Experience
                         <ChevronDown
                             size={20}
@@ -38,7 +38,7 @@ export default function Experience({ items }: ExperienceProps) {
                         />
                     </h2>
                 </button>
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-8 text-sm">
+                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-4 text-xs">
                     <span className="text-green-500 font-bold">$</span>
                     <span>cat ~/work/history.log</span>
                     <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>

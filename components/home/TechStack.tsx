@@ -54,12 +54,12 @@ export default function TechStack() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="section max-w-4xl mx-auto px-4 mb-8 font-mono">
+    <section className="section max-w-4xl mx-auto px-4 mb-6 font-mono">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full text-left group"
       >
-        <h2 className="text-2xl font-bold mb-2 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
+        <h2 className="text-xl font-bold mb-1 flex items-center gap-2 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors">
           <span className="text-primary">##</span> Tech Stack
           <ChevronDown
             size={20}
@@ -67,7 +67,7 @@ export default function TechStack() {
           />
         </h2>
       </button>
-      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-6 text-sm">
+      <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3 text-xs">
         <span className="text-green-500 font-bold">$</span>
         <span>cat ~/.skills</span>
         <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
