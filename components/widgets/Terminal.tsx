@@ -212,7 +212,7 @@ export default function Terminal() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium"
+              className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"
               autoFocus
               spellCheck={false}
 
