@@ -11,13 +11,35 @@ interface WeatherData {
 
 export default function WeatherWidget() {
   const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [locationName, setLocationName] = useState("Bengaluru");
 
   useEffect(() => {
-    // Bangalore Coordinates: 12.9716° N, 77.5946° E
     const fetchWeather = async () => {
       try {
+        // 1. Get location from IP
+        let lat = 12.9716;
+        let lon = 77.5946;
+        let city = "Bengaluru";
+
+        try {
+          const locRes = await fetch("https://ipapi.co/json/");
+          if (locRes.ok) {
+            const locData = await locRes.json();
+            if (locData.latitude && locData.longitude) {
+              lat = locData.latitude;
+              lon = locData.longitude;
+              city = locData.city || locData.region || "Local";
+            }
+          }
+        } catch (e) {
+          console.warn("Location fetch failed, using default");
+        }
+
+        setLocationName(city);
+
+        // 2. Fetch Weather
         const res = await fetch(
-          "https://api.open-meteo.com/v1/forecast?latitude=12.9716&longitude=77.5946&current=temperature_2m,is_day,weather_code&timezone=auto"
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,is_day,weather_code&timezone=auto`
         );
         const data = await res.json();
         setWeather({
@@ -57,9 +79,9 @@ export default function WeatherWidget() {
   };
 
   return (
-    <div className="flex items-center gap-2 text-sm text-gray-500 bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-gray-800 rounded-full px-3 py-1">
+    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 bg-white/50 dark:bg-black/50 border border-gray-200/50 dark:border-gray-800/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm">
       {getWeatherIcon()}
-      <span>Bengaluru, {weather.temperature}°C</span>
+      <span>{locationName}, {weather.temperature}°C</span>
     </div>
   );
 }

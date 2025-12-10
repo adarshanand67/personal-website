@@ -31,20 +31,9 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Copyright */}
-          <p className="text-gray-700 dark:text-gray-300 font-medium text-center">
-            <span className="text-gray-500 mr-2">©</span>
-            {new Date().getFullYear()}
-            <span className="ml-2 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 dark:from-green-400 dark:via-emerald-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
-              Adarsh Anand
-            </span>
-          </p>
-
           {/* Weather Widget */}
           <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-gray-100/50 to-gray-50/50 dark:from-gray-800/50 dark:to-gray-900/50 border border-gray-200/50 dark:border-gray-700/50">
-              <WeatherWidget />
-            </div>
+            <WeatherWidget />
           </div>
 
           {/* Inspired by badge */}
@@ -62,29 +51,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* CTF Challenge hint */}
-          <div className="flex justify-center">
-            <div className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-100/80 to-emerald-50/80 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200/50 dark:border-green-800/50 hover:border-green-500/50 transition-all duration-300">
-              <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
-              <span className="text-xs text-gray-600 dark:text-gray-400">
-                Psst... there's a hidden CTF challenge in the terminal
-              </span>
-              <span className="text-xs text-green-600 dark:text-green-400 opacity-0 group-hover:opacity-100 transition-opacity">👀</span>
-            </div>
-          </div>
-
-          {/* Keyboard shortcut hint */}
-          <div className="pt-6 border-t border-gray-200/50 dark:border-gray-800/50">
-            <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 group">
-              <span className="opacity-75">Press</span>
-              <kbd className="px-3 py-1.5 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 shadow-md font-semibold text-gray-700 dark:text-gray-300 group-hover:scale-105 group-hover:shadow-lg transition-all">
-                ⌘K
-              </kbd>
-              <span className="opacity-75">to navigate</span>
-              <span className="ml-1 text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">✨</span>
-            </p>
-          </div>
-
           {/* Made with love badge */}
           <div className="flex items-center justify-center gap-2 text-sm">
             <span className="text-gray-600 dark:text-gray-400">Made with</span>
@@ -94,6 +60,15 @@ export default function Footer() {
             <span className="text-gray-600 dark:text-gray-400">in</span>
             <span className="font-semibold bg-gradient-to-r from-orange-500 via-white to-green-500 bg-clip-text text-transparent">India</span>
           </div>
+
+          {/* Copyright moved to end */}
+          <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-xs opacity-80 pt-4 border-t border-gray-200/50 dark:border-gray-800/50">
+            <span className="mr-1">©</span>
+            {new Date().getFullYear()}
+            <span className="ml-2 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 dark:from-green-400 dark:via-emerald-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
+              Adarsh Anand
+            </span>
+          </p>
         </div>
       </div>
     </footer>
