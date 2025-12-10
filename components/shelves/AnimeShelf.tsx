@@ -239,9 +239,9 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                                     setSelectedTag(tag);
                                                     setSelectedItem(null);
                                                 }}
-                                                className="text-xs text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 hover:underline transition-colors"
+                                                className="px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-xs text-gray-600 dark:text-gray-400 hover:border-green-500 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 transition-all duration-200"
                                             >
-                                                <span className="opacity-50">•</span> {tag}
+                                                {tag}
                                             </button>
                                         ))}
                                     </div>
