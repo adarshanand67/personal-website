@@ -121,7 +121,7 @@ export default function Navbar() {
             className={`md:hidden overflow-hidden transition-all duration-200 ${isActive ? "max-h-64 pb-4" : "max-h-0"
               }`}
           >
-            <div className="flex flex-col gap-1 text-sm">
+            <div className="flex flex-col items-center gap-1 text-sm">
               <Link
                 href={ROUTES.BLOG_SHELF}
                 className="py-2 hover:text-green-600 dark:hover:text-green-400"
