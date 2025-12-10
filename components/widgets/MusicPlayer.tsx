@@ -166,11 +166,10 @@ export default function MusicPlayer() {
     return (
         <div
             ref={playerRef}
-            className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'}`}
+            className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'} w-72 md:w-80`}
             style={{
                 left: `${position.x}px`,
-                top: `${position.y}px`,
-                width: '320px'
+                top: `${position.y}px`
             }}
             onMouseDown={handleMouseDown}
         >
@@ -212,7 +211,7 @@ export default function MusicPlayer() {
                     </div>
 
                     {/* Anime Image */}
-                    <div className="relative h-72 overflow-hidden bg-gray-900">
+                    <div className="relative h-40 md:h-72 overflow-hidden bg-gray-900">
                         <Image
                             src={TRACK_IMAGES[currentTrackIndex]}
                             alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
