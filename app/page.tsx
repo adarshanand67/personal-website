@@ -7,6 +7,7 @@ import RecentSection from "@/components/home/RecentSection";
 import GitHubStats from "@/components/widgets/GitHubStats";
 import ContactSection from "@/components/home/ContactSection";
 import ShelvesSection from "@/components/home/ShelvesSection";
+import NewsSection from "@/components/home/NewsSection";
 
 export default async function Home() {
   const experiences = await getExperiences();
@@ -76,9 +77,10 @@ export default async function Home() {
             </div>
           </div>
         </div>
+
+        {/* Daily Headlines Section */}
+        <NewsSection />
       </div>
-
-
 
       {/* GitHub Stats with enhanced design */}
       <div className="section max-w-4xl mx-auto px-4 mb-8">
