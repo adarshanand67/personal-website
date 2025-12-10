@@ -31,24 +31,11 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
 
     const formatSeasons = (notes: string | undefined) => {
         if (!notes) return null;
-        // Collapse sequences like "S1,2,3...25" into "S1-25" if length > 8
-        // Pattern: S1 followed by comma-separated numbers
-        if (notes.match(/^S1(,\d+){8,}$/)) {
-            const last = notes.split(',').pop();
-            return `S1-${last}`;
-        }
-        // Pattern handling "S1,2,3,4,5... Shippuden..." - complex, keeping simple for now
-        // Just simple comma checking
-        const parts = notes.split(',');
-        if (parts.length > 8) {
-            // Check if they are mostly numbers
-            const first = parts[0].trim();
-            const last = parts[parts.length - 1].trim();
-            if (first.startsWith('S') && !isNaN(Number(last))) {
-                return `${first}-${last}`;
-            }
-        }
-        return notes;
+        // Robust regex to collapse long sequences of "S1,2,3...N" into "S1-N"
+        // Matches "S" number, followed by 7+ commas+numbers, ending with a number.
+        // Handles optional spaces.
+        // Example: "S1,2,3,4,5,6,7,8,9, Super S1" -> "S1-9, Super S1"
+        return notes.replace(/(S\d+)(?:,\s*\d+){7,},\s*(\d+)/g, "$1-$2");
     };
 
     const AnimeCard = ({ item }: { item: EntertainmentItem }) => (
