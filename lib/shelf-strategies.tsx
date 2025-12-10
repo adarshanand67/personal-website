@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Star, Check, Camera, BookOpen, Gamepad2, Activity, Dumbbell, Flower2, Bike, Mountain, ChefHat, Plane, Dices, Tv, Mic, Palette, Shapes, Trophy, Waves, Coffee } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { AnimeShelf } from "@/components/shelves/AnimeShelf";
 
 // Union type for all shelf items
 export type ShelfItem = Book | Paper | EntertainmentItem | Blog | Project | Hobby;
@@ -100,82 +101,12 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
 // Concrete Strategy: Anime Card Item
 export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   renderItem(item: EntertainmentItem, index: number): ReactNode {
-    return (
-      <SpotlightCard key={index} className="h-full flex flex-col p-4">
-        {item.image ? (
-          <div className="w-full aspect-[2/3] mb-4 overflow-hidden rounded-md relative">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-300"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-        ) : (
-          <div className="w-full aspect-[2/3] mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-md flex items-center justify-center p-4">
-            <span className="text-gray-400 text-sm text-center">{item.title}</span>
-          </div>
-        )}
-        <h3 className="font-bold text-lg leading-tight mb-2 flex items-center gap-2">
-          {item.title}
-          {item.status === WatchStatus.Completed && (
-            <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-0.5">
-              <Check className="w-3 h-3 text-green-600 dark:text-green-400" strokeWidth={3} />
-            </div>
-          )}
-          {item.recommended && <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />}
-        </h3>
-        {item.notes && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-auto font-mono break-words">{item.notes}</p>
-        )}
-      </SpotlightCard>
-    );
+    // Unused by AnimeShelf, but required by interface
+    return null;
   }
 
   renderList(items: EntertainmentItem[]): ReactNode {
-    const filterItems = (
-      items: EntertainmentItem[],
-      type: EntertainmentType,
-      status: WatchStatus
-    ) => {
-      return items.filter((item) => item.type === type && item.status === status);
-    };
-
-    const animeCompleted = filterItems(items, EntertainmentType.Anime, WatchStatus.Completed);
-    const animePlanning = filterItems(items, EntertainmentType.Anime, WatchStatus.Planning);
-    const movieCompleted = filterItems(items, EntertainmentType.Movie, WatchStatus.Completed);
-    const moviePlanning = filterItems(items, EntertainmentType.Movie, WatchStatus.Planning);
-
-    const Section = ({
-      title,
-      sectionItems,
-    }: {
-      title: string;
-      sectionItems: EntertainmentItem[];
-    }) => {
-      if (sectionItems.length === 0) return null;
-      return (
-        <div className="mb-12">
-          <h2 className="text-xl font-bold mb-4 font-mono">
-            <span className="text-gray-500">##</span> {title}
-            <span className="text-gray-500 text-sm ml-2">({sectionItems.length})</span>
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {sectionItems.map((item, index) => this.renderItem(item, index))}
-          </div>
-        </div>
-      );
-    };
-
-    return (
-      <>
-        <Section title="Anime - Watched" sectionItems={animeCompleted} />
-        <Section title="Anime - Planning" sectionItems={animePlanning} />
-        <Section title="Movies - Watched" sectionItems={movieCompleted} />
-        <Section title="Movies - Planning" sectionItems={moviePlanning} />
-      </>
-    );
+    return <AnimeShelf items={items} />;
   }
 
   filter(items: EntertainmentItem[], query: string): EntertainmentItem[] {

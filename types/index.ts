@@ -95,4 +95,8 @@ export interface EntertainmentItem {
   notes?: string;
   image?: string;
   recommended?: boolean;
+  description?: string;
+  tags?: string[];
+  year?: string;
+  rating?: string; // e.g. "8.5/10"
 }

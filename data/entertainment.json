@@ -11,14 +11,32 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2,3,4,5,6,7,8,9, Super S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg",
+    "description": "The defenders of Earth fight against intergalactic villains like Saiyans, Frieza, Cell, and Majin Buu to protect the universe.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Martial Arts"
+    ],
+    "year": "1989",
+    "rating": "8.8/10"
   },
   {
     "title": "Naruto",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3,4,5, Shippuden S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-    "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
+    "description": "Naruto Uzumaki, a mischievous adolescent ninja, struggles as he searches for recognition and dreams of becoming the Hokage, the village's leader and strongest ninja.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Martial Arts"
+    ],
+    "year": "2002",
+    "rating": "8.3/10"
   },
   {
     "title": "Death Note",
@@ -26,14 +44,32 @@
     "status": "Completed",
     "notes": "S1",
     "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
-    "recommended": true
+    "recommended": true,
+    "description": "A high school student discovers a supernatural notebook that grants him the ability to kill anyone by writing their name, sparking a cat-and-mouse game with a genius detective.",
+    "tags": [
+      "Psychological",
+      "Thriller",
+      "Supernatural",
+      "Mystery"
+    ],
+    "year": "2006",
+    "rating": "9.0/10"
   },
   {
     "title": "One Punch Man",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
+    "description": "A hero who can end all fights with a single punch grows frustrated by the lack of challenge in his fight against evil.",
+    "tags": [
+      "Action",
+      "Comedy",
+      "Parody",
+      "Sci-Fi"
+    ],
+    "year": "2015",
+    "rating": "8.7/10"
   },
   {
     "title": "Haikyu",
@@ -41,7 +77,16 @@
     "status": "Completed",
     "notes": "S1,2,3,4",
     "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
-    "recommended": true
+    "recommended": true,
+    "description": "Inspired by a pro volleyball ace, Shoyo Hinata joins the Karasuno High School volleyball team to compete against rivals and reach the nationals.",
+    "tags": [
+      "Sports",
+      "Shounen",
+      "School",
+      "Teamwork"
+    ],
+    "year": "2014",
+    "rating": "8.7/10"
   },
   {
     "title": "Haikyuu!! The Dumpster Battle",
@@ -56,35 +101,80 @@
     "status": "Completed",
     "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
-    "recommended": true
+    "recommended": true,
+    "description": "An exiled prince gains the power of absolute obedience and leads a rebellion against the Holy Britannian Empire to create a better world for his sister.",
+    "tags": [
+      "Mecha",
+      "Military",
+      "Psychological",
+      "Politics"
+    ],
+    "year": "2006",
+    "rating": "8.7/10"
   },
   {
     "title": "Cowboy Bebop",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
+    "description": "In the year 2071, a ragtag crew of bounty hunters chases criminals across the solar system while escaping their own pasts.",
+    "tags": [
+      "Sci-Fi",
+      "Action",
+      "Space",
+      "Noir"
+    ],
+    "year": "1998",
+    "rating": "8.9/10"
   },
   {
     "title": "Steins;Gate",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1, Steins;Gate 0",
-    "image": "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
+    "description": "A self-proclaimed mad scientist accidentally invents a time machine and must race against time to save his friends from a conspiracy.",
+    "tags": [
+      "Sci-Fi",
+      "Thriller",
+      "Psychological",
+      "Time Travel"
+    ],
+    "year": "2011",
+    "rating": "9.1/10"
   },
   {
     "title": "Mob Psycho 100",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2,3",
-    "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg",
+    "description": "A powerful psychic struggling to live a normal life must keep his emotions in check to prevent his powers from going out of control.",
+    "tags": [
+      "Action",
+      "Comedy",
+      "Supernatural",
+      "Slice of Life"
+    ],
+    "year": "2016",
+    "rating": "8.6/10"
   },
   {
     "title": "Jujutsu Kaisen",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
+    "description": "A boy swallows a cursed talisman - the finger of a demon - and becomes cursed himself. He enters a shaman's school to be able to locate the demon's other body parts.",
+    "tags": [
+      "Action",
+      "Fantasy",
+      "Supernatural",
+      "School"
+    ],
+    "year": "2020",
+    "rating": "8.6/10"
   },
   {
     "title": "Jujutsu Kaisen 0",
@@ -98,7 +188,16 @@
     "type": "Anime",
     "status": "Completed",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg",
+    "description": "Japan's national team struggles, so a controversial project creates a prison-like facility called Blue Lock to create the world's greatest egoist striker.",
+    "tags": [
+      "Sports",
+      "Psychological",
+      "Shounen",
+      "Thriller"
+    ],
+    "year": "2022",
+    "rating": "8.3/10"
   },
   {
     "title": "Solo Leveling",
@@ -106,14 +205,32 @@
     "status": "Completed",
     "notes": "S1,2",
     "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
-    "recommended": true
+    "recommended": true,
+    "description": "In a world where hunters fight monsters, the weakest hunter of all, Sung Jin-Woo, discovers a hidden system that allows him to level up infinitely.",
+    "tags": [
+      "Action",
+      "Fantasy",
+      "Adventure",
+      "Super Power"
+    ],
+    "year": "2024",
+    "rating": "8.5/10"
   },
   {
     "title": "Demon Slayer",
     "type": "Anime",
     "status": "Completed",
     "notes": "S1, Mugen Train, S2,3,4",
-    "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+    "description": "A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, who is turning into a demon slowly. Tanjiro sets out to become a demon slayer to avenge his family and cure his sister.",
+    "tags": [
+      "Action",
+      "Fantasy",
+      "Historical",
+      "Supernatural"
+    ],
+    "year": "2019",
+    "rating": "8.5/10"
   },
   {
     "title": "Tokyo Ghoul",
@@ -127,28 +244,64 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
+    "description": "Thorfinn pursues a journey with his father's killer in order to take revenge and end his life in a duel as an honorable warrior and pay homage to his father.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Historical"
+    ],
+    "year": "2019",
+    "rating": "8.8/10"
   },
   {
     "title": "Attack on Titan",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3,4",
-    "image": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+    "description": "Humanity fights for survival against man-eating giants known as Titans within three massive walls, uncovering dark secrets about their world.",
+    "tags": [
+      "Action",
+      "Dark Fantasy",
+      "Military",
+      "Mystery"
+    ],
+    "year": "2013",
+    "rating": "9.0/10"
   },
   {
     "title": "Fullmetal Alchemist Brotherhood",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
+    "description": "Two brothers search for the Philosopher's Stone to restore their bodies after a failed alchemical experiment violates the laws of nature.",
+    "tags": [
+      "Adventure",
+      "Dark Fantasy",
+      "Steampunk",
+      "Action"
+    ],
+    "year": "2009",
+    "rating": "9.1/10"
   },
   {
     "title": "Hunter x Hunter",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg",
+    "description": "Gon Freecss aspires to become a Hunter, an exceptional being capable of greatness. With his friends and his potential, he seeks out his father.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Fantasy",
+      "Shounen"
+    ],
+    "year": "2011",
+    "rating": "9.0/10"
   },
   {
     "title": "JoJo's Bizarre Adventure",
@@ -169,7 +322,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16, TYBW",
-    "image": "https://cdn.myanimelist.net/images/anime/1541/147774l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1541/147774l.jpg",
+    "description": "Ichigo Kurosaki gains the powers of a Soul Reaper and must defend humans from evil spirits and guide departed souls to the afterlife.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Supernatural",
+      "Super Power"
+    ],
+    "year": "2004",
+    "rating": "8.2/10"
   },
   {
     "title": "Kaiju No 8",
@@ -183,7 +345,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-    "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
+    "description": "Monkey D. Luffy and his pirate crew explore the Grand Line in search of the ultimate treasure, the 'One Piece', to become the next Pirate King.",
+    "tags": [
+      "Adventure",
+      "Fantasy",
+      "Action",
+      "Comedy"
+    ],
+    "year": "1999",
+    "rating": "9.0/10"
   },
   {
     "title": "Fairy Tail",
@@ -204,7 +375,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
+    "description": "An elf mage confronts her mortality and the passage of time after her party defeats the Demon King, embarking on a new journey to understand humanity.",
+    "tags": [
+      "Adventure",
+      "Fantasy",
+      "Drama",
+      "Slice of Life"
+    ],
+    "year": "2023",
+    "rating": "9.1/10"
   },
   {
     "title": "Black Clover",
@@ -225,14 +405,32 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2,3",
-    "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg",
+    "description": "A spy on a mission to infiltrate an elite school needs a family cover. He adopts a telepathic daughter and agrees to a fake marriage with an assassin.",
+    "tags": [
+      "Action",
+      "Comedy",
+      "Slice of Life",
+      "Family"
+    ],
+    "year": "2022",
+    "rating": "8.5/10"
   },
   {
     "title": "Berserk",
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/10/79352l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/10/79352l.jpg",
+    "description": "Guts, a wandering mercenary, joins the Band of the Hawk after being defeated by its charismatic leader, Griffith.",
+    "tags": [
+      "Action",
+      "Adventure",
+      "Dark Fantasy",
+      "Horror"
+    ],
+    "year": "1997",
+    "rating": "8.5/10"
   },
   {
     "title": "Kuroko No Basket",
@@ -253,7 +451,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
+    "description": "Denji is a teenage boy living with a Chainsaw Devil named Pochita. Due to the debt his father left behind, he has been living a rock-bottom life.",
+    "tags": [
+      "Action",
+      "Fantasy",
+      "Horror",
+      "Dark Fantasy"
+    ],
+    "year": "2022",
+    "rating": "8.5/10"
   },
   {
     "title": "Made in Abyss",
@@ -309,7 +516,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
+    "description": "Teenagers are recruited to pilot giant bio-machines called Evangelions to fight against mysterious beings known as Angels.",
+    "tags": [
+      "Mecha",
+      "Psychological",
+      "Sci-Fi",
+      "Drama"
+    ],
+    "year": "1995",
+    "rating": "8.5/10"
   },
   {
     "title": "Gurren Lagann",
@@ -379,7 +595,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg",
+    "description": "A neurosurgeon's life is ruined after saving a young boy who grows up to be a psychopathic serial killer, forcing the doctor to hunt him down.",
+    "tags": [
+      "Mystery",
+      "Psychological",
+      "Thriller",
+      "Seinen"
+    ],
+    "year": "2004",
+    "rating": "8.8/10"
   },
   {
     "title": "March comes in like a Lion",
@@ -575,7 +800,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg",
+    "description": "A street kid tries to survive in a technology and body modification-obsessed city of the future. Having everything to lose, he chooses to stay alive by becoming an edgerunner.",
+    "tags": [
+      "Sci-Fi",
+      "Action",
+      "Cyberpunk",
+      "Tragedy"
+    ],
+    "year": "2022",
+    "rating": "8.6/10"
   },
   {
     "title": "Clannad: After Story",
@@ -589,7 +823,16 @@
     "type": "Anime",
     "status": "Planning",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
+    "description": "A doctor is reincarnated as the child of his favorite idol, exploring the dark side of the entertainment industry.",
+    "tags": [
+      "Drama",
+      "Supernatural",
+      "Psychological",
+      "Music"
+    ],
+    "year": "2023",
+    "rating": "8.7/10"
   },
   {
     "title": "86 (Eighty-Six)",
