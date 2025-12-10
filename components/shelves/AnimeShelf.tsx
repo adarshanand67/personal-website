@@ -118,7 +118,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                     <span className="text-gray-500">##</span> {title}
                     <span className="text-gray-500 text-sm ml-2">({sectionItems.length})</span>
                 </h2>
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
                     {sectionItems.map((item, index) => <AnimeCard key={index} item={item} />)}
                 </div>
             </div>

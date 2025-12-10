@@ -25,81 +25,79 @@ export default function Experience({ items }: ExperienceProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className="section max-w-4xl mx-auto px-4 mb-6">
-            <div className="mb-4 font-mono" id="experience">
-                <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="w-full text-left group"
-                >
-                    <SectionHeader
-                        title="Experience"
-                        command="cat ~/work/history.log"
-                        isExpanded={isExpanded}
-                        onToggle={() => setIsExpanded(!isExpanded)}
-                    />
-                </button>
+        <div className="mb-4 font-mono" id="experience">
+            <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="w-full text-left group"
+            >
+                <SectionHeader
+                    title="Experience"
+                    command="cat ~/work/history.log"
+                    isExpanded={isExpanded}
+                    onToggle={() => setIsExpanded(!isExpanded)}
+                />
+            </button>
 
-                {/* Timeline Container */}
-                <div
-                    className={`relative transition - all duration - 300 ease -in -out overflow - hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
-                        } `}
-                >
-                    {/* Vertical Timeline Line */}
-                    <div className="absolute left-8 top-2 bottom-0 w-0.5 bg-gradient-to-b from-green-500 via-emerald-500 to-green-500"></div>
+            {/* Timeline Container */}
+            <div
+                className={`relative transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+            >
+                <div className="space-y-6 pt-4">
+                    {items.map((exp, index) => (
+                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-gray-300 dark:border-gray-700 last:pb-0 hover:border-green-500 transition-colors group/item">
+                            {/* Timeline dot */}
+                            <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-green-500 border-4 border-white dark:border-gray-900 group-hover/item:scale-125 transition-transform"></div>
 
-                    <div className="space-y-12">
-                        {items.map((exp, index) => (
-                            <div key={index} className="relative pl-24">
-                                {/* Logo positioned on timeline */}
-                                <div className="absolute left-0 top-0">
-                                    <div className="relative w-16 h-16 rounded-full overflow-hidden bg-white dark:bg-gray-800 border-2 border-green-500 z-10">
-                                        {exp.logo && (
+                            <div className="flex flex-col gap-3">
+                                {/* Company header with logo */}
+                                <div className="flex items-start gap-3">
+                                    {exp.logo && (
+                                        <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-1 border border-gray-200 dark:border-gray-700">
                                             <Image
                                                 src={getAssetPath(exp.logo)}
                                                 alt={`${exp.company} logo`}
-                                                fill
-                                                className="object-contain p-2"
+                                                width={48}
+                                                height={48}
+                                                className="w-full h-full object-contain"
                                             />
-                                        )}
-                                    </div>
-                                </div>
-
-                                {/* Content - Clean, no card styles */}
-                                <div className="pt-1">
-                                    <div className="mb-2">
-                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
-                                        <p className="text-lg text-gray-900 dark:text-gray-200 font-medium mt-0.5">{exp.role}</p>
-                                        <p className="text-gray-600 dark:text-gray-400 text-sm font-mono mt-1">
-                                            {exp.duration} • {exp.location}
-                                        </p>
-                                    </div>
-
-                                    {exp.description && (
-                                        <div className="mb-3 text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                                            {exp.description.includes("||") ? (
-                                                exp.description.split("||").map((part, i) => (
-                                                    <span key={i}>
-                                                        {i > 0 && <span className="mx-2 text-gray-400">•</span>}
-                                                        <span dangerouslySetInnerHTML={{ __html: linkifyTech(part.trim()) }} />
-                                                    </span>
-                                                ))
-                                            ) : (
-                                                <span dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }} />
-                                            )}
                                         </div>
                                     )}
-
-                                    {exp.highlights.length > 0 && (
-                                        <ul className="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-400">
-                                            {exp.highlights.map((highlight: string, idx: number) => (
-                                                <li key={idx} dangerouslySetInnerHTML={{ __html: linkifyTech(highlight) }} />
-                                            ))}
-                                        </ul>
-                                    )}
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">{exp.company}</h3>
+                                        <p className="text-green-600 dark:text-green-400 font-semibold mt-0.5">{exp.role}</p>
+                                        <div className="flex flex-wrap items-center gap-2 mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                            <span>{exp.duration}</span>
+                                            <span className="text-gray-400">•</span>
+                                            <span>{exp.location}</span>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                {/* Description */}
+                                {exp.description && (
+                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                        {exp.description}
+                                    </p>
+                                )}
+
+                                {/* Highlights */}
+                                {exp.highlights && exp.highlights.length > 0 && (
+                                    <ul className="space-y-2">
+                                        {exp.highlights.map((highlight, i) => (
+                                            <li
+                                                key={i}
+                                                className="flex gap-2 text-gray-700 dark:text-gray-300 leading-relaxed"
+                                                dangerouslySetInnerHTML={{
+                                                    __html: `<span class="text-green-500 shrink-0">▸</span><span>${linkifyTech(highlight)}</span>`
+                                                }}
+                                            />
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
