@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Minus, Maximize2 } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Minus, Maximize2, Music } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
@@ -19,10 +19,11 @@ export default function MusicPlayer() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const mounted = useMounted();
 
-    // Dragging state
-    const [position, setPosition] = useState({ x: 20, y: 20 });
+    // Dragging state (Offsets from Bottom-Right)
+    const [offset, setOffset] = useState({ x: 24, y: 24 });
     const [isDragging, setIsDragging] = useState(false);
-    const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+    const [dragStart, setDragStart] = useState({ x: 0, y: 0 }); // Cursor position
+    const [initialOffset, setInitialOffset] = useState({ x: 0, y: 0 }); // Element offset at start
     const playerRef = useRef<HTMLDivElement>(null);
     const [isMinimized, setIsMinimized] = useState(false);
     const hasMoved = useRef(false);
@@ -30,16 +31,10 @@ export default function MusicPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
 
-    // Initialize position safely on client side
+    // Initialize position (not needed if hardcoded default is good, but hydration check is good)
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            // Default to bottom-right
-            const width = window.innerWidth >= 768 ? 384 : 320;
-            const height = 550; // Approx height
-            setPosition({
-                x: Math.max(0, window.innerWidth - width - 24),
-                y: Math.max(0, window.innerHeight - height - 24)
-            });
+            setOffset({ x: 24, y: 24 });
         }
     }, [mounted]);
 
@@ -47,18 +42,23 @@ export default function MusicPlayer() {
         if ((e.target as HTMLElement).closest('button, input')) return;
         setIsDragging(true);
         hasMoved.current = false;
-        setDragOffset({
-            x: e.clientX - position.x,
-            y: e.clientY - position.y
-        });
+        setDragStart({ x: e.clientX, y: e.clientY });
+        setInitialOffset({ ...offset });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
         if (isDragging) {
             hasMoved.current = true;
-            setPosition({
-                x: e.clientX - dragOffset.x,
-                y: e.clientY - dragOffset.y
+            // Calculate delta
+            const dx = e.clientX - dragStart.x;
+            const dy = e.clientY - dragStart.y;
+
+            // Update offsets (inverted because we are positioning from Right/Bottom)
+            // Moving right (positive dx) -> Decreases Right offset
+            // Moving down (positive dy) -> Decreases Bottom offset
+            setOffset({
+                x: initialOffset.x - dx,
+                y: initialOffset.y - dy
             });
         }
     };
@@ -73,10 +73,8 @@ export default function MusicPlayer() {
         setIsDragging(true);
         hasMoved.current = false;
         const touch = e.touches[0];
-        setDragOffset({
-            x: touch.clientX - position.x,
-            y: touch.clientY - position.y
-        });
+        setDragStart({ x: touch.clientX, y: touch.clientY });
+        setInitialOffset({ ...offset });
     };
 
     const handleTouchMove = (e: TouchEvent) => {
@@ -84,9 +82,11 @@ export default function MusicPlayer() {
             e.preventDefault(); // Prevent scrolling while dragging
             hasMoved.current = true;
             const touch = e.touches[0];
-            setPosition({
-                x: touch.clientX - dragOffset.x,
-                y: touch.clientY - dragOffset.y
+            const dx = touch.clientX - dragStart.x;
+            const dy = touch.clientY - dragStart.y;
+            setOffset({
+                x: initialOffset.x - dx,
+                y: initialOffset.y - dy
             });
         }
     };
@@ -101,43 +101,16 @@ export default function MusicPlayer() {
         }
     };
 
-    // Docking logic
+    // Minimal docking logic - just ensure we don't drift too far on mode switch if needed
+    // But since we are anchored bottom-right, window resize is handled automatically.
+    // We can add boundary checks later if needed.
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        if (isMinimized) {
-            // Snap to bottom right (space cleared by centering BackToTop)
-            const dockMarginBottom = 24;
-            const dockMarginRight = 24;
-            const minWidth = 288; // w-72 = 18rem = 288px
-            const minHeight = 80; // Approx height of minimized player header
-
-            const x = window.innerWidth - minWidth - dockMarginRight;
-            const y = window.innerHeight - minHeight - dockMarginBottom;
-
-            setPosition({ x: Math.max(0, x), y: Math.max(0, y) });
-        } else {
-            // When returning to full size, ensure we don't overflow screen
-            // "Open from there" -> Keep anchor but shift if needed
-            const fullWidth = window.innerWidth >= 768 ? 384 : 320; // w-96 (md) or w-80
-            const fullHeight = 550; // Approx max height of full player (image + controls)
-
-            setPosition(prev => {
-                let newX = prev.x;
-                let newY = prev.y;
-
-                // If expanding right goes offscreen, shift left
-                if (newX + fullWidth > window.innerWidth) {
-                    newX = window.innerWidth - fullWidth - 20;
-                }
-                // If expanding down goes offscreen, shift up
-                if (newY + fullHeight > window.innerHeight) {
-                    newY = window.innerHeight - fullHeight - 20;
-                }
-
-                return { x: Math.max(0, newX), y: Math.max(0, newY) };
-            });
-        }
+        // Optional: Snap back to margin if it gets negative (offscreen right/bottom)
+        // This keeps it accessible
+        setOffset(prev => ({
+            x: Math.max(10, prev.x),
+            y: Math.max(10, prev.y)
+        }));
     }, [isMinimized]);
 
     useEffect(() => {
@@ -158,7 +131,7 @@ export default function MusicPlayer() {
             window.removeEventListener('touchmove', handleTouchMove);
             window.removeEventListener('touchend', handleTouchEnd);
         };
-    }, [isDragging, dragOffset]);
+    }, [isDragging]);
 
     const handleTimeUpdate = () => {
         if (audioRef.current) {
@@ -245,17 +218,38 @@ export default function MusicPlayer() {
         toggleMute();
     };
 
-    if (!mounted || !showMusicPlayer) {
-        return null;
+    // -- VOLUME HANDLER --
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = parseFloat(e.target.value);
+        setVolume(val);
+    };
+
+    if (!mounted) return null;
+
+    // --- LAUNCHER STATE (Bottom-Right Fixed) ---
+    if (!showMusicPlayer) {
+        return (
+            <button
+                onClick={toggleMusicPlayer}
+                className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-black/60 backdrop-blur-md border border-green-500/50 text-green-500 shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:scale-110 hover:bg-green-500 hover:text-black transition-all duration-300 group"
+                aria-label="Show Music Player"
+            >
+                <Music size={24} className="group-hover:rotate-12 transition-transform" />
+                <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
+                    Open Player
+                </span>
+            </button>
+        );
     }
 
+    // --- ACTIVE PLAYER STATE ---
     return (
         <div
             ref={playerRef}
             className={`fixed z-50 font-sans select-none transition-all duration-300 ${isDragging ? 'cursor-grabbing' : 'cursor-move'} ${isMinimized ? 'w-72' : 'w-80 md:w-96'}`}
             style={{
-                left: `${position.x}px`,
-                top: `${position.y}px`
+                right: `${offset.x}px`,
+                bottom: `${offset.y}px`
             }}
             onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
@@ -407,9 +401,10 @@ export default function MusicPlayer() {
                                 </div>
                             </div>
 
-                            {/* Controls */}
-                            <div className="px-3 py-3 bg-black/30">
-                                <div className="flex items-center justify-center gap-3 mb-3">
+                            {/* Controls with Volume */}
+                            <div className="px-3 py-3 bg-black/30 flex flex-col gap-3">
+                                {/* Playback Controls */}
+                                <div className="flex items-center justify-center gap-3">
                                     <button
                                         onClick={(e) => { e.stopPropagation(); prevTrack(); }}
                                         className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
@@ -436,6 +431,26 @@ export default function MusicPlayer() {
                                     >
                                         <SkipForward size={16} className="text-gray-300" fill="currentColor" />
                                     </button>
+                                </div>
+
+                                {/* Volume Control */}
+                                <div className="flex items-center gap-2 px-4 pb-1">
+                                    <button onClick={(e) => { e.stopPropagation(); handleMute(); }} className="p-1 hover:text-white text-gray-400">
+                                        {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                                    </button>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="1"
+                                        step="0.05"
+                                        value={isMuted ? 0 : volume}
+                                        onChange={handleVolumeChange}
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-2.5 [&::-webkit-slider-thumb]:h-2.5 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full hover:[&::-webkit-slider-thumb]:scale-125 transition-all"
+                                        style={{
+                                            background: `linear-gradient(to right, rgb(34, 197, 94) 0%, rgb(34, 197, 94) ${volume * 100}%, rgb(55, 65, 81) ${volume * 100}%, rgb(55, 65, 81) 100%)`
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </>

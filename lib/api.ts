@@ -7,7 +7,7 @@ import papersData from "@/data/papers.json";
 import booksData from "@/data/books.json";
 import entertainmentData from "@/data/entertainment.json";
 import hobbiesData from "@/data/hobbies.json";
-import projectsData from "@/data/projects.json";
+// projectsData import removed
 import usesData from "@/data/uses.json";
 
 // Shared Types
@@ -32,7 +32,7 @@ export async function getBooks() {
 }
 
 export async function getProjects() {
-  return projectsData;
+  return [];
 }
 
 export async function getUses() {

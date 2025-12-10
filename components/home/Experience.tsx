@@ -44,7 +44,7 @@ export default function Experience({ items }: ExperienceProps) {
                             {/* Timeline dot */}
                             <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-green-500 border-4 border-white dark:border-gray-900 group-hover/item:scale-125 transition-transform"></div>
 
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 glass p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 {/* Company header with logo */}
                                 <div className="flex items-start gap-3">
                                     {exp.logo && (

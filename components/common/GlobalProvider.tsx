@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext, useState, useCallback, ReactNode } from "react";
+import confetti from "canvas-confetti";
+import { useKonamiCode } from "@/hooks/useKonamiCode";
 
 import { PLAYLIST } from "@/lib/constants";
 
@@ -22,6 +24,9 @@ interface GlobalState {
     showMusicPlayer: boolean;
     toggleMusicPlayer: () => void;
     setShowMusicPlayer: (show: boolean) => void;
+    // Sound State
+    isSoundEnabled: boolean;
+    toggleSound: () => void;
 }
 
 const GlobalContext = createContext<GlobalState | undefined>(undefined);
@@ -39,6 +44,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     // Music Player Visibility - hidden by default for better mobile UX
     const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
+    // Sound State
+    const [isSoundEnabled, setIsSoundEnabled] = useState(true);
+    const toggleSound = useCallback(() => setIsSoundEnabled((prev) => !prev), []);
+
     const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
     const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);
 
@@ -48,6 +57,16 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const prevTrack = useCallback(() => setCurrentTrackIndex((prev) => (prev - 1 + PLAYLIST.length) % PLAYLIST.length), []);
 
     const toggleMusicPlayer = useCallback(() => setShowMusicPlayer((prev) => !prev), []);
+
+    // Konami Code Easter Egg
+    useKonamiCode(() => {
+        confetti({
+            particleCount: 150,
+            spread: 100,
+            origin: { y: 0.6 },
+            colors: ['#22c55e', '#15803d', '#ffffff'], // Green theme
+        });
+    });
 
     return (
         <GlobalContext.Provider
@@ -67,6 +86,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
                 showMusicPlayer,
                 toggleMusicPlayer,
                 setShowMusicPlayer,
+                isSoundEnabled,
+                toggleSound,
             }}
         >
             {children}

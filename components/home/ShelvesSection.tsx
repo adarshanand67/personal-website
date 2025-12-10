@@ -62,7 +62,7 @@ export default function ShelvesSection() {
                         if ((e.target as HTMLElement).closest('a')) return;
                         setIsExpanded(!isExpanded);
                     }}
-                    className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
+                    className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
                 >
                     <section className="font-mono">
                         <div className="w-full text-left group mb-3">

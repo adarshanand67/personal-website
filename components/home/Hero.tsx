@@ -19,7 +19,7 @@ export default async function Hero() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center">
         {/* Left Column - Description */}
-        <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center">
+        <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center glass p-8 rounded-2xl">
           {/* Terminal prompt with enhanced styling */}
           <div className="font-mono mb-1 flex items-center gap-2 group">
             <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
@@ -84,7 +84,7 @@ export default async function Hero() {
         <div className="lg:sticky lg:top-20 max-lg:flex max-lg:flex-col max-lg:justify-center w-full">
           {/* CTF Challenge hint */}
           <div className="flex justify-center lg:justify-end mb-4 pr-4">
-            <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-green-100/50 dark:bg-green-900/20 border border-green-200/50 dark:border-green-800/50 backdrop-blur-sm hover:border-green-500/50 transition-all duration-300 cursor-help">
+            <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help">
               <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
               <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
                 Psst... hidden CTF challenge

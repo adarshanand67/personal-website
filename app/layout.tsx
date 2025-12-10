@@ -92,8 +92,9 @@ export default function RootLayout({
             <CommandMenu />
             {children}
             <MusicPlayer />
-            <MusicToggleButton />
-            <ChatWidget />
+            {/* <MusicToggleButton /> - Merged into MusicPlayer */}
+            {/* <ChatWidget /> */}
+            {/* // TODO: Implement Chatbot later */}
             <Footer />
             <script
               type="application/ld+json"

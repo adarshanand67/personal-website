@@ -67,29 +67,31 @@ export default function TechStack() {
         className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
           }`}
       >
-        {Object.entries(skillCategories).map(([category, skills]) => (
-          <div key={category}>
-            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">
-              {category}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => {
-                const url =
-                  techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
-                return (
-                  <Link
-                    key={skill}
-                    href={url}
-                    target="_blank"
-                    className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded text-sm hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-700 dark:hover:text-green-400 hover:border-green-500/50 transition-all duration-200"
-                  >
-                    {skill}
-                  </Link>
-                );
-              })}
+        <div className="glass p-6 rounded-xl space-y-6 shadow-sm">
+          {Object.entries(skillCategories).map(([category, skills]) => (
+            <div key={category}>
+              <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">
+                {category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => {
+                  const url =
+                    techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                  return (
+                    <Link
+                      key={skill}
+                      href={url}
+                      target="_blank"
+                      className="px-3 py-1.5 bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 rounded text-sm hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-700 dark:hover:text-green-400 hover:border-green-500/50 transition-all duration-200"
+                    >
+                      {skill}
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

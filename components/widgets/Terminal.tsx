@@ -7,6 +7,7 @@ import { toLeetSpeak } from "@/lib/utils/leet";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { commands } from "@/lib/terminal/commands";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
+import { MOCK_FILES } from "@/lib/terminal/mockFileSystem";
 import { ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 
@@ -183,43 +184,108 @@ export default function Terminal() {
       e.preventDefault();
       const parts = input.split(" ");
 
-      // If we are at the command part (first word, no space yet or just started typing it)
+      // Check if we are completing a command or an argument
       const isCommand = parts.length === 1;
       const currentToken = parts[parts.length - 1] || '';
-
-      let candidates: string[] = [];
       const cmd = parts[0]?.toLowerCase() || '';
 
+      let candidates: string[] = [];
+
       if (isCommand) {
+        // Complete commands
         candidates = Object.keys(commands);
-      } else if ((cmd === "cd" || cmd === "open") && parts.length === 2) {
-        candidates = [...DIRECTORIES];
+      } else {
+        // Complete arguments based on command
+        if (['cd', 'open'].includes(cmd)) {
+          // Navigation - only directories
+          candidates = [...DIRECTORIES];
+        } else {
+          // General - files and directories (simplified)
+          // For now, listing both MOCK_FILES and DIRECTORIES for file-related commands
+          // ideally we'd filter based on what the command expects, but this is a good approximation
+          candidates = [...Object.keys(MOCK_FILES), ...DIRECTORIES];
+        }
       }
 
       if (candidates.length > 0) {
-        const matches = candidates.filter((c) => c.startsWith(currentToken.toLowerCase()));
+        const matches = candidates.filter((c) => c.toLowerCase().startsWith(currentToken.toLowerCase()));
 
         if (matches.length === 1) {
+          // Single match - complete it
           parts[parts.length - 1] = matches[0]!;
-          setInput(parts.join(" ") + " ");
+          // Add a space if it's a command completion, essentially preparing for args
+          // If it's a directory/file, maybe user wants to continue path? 
+          // For simplified flat file system, just adding space is fine mostly, but standard shell adds / for dirs.
+          // Let's just add space for now.
+          setInput(parts.join(" ") + (isCommand ? " " : ""));
         } else if (matches.length > 1) {
-          // Find common prefix
-          let prefix: string = matches[0] || '';
+          // Multiple matches - find common prefix
+          let prefix = matches[0] || '';
+          // Case-insensitive matching for prefix finding is tricky if we want to preserve case of the candidate
+          // Let's use the first match as the baseline for case
+          const lowerPrefix = () => prefix.toLowerCase();
+
           for (let i = 1; i < matches.length; i++) {
-            while (!matches[i]!.startsWith(prefix)) {
+            while (!matches[i]!.toLowerCase().startsWith(lowerPrefix())) {
               prefix = prefix.substring(0, prefix.length - 1);
               if (prefix === "") break;
             }
           }
 
           if (prefix.length > currentToken.length) {
+            // We found a longer common prefix, complete to it
             parts[parts.length - 1] = prefix;
             setInput(parts.join(" "));
+          } else {
+            // Cannot complete further, show candidates
+            // We append a new line to the terminal output showing candidates
+            // This is standard shell behavior (e.g., zsh)
+            // But we need to make sure we don't spam if they keep pressing tab without typing
+            // For this implementation, we'll just append.
+            setLines((prev) => [...prev, `$ ${input}`, matches.join("  ")]);
           }
         }
       }
     }
   };
+
+  // Dragging state
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const initialPosRef = useRef({ x: 0, y: 0 });
+
+  const handleDragStart = (e: React.MouseEvent) => {
+    if (!isExpanded) return;
+    setIsDragging(true);
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+    initialPosRef.current = { ...position };
+  };
+
+  useEffect(() => {
+    const handleDrag = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragStartRef.current.x;
+      const dy = e.clientY - dragStartRef.current.y;
+      setPosition({
+        x: initialPosRef.current.x + dx,
+        y: initialPosRef.current.y + dy
+      });
+    };
+
+    const handleDragEnd = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handleDrag);
+      window.addEventListener('mouseup', handleDragEnd);
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleDrag);
+      window.removeEventListener('mouseup', handleDragEnd);
+    };
+  }, [isDragging]);
 
   const handleTerminalWrapperClick = (e: React.MouseEvent) => {
     // If collapsed, don't focus
@@ -231,6 +297,9 @@ export default function Terminal() {
       return;
     }
 
+    // Don't focus if dragging
+    if (isDragging) return;
+
     if (isIntroDone) {
       inputRef.current?.focus();
     }
@@ -241,7 +310,7 @@ export default function Terminal() {
       className="w-full max-w-4xl relative"
       onClick={handleTerminalWrapperClick}
     >
-      <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
+      <div className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300">
         <section className="font-mono">
           <SectionHeader
             title="Terminal"
@@ -251,8 +320,17 @@ export default function Terminal() {
           />
 
           <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-            <div className="w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base select-text relative">
-              <div className="bg-white/50 dark:bg-white/5 px-4 h-8 flex items-center gap-2 border-b border-white/20 dark:border-white/10">
+            <div
+              className={`w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base select-text relative ${isDragging ? 'cursor-grabbing z-50 shadow-green-500/20' : ''}`}
+              style={{
+                transform: `translate(${position.x}px, ${position.y}px)`,
+                transition: isDragging ? 'none' : 'transform 0.1s ease-out, opacity 0.5s ease-in-out'
+              }}
+            >
+              <div
+                onMouseDown={handleDragStart}
+                className="bg-white/50 dark:bg-white/5 px-4 h-8 flex items-center gap-2 border-b border-white/20 dark:border-white/10 cursor-grab active:cursor-grabbing select-none"
+              >
                 <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></div>
                 <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
                 <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>

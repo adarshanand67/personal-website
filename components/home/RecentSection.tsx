@@ -56,11 +56,11 @@ export default function RecentSection({
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
             >
-                <div className="space-y-2">
+                <div className="space-y-2 glass p-4 rounded-xl">
                     {items.map((item, index) => (
                         <div
                             key={index}
-                            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+                            className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors py-1"
                         >
                             <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
                                 {item.date && <span className="text-gray-500 text-xs">{item.date}</span>}
