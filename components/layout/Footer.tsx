@@ -62,6 +62,17 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* CTF Challenge hint */}
+          <div className="flex justify-center">
+            <div className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-100/80 to-emerald-50/80 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200/50 dark:border-green-800/50 hover:border-green-500/50 transition-all duration-300">
+              <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400">
+                Psst... there's a hidden CTF challenge in the terminal
+              </span>
+              <span className="text-xs text-green-600 dark:text-green-400 opacity-0 group-hover:opacity-100 transition-opacity">👀</span>
+            </div>
+          </div>
+
           {/* Keyboard shortcut hint */}
           <div className="pt-6 border-t border-gray-200/50 dark:border-gray-800/50">
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2 group">
