@@ -5,7 +5,6 @@ import TechStack from "@/components/home/TechStack";
 import Experience from "@/components/home/Experience";
 import GitHubStats from "@/components/widgets/GitHubStats";
 import ContactSection from "@/components/home/ContactSection";
-import NewsSection from "@/components/home/NewsSection";
 
 export default async function Home() {
   const experiences = await getExperiences();
@@ -31,9 +30,6 @@ export default async function Home() {
             <TechStack />
           </div>
         </div>
-
-        {/* Daily Headlines Section */}
-        <NewsSection />
       </div>
 
       {/* GitHub Stats with enhanced design */}

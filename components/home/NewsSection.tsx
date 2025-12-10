@@ -104,7 +104,7 @@ export default function NewsSection() {
     };
 
     return (
-        <div className="section w-full relative group">
+        <div className="w-full relative group">
             {/* Gradient Glow */}
             <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
@@ -113,7 +113,7 @@ export default function NewsSection() {
             >
                 {/* Header */}
                 <div
-                    className="px-6 py-4 border-b border-gray-200/50 dark:border-gray-800/50 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                    className="p-4 border-b border-gray-200/50 dark:border-gray-800/50 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                     onClick={() => setIsExpanded(!isExpanded)}
                 >
                     <SectionHeader
