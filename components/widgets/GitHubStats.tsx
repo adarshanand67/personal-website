@@ -8,9 +8,9 @@ export default async function GitHubStats() {
 
   return (
     <section className="section max-w-4xl mx-auto px-4 mb-16 font-mono">
-      <div className="relative">
-        <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl"></div>
-        <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-gray-800">
+      <div className="group relative">
+        <div className="absolute -inset-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
+        <div className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300">
           <h2 className="text-2xl font-bold mb-2">
             <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Open Source</span>
           </h2>
