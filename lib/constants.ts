@@ -31,16 +31,16 @@ export const TRACK_NAMES = [
 ] as const;
 
 export const TRACK_IMAGES = [
-    "https://m.media-amazon.com/images/M/MV5BYTlhNzJjYzYtNGU3My00ZDNiLWEyZjItYTdiOTIxOTc1YWQ0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Evangelion
-    "https://m.media-amazon.com/images/M/MV5BZjJlNzE5YzEtYzQwYS00NTBjLTk5YzEtYWQ3ZTI5YjgzNzNhXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // One Punch Man
-    "https://m.media-amazon.com/images/M/MV5BNDc2NjdmMjItZjlkNy00NjZjLTk0NjUtODZkMjRkMjNlMmRjXkEyXkFqcGdeQXVyMTA1OTcyNDQ4._V1_.jpg", // Pokemon
-    "https://m.media-amazon.com/images/M/MV5BNzJlNGNkNDctMjcwYy00YjkzLTk3YjMtNGRjN2Y1ZWY4NzJiXkEyXkFqcGdeQXVyNjI4OTE5OTM@._V1_.jpg", // Cowboy Bebop
-    "https://m.media-amazon.com/images/M/MV5BYjg3YjM3MGEtNTZkOS00ZDQ5LWFkN2YtOWFjMGE5MWMyYzZjXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Tokyo Ghoul
-    "https://m.media-amazon.com/images/M/MV5BNTBjZTJmNTctYTZkYS00ZmJhLWFkOTgtNjgzMzZmMjJiNzJlXkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg", // Samurai Champloo
-    "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg", // Naruto
-    "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg", // Naruto
-    "https://m.media-amazon.com/images/M/MV5BNzhiYjY3ZjUtZWJkMi00ZWNiLWFjNGMtNjkwZjMyNWJiMzRhXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg", // Death Note
-    "https://m.media-amazon.com/images/M/MV5BNzc5MTczNjQtOWFkNS00MjJmLWJiMzYtZjhjMDk5NTI2NmM5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg", // Attack on Titan
+    "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg", // Neon Genesis Evangelion
+    "https://cdn.myanimelist.net/images/anime/12/76049l.jpg", // One Punch Man
+    "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg", // Pokémon
+    "https://cdn.myanimelist.net/images/anime/4/19644l.jpg", // Cowboy Bebop
+    "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg", // Tokyo Ghoul
+    "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg", // Samurai Champloo (using placeholder)
+    "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg", // Naruto
+    "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg", // Naruto
+    "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg", // Death Note
+    "https://cdn.myanimelist.net/images/anime/10/47347l.jpg", // Attack on Titan
 ] as const;
 
 export const INTRO_LINES = (toLeet: (t: string) => string) => [

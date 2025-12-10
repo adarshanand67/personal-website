@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X, Maximize2 } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, X } from "lucide-react";
 import { useGlobalState } from "@/components/common/GlobalProvider";
 import { PLAYLIST, TRACK_NAMES, TRACK_IMAGES, AUDIO_CONFIG, ERROR_MESSAGES } from "@/lib";
 import { useMounted } from "@/lib/hooks";
@@ -23,7 +23,6 @@ export default function MusicPlayer() {
     const [position, setPosition] = useState({ x: 20, y: 20 });
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-    const [isCompact, setIsCompact] = useState(true); // Start in compact mode
     const playerRef = useRef<HTMLDivElement>(null);
 
     const [currentTime, setCurrentTime] = useState(0);
@@ -33,8 +32,8 @@ export default function MusicPlayer() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             setPosition({
-                x: window.innerWidth - 380,
-                y: window.innerHeight - 200
+                x: window.innerWidth - 300,
+                y: window.innerHeight - 420
             });
         }
     }, [mounted]);
@@ -171,7 +170,7 @@ export default function MusicPlayer() {
             style={{
                 left: `${position.x}px`,
                 top: `${position.y}px`,
-                width: isCompact ? '280px' : '360px'
+                width: '280px'
             }}
             onMouseDown={handleMouseDown}
         >
@@ -185,86 +184,65 @@ export default function MusicPlayer() {
                 crossOrigin="anonymous"
             />
 
-            {/* Spotify-inspired Player */}
+            {/* Mini Cute Player */}
             <div className="relative group">
                 {/* Glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition duration-500"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition duration-500"></div>
 
                 {/* Main player container */}
                 <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
-                    {/* Header with controls */}
-                    <div className="flex items-center justify-between px-4 py-2 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
+                    {/* Header */}
+                    <div className="flex items-center justify-between px-3 py-2 bg-black/40 backdrop-blur-sm border-b border-gray-800/50">
                         <div className="flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}></div>
                             <span className="text-xs text-gray-400 font-medium">
                                 {isPlaying ? 'Playing' : 'Paused'}
                             </span>
                         </div>
-                        <div className="flex items-center gap-1">
-                            {isCompact && (
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setIsCompact(false);
-                                    }}
-                                    className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                                    aria-label="Expand"
-                                >
-                                    <Maximize2 size={14} className="text-gray-400" />
-                                </button>
-                            )}
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    toggleMusicPlayer();
-                                }}
-                                className="p-1.5 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer"
-                                aria-label="Close"
-                            >
-                                <X size={14} className="text-gray-400 hover:text-red-400" />
-                            </button>
-                        </div>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                toggleMusicPlayer();
+                            }}
+                            className="p-1 rounded-lg hover:bg-red-500/20 transition-colors cursor-pointer"
+                            aria-label="Close"
+                        >
+                            <X size={14} className="text-gray-400 hover:text-red-400" />
+                        </button>
                     </div>
 
-                    {/* Album art with anime poster */}
-                    {!isCompact && (
-                        <div className="relative h-48 overflow-hidden">
-                            <Image
-                                src={TRACK_IMAGES[currentTrackIndex]}
-                                alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                            {/* Overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                            {/* Playing indicator */}
-                            {isPlaying && (
-                                <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
-                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                                    <span className="text-xs text-white font-medium">Playing</span>
-                                </div>
-                            )}
-                        </div>
-                    )}
+                    {/* Anime Image */}
+                    <div className="relative h-40 overflow-hidden">
+                        <Image
+                            src={TRACK_IMAGES[currentTrackIndex]}
+                            alt={TRACK_NAMES[currentTrackIndex] || "Album Art"}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        {/* Playing indicator */}
+                        {isPlaying && (
+                            <div className="absolute bottom-2 right-2 flex items-center gap-1.5 bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full">
+                                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                <span className="text-xs text-white font-medium">Playing</span>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Track info */}
-                    <div className="px-4 py-3 bg-black/20">
-                        <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-sm font-semibold text-white truncate flex-1">
-                                {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
-                            </h3>
-                            <span className="text-xs text-gray-500 ml-2">
-                                {currentTrackIndex + 1}/{PLAYLIST.length}
-                            </span>
-                        </div>
-                        <p className="text-xs text-gray-400">Playlist • {PLAYLIST.length} tracks</p>
+                    <div className="px-3 py-2 bg-black/20">
+                        <h3 className="text-xs font-semibold text-white truncate">
+                            {TRACK_NAMES[currentTrackIndex] || "Unknown Track"}
+                        </h3>
+                        <p className="text-xs text-gray-400 mt-0.5">Track {currentTrackIndex + 1}/{PLAYLIST.length}</p>
                     </div>
 
                     {/* Progress bar */}
-                    <div className="px-4 py-2 bg-black/20">
-                        <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xs text-gray-500 w-10 text-right">{formatTime(currentTime)}</span>
+                    <div className="px-3 py-2 bg-black/20">
+                        <div className="flex items-center gap-1.5 mb-1">
+                            <span className="text-xs text-gray-500 w-8 text-right">{formatTime(currentTime)}</span>
                             <div className="flex-1 group/progress">
                                 <input
                                     type="range"
@@ -274,8 +252,8 @@ export default function MusicPlayer() {
                                     onChange={handleSeek}
                                     className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
                                         [&::-webkit-slider-thumb]:appearance-none 
-                                        [&::-webkit-slider-thumb]:w-3 
-                                        [&::-webkit-slider-thumb]:h-3 
+                                        [&::-webkit-slider-thumb]:w-2.5 
+                                        [&::-webkit-slider-thumb]:h-2.5 
                                         [&::-webkit-slider-thumb]:bg-white 
                                         [&::-webkit-slider-thumb]:rounded-full
                                         [&::-webkit-slider-thumb]:shadow-lg
@@ -289,51 +267,51 @@ export default function MusicPlayer() {
                                     }}
                                 />
                             </div>
-                            <span className="text-xs text-gray-500 w-10">{formatTime(duration)}</span>
+                            <span className="text-xs text-gray-500 w-8">{formatTime(duration)}</span>
                         </div>
                     </div>
 
                     {/* Controls */}
-                    <div className="px-4 py-4 bg-black/30">
-                        <div className="flex items-center justify-center gap-4 mb-4">
+                    <div className="px-3 py-3 bg-black/30">
+                        <div className="flex items-center justify-center gap-3 mb-3">
                             <button
                                 onClick={prevTrack}
-                                className="p-2 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
+                                className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
                                 aria-label="Previous"
                             >
-                                <SkipBack size={20} className="text-gray-300" fill="currentColor" />
+                                <SkipBack size={16} className="text-gray-300" fill="currentColor" />
                             </button>
 
                             <button
                                 onClick={togglePlay}
-                                className="p-3 rounded-full bg-white hover:bg-gray-100 hover:scale-105 transition-all shadow-lg cursor-pointer"
+                                className="p-2.5 rounded-full bg-white hover:bg-gray-100 hover:scale-105 transition-all shadow-lg cursor-pointer"
                                 aria-label={isPlaying ? "Pause" : "Play"}
                             >
                                 {isPlaying ?
-                                    <Pause size={24} className="text-black" fill="currentColor" /> :
-                                    <Play size={24} className="text-black ml-0.5" fill="currentColor" />
+                                    <Pause size={18} className="text-black" fill="currentColor" /> :
+                                    <Play size={18} className="text-black ml-0.5" fill="currentColor" />
                                 }
                             </button>
 
                             <button
                                 onClick={nextTrack}
-                                className="p-2 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
+                                className="p-1.5 rounded-full hover:bg-white/10 transition-all hover:scale-110 cursor-pointer"
                                 aria-label="Next"
                             >
-                                <SkipForward size={20} className="text-gray-300" fill="currentColor" />
+                                <SkipForward size={16} className="text-gray-300" fill="currentColor" />
                             </button>
                         </div>
 
                         {/* Volume control */}
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                             <button
                                 onClick={handleMute}
-                                className="p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                                className="p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                                 aria-label={isMuted ? "Unmute" : "Mute"}
                             >
                                 {isMuted ?
-                                    <VolumeX size={18} className="text-gray-400" /> :
-                                    <Volume2 size={18} className="text-gray-400" />
+                                    <VolumeX size={14} className="text-gray-400" /> :
+                                    <Volume2 size={14} className="text-gray-400" />
                                 }
                             </button>
 
@@ -347,8 +325,8 @@ export default function MusicPlayer() {
                                     onChange={(e) => setVolume(parseFloat(e.target.value))}
                                     className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer
                                         [&::-webkit-slider-thumb]:appearance-none 
-                                        [&::-webkit-slider-thumb]:w-3 
-                                        [&::-webkit-slider-thumb]:h-3 
+                                        [&::-webkit-slider-thumb]:w-2.5 
+                                        [&::-webkit-slider-thumb]:h-2.5 
                                         [&::-webkit-slider-thumb]:bg-white 
                                         [&::-webkit-slider-thumb]:rounded-full
                                         [&::-webkit-slider-thumb]:shadow-lg
@@ -363,7 +341,7 @@ export default function MusicPlayer() {
                                     aria-label="Volume"
                                 />
                             </div>
-                            <span className="text-xs text-gray-500 w-8 text-right">{Math.round(volume * 100)}</span>
+                            <span className="text-xs text-gray-500 w-6 text-right">{Math.round(volume * 100)}</span>
                         </div>
                     </div>
                 </div>
