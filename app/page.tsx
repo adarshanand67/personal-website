@@ -18,7 +18,7 @@ export default async function Home() {
     isExternal: false,
   }));
 
-  const recentPapers = papers.slice(0, 5).map((paper: { title: string; url: string }) => ({
+  const recentPapers = papers.slice(0, 4).map((paper: { title: string; url: string }) => ({
     title: paper.title,
     url: paper.url,
     isExternal: true,

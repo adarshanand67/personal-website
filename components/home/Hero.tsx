@@ -78,51 +78,6 @@ export default async function Hero() {
               />
             ))}
           </div>
-
-          {/* Enhanced social buttons */}
-          <ul className="buttons flex flex-wrap gap-4">
-            <Link
-              className="button group relative overflow-hidden bg-gradient-to-r from-white to-gray-50 dark:from-gray-900 dark:to-black border-2 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300 rounded-lg px-6 py-3 flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5"
-              href={profile.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`Follow ${profile.name} on LinkedIn`}
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-              <span className="icon relative z-10 group-hover:scale-110 transition-transform">
-                <Linkedin className="w-5 h-5" />
-              </span>
-              <span className="relative z-10 font-medium">LinkedIn</span>
-            </Link>
-            <Link
-              className="button group relative overflow-hidden bg-gradient-to-r from-white to-gray-50 dark:from-gray-900 dark:to-black border-2 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300 rounded-lg px-6 py-3 flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5"
-              href={profile.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`Follow ${profile.name} on GitHub`}
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-              <span className="icon relative z-10 group-hover:scale-110 transition-transform">
-                <Github className="w-5 h-5" />
-              </span>
-              <span className="relative z-10 font-medium">GitHub</span>
-            </Link>
-            {profile.socials.email && (
-              <Link
-                className="button group relative overflow-hidden bg-gradient-to-r from-white to-gray-50 dark:from-gray-900 dark:to-black border-2 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 hover:border-green-500 dark:hover:border-green-400 transition-all duration-300 rounded-lg px-6 py-3 flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5"
-                href={`mailto:${profile.socials.email}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={`Email ${profile.name}`}
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-                <span className="icon relative z-10 group-hover:scale-110 transition-transform">
-                  <Mail className="w-5 h-5" />
-                </span>
-                <span className="relative z-10 font-medium">Email</span>
-              </Link>
-            )}
-          </ul>
         </div>
 
         {/* Right Column - Terminal */}
