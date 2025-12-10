@@ -4,28 +4,32 @@
     "type": "Anime",
     "status": "Watching",
     "notes": "S1",
-    "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
+    "recommended": true
   },
   {
     "title": "Haikyu",
     "type": "Anime",
     "status": "Watching",
     "notes": "S1,2,3,4",
-    "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
+    "recommended": true
   },
   {
     "title": "Code Geass",
     "type": "Anime",
     "status": "Watching",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
+    "recommended": true
   },
   {
     "title": "Solo Leveling",
     "type": "Anime",
     "status": "Watching",
     "notes": "S1,2",
-    "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg"
+    "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
+    "recommended": true
   },
   {
     "title": "Pokémon",
