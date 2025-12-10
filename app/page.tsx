@@ -104,13 +104,13 @@ export default async function Home() {
               </p>
 
               {/* Contact Cards Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* LinkedIn Card */}
                 <a
                   href="https://linkedin.com/in/adarshanand67"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 border-2 border-blue-200 dark:border-blue-800 hover:border-blue-500 dark:hover:border-blue-400 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1"
+                  className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -131,7 +131,7 @@ export default async function Home() {
                 {/* Email Card */}
                 <a
                   href="mailto:adarshan20302@gmail.com"
-                  className="group relative overflow-hidden bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/20 border-2 border-red-200 dark:border-red-800 hover:border-red-500 dark:hover:border-red-400 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 hover:-translate-y-1"
+                  className="group relative overflow-hidden bg-gradient-to-br from-red-50 to-red-100/50 dark:from-red-950/30 dark:to-red-900/20 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -154,7 +154,7 @@ export default async function Home() {
                   href="https://github.com/adarshanand67"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/30 dark:to-gray-900/20 border-2 border-gray-200 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-400 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/20 hover:-translate-y-1"
+                  className="group relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/30 dark:to-gray-900/20 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/20 hover:-translate-y-1"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0 w-10 h-10 bg-gray-800 dark:bg-gray-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -165,29 +165,6 @@ export default async function Home() {
                     <div className="flex-1 min-w-0">
                       <div className="text-xs text-gray-600 dark:text-gray-400 font-semibold mb-0.5">GitHub</div>
                       <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">adarshanand67</div>
-                    </div>
-                    <svg className="w-5 h-5 text-gray-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </a>
-
-                {/* Twitter/X Card */}
-                <a
-                  href="https://x.com/adarshanand67"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 dark:from-gray-800/30 dark:to-gray-900/20 border-2 border-gray-200 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-400 rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/20 hover:-translate-y-1"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0 w-10 h-10 bg-black dark:bg-gray-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs text-gray-600 dark:text-gray-400 font-semibold mb-0.5">X (Twitter)</div>
-                      <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">@adarshanand67</div>
                     </div>
                     <svg className="w-5 h-5 text-gray-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
