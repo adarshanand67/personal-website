@@ -66,25 +66,25 @@ export const base64: Command = createCommand(
                     setTimeout(() => {
                         addLines(setLines, [
                             '',
-                            '🎉🎉🎉 CONGRATULATIONS! 🎉🎉🎉',
+                            'CONGRATULATIONS!',
                             '═══════════════════════════════════',
                             '',
-                            '🏆 You found the hidden flag!',
+                            'You found the hidden flag!',
                             '',
-                            `✨ Flag: ${DECODED_FLAG}`,
+                            `Flag: ${DECODED_FLAG}`,
                             '',
-                            '🎁 Your Rewards:',
-                            '   • Terminal Master Achievement Unlocked! 🚀',
+                            'Your Rewards:',
+                            '   • Terminal Master Achievement Unlocked!',
                             '   • Secret Resource: System Design Primer',
                             '   • Opening your reward in 3 seconds...',
                             '',
-                            '💡 Pro Tip: Check out these resources:',
+                            'Pro Tip: Check out these resources:',
                             '   • System Design: https://github.com/donnemartin/system-design-primer',
                             '   • CTF Practice: https://overthewire.org/wargames/',
                             '   • Linux Commands: https://explainshell.com/',
                             '',
-                            '📧 DM me on LinkedIn with this flag!',
-                            '   I might have more challenges for you 😉',
+                            'DM me on LinkedIn with this flag!',
+                            '   I might have more challenges for you',
                             '',
                             '═══════════════════════════════════',
                             ''
@@ -94,7 +94,7 @@ export const base64: Command = createCommand(
                         setTimeout(() => {
                             window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
                             addLine(setLines, '');
-                            addLine(setLines, '😏 Enjoy your reward! You\'ve been rickrolled! 🎵');
+                            addLine(setLines, 'Enjoy your reward! You\'ve been rickrolled!');
                             addLine(setLines, '');
                         }, 3000);
                     }, 100);

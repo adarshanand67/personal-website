@@ -51,7 +51,7 @@ export const mkdir: Command = createCommand(
         if (args.length === 0) {
             showUsage(setLines, 'mkdir [directory]');
         } else {
-            addLine(setLines, `mkdir: cannot create directory '${args[0]}': Read-only file system 😅`);
+            addLine(setLines, `mkdir: cannot create directory '${args[0]}': Read-only file system`);
         }
     },
     {
@@ -214,7 +214,7 @@ export const tar: Command = createCommand(
                 addLine(setLines, `Created ${filename}`);
             }
         } else {
-            addLine(setLines, 'tar: This is a web portfolio, not a real filesystem! 📦');
+            addLine(setLines, 'tar: This is a web portfolio, not a real filesystem.');
         }
     },
     {
@@ -254,7 +254,7 @@ export const unzip: Command = createCommand(
                 `Archive:  ${args[0]}`,
                 '  inflating: portfolio.html',
                 '  inflating: styles.css',
-                'Done! 📂'
+                'Done!'
             ];
             addLines(setLines, output);
         }

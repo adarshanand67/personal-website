@@ -33,7 +33,7 @@ export default function MusicPlayer() {
         if (typeof window !== 'undefined') {
             setPosition({
                 x: window.innerWidth - 300,
-                y: window.innerHeight - 420
+                y: window.innerHeight - 500
             });
         }
     }, [mounted]);

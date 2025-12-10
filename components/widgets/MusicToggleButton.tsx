@@ -14,8 +14,8 @@ export default function MusicToggleButton() {
         <button
             onClick={toggleMusicPlayer}
             className={`
-                fixed bottom-6 left-6 z-40
-                p-4 rounded-full
+                fixed bottom-8 left-8 z-40
+                p-3 rounded-full
                 bg-gradient-to-br from-green-500 to-emerald-600
                 hover:from-green-600 hover:to-emerald-700
                 shadow-lg hover:shadow-xl
@@ -29,7 +29,7 @@ export default function MusicToggleButton() {
         >
             <Music
                 className={`
-                    w-6 h-6 text-white
+                    w-5 h-5 text-white
                     transition-transform duration-300
                     ${showMusicPlayer ? 'rotate-0' : 'group-hover:rotate-12'}
                 `}
