@@ -22,7 +22,6 @@ const skillCategories = {
     "Data Loss Prevention",
     "Trellix ePO",
     "Endpoint Security",
-    "Metrelic CPU",
     "EDR (Endpoint Detection & Response)",
     "XDR (Extended Detection & Response)",
     "PowerShell",
