@@ -267,5 +267,33 @@ export const utilityCommands = {
     which,
     whereis,
     find,
-    man
+    man,
+    theme
 };
+
+export const theme: Command = createCommand(
+    'theme',
+    'Switch color theme',
+    (args, { setLines, setTheme }) => {
+        if (args.length === 0) {
+            showUsage(setLines, 'theme [dark|light|system]');
+            return;
+        }
+
+        const mode = args[0].toLowerCase();
+        if (['dark', 'light', 'system'].includes(mode)) {
+            setTheme(mode as 'dark' | 'light' | 'system');
+            addLine(setLines, `Theme set to ${mode} mode.`);
+        } else {
+            addLine(setLines, `Invalid theme: ${mode}. Use dark, light, or system.`);
+        }
+    },
+    {
+        category: 'utility',
+        usage: 'theme [dark|light|system]',
+        examples: [
+            'theme dark',
+            'theme light'
+        ]
+    }
+);

@@ -213,3 +213,14 @@ export const getFileType = (filename: string): string => {
     }
     return 'data';
 };
+
+/**
+ * Gets files in a directory
+ */
+export const getDirectoryContent = (path: string): string[] => {
+    // Simple mock implementation: everything is in root
+    if (path === '.' || path === './' || path === '/') {
+        return Object.keys(MOCK_FILES).sort();
+    }
+    return [];
+};

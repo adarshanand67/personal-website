@@ -18,6 +18,7 @@ import { environmentCommands } from './environment';
 import { mathCommands } from './math';
 import { funCommands } from './fun';
 import { ctfCommands } from './ctf';
+import { personalCommands } from './personal';
 
 /**
  * All available terminal commands
@@ -59,6 +60,9 @@ export const commands: Record<string, Command> = {
 
     // CTF Challenge (Hidden)
     ...ctfCommands,
+
+    // Personal Branding
+    ...personalCommands,
 };
 
 /**

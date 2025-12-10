@@ -37,7 +37,7 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
     // Music Player Visibility - hidden by default for better mobile UX
-    const [showMusicPlayer, setShowMusicPlayer] = useState(false);
+    const [showMusicPlayer, setShowMusicPlayer] = useState(true);
 
     const toggleMatrix = useCallback(() => setIsMatrixEnabled((prev) => !prev), []);
     const setMatrix = useCallback((enabled: boolean) => setIsMatrixEnabled(enabled), []);

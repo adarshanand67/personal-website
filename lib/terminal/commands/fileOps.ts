@@ -1,6 +1,7 @@
 import { Command } from '../types';
 import { createCommand, addLine, addLines, showUsage, showPermissionDenied, showFileNotFound, parseFlags, getFlagValue } from '../helpers';
 import { getFileContent, fileExists, SAMPLE_FILE_LINES, ARCHIVE_FILES, getFileType } from '../mockFileSystem';
+import { TERMINAL_MESSAGES } from '../messages';
 
 /**
  * File operation commands: cat, mkdir, touch, rm, mv, cp, chmod, chown, ln, tar, zip, unzip, file
@@ -51,7 +52,7 @@ export const mkdir: Command = createCommand(
         if (args.length === 0) {
             showUsage(setLines, 'mkdir [directory]');
         } else {
-            addLine(setLines, `mkdir: cannot create directory '${args[0]}': Read-only file system`);
+            addLine(setLines, TERMINAL_MESSAGES.FILE_OPS.MKDIR_FAIL(args[0]));
         }
     },
     {
@@ -67,7 +68,7 @@ export const touch: Command = createCommand(
         if (args.length === 0) {
             showUsage(setLines, 'touch [file]');
         } else {
-            addLine(setLines, `touch: cannot touch '${args[0]}': Read-only file system`);
+            addLine(setLines, TERMINAL_MESSAGES.FILE_OPS.TOUCH_FAIL(args[0]));
         }
     },
     {
@@ -115,7 +116,7 @@ export const cp: Command = createCommand(
         if (args.length < 2) {
             showUsage(setLines, 'cp [source] [destination]');
         } else {
-            addLine(setLines, `cp: cannot create regular file '${args[1]}': Permission denied`);
+            addLine(setLines, TERMINAL_MESSAGES.ERRORS.PERMISSION_DENIED('cp'));
         }
     },
     {
@@ -131,7 +132,7 @@ export const chmod: Command = createCommand(
         if (args.length < 2) {
             showUsage(setLines, 'chmod [mode] [file]');
         } else {
-            addLine(setLines, `chmod: changing permissions of '${args[1]}': Operation not permitted`);
+            addLine(setLines, TERMINAL_MESSAGES.ERRORS.PERMISSION_DENIED('chmod'));
         }
     },
     {
@@ -147,7 +148,7 @@ export const chown: Command = createCommand(
         if (args.length < 2) {
             showUsage(setLines, 'chown [owner] [file]');
         } else {
-            addLine(setLines, `chown: changing ownership of '${args[1]}': Operation not permitted`);
+            addLine(setLines, TERMINAL_MESSAGES.ERRORS.PERMISSION_DENIED('chown'));
         }
     },
     {
@@ -163,7 +164,7 @@ export const ln: Command = createCommand(
         if (args.length < 2) {
             showUsage(setLines, 'ln [-s] [target] [link]');
         } else {
-            addLine(setLines, 'ln: failed to create link: Operation not permitted');
+            addLine(setLines, TERMINAL_MESSAGES.ERRORS.PERMISSION_DENIED('ln'));
         }
     },
     {
@@ -196,7 +197,7 @@ export const tar: Command = createCommand(
                 const output = [
                     `Extracting ${filename}...`,
                     ...ARCHIVE_FILES.map(f => `x ${f}`),
-                    'Done!'
+                    TERMINAL_MESSAGES.FILE_OPS.UNZIP_DONE
                 ];
                 addLines(setLines, output);
             } else {
@@ -207,14 +208,14 @@ export const tar: Command = createCommand(
                 const output = [
                     `Creating ${filename}...`,
                     ...ARCHIVE_FILES.map(f => `a ${f}`),
-                    'Done!'
+                    TERMINAL_MESSAGES.FILE_OPS.UNZIP_DONE
                 ];
                 addLines(setLines, output);
             } else {
                 addLine(setLines, `Created ${filename}`);
             }
         } else {
-            addLine(setLines, 'tar: This is a web portfolio, not a real filesystem.');
+            addLine(setLines, TERMINAL_MESSAGES.FILE_OPS.TAR_MSG);
         }
     },
     {
@@ -234,7 +235,7 @@ export const zip: Command = createCommand(
         if (args.length === 0) {
             showUsage(setLines, 'zip [archive] [files...]');
         } else {
-            addLine(setLines, `  adding: ${args[0]} (deflated 42%)`);
+            addLine(setLines, TERMINAL_MESSAGES.FILE_OPS.ZIP_MSG(args[0]));
         }
     },
     {
@@ -254,7 +255,7 @@ export const unzip: Command = createCommand(
                 `Archive:  ${args[0]}`,
                 '  inflating: portfolio.html',
                 '  inflating: styles.css',
-                'Done!'
+                TERMINAL_MESSAGES.FILE_OPS.UNZIP_DONE
             ];
             addLines(setLines, output);
         }
