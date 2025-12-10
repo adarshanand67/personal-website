@@ -94,7 +94,7 @@ export const CONTACT_INFO = [
 
 export const SYSTEM_STATS = (isMatrix: boolean) => [
     "                    \x1b[32m'c.\x1b[0m          \x1b[1madarsh_anand@Adarshs-MacBook-Air.local\x1b[0m",
-    "                 \x1b[33m,xNMM.\x1b[0m          \x1b[90m──────────────────────────────────────\x1b[0m",
+    "                 \x1b[33m,xNMM.\x1b[0m          ",
     "               \x1b[31m.OMMMMo\x1b[0m           \x1b[36mOS:\x1b[0m macOS 27.0 26A5289h arm64",
     "               \x1b[31mOMMM0,\x1b[0m            \x1b[36mHost:\x1b[0m Mac16,13",
     "     \x1b[31m.;loddo:'\x1b[0m \x1b[33mloolloddol;.\x1b[0m      \x1b[36mKernel:\x1b[0m 27.0.0",
