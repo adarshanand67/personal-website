@@ -94,7 +94,7 @@ export const tree: Command = createCommand(
             '├── papershelf/',
             '├── bookshelf/',
             '├── animeshelf/',
-            '└── HobbyShelf/'
+            '└── hobby/'
         ];
         addLines(setLines, treeOutput);
     },

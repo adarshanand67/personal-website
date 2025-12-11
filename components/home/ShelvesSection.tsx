@@ -39,8 +39,8 @@ const SHELVES: Shelf[] = [
         color: "text-green-500"
     },
     {
-        name: "hobbies",
-        path: "/HobbyShelf",
+        name: "hobby",
+        path: "/hobbyshelf",
         description: "Interests outside of coding",
         icon: Gamepad2,
         color: "text-green-500"

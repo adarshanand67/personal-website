@@ -281,7 +281,7 @@ export const getDirectoryContent = (path: string): string[] => {
             return ['clean-code.epub', 'pragmatic-programmer.pdf', 'designing-data-intensive-apps.mobi'];
         case 'anime':
             return ['evangelion/', 'cowboy-bebop/', 'naruto/'];
-        case 'hobbyshelf':
+        case 'hobby':
             return ['photography/', 'gaming/', 'reading/'];
         default:
             return [];

@@ -17,7 +17,7 @@ export default function Navbar() {
   }, []);
   return (
     <>
-      <div className="h-24" /> {}
+      <div className="h-24" /> { }
       <nav
         className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
         role="navigation"
@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="w-full max-w-5xl glass rounded-2xl shadow-sm transition-all duration-300">
           <div className="px-4 md:px-6">
             <div className="flex items-center h-14">
-              {}
+              { }
               <button
                 className={`md:hidden p-2 mr-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${isActive ? "is-active" : ""}`}
                 aria-label="menu"
@@ -49,18 +49,18 @@ export default function Navbar() {
                   />
                 </div>
               </button>
-              {}
+              { }
               <Link
                 href={ROUTES.HOME}
                 className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2 font-mono whitespace-nowrap mr-auto md:mr-0"
               >
                 ~/
               </Link>
-              {}
+              { }
               <div className="md:hidden">
                 <ThemeToggle />
               </div>
-              {}
+              { }
               <div className="hidden md:flex md:items-center md:ml-auto gap-1 text-sm font-medium">
                 <GlitchLink
                   href={ROUTES.BLOG_SHELF}
@@ -90,9 +90,9 @@ export default function Navbar() {
                   href={ROUTES.HOBBY_SHELF}
                   className="px-3 py-2 rounded-lg text-foreground/80 hover:bg-gray-100 dark:hover:bg-gray-800 font-mono transition-colors"
                 >
-                  HobbyShelf
+                  Hobbyshelf
                 </GlitchLink>
-                {}
+                { }
                 <div className="w-px h-5 bg-gray-200 dark:bg-gray-800 mx-2"></div>
                 <div className="flex items-center gap-2">
                   <button
@@ -110,7 +110,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            {}
+            { }
             <div
               id="menu"
               className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isActive ? "max-h-80 pb-6 opacity-100" : "max-h-0 opacity-0"
@@ -150,7 +150,7 @@ export default function Navbar() {
                   className="w-full text-center py-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400"
                   onClick={() => setIsActive(false)}
                 >
-                  HobbyShelf
+                  Hobbyshelf
                 </Link>
                 <div className="flex items-center gap-2 pt-2 w-full justify-center">
                   <button

@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { siteConfig } from '@/config';
+import { siteConfig } from '@/config/site.config';
 export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/papershelf',
     '/bookshelf',
     '/animeshelf',
-    '/HobbyShelf'
+    '/hobbyshelf'
   ];
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,

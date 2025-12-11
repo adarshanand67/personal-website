@@ -203,8 +203,30 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   }
 }
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
+  private iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    Dumbbell: require('lucide-react').Dumbbell,
+    Tv: require('lucide-react').Tv,
+    Book: require('lucide-react').Book,
+    Trophy: require('lucide-react').Trophy,
+    Flower2: require('lucide-react').Flower2,
+    Bike: require('lucide-react').Bike,
+    Mountain: require('lucide-react').Mountain,
+    Dices: require('lucide-react').Dices,
+    Waves: require('lucide-react').Waves,
+    Plane: require('lucide-react').Plane,
+    Mic: require('lucide-react').Mic,
+    Coffee: require('lucide-react').Coffee,
+    ChefHat: require('lucide-react').ChefHat,
+    Users: require('lucide-react').Users,
+    Gamepad2: require('lucide-react').Gamepad2,
+  };
+
   private getIcon(iconName: string): ReactNode {
-    return null;
+    const IconComponent = this.iconMap[iconName];
+    if (IconComponent) {
+      return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
+    }
+    return <span className="text-2xl">🎮</span>;
   }
   renderItem(hobby: Hobby, index: number): ReactNode {
     return (

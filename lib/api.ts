@@ -5,7 +5,7 @@ import experiencesData from "@/data/experiences.json";
 import papersData from "@/data/papers.json";
 import booksData from "@/data/books.json";
 import entertainmentData from "@/data/entertainment.json";
-import hobbiesData from "@/data/hobbies.json";
+import hobbyData from "@/data/hobby.json";
 import usesData from "@/data/uses.json";
 import { EntertainmentItem, EntertainmentType, WatchStatus } from "@/types/definitions";
 
@@ -15,7 +15,7 @@ export const getPapers = async () => papersData;
 export const getBooks = async () => booksData;
 export const getProjects = async () => [];
 export const getUses = async () => usesData;
-export const getHobbies = async () => hobbiesData;
+export const getHobby = async () => hobbyData;
 
 export const getEntertainment = async (): Promise<EntertainmentItem[]> =>
   entertainmentData.map((item: any) => ({

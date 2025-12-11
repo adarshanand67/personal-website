@@ -1,6 +1,6 @@
 import { Command } from '../types';
 import { createCommand, addLines } from '../helpers';
-import { siteConfig } from '@/config';
+import { siteConfig } from '@/config/site.config';
 import { TERMINAL_MESSAGES } from '../messages';
 export const resume: Command = createCommand(
     'resume',

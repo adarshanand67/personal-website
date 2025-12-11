@@ -2,7 +2,7 @@ import { ShelfType } from "@/types/definitions";
 export interface ShelfConfig {
   title: string;
   description: string;
-  command: string; 
+  command: string;
   searchPlaceholder: string;
   type: ShelfType;
 }
@@ -42,11 +42,11 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     searchPlaceholder: "Search projects...",
     type: ShelfType.Project,
   },
-  hobbies: {
+  hobby: {
     title: "HobbyShelf",
     description: "What I do when I'm not coding.",
     command: "ls -la ~/freetime",
-    searchPlaceholder: "Search hobbies...",
+    searchPlaceholder: "Search hobby...",
     type: ShelfType.Hobby,
   },
 };
