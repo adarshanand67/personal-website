@@ -9,43 +9,24 @@ interface Shelf {
     icon: React.ElementType;
     color: string;
 }
-const SHELVES: Shelf[] = [
-    {
-        name: "blogs",
-        path: "/blogshelf",
-        description: "Technical articles and thoughts",
-        icon: Feather,
-        color: "text-green-500"
-    },
-    {
-        name: "papers",
-        path: "/papershelf",
-        description: "Research papers and publications",
-        icon: FileText,
-        color: "text-green-500"
-    },
-    {
-        name: "books",
-        path: "/bookshelf",
-        description: "Reading list and notes",
-        icon: Book,
-        color: "text-green-500"
-    },
-    {
-        name: "anime",
-        path: "/animeshelf",
-        description: "Watch list and favorites",
-        icon: Tv,
-        color: "text-green-500"
-    },
-    {
-        name: "hobby",
-        path: "/hobbyshelf",
-        description: "Interests outside of coding",
-        icon: Gamepad2,
-        color: "text-green-500"
-    }
-];
+import { shelfConfigs } from "@/config/shelves";
+import { DIRECTORY_MAP } from "@/lib/constants";
+
+const SHELF_ICONS: Record<string, any> = {
+    blogs: Feather,
+    papers: FileText,
+    books: Book,
+    anime: Tv,
+    hobby: Gamepad2
+};
+
+const SHELVES = ["blogs", "papers", "books", "anime", "hobby"].map(key => ({
+    name: key,
+    path: DIRECTORY_MAP[key],
+    description: shelfConfigs[key].description,
+    icon: SHELF_ICONS[key],
+    color: "text-green-500"
+}));
 export default function ShelvesSection() {
     const [isExpanded, setIsExpanded] = useState(false);
     return (
