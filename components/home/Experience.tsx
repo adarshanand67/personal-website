@@ -32,9 +32,9 @@ export default function Experience({ items }: ExperienceProps) {
                 className={`relative transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[10000px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
             >
-                <div className="space-y-6 pt-4 pl-2">
+                <div className="pt-4 pl-2">
                     {items.map((exp, index) => (
-                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-gray-300 dark:border-gray-700 last:pb-0 hover:border-green-500 transition-colors group/item">
+                        <div key={index} className="relative pl-8 pb-8 border-l-2 border-gray-300 dark:border-gray-700 last:pb-0 last:border-l-transparent hover:border-green-500 transition-colors group/item">
                             { }
                             <div className="absolute left-0 top-0 z-10 w-4 h-4 -translate-x-[9px] rounded-full bg-green-500 border-4 border-white dark:border-gray-900 group-hover/item:scale-125 transition-transform"></div>
                             <div className="flex flex-col gap-3 glass p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow">
