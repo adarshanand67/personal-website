@@ -35,11 +35,6 @@
         "icon": "Trophy"
     },
     {
-        "name": "Meditation & Yoga",
-        "description": "Vipassana and mindfulness practices.",
-        "icon": "Flower2"
-    },
-    {
         "name": "Cycling",
         "description": "Urban exploration on two wheels.",
         "icon": "Bike"
@@ -50,19 +45,9 @@
         "icon": "Mountain"
     },
     {
-        "name": "Bowling",
-        "description": "Aiming for strikes and spares.",
-        "icon": "Trophy"
-    },
-    {
         "name": "Board Games",
         "description": "Strategy and social deduction games.",
         "icon": "Dices"
-    },
-    {
-        "name": "Surfing",
-        "description": "Riding waves and ocean connection.",
-        "icon": "Waves"
     },
     {
         "name": "Travelling",
@@ -70,19 +55,9 @@
         "icon": "Plane"
     },
     {
-        "name": "Standup Comedy",
-        "description": "Enjoying humor and wit.",
-        "icon": "Mic"
-    },
-    {
         "name": "Cafe Hopping",
         "description": "Finding the best coffee spots.",
         "icon": "Coffee"
-    },
-    {
-        "name": "Cooking",
-        "description": "Culinary experiments in the kitchen.",
-        "icon": "ChefHat"
     },
     {
         "name": "Tech Conferences",
