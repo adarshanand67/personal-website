@@ -65,7 +65,19 @@ interface UIState {
     toggleSectionExpanded: (section: string) => void;
 }
 
-export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState { }
+interface AnimeState {
+    animeSelectedItem: any;
+    animeSelectedTag: string | null;
+    setAnimeSelectedItem: (item: any) => void;
+    setAnimeSelectedTag: (tag: string | null) => void;
+}
+
+interface SearchState {
+    searchQuery: string;
+    setSearchQuery: (query: string) => void;
+}
+
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, SearchState { }
 
 export const useStore = create<AppState>((set) => ({
     lines: [],
@@ -82,6 +94,16 @@ export const useStore = create<AppState>((set) => ({
     showHobbiesModal: false,
     isNavbarActive: false,
     expandedSections: {},
+
+    // Anime state
+    animeSelectedItem: null,
+    animeSelectedTag: null,
+    setAnimeSelectedItem: (item) => set({ animeSelectedItem: item }),
+    setAnimeSelectedTag: (tag) => set({ animeSelectedTag: tag }),
+
+    // Search state
+    searchQuery: '',
+    setSearchQuery: (query) => set({ searchQuery: query }),
 
     setLines: (lines) => set((state) => ({ lines: typeof lines === 'function' ? lines(state.lines) : lines })),
     addLine: (line) => set((state) => ({ lines: [...state.lines, line] })),

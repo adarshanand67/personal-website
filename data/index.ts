@@ -139,7 +139,7 @@ export const animeData = [
         "tags": ["Sci-Fi"],
         "year": "1998",
         "rating": "8.9/10"
-    }
+    },
     {
         "title": "Mob Psycho 100",
         "type": "Anime",
