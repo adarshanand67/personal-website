@@ -1,10 +1,10 @@
-import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, ShelfType } from "@/types/definitions";
+import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { Star, ExternalLink } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { AnimeShelf } from "@/components/Shelves";
-export type ShelfItem = Book | Paper | EntertainmentItem | Blog | Project | Hobby;
+export type ShelfItem = Book | Paper | AnimeItem | Blog | Project | Hobby;
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
   renderList(items: T[]): ReactNode;

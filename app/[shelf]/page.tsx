@@ -1,6 +1,6 @@
 import {
     getBooks,
-    getEntertainment,
+    getAnime,
     getHobby,
     getProjects,
     getArticles
@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
 const SHELF_MAPPING = {
     articleshelf: { api: getArticles, config: shelfConfigs.articles },
     bookshelf: { api: getBooks, config: shelfConfigs.books },
-    animeshelf: { api: getEntertainment, config: shelfConfigs.anime },
+    animeshelf: { api: getAnime, config: shelfConfigs.anime },
     hobbyshelf: { api: getHobby, config: shelfConfigs.hobby },
     projectshelf: { api: getProjects, config: shelfConfigs.projects }
 } as const;

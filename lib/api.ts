@@ -5,11 +5,11 @@ import {
   experiencesData,
   papersData,
   booksData,
-  entertainmentData,
+  animeData,
   hobbyData,
   usesData
 } from "@/data";
-import { EntertainmentItem, EntertainmentType, WatchStatus } from "@/types/definitions";
+import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 
 export const getProfile = async () => profileData;
 export const getExperiences = async () => experiencesData;
@@ -24,10 +24,10 @@ export const getArticles = async () => {
   return [...papers, ...blogs];
 };
 
-export const getEntertainment = async (): Promise<EntertainmentItem[]> =>
-  (entertainmentData as unknown[]).map((item: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
-    title: item.title,
-    type: item.type as EntertainmentType,
+export const getAnime = async (): Promise<AnimeItem[]> =>
+  (animeData as unknown[]).map((item: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+    ...item,
+    type: item.type as AnimeType,
     status: item.status as WatchStatus,
     image: item.image,
     notes: item.notes,

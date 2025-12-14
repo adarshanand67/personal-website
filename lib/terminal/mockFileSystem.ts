@@ -100,7 +100,7 @@ export const MOCK_FILES: Record<string, MockFile> = {
         group: 'adarsh',
         modified: 'Dec  9 22:30',
         content: [
-            'ZmxhZ3tIMWRkM25fVDNybTFuNGxfTTQ1dDNyfQ=='
+            'ZmxhZ3tIaWRkZW5fVGVybWluYWxfTWFzdGVyfQ=='
         ]
     },
     'footer.txt': {

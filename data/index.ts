@@ -39,7 +39,7 @@ export const booksData = [
     { "title": "You Are a Badass", "author": "Jen Sincero" }
 ];
 
-export const entertainmentData = [
+export const animeData = [
     {
         "title": "Pokémon",
         "type": "Anime",

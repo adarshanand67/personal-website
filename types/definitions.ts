@@ -57,7 +57,7 @@ export interface Blog {
   slug: string;
   excerpt?: string;
 }
-export enum EntertainmentType {
+export enum AnimeType {
   Anime = "Anime",
   Movie = "Movie",
   WebSeries = "Web Series"
@@ -76,9 +76,9 @@ export enum ShelfType {
   Hobby = "hobby",
   Article = "article"
 }
-export interface EntertainmentItem {
+export interface AnimeItem {
   title: string;
-  type: EntertainmentType;
+  type: AnimeType;
   status: WatchStatus;
   notes?: string;
   image?: string;

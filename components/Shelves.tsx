@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
-import { EntertainmentItem, EntertainmentType, WatchStatus } from '@/types/definitions';
+import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelf-strategies";
 
@@ -225,13 +225,13 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
     const toggleTag = (tag: string) => {
         setSelectedTag(selectedTag === tag ? null : tag);
     };
-    const animeWatching = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Watching);
-    const animeCompleted = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Completed);
-    const animePlanning = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Planning);
-    const movieWatching = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Watching);
-    const movieCompleted = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Completed);
-    const moviePlanning = filterItems(filteredItems, EntertainmentType.Movie, WatchStatus.Planning);
-    const AnimeCard = ({ item }: { item: EntertainmentItem }) => (
+    const animeWatching = filterItems(filteredItems, AnimeType.Anime, WatchStatus.Watching);
+    const animeCompleted = filterItems(filteredItems, AnimeType.Anime, WatchStatus.Completed);
+    const animePlanning = filterItems(filteredItems, AnimeType.Anime, WatchStatus.Planning);
+    const movieWatching = filterItems(filteredItems, AnimeType.Movie, WatchStatus.Watching);
+    const movieCompleted = filterItems(filteredItems, AnimeType.Movie, WatchStatus.Completed);
+    const moviePlanning = filterItems(filteredItems, AnimeType.Movie, WatchStatus.Planning);
+    const AnimeCard = ({ item }: { item: AnimeItem }) => (
         <div onClick={() => setSelectedItem(item)} className="cursor-pointer h-full">
             <div className="h-full flex flex-col p-4 relative overflow-hidden group glass hover:bg-white/40 dark:hover:bg-gray-800/40 transition-colors duration-300 rounded-xl">
                 {item.image ? (

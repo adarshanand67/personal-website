@@ -135,7 +135,7 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     anime: {
         title: "Animeshelf",
         description: "Anime series I've watched and enjoyed.",
-        command: "ls ~/entertainment",
+        command: "ls ~/anime",
         searchPlaceholder: "Search anime & movies...",
         type: ShelfType.Anime,
     },

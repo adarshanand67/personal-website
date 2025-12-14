@@ -1,7 +1,7 @@
 import { Command, ThemeMode } from './types';
 import { createCommand, createAliasCommand, addLine, addLines, parseFlags, getFlagValue, validateNumberArg, generateRange, showUsage, formatLongListing } from './helpers';
 import { CONTACT_INFO, WHOAMI_INFO, SYSTEM_STATS, DIRECTORY_MAP } from '@/lib/constants';
-import { getFileContent, ARCHIVE_FILES, getFileType, getDirectoryContent, SAMPLE_TEXT_CONTENT, SAMPLE_FILE_LINES } from './mockFileSystem';
+import { getFileContent, ARCHIVE_FILES, getFileType, getDirectoryContent, SAMPLE_TEXT_CONTENT, SAMPLE_FILE_LINES, getFileMetadata } from './mockFileSystem';
 import { TERMINAL_MESSAGES } from './messages';
 import { siteConfig } from '@/lib/config';
 
@@ -86,22 +86,25 @@ export const ls: Command = createCommand('ls', 'List directories', (args, { setL
         addLine(setLines, `ls: ${path}: No such file or directory`);
         return;
     }
+
+    // Filter hidden files if not showing all
+    const items = showHidden ? content : content.filter(item => !item.startsWith('.'));
+
     if (hasLongFormat) {
-        const output: string[] = [`total ${content.length * 4} `];
+        const output: string[] = [`total ${items.length * 4}`];
         if (showHidden && (path === '.' || path === './' || path === '~')) {
             output.push(formatLongListing('.', true, 4096, 'Dec  9 22:30'));
             output.push(formatLongListing('..', true, 4096, 'Dec  9 22:30'));
         }
-        content.forEach(item => {
-            const isDir = item.endsWith('/') || !item.includes('.');
-            output.push(formatLongListing(item, isDir, isDir ? 4096 : 1024, 'Dec  9 22:30'));
+        items.forEach(item => {
+            const meta = getFileMetadata(item);
+            const isDir = item.endsWith('/') || (meta ? meta.type === 'directory' : !item.includes('.'));
+            const size = meta ? meta.size : (isDir ? 4096 : 1024);
+            const date = meta ? meta.modified : 'Dec  9 22:30';
+            output.push(formatLongListing(item, isDir, size, date));
         });
         addLines(setLines, output);
     } else {
-        let items = [...content];
-        if (showHidden && (path === '.' || path === './' || path === '~')) {
-            items = ['.env.example', '.gitignore', '.secret', ...items];
-        }
         addLine(setLines, items.join('  '));
     }
 }, { category: 'navigation', usage: 'ls [-l] [-a]' });
@@ -280,7 +283,7 @@ export const tail: Command = createCommand('tail', 'Output last part of files', 
 export const wc: Command = createCommand('wc', 'Word count', (args, { setLines }) => {
     const { hasFlags, nonFlagArgs } = parseFlags(args, ['l', 'w', 'c', 'm']);
     const file = nonFlagArgs[0] || 'file';
-    const output = hasFlags.l ? `  42 ${file}` : (hasFlags.w ? `  256 ${file}` : (hasFlags.c || hasFlags.m ? `  1337 ${file}` : `  42  256  1337 ${file}`));
+    const output = hasFlags.l ? `  10 ${file}` : (hasFlags.w ? `  50 ${file}` : (hasFlags.c || hasFlags.m ? `  300 ${file}` : `  10  50  300 ${file}`));
     addLine(setLines, output);
 }, { category: 'text', usage: 'wc [-l|-w|-c] [file]' });
 
@@ -300,33 +303,31 @@ export const curl: Command = createCommand('curl', 'Transfer data from URL', (ar
 }, { category: 'network', usage: 'curl [url]' });
 
 export const wget: Command = createCommand('wget', 'Download files', (args, { setLines }) => {
-    addLines(setLines, args.length === 0 ? ['Usage: wget [url]'] : [`Resolving ${args[0]}...done.`, 'Download complete! (Just kidding, this is a portfolio 😉)']);
+    addLines(setLines, args.length === 0 ? ['Usage: wget [url]'] : [`Resolving ${args[0]}... failed: Connection refused.`]);
 }, { category: 'network', usage: 'wget [url]' });
 
 export const ssh: Command = createCommand('ssh', 'Connect via SSH', (args, { setLines }) => {
-    addLines(setLines, [`ssh: connect to host ${args[0] || 'localhost'} port 22: Connection refused`, '(This is a web portfolio, not a real SSH client! 🔒)']);
+    addLines(setLines, [`ssh: connect to host ${args[0] || 'localhost'} port 22: Connection refused`]);
 }, { category: 'network', usage: 'ssh [user@]host' });
-
 
 // --- Development ---
 export const git: Command = createCommand('git', 'Version control', (args, { setLines }) => {
     const subcommand = args[0] || 'status';
-    if (subcommand === 'status') addLines(setLines, ['On branch main', 'nothing to commit, working tree clean ✨']);
-    else if (subcommand === 'log') addLines(setLines, ['commit 2c91128', 'Author: Adarsh Anand', 'feat: enhance cmds']);
+    if (subcommand === 'status') addLines(setLines, ['On branch main', 'nothing to commit, working tree clean']);
+    else if (subcommand === 'log') addLines(setLines, ['commit 2c91128', 'Author: Adarsh Anand', 'feat: initial commit']);
     else if (subcommand === 'branch') addLines(setLines, ['* main']);
-    else if (subcommand === 'diff') addLines(setLines, ['diff --git a/file b/file', 'index ...']);
+    else if (subcommand === 'diff') addLines(setLines, []);
     else if (subcommand === 'remote') addLines(setLines, ['origin https://github.com/adarshanand67/adarshanand67.github.io.git']);
-    else addLine(setLines, `git ${subcommand}: Check out the real repo on GitHub! 🚀`);
+    else addLine(setLines, `git ${subcommand}: Command not found`);
 }, { category: 'dev', usage: 'git [subcommand]' });
 
 export const npm: Command = createCommand('npm', 'Node package manager', (args, { setLines }) => {
-    addLine(setLines, `npm ${args[0] || 'help'} - This portfolio uses pnpm actually! 📦`);
+    addLine(setLines, `npm ${args[0] || 'help'}`);
 }, { category: 'dev', usage: 'npm [command]' });
 
 export const docker: Command = createCommand('docker', 'Container management', (_, { setLines }) => {
-    addLines(setLines, ['CONTAINER ID   IMAGE              STATUS', 'a1b2c3d4e5f6   portfolio:latest   Up 42 minutes', '🐳 Containers running smoothly!']);
+    addLine(setLines, 'Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?');
 }, { category: 'dev', usage: 'docker [command]' });
-
 
 // --- Environment ---
 export const env: Command = createCommand('env', 'Display environment', (_, { setLines }) => {
@@ -334,7 +335,7 @@ export const env: Command = createCommand('env', 'Display environment', (_, { se
 }, { category: 'environment', usage: 'env' });
 
 export const exportCmd: Command = createCommand('export', 'Set environment variable', (args, { setLines }) => {
-    addLine(setLines, args.length === 0 ? 'Usage: export VAR=value' : `export: ${args[0]} - Variable set (temporarily)`);
+    addLine(setLines, args.length === 0 ? 'Usage: export VAR=value' : `export: ${args[0]} - Variable set`);
 }, { category: 'environment', usage: 'export VAR=value' });
 
 export const printenv: Command = createCommand('printenv', 'Print environment', (args, { setLines }) => {
@@ -342,7 +343,7 @@ export const printenv: Command = createCommand('printenv', 'Print environment', 
 }, { category: 'environment', usage: 'printenv [variable]' });
 
 export const alias: Command = createCommand('alias', 'Create command alias', (args, { setLines }) => {
-    addLines(setLines, args.length === 0 ? ["alias ll='ls -la'"] : [`alias: ${args.join(' ')} - Aliases are temporary`]);
+    addLines(setLines, args.length === 0 ? ["alias ll='ls -la'"] : [`alias: ${args.join(' ')}`]);
 }, { category: 'environment', usage: 'alias [name=value]' });
 
 
@@ -356,7 +357,7 @@ export const bc: Command = createCommand('bc', 'Calculator', (args, { setLines }
 
 export const factor: Command = createCommand('factor', 'Prime factorization', (args, { setLines }) => {
     const num = validateNumberArg(args[0], 'factor', setLines);
-    if (num !== null) addLine(setLines, `${num}: ${num} (prime factorization not implemented 😅)`);
+    if (num !== null) addLine(setLines, `${num}: ${num} (prime factorization not implemented)`);
 }, { category: 'math', usage: 'factor [number]' });
 
 export const seq: Command = createCommand('seq', 'Print sequence', (args, { setLines }) => {
@@ -386,7 +387,7 @@ export const cal: Command = createCommand('cal', 'Display calendar', (_, { setLi
 }, { category: 'math', usage: 'cal' });
 
 export const hack: Command = createCommand('hack', 'Initiate hack', (_, { setLines, toggleMatrix }) => {
-    addLines(setLines, ['Hacking started... access granted.', 'Try \'sudo\' for power.']);
+    addLines(setLines, ['System breach initiated...', 'Access granted.']);
     setTimeout(() => toggleMatrix(), 1000);
 }, { category: 'fun', usage: 'hack' });
 
@@ -413,7 +414,7 @@ export const sl: Command = createCommand('sl', 'Steam locomotive', (_, { setLine
 
 
 // --- Hidden (CTF) ---
-const DECODED_FLAG = 'flag{H1dd3n_T3rm1n4l_M45t3r}';
+const DECODED_FLAG = 'flag{Hidden_Terminal_Master}';
 export const base64: Command = createCommand('base64', 'Encode/decode base64', (args, { setLines }, input) => {
     const isDecode = args[0] === '-d';
     const text = isDecode ? args.slice(1).join(' ') : args.join(' ');
@@ -424,7 +425,6 @@ export const base64: Command = createCommand('base64', 'Encode/decode base64', (
         addLine(setLines, res);
         if (isDecode && res === DECODED_FLAG) {
             setTimeout(() => addLines(setLines, ['CONGRATULATIONS!', `Flag: ${DECODED_FLAG}`, 'Reward unlocked!']), 100);
-            setTimeout(() => { window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank'); }, 3000);
         }
     } catch { addLine(setLines, 'Error: Invalid input'); }
 }, { category: 'file', usage: 'base64 [-d] <string>' });

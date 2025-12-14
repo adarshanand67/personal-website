@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { EntertainmentItem } from '@/types/definitions';
+import { AnimeItem } from '@/types/definitions';
 
 interface WeatherData {
     temperature: number;
@@ -90,9 +90,9 @@ interface ShelvesState {
     setSearchQuery: (query: string) => void;
 
     // Anime Shelf
-    animeSelectedItem: EntertainmentItem | null;
+    animeSelectedItem: AnimeItem | null;
     animeSelectedTag: string | null;
-    setAnimeSelectedItem: (item: EntertainmentItem | null) => void;
+    setAnimeSelectedItem: (item: AnimeItem | null) => void;
     setAnimeSelectedTag: (tag: string | null) => void;
 }
 

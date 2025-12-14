@@ -3,13 +3,18 @@ import { EntertainmentType, WatchStatus } from "@/types";
 /**
  * Type guard to check if a string is a valid EntertainmentType enum value
  * @param type - The string to validate
- * @returns True if the string is a valid EntertainmentType, false otherwise
+import { AnimeType, WatchStatus } from "@/types/definitions";
+
+/**
+ * Type guard to check if a string is a valid AnimeType enum value
+ * @param type - The string to check
+ * @returns True if the string is a valid AnimeType, false otherwise
  * @example
- * isValidEntertainmentType("Anime") // true
- * isValidEntertainmentType("invalid") // false
+ * isValidAnimeType("Anime") // true
+ * isValidAnimeType("invalid") // false
  */
-export function isValidEntertainmentType(type: string): type is EntertainmentType {
-    return Object.values(EntertainmentType).includes(type as EntertainmentType);
+export function isValidAnimeType(type: string): type is AnimeType {
+    return Object.values(AnimeType).includes(type as AnimeType);
 }
 
 /**
@@ -25,22 +30,23 @@ export function isValidWatchStatus(status: string): status is WatchStatus {
 }
 
 /**
- * Safely parses a string to EntertainmentType enum with fallback
- * Handles legacy "Web_Series" format for backward compatibility
+ * Safely parses a string to AnimeType enum with fallback
  * @param type - The string to parse
- * @returns Valid EntertainmentType, defaults to Anime if invalid
+ * @returns Valid AnimeType, defaults to Anime if invalid
  * @example
- * parseEntertainmentType("Movie") // EntertainmentType.Movie
- * parseEntertainmentType("Web_Series") // EntertainmentType.WebSeries
- * parseEntertainmentType("invalid") // EntertainmentType.Anime (fallback)
+ * parseAnimeType("Movie") // AnimeType.Movie
+ * parseAnimeType("Web_Series") // AnimeType.WebSeries
+ * parseAnimeType("invalid") // AnimeType.Anime (fallback)
  */
-export function parseEntertainmentType(type: string): EntertainmentType {
-    // Handle legacy "Web_Series" format
+export function parseAnimeType(type: string): AnimeType {
+    if (!type) return AnimeType.Anime;
+
+    // Handle specific mapping if needed, e.g. "Web Series" space handling
     if (type === "Web_Series" || type === "Web Series") {
-        return EntertainmentType.WebSeries;
+        return AnimeType.WebSeries;
     }
 
-    return isValidEntertainmentType(type) ? type : EntertainmentType.Anime;
+    return isValidAnimeType(type) ? type : AnimeType.Anime;
 }
 
 /**

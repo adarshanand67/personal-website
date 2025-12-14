@@ -22,12 +22,12 @@ export const TERMINAL_MESSAGES = {
         MKDIR_FAIL: (dir: string) => `mkdir: cannot create directory '${dir}': Read-only file system`,
         TOUCH_FAIL: (file: string) => `touch: cannot touch '${file}': Read-only file system`,
         TAR_MSG: "tar: This is a web portfolio, not a real filesystem.",
-        ZIP_MSG: (file: string) => `  adding: ${file} (deflated 42%)`,
+        ZIP_MSG: (file: string) => `  adding: ${file}`,
         UNZIP_DONE: "Done!",
     },
     CTF: {
         CONGRATS_HEADER: "CONGRATS!",
         FOUND_FLAG: "You found the hidden flag!",
-        RICKROLL: "Enjoy your reward! You've been rickrolled!",
+        RICKROLL: "Enjoy your reward!",
     }
 } as const;
