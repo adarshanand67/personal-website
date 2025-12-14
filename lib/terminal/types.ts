@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction } from 'react';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+
 export interface CommandContext {
     setLines: Dispatch<SetStateAction<string[]>>;
     setPasswordMode: (mode: boolean) => void;
-    router: any;
+    router: AppRouterInstance;
     setTheme: (theme: ThemeMode) => void;
     isMatrixEnabled: boolean;
     toggleMatrix: () => void;
     setIsPlaying: (playing: boolean) => void;
-    nextTrack: () => void;
-    prevTrack: () => void;
     toggleMute: () => void;
     setInput: (input: string) => void;
     commandHistory: readonly string[];

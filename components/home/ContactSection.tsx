@@ -1,16 +1,18 @@
 "use client";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useStore } from "@/lib/store/useStore";
+
 export default function ContactSection() {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['contact'] ?? false;
+
     return (
         <div className="font-mono">
             <SectionHeader
                 title="Let's Talk"
                 command="echo $CONTACT_INFO"
                 isExpanded={isExpanded}
-                onToggle={() => setIsExpanded(!isExpanded)}
+                onToggle={() => toggleSectionExpanded('contact')}
             />
             <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'

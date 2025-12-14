@@ -1,5 +1,5 @@
 import { Command } from '../types';
-import { createCommand, createAliasCommand, parseFlags, addLines, addLine } from '../helpers';
+import { createCommand, createAliasCommand, addLines, addLine } from '../helpers';
 import { WHOAMI_INFO, SYSTEM_STATS } from '@/lib/constants';
 export const whoami: Command = createCommand('whoami', 'Display profile info', (_, { setLines }) => {
     addLines(setLines, WHOAMI_INFO as unknown as string[]);

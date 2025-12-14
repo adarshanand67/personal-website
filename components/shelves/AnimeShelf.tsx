@@ -1,13 +1,44 @@
 "use client";
-import { useState } from 'react';
 import { EntertainmentItem, EntertainmentType, WatchStatus } from '@/types/definitions';
 import Image from 'next/image';
-import { Check, Star, X, Tag, Calendar, Layers } from 'lucide-react';
+import { Check, Star, X, Tag, Layers } from 'lucide-react';
+import { useStore } from '@/lib/store/useStore';
+
+const Section = ({
+    title,
+    sectionItems,
+    AnimeCard,
+}: {
+    title: string;
+    sectionItems: EntertainmentItem[];
+    AnimeCard: React.ComponentType<{ item: EntertainmentItem }>;
+}) => {
+    if (sectionItems.length === 0) return null;
+    return (
+        <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">
+                {title}
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                {sectionItems.map((item, index) => (
+                    <AnimeCard key={`${item.title}-${index}`} item={item} />
+                ))}
+            </div>
+        </div>
+    );
+};
+
 interface AnimeShelfProps {
     items: EntertainmentItem[];
 }
 export const AnimeShelf = ({ items }: AnimeShelfProps) => {
-    const [selectedItem, setSelectedItem] = useState<EntertainmentItem | null>(null);
+    const {
+        animeSelectedItem: selectedItem,
+        setAnimeSelectedItem: setSelectedItem,
+        animeSelectedTag: selectedTag,
+        setAnimeSelectedTag: setSelectedTag
+    } = useStore();
+
     const filterItems = (
         items: EntertainmentItem[],
         type: EntertainmentType,
@@ -19,14 +50,14 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
         if (!notes) return null;
         return notes.replace(/(S\d+)(?:,\s*\d+){7,},\s*(\d+)/g, "$1-$2");
     };
-    const [selectedTag, setSelectedTag] = useState<string | null>(null);
+
     const allTags = Array.from(new Set(items.flatMap(item => item.tags || []))).sort();
     const filteredItems = items.filter(item => {
         if (!selectedTag) return true;
         return item.tags?.includes(selectedTag);
     });
     const toggleTag = (tag: string) => {
-        setSelectedTag(prev => (prev === tag ? null : tag));
+        setSelectedTag(selectedTag === tag ? null : tag);
     };
     const animeWatching = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Watching);
     const animeCompleted = filterItems(filteredItems, EntertainmentType.Anime, WatchStatus.Completed);
@@ -46,7 +77,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
-                        {}
+                        {/* Overlay */}
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <span className="text-white text-xs font-bold uppercase tracking-wider border border-white/50 px-2 py-1 rounded-full backdrop-blur-sm">View Details</span>
                         </div>
@@ -70,7 +101,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                         {formatSeasons(item.notes)}
                     </p>
                 )}
-                {}
+                {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
                     <div className="flex gap-1 mt-2 flex-wrap">
                         {item.tags.slice(0, 2).map(tag => (
@@ -82,29 +113,11 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
             </div>
         </div>
     );
-    const Section = ({
-        title,
-        sectionItems,
-    }: {
-        title: string;
-        sectionItems: EntertainmentItem[];
-    }) => {
-        if (sectionItems.length === 0) return null;
-        return (
-            <div className="mb-12">
-                <h2 className="text-xl font-bold mb-4 font-mono">
-                    <span className="text-gray-500">##</span> {title}
-                    <span className="text-gray-500 text-sm ml-2">({sectionItems.length})</span>
-                </h2>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-                    {sectionItems.map((item, index) => <AnimeCard key={index} item={item} />)}
-                </div>
-            </div>
-        );
-    };
+    // Section component moved outside
+    // Section definition moved outside
     return (
         <>
-            {}
+            {/* Filter Section */}
             <div className="mb-8">
                 <div className="flex items-center justify-between mb-3">
                     <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 flex items-center gap-2">
@@ -138,13 +151,13 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                     })}
                 </div>
             </div>
-            <Section title="Anime - Watching" sectionItems={animeWatching} />
-            <Section title="Anime - Watched" sectionItems={animeCompleted} />
-            <Section title="Anime - Planning" sectionItems={animePlanning} />
-            <Section title="Movies - Watching" sectionItems={movieWatching} />
-            <Section title="Movies - Watched" sectionItems={movieCompleted} />
-            <Section title="Movies - Planning" sectionItems={moviePlanning} />
-            {}
+            <Section title="Anime - Watching" sectionItems={animeWatching} AnimeCard={AnimeCard} />
+            <Section title="Anime - Watched" sectionItems={animeCompleted} AnimeCard={AnimeCard} />
+            <Section title="Anime - Planning" sectionItems={animePlanning} AnimeCard={AnimeCard} />
+            <Section title="Movies - Watching" sectionItems={movieWatching} AnimeCard={AnimeCard} />
+            <Section title="Movies - Watched" sectionItems={movieCompleted} AnimeCard={AnimeCard} />
+            <Section title="Movies - Planning" sectionItems={moviePlanning} AnimeCard={AnimeCard} />
+            {/* Modal */}
             {selectedItem && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                     <div
@@ -152,14 +165,14 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                         onClick={() => setSelectedItem(null)}
                     ></div>
                     <div className="relative w-full max-w-2xl bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh] md:max-h-[600px] animate-fade-in border border-gray-200 dark:border-gray-800">
-                        {}
+                        {/* Close Button */}
                         <button
                             onClick={() => setSelectedItem(null)}
                             className="absolute top-3 right-3 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
                         >
                             <X size={20} />
                         </button>
-                        {}
+                        {/* Left Side - Image */}
                         <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-full">
                             {selectedItem.image ? (
                                 <Image
@@ -174,14 +187,14 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                     <span className="text-gray-500">{selectedItem.title}</span>
                                 </div>
                             )}
-                            {}
+                            {/* Overlay Gradient for mobile title readability */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:hidden"></div>
                             <div className="absolute bottom-4 left-4 md:hidden">
                                 <h2 className="text-2xl font-bold text-white shadow-black drop-shadow-lg">{selectedItem.title}</h2>
                             </div>
                         </div>
-                        {}
-                        {}
+                        {/* Right Side - Content */}
+                        {/* ... existing content ... */}
                         <div className="w-full md:w-1/2 p-6 overflow-y-auto bg-white dark:bg-zinc-900 flex flex-col text-center">
                             <div className="mb-6">
                                 <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-2 flex items-center justify-center gap-2">
@@ -195,11 +208,11 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                 </div>
                             </div>
                             <div className="space-y-6 flex-grow">
-                                {}
+                                {/* Description */}
                                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base">
                                     {selectedItem.description || "No description available."}
                                 </p>
-                                {}
+                                {/* Tags */}
                                 {selectedItem.tags && selectedItem.tags.length > 0 && (
                                     <div className="flex flex-wrap justify-center gap-2">
                                         {selectedItem.tags.map(tag => (
@@ -216,7 +229,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                         ))}
                                     </div>
                                 )}
-                                {}
+                                {/* Seasons */}
                                 {selectedItem.notes && (
                                     <div className="py-2">
                                         <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1 flex items-center justify-center gap-2">
@@ -228,7 +241,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                     </div>
                                 )}
                             </div>
-                            {}
+                            {/* Trailer Button */}
                             <div className="mt-8 pt-4">
                                 <a
                                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(selectedItem.title + " anime trailer official")}`}

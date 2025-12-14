@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+// import { Code2 } from "lucide-react";
 import { techLinks } from "@/lib/tech-links";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useStore } from "@/lib/store/useStore";
 const skillCategories = {
   "Languages": [
     "C",
@@ -49,14 +49,15 @@ const skillCategories = {
   ],
 };
 export default function TechStack() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { expandedSections, toggleSectionExpanded } = useStore();
+  const isExpanded = expandedSections['techstack'] ?? false;
   return (
     <div className="font-mono">
       <SectionHeader
         title="Tech Stack"
         command="cat ~/.skills"
         isExpanded={isExpanded}
-        onToggle={() => setIsExpanded(!isExpanded)}
+        onToggle={() => toggleSectionExpanded('techstack')}
       />
       <div
         className={`space-y-6 transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'

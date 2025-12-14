@@ -1,7 +1,6 @@
-import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, EntertainmentType, WatchStatus, ShelfType } from "@/types/definitions";
+import { Book, Paper, Blog, EntertainmentItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import { AnimeShelf } from "@/components/shelves/AnimeShelf";
@@ -85,7 +84,8 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   }
 }
 export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
-  renderItem(item: EntertainmentItem, index: number): ReactNode {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  renderItem(_item: EntertainmentItem, _index: number): ReactNode {
     return null;
   }
   renderList(items: EntertainmentItem[]): ReactNode {
@@ -104,7 +104,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
   }
 }
 export class BlogListStrategy implements ShelfItemStrategy<Blog> {
-  renderItem(blog: Blog, _index: number): ReactNode {
+  renderItem(blog: Blog): ReactNode {
     return (
       <div
         key={blog.slug}
@@ -141,7 +141,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
               <span className="text-gray-500">##</span> {year}
             </h2>
             <div className="space-y-2">
-              {blogsByYear[year]!.map((post, index) => this.renderItem(post, index))}
+              {blogsByYear[year]!.map((post) => this.renderItem(post))}
             </div>
           </div>
         ))}
@@ -205,6 +205,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
 }
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const IconComponent = (LucideIcons as any)[iconName];
     if (IconComponent) {
       return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
@@ -253,7 +254,7 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
     if ('url' in item) {
       return new PaperListStrategy().renderItem(item as Paper, index);
     }
-    return new BlogListStrategy().renderItem(item as Blog, index);
+    return new BlogListStrategy().renderItem(item as Blog);
   }
 
   renderList(items: (Blog | Paper)[]): ReactNode {

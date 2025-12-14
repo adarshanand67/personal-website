@@ -1,18 +1,12 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown, Folder, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
-interface Shelf {
-    name: string;
-    path: string;
-    description: string;
-    icon: React.ElementType;
-    color: string;
-}
-import { shelfConfigs } from "@/config/shelves";
+import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
+
+import { shelfConfigs } from "@/lib/config/shelves";
 import { DIRECTORY_MAP } from "@/lib/constants";
 
-const SHELF_ICONS: Record<string, any> = {
+const SHELF_ICONS: Record<string, React.ElementType> = {
     blogs: Feather,
     papers: FileText,
     books: Book,
@@ -28,7 +22,9 @@ const SHELVES = ["blogs", "papers", "books", "anime", "hobby"].map(key => ({
     color: "text-green-500"
 }));
 export default function ShelvesSection() {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['shelves'] ?? false;
+
     return (
         <div className="section max-w-4xl mx-auto px-4 mb-8">
             <div className="group relative">
@@ -36,7 +32,7 @@ export default function ShelvesSection() {
                 <div
                     onClick={(e) => {
                         if ((e.target as HTMLElement).closest('a')) return;
-                        setIsExpanded(!isExpanded);
+                        toggleSectionExpanded('shelves');
                     }}
                     className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
                 >

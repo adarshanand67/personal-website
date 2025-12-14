@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
+
 interface Item {
     title: string;
     url: string;
@@ -22,13 +23,17 @@ export default function RecentSection({
     linkText,
     linkUrl,
 }: RecentSectionProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    // Generate a consistent ID based on title
+    const sectionId = `recent-${title.toLowerCase().replace(/\s+/g, '-')}`;
+    const isExpanded = expandedSections[sectionId] ?? false;
+
     return (
         <section
             className="font-mono group/section cursor-pointer"
             onClick={(e) => {
                 if ((e.target as HTMLElement).closest('a')) return;
-                setIsExpanded(!isExpanded);
+                toggleSectionExpanded(sectionId);
             }}
         >
             <div className="w-full text-left group">

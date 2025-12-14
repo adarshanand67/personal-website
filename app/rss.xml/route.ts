@@ -14,7 +14,7 @@ export async function GET() {
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     ${blogs
       .map(
-        (post: any) => `
+        (post) => `
     <item>
       <title><![CDATA[${post.title}]]></title>
       <link>${baseUrl}/blogshelf/${post.slug}</link>

@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { getProfile } from "@/lib/api";
 import Terminal from "@/components/widgets/Terminal";
-import { ClientGithub as Github, ClientLinkedin as Linkedin, ClientMail as Mail } from "@/components/common/ClientIcons";
 import { GlitchText } from "@/components/ui/GlitchText";
 export default async function Hero() {
   const profile = await getProfile();

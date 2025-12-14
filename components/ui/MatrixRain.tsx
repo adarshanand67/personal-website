@@ -1,10 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { useGlobalState } from "@/components/common/GlobalProvider";
+import { useStore } from "@/lib/store/useStore";
 import { useTheme } from "next-themes";
 export const MatrixRain = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const { isMatrixEnabled } = useGlobalState();
+    const { isMatrixEnabled } = useStore();
     const { resolvedTheme } = useTheme();
     useEffect(() => {
         if (!isMatrixEnabled) return;
@@ -44,7 +44,7 @@ export const MatrixRain = () => {
             window.removeEventListener("resize", resizeCanvas);
             cancelAnimationFrame(animationId);
         };
-    }, [isMatrixEnabled, resolvedTheme]); 
+    }, [isMatrixEnabled, resolvedTheme]);
     if (!isMatrixEnabled) return null;
     return (
         <canvas

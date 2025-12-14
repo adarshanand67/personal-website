@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/lib/config/site.config";
 export function generatePersonSchema() {
     return {
         "@context": "https://schema.org",

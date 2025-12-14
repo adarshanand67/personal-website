@@ -48,8 +48,12 @@ export const printenv: Command = createCommand(
     'printenv',
     'Print environment',
     (args, { setLines }) => {
-        const varName = args[0] || 'PATH';
-        addLine(setLines, '/usr/local/bin:/usr/bin:/bin');
+        const varName = args[0];
+        if (varName && varName !== 'PATH') {
+            addLine(setLines, ''); // Empty for unknown vars
+        } else {
+            addLine(setLines, '/usr/local/bin:/usr/bin:/bin');
+        }
     },
     {
         category: 'environment',

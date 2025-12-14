@@ -1,26 +1,35 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ArrowUp } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
+
 export default function BackToTop() {
-  const [isVisible, setIsVisible] = useState(false);
+  const { isBackToTopVisible, setIsBackToTopVisible } = useStore();
+
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
-        setIsVisible(true);
+        setIsBackToTopVisible(true);
       } else {
-        setIsVisible(false);
+        setIsBackToTopVisible(false);
       }
     };
+    // Initial check
+    toggleVisibility();
+
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
+  }, [setIsBackToTopVisible]);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-  if (!isVisible) return null;
+
+  if (!isBackToTopVisible) return null;
+
   return (
     <button
       onClick={scrollToTop}

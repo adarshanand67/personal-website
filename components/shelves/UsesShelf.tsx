@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
 import { ShelfHeader } from "@/components/shelves/ShelfHeader";
+import { useStore } from "@/lib/store/useStore";
+
 interface UsesItem {
     name: string;
     description: string;
@@ -13,13 +14,14 @@ interface UsesShelfProps {
     initialUses: UsesData;
 }
 export default function UsesShelf({ initialUses }: UsesShelfProps) {
-    const [query, setQuery] = useState("");
+    const { searchQuery, setSearchQuery } = useStore();
+
     const filterItems = (items: UsesItem[]) => {
-        if (!query) return items;
+        if (!searchQuery) return items;
         return items.filter(
             (item) =>
-                item.name.toLowerCase().includes(query.toLowerCase()) ||
-                item.description.toLowerCase().includes(query.toLowerCase())
+                item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                item.description.toLowerCase().includes(searchQuery.toLowerCase())
         );
     };
     const filteredHardware = filterItems(initialUses.hardware);
@@ -32,8 +34,8 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                 description="The hardware, software, and gear I use daily."
                 count={totalCount}
                 command="cat ~/setup.json"
-                searchValue={query}
-                onSearchChange={setQuery}
+                searchValue={searchQuery}
+                onSearchChange={setSearchQuery}
                 searchPlaceholder="Search setup..."
             />
             <div className="space-y-12">
@@ -75,7 +77,7 @@ export default function UsesShelf({ initialUses }: UsesShelfProps) {
                 )}
                 {totalCount === 0 && (
                     <p className="text-gray-500 text-center py-8">
-                        No items found matching &quot;{query}&quot;
+                        No items found matching &quot;{searchQuery}&quot;
                     </p>
                 )}
             </div>

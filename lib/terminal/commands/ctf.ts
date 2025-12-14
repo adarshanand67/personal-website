@@ -106,7 +106,7 @@ export const base64: Command = createCommand(
                 addLine(setLines, encoded);
                 addLine(setLines, '');
             }
-        } catch (e) {
+        } catch {
             addLines(setLines, [
                 '',
                 'Error: Invalid input',
@@ -128,9 +128,9 @@ export const base64: Command = createCommand(
 export const decode: Command = createCommand(
     'decode',
     'Decode base64 strings (alias for base64 -d)',
-    (args, { setLines }) => {
+    (args, context) => {
         // Just call base64 with -d flag
-        base64.execute(['-d', ...args], { setLines } as any);
+        base64.execute(['-d', ...args], context);
     },
     {
         category: 'file',

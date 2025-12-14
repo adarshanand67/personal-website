@@ -1,12 +1,12 @@
 import { promises as fs } from "fs";
 import path from "path";
-import profileData from "@/data/profile.json";
-import experiencesData from "@/data/experiences.json";
-import papersData from "@/data/papers.json";
-import booksData from "@/data/books.json";
-import entertainmentData from "@/data/entertainment.json";
-import hobbyData from "@/data/hobby.json";
-import usesData from "@/data/uses.json";
+import profileData from "@/lib/data/profile.json";
+import experiencesData from "@/lib/data/experiences.json";
+import papersData from "@/lib/data/papers.json";
+import booksData from "@/lib/data/books.json";
+import entertainmentData from "@/lib/data/entertainment.json";
+import hobbyData from "@/lib/data/hobby.json";
+import usesData from "@/lib/data/uses.json";
 import { EntertainmentItem, EntertainmentType, WatchStatus } from "@/types/definitions";
 
 export const getProfile = async () => profileData;
@@ -23,7 +23,7 @@ export const getArticles = async () => {
 };
 
 export const getEntertainment = async (): Promise<EntertainmentItem[]> =>
-  entertainmentData.map((item: any) => ({
+  (entertainmentData as unknown[]).map((item: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
     title: item.title,
     type: item.type as EntertainmentType,
     status: item.status as WatchStatus,

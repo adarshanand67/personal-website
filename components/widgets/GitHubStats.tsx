@@ -2,18 +2,20 @@
 
 import { getGithubRepos } from "@/lib/github";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { ChevronDown } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
 
 export default function GitHubStats() {
-  const [repos, setRepos] = useState<any[]>([]);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { githubRepos, setGithubRepos, isGithubExpanded, setIsGithubExpanded } = useStore();
 
   useEffect(() => {
-    getGithubRepos().then(setRepos);
-  }, []);
+    if (githubRepos.length === 0) {
+      getGithubRepos().then(setGithubRepos);
+    }
+  }, [githubRepos.length, setGithubRepos]);
 
-  if (repos.length === 0) return null;
+  if (githubRepos.length === 0) return null;
 
   return (
     <div className="group relative">
@@ -22,7 +24,7 @@ export default function GitHubStats() {
         onClick={(e) => {
           // Prevent toggle when clicking links
           if ((e.target as HTMLElement).closest('a')) return;
-          setIsExpanded(!isExpanded);
+          setIsGithubExpanded(!isGithubExpanded);
         }}
         className="relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-800 hover:border-green-500/50 transition-colors duration-300 cursor-pointer"
       >
@@ -32,7 +34,7 @@ export default function GitHubStats() {
               <span className="text-primary">##</span> <span className="text-green-700 dark:text-green-400">Open Source</span>
               <ChevronDown
                 size={20}
-                className={`transition-transform duration-300 ${isExpanded ? 'rotate-0' : '-rotate-90'}`}
+                className={`transition-transform duration-300 ${isGithubExpanded ? 'rotate-0' : '-rotate-90'}`}
               />
             </h2>
             <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
@@ -43,11 +45,11 @@ export default function GitHubStats() {
           </div>
 
           <div
-            className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${isGithubExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
               }`}
           >
             <div className="space-y-3">
-              {repos.map((repo) => (
+              {githubRepos.map((repo) => (
                 <div
                   key={repo.name}
                   className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"

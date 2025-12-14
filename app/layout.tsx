@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { GlobalProvider } from "@/components/common/GlobalProvider";
+import { GlobalEffect } from "@/components/common/GlobalEffect";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { CommandMenu } from "@/components/layout/CommandMenu";
 import { MatrixRain } from "@/components/ui/MatrixRain";
 
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/lib/config/site.config";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 import { HobbiesModal } from "@/components/modals/HobbiesModal";
@@ -64,6 +64,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 export default function RootLayout({
   children,
@@ -80,40 +85,38 @@ export default function RootLayout({
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <GlobalProvider>
-            <Navbar />
-            <MatrixRain />
-            <CommandMenu />
-            <HobbiesModal />
-            {children}
+          <GlobalEffect />
+          <Navbar />
+          <MatrixRain />
+          <CommandMenu />
+          <HobbiesModal />
+          {children}
 
-            { }
-            { }
-            { }
-            <Footer />
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "Person",
-                  name: "Adarsh Anand",
-                  url: "https://adarshanand.dev",
-                  sameAs: [
-                    "https://github.com/adarshanand67",
-                    "https://linkedin.com/in/adarshanand67",
-                  ],
-                  jobTitle: "Software Development Engineer",
-                  worksFor: {
-                    "@type": "Organization",
-                    name: "Trellix",
-                  },
-                  description:
-                    "Software Development Engineer @Trellix focusing on data security, C++, and secure systems.",
-                }),
-              }}
-            />
-          </GlobalProvider>
+          {/* Footer */}
+          {/* <div className="h-20" /> */}
+          <Footer />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Adarsh Anand",
+                url: "https://adarshanand.dev",
+                sameAs: [
+                  "https://github.com/adarshanand67",
+                  "https://linkedin.com/in/adarshanand67",
+                ],
+                jobTitle: "Software Development Engineer",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Trellix",
+                },
+                description:
+                  "Software Development Engineer @Trellix focusing on data security, C++, and secure systems.",
+              }),
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>

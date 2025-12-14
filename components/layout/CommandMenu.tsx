@@ -3,7 +3,7 @@ import * as React from "react";
 import { Command } from "cmdk";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useGlobalState } from "@/components/common/GlobalProvider";
+import { useStore } from "@/lib/store/useStore";
 import {
   Laptop,
   Moon,
@@ -28,7 +28,7 @@ export function CommandMenu() {
   const {
     toggleMatrix,
     toggleHobbiesModal,
-  } = useGlobalState();
+  } = useStore();
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {

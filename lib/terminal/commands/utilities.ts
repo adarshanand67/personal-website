@@ -1,4 +1,4 @@
-import { Command } from '../types';
+import { Command, ThemeMode } from '../types';
 import { createCommand, createAliasCommand, addLine, addLines, parseFlags } from '../helpers';
 import { CONTACT_INFO } from '@/lib/constants';
 export const date: Command = createCommand('date', 'Show current date/time', (args, { setLines }) => {
@@ -29,10 +29,18 @@ export const contact: Command = createCommand('contact', 'Show contact info', (_
     addLines(setLines, CONTACT_INFO as unknown as string[]);
 }, { category: 'utility', usage: 'contact' });
 export const which: Command = createCommand('which', 'Locate command', (args, { setLines }) => {
-    args[0] ? addLine(setLines, `/usr/bin/${args[0]}`) : addLine(setLines, 'Usage: which [command]');
+    if (args[0]) {
+        addLine(setLines, `/usr/bin/${args[0]}`);
+    } else {
+        addLine(setLines, 'Usage: which [command]');
+    }
 }, { category: 'utility', usage: 'which [command]' });
 export const whereis: Command = createCommand('whereis', 'Locate binary', (args, { setLines }) => {
-    args[0] ? addLine(setLines, `${args[0]}: /usr/bin/${args[0]}`) : addLine(setLines, 'Usage: whereis [command]');
+    if (args[0]) {
+        addLine(setLines, `${args[0]}: /usr/bin/${args[0]}`);
+    } else {
+        addLine(setLines, 'Usage: whereis [command]');
+    }
 }, { category: 'utility', usage: 'whereis [command]' });
 export const find: Command = createCommand('find', 'Search for files', (args, { setLines }) => {
     addLines(setLines, ['./blogs', './papers', './books', './README.md', './package.json']);
@@ -43,7 +51,7 @@ export const man: Command = createCommand('man', 'Display manual pages', (args, 
 export const cls: Command = createAliasCommand('cls', 'Clear screen (alias)', () => clear);
 export const theme: Command = createCommand('theme', 'Switch color theme', (args, { setLines, setTheme }) => {
     if (['dark', 'light', 'system'].includes(args[0])) {
-        setTheme(args[0] as any);
+        setTheme(args[0] as ThemeMode);
         addLine(setLines, `Theme set to ${args[0]} mode.`);
     } else {
         addLine(setLines, 'Use dark, light, or system.');

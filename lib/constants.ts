@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config";
+import { siteConfig } from "@/lib/config/site.config";
 import { CONFIG } from "./config";
 export const BASE_PATH = CONFIG.BASE_PATH;
 export const PLAYLIST = [
@@ -37,7 +37,7 @@ export const TRACK_IMAGES = [
     "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
-export const INTRO_LINES = (toLeet: (t: string) => string) => [
+export const INTRO_LINES = () => [
     `$ ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
     "",
     "[    0.001] Loading kernel modules",

@@ -1,43 +1,52 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { toLeetSpeak } from "@/lib/utils/leet";
-import { useGlobalState } from "@/components/common/GlobalProvider";
+import { useStore } from "@/lib/store/useStore";
 import { commands } from "@/lib/terminal/commands/registry";
 import { INTRO_LINES, DIRECTORIES } from "@/lib/constants";
 import { MOCK_FILES } from "@/lib/terminal/mockFileSystem";
-import { ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 export default function Terminal() {
   const router = useRouter();
   const { setTheme } = useTheme();
-  const {
-    toggleMatrix, isMatrixEnabled,
-    setIsPlaying, nextTrack, prevTrack, toggleMute,
-    toggleMusicPlayer, setShowMusicPlayer
-  } = useGlobalState();
-  const [lines, setLines] = useState<string[]>([]);
-  const [isIntroDone, setIsIntroDone] = useState(false);
-  const [input, setInput] = useState("");
-  const [history, setHistory] = useState<string[]>([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
-  const [passwordMode, setPasswordMode] = useState(false);
 
-  const [isExpanded, setIsExpanded] = useState(true);
+  // Access global store state
+  const {
+    // UI
+    toggleMatrix, isMatrixEnabled,
+    setIsPlaying, toggleMute,
+    toggleMusicPlayer, setShowMusicPlayer,
+
+    // Terminal State
+    lines, setLines,
+    isIntroDone, setIsIntroDone,
+    input, setInput,
+    history, setHistory,
+    historyIndex, setHistoryIndex,
+    passwordMode, setPasswordMode,
+    isExpanded, setIsExpanded,
+    position, setPosition,
+    isDragging, setIsDragging
+  } = useStore();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const initialPosRef = useRef({ x: 0, y: 0 });
+
   useEffect(() => {
     if (window.innerWidth < 1024) {
       setIsExpanded(false);
     }
-  }, []);
+  }, [setIsExpanded]);
   useEffect(() => {
     if (isMatrixEnabled) {
-      setLines(prev => [...prev, "Matrix: Activated."]);
+      setLines((prev) => [...prev, "Matrix: Activated."]);
     }
-  }, [isMatrixEnabled]);
+  }, [isMatrixEnabled, setLines]);
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -45,22 +54,23 @@ export default function Terminal() {
   }, [lines, isIntroDone]);
   useEffect(() => {
     if (!isIntroDone) {
-      setLines([...INTRO_LINES(toLeetSpeak)]);
+      // Need to cast to match string[] type if implementation is rigid, but setLines accepts callbacks
+      setLines((prev: string[]) => [...prev, ...INTRO_LINES(toLeetSpeak)]);
       setIsIntroDone(true);
     }
-  }, [isIntroDone]);
+  }, [isIntroDone, setLines, setIsIntroDone]);
   const executeCommand = async (cmd: string) => {
     if (passwordMode) {
       setPasswordMode(false);
-      setLines((prev) => [...prev, "Checking permissions..."]);
+      setLines((prev: string[]) => [...prev, "Checking permissions..."]);
       if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") {
         setTimeout(() => {
-          setLines((prev) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
+          setLines((prev: string[]) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
           if (!isMatrixEnabled) toggleMatrix();
         }, 800);
       } else {
         setTimeout(() => {
-          setLines((prev) => [...prev, "Access Denied."]);
+          setLines((prev: string[]) => [...prev, "Access Denied."]);
         }, 800);
       }
       return;
@@ -80,8 +90,6 @@ export default function Terminal() {
       isMatrixEnabled,
       toggleMatrix,
       setIsPlaying,
-      nextTrack,
-      prevTrack,
       toggleMute,
       setInput,
       commandHistory: history,
@@ -98,11 +106,13 @@ export default function Terminal() {
         if (!commandName) continue;
         const command = commands[commandName];
         if (!command) {
-          setLines((prev) => [...prev, `Command not found: ${commandName}`]);
+          setLines((prev: string[]) => [...prev, `Command not found: ${commandName}`]);
           return;
         }
         if (i < pipeParts.length - 1) {
           let captured: string[] = [];
+
+          // Custom setter for mocking lines in pipe chain
           const mockSetLines: React.Dispatch<React.SetStateAction<string[]>> = (action) => {
             if (typeof action === 'function') {
               captured = action(captured);
@@ -114,17 +124,20 @@ export default function Terminal() {
               }
             }
           };
+
           const context = { ...baseContext, setLines: mockSetLines };
           await command.execute(args, context, currentInput);
           currentInput = captured.join('\n');
         } else {
-          const context = { ...baseContext, setLines };
+          // Final command outputs to real terminal
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const context = { ...baseContext, setLines: setLines as any }; // Adjusting type for compatibility
           await command.execute(args, context, currentInput);
         }
       }
     } catch (error) {
       console.error("Exec error", error);
-      setLines((prev) => [...prev, `Error executing command.`]);
+      setLines((prev: string[]) => [...prev, `Error executing command.`]);
     }
   };
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -190,10 +203,7 @@ export default function Terminal() {
       }
     }
   };
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const dragStartRef = useRef({ x: 0, y: 0 });
-  const initialPosRef = useRef({ x: 0, y: 0 });
+
   const handleDragStart = (e: React.MouseEvent) => {
     if (!isExpanded) return;
     setIsDragging(true);
@@ -221,8 +231,8 @@ export default function Terminal() {
       window.removeEventListener('mousemove', handleDrag);
       window.removeEventListener('mouseup', handleDragEnd);
     };
-  }, [isDragging]);
-  const handleTerminalWrapperClick = (e: React.MouseEvent) => {
+  }, [isDragging, setPosition, setIsDragging]); // Updated deps
+  const handleTerminalWrapperClick = (_e: React.MouseEvent) => {
     if (!isExpanded) return;
     const selection = window.getSelection();
     if (selection && selection.toString().length > 0) {
@@ -312,6 +322,9 @@ export default function Terminal() {
                       ref={inputRef}
                       type={passwordMode ? "password" : "text"}
                       value={input}
+                      onBlur={(_e) => {
+                        setInput(_e.target.value)
+                      }}
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={handleKeyDown}
                       className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"

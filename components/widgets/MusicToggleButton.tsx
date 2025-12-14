@@ -1,14 +1,14 @@
 "use client";
 
 import { Music } from "lucide-react";
-import { useGlobalState } from "@/components/common/GlobalProvider";
+import { useStore } from "@/lib/store/useStore";
 
 /**
  * Floating button to toggle music player visibility
  * Positioned in bottom-right corner for easy access
  */
 export default function MusicToggleButton() {
-    const { showMusicPlayer, toggleMusicPlayer } = useGlobalState();
+    const { showMusicPlayer, toggleMusicPlayer } = useStore();
 
     return (
         <button

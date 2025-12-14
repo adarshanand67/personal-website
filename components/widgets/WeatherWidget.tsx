@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Cloud, CloudRain, Sun, Moon } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
 
-interface WeatherData {
-  temperature: number;
-  isDay: boolean;
-  weatherCode: number;
-}
 
 export default function WeatherWidget() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [locationName, setLocationName] = useState("Bengaluru");
+  const { weather, setWeather, locationName, setLocationName } = useStore();
 
   useEffect(() => {
+    // Avoid re-fetching if data already exists to persist state across navigation
+    if (weather) return;
+
     const fetchWeather = async () => {
       try {
         // 1. Get location from IP
@@ -31,7 +29,7 @@ export default function WeatherWidget() {
               city = locData.city || locData.region || "Local";
             }
           }
-        } catch (e) {
+        } catch {
           console.warn("Location fetch failed, using default");
         }
 
@@ -53,7 +51,7 @@ export default function WeatherWidget() {
     };
 
     fetchWeather();
-  }, []);
+  }, [weather, setWeather, setLocationName]);
 
   if (!weather) return null;
 

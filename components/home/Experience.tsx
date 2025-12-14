@@ -1,10 +1,11 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+// import { Briefcase } from "lucide-react";
 import { linkifyTech } from "@/lib/tech-links";
 import { getAssetPath } from "@/lib/utils/asset-path";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useStore } from "@/lib/store/useStore";
+
 interface ExperienceItem {
     company: string;
     role: string;
@@ -18,14 +19,16 @@ interface ExperienceProps {
     items: ExperienceItem[];
 }
 export default function Experience({ items }: ExperienceProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const { expandedSections, toggleSectionExpanded } = useStore();
+    const isExpanded = expandedSections['experience'] ?? false;
+
     return (
         <div className="mb-4 font-mono" id="experience">
             <SectionHeader
                 title="Experience"
                 command="cat ~/work/history.log"
                 isExpanded={isExpanded}
-                onToggle={() => setIsExpanded(!isExpanded)}
+                onToggle={() => toggleSectionExpanded('experience')}
             />
             { }
             <div

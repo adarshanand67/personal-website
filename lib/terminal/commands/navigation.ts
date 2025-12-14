@@ -1,6 +1,6 @@
 import { Command } from '../types';
 import { createCommand, createAliasCommand, parseFlags, addLines, addLine, showUsage, formatLongListing } from '../helpers';
-import { DIRECTORIES, DIRECTORY_MAP } from '@/lib/constants';
+import { DIRECTORY_MAP } from '@/lib/constants';
 import { getDirectoryContent } from '../mockFileSystem';
 export const ls: Command = createCommand(
     'ls',

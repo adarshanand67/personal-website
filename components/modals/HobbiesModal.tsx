@@ -1,14 +1,14 @@
 "use client";
 
-import { useGlobalState } from "@/components/common/GlobalProvider";
-import hobbyData from "@/data/hobby.json";
+import { useStore } from "@/lib/store/useStore";
+import hobbyData from "@/lib/data/hobby.json"; // Direct import for now, or use loadData
 import * as LucideIcons from "lucide-react";
 import { X } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 
 export const HobbiesModal = () => {
-    const { showHobbiesModal, toggleHobbiesModal } = useGlobalState();
+    const { showHobbiesModal, toggleHobbiesModal } = useStore();
     const modalRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export const HobbiesModal = () => {
     if (!showHobbiesModal) return null;
 
     const getIcon = (iconName: string) => {
-        const IconComponent = (LucideIcons as any)[iconName];
+        const IconComponent = (LucideIcons as unknown as Record<string, React.ElementType>)[iconName];
         if (IconComponent) {
             return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
         }

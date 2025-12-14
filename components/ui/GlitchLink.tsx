@@ -15,7 +15,7 @@ export default function GlitchLink({ href, children, className = "", onClick }: 
         <Link
             href={href}
             className={`relative group inline-block overflow-hidden ${className}`}
-            onClick={(e) => {
+            onClick={() => {
                 if (onClick) onClick();
             }}
         >

@@ -1,14 +1,23 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useStore } from "@/lib/store/useStore";
+
 export function TerminalCursor() {
-    const [position, setPosition] = useState({ x: -100, y: -100 });
-    const [isVisible, setIsVisible] = useState(false);
-    const [isClicking, setIsClicking] = useState(false);
-    const [isPointer, setIsPointer] = useState(false);
+    const {
+        cursorPosition,
+        setCursorPosition,
+        isCursorVisible,
+        setIsCursorVisible,
+        isCursorClicking,
+        setIsCursorClicking,
+        isCursorPointer,
+        setIsCursorPointer
+    } = useStore();
+
     useEffect(() => {
         const updatePosition = (e: MouseEvent) => {
-            setPosition({ x: e.clientX, y: e.clientY });
-            if (!isVisible) setIsVisible(true);
+            setCursorPosition({ x: e.clientX, y: e.clientY });
+            if (!isCursorVisible) setIsCursorVisible(true);
             const target = e.target as HTMLElement;
             const isClickable =
                 target.tagName === 'A' ||
@@ -17,13 +26,13 @@ export function TerminalCursor() {
                 target.closest('button') !== null ||
                 target.classList.contains('cursor-pointer') ||
                 window.getComputedStyle(target).cursor === 'pointer';
-            setIsPointer(isClickable);
+            setIsCursorPointer(isClickable);
         };
-        const handleMouseDown = () => setIsClicking(true);
-        const handleMouseUp = () => setIsClicking(false);
+        const handleMouseDown = () => setIsCursorClicking(true);
+        const handleMouseUp = () => setIsCursorClicking(false);
         document.documentElement.style.cursor = 'none';
-        const handleMouseEnter = () => setIsVisible(true);
-        const handleMouseLeave = () => setIsVisible(false);
+        const handleMouseEnter = () => setIsCursorVisible(true);
+        const handleMouseLeave = () => setIsCursorVisible(false);
         window.addEventListener("mousemove", updatePosition);
         window.addEventListener("mousedown", handleMouseDown);
         window.addEventListener("mouseup", handleMouseUp);
@@ -37,23 +46,24 @@ export function TerminalCursor() {
             document.removeEventListener("mouseleave", handleMouseLeave);
             document.documentElement.style.cursor = 'auto';
         };
-    }, [isVisible]);
-    if (!isVisible) return null;
+    }, [isCursorVisible, setCursorPosition, setIsCursorVisible, setIsCursorClicking, setIsCursorPointer]);
+
+    if (!isCursorVisible) return null;
     return (
         <div
             className="fixed pointer-events-none z-[9999] mix-blend-difference"
             style={{
-                left: position.x,
-                top: position.y,
+                left: cursorPosition.x,
+                top: cursorPosition.y,
                 transform: "translate(-50%, -50%)",
             }}
         >
             <div
-                className={`bg-green-500 transition-all duration-150 ease-out border border-green-400/50 shadow-[0_0_10px_rgba(34,197,94,0.5)] ${isClicking
-                        ? "w-3 h-3 scale-90"
-                        : isPointer
-                            ? "w-6 h-6 rotate-45 opacity-80"
-                            : "w-4 h-6 opacity-80 animate-pulse"
+                className={`bg-green-500 transition-all duration-150 ease-out border border-green-400/50 shadow-[0_0_10px_rgba(34,197,94,0.5)] ${isCursorClicking
+                    ? "w-3 h-3 scale-90"
+                    : isCursorPointer
+                        ? "w-6 h-6 rotate-45 opacity-80"
+                        : "w-4 h-6 opacity-80 animate-pulse"
                     }`}
             />
         </div>

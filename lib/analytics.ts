@@ -7,6 +7,12 @@ type AnalyticsEvent = {
     name: string;
     properties?: Record<string, string | number | boolean>;
 };
+declare global {
+    interface Window {
+        plausible?: (event: string, options?: { props: Record<string, string | number | boolean> }) => void;
+        umami?: { track: (event: string | { url: string }, data?: Record<string, string | number | boolean>) => void };
+    }
+}
 
 class Analytics {
     private enabled: boolean;
@@ -23,13 +29,13 @@ class Analytics {
         if (!this.enabled) return;
 
         // Plausible Analytics
-        if (typeof window !== 'undefined' && (window as any).plausible) {
-            (window as any).plausible('pageview', { props: { url } });
+        if (typeof window !== 'undefined' && window.plausible) {
+            window.plausible('pageview', { props: { url } });
         }
 
         // Umami Analytics
-        if (typeof window !== 'undefined' && (window as any).umami) {
-            (window as any).umami.track({ url });
+        if (typeof window !== 'undefined' && window.umami) {
+            window.umami.track({ url });
         }
     }
 
@@ -40,13 +46,13 @@ class Analytics {
         if (!this.enabled) return;
 
         // Plausible Analytics
-        if (typeof window !== 'undefined' && (window as any).plausible) {
-            (window as any).plausible(event.name, { props: event.properties });
+        if (typeof window !== 'undefined' && window.plausible) {
+            window.plausible(event.name, { props: event.properties || {} });
         }
 
         // Umami Analytics
-        if (typeof window !== 'undefined' && (window as any).umami) {
-            (window as any).umami.track(event.name, event.properties);
+        if (typeof window !== 'undefined' && window.umami) {
+            window.umami.track(event.name, event.properties || {});
         }
     }
 

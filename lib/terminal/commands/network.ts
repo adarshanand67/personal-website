@@ -1,5 +1,5 @@
 import { Command } from '../types';
-import { createCommand, addLine, addLines, showUsage } from '../helpers';
+import { createCommand, addLines, showUsage } from '../helpers';
 
 /**
  * Network commands: ping, curl, wget, ssh
@@ -12,9 +12,9 @@ export const ping: Command = createCommand(
         const host = args[0] || 'localhost';
         const output = [
             `PING ${host} (127.0.0.1): 56 data bytes`,
-            `64 bytes from ${host}: icmp_seq=0 ttl=64 time=0.042 ms`,
-            `64 bytes from ${host}: icmp_seq=1 ttl=64 time=0.037 ms`,
-            `--- ${host} ping statistics ---`,
+            `64 bytes from ${host}: icmp_seq = 0 ttl = 64 time = 0.042 ms`,
+            `64 bytes from ${host}: icmp_seq = 1 ttl = 64 time = 0.037 ms`,
+            `-- - ${host} ping statistics-- - `,
             '2 packets transmitted, 2 packets received, 0.0% packet loss'
         ];
         addLines(setLines, output);
@@ -60,9 +60,9 @@ export const wget: Command = createCommand(
             showUsage(setLines, 'wget [url]');
         } else {
             const output = [
-                `--2024-12-09 22:16:00--  ${args[0]}`,
-                `Resolving ${args[0]}... done.`,
-                `Connecting to ${args[0]}... connected.`,
+                `--2024 - 12 -09 22: 16:00--  ${args[0]} `,
+                `Resolving ${args[0]}...done.`,
+                `Connecting to ${args[0]}...connected.`,
                 'HTTP request sent, awaiting response... 200 OK',
                 'Download complete! (Just kidding, this is a portfolio 😉)'
             ];

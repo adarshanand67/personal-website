@@ -1,6 +1,4 @@
 import {
-    getBlogs,
-    getPapers,
     getBooks,
     getEntertainment,
     getHobby,
