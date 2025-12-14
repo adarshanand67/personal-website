@@ -35,12 +35,12 @@ A modern, customizable portfolio website built with **Next.js 16**, **React 19**
 ```bash
 git clone https://github.com/adarshanand67/personal-website.git my-portfolio
 cd my-portfolio
-pnpm install
+npm install
 ```
 
 ### 2. **Customize Your Info**
 
-Edit **`config/site.config.ts`**:
+Edit **`lib/config.ts`**:
 
 ```typescript
 export const siteConfig = {
@@ -66,23 +66,12 @@ export const siteConfig = {
 
 ### 3. **Update Your Data**
 
-Edit JSON files in `data/` folder:
-
-```bash
-data/
-├── profile.json          # Your bio, education, socials
-├── experiences.json      # Work history
-├── projects.json         # Portfolio projects
-├── blogs/               # Blog posts (markdown)
-├── books.json           # Reading list
-├── entertainment.json   # Anime/movies
-└── hobbies.json         # Your hobbies
-```
+Edit `lib/data.ts` to update your profile, projects, experiences, and more.
 
 ### 4. **Run Locally**
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Visit **http://localhost:3000** 🎉
@@ -90,7 +79,7 @@ Visit **http://localhost:3000** 🎉
 ### 5. **Deploy**
 
 ```bash
-pnpm build
+npm run build
 ```
 
 Deploy to [Vercel](https://vercel.com), [Netlify](https://netlify.com), or [GitHub Pages](https://pages.github.com).
@@ -101,27 +90,21 @@ Deploy to [Vercel](https://vercel.com), [Netlify](https://netlify.com), or [GitH
 
 ```
 my-portfolio/
-├── config/                    # 🎯 CUSTOMIZE THESE
-│   ├── site.config.ts        # Personal info, SEO
-│   ├── theme.config.ts       # Colors, fonts, effects
-│   ├── features.config.ts    # Toggle features on/off
-│   └── shelves.ts            # Shelf configurations
+├── lib/                       # 🎯 CORE CONFIG & DATA
+│   ├── config.ts              # Site, theme, and feature config
+│   ├── data.ts                # Profile, projects, blogs, etc.
+│   ├── api.ts                 # Data fetching utilities
+│   └── ...                    # Other utilities
 │
-├── data/                      # 🎯 YOUR DATA HERE
-│   ├── profile.json          # Bio, education, socials
-│   ├── experiences.json      # Work experience
-│   ├── projects.json         # Portfolio projects
-│   ├── blogs/                # Blog posts (.md files)
-│   ├── books.json            # Reading list
-│   ├── papers.json           # Research papers
-│   ├── entertainment.json    # Anime/movies
-│   ├── hobbies.json          # Hobbies
-│   └── uses.json             # Tech stack
+├── components/                # ✅ UI Components
+│   ├── Home.tsx              # Main homepage component
+│   ├── Layout.tsx            # Root layout wrapper
+│   ├── Shelves.tsx           # Shelf components
+│   └── UI.tsx                # Reusable UI components
 │
-├── components/                # ✅ UI Components (don't edit)
-├── app/                       # ✅ Pages (don't edit)
-├── lib/                       # ✅ Utilities (don't edit)
-└── public/                    # 🎯 Images, assets
+├── app/                       # ✅ Pages
+├── public/                    # 🎯 Images, assets
+└── types/                     # TypeScript definitions
 ```
 
 ---
@@ -129,101 +112,10 @@ my-portfolio/
 ## 🎨 Customization
 
 ### **Change Colors**
-
-Edit `config/theme.config.ts`:
-
-```typescript
-export const themeConfig = {
-  colors: {
-    primary: "#00bf40",       // Your brand color
-    accent: "#15803d",        // Accent color
-  },
-};
-```
+Edit `themeConfig` in `lib/config.ts`.
 
 ### **Toggle Features**
-
-Edit `config/features.config.ts`:
-
-```typescript
-export const featuresConfig = {
-  enableBlog: true,           // Show/hide blog
-  enableProjects: true,       // Show/hide projects
-  enableMusicPlayer: true,    // Enable music player
-  enableTerminal: true,       // Enable terminal widget
-  enableMatrixRain: true,     // Matrix background effect
-  enableGitHubStats: true,    // GitHub stats widget
-  // ... toggle any feature
-};
-```
-
-### **Update SEO**
-
-Edit `config/site.config.ts`:
-
-```typescript
-seo: {
-  keywords: ["Your", "SEO", "Keywords"],
-  ogImage: "/your-og-image.png",
-  twitterHandle: "@yourhandle",
-}
-```
-
----
-
-## 📝 Adding Content
-
-### **Add a Blog Post**
-
-1. Create `data/blogs/my-post.md`
-2. Add frontmatter:
-
-```markdown
----
-title: "My Blog Post"
-date: "2024-01-15"
-excerpt: "A short description"
----
-
-Your content here...
-```
-
-### **Add a Project**
-
-Edit `data/projects.json`:
-
-```json
-{
-  "title": "My Project",
-  "description": "Project description",
-  "tech": ["React", "TypeScript", "Next.js"],
-  "link": "https://github.com/you/project"
-}
-```
-
-### **Add Work Experience**
-
-Edit `data/experiences.json`:
-
-```json
-{
-  "company": "Company Name",
-  "role": "Your Role",
-  "duration": "Jan 2024 - Present",
-  "location": "Remote",
-  "logo": "/assets/logos/company.png",  // Optional: add company logo
-  "highlights": [
-    "Achievement 1",
-    "Achievement 2"
-  ]
-}
-```
-
-**Adding Company Logos:**
-1. Download company logo (PNG/SVG, transparent background)
-2. Save to `public/assets/logos/company-name.png`
-3. Reference in `logo` field above
-4. If logo is missing, only company name will show (graceful fallback)
+Edit `featuresConfig` in `lib/config.ts`.
 
 ---
 
@@ -231,45 +123,15 @@ Edit `data/experiences.json`:
 
 ### **Vercel (Recommended)**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/adarshanand67/personal-website)
-
 1. Push to GitHub
 2. Import on [Vercel](https://vercel.com)
 3. Deploy! ✨
 
-### **Netlify**
-
-1. Push to GitHub
-2. Import on [Netlify](https://netlify.com)
-3. Build command: `pnpm build`
-4. Publish directory: `.next`
-
 ### **GitHub Pages**
 
-```bash
-pnpm build
-pnpm export
-# Push to gh-pages branch
-```
-
-### **Deployment Configuration (Base Path)**
-
-This project supports deploying to a subdirectory (like GitHub Pages often requires) using environment variables.
-
-#### **Scenario A: Root Deployment (Default)**
-If deploying to `https://your-site.com/` or `https://username.github.io/`:
-- No configuration needed.
-- `NEXT_PUBLIC_BASE_PATH` should be empty.
-
-#### **Scenario B: Subdirectory Deployment**
-If deploying to `https://username.github.io/repo-name/`:
-1. **GitHub Actions**: Set `NEXT_PUBLIC_BASE_PATH` to `/repo-name` in your workflow env.
-2. **Environment File**: Create/Edit `.env.production`:
-   ```env
-   NEXT_PUBLIC_BASE_PATH=/repo-name
-   ```
-   *(Note: This project includes a `.env.production` set to `/personal-website` by default)*.
-
+The project includes a GitHub Action for automatic deployment.
+1. Go to Settings > Pages
+2. Source: GitHub Actions
 
 ---
 
@@ -281,103 +143,12 @@ If deploying to `https://username.github.io/repo-name/`:
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **Icons:** [Lucide React](https://lucide.dev/)
 - **Fonts:** [Google Fonts](https://fonts.google.com/) (Assistant, JetBrains Mono)
-- **Deployment:** [Vercel](https://vercel.com/)
-
----
-
-## 📚 Documentation
-
-- **[SETUP.md](./SETUP.md)** - Detailed setup guide
-- **[BEST_PRACTICES.md](./BEST_PRACTICES.md)** - Code quality standards
-- **[config/](./config/)** - Configuration files with inline docs
-
----
-
-## 🎯 Key Features Explained
-
-### **1. Decoupled Data System**
-
-All personal data is in **config files** and **JSON files**. No hardcoded values in components!
-
-```typescript
-// Before: Hardcoded
-const name = "Adarsh Anand";
-
-// After: From config
-import { siteConfig } from "@/config";
-const name = siteConfig.name;
-```
-
-### **2. Feature Flags**
-
-Toggle components on/off without deleting code:
-
-```typescript
-{featuresConfig.enableMusicPlayer && <MusicPlayer />}
-{featuresConfig.enableTerminal && <Terminal />}
-```
-
-### **3. Type Safety**
-
-Everything is fully typed with TypeScript:
-
-```typescript
-export const siteConfig: SiteConfig = { /* ... */ };
-export const themeConfig: ThemeConfig = { /* ... */ };
-```
-
-### **4. Modern Best Practices**
-
-- ✅ No `any` types
-- ✅ Enums instead of string literals
-- ✅ Type guards for runtime validation
-- ✅ Barrel exports for clean imports
-- ✅ JSDoc comments on all public APIs
-- ✅ Memoization with `useCallback`
-- ✅ Custom hooks for reusable logic
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- Design inspired by terminal/cyberpunk aesthetics
-- Matrix rain effect from classic Matrix movies
-- Built with modern web technologies
-
----
-
-## 📧 Contact
-
-**Adarsh Anand**
-
-- Website: [adarshanand.dev](https://adarshanand.dev)
-- GitHub: [@adarshanand67](https://github.com/adarshanand67)
-- LinkedIn: [adarshanand67](https://linkedin.com/in/adarshanand67)
-- Email: adarshan20302@gmail.com
-
----
-
-## ⭐ Show Your Support
-
-If you found this template helpful, please give it a ⭐ on GitHub!
 
 ---
 
