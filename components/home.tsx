@@ -45,9 +45,6 @@ export function Hero({ profile }: { profile: any }) {
                         </h1>
                     </div>
                     <div className="relative inline-block">
-                        <h3 className="title text-lg md:text-2xl font-bold text-primary font-serif">
-                            <GlitchText text={profile.bio.short} className="text-primary" />
-                        </h3>
                         <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
                     <div className="content text-lg leading-relaxed space-y-3">

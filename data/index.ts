@@ -354,7 +354,7 @@ export const papersData = [
 
 export const profileData = {
     "name": "Adarsh Anand",
-    "title": "SDE @Trellix | C++ | Ex-Intel",
+    "title": "Adarsh Anand",
     "pronouns": "He/Him",
     "location": "Bengaluru, Karnataka, India",
     "avatar": "/dp.jpeg",
@@ -370,7 +370,6 @@ export const profileData = {
         "email": "adarshan20302@gmail.com"
     },
     "bio": {
-        "short": "SDE @Trellix | C++ | Ex-Intel",
         "paragraphs": [
             "As a Software Development Engineer at Trellix, I focus on data security and preventing unauthorized exfiltration of sensitive corporate information as part of the Data Loss Prevention (Windows) team.",
             "Previously at Intel Corporation, I worked on confidential computing technologies, including Intel SGX and TDX, implementing advanced fuzzing frameworks and addressing vulnerabilities.",
@@ -378,5 +377,3 @@ export const profileData = {
         ]
     }
 };
-
-

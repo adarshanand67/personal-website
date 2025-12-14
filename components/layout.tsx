@@ -50,20 +50,30 @@ export function GlitchText({ text, className = "" }: GlitchTextProps) {
     }
 
     return (
-        <span className={`relative inline-block overflow-hidden group hover:text-green-500 transition-colors duration-300 ${className}`}>
-            <span className="relative z-10">{text}</span>
+        <span className={`relative inline-block overflow-hidden group hover:text-green-500 transition-all duration-300 ${className}`}>
+            <span className="relative z-10 group-hover:animate-pulse group-hover:text-green-400">{text}</span>
             <span
-                className="absolute top-0 left-0 -z-10 w-full h-full text-green-500 opacity-0 group-hover:opacity-50 group-hover:animate-glitch-1 group-hover:translate-x-[2px]"
+                className="absolute -top-[1px] left-0 -z-10 w-full h-full text-green-500 opacity-0 group-hover:opacity-70 group-hover:animate-glitch-1 group-hover:translate-x-[1px] group-hover:translate-y-[1px] group-hover:drop-shadow-[0_0_3px_rgba(34,197,94,0.8)]"
                 aria-hidden="true"
             >
                 {text}
             </span>
             <span
-                className="absolute top-0 left-0 -z-10 w-full h-full text-red-500 opacity-0 group-hover:opacity-50 group-hover:animate-glitch-2 group-hover:-translate-x-[2px]"
+                className="absolute top-[1px] left-0 -z-10 w-full h-full text-red-500 opacity-0 group-hover:opacity-60 group-hover:animate-glitch-2 group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] group-hover:drop-shadow-[0_0_4px_rgba(239,68,68,0.6)]"
                 aria-hidden="true"
             >
                 {text}
             </span>
+            <span
+                className="absolute top-0 left-0 -z-20 w-full h-full text-green-300 opacity-0 group-hover:opacity-30 group-hover:animate-glitch-3 group-hover:translate-x-[2px] group-hover:-translate-y-[0.5px] group-hover:drop-shadow-[0_0_6px_rgba(134,239,172,0.9)]"
+                aria-hidden="true"
+            >
+                {text}
+            </span>
+            <span
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-[5] w-full h-1/2 bg-gradient-to-r from-transparent via-red-400/20 to-transparent opacity-0 group-hover:opacity-40 group-hover:animate-glitch-scan blur-sm ${className}`}
+                aria-hidden="true"
+            ></span>
         </span>
     );
 }
