@@ -33,7 +33,7 @@ A modern, customizable portfolio website built with **Next.js 16**, **React 19**
 ### 1. **Clone & Install**
 
 ```bash
-git clone https://github.com/adarshanand67/personal-website.git my-portfolio
+git clone https://github.com/adarshanand67/adarshanand67.github.io.git my-portfolio
 cd my-portfolio
 npm install
 ```
