@@ -1,9 +1,12 @@
 import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
-import { Star, ExternalLink } from "lucide-react";
-import * as LucideIcons from "lucide-react";
+import { Star, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
 import { AnimeShelf } from "@/components/shelves";
+
+const iconMap: Record<string, React.ElementType> = {
+  Dumbbell, Tv, Book: Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+};
 export type ShelfItem = Book | Paper | AnimeItem | Blog | Project | Hobby;
 export interface ShelfItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
@@ -204,7 +207,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
 }
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
-    const IconComponent = (LucideIcons as any)[iconName];
+    const IconComponent = iconMap[iconName];
     if (IconComponent) {
       return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
     }

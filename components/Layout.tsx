@@ -12,7 +12,6 @@ import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
-import * as lucideReact from "lucide-react";
 import {
     ArrowUp,
     Search,
@@ -878,16 +877,16 @@ export const GlobalEffect = () => {
 };
 
 
-function createClientIcon(Icon: React.ComponentType<lucideReact.LucideProps>) {
-    return function ClientIcon(props: lucideReact.LucideProps) {
+function createClientIcon(Icon: React.ComponentType<{ className?: string }>) {
+    return function ClientIcon(props: { className?: string }) {
         const mounted = useMounted();
         if (!mounted) return <div className={props.className} aria-hidden="true" />;
         return <Icon {...props} />;
     };
 }
-export const ClientLinkedin = createClientIcon(lucideReact.Linkedin);
-export const ClientGithub = createClientIcon(lucideReact.Github);
-export const ClientMail = createClientIcon(lucideReact.Mail);
+export const ClientLinkedin = createClientIcon(Linkedin);
+export const ClientGithub = createClientIcon(Github);
+export const ClientMail = createClientIcon(Mail);
 
 
 

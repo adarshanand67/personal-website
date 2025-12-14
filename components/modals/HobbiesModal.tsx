@@ -2,10 +2,12 @@
 
 import { useStore } from "@/lib/store/useStore";
 import { hobbyData } from "@/data";
-import * as LucideIcons from "lucide-react";
-import { X } from "lucide-react";
+import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+const iconMap: Record<string, React.ElementType> = {
+    Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+};
 
 export const HobbiesModal = () => {
     const { showHobbiesModal, toggleHobbiesModal } = useStore();
@@ -24,7 +26,7 @@ export const HobbiesModal = () => {
     if (!showHobbiesModal) return null;
 
     const getIcon = (iconName: string) => {
-        const IconComponent = (LucideIcons as unknown as Record<string, React.ElementType>)[iconName];
+        const IconComponent = iconMap[iconName];
         if (IconComponent) {
             return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
         }
