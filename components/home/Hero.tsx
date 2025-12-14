@@ -1,7 +1,7 @@
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { getProfile } from "@/lib/api";
-import Terminal from "@/components/widgets/Terminal";
+import { Terminal } from "@/components/Widgets";
 import { GlitchText } from "@/components/UI";
 export default async function Hero() {
   const profile = await getProfile();
