@@ -400,11 +400,11 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
-    const { isMounted, setMounted } = useStore();
+    const { isMounted, setIsMounted } = useStore();
 
     useEffect(() => {
-        setMounted(true);
-    }, [setMounted]);
+        setIsMounted(true);
+    }, [setIsMounted]);
 
     if (!isMounted) {
         return (
@@ -628,11 +628,11 @@ export function Footer() {
 
 
 export function Navbar() {
-    const { isNavbarActive, setIsNavbarActive, isMounted, setMounted } = useStore();
+    const { isNavbarActive, setIsNavbarActive, isMounted, setIsMounted } = useStore();
 
     useEffect(() => {
-        setMounted(true);
-    }, [setMounted]);
+        setIsMounted(true);
+    }, [setIsMounted]);
 
     return (
         <>
@@ -771,11 +771,11 @@ export function Navbar() {
 
 
 export const GlobalEffect = () => {
-    const { setMounted } = useStore();
+    const { setIsMounted } = useStore();
 
     useEffect(() => {
-        setMounted(true);
-    }, [setMounted]);
+        setIsMounted(true);
+    }, [setIsMounted]);
 
     return null;
 };

@@ -24,6 +24,34 @@ interface TerminalState {
     setIsDragging: (dragging: boolean) => void;
 }
 
+interface CursorState {
+    cursorPosition: { x: number; y: number };
+    isCursorVisible: boolean;
+    isCursorClicking: boolean;
+    isCursorPointer: boolean;
+    setCursorPosition: (position: { x: number; y: number }) => void;
+    setIsCursorVisible: (visible: boolean) => void;
+    setIsCursorClicking: (clicking: boolean) => void;
+    setIsCursorPointer: (pointer: boolean) => void;
+}
+
+interface MusicState {
+    showMusicPlayer: boolean;
+    toggleMusicPlayer: () => void;
+}
+
+interface WeatherState {
+    weather: { temperature: number; isDay: boolean; weatherCode: number } | null;
+    locationName: string;
+    setWeather: (weather: { temperature: number; isDay: boolean; weatherCode: number } | null) => void;
+    setLocationName: (name: string) => void;
+}
+
+interface BackToTopState {
+    isBackToTopVisible: boolean;
+    setIsBackToTopVisible: (visible: boolean) => void;
+}
+
 interface UIState {
     isMatrixEnabled: boolean;
     isMounted: boolean;
@@ -37,7 +65,7 @@ interface UIState {
     toggleSectionExpanded: (section: string) => void;
 }
 
-export interface AppState extends TerminalState, UIState { }
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState { }
 
 export const useStore = create<AppState>((set) => ({
     lines: [],
@@ -74,4 +102,28 @@ export const useStore = create<AppState>((set) => ({
     toggleSectionExpanded: (section) => set((state) => ({
         expandedSections: { ...state.expandedSections, [section]: !state.expandedSections[section] }
     })),
+
+    // Cursor state
+    cursorPosition: { x: 0, y: 0 },
+    isCursorVisible: false,
+    isCursorClicking: false,
+    isCursorPointer: false,
+    setCursorPosition: (position) => set({ cursorPosition: position }),
+    setIsCursorVisible: (visible) => set({ isCursorVisible: visible }),
+    setIsCursorClicking: (clicking) => set({ isCursorClicking: clicking }),
+    setIsCursorPointer: (pointer) => set({ isCursorPointer: pointer }),
+
+    // Music state
+    showMusicPlayer: false,
+    toggleMusicPlayer: () => set((state) => ({ showMusicPlayer: !state.showMusicPlayer })),
+
+    // Weather state
+    weather: null,
+    locationName: '',
+    setWeather: (weather) => set({ weather }),
+    setLocationName: (name) => set({ locationName: name }),
+
+    // Back to top state
+    isBackToTopVisible: false,
+    setIsBackToTopVisible: (visible) => set({ isBackToTopVisible: visible }),
 }));
