@@ -4,6 +4,7 @@ import { CONTACT_INFO, WHOAMI_INFO, SYSTEM_STATS, DIRECTORY_MAP } from '@/lib/co
 import { getFileContent, ARCHIVE_FILES, getFileType, getDirectoryContent, SAMPLE_TEXT_CONTENT, SAMPLE_FILE_LINES, getFileMetadata } from './mockFileSystem';
 import { TERMINAL_MESSAGES } from './messages';
 import { siteConfig } from '@/lib/config';
+import { useStore } from '@/lib/store/useStore';
 
 // --- Utilities ---
 export const date: Command = createCommand('date', 'Show current date/time', (args, { setLines }) => {
@@ -98,7 +99,7 @@ export const ls: Command = createCommand('ls', 'List directories', (args, { setL
         }
         items.forEach(item => {
             const meta = getFileMetadata(item);
-            const isDir = item.endsWith('/') || (meta ? meta.type === 'directory' : !item.includes('.'));
+            const isDir = item.endsWith('/') || (meta ? (meta as unknown as { type: string }).type === 'directory' : !item.includes('.'));
             const size = meta ? meta.size : (isDir ? 4096 : 1024);
             const date = meta ? meta.modified : 'Dec  9 22:30';
             output.push(formatLongListing(item, isDir, size, date));
@@ -439,6 +440,11 @@ export const resume: Command = createCommand('resume', 'Display resume', (_, { s
     addLines(setLines, ['', `📄 ${siteConfig.author.name.toUpperCase()} - RESUME`, '──────────────────────────────────────────────────', 'Software Engineer @ Trellix', 'July 2022 - Present', '']);
 }, { category: 'utility', usage: 'resume' });
 
+export const hobbies: Command = createCommand('hobbies', 'Open Hobbies Modal', (_, { setLines }) => {
+    useStore.getState().toggleHobbiesModal();
+    addLine(setLines, 'Opening hobbies modal...');
+}, { category: 'fun', usage: 'hobbies' });
+
 
 // --- Help ---
 export const help: Command = createCommand('help', 'List commands', (_, { setLines }) => {
@@ -473,7 +479,7 @@ export const commands: Record<string, Command> = {
     bc, factor, seq, yes, banner, figlet, cal,
     hack, fortune, cowsay, matrix, sudo, sl,
     base64, decode,
-    resume
+    resume, hobbies
 };
 
 export const getCommandNames = (): string[] => Object.keys(commands);

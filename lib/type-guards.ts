@@ -1,8 +1,3 @@
-import { EntertainmentType, WatchStatus } from "@/types";
-
-/**
- * Type guard to check if a string is a valid EntertainmentType enum value
- * @param type - The string to validate
 import { AnimeType, WatchStatus } from "@/types/definitions";
 
 /**

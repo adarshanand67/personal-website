@@ -176,8 +176,8 @@ const Section = ({
     AnimeCard,
 }: {
     title: string;
-    sectionItems: EntertainmentItem[];
-    AnimeCard: React.ComponentType<{ item: EntertainmentItem }>;
+    sectionItems: AnimeItem[];
+    AnimeCard: React.ComponentType<{ item: AnimeItem }>;
 }) => {
     if (sectionItems.length === 0) return null;
     return (
@@ -195,7 +195,7 @@ const Section = ({
 };
 
 interface AnimeShelfProps {
-    items: EntertainmentItem[];
+    items: AnimeItem[];
 }
 export const AnimeShelf = ({ items }: AnimeShelfProps) => {
     const {
@@ -206,8 +206,8 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
     } = useStore();
 
     const filterItems = (
-        items: EntertainmentItem[],
-        type: EntertainmentType,
+        items: AnimeItem[],
+        type: AnimeType,
         status: WatchStatus
     ) => {
         return items.filter((item) => item.type === type && item.status === status);

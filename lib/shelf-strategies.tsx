@@ -83,22 +83,22 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
     return items.filter((paper) => paper.title.toLowerCase().includes(query.toLowerCase()));
   }
 }
-export class AnimeCardStrategy implements ShelfItemStrategy<EntertainmentItem> {
+export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  renderItem(_item: EntertainmentItem, _index: number): ReactNode {
+  renderItem(_item: AnimeItem, _index: number): ReactNode {
     return null;
   }
-  renderList(items: EntertainmentItem[]): ReactNode {
+  renderList(items: AnimeItem[]): ReactNode {
     return <AnimeShelf items={items} />;
   }
-  filter(items: EntertainmentItem[], query: string): EntertainmentItem[] {
+  filter(items: AnimeItem[], query: string): AnimeItem[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
     return items.filter(
       (item) =>
         item.title.toLowerCase().includes(lowerQuery) ||
         (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
-        (item.tags && item.tags.some(tag => tag.toLowerCase().includes(lowerQuery))) ||
+        (item.tags && item.tags.some((tag: string) => tag.toLowerCase().includes(lowerQuery))) ||
         (item.notes && item.notes.toLowerCase().includes(lowerQuery))
     );
   }
