@@ -21,6 +21,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     };
     return (
       <div
+        id={`shelf-item-${book.title}`}
         key={index}
         className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
       >
@@ -62,6 +63,7 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
   renderItem(paper: Paper, index: number): ReactNode {
     return (
       <div
+        id={`shelf-item-${paper.title}`}
         key={index}
         className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
       >
@@ -109,6 +111,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
   renderItem(blog: Blog): ReactNode {
     return (
       <div
+        id={`shelf-item-${blog.title}`}
         key={blog.slug}
         className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
       >
@@ -162,6 +165,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
   renderItem(project: Project, index: number): ReactNode {
     return (
       <div
+        id={`shelf-item-${project.title}`}
         key={index}
         className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
       >
@@ -216,6 +220,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   renderItem(hobby: Hobby, index: number): ReactNode {
     return (
       <div
+        id={`shelf-item-${hobby.name}`}
         key={index}
         className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       >

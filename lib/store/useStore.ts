@@ -91,7 +91,14 @@ interface SearchState {
     setSearchQuery: (query: string) => void;
 }
 
-export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, SearchState { }
+interface RandomizerState {
+    randomItemIndex: number | null;
+    isRandomizing: boolean;
+    setRandomItemIndex: (index: number | null) => void;
+    setIsRandomizing: (isRandomizing: boolean) => void;
+}
+
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, SearchState, RandomizerState { }
 
 export const useStore = create<AppState>((set) => ({
     lines: [],
@@ -184,4 +191,10 @@ export const useStore = create<AppState>((set) => ({
     // Back to top state
     isBackToTopVisible: false,
     setIsBackToTopVisible: (visible) => set({ isBackToTopVisible: visible }),
+
+    // Randomizer state
+    randomItemIndex: null,
+    isRandomizing: false,
+    setRandomItemIndex: (index) => set({ randomItemIndex: index }),
+    setIsRandomizing: (isRandomizing) => set({ isRandomizing }),
 }));

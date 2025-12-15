@@ -7,6 +7,7 @@ import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
+import { RandomizerButton } from "@/components/randomizer-button";
 
 interface ShelfHeaderProps {
     title: string;
@@ -16,6 +17,8 @@ interface ShelfHeaderProps {
     searchValue: string;
     onSearchChange: (value: string) => void;
     searchPlaceholder?: string;
+    onPickRandom?: (item: unknown) => void;
+    items?: unknown[];
 }
 export function ShelfHeader({
     title,
@@ -25,13 +28,20 @@ export function ShelfHeader({
     searchValue,
     onSearchChange,
     searchPlaceholder = "Search...",
+    onPickRandom,
+    items = []
 }: ShelfHeaderProps) {
     return (
         <>
-            <h1 className="text-3xl font-bold mb-2">
-                <span className="text-gray-500">#</span> {title}
-                <span className="text-gray-500 text-lg ml-2">({count})</span>
-            </h1>
+            <div className="flex justify-between items-start mb-2">
+                <h1 className="text-3xl font-bold">
+                    <span className="text-gray-500">#</span> {title}
+                    <span className="text-gray-500 text-lg ml-2">({count})</span>
+                </h1>
+                {onPickRandom && items.length > 0 && (
+                    <RandomizerButton items={items} onPick={onPickRandom} />
+                )}
+            </div>
             <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm">$ {command}</p>
             {description && (
                 <p className="text-gray-500 dark:text-gray-500 mb-6 text-sm italic">&gt; {description}</p>
@@ -74,6 +84,19 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 searchValue={searchQuery}
                 onSearchChange={setSearchQuery}
                 searchPlaceholder={config.searchPlaceholder}
+                items={filteredItems}
+                onPickRandom={(item) => {
+                    const element = document.getElementById(`shelf-item-${(item as any).title}`);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        element.classList.add('ring-4', 'ring-green-500', 'ring-offset-2');
+                        setTimeout(() => element.classList.remove('ring-4', 'ring-green-500', 'ring-offset-2'), 2000);
+                    } else if (config.type === 'anime') {
+                        // For anime, we use the store to open modal
+                        const { setAnimeSelectedItem } = useStore.getState();
+                        setAnimeSelectedItem(item);
+                    }
+                }}
             />
             {filteredItems.length === 0 ? (
                 <p className="text-gray-500 text-center py-8">
