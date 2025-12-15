@@ -525,7 +525,7 @@ export const animeData = [
     {
         "title": "Chainsaw Man",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
         "description": "A young man merges with his pet devil to become a chainsaw-wielding devil hunter.",

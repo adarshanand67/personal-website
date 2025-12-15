@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
@@ -36,7 +36,7 @@ export function ShelfHeader({
             {description && (
                 <p className="text-gray-500 dark:text-gray-500 mb-6 text-sm italic">&gt; {description}</p>
             )}
-            { }
+            {/* Search Bar */}
             <div className="relative mb-6">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
@@ -58,6 +58,10 @@ interface UniversalShelfProps {
 export function UniversalShelf({ config, items }: UniversalShelfProps) {
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
     const { searchQuery, setSearchQuery } = useStore();
+
+    useEffect(() => {
+        setSearchQuery("");
+    }, [config.type, setSearchQuery]);
 
     const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
     return (
@@ -293,7 +297,7 @@ export const AnimeShelf = ({ items }: AnimeShelfProps) => {
                                 {/* Tags */}
                                 {selectedItem.tags && selectedItem.tags.length > 0 && (
                                     <div className="flex flex-wrap justify-center gap-2">
-                                        {selectedItem.tags.map(tag => (
+                                        {selectedItem.tags.map((tag: string) => (
                                             <button
                                                 key={tag}
                                                 onClick={() => {
