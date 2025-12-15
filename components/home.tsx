@@ -10,15 +10,19 @@ import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";
 import { techLinks } from "@/lib/techLinks";
 import { shelfConfigs, siteConfig } from "@/lib/config";
+import { Hero3D } from "@/components/hero-3d";
 import { directoryMap, skillCategories } from "@/lib/constants";
+import { SkillGraph } from "@/components/skill-graph";
+
 export function Hero({ profile }: { profile: any }) {
     return (
         <section className="section max-w-6xl mx-auto px-4 mt-8 mb-8 relative">
-            <div className="absolute inset-0 -z-10 overflow-hidden">
+            <Hero3D />
+            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center relative z-10">
                 <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center glass p-8 rounded-2xl">
                     <div className="font-mono mb-1 flex items-center gap-2 group">
                         <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
@@ -258,7 +262,6 @@ export function Experience({ items }: ExperienceProps) {
     );
 }
 
-
 export function TechStack() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['techstack'] ?? false;
@@ -274,6 +277,9 @@ export function TechStack() {
             <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}
             >
+                <div className="mt-4 mb-6">
+                    <SkillGraph />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {Object.entries(skillCategories).map(([category, skills]) => (
                         <div
