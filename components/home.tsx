@@ -13,6 +13,7 @@ import { shelfConfigs, siteConfig } from "@/lib/config";
 import { Hero3D } from "@/components/hero-3d";
 import { directoryMap, skillCategories } from "@/lib/constants";
 import { SkillGraph } from "@/components/skill-graph";
+import { ArchitectureViewer } from "@/components/architecture-viewer";
 
 export function Hero({ profile }: { profile: any }) {
     return (
@@ -280,6 +281,11 @@ export function TechStack() {
                 <div className="mt-4 mb-6">
                     <SkillGraph />
                 </div>
+
+                <div className="mt-8 mb-8">
+                    <ArchitectureViewer />
+                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     {Object.entries(skillCategories).map(([category, skills]) => (
                         <div

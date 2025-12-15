@@ -50,7 +50,11 @@ export function SystemMonitor() {
 
     return (
         <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fade-in font-mono">
-            <div className="w-full max-w-4xl bg-black border border-green-800 rounded-lg shadow-[0_0_30px_rgba(34,197,94,0.15)] overflow-hidden flex flex-col h-[600px]">
+            <div
+                className="absolute inset-0 z-0"
+                onClick={() => useStore.getState().toggleSystemMonitor()}
+            />
+            <div className="relative z-10 w-full max-w-4xl bg-black border border-green-800 rounded-lg shadow-[0_0_30px_rgba(34,197,94,0.15)] overflow-hidden flex flex-col h-[600px]">
 
                 {/* Header */}
                 <div className="bg-green-900/20 px-4 py-2 border-b border-green-900 flex justify-between items-center">
@@ -61,8 +65,12 @@ export function SystemMonitor() {
                     <div className="text-xs text-green-600">
                         Uptime: <span className="text-white">{formatTime(uptime)}</span>
                     </div>
-                    {/* Close hint (No actual close button for realism, user must use terminal or close modal manually if integrated that way, but for UX we add a button) */}
-                    {/* For this specific feature mock, we might want a close button since it's a modal */}
+                    <button
+                        onClick={() => useStore.getState().toggleSystemMonitor()}
+                        className="text-green-700 hover:text-green-500 transition-colors"
+                    >
+                        <X size={16} />
+                    </button>
                 </div>
 
                 <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow overflow-hidden">
