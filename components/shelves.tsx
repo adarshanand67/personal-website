@@ -83,6 +83,15 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
     };
 
     const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
+
+    // For Randomizer: Filter only "Completed" items if it's an Anime shelf
+    const randomizerItems = useMemo(() => {
+        if (config.type === 'anime') {
+            return filteredItems.filter((item: any) => item.status === WatchStatus.Completed);
+        }
+        return filteredItems;
+    }, [filteredItems, config.type]);
+
     return (
         <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
             <ShelfHeader
@@ -93,7 +102,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 searchValue={searchQuery}
                 onSearchChange={setSearchQuery}
                 searchPlaceholder={config.searchPlaceholder}
-                items={filteredItems}
+                items={randomizerItems}
                 onPickRandom={(item) => {
                     if (config.type === 'anime') {
                         const { setAnimeSelectedItem } = useStore.getState();
