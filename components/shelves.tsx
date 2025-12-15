@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
-import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon } from "lucide-react";
+import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
@@ -67,11 +67,20 @@ interface UniversalShelfProps {
 }
 export function UniversalShelf({ config, items }: UniversalShelfProps) {
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
-    const { searchQuery, setSearchQuery } = useStore();
+    const { searchQuery, setSearchQuery, hobbySelectedItem, setHobbySelectedItem } = useStore();
 
     useEffect(() => {
         setSearchQuery("");
     }, [config.type, setSearchQuery]);
+
+    // Icon map for Hobby Modal
+    const iconMap: Record<string, React.ElementType> = {
+        Dumbbell, Tv, Book: Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+    };
+    const getIcon = (iconName: string) => {
+        const IconComponent = iconMap[iconName];
+        return IconComponent ? <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" /> : <span className="text-4xl mb-4">🎮</span>;
+    };
 
     const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
     return (
@@ -86,15 +95,18 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 searchPlaceholder={config.searchPlaceholder}
                 items={filteredItems}
                 onPickRandom={(item) => {
-                    const element = document.getElementById(`shelf-item-${(item as any).title}`);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        element.classList.add('ring-4', 'ring-green-500', 'ring-offset-2');
-                        setTimeout(() => element.classList.remove('ring-4', 'ring-green-500', 'ring-offset-2'), 2000);
-                    } else if (config.type === 'anime') {
-                        // For anime, we use the store to open modal
+                    if (config.type === 'anime') {
                         const { setAnimeSelectedItem } = useStore.getState();
                         setAnimeSelectedItem(item);
+                    } else if (config.type === 'hobby') {
+                        setHobbySelectedItem(item);
+                    } else {
+                        const element = document.getElementById(`shelf-item-${(item as any).title}`);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            element.classList.add('ring-4', 'ring-green-500', 'ring-offset-2');
+                            setTimeout(() => element.classList.remove('ring-4', 'ring-green-500', 'ring-offset-2'), 2000);
+                        }
                     }
                 }}
             />
@@ -104,6 +116,36 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 </p>
             ) : (
                 strategy.renderList(filteredItems)
+            )}
+
+            {/* Hobby Modal */}
+            {hobbySelectedItem && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+                    <div
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+                        onClick={() => setHobbySelectedItem(null)}
+                    ></div>
+                    <div className="relative w-full max-w-lg bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden animate-fade-in border border-green-500/30 p-8 flex flex-col items-center text-center">
+                        <button
+                            onClick={() => setHobbySelectedItem(null)}
+                            className="absolute top-3 right-3 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full text-gray-500 transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-full mb-4">
+                            {getIcon((hobbySelectedItem as any).icon)}
+                        </div>
+
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                            {(hobbySelectedItem as any).name}
+                        </h2>
+
+                        <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            {(hobbySelectedItem as any).description}
+                        </p>
+                    </div>
+                </div>
             )}
         </div>
     );

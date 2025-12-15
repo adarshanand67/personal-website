@@ -87,6 +87,11 @@ interface AnimeState {
     setAnimeSelectedTag: (tag: string | null) => void;
 }
 
+interface HobbyState {
+    hobbySelectedItem: any;
+    setHobbySelectedItem: (item: any) => void;
+}
+
 interface SearchState {
     searchQuery: string;
     setSearchQuery: (query: string) => void;
@@ -99,7 +104,18 @@ interface RandomizerState {
     setIsRandomizing: (isRandomizing: boolean) => void;
 }
 
-export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, SearchState, RandomizerState { }
+interface GuestbookEntry {
+    name: string;
+    message: string;
+    timestamp: string;
+}
+
+interface GuestbookState {
+    guestbookEntries: GuestbookEntry[];
+    addGuestbookEntry: (entry: GuestbookEntry) => void;
+}
+
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, HobbyState, SearchState, RandomizerState, GuestbookState { }
 
 export const useStore = create<AppState>()(persist((set) => ({
     lines: [],
@@ -122,6 +138,10 @@ export const useStore = create<AppState>()(persist((set) => ({
     animeSelectedTag: null,
     setAnimeSelectedItem: (item) => set({ animeSelectedItem: item }),
     setAnimeSelectedTag: (tag) => set({ animeSelectedTag: tag }),
+
+    // Hobby state
+    hobbySelectedItem: null,
+    setHobbySelectedItem: (item) => set({ hobbySelectedItem: item }),
 
     // Search state
     searchQuery: '',
@@ -198,6 +218,12 @@ export const useStore = create<AppState>()(persist((set) => ({
     isRandomizing: false,
     setRandomItemIndex: (index) => set({ randomItemIndex: index }),
     setIsRandomizing: (isRandomizing) => set({ isRandomizing }),
+
+    // Guestbook state
+    guestbookEntries: [
+        { name: "System", message: "Guestbook initialized.", timestamp: new Date().toISOString() }
+    ],
+    addGuestbookEntry: (entry) => set((state) => ({ guestbookEntries: [entry, ...state.guestbookEntries] })),
 }), {
     name: 'ui-storage',
     partialize: (state) => ({
@@ -206,6 +232,7 @@ export const useStore = create<AppState>()(persist((set) => ({
         volume: state.volume,
         isMuted: state.isMuted,
         isShuffle: state.isShuffle,
-        isRepeat: state.isRepeat
+        isRepeat: state.isRepeat,
+        guestbookEntries: state.guestbookEntries
     }),
 }));

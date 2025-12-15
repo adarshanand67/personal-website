@@ -1,3 +1,6 @@
+"use client";
+
+import { useStore } from "@/lib/store/useStore";
 import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
@@ -222,14 +225,15 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
       <div
         id={`shelf-item-${hobby.name}`}
         key={index}
-        className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
+        className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer"
       >
         <div className="shrink-0 p-2 bg-white dark:bg-gray-900 rounded-md shadow-sm">
           {this.getIcon(hobby.icon)}
         </div>
         <div>
           <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100 mb-1">{hobby.name}</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2">
             {hobby.description}
           </p>
         </div>
