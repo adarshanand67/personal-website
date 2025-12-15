@@ -1026,15 +1026,15 @@ export function MusicToggleButton() {
         <button
             onClick={toggleMusicPlayer}
             className={`
-                fixed bottom-8 left-8 z-40
+                fixed bottom-8 right-8 z-40
                 p-3 rounded-full
                 bg-gradient-to-br from-green-500 to-emerald-600
                 hover:from-green-600 hover:to-emerald-700
                 shadow-lg hover:shadow-xl
-                transition-all duration-300
+                transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
                 border-2 border-green-400/50
                 group
-                ${showMusicPlayer ? 'scale-95 opacity-70' : 'scale-100 opacity-100'}
+                ${showMusicPlayer ? 'opacity-0 scale-50 pointer-events-none' : 'opacity-100 scale-100'}
             `}
             aria-label={showMusicPlayer ? "Hide Music Player" : "Show Music Player"}
             title={showMusicPlayer ? "Hide Music Player" : "Show Music Player"}

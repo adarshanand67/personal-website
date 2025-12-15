@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { playlist } from '@/lib/constants';
 
 interface TerminalState {
     lines: string[];
@@ -37,7 +38,20 @@ interface CursorState {
 
 interface MusicState {
     showMusicPlayer: boolean;
+    isPlaying: boolean;
+    volume: number;
+    isMuted: boolean;
+    currentTrackIndex: number;
+    isShuffle: boolean;
+    isRepeat: boolean;
     toggleMusicPlayer: () => void;
+    toggleShuffle: () => void;
+    toggleRepeat: () => void;
+    setIsPlaying: (playing: boolean) => void;
+    setVolume: (volume: number) => void;
+    toggleMute: () => void;
+    nextTrack: () => void;
+    prevTrack: () => void;
 }
 
 interface WeatherState {
@@ -137,7 +151,29 @@ export const useStore = create<AppState>((set) => ({
 
     // Music state
     showMusicPlayer: false,
+    isPlaying: false,
+    volume: 1.0,
+    isMuted: false,
+    currentTrackIndex: 0,
+    isShuffle: false,
+    isRepeat: false,
     toggleMusicPlayer: () => set((state) => ({ showMusicPlayer: !state.showMusicPlayer })),
+    toggleShuffle: () => set((state) => ({ isShuffle: !state.isShuffle })),
+    toggleRepeat: () => set((state) => ({ isRepeat: !state.isRepeat })),
+    setIsPlaying: (playing) => set({ isPlaying: playing }),
+    setVolume: (volume) => set({ volume: Math.max(0, Math.min(1, volume)) }),
+    toggleMute: () => set((state) => ({ isMuted: !state.isMuted })),
+    nextTrack: () => set((state) => {
+        if (state.isShuffle) {
+            let nextIndex = Math.floor(Math.random() * playlist.length);
+            while (nextIndex === state.currentTrackIndex && playlist.length > 1) {
+                nextIndex = Math.floor(Math.random() * playlist.length);
+            }
+            return { currentTrackIndex: nextIndex };
+        }
+        return { currentTrackIndex: (state.currentTrackIndex + 1) % playlist.length };
+    }),
+    prevTrack: () => set((state) => ({ currentTrackIndex: (state.currentTrackIndex - 1 + playlist.length) % playlist.length })),
 
     // Weather state
     weather: null,

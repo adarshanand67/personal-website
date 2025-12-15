@@ -6,7 +6,7 @@ export const playlist = [
     `${basePath}/assets/music/pokemon_theme.mp3`,
     `${basePath}/assets/music/tank.mp3`,
     `${basePath}/assets/music/unravel.mp3`,
-    `${basePath}/assets/music/battlecry.mp3`,
+
     `${basePath}/assets/music/blue_bird.mp3`,
     `${basePath}/assets/music/go.mp3`,
     `${basePath}/assets/music/the_world.mp3`,
@@ -18,7 +18,7 @@ export const trackNames = [
     "Pokemon Theme (Instrumental)",
     "Tank! (Cowboy Bebop)",
     "Unravel (Tokyo Ghoul)",
-    "Battlecry (Samurai Champloo)",
+
     "Blue Bird (Naruto)",
     "GO!!! (Naruto)",
     "The World (Death Note)",
@@ -30,7 +30,7 @@ export const trackImages = [
     "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
     "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
     "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
-    "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
+
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",

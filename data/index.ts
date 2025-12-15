@@ -180,6 +180,7 @@ export const animeData = [
         "type": "Anime",
         "status": "Completed",
         "notes": "S1,2,3",
+        "recommended": true,
         "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg",
         "description": "A powerful psychic tries to live a normal life while suppressing his emotions to control his powers.",
         "tags": [
@@ -222,6 +223,7 @@ export const animeData = [
         "type": "Anime",
         "status": "Completed",
         "notes": "S1,2",
+        "recommended": true,
         "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg",
         "description": "A controversial project to create the world's greatest egoist striker for the Japanese national soccer team.",
         "tags": [
@@ -564,7 +566,7 @@ export const animeData = [
     {
         "title": "Aoashi",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
         "description": "A talented but raw young soccer player is recruited for a professional youth team.",

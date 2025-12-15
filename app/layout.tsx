@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain } from "@/components/layout";
+import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton } from "@/components/layout";
+import { MusicPlayer } from "@/components/music-player";
 
 import { siteConfig } from "@/lib/config";
 import { StructuredData } from "@/components/seo/structuredData";
@@ -87,6 +88,8 @@ export default function RootLayout({
           <CommandMenu />
           <HobbiesModal />
           {children}
+          <MusicPlayer />
+          <MusicToggleButton />
 
           {/* Footer */}
           {/* <div className="h-20" /> */}

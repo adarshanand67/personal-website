@@ -99,7 +99,7 @@ const Section = ({
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">
                 {title}
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
                 {sectionItems.map((item, index) => (
                     <AnimeCard key={`${item.title}-${index}`} item={item} />
                 ))}
