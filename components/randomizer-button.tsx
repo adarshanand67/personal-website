@@ -22,8 +22,8 @@ export function RandomizerButton({ items, onPick }: RandomizerButtonProps) {
         timeoutsRef.current.forEach(clearTimeout);
         timeoutsRef.current = [];
 
-        const totalDuration = 2000; // 2 seconds spin
-        let interval = 50;
+        const totalDuration = 800; // 0.8 seconds spin (Faster)
+        let interval = 30;
         let elapsed = 0;
 
         const spin = () => {
@@ -43,7 +43,7 @@ export function RandomizerButton({ items, onPick }: RandomizerButtonProps) {
                 setTimeout(() => {
                     setIsRandomizing(false);
                     onPick(items[finalIndex]);
-                }, 500);
+                }, 200);
             }
         };
 
