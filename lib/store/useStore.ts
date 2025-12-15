@@ -150,7 +150,7 @@ export const useStore = create<AppState>((set) => ({
     setIsCursorPointer: (pointer) => set({ isCursorPointer: pointer }),
 
     // Music state
-    showMusicPlayer: false,
+    showMusicPlayer: true,
     isPlaying: false,
     volume: 1.0,
     isMuted: false,

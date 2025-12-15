@@ -1,6 +1,7 @@
 import { siteConfig, featuresConfig as config, basePath as configBasePath } from "@/lib/config";
 export const basePath = configBasePath;
 export const playlist = [
+    `${basePath}/assets/music/the_world.mp3`,
     `${basePath}/assets/music/cruel_angels_thesis.mp3`,
     `${basePath}/assets/music/one_punch_man.mp3`,
     `${basePath}/assets/music/pokemon_theme.mp3`,
@@ -9,10 +10,10 @@ export const playlist = [
 
     `${basePath}/assets/music/blue_bird.mp3`,
     `${basePath}/assets/music/go.mp3`,
-    `${basePath}/assets/music/the_world.mp3`,
     `${basePath}/assets/music/guren_no_yumiya.mp3`
 ] as const;
 export const trackNames = [
+    "The World (Death Note)",
     "A Cruel Angel's Thesis (Evangelion)",
     "THE HERO!! (One Punch Man)",
     "Pokemon Theme (Instrumental)",
@@ -21,10 +22,10 @@ export const trackNames = [
 
     "Blue Bird (Naruto)",
     "GO!!! (Naruto)",
-    "The World (Death Note)",
     "Guren no Yumiya (Attack on Titan)",
 ] as const;
 export const trackImages = [
+    "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
     "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
     "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
     "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
@@ -33,7 +34,6 @@ export const trackImages = [
 
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
-    "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
 export const introLines = (modifier?: (s: string) => string) => {
