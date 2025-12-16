@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
-import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather } from "lucide-react";
+import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather, LayoutGrid, Network, User, Terminal as TerminalIcon, LayoutTemplate } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { SectionHeader, GlitchText, Terminal } from "@/components/layout";
 import { linkifyTech } from "@/lib/techLinks";
@@ -14,78 +15,118 @@ import { Hero3D } from "@/components/hero-3d";
 import { directoryMap, skillCategories } from "@/lib/constants";
 import { SkillGraph } from "@/components/skill-graph";
 import { ArchitectureViewer } from "@/components/architecture-viewer";
-import { useState } from "react";
 import { XRayWrapper } from "@/components/x-ray-wrapper";
 import { withXRay } from "@/lib/withXRay";
 
 function HeroBase({ profile }: { profile: any }) {
+    const [viewMode, setViewMode] = useState<'profile' | 'terminal'>('profile');
+
     return (
-        <section className="section max-w-6xl mx-auto px-4 mt-8 mb-8 relative">
+        <section className="section max-w-7xl mx-auto px-4 mt-8 mb-8 relative">
             <Hero3D />
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start max-lg:items-center max-lg:justify-center relative z-10">
-                <div className="flex flex-col gap-4 max-lg:items-center max-lg:text-center glass p-8 rounded-2xl">
-                    <div className="font-mono mb-1 flex items-center gap-2 group">
-                        <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
-                        <span className="text-gray-700 dark:text-gray-300">whoami</span>
-                        <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-                    </div>
-                    <div className="flex items-center gap-5">
-                        {profile.avatar && (
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                                <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                    <Image
-                                        src={profile.avatar}
-                                        alt={profile.name}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
+
+            {/* View Toggle */}
+            <div className="flex justify-end mb-4 relative z-20">
+                <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    <button
+                        onClick={() => setViewMode('profile')}
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${viewMode === 'profile'
+                            ? 'bg-white dark:bg-black text-green-600 shadow-sm'
+                            : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+                            }`}
+                        title="Profile View"
+                    >
+                        <User size={16} />
+                        <span>Profile</span>
+                    </button>
+                    <button
+                        onClick={() => setViewMode('terminal')}
+                        className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm font-medium transition-all ${viewMode === 'terminal'
+                            ? 'bg-white dark:bg-black text-green-600 shadow-sm'
+                            : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+                            }`}
+                        title="Terminal View"
+                    >
+                        <TerminalIcon size={16} />
+                        <span>Terminal</span>
+                    </button>
+                </div>
+            </div>
+
+            <div className="relative z-10 min-h-[500px]">
+                {/* Profile Section */}
+                {viewMode === 'profile' && (
+                    <div className="w-full max-w-4xl mx-auto flex flex-col gap-4 glass p-8 rounded-2xl animate-fade-in">
+                        <div className="font-mono mb-1 flex items-center gap-2 group">
+                            <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
+                            <span className="text-gray-700 dark:text-gray-300">whoami</span>
+                            <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                            {profile.avatar && (
+                                <div className="relative group shrink-0">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                                    <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+                                        <Image
+                                            src={profile.avatar}
+                                            alt={profile.name}
+                                            fill
+                                            className="object-cover"
+                                            priority
+                                        />
+                                    </div>
+                                </div>
+                            )}
+                            <div className="text-center md:text-left">
+                                <h1 className="title text-4xl md:text-6xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-2">
+                                    <GlitchText text={profile.name} className="text-primary" />
+                                </h1>
+                                <div className="relative inline-block">
+                                    <div className="w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                                 </div>
                             </div>
-                        )}
-                        <h1 className="title text-3xl md:text-5xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent">
-                            <GlitchText text={profile.name} className="text-primary" />
-                        </h1>
-                    </div>
-                    <div className="relative inline-block">
-                        <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                    </div>
-                    <div className="content text-lg leading-relaxed space-y-3">
-                        {profile.bio.paragraphs.map((paragraph: string, index: number) => (
-                            <p
-                                key={index}
-                                dangerouslySetInnerHTML={{
-                                    __html: paragraph
-                                        .replace(
-                                            "Trellix",
-                                            `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Trellix</a>`
-                                        )
-                                        .replace(
-                                            "Intel Corporation",
-                                            `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Intel Corporation</a>`
-                                        ),
-                                }}
-                                className="text-gray-700 dark:text-gray-300"
-                            />
-                        ))}
-                    </div>
-                </div>
-                <div className="lg:sticky lg:top-20 max-lg:flex max-lg:flex-col max-lg:justify-center w-full">
-                    <div className="flex justify-center lg:justify-end mb-4 pr-4">
-                        <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help">
-                            <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
-                            <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
-                                Psst... hidden CTF challenge
-                            </span>
+                        </div>
+
+                        <div className="content text-lg leading-relaxed space-y-4 mt-4">
+                            {profile.bio.paragraphs.map((paragraph: string, index: number) => (
+                                <p
+                                    key={index}
+                                    dangerouslySetInnerHTML={{
+                                        __html: paragraph
+                                            .replace(
+                                                "Trellix",
+                                                `<a href="https://trellix.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Trellix</a>`
+                                            )
+                                            .replace(
+                                                "Intel Corporation",
+                                                `<a href="https://intel.com" target="_blank" class="text-green-700 dark:text-green-400 hover:underline font-semibold hover:text-green-600 dark:hover:text-green-300 transition-colors">Intel Corporation</a>`
+                                            ),
+                                    }}
+                                    className="text-gray-700 dark:text-gray-300"
+                                />
+                            ))}
                         </div>
                     </div>
-                    <Terminal />
-                </div>
+                )}
+
+                {/* Terminal Section */}
+                {viewMode === 'terminal' && (
+                    <div className="w-full max-w-5xl mx-auto animate-fade-in">
+                        <div className="flex justify-center mb-4">
+                            <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help">
+                                <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
+                                <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
+                                    Psst... hidden CTF challenge
+                                </span>
+                            </div>
+                        </div>
+                        <Terminal />
+                    </div>
+                )}
             </div>
         </section>
     );
@@ -289,6 +330,7 @@ export function TechStack() {
 function TechStackBase() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['techstack'] ?? false;
+    const [viewMode, setViewMode] = useState<'list' | 'graph'>('list');
 
     return (
         <div className="font-mono">
@@ -304,82 +346,100 @@ function TechStackBase() {
             <div
                 className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}
             >
-                <div className="flex flex-col lg:flex-row gap-8 mt-4">
-                    {/* Left Column: List View */}
-                    <div className="w-full lg:w-1/2">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {Object.entries(skillCategories).map(([category, skills]) => (
-                                <div
-                                    key={category}
-                                    className="glass p-5 rounded-xl border border-gray-200/50 dark:border-gray-800/50 hover:border-green-500/30 transition-all duration-300 group hover:shadow-lg hover:shadow-green-500/5"
-                                >
-                                    <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
-                                        {category}
-                                        <span className="text-[10px] text-gray-400 ml-auto font-mono opacity-0 group-hover:opacity-100 transition-opacity">
-                                            {skills.length} items
-                                        </span>
-                                    </h3>
-                                    <div className="flex flex-wrap gap-2">
-                                        {skills.map((skill) => {
-                                            const url = techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
-                                            let domain = 'google.com';
-                                            try {
-                                                domain = new URL(url).hostname;
-                                            } catch {
-                                            }
-                                            const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-
-                                            return (
-                                                <Link
-                                                    key={skill}
-                                                    href={url}
-                                                    target="_blank"
-                                                    className="
-                                                        flex items-center gap-2 pl-2 pr-3 py-1.5 
-                                                        bg-gray-50/50 dark:bg-gray-800/30 
-                                                        border border-gray-200 dark:border-gray-700 
-                                                        rounded-full text-xs font-medium 
-                                                        text-gray-700 dark:text-gray-300 
-                                                        hover:bg-white dark:hover:bg-gray-800 
-                                                        hover:text-green-600 dark:hover:text-green-400 
-                                                        hover:border-green-500/50 hover:shadow-md 
-                                                        hover:-translate-y-0.5 transition-all duration-200
-                                                    "
-                                                >
-                                                    <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
-                                                        <Image
-                                                            src={favicon}
-                                                            alt={skill}
-                                                            width={16}
-                                                            height={16}
-                                                            className="object-contain"
-                                                        />
-                                                    </div>
-                                                    {skill}
-                                                </Link>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Right Column: Graph View */}
-                    <div className="w-full lg:w-1/2">
-                        <div className="sticky top-24">
-                            <div className="text-center mb-6">
-                                <p className="text-sm text-gray-500 max-w-lg mx-auto">
-                                    Interactive visualization of the system architecture. Hover over nodes to see data flow.
-                                </p>
-                            </div>
-                            <div className="min-h-[500px] border border-gray-200/50 dark:border-gray-800/50 rounded-xl overflow-hidden glass">
-                                <SkillGraph />
-                            </div>
-                        </div>
+                {/* View Toggle */}
+                <div className="flex justify-end px-1 mb-4">
+                    <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg">
+                        <button
+                            onClick={() => setViewMode('list')}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${viewMode === 'list'
+                                ? 'bg-white dark:bg-black text-green-600 dark:text-green-400 shadow-sm'
+                                : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'
+                                }`}
+                        >
+                            <LayoutGrid size={14} />
+                            <span>Skills List</span>
+                        </button>
+                        <button
+                            onClick={() => setViewMode('graph')}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${viewMode === 'graph'
+                                ? 'bg-white dark:bg-black text-green-600 dark:text-green-400 shadow-sm'
+                                : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-300'
+                                }`}
+                        >
+                            <Network size={14} />
+                            <span>Architecture</span>
+                        </button>
                     </div>
                 </div>
+
+                {viewMode === 'graph' ? (
+                    <div className="mt-4 mb-8">
+                        <div className="text-center mb-6">
+                            <p className="text-sm text-gray-500 max-w-lg mx-auto">
+                                Interactive visualization of the system architecture. Hover over nodes to see data flow.
+                            </p>
+                        </div>
+                        <SkillGraph />
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        {Object.entries(skillCategories).map(([category, skills]) => (
+                            <div
+                                key={category}
+                                className="glass p-5 rounded-xl border border-gray-200/50 dark:border-gray-800/50 hover:border-green-500/30 transition-all duration-300 group hover:shadow-lg hover:shadow-green-500/5"
+                            >
+                                <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
+                                    {category}
+                                    <span className="text-[10px] text-gray-400 ml-auto font-mono opacity-0 group-hover:opacity-100 transition-opacity">
+                                        {skills.length} items
+                                    </span>
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {skills.map((skill) => {
+                                        const url = techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                                        let domain = 'google.com';
+                                        try {
+                                            domain = new URL(url).hostname;
+                                        } catch {
+                                        }
+                                        const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+
+                                        return (
+                                            <Link
+                                                key={skill}
+                                                href={url}
+                                                target="_blank"
+                                                className="
+                                                    flex items-center gap-2 pl-2 pr-3 py-1.5 
+                                                    bg-gray-50/50 dark:bg-gray-800/30 
+                                                    border border-gray-200 dark:border-gray-700 
+                                                    rounded-full text-xs font-medium 
+                                                    text-gray-700 dark:text-gray-300 
+                                                    hover:bg-white dark:hover:bg-gray-800 
+                                                    hover:text-green-600 dark:hover:text-green-400 
+                                                    hover:border-green-500/50 hover:shadow-md 
+                                                    hover:-translate-y-0.5 transition-all duration-200
+                                                "
+                                            >
+                                                <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
+                                                    <Image
+                                                        src={favicon}
+                                                        alt={skill}
+                                                        width={16}
+                                                        height={16}
+                                                        className="object-contain"
+                                                    />
+                                                </div>
+                                                {skill}
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );

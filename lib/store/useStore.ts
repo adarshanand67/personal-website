@@ -137,7 +137,12 @@ export const useStore = create<AppState>()(persist((set) => ({
     showSystemMonitor: false,
     isXRayEnabled: false,
     isNavbarActive: false,
-    expandedSections: {},
+    expandedSections: {
+        'experience': true,
+        'techstack': true,
+        'contact': true,
+        'shelves': true
+    },
 
     // Anime state
     animeSelectedItem: null,

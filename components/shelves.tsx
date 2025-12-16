@@ -99,7 +99,7 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     }, [filteredItems, config.type]);
 
     return (
-        <div className="section max-w-4xl mx-auto px-4 mt-12 mb-12 font-mono">
+        <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
             <ShelfHeader
                 title={config.title}
                 description={config.description}
