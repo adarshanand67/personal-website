@@ -16,42 +16,98 @@ export interface ShelfItemStrategy<T> {
   renderList(items: T[]): ReactNode;
   filter(items: T[], query: string): T[];
 }
+// Helper to generate consistent book cover styles from title
+const bookPatterns = [
+  'bg-red-900', 'bg-blue-900', 'bg-green-900', 'bg-amber-900',
+  'bg-slate-800', 'bg-purple-900', 'bg-indigo-900', 'bg-rose-900'
+];
+
+const getBookStyle = (title: string) => {
+  let hash = 0;
+  for (let i = 0; i < title.length; i++) hash = title.charCodeAt(i) + ((hash << 5) - hash);
+  const colorIndex = Math.abs(hash) % bookPatterns.length;
+  return bookPatterns[colorIndex];
+};
+
 export class BookListStrategy implements ShelfItemStrategy<Book> {
   renderItem(book: Book, index: number): ReactNode {
     const getAmazonSearchUrl = (title: string, author: string) => {
       const searchQuery = encodeURIComponent(`${title} ${author}`);
       return `https://www.amazon.in/s?k=${searchQuery}`;
     };
+
+    // Procedural cover style
+    const coverColor = getBookStyle(book.title);
+
     return (
-      <div
+      <Link
         id={`shelf-item-${book.title}`}
         key={index}
-        className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
+        href={getAmazonSearchUrl(book.title, book.author)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full aspect-[2/3] perspective-1000"
       >
-        <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
-          <Link
-            href={getAmazonSearchUrl(book.title, book.author)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-700 dark:text-green-400 hover:underline flex items-center gap-2 group"
-          >
-            {book.title}
+        <div className={`
+          relative w-full h-full transition-all duration-500 transform-style-3d 
+          group-hover:rotate-y-[-20deg] group-hover:translate-x-2 group-hover:-translate-y-2
+          shadow-lg group-hover:shadow-2xl
+        `}>
+          {/* Book Spine (Left) */}
+          <div className={`
+             absolute top-1 left-0 w-4 h-[98%] -translate-x-3 translate-z-[-2px] rotate-y-[-90deg] origin-right
+             ${coverColor} brightness-75 rounded-l-sm
+           `}></div>
+
+          {/* Book Cover (Front) */}
+          <div className={`
+             absolute inset-0 flex flex-col p-4 ${coverColor} 
+             bg-gradient-to-br from-white/10 to-black/20
+             border-r-2 border-white/10 rounded-r-md rounded-l-sm
+           `}>
+            {/* Title */}
+            <div className="flex-1 border-2 border-white/20 p-2 flex flex-col items-center justify-center text-center">
+              <h3 className="font-serif font-bold text-white text-lg leading-tight line-clamp-4 drop-shadow-md">
+                {book.title}
+              </h3>
+            </div>
+
+            {/* Author */}
+            <div className="mt-4 text-center">
+              <p className="text-xs text-white/80 font-mono uppercase tracking-widest truncate max-w-full">
+                {book.author}
+              </p>
+            </div>
+
+            {/* Recommended Badge */}
             {book.recommended && (
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 shrink-0" />
+              <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 p-1.5 rounded-full shadow-lg transform rotate-12 group-hover:scale-110 transition-transform">
+                <Star size={12} fill="currentColor" />
+              </div>
             )}
-            <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-          </Link>
-          <span className="text-gray-500 text-sm italic">by {book.author}</span>
+
+            {/* Texture Overlay */}
+            <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
+
+            {/* Spine Crease Effect */}
+            <div className="absolute top-0 left-2 bottom-0 w-1 bg-black/20 blur-[1px]"></div>
+          </div>
+
+          {/* Pages (Right/Bottom Depth effect if rotated) - simplified to shadow or just hidden for front-only mostly */}
         </div>
-      </div>
+      </Link>
     );
   }
+
   renderList(items: Book[]): ReactNode {
     if (items.length === 0) return null;
     return (
-      <div className="space-y-2">{items.map((book, index) => this.renderItem(book, index))}</div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 px-4 py-8">
+        {items.map((book, index) => this.renderItem(book, index))}
+      </div>
     );
   }
+
   filter(items: Book[], query: string): Book[] {
     if (!query) return items;
     const lowerQuery = query.toLowerCase();
