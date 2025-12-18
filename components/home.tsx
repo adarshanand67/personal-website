@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { ChevronDown, Book, FileText, Tv, Gamepad2, Feather, LayoutGrid, Network, User, Terminal as TerminalIcon, LayoutTemplate } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
-import { SectionHeader, GlitchText, Terminal } from "@/components/layout";
+import { SectionHeader, Terminal } from "@/components/layout";
 import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";
 import { techLinks } from "@/lib/techLinks";
@@ -15,8 +15,6 @@ import { Hero3D } from "@/components/hero-3d";
 import { directoryMap, skillCategories } from "@/lib/constants";
 import { SkillGraph } from "@/components/skill-graph";
 import { ArchitectureViewer } from "@/components/architecture-viewer";
-import { XRayWrapper } from "@/components/x-ray-wrapper";
-import { withXRay } from "@/lib/withXRay";
 
 function HeroBase({ profile }: { profile: any }) {
     const [viewMode, setViewMode] = useState<'profile' | 'terminal'>('profile');
@@ -86,7 +84,7 @@ function HeroBase({ profile }: { profile: any }) {
                             )}
                             <div className="text-center md:text-left">
                                 <h1 className="title text-4xl md:text-6xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-2">
-                                    <GlitchText text={profile.name} className="text-primary" />
+                                    {profile.name}
                                 </h1>
                                 <div className="relative inline-block">
                                     <div className="w-full h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
@@ -137,9 +135,8 @@ function HeroBase({ profile }: { profile: any }) {
         </section>
     );
 }
-const HeroWrapped = withXRay(HeroBase, 'Hero');
 export function Hero(props: any) {
-    return <HeroWrapped {...props} />;
+    return <HeroBase {...props} />;
 }
 
 function ContactSectionBase() {
@@ -230,9 +227,8 @@ function ContactSectionBase() {
     );
 }
 
-const ContactSectionWrapped = withXRay(ContactSectionBase, 'ContactSection');
 export function ContactSection() {
-    return <ContactSectionWrapped />;
+    return <ContactSectionBase />;
 }
 
 interface ExperienceItem {
@@ -248,9 +244,8 @@ interface ExperienceProps {
     items: ExperienceItem[];
 }
 
-const ExperienceWrapped = withXRay(ExperienceBase, 'Experience');
 export function Experience(props: ExperienceProps) {
-    return <ExperienceWrapped {...props} />;
+    return <ExperienceBase {...props} />;
 }
 
 function ExperienceBase({ items }: ExperienceProps) {
@@ -328,9 +323,8 @@ function ExperienceBase({ items }: ExperienceProps) {
     );
 }
 
-const TechStackWrapped = withXRay(TechStackBase, 'TechStack');
 export function TechStack() {
-    return <TechStackWrapped />;
+    return <TechStackBase />;
 }
 
 function TechStackBase() {
@@ -464,9 +458,8 @@ interface RecentSectionProps {
     linkText: string;
     linkUrl: string;
 }
-const RecentSectionWrapped = withXRay(RecentSectionBase, 'RecentSection');
 export function RecentSection(props: RecentSectionProps) {
-    return <RecentSectionWrapped {...props} />;
+    return <RecentSectionBase {...props} />;
 }
 
 function RecentSectionBase({
@@ -552,9 +545,8 @@ const shelves = ["blogs", "articles", "books", "anime", "hobby"].map(key => ({
     icon: shelfIcons[key],
     color: "text-green-500"
 }));
-const ShelvesSectionWrapped = withXRay(ShelvesSectionBase, 'ShelvesSection');
 export function ShelvesSection() {
-    return <ShelvesSectionWrapped />;
+    return <ShelvesSectionBase />;
 }
 
 function ShelvesSectionBase() {

@@ -9,7 +9,7 @@ import { useStore } from "@/lib/store/useStore";
 import { useMounted } from "@/lib/hooks";
 import { useRef } from "react";
 import {
-    Terminal as TerminalIcon, Search as SearchIcon, Moon, Sun, X, Music, Menu, Bug,
+    Terminal as TerminalIcon, Search as SearchIcon, Moon, Sun, X, Music, Menu,
     ArrowUp, Laptop, FileText, Home, BookOpen, Tv, Mail, Github, Linkedin, Sparkles,
     Gamepad2, Cloud, CloudRain, ChevronDown, Search,
 } from "lucide-react";
@@ -20,49 +20,7 @@ import { mockFiles } from "@/lib/terminal/mockFileSystem";
 import { SystemMonitor } from "@/components/system-monitor";
 
 
-interface GlitchTextProps {
-    text: string;
-    className?: string;
-}
-export function GlitchText({ text, className = "" }: GlitchTextProps) {
-    const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        return <span className={className}>{text}</span>;
-    }
-
-    return (
-        <span className={`relative inline-block overflow-hidden group hover:scale-105 transition-transform duration-300 ${className}`}>
-            <span className="relative z-10 animate-pulse text-green-400 font-bold tracking-tight">{text}</span>
-            <span
-                className="absolute -top-[1px] left-0 -z-10 w-full h-full text-green-500 opacity-70 animate-glitch-1 translate-x-[1px] translate-y-[1px] drop-shadow-[0_0_3px_rgba(34,197,94,0.8)]"
-                aria-hidden="true"
-            >
-                {text}
-            </span>
-            <span
-                className="absolute top-[1px] left-0 -z-10 w-full h-full text-red-500 opacity-60 animate-glitch-2 -translate-x-[1px] -translate-y-[1px] drop-shadow-[0_0_4px_rgba(239,68,68,0.6)]"
-                aria-hidden="true"
-            >
-                {text}
-            </span>
-            <span
-                className="absolute top-0 left-0 -z-20 w-full h-full text-green-300 opacity-30 animate-glitch-3 translate-x-[2px] -translate-y-[0.5px] drop-shadow-[0_0_6px_rgba(134,239,172,0.9)]"
-                aria-hidden="true"
-            >
-                {text}
-            </span>
-            <span
-                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-[5] w-full h-1/2 bg-gradient-to-r from-transparent via-red-400/20 to-transparent opacity-40 animate-glitch-scan blur-sm ${className}`}
-                aria-hidden="true"
-            ></span>
-        </span>
-    );
-}
 
 export function Terminal() {
     const router = useRouter();
@@ -399,7 +357,7 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
 export function ThemeToggle() {
     const { theme, setTheme } = useTheme();
-    const { isMounted, setIsMounted, isXRayEnabled, toggleXRay } = useStore();
+    const { isMounted, setIsMounted } = useStore();
 
     useEffect(() => {
         setIsMounted(true);
@@ -416,25 +374,13 @@ export function ThemeToggle() {
         );
     }
     return (
-        <div className="flex items-center gap-1"> {/* Added a div to wrap the buttons */}
-            <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors"
-                aria-label="Toggle theme"
-            >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-
-            {/* X-Ray Toggle */}
-            <button
-                onClick={toggleXRay}
-                className={`p-2 rounded-lg transition-colors ${isXRayEnabled ? 'bg-green-500/10 text-green-500' : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500'}`}
-                title="Toggle X-Ray Debug Mode"
-                aria-label="Toggle X-Ray Debug Mode"
-            >
-                <Bug size={20} />
-            </button>
-        </div>
+        <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors"
+            aria-label="Toggle theme"
+        >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
     );
 }
 
@@ -676,7 +622,7 @@ export function Navbar() {
                                 href={routes.home}
                                 className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2 font-mono whitespace-nowrap mr-auto md:mr-0"
                             >
-                                ~/adarsh
+                                ~/Adarsh
                             </Link>
                             <div className="md:hidden">
                                 <ThemeToggle />
