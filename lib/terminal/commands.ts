@@ -100,12 +100,52 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '  weather       - Show current weather',
         '  github        - Show GitHub statistics',
         '  haiku         - Generate a tech haiku',
+        '  quote         - Get a daily tech quote',
+        '  joke          - Random programmer joke',
+        '  crypto        - Live BTC price',
+        '  echo [text]   - Print text to terminal',
         '  secret        - ???',
         '  help          - Show this help message',
         '  theme [mode]  - Set theme (light/dark/system)',
         '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
     ]);
 }, { category: 'utility', usage: 'help' });
+
+export const quote: Command = createCommand('quote', 'Get a daily tech quote', async (_, { setLines }) => {
+    try {
+        const res = await fetch('https://api.quotable.io/random?tags=technology,famous-quotes');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        addLines(setLines, ["", `"${data.content}"`, `— ${data.author}`, ""]);
+    } catch {
+        addLines(setLines, ["", '"The best way to predict the future is to invent it."', "— Alan Kay", ""]);
+    }
+}, { category: 'utility', usage: 'quote' });
+
+export const joke: Command = createCommand('joke', 'Random programmer joke', async (_, { setLines }) => {
+    try {
+        const res = await fetch('https://v2.jokeapi.dev/joke/Programming?type=single');
+        const data = await res.json();
+        addLines(setLines, ["", data.joke || "Why did the programmer quit his job? Because he didn't get arrays.", ""]);
+    } catch {
+        addLine(setLines, "Why do programmers prefer dark mode? Because light attracts bugs.");
+    }
+}, { category: 'utility', usage: 'joke' });
+
+export const crypto: Command = createCommand('crypto', 'Live BTC price', async (_, { setLines }) => {
+    addLine(setLines, "Fetching BTC/USD price...");
+    try {
+        const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+        const data = await res.json();
+        addLine(setLines, `Bitcoin (BTC): $${data.bpi.USD.rate_float.toLocaleString()} USD`);
+    } catch {
+        addLine(setLines, "Error: Unable to fetch crypto data.");
+    }
+}, { category: 'utility', usage: 'crypto' });
+
+export const echo: Command = createCommand('echo', 'Print text', (args, { setLines }) => {
+    addLine(setLines, args.join(' '));
+}, { category: 'utility', usage: 'echo [text]' });
 
 export const weather: Command = createCommand('weather', 'Show current weather', async (args, { setLines }) => {
     const city = args[0] || '';
@@ -242,14 +282,27 @@ export const htop: Command = createCommand('htop', 'Open System Monitor', (_, { 
     addLine(setLines, 'Launching System Monitor...');
 }, { category: 'utility', usage: 'htop' });
 
-export const sudo: Command = createCommand('sudo', 'Execute a command as superuser', (_, { setLines }) => {
-    setTimeout(() => {
-        addLines(setLines, [
-            'sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the \'nosuid\' option set or an NFS file system without root privileges?',
-            'Just kidding. You have no power here.'
-        ]);
-    }, 500);
-}, { category: 'utility', usage: 'sudo [command]' });
+export const sudo: Command = createCommand('sudo', 'Execute as superuser', (args, { setLines }) => {
+    const password = args[0];
+    if (password === 'ANTIGRAVITY') {
+        setTimeout(() => {
+            addLines(setLines, [
+                '\x1b[32m[ACCESS GRANTED]\x1b[0m',
+                'Root privileges escalated successfully.',
+                'You are now the master of this universe.',
+                '',
+                'Try: cat .root_flag'
+            ]);
+        }, 800);
+    } else {
+        setTimeout(() => {
+            addLines(setLines, [
+                'sudo: effective uid is not 0, is /usr/bin/sudo on a file system with the \'nosuid\' option set or an NFS file system without root privileges?',
+                'Just kidding. You have no power here.'
+            ]);
+        }, 500);
+    }
+}, { category: 'utility', usage: 'sudo [password]' });
 
 export const rm: Command = createCommand('rm', 'Remove files', (args, { setLines }) => {
     if (args.includes('/')) {
@@ -292,5 +345,5 @@ export const neofetch: Command = createCommand('neofetch', 'Display system infor
 }, { category: 'utility', usage: 'neofetch' });
 
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret, quote, joke, crypto, echo
 };
