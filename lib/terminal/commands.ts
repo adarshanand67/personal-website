@@ -26,6 +26,7 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         'Utility:',
         '  clear         - Clear terminal',
         '  matrix        - Toggle Matrix rain',
+        '  neofetch      - Display system information',
         '  help          - Show this help message',
         '  theme [mode]  - Set theme (light/dark/system)',
         '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
@@ -159,6 +160,11 @@ export const open: Command = createCommand('open', 'Open directory or URL', (arg
     }
 }, { category: 'navigation', usage: 'open [link]' });
 
+export const neofetch: Command = createCommand('neofetch', 'Display system information', (_, { setLines, isMatrixEnabled }) => {
+    const { systemStats } = require('@/lib/constants');
+    addLines(setLines, [...systemStats(isMatrixEnabled)] as string[]);
+}, { category: 'utility', usage: 'neofetch' });
+
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch
 };

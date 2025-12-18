@@ -62,10 +62,10 @@ export function Terminal() {
     }, [lines, isIntroDone]);
     useEffect(() => {
         if (!isIntroDone) {
-            setLines((prev: string[]) => [...prev, ...introLines()]);
+            setLines((prev: string[]) => [...prev, ...introLines(isMatrixEnabled)]);
             setIsIntroDone(true);
         }
-    }, [isIntroDone, setLines, setIsIntroDone]);
+    }, [isIntroDone, setLines, setIsIntroDone, isMatrixEnabled]);
     const executeCommand = async (cmd: string) => {
         if (passwordMode) {
             setPasswordMode(false);

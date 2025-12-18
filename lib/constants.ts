@@ -36,21 +36,13 @@ export const trackImages = [
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
-export const introLines = (modifier?: (s: string) => string) => {
+export const introLines = (isMatrix: boolean = true) => {
     const lines = [
-        `$ ./${siteConfig.author.name.toLowerCase().replace(' ', '_')}_profile.sh`,
-        "",
-        "[    0.001] Loading kernel modules",
-        "[    0.023] ✓ gcc-12.2.0 | glibc-2.36 | binutils-2.39",
-        "[    0.045] ✓ make-4.3 | git-2.39.0 | vim-9.0",
-        "[    0.067] ✓ ssh.service | docker.service",
-        "[    0.089] System ready.",
-        "",
-        "macOS Tahoe 27.0",
-        `Last login: ${new Date().toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}`,
+        "$ neofetch",
+        ...systemStats(isMatrix),
         "",
     ];
-    return modifier ? lines.map(modifier) : lines;
+    return lines;
 };
 export const directories = ["blogs", "papers", "books", "anime", "hobby"] as const;
 export const routes = {
