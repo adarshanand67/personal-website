@@ -51,11 +51,6 @@ export function Terminal() {
         }
     }, [setIsExpanded]);
     useEffect(() => {
-        if (isMatrixEnabled) {
-            setLines((prev) => [...prev, "Matrix: Activated."]);
-        }
-    }, [isMatrixEnabled, setLines]);
-    useEffect(() => {
         if (containerRef.current) {
             containerRef.current.scrollTop = containerRef.current.scrollHeight;
         }
