@@ -676,7 +676,7 @@ export function Navbar() {
                                 href={routes.home}
                                 className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2 font-mono whitespace-nowrap mr-auto md:mr-0"
                             >
-                                ~adarsh
+                                ~/adarsh
                             </Link>
                             <div className="md:hidden">
                                 <ThemeToggle />

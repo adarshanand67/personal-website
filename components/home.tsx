@@ -255,7 +255,7 @@ export function Experience(props: ExperienceProps) {
 
 function ExperienceBase({ items }: ExperienceProps) {
     const { expandedSections, toggleSectionExpanded } = useStore();
-    const isExpanded = expandedSections['experience'] ?? false;
+    const isExpanded = expandedSections['experience'] ?? true;
 
     return (
         <div className="mb-4 font-mono" id="experience">
