@@ -18,6 +18,7 @@ import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
 import { SystemMonitor } from "@/components/systemMonitor";
+import { SystemStatus } from "@/components/systemStatus";
 
 
 
@@ -619,6 +620,9 @@ export function Navbar() {
                             >
                                 ~/Adarsh
                             </Link>
+                            <div className="hidden lg:flex items-center ml-4">
+                                <SystemStatus />
+                            </div>
                             <div className="md:hidden">
                                 <ThemeToggle />
                             </div>

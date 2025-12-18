@@ -97,12 +97,68 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         'Utility:',
         '  clear         - Clear terminal',
         '  matrix        - Toggle Matrix rain',
-        '  neofetch      - Display system information',
+        '  weather       - Show current weather',
+        '  github        - Show GitHub statistics',
+        '  haiku         - Generate a tech haiku',
+        '  secret        - ???',
         '  help          - Show this help message',
         '  theme [mode]  - Set theme (light/dark/system)',
         '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
     ]);
 }, { category: 'utility', usage: 'help' });
+
+export const weather: Command = createCommand('weather', 'Show current weather', async (args, { setLines }) => {
+    const city = args[0] || '';
+    addLine(setLines, `Fetching weather for ${city || 'your location'}...`);
+    try {
+        const res = await fetch(`https://wttr.in/${city}?format=3&m`);
+        const data = await res.text();
+        addLine(setLines, data);
+    } catch {
+        addLine(setLines, 'Error: Unable to fetch weather data.');
+    }
+}, { category: 'utility', usage: 'weather [city]' });
+
+export const github: Command = createCommand('github', 'Show GitHub statistics', async (_, { setLines }) => {
+    addLine(setLines, 'Fetching GitHub stats for adarshanand67...');
+    try {
+        const res = await fetch('https://api.github.com/users/adarshanand67');
+        const data = await res.json();
+        addLines(setLines, [
+            `User:       ${data.login}`,
+            `Repos:      ${data.public_repos}`,
+            `Gists:      ${data.public_gists}`,
+            `Followers:  ${data.followers}`,
+            `Following:  ${data.following}`,
+            `Bio:        ${data.bio || 'N/A'}`
+        ]);
+    } catch {
+        addLine(setLines, 'Error: Unable to fetch GitHub profile.');
+    }
+}, { category: 'utility', usage: 'github' });
+
+export const haiku: Command = createCommand('haiku', 'Generate a tech haiku', (_, { setLines }) => {
+    const haikus = [
+        ["Code flows like a stream,", "Bugs hide in the shadows deep,", "Logic finds the way."],
+        ["Screens glow in the night,", "Coffee turns to lines of light,", "Sleeping can wait now."],
+        ["Zeroes and ones dance,", "Building worlds with just a thought,", "Silicon dreaming."],
+        ["Infinite feedback,", "Stack overflow saves the day,", "Deploy is success."]
+    ];
+    const pick = haikus[Math.floor(Math.random() * haikus.length)];
+    addLines(setLines, ["", ...pick, ""]);
+}, { category: 'utility', usage: 'haiku' });
+
+export const secret: Command = createCommand('secret', '???', (_, { setLines }) => {
+    addLines(setLines, [
+        'Searching for secrets...',
+        'Found hidden file: .ctf_hint.txt',
+        'Loading content...',
+        '',
+        'Congratulations, you found the first gate.',
+        'The password is: "ANTIGRAVITY"',
+        'Try typing: sudo ANTIGRAVITY'
+    ]);
+}, { category: 'utility', usage: 'secret' });
 
 export const cls: Command = createAliasCommand('cls', 'Clear screen (alias)', () => clear);
 
@@ -132,10 +188,12 @@ export const theme: Command = createCommand('theme', 'Switch color theme', (args
     addLine(setLines, `Theme set to ${mode} mode.`);
 }, { category: 'utility', usage: 'theme [light|dark|system]' });
 
-export const ls: Command = createCommand('ls', 'List directories', (_, { setLines }) => {
+export const ls: Command = createCommand('ls', 'List directories', (args, { setLines }) => {
+    const showAll = args.includes('-a') || args.includes('-la');
     const dirs = Object.keys(directoryMap);
-    addLines(setLines, dirs.map(d => `  ${d}/`));
-}, { category: 'navigation', usage: 'ls' });
+    const files = showAll ? [...dirs, '.secret.txt', '.config'] : dirs;
+    addLines(setLines, files.map(d => `  ${d}${dirs.includes(d) ? '/' : ''}`));
+}, { category: 'navigation', usage: 'ls [-a]' });
 
 export const cd: Command = createCommand('cd', 'Change directory', (args, { setLines, router }) => {
     const target = args[0];
@@ -234,5 +292,5 @@ export const neofetch: Command = createCommand('neofetch', 'Display system infor
 }, { category: 'utility', usage: 'neofetch' });
 
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret
 };
