@@ -613,7 +613,7 @@ export const animeData = [
     {
         "title": "Dr Stone",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1,2,3,4",
         "image": "https://cdn.myanimelist.net/images/anime/1613/102576l.jpg",
         "description": "A genius boy wakes up thousands of years after humanity was petrified and aims to rebuild civilization with science.",

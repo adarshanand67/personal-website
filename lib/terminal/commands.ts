@@ -1,7 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { contactInfo, whoamiInfo, directoryMap } from '@/lib/constants';
+import { contactInfo, whoamiInfo, directoryMap, systemStats } from '@/lib/constants';
 import { siteConfig } from '@/lib/config';
+import { getFileContent } from './mockFileSystem';
 
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // Types
@@ -263,7 +264,6 @@ export const cat: Command = createCommand('cat', 'Read file', (args, { setLines 
         addLine(setLines, 'Usage: cat [filename]');
         return;
     }
-    const { getFileContent } = require('./mockFileSystem');
     const content = getFileContent(filename);
     if (content) {
         addLines(setLines, content.split('\n'));
@@ -340,7 +340,6 @@ export const open: Command = createCommand('open', 'Open directory or URL', (arg
 }, { category: 'navigation', usage: 'open [link]' });
 
 export const neofetch: Command = createCommand('neofetch', 'Display system information', (_, { setLines, isMatrixEnabled }) => {
-    const { systemStats } = require('@/lib/constants');
     addLines(setLines, [...systemStats(isMatrixEnabled)] as string[]);
 }, { category: 'utility', usage: 'neofetch' });
 
