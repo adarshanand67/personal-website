@@ -145,24 +145,19 @@ export const animeData = [
         "title": "Pokémon",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25",
+        "notes": "too many to count (20+ seasons across regions)",
         "image": "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
         "description": "Ash Ketchum and his partner Pikachu travel the world to become the greatest Pokémon Master.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ]
+        "tags": ["Adventure", "Fantasy"]
     },
     {
         "title": "Dragon Ball Z",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2,3,4,5,6,7,8,9, Super S1",
+        "notes": "S1-9 / Dragon Ball Super – S1",
         "image": "https://cdn.myanimelist.net/images/anime/1277/142022l.jpg",
         "description": "Goku and his friends defend Earth from intergalactic threats including Saiyans, Androids, and magical creatures.",
-        "tags": [
-            "Action"
-        ],
+        "tags": ["Action"],
         "year": "1989",
         "rating": "8.8/10"
     },
@@ -170,12 +165,10 @@ export const animeData = [
         "title": "Naruto",
         "type": "Anime",
         "status": "Planning",
-        "notes": "S1,2,3,4,5, Shippuden S1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+        "notes": "S1,2,3,4,5 / Naruto Shippuden – S1-21",
         "image": "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
-        "description": "A young ninja seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.",
-        "tags": [
-            "Action"
-        ],
+        "description": "A young ninja seeks recognition from his peers and dreams of becoming the Hokage.",
+        "tags": ["Action"],
         "year": "2002",
         "rating": "8.3/10"
     },
@@ -186,11 +179,8 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1079/138100l.jpg",
         "recommended": true,
-        "description": "A high school student discovers a supernatural notebook that grants him the ability to kill anyone by writing their name.",
-        "tags": [
-            "Supernatural",
-            "Thriller"
-        ],
+        "description": "A high school student discovers a supernatural notebook that grants him the ability to kill anyone.",
+        "tags": ["Supernatural", "Thriller"],
         "year": "2006",
         "rating": "9.0/10"
     },
@@ -198,54 +188,34 @@ export const animeData = [
         "title": "One Punch Man",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2",
+        "notes": "S1,2, [3?]",
         "image": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
         "description": "A hero who can defeat any opponent with a single punch seeks a worthy challenge.",
-        "tags": [
-            "Action",
-            "Comedy"
-        ],
+        "tags": ["Action", "Comedy"],
         "year": "2015",
         "rating": "8.7/10"
     },
     {
-        "title": "Haikyu",
+        "title": "Haikyuu!! Series",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2,3,4",
-        "image": "https://cdn.myanimelist.net/images/anime/7/76014l.jpg",
-        "recommended": true,
-        "description": "A short volleyball player with high jumping ability joins a former rival to revive their school's volleyball club.",
-        "tags": [
-            "Slice of Life",
-            "Sports"
-        ],
-        "year": "2014",
-        "rating": "8.7/10"
-    },
-    {
-        "title": "Haikyuu!! The Dumpster Battle",
-        "type": "Movie",
-        "status": "Completed",
-        "notes": "",
+        "notes": "S1-4 + The Dumpster Battle Movie + Final Movie Part 2",
         "image": "https://cdn.myanimelist.net/images/anime/1665/140360l.jpg",
-        "description": "The long-awaited showdown between Karasuno and Nekoma High School at the nationals.",
-        "tags": [
-            "Sports"
-        ]
+        "recommended": true,
+        "description": "The complete journey of Karasuno High School's volleyball team, from reviving the club to the legendary showdowns at the nationals.",
+        "tags": ["Sports", "Drama", "Slice of Life", "Action"],
+        "year": "2014",
+        "rating": "8.9/10"
     },
     {
-        "title": "Code Geass",
+        "title": "Code Geass: Lelouch of Rebellion",
         "type": "Anime",
         "status": "Completed",
         "notes": "S1,2",
         "image": "https://cdn.myanimelist.net/images/anime/1032/135088l.jpg",
         "recommended": true,
-        "description": "An exiled prince gains the power of absolute obedience and leads a rebellion against a global empire.",
-        "tags": [
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "description": "An exiled prince gains the power of absolute obedience and leads a rebellion.",
+        "tags": ["Sci-Fi", "Thriller"],
         "year": "2006",
         "rating": "8.7/10"
     },
@@ -255,24 +225,19 @@ export const animeData = [
         "status": "Completed",
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
-        "description": "A crew of bounty hunters travels the solar system chasing criminals and escaping their pasts.",
-        "tags": [
-            "Sci-Fi"
-        ],
+        "description": "A crew of bounty hunters travels the solar system chasing criminals.",
+        "tags": ["Sci-Fi"],
         "year": "1998",
         "rating": "8.9/10"
     },
     {
-        "title": "Steins;Gate",
+        "title": "Steins;Gate Series",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1, Steins;Gate 0",
+        "notes": "S1 + Steins;Gate 0 (Complete Storyline)",
         "image": "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
-        "description": "A group of friends accidentally invent a time machine and face the consequences of altering the past.",
-        "tags": [
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "description": "A group of friends invent a time machine and must navigate through multiple worldlines to prevent a dystopian future and save their loved ones.",
+        "tags": ["Sci-Fi", "Thriller", "Psychological", "Drama"],
         "year": "2011",
         "rating": "9.1/10"
     },
@@ -283,7 +248,7 @@ export const animeData = [
         "notes": "S1,2,3",
         "recommended": true,
         "image": "https://cdn.myanimelist.net/images/anime/8/80356l.jpg",
-        "description": "A powerful psychic tries to live a normal life while suppressing his emotions to control his powers.",
+        "description": "A powerful psychic tries to live a normal life while suppressing his emotions.",
         "tags": [
             "Action",
             "Comedy",
@@ -293,31 +258,15 @@ export const animeData = [
         "rating": "8.6/10"
     },
     {
-        "title": "Jujutsu Kaisen",
+        "title": "Jujutsu Kaisen Series",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2",
+        "notes": "S1,2 + JJK 0 Movie + Upcoming S3",
         "image": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
-        "description": "A student swallows a cursed finger to save his friends and becomes involved in the world of Jujutsu Sorcery.",
-        "tags": [
-            "Action",
-            "Slice of Life",
-            "Supernatural"
-        ],
+        "description": "Yuji Itadori joins the Jujutsu sorcerers to fight against powerful curses and find the fingers of Sukuna, the King of Curses.",
+        "tags": ["Action", "Supernatural", "Fantasy", "Horror"],
         "year": "2020",
-        "rating": "8.6/10"
-    },
-    {
-        "title": "Jujutsu Kaisen 0",
-        "type": "Movie",
-        "status": "Completed",
-        "notes": "",
-        "image": "https://cdn.myanimelist.net/images/anime/1121/119044l.jpg",
-        "description": "A prequel following Yuta Okkotsu who is haunted by the spirit of his childhood friend.",
-        "tags": [
-            "Action",
-            "Supernatural"
-        ]
+        "rating": "8.7/10"
     },
     {
         "title": "Blue Lock",
@@ -326,11 +275,8 @@ export const animeData = [
         "notes": "S1,2",
         "recommended": true,
         "image": "https://cdn.myanimelist.net/images/anime/1258/126929l.jpg",
-        "description": "A controversial project to create the world's greatest egoist striker for the Japanese national soccer team.",
-        "tags": [
-            "Sports",
-            "Thriller"
-        ],
+        "description": "A controversial project to create the world's greatest egoist striker.",
+        "tags": ["Sports", "Thriller"],
         "year": "2022",
         "rating": "8.3/10"
     },
@@ -338,15 +284,11 @@ export const animeData = [
         "title": "Solo Leveling",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2",
+        "notes": "S1,2 manhwa comics - 3,4",
         "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
         "recommended": true,
-        "description": "The weakest hunter in the world gains the unique ability to level up and become the strongest.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ],
+        "description": "The weakest hunter in the world gains the unique ability to level up.",
+        "tags": ["Action", "Adventure", "Fantasy"],
         "year": "2024",
         "rating": "8.5/10"
     },
@@ -354,29 +296,59 @@ export const animeData = [
         "title": "Demon Slayer",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1, Mugen Train, S2,3,4",
+        "notes": "S1, Mugen Train, S2-5 (Complete Series)",
         "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
-        "description": "A young man becomes a demon slayer to avenge his family and cure his sister who has turned into a demon.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Historical"
-        ],
+        "description": "A young man becomes a demon slayer to avenge his family and cure his sister, Tanjirou Kamado's journey through the ranks of the Demon Slayer Corps.",
+        "tags": ["Action", "Fantasy", "Supernatural", "Adventure"],
         "year": "2019",
-        "rating": "8.5/10"
+        "rating": "9/10"
     },
     {
         "title": "Tokyo Ghoul",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1,2,3,4",
+        "notes": "S1,2 + √A + :re (4 seasons)",
         "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
-        "description": "A college student becomes a half-ghoul and must navigate the world of flesh-eating monsters living among humans.",
-        "tags": [
-            "Action",
-            "Horror",
-            "Supernatural"
-        ]
+        "description": "A college student becomes a half-ghoul and must navigate the world of flesh-eating monsters.",
+        "tags": ["Action", "Horror", "Supernatural"]
+    },
+    {
+        "title": "Aoashi",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
+        "description": "A talented young soccer player is recruited for a professional youth team.",
+        "tags": ["Drama", "Sports"]
+    },
+    {
+        "title": "Chainsaw Man",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1 (S2 announced)",
+        "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
+        "description": "A young man merges with his pet devil to become a chainsaw-wielding devil hunter.",
+        "tags": ["Action", "Fantasy", "Horror"],
+        "year": "2022",
+        "rating": "8.5/10"
+    },
+    {
+        "title": "Erased",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1",
+        "image": "https://cdn.myanimelist.net/images/anime/10/77957l.jpg",
+        "description": "A man travels back in time to his childhood to prevent a series of murders.",
+        "tags": ["Mystery", "Supernatural", "Thriller"]
+    },
+    {
+        "title": "Dr Stone",
+        "type": "Anime",
+        "status": "Completed",
+        "notes": "S1,2,3,4",
+        "image": "https://cdn.myanimelist.net/images/anime/1613/102576l.jpg",
+        "description": "A genius boy wakes up thousands of years after humanity was petrified.",
+        "tags": ["Adventure", "Sci-Fi", "Thriller"]
     },
     {
         "title": "Vinland Saga",
@@ -610,34 +582,8 @@ export const animeData = [
             "Sports"
         ]
     },
-    {
-        "title": "Dr Stone",
-        "type": "Anime",
-        "status": "Completed",
-        "notes": "S1,2,3,4",
-        "image": "https://cdn.myanimelist.net/images/anime/1613/102576l.jpg",
-        "description": "A genius boy wakes up thousands of years after humanity was petrified and aims to rebuild civilization with science.",
-        "tags": [
-            "Adventure",
-            "Sci-Fi",
-            "Thriller"
-        ]
-    },
-    {
-        "title": "Chainsaw Man",
-        "type": "Anime",
-        "status": "Completed",
-        "notes": "S1",
-        "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
-        "description": "A young man merges with his pet devil to become a chainsaw-wielding devil hunter.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Horror"
-        ],
-        "year": "2022",
-        "rating": "8.5/10"
-    },
+
+
     {
         "title": "Made in Abyss",
         "type": "Anime",
@@ -664,18 +610,7 @@ export const animeData = [
             "Thriller"
         ]
     },
-    {
-        "title": "Aoashi",
-        "type": "Anime",
-        "status": "Completed",
-        "notes": "S1",
-        "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
-        "description": "A talented but raw young soccer player is recruited for a professional youth team.",
-        "tags": [
-            "Drama",
-            "Sports"
-        ]
-    },
+
     {
         "title": "The Seven Deadly Sins",
         "type": "Anime",
@@ -768,19 +703,7 @@ export const animeData = [
             "Thriller"
         ]
     },
-    {
-        "title": "Erased",
-        "type": "Anime",
-        "status": "Completed",
-        "notes": "S1",
-        "image": "https://cdn.myanimelist.net/images/anime/10/77957l.jpg",
-        "description": "A man travels back in time to his childhood to prevent a series of murders.",
-        "tags": [
-            "Mystery",
-            "Supernatural",
-            "Thriller"
-        ]
-    },
+
     {
         "title": "Fate/Zero",
         "type": "Anime",

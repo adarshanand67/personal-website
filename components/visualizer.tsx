@@ -7,6 +7,14 @@ interface VisualizerProps {
     isPlaying: boolean;
 }
 
+interface ExtendedHTMLAudioElement extends HTMLAudioElement {
+    _sourceNode?: MediaElementAudioSourceNode;
+}
+
+interface ExtendedWindow extends Window {
+    webkitAudioContext?: typeof AudioContext;
+}
+
 export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const contextRef = useRef<AudioContext | null>(null);
@@ -22,7 +30,8 @@ export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
 
         const initAudio = () => {
             if (!contextRef.current) {
-                const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+                const AudioContextClass = window.AudioContext || (window as ExtendedWindow).webkitAudioContext;
+                if (!AudioContextClass) return;
                 contextRef.current = new AudioContextClass();
             }
 
@@ -39,13 +48,14 @@ export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
 
             // Re-create source only if it doesn't exist
             if (!sourceRef.current && audioRef.current) {
+                const audio = audioRef.current as ExtendedHTMLAudioElement;
                 try {
                     // Check if source already exists on the element to avoid error
-                    if (!(audioRef.current as any)._sourceNode) {
-                        sourceRef.current = ctx.createMediaElementSource(audioRef.current);
-                        (audioRef.current as any)._sourceNode = sourceRef.current;
+                    if (!audio._sourceNode) {
+                        sourceRef.current = ctx.createMediaElementSource(audio);
+                        audio._sourceNode = sourceRef.current;
                     } else {
-                        sourceRef.current = (audioRef.current as any)._sourceNode;
+                        sourceRef.current = audio._sourceNode;
                     }
 
                     if (sourceRef.current) {
@@ -63,7 +73,7 @@ export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
         const render = () => {
             if (!canvasRef.current || !analyserRef.current || !dataArray) return;
 
-            analyserRef.current.getByteFrequencyData(dataArray);
+            analyserRef.current.getByteFrequencyData(dataArray as any);
 
             const canvas = canvasRef.current;
             const ctx = canvas.getContext('2d');

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { playlist } from '@/lib/constants';
+import { AnimeItem, Hobby, Book } from '@/types/definitions';
 
 interface TerminalState {
     lines: string[];
@@ -83,15 +84,15 @@ interface UIState {
 }
 
 interface AnimeState {
-    animeSelectedItem: any;
+    animeSelectedItem: AnimeItem | null;
     animeSelectedTag: string | null;
-    setAnimeSelectedItem: (item: any) => void;
+    setAnimeSelectedItem: (item: AnimeItem | null) => void;
     setAnimeSelectedTag: (tag: string | null) => void;
 }
 
 interface HobbyState {
-    hobbySelectedItem: any;
-    setHobbySelectedItem: (item: any) => void;
+    hobbySelectedItem: Hobby | null;
+    setHobbySelectedItem: (item: Hobby | null) => void;
 }
 
 interface SearchState {
@@ -100,8 +101,8 @@ interface SearchState {
 }
 
 interface BookState {
-    bookSelectedItem: any;
-    setBookSelectedItem: (item: any) => void;
+    bookSelectedItem: Book | null;
+    setBookSelectedItem: (item: Book | null) => void;
 }
 
 interface RandomizerState {
@@ -122,7 +123,21 @@ interface GuestbookState {
     addGuestbookEntry: (entry: GuestbookEntry) => void;
 }
 
-export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, HobbyState, BookState, SearchState, RandomizerState, GuestbookState { }
+interface TodoItem {
+    id: string;
+    text: string;
+    completed: boolean;
+}
+
+interface TodoState {
+    todos: TodoItem[];
+    addTodo: (text: string) => void;
+    toggleTodo: (id: string) => void;
+    removeTodo: (id: string) => void;
+    clearTodos: () => void;
+}
+
+export interface AppState extends TerminalState, UIState, CursorState, MusicState, WeatherState, BackToTopState, AnimeState, HobbyState, BookState, SearchState, RandomizerState, GuestbookState, TodoState { }
 
 export const useStore = create<AppState>()(persist((set) => ({
     lines: [],
@@ -242,6 +257,19 @@ export const useStore = create<AppState>()(persist((set) => ({
         { name: "System", message: "Guestbook initialized.", timestamp: new Date().toISOString() }
     ],
     addGuestbookEntry: (entry) => set((state) => ({ guestbookEntries: [entry, ...state.guestbookEntries] })),
+
+    // Todo state
+    todos: [],
+    addTodo: (text) => set((state) => ({
+        todos: [...state.todos, { id: Math.random().toString(36).substring(7), text, completed: false }]
+    })),
+    toggleTodo: (id) => set((state) => ({
+        todos: state.todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t)
+    })),
+    removeTodo: (id) => set((state) => ({
+        todos: state.todos.filter(t => t.id !== id)
+    })),
+    clearTodos: () => set({ todos: [] }),
 }), {
     name: 'ui-storage',
     partialize: (state) => ({
@@ -251,6 +279,7 @@ export const useStore = create<AppState>()(persist((set) => ({
         isMuted: state.isMuted,
         isShuffle: state.isShuffle,
         isRepeat: state.isRepeat,
-        guestbookEntries: state.guestbookEntries
+        guestbookEntries: state.guestbookEntries,
+        todos: state.todos
     }),
 }));

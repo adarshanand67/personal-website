@@ -118,11 +118,11 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
                 onPickRandom={(item) => {
                     if (config.type === 'anime') {
                         const { setAnimeSelectedItem } = useStore.getState();
-                        setAnimeSelectedItem(item);
+                        setAnimeSelectedItem(item as any);
                     } else if (config.type === 'hobby') {
-                        setHobbySelectedItem(item);
+                        setHobbySelectedItem(item as any);
                     } else if (config.type === 'book') {
-                        setBookSelectedItem(item);
+                        setBookSelectedItem(item as any);
                     } else {
                         const element = document.getElementById(`shelf-item-${(item as any).title}`);
                         if (element) {

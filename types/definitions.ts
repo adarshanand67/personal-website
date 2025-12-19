@@ -89,3 +89,15 @@ export interface AnimeItem {
   year?: string;
   rating?: string;
 }
+
+export interface SkillNode {
+  id: string;
+  name: string;
+  val: number;
+  color: string;
+  url: string | null;
+  x?: number;
+  y?: number;
+  fx?: number | null;
+  fy?: number | null;
+}

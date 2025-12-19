@@ -25,7 +25,7 @@ export const getArticles = async () => {
 };
 
 export const getAnime = async (): Promise<AnimeItem[]> =>
-  (animeData as unknown[]).map((item: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+  (animeData as AnimeItem[]).map((item) => ({
     ...item,
     type: item.type as AnimeType,
     status: item.status as WatchStatus,

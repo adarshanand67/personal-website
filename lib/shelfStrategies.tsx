@@ -266,7 +266,7 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
 }
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
-    const IconComponent = iconMap[iconName];
+    const IconComponent = iconMap[iconName] as any;
     if (IconComponent) {
       return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
     }

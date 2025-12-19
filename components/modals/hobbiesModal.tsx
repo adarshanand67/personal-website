@@ -26,7 +26,7 @@ export const HobbiesModal = () => {
     if (!showHobbiesModal) return null;
 
     const getIcon = (iconName: string) => {
-        const IconComponent = iconMap[iconName];
+        const IconComponent = iconMap[iconName] as any;
         if (IconComponent) {
             return <IconComponent className="w-6 h-6 text-green-600 dark:text-green-400" />;
         }

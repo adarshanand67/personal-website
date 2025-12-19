@@ -12,11 +12,13 @@ const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), {
     loading: () => <div className="h-[600px] w-full animate-pulse bg-green-500/5 rounded-xl flex items-center justify-center text-green-500 font-mono">Loading Neural Net...</div>
 });
 
+import { SkillNode } from '@/types/definitions';
+
 export function SkillGraph() {
     const { theme } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const [dimensions, setDimensions] = useState({ w: 0, h: 0 });
-    const graphRef = useRef<any>(null);
+    const graphRef = useRef<any>(null); // graphRef stays any as the library doesn't easily expose the instance type here
 
     useEffect(() => {
         const updateDims = () => {
@@ -66,7 +68,7 @@ export function SkillGraph() {
         ]
     };
 
-    const paintRing = useCallback((node: any, ctx: CanvasRenderingContext2D, globalScale: number) => {
+    const paintRing = useCallback((node: SkillNode, ctx: CanvasRenderingContext2D, globalScale: number) => {
         const fontSize = 12 / globalScale;
         ctx.font = `${fontSize}px monospace`;
         const textWidth = ctx.measureText(node.name).width;
@@ -75,21 +77,20 @@ export function SkillGraph() {
         if (node.id === 'root') {
             ctx.fillStyle = 'rgba(34, 197, 94, 0.2)';
             ctx.beginPath();
-            ctx.arc(node.x, node.y, 8, 0, 2 * Math.PI, false);
+            ctx.arc(node.x || 0, node.y || 0, 8, 0, 2 * Math.PI, false);
             ctx.fill();
         }
 
         ctx.fillStyle = theme === 'dark' ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)';
         if (node.id !== 'root') {
-            // @ts-ignore
-            ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, bckgDimensions[0], bckgDimensions[1]);
+            ctx.fillRect((node.x || 0) - bckgDimensions[0]! / 2, (node.y || 0) - bckgDimensions[1]! / 2, bckgDimensions[0]!, bckgDimensions[1]!);
         }
 
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = node.color;
 
-        ctx.fillText(node.name, node.x, node.y);
+        ctx.fillText(node.name, node.x || 0, node.y || 0);
     }, [theme]);
 
     return (
@@ -104,7 +105,7 @@ export function SkillGraph() {
                     height={dimensions.h}
                     graphData={data}
                     nodeLabel="name"
-                    nodeCanvasObject={paintRing}
+                    nodeCanvasObject={paintRing as any}
                     linkColor={() => theme === 'dark' ? 'rgba(74, 222, 128, 0.2)' : 'rgba(22, 163, 74, 0.2)'}
                     backgroundColor="rgba(0,0,0,0)"
                     enableNodeDrag={true}

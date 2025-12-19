@@ -38,7 +38,8 @@ export function Terminal() {
         isExpanded, setIsExpanded,
         position, setPosition,
         isDragging, setIsDragging,
-        showSystemMonitor
+        showSystemMonitor,
+        todos, addTodo, toggleTodo, removeTodo, clearTodos
     } = useStore();
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -57,6 +58,9 @@ export function Terminal() {
         }
     }, [lines, isIntroDone]);
     useEffect(() => {
+        if (!(globalThis as any)._terminalStartTime) {
+            (globalThis as any)._terminalStartTime = Date.now();
+        }
         if (!isIntroDone) {
             setLines((prev: string[]) => [...prev, ...introLines(isMatrixEnabled)]);
             setIsIntroDone(true);
@@ -94,7 +98,12 @@ export function Terminal() {
             toggleMatrix,
             toggleSystemMonitor: useStore.getState().toggleSystemMonitor,
             setInput,
-            commandHistory: history,
+            history,
+            todos,
+            addTodo,
+            toggleTodo,
+            removeTodo,
+            clearTodos
         };
         try {
             for (let i = 0; i < pipeParts.length; i++) {

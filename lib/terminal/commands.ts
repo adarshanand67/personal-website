@@ -21,7 +21,12 @@ export interface CommandContext {
     toggleMatrix: () => void;
     toggleSystemMonitor: () => void;
     setInput: (input: string) => void;
-    commandHistory: readonly string[];
+    history: readonly string[];
+    todos: any[]; // Avoid circular dependency with store if possible, or just use any for now
+    addTodo: (text: string) => void;
+    toggleTodo: (id: string) => void;
+    removeTodo: (id: string) => void;
+    clearTodos: () => void;
 }
 
 export type CommandFn = (args: CommandArgs, context: CommandContext, input?: string) => void | Promise<void>;
@@ -94,6 +99,8 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '  cat [file]    - Read file content',
         '  contact       - Show contact information',
         '  skills        - Display technical skills',
+        '  history       - Show command history',
+        '  todo [cmd]    - Simple todo list manager',
         '',
         'Utility:',
         '  clear         - Clear terminal',
@@ -101,11 +108,13 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '  weather       - Show current weather',
         '  github        - Show GitHub statistics',
         '  haiku         - Generate a tech haiku',
+        '  calc [expr]   - Evaluate math expression',
+        '  uptime        - Show system uptime',
+        '  fortune       - Your daily tech fortune',
         '  quote         - Get a daily tech quote',
         '  joke          - Random programmer joke',
         '  crypto        - Live BTC price',
         '  echo [text]   - Print text to terminal',
-        '  secret        - ???',
         '  help          - Show this help message',
         '  theme [mode]  - Set theme (light/dark/system)',
         '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
@@ -200,6 +209,101 @@ export const secret: Command = createCommand('secret', '???', (_, { setLines }) 
         'Try typing: sudo ANTIGRAVITY'
     ]);
 }, { category: 'utility', usage: 'secret' });
+
+export const history: Command = createCommand('history', 'Show command history', (_, { setLines, history }) => {
+    if (history.length === 0) {
+        addLine(setLines, 'No history found.');
+        return;
+    }
+    addLines(setLines, [...history].slice(0).reverse().map((cmd, i) => `${i + 1}  ${cmd}`));
+}, { category: 'utility', usage: 'history' });
+
+export const calc: Command = createCommand('calc', 'Evaluate math expression', (args, { setLines }) => {
+    const expr = args.join(' ');
+    if (!expr) {
+        addLine(setLines, 'Usage: calc [expression]');
+        return;
+    }
+    try {
+        // Safe evaluation using Function constructor for basic math
+        // We only allow math characters
+        if (/[^0-9+\-*/().\s]/.test(expr)) {
+            throw new Error('Invalid characters');
+        }
+        const result = new Function(`return ${expr}`)();
+        addLine(setLines, `${expr} = ${result}`);
+    } catch {
+        addLine(setLines, 'Error: Invalid expression');
+    }
+}, { category: 'utility', usage: 'calc [expression]' });
+
+export const uptime: Command = createCommand('uptime', 'Show system uptime', (_, { setLines }) => {
+    const startTime = (globalThis as any)._terminalStartTime || Date.now();
+    const diff = Math.floor((Date.now() - startTime) / 1000);
+    const mins = Math.floor(diff / 60);
+    const secs = diff % 60;
+    addLine(setLines, `up ${mins} min, ${secs} sec`);
+}, { category: 'utility', usage: 'uptime' });
+
+export const fortune: Command = createCommand('fortune', 'Your daily tech fortune', (_, { setLines }) => {
+    const fortunes = [
+        "A bug you found today will be fixed by a library update tomorrow.",
+        "Your code will compile on the first try (in a parallel universe).",
+        "Coffee is the input, code is the output.",
+        "A project manager will change the requirements mid-sprint.",
+        "You will find the answer on Stack Overflow, but it will be for a different language.",
+        "A legacy codebase will whisper your name tonight.",
+        "Your PR will be approved with zero comments.",
+        "A dangling pointer will point you towards your destiny.",
+        "The documentation you seek does not exist. Be the change."
+    ];
+    addLine(setLines, fortunes[Math.floor(Math.random() * fortunes.length)]!);
+}, { category: 'utility', usage: 'fortune' });
+
+export const todo: Command = createCommand('todo', 'Simple todo list manager', (args, { setLines, todos, addTodo, toggleTodo, removeTodo, clearTodos }) => {
+    const sub = args[0]?.toLowerCase();
+    if (!sub || sub === 'ls' || sub === 'list') {
+        if (todos.length === 0) {
+            addLine(setLines, 'Todo list is empty. Use: todo add [task]');
+        } else {
+            addLines(setLines, [
+                'Todo List:',
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+                ...todos.map((t, i) => `${i + 1}. [${t.completed ? 'x' : ' '}] ${t.text} (${t.id})`),
+                '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+            ]);
+        }
+    } else if (sub === 'add') {
+        const text = args.slice(1).join(' ');
+        if (!text) {
+            addLine(setLines, 'Usage: todo add [task text]');
+        } else {
+            addTodo(text);
+            addLine(setLines, `Added: ${text}`);
+        }
+    } else if (sub === 'done' || sub === 'toggle') {
+        const id = args[1];
+        if (!id) {
+            addLine(setLines, 'Usage: todo done [id]');
+        } else {
+            toggleTodo(id);
+            addLine(setLines, `Toggled todo: ${id}`);
+        }
+    } else if (sub === 'rm' || sub === 'remove') {
+        const id = args[1];
+        if (!id) {
+            addLine(setLines, 'Usage: todo rm [id]');
+        } else {
+            removeTodo(id);
+            addLine(setLines, `Removed todo: ${id}`);
+        }
+    } else if (sub === 'clear') {
+        clearTodos();
+        addLine(setLines, 'Cleared all todos.');
+    } else {
+        addLine(setLines, 'Usage: todo [list|add|done|rm|clear]');
+    }
+}, { category: 'utility', usage: 'todo [ls|add|done|rm|clear]' });
 
 export const cls: Command = createAliasCommand('cls', 'Clear screen (alias)', () => clear);
 
@@ -344,5 +448,5 @@ export const neofetch: Command = createCommand('neofetch', 'Display system infor
 }, { category: 'utility', usage: 'neofetch' });
 
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret, quote, joke, crypto, echo
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret, quote, joke, crypto, echo, history, calc, uptime, fortune, todo
 };

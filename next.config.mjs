@@ -27,7 +27,7 @@ const nextConfig = {
     assetPrefix: '',
 
     typescript: {
-        ignoreBuildErrors: true,
+        ignoreBuildErrors: false,
     },
     output: isProd ? 'export' : undefined,
     async headers() {

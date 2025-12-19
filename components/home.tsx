@@ -538,11 +538,11 @@ const shelfIcons: Record<string, React.ElementType> = {
     hobby: Gamepad2
 };
 
-const shelves = ["blogs", "articles", "books", "anime", "hobby"].map(key => ({
+const shelves = (["blogs", "articles", "books", "anime", "hobby"] as const).map(key => ({
     name: key,
     path: directoryMap[key],
     description: shelfConfigs[key].description,
-    icon: shelfIcons[key],
+    icon: shelfIcons[key] as any,
     color: "text-green-500"
 }));
 export function ShelvesSection() {
