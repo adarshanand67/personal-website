@@ -35,13 +35,13 @@ export const trackImages = [
     "https://cdn.myanimelist.net/images/anime/1141/142503l.jpg",
     "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
 ] as const;
-export const introLines = (isMatrix: boolean = true) => {
+export const introLines = () => {
     const lines = [
         "[  0.000000] Linux version 27.0.0-ADARSH (gcc version 14.2.1)",
         "[  0.004123] Command line: initrd=intel-ucode.img root=UUID=ADARSH-OS",
         "[  0.012541] x86/fpu: Supporting XSAVE feature 0x01: 'x87 floating point registers'",
         "[  0.045129] secureboot: Secure boot enabled",
-        "[  0.154210] Memory: 16384K/1048576K available",
+        "[  0.154210] Memory: 16383K/1048576K available",
         "[  0.412589] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes)",
         "[  0.841253] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0",
         "[  1.124589] NET: Registered protocol family 2 (AF_INET)",
@@ -55,7 +55,7 @@ export const introLines = (isMatrix: boolean = true) => {
         "* Management: https://github.com/adarshanand67",
         "",
         "$ neofetch",
-        ...systemStats(isMatrix),
+        ...systemStats(),
         "",
     ];
     return lines;
@@ -91,7 +91,7 @@ export const contactInfo = [
     `LinkedIn: ${siteConfig.contact.linkedin}`,
     `GitHub: ${siteConfig.contact.github}`
 ] as const;
-export const systemStats = (isMatrix: boolean) => [
+export const systemStats = () => [
     "                    \x1b[32m'c.\x1b[0m          \x1b[1madarsh_anand@Adarshs-MacBook-Air.local\x1b[0m",
     "                 \x1b[33m,xNMM.\x1b[0m          ",
     "               \x1b[31m.OMMMMo\x1b[0m           \x1b[36mOS:\x1b[0m macOS 27.0 26A5289h arm64",

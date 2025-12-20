@@ -20,7 +20,6 @@ function TechStackBase() {
             <div className="flex items-center justify-between mb-4">
                 <SectionHeader
                     title="Tech Stack"
-                    command="cat ~/.skills"
                     isExpanded={isExpanded}
                     onToggle={() => toggleSectionExpanded('techstack')}
                 />

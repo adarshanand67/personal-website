@@ -1,5 +1,5 @@
-// Re-export from home.tsx sections
-export { TechStack, Experience, ContactSection, Hero, RecentSection, ShelvesSection } from './home';
+// Re-export from sections.tsx
+export { TechStack, Experience, ContactSection, Hero, RecentSection, ShelvesSection } from './sections';
 
 // Re-export from submodules
 export * from './navigation';

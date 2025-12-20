@@ -1,2 +1,2 @@
 export { ShelfHeader } from './ShelfHeader';
-export { UniversalShelf, AnimeShelf } from './shelves';
+export { UniversalShelf } from './shelves';

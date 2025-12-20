@@ -6,7 +6,6 @@ import { useStore } from "@/lib/store/useStore";
 
 interface SectionHeaderProps {
     title: string;
-    command: string;
     isExpanded: boolean;
     onToggle: () => void;
     rightElement?: React.ReactNode;
@@ -14,7 +13,6 @@ interface SectionHeaderProps {
 
 export function SectionHeader({
     title,
-    command,
     isExpanded,
     onToggle,
     rightElement,
@@ -33,9 +31,6 @@ export function SectionHeader({
                 />
                 {rightElement && <div className="ml-auto">{rightElement}</div>}
             </h2>
-            <div className="flex items-center gap-2 text-gray-500 dark:text-gray-500 text-xs font-mono tracking-tight">
-                <span>{command}</span>
-            </div>
         </div>
     );
 }

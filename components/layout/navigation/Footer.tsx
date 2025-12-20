@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Home, FileText, BookOpen, Tv, Gamepad2 } from "lucide-react";
+import { ClientGithub, ClientLinkedin, ClientMail } from "@/components/layout/theme";
 
 export function Footer() {
     return (
@@ -44,9 +45,14 @@ export function Footer() {
                         ))}
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-4 mt-12 mb-8">
+                <div className="flex flex-col items-center gap-6 mt-12 mb-8">
                     <div className="text-3xl md:text-4xl text-green-600 dark:text-green-400 opacity-80" style={{ fontFamily: "'Dancing Script', cursive" }}>
                         Adarsh Anand
+                    </div>
+                    <div className="flex items-center gap-6">
+                        <ClientGithub />
+                        <ClientLinkedin />
+                        <ClientMail />
                     </div>
                 </div>
             </div>

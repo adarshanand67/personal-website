@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function BackToTop() {
     const { isBackToTopVisible, setIsBackToTopVisible } = useStore();
 
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.scrollY > 300) {
+            if (window.scrollY > 400) {
                 setIsBackToTopVisible(true);
             } else {
                 setIsBackToTopVisible(false);
             }
         };
-        toggleVisibility();
 
         window.addEventListener("scroll", toggleVisibility);
         return () => window.removeEventListener("scroll", toggleVisibility);
@@ -28,15 +28,25 @@ export function BackToTop() {
         });
     };
 
-    if (!isBackToTopVisible) return null;
-
     return (
-        <button
-            onClick={scrollToTop}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 p-4 md:p-5 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg transition-all z-50 font-mono text-sm hover:scale-110"
-            aria-label="Back to top"
-        >
-            <ArrowUp className="w-6 h-6 md:w-7 md:h-7" />
-        </button>
+        <AnimatePresence>
+            {isBackToTopVisible && (
+                <motion.button
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                    onClick={scrollToTop}
+                    className="fixed bottom-8 left-8 z-50 group"
+                    aria-label="Back to top"
+                >
+                    <div className="relative">
+                        <div className="absolute -inset-2 bg-green-500/20 rounded-full blur-xl group-hover:bg-green-500/30 transition-all" />
+                        <div className="relative w-12 h-12 flex items-center justify-center bg-white/10 dark:bg-black/20 backdrop-blur-md border border-white/20 dark:border-white/5 rounded-full shadow-2xl transition-all duration-300 group-hover:-translate-y-1">
+                            <ArrowUp size={20} className="text-gray-600 dark:text-gray-300 group-hover:text-green-500 transition-colors" />
+                        </div>
+                    </div>
+                </motion.button>
+            )}
+        </AnimatePresence>
     );
 }

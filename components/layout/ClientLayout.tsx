@@ -1,22 +1,32 @@
 "use client";
 
 import { ThemeProvider } from "@/components/layout/theme";
-import { GlobalEffect } from "@/components/layout/effects/GlobalEffect";
+import { GlobalEffect, MatrixRain } from "@/components/layout/effects";
 import { Navbar } from "@/components/layout/navigation/Navbar";
 import { Footer } from "@/components/layout/navigation/Footer";
 import { CommandMenu } from "@/components/layout/navigation/CommandMenu";
 import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlayer";
-import { ServiceWorker } from "@/components/features/serviceWorker";
+import { PWARegistration } from "@/components/features/serviceWorker";
 import { HobbiesModal } from "@/components/modals/hobbiesModal";
+import { QuickJump } from "@/components/layout/navigation/QuickJump";
+import { ShortcutGuide } from "@/components/features/ShortcutGuide";
+import { BackToTop } from "@/components/layout/navigation/BackToTop";
+import { MobileDock } from "@/components/layout/navigation/MobileDock";
+
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <ServiceWorker />
+            <PWARegistration />
             <GlobalEffect />
+            <MatrixRain />
             <Navbar />
             <CommandMenu />
             <HobbiesModal />
             {children}
+            <QuickJump />
+            <ShortcutGuide />
+            <BackToTop />
+            <MobileDock />
             <MusicPlayer />
             <MusicToggleButton />
             <Footer />

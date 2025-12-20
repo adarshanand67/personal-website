@@ -19,10 +19,9 @@ export function ContactSection() {
     };
 
     return (
-        <div className="font-mono">
+        <div id="contact" className="font-mono">
             <SectionHeader
                 title="Let's Talk"
-                command="echo $CONTACT_INFO"
                 isExpanded={isExpanded}
                 onToggle={() => toggleSectionExpanded('contact')}
             />

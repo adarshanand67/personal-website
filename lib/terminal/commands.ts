@@ -17,9 +17,6 @@ export interface CommandContext {
     setPasswordMode: (mode: boolean) => void;
     router: AppRouterInstance;
     setTheme: (theme: ThemeMode) => void;
-    isMatrixEnabled: boolean;
-    toggleMatrix: () => void;
-    toggleSystemMonitor: () => void;
     setInput: (input: string) => void;
     history: readonly string[];
     todos: any[];
@@ -27,6 +24,7 @@ export interface CommandContext {
     toggleTodo: (id: string) => void;
     removeTodo: (id: string) => void;
     clearTodos: () => void;
+    toggleMatrix?: () => void;
 }
 
 export type CommandFn = (args: CommandArgs, context: CommandContext, input?: string) => void | Promise<void>;
@@ -104,8 +102,7 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '',
         'Utility:',
         '  clear         - Clear terminal',
-        '  matrix        - Toggle Matrix rain',
-        '  weather       - Show current weather',
+        '  matrix        - Toggle Matrix rain background',
         '  github        - Show GitHub statistics',
         '  haiku         - Generate a tech haiku',
         '  calc [expr]   - Evaluate math expression',
@@ -113,7 +110,6 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '  fortune       - Your daily tech fortune',
         '  quote         - Get a daily tech quote',
         '  joke          - Random programmer joke',
-        '  crypto        - Live BTC price',
         '  echo [text]   - Print text to terminal',
         '  help          - Show this help message',
         '  theme [mode]  - Set theme (light/dark/system)',
@@ -142,32 +138,9 @@ export const joke: Command = createCommand('joke', 'Random programmer joke', asy
     }
 }, { category: 'utility', usage: 'joke' });
 
-export const crypto: Command = createCommand('crypto', 'Live BTC price', async (_, { setLines }) => {
-    addLine(setLines, "Fetching BTC/USD price...");
-    try {
-        const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
-        const data = await res.json();
-        addLine(setLines, `Bitcoin (BTC): $${data.bpi.USD.rate_float.toLocaleString()} USD`);
-    } catch {
-        addLine(setLines, "Error: Unable to fetch crypto data.");
-    }
-}, { category: 'utility', usage: 'crypto' });
-
 export const echo: Command = createCommand('echo', 'Print text', (args, { setLines }) => {
     addLine(setLines, args.join(' '));
 }, { category: 'utility', usage: 'echo [text]' });
-
-export const weather: Command = createCommand('weather', 'Show current weather', async (args, { setLines }) => {
-    const city = args[0] || '';
-    addLine(setLines, `Fetching weather for ${city || 'your location'}...`);
-    try {
-        const res = await fetch(`https://wttr.in/${city}?format=3&m`);
-        const data = await res.text();
-        addLine(setLines, data);
-    } catch {
-        addLine(setLines, 'Error: Unable to fetch weather data.');
-    }
-}, { category: 'utility', usage: 'weather [city]' });
 
 export const github: Command = createCommand('github', 'Show GitHub statistics', async (_, { setLines }) => {
     addLine(setLines, 'Fetching GitHub stats for adarshanand67...');
@@ -198,18 +171,6 @@ export const haiku: Command = createCommand('haiku', 'Generate a tech haiku', (_
     addLines(setLines, ["", ...pick, ""]);
 }, { category: 'utility', usage: 'haiku' });
 
-export const secret: Command = createCommand('secret', '???', (_, { setLines }) => {
-    addLines(setLines, [
-        'Searching for secrets...',
-        'Found hidden file: .ctf_hint.txt',
-        'Loading content...',
-        '',
-        'Congratulations, you found the first gate.',
-        'The password is: "ANTIGRAVITY"',
-        'Try typing: sudo ANTIGRAVITY'
-    ]);
-}, { category: 'utility', usage: 'secret' });
-
 export const history: Command = createCommand('history', 'Show command history', (_, { setLines, history }) => {
     if (history.length === 0) {
         addLine(setLines, 'No history found.');
@@ -225,8 +186,6 @@ export const calc: Command = createCommand('calc', 'Evaluate math expression', (
         return;
     }
     try {
-        // Safe evaluation using Function constructor for basic math
-        // We only allow math characters
         if (/[^0-9+\-*/().\s]/.test(expr)) {
             throw new Error('Invalid characters');
         }
@@ -333,6 +292,15 @@ export const theme: Command = createCommand('theme', 'Switch color theme', (args
     addLine(setLines, `Theme set to ${mode} mode.`);
 }, { category: 'utility', usage: 'theme [light|dark|system]' });
 
+export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix, setLines }) => {
+    if (toggleMatrix) {
+        toggleMatrix();
+        addLine(setLines, 'Toggling Matrix Rain background...');
+    } else {
+        addLine(setLines, 'Matrix Rain subsystem not found.');
+    }
+}, { category: 'utility', usage: 'matrix' });
+
 export const ls: Command = createCommand('ls', 'List directories', (args, { setLines }) => {
     const showAll = args.includes('-a') || args.includes('-la');
     const dirs = Object.keys(directoryMap);
@@ -375,16 +343,6 @@ export const cat: Command = createCommand('cat', 'Read file', (args, { setLines 
         addLine(setLines, `cat: ${filename}: No such file`);
     }
 }, { category: 'utility', usage: 'cat [file]' });
-
-export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix }) => {
-    toggleMatrix();
-    toggleMatrix();
-}, { category: 'utility', usage: 'matrix' });
-
-export const htop: Command = createCommand('htop', 'Open System Monitor', (_, { toggleSystemMonitor, setLines }) => {
-    toggleSystemMonitor();
-    addLine(setLines, 'Launching System Monitor...');
-}, { category: 'utility', usage: 'htop' });
 
 export const sudo: Command = createCommand('sudo', 'Execute as superuser', (args, { setLines }) => {
     const password = args[0];
@@ -443,10 +401,10 @@ export const open: Command = createCommand('open', 'Open directory or URL', (arg
     }
 }, { category: 'navigation', usage: 'open [link]' });
 
-export const neofetch: Command = createCommand('neofetch', 'Display system information', (_, { setLines, isMatrixEnabled }) => {
-    addLines(setLines, [...systemStats(isMatrixEnabled)] as string[]);
+export const neofetch: Command = createCommand('neofetch', 'Display system information', (_, { setLines }) => {
+    addLines(setLines, [...systemStats()] as string[]);
 }, { category: 'utility', usage: 'neofetch' });
 
 export const commands: Record<string, Command> = {
-    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cls, cat, matrix, sudo, rm, open, htop, neofetch, weather, github, haiku, secret, quote, joke, crypto, echo, history, calc, uptime, fortune, todo
+    clear, help, skills, contact, theme, ls, cd, pwd, whoami, cat, sudo, rm, open, neofetch, github, haiku, history, calc, uptime, fortune, todo, joke, quote, echo, matrix
 };

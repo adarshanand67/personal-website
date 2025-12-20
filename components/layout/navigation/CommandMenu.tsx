@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -9,24 +9,38 @@ import {
     FileText,
     BookOpen,
     Tv,
-    Sparkles,
     Gamepad2,
     Sun,
     Moon,
     Laptop,
     Github,
     Linkedin,
-    Mail
+    Mail,
+    ArrowRight,
+    Command as CommandIcon,
 } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { siteConfig } from "@/lib/config";
+import { motion, AnimatePresence } from "framer-motion";
+
+type CommandGroup = {
+    group: string;
+    items: {
+        icon: any;
+        label: string;
+        action: () => void;
+        shortcut?: string;
+    }[];
+};
 
 export function CommandMenu() {
     const [open, setOpen] = useState(false);
     const [search, setSearch] = useState("");
+    const [selectedIndex, setSelectedIndex] = useState(0);
     const router = useRouter();
     const { setTheme } = useTheme();
-    const { toggleMatrix, toggleHobbiesModal } = useStore();
+    const { toggleHobbiesModal } = useStore();
+    const listRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -53,69 +67,182 @@ export function CommandMenu() {
         command();
     }, []);
 
-    if (!open) return null;
+    const scrollToSection = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
-    const commands = [
-        { icon: Home, label: "Home", action: () => router.push("/") },
-        { icon: FileText, label: "Blogshelf", action: () => router.push("/blogs") },
-        { icon: FileText, label: "Papershelf", action: () => router.push("/papershelf") },
-        { icon: Tv, label: "Animeshelf", action: () => router.push("/animeshelf") },
-        { icon: BookOpen, label: "Bookshelf", action: () => router.push("/bookshelf") },
-        { icon: Sparkles, label: "Toggle Matrix Rain", action: toggleMatrix },
-        { icon: Gamepad2, label: "View Hobbies", action: toggleHobbiesModal },
-        { icon: Sun, label: "Light Mode", action: () => setTheme("light") },
-        { icon: Moon, label: "Dark Mode", action: () => setTheme("dark") },
-        { icon: Laptop, label: "System Theme", action: () => setTheme("system") },
-        { icon: Github, label: "GitHub", action: () => window.open(`https://${siteConfig.contact.github}`, "_blank") },
-        { icon: Linkedin, label: "LinkedIn", action: () => window.open(`https://${siteConfig.contact.linkedin}`, "_blank") },
-        { icon: Mail, label: "Contact Email", action: () => window.open(`mailto:${siteConfig.contact.email}`) },
+    const commandGroups: CommandGroup[] = [
+        {
+            group: "Navigation",
+            items: [
+                { icon: Home, label: "Home", action: () => router.push("/") },
+                { icon: FileText, label: "Articleshelf", action: () => router.push("/articleshelf") },
+                { icon: Tv, label: "Animeshelf", action: () => router.push("/animeshelf") },
+                { icon: BookOpen, label: "Bookshelf", action: () => router.push("/bookshelf") },
+                { icon: Gamepad2, label: "Hobbyshelf", action: () => router.push("/hobbyshelf") },
+            ]
+        },
+        {
+            group: "Home Sections",
+            items: [
+                { icon: ArrowRight, label: "Jump to Hero", action: () => scrollToSection("hero") },
+                { icon: ArrowRight, label: "Jump to Experience", action: () => scrollToSection("experience") },
+                { icon: ArrowRight, label: "Jump to Tech Stack", action: () => scrollToSection("techstack") },
+                { icon: ArrowRight, label: "Jump to Contact", action: () => scrollToSection("contact") },
+            ]
+        },
+        {
+            group: "Appearance",
+            items: [
+                { icon: Sun, label: "Light Mode", action: () => setTheme("light") },
+                { icon: Moon, label: "Dark Mode", action: () => setTheme("dark") },
+                { icon: Laptop, label: "System Theme", action: () => setTheme("system") },
+            ]
+        },
+        {
+            group: "Social",
+            items: [
+                { icon: Github, label: "GitHub", action: () => window.open(`https://${siteConfig.contact.github}`, "_blank") },
+                { icon: Linkedin, label: "LinkedIn", action: () => window.open(`https://${siteConfig.contact.linkedin}`, "_blank") },
+                { icon: Mail, label: "Contact Email", action: () => window.open(`mailto:${siteConfig.contact.email}`) },
+            ]
+        }
     ];
 
-    const filtered = commands.filter(cmd =>
-        cmd.label.toLowerCase().includes(search.toLowerCase())
+    const allItems = commandGroups.flatMap(g => g.items);
+    const filteredItems = allItems.filter(item =>
+        item.label.toLowerCase().includes(search.toLowerCase())
     );
 
+    useEffect(() => {
+        setSelectedIndex(0);
+    }, [search]);
+
+    useEffect(() => {
+        const handleKeys = (e: KeyboardEvent) => {
+            if (!open) return;
+            if (e.key === "ArrowDown") {
+                e.preventDefault();
+                setSelectedIndex(prev => (prev + 1) % filteredItems.length);
+            } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                setSelectedIndex(prev => (prev - 1 + filteredItems.length) % filteredItems.length);
+            } else if (e.key === "Enter") {
+                e.preventDefault();
+                if (filteredItems[selectedIndex]) {
+                    runCommand(filteredItems[selectedIndex].action);
+                }
+            }
+        };
+        window.addEventListener("keydown", handleKeys);
+        return () => window.removeEventListener("keydown", handleKeys);
+    }, [open, filteredItems, selectedIndex, runCommand]);
+
     return (
-        <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-            onClick={() => setOpen(false)}
-        >
-            <div onClick={(e) => e.stopPropagation()} className="w-full max-w-[640px]">
-                <div className="w-full bg-white/80 dark:bg-black/80 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 dark:border-gray-800 p-2">
-                    <div className="flex items-center border-b border-gray-100 dark:border-gray-800 px-3 pb-2 mb-2">
-                        <Search className="w-4 h-4 text-gray-600 dark:text-gray-300 mr-2" />
-                        <input
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            placeholder="Type a command or search..."
-                            className="w-full bg-transparent border-none outline-none text-sm h-8 dark:text-white placeholder:text-gray-600 dark:placeholder:text-gray-400"
-                            autoFocus
-                        />
-                    </div>
-                    <div className="max-h-[300px] overflow-y-auto px-1">
-                        {filtered.length === 0 ? (
-                            <div className="py-6 text-center text-sm text-gray-700 dark:text-gray-300">
-                                No results found.
+        <AnimatePresence>
+            {open && (
+                <div className="fixed inset-0 z-[9999] flex items-start justify-center pt-[15vh] px-4 pointer-events-none">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm pointer-events-auto"
+                        onClick={() => setOpen(false)}
+                    />
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                        className="w-full max-w-[600px] bg-white/90 dark:bg-[#1a1a1a]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 dark:border-white/5 overflow-hidden pointer-events-auto overflow-hidden"
+                    >
+                        <div className="flex items-center border-b border-gray-100 dark:border-white/5 px-4 h-14">
+                            <Search className="w-5 h-5 text-gray-400 mr-3" />
+                            <input
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                placeholder="Search for anything..."
+                                className="w-full bg-transparent border-none outline-none text-base dark:text-white placeholder:text-gray-500 font-medium"
+                                autoFocus
+                            />
+                            <div className="flex items-center gap-1.5 ml-auto">
+                                <span className="px-1.5 py-0.5 rounded border border-gray-200 dark:border-white/10 text-[10px] text-gray-400 font-mono">ESC</span>
                             </div>
-                        ) : (
-                            filtered.map((cmd, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => runCommand(cmd.action)}
-                                    className="w-full flex items-center gap-2 px-2 py-2 rounded-md text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 cursor-pointer transition-colors"
-                                >
-                                    <cmd.icon className="w-4 h-4" />
-                                    {cmd.label}
-                                </button>
-                            ))
-                        )}
-                    </div>
-                    <div className="border-t border-gray-100 dark:border-gray-800 mt-2 pt-2 px-2 flex justify-between items-center text-[10px] text-gray-400">
-                        <span>Open with ⌘ K</span>
-                        <span>Select with ↵</span>
-                    </div>
+                        </div>
+
+                        <div ref={listRef} className="max-h-[60vh] overflow-y-auto py-2 px-2 custom-scrollbar">
+                            {filteredItems.length === 0 ? (
+                                <div className="py-12 text-center text-gray-500 text-sm">
+                                    No results found for &ldquo;{search}&rdquo;
+                                </div>
+                            ) : (
+                                <div className="space-y-4">
+                                    {commandGroups.map((group) => {
+                                        const groupFiltered = group.items.filter(item =>
+                                            item.label.toLowerCase().includes(search.toLowerCase())
+                                        );
+                                        if (groupFiltered.length === 0) return null;
+
+                                        return (
+                                            <div key={group.group} className="space-y-1">
+                                                <div className="px-3 py-1 text-[10px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest">
+                                                    {group.group}
+                                                </div>
+                                                {groupFiltered.map((item) => {
+                                                    const globalIndex = filteredItems.indexOf(item);
+                                                    const isSelected = globalIndex === selectedIndex;
+                                                    return (
+                                                        <button
+                                                            key={item.label}
+                                                            onClick={() => runCommand(item.action)}
+                                                            className={`
+                                                                w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200
+                                                                ${isSelected
+                                                                    ? 'bg-green-500 text-white shadow-lg shadow-green-500/20'
+                                                                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5'}
+                                                            `}
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <item.icon size={18} className={isSelected ? 'text-white' : 'text-gray-400 dark:text-gray-500'} />
+                                                                <span className="font-medium">{item.label}</span>
+                                                            </div>
+                                                            {isSelected && (
+                                                                <div className="flex items-center gap-1.5 opacity-80">
+                                                                    <span className="text-[10px] font-mono">Enter</span>
+                                                                    <ArrowRight size={14} />
+                                                                </div>
+                                                            )}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="bg-gray-50 dark:bg-white/5 px-4 h-10 flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-white/5">
+                            <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-1.5">
+                                    <span className="p-1 rounded bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10">↑↓</span>
+                                    <span>Navigate</span>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="p-1 rounded bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10">↵</span>
+                                    <span>Select</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <CommandIcon size={12} />
+                                <span className="font-mono">K</span>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
-            </div>
-        </div>
+            )}
+        </AnimatePresence>
     );
 }

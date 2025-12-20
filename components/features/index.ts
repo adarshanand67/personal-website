@@ -2,4 +2,5 @@
 
 export { MusicPlayer } from './musicPlayer';
 export { ErrorBoundary } from './errorBoundary';
-export { ServiceWorker } from './serviceWorker';
+export { PWARegistration as ServiceWorker } from './serviceWorker';
+export { ShortcutGuide } from './ShortcutGuide';

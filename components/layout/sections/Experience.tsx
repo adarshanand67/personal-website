@@ -32,7 +32,6 @@ function ExperienceBase({ items }: ExperienceProps) {
         <div className="mb-4 font-mono" id="experience">
             <SectionHeader
                 title="Experience"
-                command="cat ~/work/history.log"
                 isExpanded={isExpanded}
                 onToggle={() => toggleSectionExpanded('experience')}
             />

@@ -37,10 +37,26 @@ function HeroBase({ profile }: { profile: any }) {
     );
 
     return (
-        <section className="section max-w-6xl mx-auto px-6 md:px-12 mt-8 mb-8 relative">
+        <section
+            id="hero"
+            className="section max-w-6xl mx-auto px-6 md:px-12 mt-8 mb-8 relative"
+            onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                e.currentTarget.style.setProperty('--mouse-x', `${x}%`);
+                e.currentTarget.style.setProperty('--mouse-y', `${y}%`);
+            }}
+        >
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+                <div
+                    className="absolute inset-0 opacity-30 dark:opacity-20 transition-opacity duration-1000"
+                    style={{
+                        background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(34, 197, 94, 0.15) 0%, transparent 50%)`
+                    }}
+                />
             </div>
 
             <div className="relative z-10 min-h-[500px]">

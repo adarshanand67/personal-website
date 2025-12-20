@@ -14,7 +14,6 @@ export function Terminal() {
     const { setTheme } = useTheme();
 
     const {
-        toggleMatrix, isMatrixEnabled,
         lines, setLines,
         isIntroDone, setIsIntroDone,
         input, setInput,
@@ -24,7 +23,6 @@ export function Terminal() {
         isExpanded, setIsExpanded,
         position, setPosition,
         isDragging, setIsDragging,
-        showSystemMonitor,
         todos, addTodo, toggleTodo, removeTodo, clearTodos
     } = useStore();
 
@@ -51,7 +49,7 @@ export function Terminal() {
         }
 
         if (!isIntroDone) {
-            const allIntroLines = introLines(isMatrixEnabled);
+            const allIntroLines = introLines();
             let currentLine = 0;
 
             const typeNextLine = () => {
@@ -68,7 +66,7 @@ export function Terminal() {
 
             typeNextLine();
         }
-    }, [isIntroDone, setLines, setIsIntroDone, isMatrixEnabled]);
+    }, [isIntroDone, setLines, setIsIntroDone]);
 
     const executeCommand = async (cmd: string) => {
         if (passwordMode) {
@@ -76,10 +74,10 @@ export function Terminal() {
             setLines((prev: string[]) => [...prev, "Checking permissions..."]);
             if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") {
                 setTimeout(() => {
-                    setLines((prev: string[]) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
-                    if (!isMatrixEnabled) toggleMatrix();
+                    setLines((prev: string[]) => [...prev, "Access Granted. Welcome, Administrator.", "Developer Mode: Enabled"]);
                 }, 800);
             } else {
+
                 setTimeout(() => {
                     setLines((prev: string[]) => [...prev, "Access Denied."]);
                 }, 800);
@@ -101,9 +99,7 @@ export function Terminal() {
             setPasswordMode,
             router,
             setTheme,
-            isMatrixEnabled,
-            toggleMatrix,
-            toggleSystemMonitor: useStore.getState().toggleSystemMonitor,
+            toggleMatrix: useStore.getState().toggleMatrix,
             setInput,
             history,
             todos,
@@ -307,7 +303,6 @@ export function Terminal() {
                 <section className="font-mono">
                     <SectionHeader
                         title="Terminal"
-                        command="./interactive-shell.sh"
                         isExpanded={isExpanded}
                         onToggle={() => setIsExpanded(!isExpanded)}
                     />
