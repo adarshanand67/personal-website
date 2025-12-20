@@ -165,7 +165,7 @@ export function Experience({ items }: { items: any[] }) {
                                 <div className="flex flex-col gap-3 p-5">
                                     <div className="flex items-start gap-3">
                                         {exp.logo && (
-                                            <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-1 border border-gray-200 dark:border-gray-700">
+                                            <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-white dark:bg-gray-800 p-2 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
                                                 <Image src={getAssetPath(exp.logo)} alt={`${exp.company} logo`} width={48} height={48} className="w-full h-full object-contain" />
                                             </div>
                                         )}
