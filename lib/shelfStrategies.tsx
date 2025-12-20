@@ -98,7 +98,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
   renderList(items: Book[]): ReactNode {
     if (items.length === 0) return null;
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 px-4 py-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 px-4 py-8">
         {items.map((book, index) => this.renderItem(book, index))}
       </div>
     );
@@ -198,7 +198,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
         {years.map((year) => (
           <div key={year} className="mb-8">
             <h2 className="text-xl font-bold mb-4">
-              <span className="text-gray-500">##</span> {year}
+              {year}
             </h2>
             <div className="space-y-2">
               {blogsByYear[year]!.map((post) => this.renderItem(post))}

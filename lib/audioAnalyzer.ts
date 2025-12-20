@@ -4,6 +4,7 @@ class AudioAnalyzer {
     private static instance: AudioAnalyzer;
     private context: AudioContext | null = null;
     private analyser: AnalyserNode | null = null;
+    private gainNode: GainNode | null = null;
     private dataArray: Uint8Array | null = null;
     private source: MediaElementAudioSourceNode | null = null;
     private initialized = false;
@@ -25,21 +26,26 @@ class AudioAnalyzer {
 
         this.context = new AudioContextClass();
         this.analyser = this.context.createAnalyser();
+        this.gainNode = this.context.createGain();
         this.analyser.fftSize = 256;
 
         const bufferLength = this.analyser.frequencyBinCount;
         this.dataArray = new Uint8Array(bufferLength);
 
         try {
-            // Next.js hydration issues might make this run multiple times, 
-            // so we check if source is already created on the audio element elsewhere
-            // but for simplicity we manage it here.
             this.source = this.context.createMediaElementSource(audio);
             this.source.connect(this.analyser);
-            this.analyser.connect(this.context.destination);
+            this.analyser.connect(this.gainNode);
+            this.gainNode.connect(this.context.destination);
             this.initialized = true;
         } catch (e) {
             console.warn("Audio Context already initialized or failed:", e);
+        }
+    }
+
+    setVolume(volume: number) {
+        if (this.gainNode) {
+            this.gainNode.gain.setTargetAtTime(volume, this.context!.currentTime, 0.01);
         }
     }
 

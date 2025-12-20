@@ -37,7 +37,7 @@ function HeroBase({ profile }: { profile: any }) {
     );
 
     return (
-        <section className="section max-w-7xl mx-auto px-4 mt-8 mb-8 relative">
+        <section className="section max-w-6xl mx-auto px-6 md:px-12 mt-8 mb-8 relative">
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse" />
                 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -49,9 +49,7 @@ function HeroBase({ profile }: { profile: any }) {
                     <div className="w-full max-w-4xl mx-auto flex flex-col gap-4 glass p-6 sm:p-8 rounded-2xl animate-fade-in relative">
                         <div className="flex items-start justify-between mb-2">
                             <div className="font-mono flex items-center gap-2 group mt-1">
-                                <span className="text-green-500 font-bold text-lg group-hover:scale-110 transition-transform">$</span>{" "}
-                                <span className="text-gray-700 dark:text-gray-300">whoami</span>
-                                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
+                                <span className="text-gray-500 dark:text-gray-400 text-sm tracking-wider uppercase">whoami</span>
                             </div>
                             <ViewToggle />
                         </div>
@@ -111,14 +109,7 @@ function HeroBase({ profile }: { profile: any }) {
                         <div className="absolute top-0 right-0 z-20 p-4">
                             <ViewToggle />
                         </div>
-                        <div className="flex justify-center mb-12 sm:mb-4">
-                            <div className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass hover:scale-105 transition-all duration-300 cursor-help opacity-0 sm:opacity-100 transition-opacity">
-                                <span className="text-xs text-green-700 dark:text-green-400">🔐</span>
-                                <span className="text-xs text-gray-600 dark:text-gray-400 font-mono">
-                                    Psst... hidden CTF challenge
-                                </span>
-                            </div>
-                        </div>
+
                         <Terminal />
                     </div>
                 )}

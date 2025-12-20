@@ -42,7 +42,7 @@ export function ShelfHeader({
                     <RandomizerButton items={items} onPick={onPickRandom} />
                 )}
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm">$ {command}</p>
+            <p className="text-gray-400 dark:text-gray-500 mb-2 text-xs font-mono uppercase tracking-widest">{command}</p>
             {description && (
                 <p className="text-gray-500 dark:text-gray-500 mb-6 text-sm italic">&gt; {description}</p>
             )}
@@ -135,7 +135,7 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
     // For Randomizer: Filter only "Completed" items if it's an Anime shelf
 
     return (
-        <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
+        <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-12 font-mono">
             <ShelfHeader
                 title={config.title}
                 description={config.description}
@@ -315,7 +315,7 @@ const Section = ({
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">
                 {title}
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {sectionItems.map((item, index) => (
                     <AnimeCard key={`${item.title}-${index}`} item={item} />
                 ))}
@@ -353,7 +353,7 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
 
     if (!mounted) {
         return (
-            <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
+            <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-12 font-mono">
                 <div className="flex flex-wrap gap-2 mb-8">
                     {[1, 2, 3, 4, 5].map(i => (
                         <div key={i} className="h-8 w-20 bg-gray-200 dark:bg-gray-800 animate-pulse rounded-full" />
@@ -362,7 +362,7 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
                 {[1, 2].map(section => (
                     <div key={section} className="mb-12">
                         <div className="h-8 w-48 bg-gray-200 dark:bg-gray-800 animate-pulse rounded mb-6" />
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                             {[1, 2, 3, 4, 5].map(i => (
                                 <div key={i} className="glass p-3 rounded-xl space-y-3">
                                     <div className="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 animate-pulse rounded-md" />

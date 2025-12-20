@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store/useStore";
 import { routes } from "@/lib/constants";
-import { SystemStatus } from "@/components/features";
 import { ThemeToggle } from "@/components/layout/theme";
-import { SoundToggle } from "@/components/layout/utils/SoundToggle";
 import { Menu, Search } from "lucide-react";
 
 export function Navbar() {
@@ -69,9 +67,6 @@ export function Navbar() {
                             >
                                 ~/Adarsh
                             </Link>
-                            <div className="hidden lg:flex items-center ml-4">
-                                <SystemStatus />
-                            </div>
                             <div className="md:hidden">
                                 <ThemeToggle />
                             </div>
@@ -111,7 +106,6 @@ export function Navbar() {
                                     >
                                         {isMounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
                                     </button>
-                                    <SoundToggle />
                                     <ThemeToggle />
                                 </div>
                             </div>

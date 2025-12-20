@@ -1,1 +1,1 @@
-export { SectionHeader, SpotlightCard, TerminalCursor } from './SectionHeader';
+export { SectionHeader, SpotlightCard } from './SectionHeader';

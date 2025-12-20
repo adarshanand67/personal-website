@@ -7,7 +7,6 @@ import { useStore } from "@/lib/store/useStore";
 import { introLines, directories } from "@/lib/constants";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
-import { SystemMonitor } from "@/components/features";
 import { SectionHeader } from "../ui/SectionHeader";
 
 export function Terminal() {
@@ -304,7 +303,6 @@ export function Terminal() {
             className="w-full max-w-7xl relative"
             onClick={handleTerminalWrapperClick}
         >
-            {showSystemMonitor && <SystemMonitor />}
             <div className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300">
                 <section className="font-mono">
                     <SectionHeader

@@ -21,6 +21,5 @@ export {
 // Re-export from ui submodule
 export {
     SectionHeader,
-    SpotlightCard,
-    TerminalCursor
+    SpotlightCard
 } from './ui';

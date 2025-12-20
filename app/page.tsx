@@ -11,7 +11,7 @@ export default async function Home() {
     <main className="min-h-screen">
       <Hero profile={profile} />
       { }
-      <div className="section max-w-7xl mx-auto px-4 mb-8 space-y-8">
+      <div className="section max-w-6xl mx-auto px-6 md:px-12 mb-8 space-y-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Experience Section */}
           <ErrorBoundary>
