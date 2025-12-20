@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { User, Terminal as TerminalIcon } from "lucide-react";
 import { Terminal } from "@/components/layout";
+import { TiltWrapper } from "@/components/ui/TiltWrapper";
 
 function HeroBase({ profile }: { profile: any }) {
     const [viewMode, setViewMode] = useState<'profile' | 'terminal'>('profile');
@@ -57,18 +58,20 @@ function HeroBase({ profile }: { profile: any }) {
 
                         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
                             {profile.avatar && (
-                                <div className="relative group shrink-0">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                                    <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-green-500 shadow-lg shadow-green-500/50 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                                        <Image
-                                            src={profile.avatar}
-                                            alt={profile.name}
-                                            fill
-                                            className="object-cover"
-                                            priority
-                                        />
+                                <TiltWrapper intensity={20} className="shrink-0">
+                                    <div className="relative group">
+                                        <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500/50 to-emerald-500/50 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                        <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-green-500/30 dark:border-emerald-500/20 shadow-xl shadow-green-500/10 flex-shrink-0">
+                                            <Image
+                                                src={profile.avatar}
+                                                alt={profile.name}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                priority
+                                            />
+                                        </div>
                                     </div>
-                                </div>
+                                </TiltWrapper>
                             )}
                             <div className="text-center md:text-left">
                                 <h1 className="title text-4xl md:text-6xl font-bold font-serif bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400 bg-clip-text text-transparent mb-2">

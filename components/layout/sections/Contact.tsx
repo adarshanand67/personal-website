@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { SectionHeader } from "@/components/layout/ui";
 import { siteConfig } from "@/lib/config";
@@ -7,6 +9,14 @@ import { siteConfig } from "@/lib/config";
 export function ContactSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['contact'] ?? false;
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyEmail = (e: React.MouseEvent) => {
+        e.preventDefault();
+        navigator.clipboard.writeText(siteConfig.contact.email);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     return (
         <div className="font-mono">
@@ -46,25 +56,25 @@ export function ContactSection() {
                             </svg>
                         </div>
                     </a>
-                    <a
-                        href={`mailto:${siteConfig.contact.email}`}
-                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1"
+                    <div
+                        onClick={handleCopyEmail}
+                        className="group relative overflow-hidden glass rounded-lg p-4 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-1 cursor-pointer"
                     >
                         <div className="flex items-center gap-3">
                             <div className="flex-shrink-0 w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
+                                {copied ? <Check className="w-5 h-5 text-white" /> : <Copy className="w-5 h-5 text-white" />}
                             </div>
                             <div className="flex-1 min-w-0">
-                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">Email</div>
+                                <div className="text-xs text-green-600 dark:text-green-400 font-semibold mb-0.5">
+                                    {copied ? "Copied!" : "Email"}
+                                </div>
                                 <div className="text-sm text-gray-700 dark:text-gray-300 font-medium truncate">{siteConfig.contact.email}</div>
                             </div>
                             <svg className="w-5 h-5 text-green-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                         </div>
-                    </a>
+                    </div>
                     <a
                         href={`https://${siteConfig.contact.github}`}
                         target="_blank"

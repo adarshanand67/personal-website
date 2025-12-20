@@ -37,6 +37,23 @@ export const trackImages = [
 ] as const;
 export const introLines = (isMatrix: boolean = true) => {
     const lines = [
+        "[  0.000000] Linux version 27.0.0-ADARSH (gcc version 14.2.1)",
+        "[  0.004123] Command line: initrd=intel-ucode.img root=UUID=ADARSH-OS",
+        "[  0.012541] x86/fpu: Supporting XSAVE feature 0x01: 'x87 floating point registers'",
+        "[  0.045129] secureboot: Secure boot enabled",
+        "[  0.154210] Memory: 16384K/1048576K available",
+        "[  0.412589] Mount-cache hash table entries: 16384 (order: 5, 131072 bytes)",
+        "[  0.841253] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0",
+        "[  1.124589] NET: Registered protocol family 2 (AF_INET)",
+        "[  1.458963] usb 1-1: new high-speed USB device number 2 using xhci_hcd",
+        "[  2.012458] clocksource: Switched to clocksource tsc",
+        "[  2.415896] systemd[1]: Inserted module 'autofs4'",
+        "[  2.784125] systemd[1]: Set hostname to <ADARSH-AIR>",
+        "[  3.124589] adarsh-os login: adarsh (automatic login)",
+        "Welcome to Adarsh OS 27.0.0-LTS (GNU/Linux arm64)",
+        "* Documentation: https://adarshanand.dev",
+        "* Management: https://github.com/adarshanand67",
+        "",
         "$ neofetch",
         ...systemStats(isMatrix),
         "",

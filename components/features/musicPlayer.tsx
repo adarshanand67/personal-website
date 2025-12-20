@@ -103,6 +103,12 @@ export function MusicPlayer() {
     useEffect(() => {
         if (!audioRef.current) return;
         if (isPlaying) {
+            import('@/lib/audioAnalyzer').then(({ audioAnalyzer }) => {
+                if (audioRef.current) {
+                    audioAnalyzer.init(audioRef.current);
+                    audioAnalyzer.resume();
+                }
+            });
             audioRef.current.play().catch(e => {
                 console.error("Playback failed:", e);
                 setIsPlaying(false);

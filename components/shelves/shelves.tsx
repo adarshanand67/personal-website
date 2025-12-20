@@ -61,6 +61,8 @@ export function ShelfHeader({
     );
 }
 
+import { Skeleton } from "@/components/ui/Skeleton";
+
 interface UniversalShelfProps {
     config: ShelfConfig;
     items: unknown[];
@@ -70,7 +72,6 @@ export function UniversalShelf(props: UniversalShelfProps) {
 }
 
 function UniversalShelfBase({ config, items }: UniversalShelfProps) {
-    const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
     const {
         searchQuery,
         setSearchQuery,
@@ -80,9 +81,46 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
         setBookSelectedItem
     } = useStore();
 
+    const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
+
+    const [mounted, setMounted] = useState(false);
     useEffect(() => {
+        setMounted(true);
         setSearchQuery("");
     }, [config.type, setSearchQuery]);
+
+    const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
+
+    // For Randomizer: Filter only "Completed" items if it's an Anime shelf
+    const randomizerItems = useMemo(() => {
+        if (config.type === 'anime') {
+            return filteredItems.filter((item: any) => item.status === WatchStatus.Completed);
+        }
+        return filteredItems;
+    }, [filteredItems, config.type]);
+
+    if (!mounted) {
+        return (
+            <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
+                <div className="flex justify-between items-start mb-6">
+                    <div className="space-y-4 w-full">
+                        <Skeleton variant="text" width={200} height={40} animation="wave" />
+                        <Skeleton variant="text" width={300} height={16} animation="wave" />
+                    </div>
+                </div>
+                <Skeleton variant="rect" height={40} className="mb-8 rounded-lg" animation="wave" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                        <div key={i} className="glass p-4 rounded-xl space-y-4">
+                            <Skeleton variant="rect" height={200} animation="wave" className="rounded-lg" />
+                            <Skeleton variant="text" width="75%" animation="wave" />
+                            <Skeleton variant="text" width="50%" animation="wave" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     // Icon map for Hobby Modal
     const iconMap: Record<string, React.ElementType> = {
@@ -94,15 +132,7 @@ function UniversalShelfBase({ config, items }: UniversalShelfProps) {
         return <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />;
     };
 
-    const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
-
     // For Randomizer: Filter only "Completed" items if it's an Anime shelf
-    const randomizerItems = useMemo(() => {
-        if (config.type === 'anime') {
-            return filteredItems.filter((item: any) => item.status === WatchStatus.Completed);
-        }
-        return filteredItems;
-    }, [filteredItems, config.type]);
 
     return (
         <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
@@ -300,7 +330,6 @@ interface AnimeShelfProps {
 export function AnimeShelf(props: AnimeShelfProps) {
     return <AnimeShelfBase {...props} />;
 }
-
 function AnimeShelfBase({ items }: AnimeShelfProps) {
     const {
         animeSelectedItem: selectedItem,
@@ -309,6 +338,11 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
         setAnimeSelectedTag: setSelectedTag
     } = useStore();
 
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     const filterItems = (
         items: AnimeItem[],
         type: AnimeType,
@@ -316,6 +350,31 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
     ) => {
         return items.filter((item) => item.type === type && item.status === status);
     };
+
+    if (!mounted) {
+        return (
+            <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
+                <div className="flex flex-wrap gap-2 mb-8">
+                    {[1, 2, 3, 4, 5].map(i => (
+                        <div key={i} className="h-8 w-20 bg-gray-200 dark:bg-gray-800 animate-pulse rounded-full" />
+                    ))}
+                </div>
+                {[1, 2].map(section => (
+                    <div key={section} className="mb-12">
+                        <div className="h-8 w-48 bg-gray-200 dark:bg-gray-800 animate-pulse rounded mb-6" />
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                            {[1, 2, 3, 4, 5].map(i => (
+                                <div key={i} className="glass p-3 rounded-xl space-y-3">
+                                    <div className="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 animate-pulse rounded-md" />
+                                    <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-800 animate-pulse rounded" />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+    }
     const formatSeasons = (notes: string | undefined) => {
         if (!notes) return null;
         return notes.replace(/(S\d+)(?:,\s*\d+){7,},\s*(\d+)/g, "$1-$2");
@@ -527,4 +586,4 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
             )}
         </>
     );
-};
+}

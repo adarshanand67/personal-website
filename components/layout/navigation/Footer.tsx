@@ -44,13 +44,17 @@ export function Footer() {
                         ))}
                     </div>
                 </div>
-                <div className="hidden md:block w-px h-8 bg-gray-200 dark:bg-gray-800"></div>
+                <div className="flex flex-col items-center gap-4 mt-12 mb-8">
+                    <div className="text-3xl md:text-4xl text-green-600 dark:text-green-400 opacity-80" style={{ fontFamily: "'Dancing Script', cursive" }}>
+                        Adarsh Anand
+                    </div>
+                </div>
             </div>
-            <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-xs opacity-80 pt-4 border-t border-gray-200/50 dark:border-gray-800/50">
+            <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-[10px] opacity-60 pb-8 tracking-widest uppercase">
                 <span className="mr-1">©</span>
                 {new Date().getFullYear()}
-                <span className="ml-2 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 dark:from-green-400 dark:via-emerald-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
-                    Adarsh Anand
+                <span className="ml-2">
+                    All Rights Reserved
                 </span>
             </p>
         </footer>

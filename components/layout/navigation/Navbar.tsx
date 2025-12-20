@@ -1,23 +1,40 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useStore } from "@/lib/store/useStore";
 import { routes } from "@/lib/constants";
 import { SystemStatus } from "@/components/features";
 import { ThemeToggle } from "@/components/layout/theme";
+import { SoundToggle } from "@/components/layout/utils/SoundToggle";
 import { Menu, Search } from "lucide-react";
 
 export function Navbar() {
     const { isNavbarActive, setIsNavbarActive, isMounted, setIsMounted } = useStore();
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
         setIsMounted(true);
+        const updateScroll = () => {
+            const currentScroll = window.scrollY;
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollHeight) {
+                setScrollProgress(Number((currentScroll / scrollHeight).toFixed(2)) * 100);
+            }
+        };
+        window.addEventListener("scroll", updateScroll);
+        return () => window.removeEventListener("scroll", updateScroll);
     }, [setIsMounted]);
 
     return (
         <>
             <div className="h-24" />
+            <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/20 pointer-events-none">
+                <div
+                    className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-150 ease-out shadow-[0_0_10px_rgba(34,197,94,0.5)]"
+                    style={{ width: `${scrollProgress}%` }}
+                />
+            </div>
             <nav
                 className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
                 role="navigation"
@@ -94,6 +111,7 @@ export function Navbar() {
                                     >
                                         {isMounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
                                     </button>
+                                    <SoundToggle />
                                     <ThemeToggle />
                                 </div>
                             </div>

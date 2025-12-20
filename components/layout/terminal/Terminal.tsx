@@ -50,9 +50,24 @@ export function Terminal() {
         if (!(globalThis as any)._terminalStartTime) {
             (globalThis as any)._terminalStartTime = Date.now();
         }
+
         if (!isIntroDone) {
-            setLines((prev: string[]) => [...prev, ...introLines(isMatrixEnabled)]);
-            setIsIntroDone(true);
+            const allIntroLines = introLines(isMatrixEnabled);
+            let currentLine = 0;
+
+            const typeNextLine = () => {
+                if (currentLine < allIntroLines.length) {
+                    setLines(prev => [...prev, allIntroLines[currentLine]!]);
+                    currentLine++;
+                    // Faster for the neofetch part, slower for boot logs
+                    const delay = currentLine > 14 ? 10 : 30;
+                    setTimeout(typeNextLine, delay);
+                } else {
+                    setIsIntroDone(true);
+                }
+            };
+
+            typeNextLine();
         }
     }, [isIntroDone, setLines, setIsIntroDone, isMatrixEnabled]);
 

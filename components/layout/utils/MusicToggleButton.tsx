@@ -2,7 +2,7 @@ import { useStore } from "@/lib/store/useStore";
 import { Music } from "lucide-react";
 
 export function MusicToggleButton() {
-    const { showMusicPlayer, toggleMusicPlayer } = useStore();
+    const { showMusicPlayer, toggleMusicPlayer, isPlaying } = useStore();
 
     return (
         <button
@@ -28,6 +28,16 @@ export function MusicToggleButton() {
                     ${showMusicPlayer ? 'rotate-0' : 'group-hover:rotate-12'}
                 `}
             />
+            {isPlaying && !showMusicPlayer && (
+                <div
+                    className="flex gap-[2px] items-center justify-center absolute -top-1 -right-1 bg-green-500 rounded-full p-1 border-2 border-white dark:border-gray-900 overflow-hidden w-6 h-6 shadow-sm"
+                    title="Music is playing"
+                >
+                    <div className="w-[2px] bg-white animate-[music-bar-1_1s_ease-in-out_infinite]" />
+                    <div className="w-[2px] bg-white animate-[music-bar-2_0.8s_ease-in-out_infinite]" />
+                    <div className="w-[2px] bg-white animate-[music-bar-3_1.2s_ease-in-out_infinite]" />
+                </div>
+            )}
             {!showMusicPlayer && (
                 <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20" />
             )}
