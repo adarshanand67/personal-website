@@ -353,7 +353,7 @@ export const animeData = [
     {
         "title": "Vinland Saga",
         "type": "Anime",
-        "status": "Completed",
+        "status": "Planning",
         "notes": "S1,2",
         "image": "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
         "description": "A young Viking warrior seeks revenge against his father's killer while caught in a war for the English throne.",
