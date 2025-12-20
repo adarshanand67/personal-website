@@ -409,9 +409,6 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                 </h2>
 
                                 <div className="flex flex-wrap gap-2 mb-6">
-                                    <span className="px-3 py-1 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-xs font-bold uppercase tracking-wider">
-                                        {animeSelectedItem.type}
-                                    </span>
                                     {animeSelectedItem.year && (
                                         <span className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full text-xs font-bold">
                                             {animeSelectedItem.year}
