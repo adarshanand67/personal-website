@@ -151,7 +151,7 @@ export const useStore = create<AppState>()(persist((set) => ({
     // Music
     showMusicPlayer: false,
     isPlaying: false,
-    volume: 0.5,
+    volume: 1.0,
     isMuted: false,
     currentTrackIndex: 0,
     isShuffle: false,
