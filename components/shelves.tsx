@@ -196,7 +196,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
 
             {/* Clear Filters Button */}
             {config.type === ShelfType.Anime && (searchQuery || animeSelectedTag) && (
-                <div className="mb-4 flex justify-end">
+                <div className="mb-2 flex justify-end">
                     <button
                         onClick={() => {
                             setSearchQuery("");
