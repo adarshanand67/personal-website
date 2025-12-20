@@ -8,7 +8,6 @@ import { CommandMenu } from "@/components/layout/navigation/CommandMenu";
 import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlayer";
 import { PWARegistration } from "@/components/features/serviceWorker";
 import { HobbiesModal } from "@/components/modals/hobbiesModal";
-import { QuickJump } from "@/components/layout/navigation/QuickJump";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
 import { BackToTop } from "@/components/layout/navigation/BackToTop";
 import { MobileDock } from "@/components/layout/navigation/MobileDock";
@@ -23,7 +22,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
             <CommandMenu />
             <HobbiesModal />
             {children}
-            <QuickJump />
+
             <ShortcutGuide />
             <BackToTop />
             <MobileDock />
