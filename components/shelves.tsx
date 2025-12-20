@@ -285,7 +285,7 @@ const Section = ({
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">
                 {title}
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {sectionItems.map((item, index) => (
                     <AnimeCard key={`${item.title}-${index}`} item={item} />
                 ))}
@@ -337,9 +337,9 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
     const moviePlanning = filterItems(filteredItems, AnimeType.Movie, WatchStatus.Planning);
     const AnimeCard = ({ item }: { item: AnimeItem }) => (
         <div onClick={() => setSelectedItem(item)} className="cursor-pointer h-full">
-            <div className="h-full flex flex-col p-4 relative overflow-hidden group glass hover:bg-white/40 dark:hover:bg-gray-800/40 transition-colors duration-300 rounded-xl">
+            <div className="h-full flex flex-col p-3 relative overflow-hidden group glass hover:bg-white/40 dark:hover:bg-gray-800/40 transition-colors duration-300 rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all">
                 {item.image ? (
-                    <div className="w-full aspect-[2/3] mb-4 overflow-hidden rounded-md relative shadow-lg">
+                    <div className="w-full aspect-[2/3] mb-3 overflow-hidden rounded-md relative shadow-lg">
                         <Image
                             src={item.image}
                             alt={item.title}
@@ -357,7 +357,7 @@ function AnimeShelfBase({ items }: AnimeShelfProps) {
                         <span className="text-gray-400 text-sm text-center">{item.title}</span>
                     </div>
                 )}
-                <h3 className="font-bold text-lg leading-tight mb-2 flex items-center gap-2">
+                <h3 className="font-bold text-base leading-tight mb-2 flex items-center gap-2">
                     <span className="truncate">{item.title}</span>
                     {item.status === WatchStatus.Completed && (
                         <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-0.5 shrink-0">
