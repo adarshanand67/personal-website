@@ -382,9 +382,6 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
             {hobby.description}
           </p>
         </div>
-        <div className="absolute -bottom-4 -right-4 opacity-5 group-hover:opacity-20 transition-opacity duration-500 scale-150 rotate-12">
-          {this.getIcon(hobby.icon)}
-        </div>
       </div>
     );
   }
