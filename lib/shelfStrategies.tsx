@@ -137,9 +137,9 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
         id={`shelf-item-${anime.title}`}
         key={index}
         onClick={() => useStore.getState().setAnimeSelectedItem(anime)}
-        className="group relative cursor-pointer"
+        className="group flex flex-col gap-3 cursor-pointer"
       >
-        <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-lg group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+        <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
           {anime.image ? (
             <Image
               src={anime.image}
@@ -153,27 +153,29 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-          <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-            <h3 className="text-white font-bold text-sm line-clamp-2 mb-1">{anime.title}</h3>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] text-green-400 font-bold uppercase">{anime.type}</span>
-              {anime.rating && <span className="text-[10px] text-gray-400">★ {anime.rating}</span>}
-            </div>
-          </div>
-
-          {anime.status === WatchStatus.Completed && (
-            <div className="absolute top-3 right-3 bg-green-500 text-white p-1 rounded-full shadow-lg group-hover:scale-110 transition-transform">
-              <Check size={12} />
-            </div>
-          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {anime.recommended && (
-            <div className="absolute top-3 left-3 bg-amber-400 text-amber-950 p-1 rounded-full shadow-lg group-hover:rotate-12 transition-transform">
+            <div className="absolute top-3 left-3 bg-amber-400 text-amber-950 p-1.5 rounded-full shadow-lg group-hover:rotate-12 transition-transform">
               <Star size={12} fill="currentColor" />
             </div>
           )}
+        </div>
+
+        <div className="px-1">
+          <h3 className="text-gray-900 dark:text-white font-bold text-sm leading-tight group-hover:text-green-500 transition-colors line-clamp-2 mb-1.5">
+            {anime.title}
+          </h3>
+          <div className="flex flex-wrap gap-1.5 mt-auto">
+            <span className="text-[9px] font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 px-1.5 py-0.5 rounded">
+              {anime.type}
+            </span>
+            {anime.tags?.slice(0, 3).map((tag, i) => (
+              <span key={i} className="text-[9px] font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -182,16 +184,19 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
   renderList(items: AnimeItem[]): ReactNode {
     if (items.length === 0) return null;
     return (
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4 py-8">
         {items.map((anime, index) => this.renderItem(anime, index))}
       </div>
     );
   }
 
   filter(items: AnimeItem[], query: string): AnimeItem[] {
-    if (!query) return items;
+    // Only return completed (watched) animes
+    const watchedItems = items.filter(item => item.status === WatchStatus.Completed);
+
+    if (!query) return watchedItems;
     const lowerQuery = query.toLowerCase();
-    return items.filter(
+    return watchedItems.filter(
       (item) =>
         item.title.toLowerCase().includes(lowerQuery) ||
         (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
@@ -344,7 +349,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   renderList(items: Hobby[]): ReactNode {
     if (items.length === 0) return null;
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
         {items.map((hobby, index) => this.renderItem(hobby, index))}
       </div>
     );

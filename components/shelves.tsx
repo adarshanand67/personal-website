@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-    Search, X, ExternalLink, BookOpen,
+    Search, X, ExternalLink, BookOpen, Check, Star,
     Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -97,7 +97,9 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
         hobbySelectedItem,
         setHobbySelectedItem,
         bookSelectedItem,
-        setBookSelectedItem
+        setBookSelectedItem,
+        animeSelectedItem,
+        setAnimeSelectedItem
     } = useStore();
 
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
@@ -191,29 +193,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 </motion.div>
             )}
 
-            {/* Related Navigation */}
-            <div className="mt-32 pt-16 border-t border-gray-100 dark:border-white/5">
-                <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-10">Related Shelves</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {Object.entries(routes)
-                        .filter(([key, path]) => path !== routes.home && path !== `/${config.type + 'shelf'}`)
-                        .map(([key, path]) => (
-                            <Link
-                                key={key}
-                                href={path}
-                                className="group relative p-8 glass rounded-3xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/5 hover:-translate-y-2 overflow-hidden"
-                            >
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-150 group-hover:opacity-20 transition-all duration-700 -rotate-12">
-                                    <ExternalLink size={64} className="text-green-500" />
-                                </div>
-                                <span className="text-[10px] text-gray-400 uppercase tracking-widest mb-4 block group-hover:text-green-500 transition-colors font-bold">Browse</span>
-                                <h4 className="text-xl font-bold capitalize mb-2">{key.replace('Shelf', '')}</h4>
-                                <p className="text-xs text-gray-500 line-clamp-1 group-hover:text-gray-400 transition-colors">Explore my curated collection.</p>
-                            </Link>
-                        ))
-                    }
-                </div>
-            </div>
+
 
             {/* Modal Components */}
             <AnimatePresence>
@@ -293,14 +273,7 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                 <h2 className="text-3xl font-bold mb-2">{bookSelectedItem.title}</h2>
                                 <h3 className="text-lg text-gray-600 dark:text-gray-400 mb-6 font-medium">by {bookSelectedItem.author}</h3>
 
-                                <div className="grid grid-cols-2 gap-4 mb-8">
-                                    <div className="p-4 rounded-2xl bg-gray-50 dark:bg-white/5">
-                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Recommended</div>
-                                        <div className={`text-sm font-bold ${bookSelectedItem.recommended ? 'text-green-600' : 'text-gray-400'}`}>
-                                            {bookSelectedItem.recommended ? 'Yes' : 'No'}
-                                        </div>
-                                    </div>
-                                </div>
+
 
                                 {bookSelectedItem.description && (
                                     <p className="text-gray-700 dark:text-gray-300 mb-6">
@@ -312,6 +285,102 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base italic border-l-4 border-green-500/30 pl-4 py-2">
                                         {bookSelectedItem.notes}
                                     </p>
+                                )}
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+                {animeSelectedItem && (
+                    <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 bg-black/60 backdrop-blur-md"
+                            onClick={() => setAnimeSelectedItem(null)}
+                        />
+                        <motion.div
+                            layoutId={`anime-${animeSelectedItem.title}`}
+                            className="bg-white dark:bg-zinc-900 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden relative z-10 flex flex-col md:flex-row border border-gray-200 dark:border-white/10"
+                        >
+                            <button
+                                onClick={() => setAnimeSelectedItem(null)}
+                                className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition-colors z-20"
+                            >
+                                <X size={20} />
+                            </button>
+
+                            <div className="md:w-1/3 bg-gray-50 dark:bg-white/5 p-10 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-100 dark:border-white/5">
+                                {animeSelectedItem.image ? (
+                                    <div className="relative w-48 aspect-[2/3] shadow-2xl rounded-lg overflow-hidden transition-transform duration-500 hover:scale-105">
+                                        <Image
+                                            src={animeSelectedItem.image}
+                                            alt={animeSelectedItem.title}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="w-48 aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+                                        <Tv className="text-gray-400" size={48} />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div className="md:w-2/3 p-10">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Anime Details</span>
+                                    {animeSelectedItem.status === WatchStatus.Completed && (
+                                        <div className="flex items-center gap-1 bg-green-500/10 text-green-500 px-2 py-0.5 rounded-full text-[10px] font-bold">
+                                            <Check size={10} />
+                                            WATCHED
+                                        </div>
+                                    )}
+                                </div>
+                                <h2 className="text-3xl font-bold mb-4 flex items-center gap-3">
+                                    {animeSelectedItem.title}
+                                    {animeSelectedItem.status === WatchStatus.Completed && (
+                                        <Check className="text-green-500 w-6 h-6" />
+                                    )}
+                                </h2>
+
+                                <div className="flex flex-wrap gap-2 mb-6">
+                                    <span className="px-3 py-1 bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400 rounded-full text-xs font-bold uppercase tracking-wider">
+                                        {animeSelectedItem.type}
+                                    </span>
+                                    {animeSelectedItem.year && (
+                                        <span className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full text-xs font-bold">
+                                            {animeSelectedItem.year}
+                                        </span>
+                                    )}
+                                    {animeSelectedItem.rating && (
+                                        <span className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full text-xs font-bold flex items-center gap-1">
+                                            <Star size={12} fill="currentColor" className="text-amber-400" />
+                                            {animeSelectedItem.rating}
+                                        </span>
+                                    )}
+                                </div>
+
+                                {animeSelectedItem.description && (
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-lg">
+                                        {animeSelectedItem.description}
+                                    </p>
+                                )}
+
+                                {animeSelectedItem.tags && (
+                                    <div className="space-y-3">
+                                        <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tags</h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {animeSelectedItem.tags.map((tag, i) => (
+                                                <span key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 rounded-xl text-xs font-medium border border-gray-100 dark:border-white/5">
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 )}
                             </div>
                         </motion.div>
