@@ -1,10 +1,10 @@
 "use client";
 
-import { useStore } from "@/lib/store/useStore";
-import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { Star, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
+import { Book, Paper, Blog, AnimeItem, Project, Hobby, ShelfType } from "@/types/definitions";
 import { AnimeShelf } from "@/components/shelves";
 
 const iconMap: Record<string, React.ElementType> = {

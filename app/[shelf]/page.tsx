@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import {
     getBooks,
     getAnime,
@@ -7,7 +8,6 @@ import {
 } from "@/lib/api";
 import { UniversalShelf } from "@/components/shelves";
 import { shelfConfigs } from "@/lib/config";
-import { notFound } from "next/navigation";
 
 const SHELF_MAPPING = {
     articleshelf: { api: getArticles, config: shelfConfigs.articles },

@@ -1,6 +1,6 @@
-import { getPost, getBlogs } from "@/lib/api";
 import { notFound } from "next/navigation";
 import Markdown from "markdown-to-jsx";
+import { getPost, getBlogs } from "@/lib/api";
 
 export async function generateStaticParams() {
     const blogs = await getBlogs();

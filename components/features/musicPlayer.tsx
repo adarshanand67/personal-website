@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Play, Pause, Volume2, VolumeX, SkipBack, SkipForward, Repeat, Shuffle, ChevronDown } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { playlist, trackNames, trackImages } from "@/lib/constants";
-
 import { Visualizer } from '@/components/visualizer';
 
 export function MusicPlayer() {
@@ -44,13 +43,47 @@ export function MusicPlayer() {
             }
         };
 
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (!showMusicPlayer) return;
+
+            switch (event.code) {
+                case 'Space':
+                    event.preventDefault();
+                    togglePlay();
+                    break;
+                case 'ArrowLeft':
+                    if (event.ctrlKey || event.metaKey) {
+                        event.preventDefault();
+                        prevTrack();
+                    }
+                    break;
+                case 'ArrowRight':
+                    if (event.ctrlKey || event.metaKey) {
+                        event.preventDefault();
+                        nextTrack();
+                    }
+                    break;
+                case 'KeyM':
+                    if (event.ctrlKey || event.metaKey) {
+                        event.preventDefault();
+                        handleMute();
+                    }
+                    break;
+                case 'Escape':
+                    toggleMusicPlayer();
+                    break;
+            }
+        };
+
         if (showMusicPlayer) {
             document.addEventListener("mousedown", handleClickOutside);
+            document.addEventListener("keydown", handleKeyDown);
         }
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [showMusicPlayer, toggleMusicPlayer]);
+    }, [showMusicPlayer, toggleMusicPlayer, prevTrack, nextTrack]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -153,10 +186,14 @@ export function MusicPlayer() {
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={handleEnded}
                 crossOrigin="anonymous"
+                aria-label={`Now playing: ${trackNames[currentTrackIndex] || "Unknown Track"}`}
             />
             <div
                 ref={playerRef}
                 className={`fixed bottom-8 right-8 z-[60] font-sans transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform origin-bottom-right ${showMusicPlayer ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-90 translate-y-4 pointer-events-none'}`}
+                role="region"
+                aria-label="Music Player"
+                aria-live="polite"
             >
                 <div className="bg-white/90 dark:bg-[#121212] backdrop-blur-md w-80 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-2xl border border-gray-200 dark:border-[#282828] overflow-hidden flex flex-col transition-colors duration-300 relative">
 

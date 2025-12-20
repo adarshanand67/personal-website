@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider, GlobalEffect, Navbar, Footer, CommandMenu, MatrixRain, MusicToggleButton } from "@/components/layout";
-import { MusicPlayer } from "@/components/musicPlayer";
-
-import { siteConfig } from "@/lib/config";
-import { StructuredData } from "@/components/seo/structuredData";
-import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
+import { MusicPlayer, ErrorBoundary, ServiceWorker } from "@/components/features";
 import { HobbiesModal } from "@/components/modals/hobbiesModal";
+import { StructuredData } from "@/components/seo/structuredData";
+import { siteConfig } from "@/lib/config";
+import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
+
 const assistant = Assistant({
   variable: "--font-assistant",
   subsets: ["latin"],
@@ -66,6 +66,11 @@ export const metadata: Metadata = {
     shortcut: "/icon.png",
     apple: "/icon.png",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: siteConfig.name,
+  },
 };
 export default function RootLayout({
   children,
@@ -82,6 +87,7 @@ export default function RootLayout({
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ServiceWorker />
           <GlobalEffect />
           <Navbar />
           <MatrixRain />

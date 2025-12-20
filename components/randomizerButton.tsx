@@ -1,8 +1,8 @@
 "use client";
 
-import { useStore } from "@/lib/store/useStore";
-import { Shuffle } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import { Shuffle } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
 
 interface RandomizerButtonProps {
     items: unknown[];

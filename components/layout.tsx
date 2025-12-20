@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useTheme, ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes";
+import { useTheme, type ThemeProviderProps } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
 import { useMounted } from "@/lib/hooks";
-import { useRef } from "react";
 import {
-    Terminal as TerminalIcon, Search as SearchIcon, Moon, Sun, X, Music, Menu,
+    Search as SearchIcon, Moon, Sun, X, Music, Menu,
     ArrowUp, Laptop, FileText, Home, BookOpen, Tv, Mail, Github, Linkedin, Sparkles,
     Gamepad2, Cloud, CloudRain, ChevronDown, Search,
 } from "lucide-react";
@@ -17,378 +15,21 @@ import { routes, introLines, directories } from "@/lib/constants";
 import { siteConfig } from "@/lib/config";
 import { commands } from "@/lib/terminal/commands";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
-import { SystemMonitor } from "@/components/systemMonitor";
+import { SystemMonitor } from "@/components/features";
 import { SystemStatus } from "@/components/systemStatus";
+import { Terminal } from "@/components/layout/terminal";
+import { ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail } from "@/components/layout/theme";
+import { SectionHeader, SpotlightCard, TerminalCursor } from "@/components/layout/ui";
 
 
 
 
 
-export function Terminal() {
-    const router = useRouter();
-    const { setTheme } = useTheme();
-
-    const {
-        toggleMatrix, isMatrixEnabled,
-        lines, setLines,
-        isIntroDone, setIsIntroDone,
-        input, setInput,
-        history, setHistory,
-        historyIndex, setHistoryIndex,
-        passwordMode, setPasswordMode,
-        isExpanded, setIsExpanded,
-        position, setPosition,
-        isDragging, setIsDragging,
-        showSystemMonitor,
-        todos, addTodo, toggleTodo, removeTodo, clearTodos
-    } = useStore();
-
-    const containerRef = useRef<HTMLDivElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
-    const dragStartRef = useRef({ x: 0, y: 0 });
-    const initialPosRef = useRef({ x: 0, y: 0 });
-
-    useEffect(() => {
-        if (window.innerWidth < 1024) {
-            setIsExpanded(false);
-        }
-    }, [setIsExpanded]);
-    useEffect(() => {
-        if (containerRef.current) {
-            containerRef.current.scrollTop = containerRef.current.scrollHeight;
-        }
-    }, [lines, isIntroDone]);
-    useEffect(() => {
-        if (!(globalThis as any)._terminalStartTime) {
-            (globalThis as any)._terminalStartTime = Date.now();
-        }
-        if (!isIntroDone) {
-            setLines((prev: string[]) => [...prev, ...introLines(isMatrixEnabled)]);
-            setIsIntroDone(true);
-        }
-    }, [isIntroDone, setLines, setIsIntroDone, isMatrixEnabled]);
-    const executeCommand = async (cmd: string) => {
-        if (passwordMode) {
-            setPasswordMode(false);
-            setLines((prev: string[]) => [...prev, "Checking permissions..."]);
-            if (cmd === "admin123" || cmd === "godmode" || cmd === "trellix") {
-                setTimeout(() => {
-                    setLines((prev: string[]) => [...prev, "Access Granted. Welcome, Administrator.", "God Mode: Enabled (Matrix Rain toggled)"]);
-                    if (!isMatrixEnabled) toggleMatrix();
-                }, 800);
-            } else {
-                setTimeout(() => {
-                    setLines((prev: string[]) => [...prev, "Access Denied."]);
-                }, 800);
-            }
-            return;
-        }
-        if (cmd.trim()) {
-            setHistory((prev) => [cmd, ...prev]);
-            setHistoryIndex(-1);
-        }
-        setLines((prev) => [...prev, `$ ${cmd}`]);
-        const pipeParts = cmd.split('|').map(p => p.trim()).filter(p => p);
-        if (pipeParts.length === 0) return;
-        let currentInput: string | undefined = undefined;
-        const baseContext = {
-            setPasswordMode,
-            router,
-            setTheme,
-            isMatrixEnabled,
-            toggleMatrix,
-            toggleSystemMonitor: useStore.getState().toggleSystemMonitor,
-            setInput,
-            history,
-            todos,
-            addTodo,
-            toggleTodo,
-            removeTodo,
-            clearTodos
-        };
-        try {
-            for (let i = 0; i < pipeParts.length; i++) {
-                const part = pipeParts[i];
-                const parts = part.trim().split(/\s+/);
-                const commandName = parts[0]?.toLowerCase() || '';
-                const args = parts.slice(1);
-                if (!commandName) continue;
-                const command = commands[commandName];
-                if (!command) {
-                    setLines((prev: string[]) => [...prev, `Command not found: ${commandName}`]);
-                    return;
-                }
-                if (i < pipeParts.length - 1) {
-                    let captured: string[] = [];
-                    const mockSetLines: React.Dispatch<React.SetStateAction<string[]>> = (action) => {
-                        if (typeof action === 'function') {
-                            captured = action(captured);
-                        } else {
-                            if (Array.isArray(action)) {
-                                captured = [...captured, ...action];
-                            } else {
-                                captured = [...captured, action as string];
-                            }
-                        }
-                    };
-
-                    const context = { ...baseContext, setLines: mockSetLines };
-                    await command.execute(args, context, currentInput);
-                    currentInput = captured.join('\n');
-                } else {
-                    const context = { ...baseContext, setLines: setLines as any };
-                    await command.execute(args, context, currentInput);
-                }
-            }
-        } catch (error) {
-            console.error("Exec error", error);
-            setLines((prev: string[]) => [...prev, `Error executing command.`]);
-        }
-    };
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            executeCommand(input);
-            setInput("");
-        } else if (e.key === "ArrowUp") {
-            e.preventDefault();
-            if (history.length > 0) {
-                const newIndex = historyIndex + 1;
-                if (newIndex < history.length) {
-                    setHistoryIndex(newIndex);
-                    setInput(history[newIndex] || '');
-                }
-            }
-        } else if (e.key === "ArrowDown") {
-            e.preventDefault();
-            if (historyIndex > 0) {
-                const newIndex = historyIndex - 1;
-                setHistoryIndex(newIndex);
-                setInput(history[newIndex] || '');
-            } else if (historyIndex === 0) {
-                setHistoryIndex(-1);
-                setInput("");
-            }
-        } else if (e.key === "Tab") {
-            e.preventDefault();
-            const parts = input.split(" ");
-            const isCommand = parts.length === 1;
-            const currentToken = parts[parts.length - 1] || '';
-            const cmd = parts[0]?.toLowerCase() || '';
-            let candidates: string[] = [];
-            if (isCommand) {
-                candidates = Object.keys(commands);
-            } else {
-                if (['cd', 'open'].includes(cmd)) {
-                    candidates = [...directories];
-                } else {
-                    candidates = [...Object.keys(mockFiles), ...directories];
-                }
-            }
-            if (candidates.length > 0) {
-                const matches = candidates.filter((c) => c.toLowerCase().startsWith(currentToken.toLowerCase()));
-                if (matches.length === 1) {
-                    parts[parts.length - 1] = matches[0]!;
-                    setInput(parts.join(" ") + (isCommand ? " " : ""));
-                } else if (matches.length > 1) {
-                    let prefix = matches[0] || '';
-                    const lowerPrefix = () => prefix.toLowerCase();
-                    for (let i = 1; i < matches.length; i++) {
-                        while (!matches[i]!.toLowerCase().startsWith(lowerPrefix())) {
-                            prefix = prefix.substring(0, prefix.length - 1);
-                            if (prefix === "") break;
-                        }
-                    }
-                    if (prefix.length > currentToken.length) {
-                        parts[parts.length - 1] = prefix;
-                        setInput(parts.join(" "));
-                    } else {
-                        setLines((prev) => [...prev, `$ ${input}`, matches.join("  ")]);
-                    }
-                }
-            }
-        }
-    };
-
-    const handleDragStart = (e: React.MouseEvent) => {
-        if (!isExpanded) return;
-        setIsDragging(true);
-        dragStartRef.current = { x: e.clientX, y: e.clientY };
-        initialPosRef.current = { ...position };
-    };
-    useEffect(() => {
-        const handleDrag = (e: MouseEvent) => {
-            if (!isDragging) return;
-            const dx = e.clientX - dragStartRef.current.x;
-            const dy = e.clientY - dragStartRef.current.y;
-            setPosition({
-                x: initialPosRef.current.x + dx,
-                y: initialPosRef.current.y + dy
-            });
-        };
-        const handleDragEnd = () => {
-            setIsDragging(false);
-        };
-        if (isDragging) {
-            window.addEventListener('mousemove', handleDrag);
-            window.addEventListener('mouseup', handleDragEnd);
-        }
-        return () => {
-            window.removeEventListener('mousemove', handleDrag);
-            window.removeEventListener('mouseup', handleDragEnd);
-        };
-    }, [isDragging, setPosition, setIsDragging]);
-    const handleTerminalWrapperClick = (_e: React.MouseEvent) => {
-        if (!isExpanded) return;
-        const selection = window.getSelection();
-        if (selection && selection.toString().length > 0) {
-            return;
-        }
-        if (isDragging) return;
-        if (isIntroDone) {
-            inputRef.current?.focus();
-        }
-    };
-    return (
-        <div
-            className="w-full max-w-7xl relative"
-            onClick={handleTerminalWrapperClick}
-        >
-            {showSystemMonitor && <SystemMonitor />}
-            <div className="relative glass rounded-xl p-4 hover:border-green-500/50 transition-colors duration-300">
-                <section className="font-mono">
-                    <SectionHeader
-                        title="Terminal"
-                        command="./interactive-shell.sh"
-                        isExpanded={isExpanded}
-                        onToggle={() => setIsExpanded(!isExpanded)}
-                    />
-                    <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-                        <div
-                            className={`w-full bg-white/70 dark:bg-black/60 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/20 dark:border-white/10 font-mono text-base select-text relative ${isDragging ? 'cursor-grabbing z-50 shadow-green-500/20' : ''}`}
-                            style={{
-                                transform: `translate(${position.x}px, ${position.y}px)`,
-                                transition: isDragging ? 'none' : 'transform 0.1s ease-out, opacity 0.5s ease-in-out'
-                            }}
-                        >
-                            <div
-                                onMouseDown={handleDragStart}
-                                className="bg-white/50 dark:bg-white/5 px-4 h-8 flex items-center gap-2 border-b border-white/20 dark:border-white/10 cursor-grab active:cursor-grabbing select-none"
-                            >
-                                <div className="w-3 h-3 rounded-full bg-[#FF5F56] shadow-sm"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#FFBD2E] shadow-sm"></div>
-                                <div className="w-3 h-3 rounded-full bg-[#27C93F] shadow-sm"></div>
-                                <span className="ml-2 text-gray-600 dark:text-gray-400 text-xs font-medium opacity-80">adarsh@linux:~</span>
-                            </div>
-                            <div
-                                ref={containerRef}
-                                className="p-4 text-gray-800 dark:text-gray-300 h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
-                            >
-                                {lines.map((line, i) => {
-                                    const parseAnsi = (text: string) => {
-                                        const ansiColors: Record<string, string> = {
-                                            '30': 'text-black',
-                                            '31': 'text-red-500',
-                                            '32': 'text-green-500',
-                                            '33': 'text-yellow-500',
-                                            '34': 'text-blue-500',
-                                            '35': 'text-purple-500',
-                                            '36': 'text-cyan-500',
-                                            '37': 'text-white',
-                                            '90': 'text-gray-500',
-                                            '1': 'font-bold',
-                                            '0': '',
-                                        };
-                                        const parts = text.split(/(\x1b\[\d+m)/g);
-                                        let currentColor = '';
-                                        return parts.map((part, idx) => {
-                                            const match = part.match(/\x1b\[(\d+)m/);
-                                            if (match) {
-                                                currentColor = ansiColors[match[1]] || '';
-                                                return null;
-                                            }
-                                            if (!part) return null;
-                                            return currentColor ? (
-                                                <span key={idx} className={currentColor}>{part}</span>
-                                            ) : part;
-                                        }).filter(Boolean);
-                                    };
-                                    return (
-                                        <div
-                                            key={i}
-                                            className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
-                                        >
-                                            {line.includes('\x1b[') ? parseAnsi(line) : line}
-                                        </div>
-                                    );
-                                })}
-                                {isIntroDone && (
-                                    <div className="flex items-center">
-                                        <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
-                                        <input
-                                            ref={inputRef}
-                                            type={passwordMode ? "password" : "text"}
-                                            value={input}
-                                            onBlur={(_e) => {
-                                                setInput(_e.target.value)
-                                            }}
-                                            onChange={(e) => setInput(e.target.value)}
-                                            onKeyDown={handleKeyDown}
-                                            className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none"
-                                            autoFocus
-                                            spellCheck={false}
-                                            autoComplete="off"
-                                            placeholder={passwordMode ? "●●●●●●●●" : ""}
-                                        />
-                                        {passwordMode && input.length === 0 && (
-                                            <span className="animate-pulse text-green-600 dark:text-green-400">▊</span>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-    );
-}
+// Terminal component is now imported from @/components/layout/terminal
 
 
 
-export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-    return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
-}
-
-
-export function ThemeToggle() {
-    const { theme, setTheme } = useTheme();
-    const { isMounted, setIsMounted } = useStore();
-
-    useEffect(() => {
-        setIsMounted(true);
-    }, [setIsMounted]);
-
-    if (!isMounted) {
-        return (
-            <button
-                className="rounded-md p-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                aria-label="Toggle theme"
-            >
-                <div className="h-5 w-5" />
-            </button>
-        );
-    }
-    return (
-        <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 transition-colors"
-            aria-label="Toggle theme"
-        >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-    );
-}
+// Theme components imported from @/components/layout/theme
 
 
 export function BackToTop() {
@@ -743,16 +384,7 @@ export const GlobalEffect = () => {
 };
 
 
-function createClientIcon(Icon: React.ComponentType<{ className?: string }>) {
-    return function ClientIcon(props: { className?: string }) {
-        const mounted = useMounted();
-        if (!mounted) return <div className={props.className} aria-hidden="true" />;
-        return <Icon {...props} />;
-    };
-}
-export const ClientLinkedin = createClientIcon(Linkedin);
-export const ClientGithub = createClientIcon(Github);
-export const ClientMail = createClientIcon(Mail);
+// Client icons imported from @/components/layout/theme
 
 
 
@@ -814,129 +446,10 @@ export const MatrixRain = () => {
 };
 
 
-interface SectionHeaderProps {
-    title: string;
-    command: string;
-    isExpanded: boolean;
-    onToggle: () => void;
-    rightElement?: React.ReactNode;
-}
-export function SectionHeader({
-    title,
-    command,
-    isExpanded,
-    onToggle,
-    rightElement,
-}: SectionHeaderProps) {
-    return (
-        <div
-            className="w-full text-left group mb-3 cursor-pointer"
-            onClick={onToggle}
-        >
-            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
-                <span className="text-primary">##</span> {title}
-                <ChevronDown
-                    size={20}
-                    className={`transition-transform duration-300 ${isExpanded ? "rotate-0" : "-rotate-90"
-                        }`}
-                />
-                {rightElement && <div className="ml-auto">{rightElement}</div>}
-            </h2>
-            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 text-sm">
-                <span className="text-green-500 font-bold">$</span>
-                <span>{command}</span>
-                <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle"></span>
-            </div>
-        </div>
-    );
-}
+// UI components imported from @/components/layout/ui
 
 
-export const SpotlightCard = ({
-    children,
-    className = "",
-}: {
-    children: React.ReactNode;
-    className?: string;
-    spotlightColor?: string;
-}) => {
-    return (
-        <div
-            className={`relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-zinc-900 shadow-sm transition-all hover:shadow-md ${className || ""}`}
-        >
-            <div className="relative h-full">{children}</div>
-        </div>
-    );
-};
-
-
-export function TerminalCursor() {
-    const {
-        cursorPosition,
-        setCursorPosition,
-        isCursorVisible,
-        setIsCursorVisible,
-        isCursorClicking,
-        setIsCursorClicking,
-        isCursorPointer,
-        setIsCursorPointer
-    } = useStore();
-
-    useEffect(() => {
-        const updatePosition = (e: MouseEvent) => {
-            setCursorPosition({ x: e.clientX, y: e.clientY });
-            if (!isCursorVisible) setIsCursorVisible(true);
-            const target = e.target as HTMLElement;
-            const isClickable =
-                target.tagName === 'A' ||
-                target.tagName === 'BUTTON' ||
-                target.closest('a') !== null ||
-                target.closest('button') !== null ||
-                target.classList.contains('cursor-pointer') ||
-                window.getComputedStyle(target).cursor === 'pointer';
-            setIsCursorPointer(isClickable);
-        };
-        const handleMouseDown = () => setIsCursorClicking(true);
-        const handleMouseUp = () => setIsCursorClicking(false);
-        document.documentElement.style.cursor = 'none';
-        const handleMouseEnter = () => setIsCursorVisible(true);
-        const handleMouseLeave = () => setIsCursorVisible(false);
-        window.addEventListener("mousemove", updatePosition);
-        window.addEventListener("mousedown", handleMouseDown);
-        window.addEventListener("mouseup", handleMouseUp);
-        document.addEventListener("mouseenter", handleMouseEnter);
-        document.addEventListener("mouseleave", handleMouseLeave);
-        return () => {
-            window.removeEventListener("mousemove", updatePosition);
-            window.removeEventListener("mousedown", handleMouseDown);
-            window.removeEventListener("mouseup", handleMouseUp);
-            document.removeEventListener("mouseenter", handleMouseEnter);
-            document.removeEventListener("mouseleave", handleMouseLeave);
-            document.documentElement.style.cursor = 'auto';
-        };
-    }, [isCursorVisible, setCursorPosition, setIsCursorVisible, setIsCursorClicking, setIsCursorPointer]);
-
-    if (!isCursorVisible) return null;
-    return (
-        <div
-            className="fixed pointer-events-none z-[9999] mix-blend-difference"
-            style={{
-                left: cursorPosition.x,
-                top: cursorPosition.y,
-                transform: "translate(-50%, -50%)",
-            }}
-        >
-            <div
-                className={`bg-green-500 transition-all duration-150 ease-out border border-green-400/50 shadow-[0_0_10px_rgba(34,197,94,0.5)] ${isCursorClicking
-                    ? "w-3 h-3 scale-90"
-                    : isCursorPointer
-                        ? "w-6 h-6 rotate-45 opacity-80"
-                        : "w-4 h-6 opacity-80 animate-pulse"
-                    }`}
-            />
-        </div>
-    );
-}
+// Terminal cursor component imported from @/components/layout/ui
 
 
 export function MusicToggleButton() {
@@ -1054,3 +567,6 @@ export function WeatherWidget() {
         </div>
     );
 }
+
+// Re-export modularized components for backward compatibility
+export { Terminal, ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail, SectionHeader, SpotlightCard, TerminalCursor };

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useStore } from "@/lib/store/useStore";
 import { Send, TerminalSquare } from "lucide-react";
+import { useStore } from "@/lib/store/useStore";
 
 export function Guestbook() {
     const { guestbookEntries, addGuestbookEntry } = useStore();

@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { hobbyData } from "@/data";
-import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
-import { useEffect, useRef } from "react";
 
 const iconMap: Record<string, React.ElementType> = {
     Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic

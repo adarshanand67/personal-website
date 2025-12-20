@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
-import { Search, Check, Star, X, Tag, Layers, Cloud, CloudRain, Sun, Moon, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink } from "lucide-react";
+import { Search, Check, Star, X, Tag, Layers, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, AnimeType, WatchStatus } from '@/types/definitions';
 import { ShelfConfig } from "@/lib/config";
