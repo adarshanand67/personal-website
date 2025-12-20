@@ -371,14 +371,14 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
         id={`shelf-item-${hobby.name}`}
         key={index}
         onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
-        className="group p-8 glass rounded-3xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500 cursor-pointer overflow-hidden relative"
+        className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500 cursor-pointer overflow-hidden relative"
       >
         <div className="relative z-10">
-          <div className="mb-6 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">
+          <div className="mb-3 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">
             {this.getIcon(hobby.icon)}
           </div>
-          <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{hobby.name}</h3>
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
+          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{hobby.name}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
             {hobby.description}
           </p>
         </div>
@@ -391,7 +391,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   renderList(items: Hobby[]): ReactNode {
     if (items.length === 0) return null;
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+      <div className="grid grid-cols-2 gap-4 py-4">
         {items.map((hobby, index) => this.renderItem(hobby, index))}
       </div>
     );
