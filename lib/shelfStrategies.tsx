@@ -137,7 +137,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
         id={`shelf-item-${anime.title}`}
         key={index}
         onClick={() => useStore.getState().setAnimeSelectedItem(anime)}
-        className="group flex flex-col gap-3 cursor-pointer"
+        className="group flex flex-col gap-3 cursor-pointer relative"
       >
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
           {anime.image ? (
@@ -153,14 +153,19 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div className="text-white text-xs font-bold uppercase tracking-wider bg-green-500 px-4 py-2 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              View Details
+            </div>
+          </div>
         </div>
 
         <div className="px-1">
           <h3 className="text-gray-900 dark:text-white font-bold text-sm leading-tight group-hover:text-green-500 transition-colors line-clamp-2 mb-1.5 flex items-center gap-1.5">
             {anime.title}
+            {anime.status === WatchStatus.Completed && (
+              <Check size={12} className="text-green-500 flex-shrink-0" />
+            )}
             {anime.recommended && (
               <Star size={12} fill="currentColor" className="text-amber-400 flex-shrink-0" />
             )}
@@ -170,9 +175,16 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
               {anime.type}
             </span>
             {anime.tags?.slice(0, 3).map((tag, i) => (
-              <span key={i} className="text-[9px] font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded">
+              <button
+                key={i}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  useStore.getState().setAnimeSelectedTag(tag);
+                }}
+                className="text-[9px] font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 px-1.5 py-0.5 rounded hover:bg-green-500 hover:text-white transition-colors cursor-pointer"
+              >
                 {tag}
-              </span>
+              </button>
             ))}
           </div>
         </div>

@@ -99,7 +99,9 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
         bookSelectedItem,
         setBookSelectedItem,
         animeSelectedItem,
-        setAnimeSelectedItem
+        setAnimeSelectedItem,
+        animeSelectedTag,
+        setAnimeSelectedTag
     } = useStore();
 
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);
@@ -110,7 +112,18 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
         setSearchQuery("");
     }, [config.type, setSearchQuery]);
 
-    const filteredItems = useMemo(() => strategy.filter(items as ShelfItem[], searchQuery), [items, searchQuery, strategy]);
+    const filteredItems = useMemo(() => {
+        let filtered = strategy.filter(items as ShelfItem[], searchQuery);
+
+        // Apply tag filter for anime
+        if (config.type === ShelfType.Anime && animeSelectedTag) {
+            filtered = filtered.filter((item: any) =>
+                item.tags && item.tags.includes(animeSelectedTag)
+            );
+        }
+
+        return filtered;
+    }, [items, searchQuery, strategy, config.type, animeSelectedTag]);
 
     const randomizerItems = useMemo(() => {
         if (config.type === ShelfType.Anime) {
@@ -176,6 +189,42 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                     }
                 }}
             />
+
+            {/* Tag Filter for Anime */}
+            {config.type === ShelfType.Anime && mounted && (() => {
+                const allTags = Array.from(new Set(
+                    (items as any[]).flatMap(item => item.tags || [])
+                )).sort();
+
+                return allTags.length > 0 ? (
+                    <div className="mb-8">
+                        <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Filter by Tag</h4>
+                        <div className="flex flex-wrap gap-2">
+                            <button
+                                onClick={() => setAnimeSelectedTag(null)}
+                                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${!animeSelectedTag
+                                    ? 'bg-green-500 text-white'
+                                    : 'bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10'
+                                    }`}
+                            >
+                                All
+                            </button>
+                            {allTags.map((tag) => (
+                                <button
+                                    key={tag}
+                                    onClick={() => setAnimeSelectedTag(animeSelectedTag === tag ? null : tag)}
+                                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${animeSelectedTag === tag
+                                        ? 'bg-green-500 text-white'
+                                        : 'bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10'
+                                        }`}
+                                >
+                                    {tag}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                ) : null;
+            })()}
 
             {filteredItems.length === 0 ? (
                 <div className="py-24 text-center">
@@ -363,7 +412,6 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                         </span>
                                     )}
                                 </div>
-
                                 {animeSelectedItem.description && (
                                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 text-lg">
                                         {animeSelectedItem.description}
@@ -380,17 +428,37 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                 )}
 
                                 {animeSelectedItem.tags && (
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 mb-8">
                                         <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Tags</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {animeSelectedItem.tags.map((tag, i) => (
-                                                <span key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 rounded-xl text-xs font-medium border border-gray-100 dark:border-white/5">
+                                                <button
+                                                    key={i}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setAnimeSelectedTag(tag);
+                                                        setAnimeSelectedItem(null);
+                                                    }}
+                                                    className="px-3 py-1.5 bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 rounded-xl text-xs font-medium border border-gray-100 dark:border-white/5 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all cursor-pointer"
+                                                >
                                                     {tag}
-                                                </span>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
                                 )}
+
+                                {/* Watch Trailer Button */}
+                                <a
+                                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(animeSelectedItem.title + ' trailer')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-green-400/20"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <ExternalLink size={16} />
+                                    Watch Trailer
+                                </a>
                             </div>
                         </motion.div>
                     </div>
