@@ -89,7 +89,7 @@ export function MusicPlayer() {
             >
                 <div className="w-72 glass-apple border border-white/20 dark:border-white/10 shadow-2xl rounded-3xl overflow-hidden p-5 flex flex-col gap-4">
                     {/* Top Info */}
-                    <div className="flex gap-4 items-center">
+                    <div className="flex gap-4 items-start">
                         <div className="relative w-16 h-16 shrink-0 rounded-2xl overflow-hidden shadow-lg border border-white/20">
                             <Image
                                 src={trackImages[currentTrackIndex] || "/icon.png"}
@@ -98,17 +98,17 @@ export function MusicPlayer() {
                                 className="object-cover"
                             />
                         </div>
-                        <div className="flex flex-col min-w-0">
-                            <span className="text-sm font-bold truncate text-gray-900 dark:text-white">
+                        <div className="flex flex-col min-w-0 flex-1">
+                            <span className="text-sm font-bold line-clamp-2 text-gray-900 dark:text-white leading-tight">
                                 {trackNames[currentTrackIndex]}
                             </span>
-                            <span className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">
+                            <span className="text-[11px] text-gray-500 dark:text-gray-400 font-medium mt-0.5">
                                 Adarsh Anand
                             </span>
                         </div>
                         <button
                             onClick={toggleMusicPlayer}
-                            className="ml-auto p-1.5 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors"
+                            className="ml-auto p-1.5 hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-colors shrink-0"
                         >
                             <ChevronDown size={18} className="text-gray-400" />
                         </button>
