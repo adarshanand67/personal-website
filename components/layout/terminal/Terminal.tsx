@@ -325,16 +325,17 @@ export function Terminal() {
                             </div>
                             <div
                                 ref={containerRef}
-                                className="p-4 text-gray-800 dark:text-gray-300 h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+                                className="p-4 text-gray-800 dark:text-gray-300 h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
                             >
                                 {lines.map((line, i) => (
                                     <div
                                         key={i}
-                                        className={`mb-1 whitespace-pre-wrap ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
+                                        className={`whitespace-pre leading-snug ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
                                     >
                                         {line.includes('\x1b[') ? parseAnsi(line) : line}
                                     </div>
                                 ))}
+
                                 {isIntroDone && (
                                     <div className="flex items-center">
                                         <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
