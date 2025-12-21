@@ -78,16 +78,16 @@ export function Navbar() {
                                     Articles
                                 </Link>
                                 <Link
-                                    href={routes.animeShelf}
-                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
-                                >
-                                    Anime
-                                </Link>
-                                <Link
                                     href={routes.bookShelf}
                                     className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
                                 >
                                     Books
+                                </Link>
+                                <Link
+                                    href={routes.animeShelf}
+                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
+                                >
+                                    Anime
                                 </Link>
                                 <Link
                                     href={routes.hobbyShelf}
