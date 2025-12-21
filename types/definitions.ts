@@ -81,7 +81,7 @@ export interface AnimeItem {
   title: string;
   type: AnimeType;
   status: WatchStatus;
-  notes?: string;
+  seasons?: string;
   image?: string;
   recommended?: boolean;
   description?: string;

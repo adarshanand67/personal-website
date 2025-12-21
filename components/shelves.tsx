@@ -437,14 +437,16 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                     </p>
                                 )}
 
-                                {animeSelectedItem.notes && (
+
+                                {animeSelectedItem.seasons && (
                                     <div className="mb-8 p-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
                                         <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Seasons</h4>
                                         <p className="text-gray-700 dark:text-gray-300 text-sm font-medium">
-                                            {animeSelectedItem.notes}
+                                            {animeSelectedItem.seasons}
                                         </p>
                                     </div>
                                 )}
+
 
                                 {animeSelectedItem.tags && (
                                     <div className="space-y-3 mb-8">
