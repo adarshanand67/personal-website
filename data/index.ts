@@ -148,7 +148,8 @@ export const animeData = [
         "notes": "too many to count (20+ seasons across regions)",
         "image": "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
         "description": "Ash Ketchum and his partner Pikachu travel the world to become the greatest Pokémon Master.",
-        "tags": ["Adventure", "Fantasy"]
+        "tags": ["Adventure", "Fantasy"],
+        "year": "1997"
     },
     {
         "title": "Dragon Ball Z",
@@ -321,7 +322,8 @@ export const animeData = [
         "notes": "S1,2 + √A + :re (4 seasons)",
         "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
         "description": "A college student becomes a half-ghoul and must navigate the world of flesh-eating monsters.",
-        "tags": ["Action", "Horror", "Supernatural"]
+        "tags": ["Action", "Horror", "Supernatural"],
+        "year": "2014"
     },
     {
         "title": "Aoashi",
@@ -330,7 +332,8 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
         "description": "A talented young soccer player is recruited for a professional youth team.",
-        "tags": ["Drama", "Sports"]
+        "tags": ["Drama", "Sports"],
+        "year": "2022"
     },
     {
         "title": "Chainsaw Man",
@@ -350,7 +353,8 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/10/77957l.jpg",
         "description": "A man travels back in time to his childhood to prevent a series of murders.",
-        "tags": ["Mystery", "Supernatural", "Thriller"]
+        "tags": ["Mystery", "Supernatural", "Thriller"],
+        "year": "2016"
     },
     {
         "title": "Dr Stone",
@@ -359,7 +363,8 @@ export const animeData = [
         "notes": "S1,2,3,4",
         "image": "https://cdn.myanimelist.net/images/anime/1613/102576l.jpg",
         "description": "A genius boy wakes up thousands of years after humanity was petrified.",
-        "tags": ["Adventure", "Sci-Fi", "Thriller"]
+        "tags": ["Adventure", "Sci-Fi", "Thriller"],
+        "year": "2019"
     },
     {
         "title": "Vinland Saga",
@@ -430,7 +435,8 @@ export const animeData = [
             "Action",
             "Adventure",
             "Supernatural"
-        ]
+        ],
+        "year": "2012"
     },
     {
         "title": "My Hero Academia",
@@ -442,7 +448,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Slice of Life"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "Bleach",
@@ -470,7 +477,8 @@ export const animeData = [
             "Action",
             "Fantasy",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2024"
     },
     {
         "title": "One Piece",
@@ -497,7 +505,8 @@ export const animeData = [
         "tags": [
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "2009"
     },
     {
         "title": "Sword Art Online",
@@ -510,7 +519,8 @@ export const animeData = [
             "Action",
             "Fantasy",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2012"
     },
     {
         "title": "Frieren: Beyond Journey’s End",
@@ -537,7 +547,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Fantasy"
-        ]
+        ],
+        "year": "2017"
     },
     {
         "title": "Black Clover: Sword of the Wizard King",
@@ -549,7 +560,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Fantasy"
-        ]
+        ],
+        "year": "2023"
     },
     {
         "title": "Spy x Family",
@@ -591,7 +603,8 @@ export const animeData = [
         "tags": [
             "Slice of Life",
             "Sports"
-        ]
+        ],
+        "year": "2012"
     },
 
 
@@ -606,7 +619,8 @@ export const animeData = [
             "Adventure",
             "Fantasy",
             "Mystery"
-        ]
+        ],
+        "year": "2017"
     },
     {
         "title": "Ping Pong the Animation",
@@ -619,7 +633,8 @@ export const animeData = [
             "Drama",
             "Sports",
             "Thriller"
-        ]
+        ],
+        "year": "2014"
     },
 
     {
@@ -633,7 +648,8 @@ export const animeData = [
             "Action",
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "2014"
     },
     {
         "title": "Hell's Paradise",
@@ -646,7 +662,8 @@ export const animeData = [
             "Action",
             "Fantasy",
             "Historical"
-        ]
+        ],
+        "year": "2023"
     },
     {
         "title": "Summer Time Rendering",
@@ -659,7 +676,8 @@ export const animeData = [
             "Mystery",
             "Supernatural",
             "Thriller"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "To Your Eternity",
@@ -672,7 +690,8 @@ export const animeData = [
             "Adventure",
             "Drama",
             "Supernatural"
-        ]
+        ],
+        "year": "2021"
     },
     {
         "title": "Neon Genesis Evangelion",
@@ -699,7 +718,8 @@ export const animeData = [
             "Action",
             "Adventure",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2007"
     },
     {
         "title": "Parasyte: The Maxim",
@@ -712,7 +732,8 @@ export const animeData = [
             "Horror",
             "Sci-Fi",
             "Thriller"
-        ]
+        ],
+        "year": "2014"
     },
 
     {
@@ -726,7 +747,8 @@ export const animeData = [
             "Action",
             "Fantasy",
             "Supernatural"
-        ]
+        ],
+        "year": "2011"
     },
     {
         "title": "Violet Evergarden",
@@ -739,7 +761,8 @@ export const animeData = [
             "Drama",
             "Fantasy",
             "Slice of Life"
-        ]
+        ],
+        "year": "2018"
     },
     {
         "title": "Your lie in April",
@@ -752,7 +775,8 @@ export const animeData = [
             "Drama",
             "Music",
             "Romance"
-        ]
+        ],
+        "year": "2014"
     },
     {
         "title": "Hyouka",
@@ -764,7 +788,8 @@ export const animeData = [
         "tags": [
             "Mystery",
             "Slice of Life"
-        ]
+        ],
+        "year": "2012"
     },
     {
         "title": "Prison School",
@@ -776,7 +801,8 @@ export const animeData = [
         "tags": [
             "Comedy",
             "Slice of Life"
-        ]
+        ],
+        "year": "2015"
     },
     {
         "title": "Grand Blue",
@@ -788,7 +814,8 @@ export const animeData = [
         "tags": [
             "Comedy",
             "Slice of Life"
-        ]
+        ],
+        "year": "2018"
     },
     {
         "title": "Monster",
@@ -814,7 +841,8 @@ export const animeData = [
         "tags": [
             "Drama",
             "Slice of Life"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "Ghost in the Shell: Stand Alone Complex",
@@ -826,7 +854,8 @@ export const animeData = [
         "tags": [
             "Sci-Fi",
             "Thriller"
-        ]
+        ],
+        "year": "2002"
     },
     {
         "title": "The Promised Neverland",
@@ -839,7 +868,8 @@ export const animeData = [
             "Horror",
             "Mystery",
             "Thriller"
-        ]
+        ],
+        "year": "2019"
     },
     {
         "title": "Charlotte",
@@ -852,7 +882,8 @@ export const animeData = [
             "Action",
             "Drama",
             "Slice of Life"
-        ]
+        ],
+        "year": "2015"
     },
     {
         "title": "Rascal Does Not Dream of Bunny Girl Senpai",
@@ -865,7 +896,8 @@ export const animeData = [
             "Romance",
             "Supernatural",
             "Thriller"
-        ]
+        ],
+        "year": "2018"
     },
     {
         "title": "Gintama",
@@ -878,7 +910,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2006"
     },
     {
         "title": "Assassination Classroom",
@@ -891,7 +924,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Slice of Life"
-        ]
+        ],
+        "year": "2015"
     },
     {
         "title": "Blue Eye Samurai",
@@ -904,7 +938,8 @@ export const animeData = [
             "Action",
             "Drama",
             "Historical"
-        ]
+        ],
+        "year": "2023"
     },
     {
         "title": "Lycoris Recoil",
@@ -916,7 +951,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Slice of Life"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "Hajime no Ippo",
@@ -928,7 +964,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Sports"
-        ]
+        ],
+        "year": "2000"
     },
     {
         "title": "I want to eat your pancreas",
@@ -941,7 +978,8 @@ export const animeData = [
             "Drama",
             "Romance",
             "Slice of Life"
-        ]
+        ],
+        "year": "2018"
     },
     {
         "title": "Grave of Fireflies",
@@ -954,7 +992,8 @@ export const animeData = [
             "Action",
             "Drama",
             "Historical"
-        ]
+        ],
+        "year": "1988"
     },
     {
         "title": "Spirited Away",
@@ -966,7 +1005,8 @@ export const animeData = [
         "tags": [
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "2001"
     },
     {
         "title": "Your Name",
@@ -979,7 +1019,8 @@ export const animeData = [
             "Drama",
             "Romance",
             "Supernatural"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "5 Centimeters Per Second",
@@ -992,7 +1033,8 @@ export const animeData = [
             "Drama",
             "Romance",
             "Slice of Life"
-        ]
+        ],
+        "year": "2007"
     },
     {
         "title": "Howl’s Moving Castle",
@@ -1005,7 +1047,8 @@ export const animeData = [
             "Adventure",
             "Fantasy",
             "Romance"
-        ]
+        ],
+        "year": "2004"
     },
     {
         "title": "Princess Mononoke",
@@ -1018,7 +1061,8 @@ export const animeData = [
             "Action",
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "1997"
     },
     {
         "title": "Suzume",
@@ -1030,7 +1074,8 @@ export const animeData = [
         "tags": [
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "Weathering With You",
@@ -1043,7 +1088,8 @@ export const animeData = [
             "Drama",
             "Fantasy",
             "Romance"
-        ]
+        ],
+        "year": "2019"
     },
     {
         "title": "A Silent Voice",
@@ -1055,7 +1101,8 @@ export const animeData = [
         "tags": [
             "Drama",
             "Slice of Life"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "The Girl Who Leapt Through Time",
@@ -1068,7 +1115,8 @@ export const animeData = [
             "Drama",
             "Romance",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2006"
     },
     {
         "title": "That Time I Got Reincarnated as a Slime",
@@ -1079,7 +1127,8 @@ export const animeData = [
         "description": "A corporate worker is reborn as a powerful slime in a fantasy world.",
         "tags": [
             "Fantasy"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "The Eminence in Shadow",
@@ -1092,7 +1141,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Fantasy"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "Kaguya-sama: Love Is War",
@@ -1105,7 +1155,8 @@ export const animeData = [
             "Comedy",
             "Romance",
             "Slice of Life"
-        ]
+        ],
+        "year": "2019"
     },
     {
         "title": "Re:Zero",
@@ -1118,7 +1169,8 @@ export const animeData = [
             "Drama",
             "Fantasy",
             "Thriller"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "Dandadan",
@@ -1131,7 +1183,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Supernatural"
-        ]
+        ],
+        "year": "2024"
     },
     {
         "title": "Mushoku Tensei: Jobless Reincarnation",
@@ -1143,7 +1196,8 @@ export const animeData = [
         "tags": [
             "Adventure",
             "Fantasy"
-        ]
+        ],
+        "year": "2021"
     },
     {
         "title": "Cyberpunk: Edgerunners",
@@ -1170,7 +1224,8 @@ export const animeData = [
             "Drama",
             "Romance",
             "Slice of Life"
-        ]
+        ],
+        "year": "2008"
     },
     {
         "title": "Oshi no Ko",
@@ -1195,7 +1250,8 @@ export const animeData = [
         "description": "Soldiers pilot drones in a war against autonomous machines, treated as non-humans.",
         "tags": [
             "Sci-Fi"
-        ]
+        ],
+        "year": "2021"
     },
     {
         "title": "Bocchi the Rock!",
@@ -1208,7 +1264,8 @@ export const animeData = [
             "Comedy",
             "Music",
             "Slice of Life"
-        ]
+        ],
+        "year": "2022"
     },
     {
         "title": "Chihayafuru",
@@ -1220,7 +1277,8 @@ export const animeData = [
         "tags": [
             "Drama",
             "Sports"
-        ]
+        ],
+        "year": "2011"
     },
     {
         "title": "Natsume's Book of Friends",
@@ -1232,7 +1290,8 @@ export const animeData = [
         "tags": [
             "Slice of Life",
             "Supernatural"
-        ]
+        ],
+        "year": "2008"
     },
     {
         "title": "Bakemonogatari",
@@ -1245,7 +1304,8 @@ export const animeData = [
             "Drama",
             "Mystery",
             "Supernatural"
-        ]
+        ],
+        "year": "2009"
     },
     {
         "title": "Mushishi",
@@ -1258,7 +1318,8 @@ export const animeData = [
             "Mystery",
             "Slice of Life",
             "Supernatural"
-        ]
+        ],
+        "year": "2005"
     },
     {
         "title": "Great Teacher Onizuka",
@@ -1271,7 +1332,8 @@ export const animeData = [
             "Comedy",
             "Drama",
             "Slice of Life"
-        ]
+        ],
+        "year": "1999"
     },
     {
         "title": "Yu Yu Hakusho",
@@ -1284,7 +1346,8 @@ export const animeData = [
             "Action",
             "Sports",
             "Supernatural"
-        ]
+        ],
+        "year": "1992"
     },
     {
         "title": "Rurouni Kenshin",
@@ -1296,7 +1359,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Historical"
-        ]
+        ],
+        "year": "1996"
     },
     {
         "title": "Inuyasha",
@@ -1309,7 +1373,8 @@ export const animeData = [
             "Adventure",
             "Fantasy",
             "Romance"
-        ]
+        ],
+        "year": "2000"
     },
     {
         "title": "Nana",
@@ -1322,7 +1387,8 @@ export const animeData = [
             "Drama",
             "Music",
             "Romance"
-        ]
+        ],
+        "year": "2006"
     },
     {
         "title": "Beck: Mongolian Chop Squad",
@@ -1335,7 +1401,8 @@ export const animeData = [
             "Drama",
             "Music",
             "Slice of Life"
-        ]
+        ],
+        "year": "2004"
     },
     {
         "title": "Black Lagoon",
@@ -1348,7 +1415,8 @@ export const animeData = [
             "Action",
             "Drama",
             "Thriller"
-        ]
+        ],
+        "year": "2006"
     },
     {
         "title": "Trigun",
@@ -1361,7 +1429,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Sci-Fi"
-        ]
+        ],
+        "year": "1998"
     },
     {
         "title": "Hellsing Ultimate",
@@ -1374,7 +1443,8 @@ export const animeData = [
             "Action",
             "Horror",
             "Supernatural"
-        ]
+        ],
+        "year": "2006"
     },
     {
         "title": "Psycho-Pass",
@@ -1386,7 +1456,8 @@ export const animeData = [
         "tags": [
             "Sci-Fi",
             "Thriller"
-        ]
+        ],
+        "year": "2012"
     },
     {
         "title": "Darker than Black",
@@ -1399,7 +1470,8 @@ export const animeData = [
             "Action",
             "Mystery",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2007"
     },
     {
         "title": "Durarara!!",
@@ -1412,7 +1484,8 @@ export const animeData = [
             "Action",
             "Fantasy",
             "Mystery"
-        ]
+        ],
+        "year": "2010"
     },
     {
         "title": "Noragami",
@@ -1425,7 +1498,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Supernatural"
-        ]
+        ],
+        "year": "2014"
     },
     {
         "title": "Soul Eater",
@@ -1438,7 +1512,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Fantasy"
-        ]
+        ],
+        "year": "2008"
     },
     {
         "title": "Akame ga Kill!",
@@ -1450,7 +1525,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Fantasy"
-        ]
+        ],
+        "year": "2014"
     },
     {
         "title": "No Game No Life",
@@ -1463,7 +1539,8 @@ export const animeData = [
             "Adventure",
             "Fantasy",
             "Sci-Fi"
-        ]
+        ],
+        "year": "2014"
     },
     {
         "title": "KonoSuba",
@@ -1475,7 +1552,8 @@ export const animeData = [
         "tags": [
             "Comedy",
             "Fantasy"
-        ]
+        ],
+        "year": "2016"
     },
     {
         "title": "Toradora!",
@@ -1488,7 +1566,8 @@ export const animeData = [
             "Comedy",
             "Romance",
             "Slice of Life"
-        ]
+        ],
+        "year": "2008"
     },
     {
         "title": "Angel Beats!",
@@ -1501,7 +1580,8 @@ export const animeData = [
             "Action",
             "Comedy",
             "Drama"
-        ]
+        ],
+        "year": "2010"
     },
     {
         "title": "Anohana: The Flower We Saw That Day",
@@ -1514,7 +1594,8 @@ export const animeData = [
             "Drama",
             "Slice of Life",
             "Supernatural"
-        ]
+        ],
+        "year": "2011"
     },
     {
         "title": "Another",
@@ -1527,7 +1608,8 @@ export const animeData = [
             "Horror",
             "Mystery",
             "Slice of Life"
-        ]
+        ],
+        "year": "2012"
     },
     {
         "title": "Mirai Nikki",
@@ -1539,7 +1621,8 @@ export const animeData = [
         "tags": [
             "Action",
             "Thriller"
-        ]
+        ],
+        "year": "2011"
     }
 ];
 
