@@ -170,9 +170,9 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
               <Star size={12} fill="currentColor" className="text-amber-400 flex-shrink-0" />
             )}
           </h3>
-          {anime.notes && (
+          {anime.seasons && (
             <p className="text-[11px] text-gray-600 dark:text-gray-300 mb-1.5 font-semibold">
-              {anime.notes}
+              {anime.seasons}
             </p>
           )}
           <div className="flex flex-wrap gap-1.5 mt-auto">
