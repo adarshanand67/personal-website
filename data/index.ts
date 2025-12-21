@@ -573,7 +573,7 @@ export const animeData = [
     {
         "title": "Kuroko No Basket",
         "type": "Anime",
-        "status": "Planning",
+        "status": "Completed",
         "notes": "S1,2,3",
         "image": "https://cdn.myanimelist.net/images/anime/11/50453l.jpg",
         "description": "A shadow player helps a new light defeat his former teammates, the Generation of Miracles.",
