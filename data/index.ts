@@ -236,7 +236,7 @@ export const animeData = [
         "title": "Steins;Gate Series",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1, Steins;Gate 0 (Complete Storyline)",
+        "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1935/127974l.jpg",
         "description": "A group of friends invent a time machine and must navigate through multiple worldlines to prevent a dystopian future and save their loved ones.",
         "tags": ["Sci-Fi", "Thriller", "Psychological", "Drama"],
@@ -259,7 +259,7 @@ export const animeData = [
         "title": "Jujutsu Kaisen Series",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1-2, JJK 0 Movie, Upcoming S3",
+        "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
         "description": "Yuji Itadori joins the Jujutsu sorcerers to fight against powerful curses and find the fingers of Sukuna, the King of Curses.",
         "tags": ["Action", "Supernatural", "Fantasy", "Horror"],
@@ -282,7 +282,7 @@ export const animeData = [
         "title": "Solo Leveling",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1-2 manhwa comics - 3,4",
+        "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
         "recommended": true,
         "description": "The weakest hunter in the world gains the unique ability to level up.",
@@ -294,7 +294,7 @@ export const animeData = [
         "title": "Demon Slayer",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1, Mugen Train, S2-5 (Complete Series)",
+        "notes": "S1-5",
         "image": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
         "description": "A young man becomes a demon slayer to avenge his family and cure his sister, Tanjirou Kamado's journey through the ranks of the Demon Slayer Corps.",
         "tags": ["Action", "Fantasy", "Supernatural", "Adventure"],
@@ -316,7 +316,7 @@ export const animeData = [
         "title": "Tokyo Ghoul",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1-2, √A, :re (4 seasons)",
+        "notes": "S1-4",
         "image": "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
         "description": "A college student becomes a half-ghoul and must navigate the world of flesh-eating monsters.",
         "tags": ["Action", "Horror", "Supernatural"],
@@ -338,7 +338,7 @@ export const animeData = [
         "title": "Chainsaw Man",
         "type": "Anime",
         "status": "Completed",
-        "notes": "S1 (S2 announced)",
+        "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
         "description": "A young man merges with his pet devil to become a chainsaw-wielding devil hunter.",
         "tags": ["Action", "Fantasy", "Horror"],
@@ -396,10 +396,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
         "description": "Two brothers search for the Philosopher's Stone to restore their bodies after a failed alchemical experiment.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Adventure", "Fantasy"],
         "year": "2009",
         "rating": "9.1/10"
     },
@@ -410,11 +407,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg",
         "description": "A young boy sets out to become a Hunter to find his father, facing dangerous trials along the way.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Adventure", "Fantasy"],
         "year": "2011",
         "rating": "9.0/10"
     },
@@ -425,11 +418,7 @@ export const animeData = [
         "notes": "S1-6",
         "image": "https://cdn.myanimelist.net/images/anime/3/40409l.jpg",
         "description": "The Joestar family battles supernatural foes across generations using unique powers.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Adventure", "Supernatural"],
         "year": "2012",
         "rating": "8.1/10"
     },
@@ -440,10 +429,7 @@ export const animeData = [
         "notes": "S1-8",
         "image": "https://cdn.myanimelist.net/images/anime/10/78745l.jpg",
         "description": "A powerless boy inherits the power of the world's greatest hero and attends a high school for heroes.",
-        "tags": [
-            "Action",
-            "Slice of Life"
-        ],
+        "tags": ["Action", "Slice of Life"],
         "year": "2016",
         "rating": "7.9/10"
     },
@@ -454,11 +440,7 @@ export const animeData = [
         "notes": "S1-16, TYBW",
         "image": "https://cdn.myanimelist.net/images/anime/1541/147774l.jpg",
         "description": "A teenager gains the powers of a Soul Reaper and protects the living from evil spirits.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Adventure", "Supernatural"],
         "year": "2004",
         "rating": "8.2/10"
     },
@@ -469,11 +451,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1370/140362l.jpg",
         "description": "A man who cleans up after monster battles gains the power to turn into a Kaiju himself.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Fantasy", "Sci-Fi"],
         "year": "2024",
         "rating": "8.2/10"
     },
@@ -484,11 +462,7 @@ export const animeData = [
         "notes": "S1-21",
         "image": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
         "description": "A rubber-bodied pirate and his crew search for the ultimate treasure to become the Pirate King.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Adventure", "Fantasy"],
         "year": "1999",
         "rating": "9.0/10"
     },
@@ -499,10 +473,7 @@ export const animeData = [
         "notes": "S1-9",
         "image": "https://cdn.myanimelist.net/images/anime/5/18179l.jpg",
         "description": "A wizard joins a famous guild and goes on adventures with her new friends.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Adventure", "Fantasy"],
         "year": "2009",
         "rating": "7.6/10"
     },
@@ -513,11 +484,7 @@ export const animeData = [
         "notes": "S1-4",
         "image": "https://cdn.myanimelist.net/images/anime/11/39717l.jpg",
         "description": "Players are trapped in a VRMMORPG where dying in the game means dying in real life.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Fantasy", "Sci-Fi"],
         "year": "2012",
         "rating": "7.2/10"
     },
@@ -528,11 +495,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
         "description": "An elf mage reflects on her long life and the meaning of human connections after her party's journey ends.",
-        "tags": [
-            "Adventure",
-            "Fantasy",
-            "Slice of Life"
-        ],
+        "tags": ["Adventure", "Fantasy", "Slice of Life"],
         "year": "2023",
         "rating": "9.1/10"
     },
@@ -543,10 +506,7 @@ export const animeData = [
         "notes": "S1-4",
         "image": "https://cdn.myanimelist.net/images/anime/2/88336l.jpg",
         "description": "A boy with no magic strives to become the Wizard King in a world where magic is everything.",
-        "tags": [
-            "Action",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Fantasy"],
         "year": "2017",
         "rating": "8.2/10"
     },
@@ -557,10 +517,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1337/136363l.jpg",
         "description": "Asta faces a returned Wizard King who aims to destroy the Clover Kingdom.",
-        "tags": [
-            "Action",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Fantasy"],
         "year": "2023",
         "rating": "7.7/10"
     },
@@ -571,11 +528,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg",
         "description": "A spy, an assassin, and a telepath form a fake family to uphold world peace.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Slice of Life"
-        ],
+        "tags": ["Action", "Comedy", "Slice of Life"],
         "year": "2022",
         "rating": "8.5/10"
     },
@@ -586,11 +539,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/10/79352l.jpg",
         "description": "A wandering mercenary joins a charismatic leader's band, leading to a dark and tragic fate.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Horror"
-        ],
+        "tags": ["Action", "Fantasy", "Horror"],
         "year": "1997",
         "rating": "8.5/10"
     },
@@ -601,10 +550,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/11/50453l.jpg",
         "description": "A shadow player helps a new light defeat his former teammates, the Generation of Miracles.",
-        "tags": [
-            "Slice of Life",
-            "Sports"
-        ],
+        "tags": ["Slice of Life", "Sports"],
         "year": "2012",
         "rating": "8.4/10"
     },
@@ -617,11 +563,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/6/86733l.jpg",
         "description": "A girl and a robot boy explore a mysterious, deadly chasm to find her mother.",
-        "tags": [
-            "Adventure",
-            "Fantasy",
-            "Mystery"
-        ],
+        "tags": ["Adventure", "Fantasy", "Mystery"],
         "year": "2017",
         "rating": "8.7/10"
     },
@@ -632,11 +574,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1586/146565l.jpg",
         "description": "Two friends with different attitudes toward ping pong navigate high school competition.",
-        "tags": [
-            "Drama",
-            "Sports",
-            "Thriller"
-        ],
+        "tags": ["Drama", "Sports", "Thriller"],
         "year": "2014",
         "rating": "8.6/10"
     },
@@ -648,11 +586,7 @@ export const animeData = [
         "notes": "S1-5",
         "image": "https://cdn.myanimelist.net/images/anime/8/65409l.jpg",
         "description": "A princess seeks a group of disbanded knights to help her take back her kingdom.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Adventure", "Fantasy"],
         "year": "2014",
         "rating": "7.7/10"
     },
@@ -663,11 +597,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1075/131925l.jpg",
         "description": "Criminals and executioners are sent to a mysterious island to find the elixir of life.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Historical"
-        ],
+        "tags": ["Action", "Fantasy", "Historical"],
         "year": "2023",
         "rating": "8.0/10"
     },
@@ -678,11 +608,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1120/120796l.jpg",
         "description": "A young man returns to his island home and uncovers a mystery involving dopplegangers.",
-        "tags": [
-            "Mystery",
-            "Supernatural",
-            "Thriller"
-        ],
+        "tags": ["Mystery", "Supernatural", "Thriller"],
         "year": "2022",
         "rating": "8.5/10"
     },
@@ -693,11 +619,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1880/118484l.jpg",
         "description": "An immortal entity takes on various forms and learns what it means to be human.",
-        "tags": [
-            "Adventure",
-            "Drama",
-            "Supernatural"
-        ],
+        "tags": ["Adventure", "Drama", "Supernatural"],
         "year": "2021",
         "rating": "8.4/10"
     },
@@ -708,10 +630,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1314/108941l.jpg",
         "description": "Teenagers pilot giant bio-machines to fight mysterious entities known as Angels.",
-        "tags": [
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "tags": ["Sci-Fi", "Thriller"],
         "year": "1995",
         "rating": "8.5/10"
     },
@@ -722,11 +641,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/4/5123l.jpg",
         "description": "Two friends emerge from an underground village to fight beastmen in giant robots.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Adventure", "Sci-Fi"],
         "year": "2007",
         "rating": "8.6/10"
     },
@@ -737,11 +652,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/3/73178l.jpg",
         "description": "A teenager coexists with an alien parasite that took over his right hand.",
-        "tags": [
-            "Horror",
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "tags": ["Horror", "Sci-Fi", "Thriller"],
         "year": "2014",
         "rating": "8.3/10"
     },
@@ -753,11 +664,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1887/117644l.jpg",
         "description": "Seven mages summon heroic spirits to fight in a battle royale for the Holy Grail.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Fantasy", "Supernatural"],
         "year": "2011",
         "rating": "8.3/10"
     },
@@ -768,11 +675,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1795/95088l.jpg",
         "description": "A former soldier works as a ghostwriter to understand the meaning of love and emotions.",
-        "tags": [
-            "Drama",
-            "Fantasy",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Fantasy", "Slice of Life"],
         "year": "2018",
         "rating": "8.7/10"
     },
@@ -783,11 +686,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1405/143284l.jpg",
         "description": "A piano prodigy who lost his ability to play meets a violinist who brings color back to his life.",
-        "tags": [
-            "Drama",
-            "Music",
-            "Romance"
-        ],
+        "tags": ["Drama", "Music", "Romance"],
         "year": "2014",
         "rating": "8.6/10"
     },
@@ -798,10 +697,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/13/50521l.jpg",
         "description": "High school students solve mundane mysteries in their Classic Literature Club.",
-        "tags": [
-            "Mystery",
-            "Slice of Life"
-        ],
+        "tags": ["Mystery", "Slice of Life"],
         "year": "2012",
         "rating": "8.1/10"
     },
@@ -812,10 +708,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1286/112161l.jpg",
         "description": "Five boys enrolled in an all-girls school are imprisoned after peeping.",
-        "tags": [
-            "Comedy",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Slice of Life"],
         "year": "2015",
         "rating": "7.6/10"
     },
@@ -826,10 +719,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1302/94882l.jpg",
         "description": "A college student joins a diving club that is mostly about drinking and partying.",
-        "tags": [
-            "Comedy",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Slice of Life"],
         "year": "2018",
         "rating": "8.4/10"
     },
@@ -840,10 +730,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1648/152231l.jpg",
         "description": "A doctor hunts down a former patient who has become a serial killer.",
-        "tags": [
-            "Mystery",
-            "Thriller"
-        ],
+        "tags": ["Mystery", "Thriller"],
         "year": "2004",
         "rating": "8.8/10"
     },
@@ -854,10 +741,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/3/82899l.jpg",
         "description": "A teen shogi player deals with loneliness and finding his place in the world.",
-        "tags": [
-            "Drama",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Slice of Life"],
         "year": "2016",
         "rating": "8.4/10"
     },
@@ -868,10 +752,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/3/85128l.jpg",
         "description": "A cyborg police officer leads a special ops unit against cyber criminals.",
-        "tags": [
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "tags": ["Sci-Fi", "Thriller"],
         "year": "2002",
         "rating": "8.5/10"
     },
@@ -882,11 +763,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1830/118780l.jpg",
         "description": "Orphans discover their orphanage is a farm raising them as food for demons.",
-        "tags": [
-            "Horror",
-            "Mystery",
-            "Thriller"
-        ],
+        "tags": ["Horror", "Mystery", "Thriller"],
         "year": "2019",
         "rating": "8.5/10"
     },
@@ -897,11 +774,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1826/147276l.jpg",
         "description": "Teens with temporary superpowers are gathered to protect them from experimentation.",
-        "tags": [
-            "Action",
-            "Drama",
-            "Slice of Life"
-        ],
+        "tags": ["Action", "Drama", "Slice of Life"],
         "year": "2015",
         "rating": "7.8/10"
     },
@@ -912,11 +785,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1301/93586l.jpg",
         "description": "A student solves 'Adolescence Syndrome' mysteries affecting girls around him.",
-        "tags": [
-            "Romance",
-            "Supernatural",
-            "Thriller"
-        ],
+        "tags": ["Romance", "Supernatural", "Thriller"],
         "year": "2018",
         "rating": "8.2/10"
     },
@@ -927,11 +796,7 @@ export const animeData = [
         "notes": "S1-9",
         "image": "https://cdn.myanimelist.net/images/anime/4/50361l.jpg",
         "description": "A samurai works odd jobs in an Edo-period Japan conquered by aliens.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Comedy", "Sci-Fi"],
         "year": "2006",
         "rating": "8.9/10"
     },
@@ -942,11 +807,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/5/75639l.jpg",
         "description": "Students must assassinate their alien teacher before he destroys the Earth.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Slice of Life"
-        ],
+        "tags": ["Action", "Comedy", "Slice of Life"],
         "year": "2015",
         "rating": "8.1/10"
     },
@@ -957,11 +818,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/12/75545l.jpg",
         "description": "A mixed-race master of the sword seeks revenge in Edo-period Japan.",
-        "tags": [
-            "Action",
-            "Drama",
-            "Historical"
-        ],
+        "tags": ["Action", "Drama", "Historical"],
         "year": "2023",
         "rating": "8.7/10"
     },
@@ -972,10 +829,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1261/127311l.jpg",
         "description": "Girls work as secret agents protecting the peace of Tokyo while running a café.",
-        "tags": [
-            "Action",
-            "Slice of Life"
-        ],
+        "tags": ["Action", "Slice of Life"],
         "year": "2022",
         "rating": "7.9/10"
     },
@@ -986,10 +840,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/4/86334l.jpg",
         "description": "A bullied boy discovers a talent for boxing and aims for the championship.",
-        "tags": [
-            "Action",
-            "Sports"
-        ],
+        "tags": ["Action", "Sports"],
         "year": "2000",
         "rating": "8.8/10"
     },
@@ -1000,11 +851,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1768/93291l.jpg",
         "description": "A boy finds a diary of his classmate who is secretly dying from a pancreatic disease.",
-        "tags": [
-            "Drama",
-            "Romance",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Romance", "Slice of Life"],
         "year": "2018",
         "rating": "8.6/10"
     },
@@ -1015,11 +862,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg",
         "description": "Two siblings struggle to survive in Japan during the final months of World War II.",
-        "tags": [
-            "Action",
-            "Drama",
-            "Historical"
-        ],
+        "tags": ["Action", "Drama", "Historical"],
         "year": "1988",
         "rating": "8.5/10"
     },
@@ -1030,10 +873,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/6/79597l.jpg",
         "description": "A young girl is trapped in a spirit world and must work to free her parents.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Adventure", "Fantasy"],
         "year": "2001",
         "rating": "8.8/10"
     },
@@ -1044,11 +884,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/5/87048l.jpg",
         "description": "Two teenagers share a profound connection after discovering they are swapping bodies.",
-        "tags": [
-            "Drama",
-            "Romance",
-            "Supernatural"
-        ],
+        "tags": ["Drama", "Romance", "Supernatural"],
         "year": "2016",
         "rating": "8.9/10"
     },
@@ -1059,11 +895,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1410/112994l.jpg",
         "description": "A story of two friends drifting apart as they grow older.",
-        "tags": [
-            "Drama",
-            "Romance",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Romance", "Slice of Life"],
         "year": "2007",
         "rating": "7.6/10"
     },
@@ -1074,11 +906,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg",
         "description": "A cursed young woman seeks the help of a wizard in his walking castle.",
-        "tags": [
-            "Adventure",
-            "Fantasy",
-            "Romance"
-        ],
+        "tags": ["Adventure", "Fantasy", "Romance"],
         "year": "2004"
     },
     {
@@ -1088,11 +916,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1355/147277l.jpg",
         "description": "A prince becomes involved in a struggle between forest gods and humans consuming nature.",
-        "tags": [
-            "Action",
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Adventure", "Fantasy"],
         "year": "1997",
         "rating": "8.7/10"
     },
@@ -1103,10 +927,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1598/128450l.jpg",
         "description": "A girl travels across Japan closing mysterious doors to prevent disasters.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Adventure", "Fantasy"],
         "year": "2022",
         "rating": "8.3/10"
     },
@@ -1117,11 +938,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg",
         "description": "A runaway boy befriends a girl who can manipulate the weather.",
-        "tags": [
-            "Drama",
-            "Fantasy",
-            "Romance"
-        ],
+        "tags": ["Drama", "Fantasy", "Romance"],
         "year": "2019",
         "rating": "8.3/10"
     },
@@ -1132,10 +949,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg",
         "description": "A former bully seeks redemption by reconnecting with the deaf girl he bullied.",
-        "tags": [
-            "Drama",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Slice of Life"],
         "year": "2016",
         "rating": "8.9/10"
     },
@@ -1146,11 +960,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1/2432l.jpg",
         "description": "A girl gains the ability to time travel and uses it to fix minor inconveniences.",
-        "tags": [
-            "Drama",
-            "Romance",
-            "Sci-Fi"
-        ],
+        "tags": ["Drama", "Romance", "Sci-Fi"],
         "year": "2006",
         "rating": "7.8/10"
     },
@@ -1161,9 +971,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1069/123309l.jpg",
         "description": "A corporate worker is reborn as a powerful slime in a fantasy world.",
-        "tags": [
-            "Fantasy"
-        ],
+        "tags": ["Fantasy"],
         "year": "2022",
         "rating": "7.6/10"
     },
@@ -1174,11 +982,7 @@ export const animeData = [
         "notes": "",
         "image": "https://cdn.myanimelist.net/images/anime/1091/128729l.jpg",
         "description": "A boy obsessed with being a mastermind in the shadows gets reincarnated.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Comedy", "Fantasy"],
         "year": "2022",
         "rating": "7.7/10"
     },
@@ -1189,11 +993,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1295/106551l.jpg",
         "description": "Two genius students try to force the other to confess their love first.",
-        "tags": [
-            "Comedy",
-            "Romance",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Romance", "Slice of Life"],
         "year": "2019",
         "rating": "8.5/10"
     },
@@ -1204,11 +1004,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1040/153636l.jpg",
         "description": "A boy transported to a fantasy world gains the ability to rewind time upon death.",
-        "tags": [
-            "Drama",
-            "Fantasy",
-            "Thriller"
-        ],
+        "tags": ["Drama", "Fantasy", "Thriller"],
         "year": "2016",
         "rating": "8.2/10"
     },
@@ -1219,11 +1015,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1584/143719l.jpg",
         "description": "Two students face off against spirits and aliens in high-speed occult battles.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Comedy", "Supernatural"],
         "year": "2024",
         "rating": "8.6/10"
     },
@@ -1234,10 +1026,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1530/117776l.jpg",
         "description": "A jobless man is reincarnated in a fantasy world and vows to live his new life to the fullest.",
-        "tags": [
-            "Adventure",
-            "Fantasy"
-        ],
+        "tags": ["Adventure", "Fantasy"],
         "year": "2021",
         "rating": "8.4/10"
     },
@@ -1248,10 +1037,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1818/126435l.jpg",
         "description": "A street kid becomes an edgerunner in a tech-obsessed dystopian city.",
-        "tags": [
-            "Action",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Sci-Fi"],
         "year": "2022",
         "rating": "8.6/10"
     },
@@ -1262,11 +1048,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/13/24647l.jpg",
         "description": "The story of adulthood, family, and loss following high school life.",
-        "tags": [
-            "Drama",
-            "Romance",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Romance", "Slice of Life"],
         "year": "2008",
         "rating": "9.0/10"
     },
@@ -1277,10 +1059,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
         "description": "A doctor is reborn as the child of an idol and enters the entertainment industry.",
-        "tags": [
-            "Drama",
-            "Mystery"
-        ],
+        "tags": ["Drama", "Mystery"],
         "year": "2023",
         "rating": "8.7/10"
     },
@@ -1291,9 +1070,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1987/117507.jpg",
         "description": "Soldiers pilot drones in a war against autonomous machines, treated as non-humans.",
-        "tags": [
-            "Sci-Fi"
-        ],
+        "tags": ["Sci-Fi"],
         "year": "2021",
         "rating": "8.2/10"
     },
@@ -1304,11 +1081,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1448/127956.jpg",
         "description": "A socially anxious girl joins a band and discovers the joy of performing.",
-        "tags": [
-            "Comedy",
-            "Music",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Music", "Slice of Life"],
         "year": "2022",
         "rating": "8.8/10"
     },
@@ -1319,10 +1092,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/3/35749.jpg",
         "description": "A girl aims to become the queen of Karuta, a competitive card game.",
-        "tags": [
-            "Drama",
-            "Sports"
-        ],
+        "tags": ["Drama", "Sports"],
         "year": "2011",
         "rating": "8.2/10"
     },
@@ -1333,10 +1103,7 @@ export const animeData = [
         "notes": "S1-7",
         "image": "https://cdn.myanimelist.net/images/anime/1681/108439.jpg",
         "description": "A boy who sees spirits returns their names to free them from a contract book.",
-        "tags": [
-            "Slice of Life",
-            "Supernatural"
-        ],
+        "tags": ["Slice of Life", "Supernatural"],
         "year": "2008",
         "rating": "8.3/10"
     },
@@ -1347,11 +1114,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/11/75274.jpg",
         "description": "A student helps girls dealing with supernatural afflictions ('oddities').",
-        "tags": [
-            "Drama",
-            "Mystery",
-            "Supernatural"
-        ],
+        "tags": ["Drama", "Mystery", "Supernatural"],
         "year": "2009",
         "rating": "8.3/10"
     },
@@ -1362,11 +1125,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/2/73862.jpg",
         "description": "A traveler investigates primeval lifeforms known as Mushi and their effects on people.",
-        "tags": [
-            "Mystery",
-            "Slice of Life",
-            "Supernatural"
-        ],
+        "tags": ["Mystery", "Slice of Life", "Supernatural"],
         "year": "2005",
         "rating": "8.7/10"
     },
@@ -1377,11 +1136,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/13/11460.jpg",
         "description": "An ex-gangster becomes a teacher to reform a class of delinquents.",
-        "tags": [
-            "Comedy",
-            "Drama",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Drama", "Slice of Life"],
         "year": "1999",
         "rating": "8.6/10"
     },
@@ -1392,11 +1147,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1228/111372.jpg",
         "description": "A delinquent dies saving a child and returns as a Spirit Detective.",
-        "tags": [
-            "Action",
-            "Sports",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Sports", "Supernatural"],
         "year": "1992",
         "rating": "8.5/10"
     },
@@ -1407,10 +1158,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1346/119505.jpg",
         "description": "A former assassin wanders Japan offering protection to atone for his past.",
-        "tags": [
-            "Action",
-            "Historical"
-        ],
+        "tags": ["Action", "Historical"],
         "year": "1996",
         "rating": "8.3/10"
     },
@@ -1421,11 +1169,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1589/95329.jpg",
         "description": "A modern girl travels to feudal Japan and searches for Jewel shards with a half-demon.",
-        "tags": [
-            "Adventure",
-            "Fantasy",
-            "Romance"
-        ],
+        "tags": ["Adventure", "Fantasy", "Romance"],
         "year": "2000",
         "rating": "7.9/10"
     },
@@ -1436,11 +1180,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/2/11232.jpg",
         "description": "Two women named Nana meet on a train and navigate life and love in Tokyo.",
-        "tags": [
-            "Drama",
-            "Music",
-            "Romance"
-        ],
+        "tags": ["Drama", "Music", "Romance"],
         "year": "2006",
         "rating": "8.5/10"
     },
@@ -1451,11 +1191,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/11/11636.jpg",
         "description": "A teenager discovers rock music and joins a band striving for fame.",
-        "tags": [
-            "Drama",
-            "Music",
-            "Slice of Life"
-        ],
+        "tags": ["Drama", "Music", "Slice of Life"],
         "year": "2004",
         "rating": "8.3/10"
     },
@@ -1466,11 +1202,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1906/121592.jpg",
         "description": "A businessman is kidnapped by pirates and joins their crew in a lawless city.",
-        "tags": [
-            "Action",
-            "Drama",
-            "Thriller"
-        ],
+        "tags": ["Action", "Drama", "Thriller"],
         "year": "2006",
         "rating": "8.1/10"
     },
@@ -1481,11 +1213,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1130/120002.jpg",
         "description": "A pacifist gunman with a huge bounty travels a desert planet.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Comedy", "Sci-Fi"],
         "year": "1998",
         "rating": "8.2/10"
     },
@@ -1496,11 +1224,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1012/143965.jpg",
         "description": "A powerful vampire fights against supernatural threats for a British organization.",
-        "tags": [
-            "Action",
-            "Horror",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Horror", "Supernatural"],
         "year": "2006",
         "rating": "8.3/10"
     },
@@ -1511,10 +1235,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1314/142015.jpg",
         "description": "Police enforce the Sibyl System, which measures mental state and crime potential.",
-        "tags": [
-            "Sci-Fi",
-            "Thriller"
-        ],
+        "tags": ["Sci-Fi", "Thriller"],
         "year": "2012",
         "rating": "8.3/10"
     },
@@ -1525,11 +1246,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/5/19570.jpg",
         "description": "Contractors with supernatural powers perform missions in a world with a fake sky.",
-        "tags": [
-            "Action",
-            "Mystery",
-            "Sci-Fi"
-        ],
+        "tags": ["Action", "Mystery", "Sci-Fi"],
         "year": "2007",
         "rating": "8.1/10"
     },
@@ -1540,11 +1257,7 @@ export const animeData = [
         "notes": "S1-4",
         "image": "https://cdn.myanimelist.net/images/anime/10/71772.jpg",
         "description": "The lives of unique characters intersect in Tokyo's Ikebukuro district.",
-        "tags": [
-            "Action",
-            "Fantasy",
-            "Mystery"
-        ],
+        "tags": ["Action", "Fantasy", "Mystery"],
         "year": "2010",
         "rating": "8.2/10"
     },
@@ -1555,11 +1268,7 @@ export const animeData = [
         "notes": "S1-2",
         "image": "https://cdn.myanimelist.net/images/anime/1886/128266.jpg",
         "description": "A minor god seeks followers and battles phantoms with his Regalia.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Supernatural"
-        ],
+        "tags": ["Action", "Comedy", "Supernatural"],
         "year": "2014",
         "rating": "8.0/10"
     },
@@ -1570,11 +1279,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1071/149486.jpg",
         "description": "Students at a weapon meister academy hunt souls to create a Death Scythe.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Comedy", "Fantasy"],
         "year": "2008",
         "rating": "7.9/10"
     },
@@ -1585,10 +1290,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1429/95946.jpg",
         "description": "A fighter joins a group of assassins planning to overthrow a corrupt empire.",
-        "tags": [
-            "Action",
-            "Fantasy"
-        ],
+        "tags": ["Action", "Fantasy"],
         "year": "2014",
         "rating": "7.5/10"
     },
@@ -1599,11 +1301,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1074/111944.jpg",
         "description": "Sibling gamers are transported to a world where everything is decided by games.",
-        "tags": [
-            "Adventure",
-            "Fantasy",
-            "Sci-Fi"
-        ],
+        "tags": ["Adventure", "Fantasy", "Sci-Fi"],
         "year": "2014",
         "rating": "8.1/10"
     },
@@ -1614,10 +1312,7 @@ export const animeData = [
         "notes": "S1-3",
         "image": "https://cdn.myanimelist.net/images/anime/1895/142748.jpg",
         "description": "A boy dies and forms a dysfunctional party in a fantasy world.",
-        "tags": [
-            "Comedy",
-            "Fantasy"
-        ],
+        "tags": ["Comedy", "Fantasy"],
         "year": "2016",
         "rating": "8.1/10"
     },
@@ -1628,11 +1323,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/13/22128.jpg",
         "description": "Two students agree to help each other pursue their crushes.",
-        "tags": [
-            "Comedy",
-            "Romance",
-            "Slice of Life"
-        ],
+        "tags": ["Comedy", "Romance", "Slice of Life"],
         "year": "2008",
         "rating": "8.3/10"
     },
@@ -1643,11 +1334,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/1244/111115.jpg",
         "description": "Students in the afterlife fight against a girl named Angel.",
-        "tags": [
-            "Action",
-            "Comedy",
-            "Drama"
-        ],
+        "tags": ["Action", "Comedy", "Drama"],
         "year": "2010",
         "rating": "8.1/10"
     },
@@ -1658,11 +1345,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/5/79697.jpg",
         "description": "Friends reunite to grant the wish of their childhood friend's ghost.",
-        "tags": [
-            "Drama",
-            "Slice of Life",
-            "Supernatural"
-        ],
+        "tags": ["Drama", "Slice of Life", "Supernatural"],
         "year": "2011",
         "rating": "8.3/10"
     },
@@ -1673,11 +1356,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/4/75509.jpg",
         "description": "A transfer student gets involved in a mystery surrounding a cursed class.",
-        "tags": [
-            "Horror",
-            "Mystery",
-            "Slice of Life"
-        ],
+        "tags": ["Horror", "Mystery", "Slice of Life"],
         "year": "2012",
         "rating": "7.5/10"
     },
@@ -1688,10 +1367,7 @@ export const animeData = [
         "notes": "S1",
         "image": "https://cdn.myanimelist.net/images/anime/13/33465.jpg",
         "description": "Participants fight in a survival game to become the next God using future diaries.",
-        "tags": [
-            "Action",
-            "Thriller"
-        ],
+        "tags": ["Action", "Thriller"],
         "year": "2011",
         "rating": "7.4/10"
     }
