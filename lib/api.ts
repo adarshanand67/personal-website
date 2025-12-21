@@ -30,7 +30,7 @@ export const getAnime = async (): Promise<AnimeItem[]> =>
     type: item.type as AnimeType,
     status: item.status as WatchStatus,
     image: item.image,
-    notes: item.notes,
+    seasons: item.seasons,
     recommended: item.recommended,
     description: item.description,
     tags: item.tags,

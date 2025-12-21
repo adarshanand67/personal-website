@@ -331,7 +331,7 @@ export function Terminal() {
                                 {lines.map((line, i) => (
                                     <div
                                         key={i}
-                                        className={`whitespace-pre leading-snug ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
+                                        className={`whitespace-pre leading-snug tracking-wide ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
                                     >
                                         {line.includes('\x1b[') ? parseAnsi(line) : line}
                                     </div>
