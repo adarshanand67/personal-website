@@ -14,9 +14,16 @@ import { MobileDock } from "@/components/layout/navigation/MobileDock";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { DLPProtection } from "@/components/features/security/DLPProtection";
 
+/**
+ * Client Layout Component - wraps all client-side providers and global components.
+ * Provides theme, state management, navigation, modals, and feature components.
+ * @component
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Page content
+ */
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false} storageKey="theme">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="theme">
             <DLPProtection />
             <PWARegistration />
             <ScrollProgress />

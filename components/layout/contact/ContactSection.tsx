@@ -7,6 +7,11 @@ import { SectionHeader } from "@/components/layout/ui";
 import { useStore } from "@/lib/store/useStore";
 import { siteConfig } from "@/lib/config";
 
+/**
+ * Contact Section Component - displays contact information with interactive cards.
+ * Features LinkedIn, Email (with copy), and GitHub links with hover effects.
+ * @component
+ */
 export function ContactSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['contact'] ?? false;

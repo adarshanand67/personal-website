@@ -15,6 +15,11 @@ const shelves = (["blogs", "articles", "books", "anime", "hobby"] as const).map(
     color: "text-green-500"
 }));
 
+/**
+ * Shelves Section Component - displays directory-style navigation to content shelves.
+ * Features collapsible grid of shelf cards (blogs, articles, books, anime, hobby).
+ * @component
+ */
 export function ShelvesSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['shelves'] ?? false;

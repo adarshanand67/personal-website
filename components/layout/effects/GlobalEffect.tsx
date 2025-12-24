@@ -3,6 +3,11 @@
 import { useEffect } from "react";
 import { useStore } from "@/lib/store/useStore";
 
+/**
+ * Global Effect Component - sets mounted state for SSR safety.
+ * Runs once on client mount to enable client-only features.
+ * @component
+ */
 export const GlobalEffect = () => {
     const { setIsMounted } = useStore();
 
