@@ -4,7 +4,14 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { Copy, AlertTriangle, EyeOff, Camera, ShieldAlert, Terminal, RefreshCw } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 
-// --- Notifications Component ---
+/**
+ * Represents a security notification displayed to the user.
+ * @typedef {Object} NotificationType
+ * @property {string} id - Unique identifier for the notification
+ * @property {string} message - The notification message to display
+ * @property {"warning" | "error" | "info"} type - Severity level of the notification
+ * @property {React.ReactNode} icon - Icon component to display alongside the message
+ */
 type NotificationType = {
     id: string;
     message: string;
@@ -12,6 +19,21 @@ type NotificationType = {
     icon: React.ReactNode;
 };
 
+/**
+ * Renders a stack of security alert notifications in the top-right corner.
+ * Notifications auto-dismiss after 3 seconds and use a high z-index to ensure visibility.
+ * 
+ * @param {Object} props - Component props
+ * @param {NotificationType[]} props.notifications - Array of notifications to display
+ * @returns {JSX.Element | null} Notification stack or null if no notifications
+ * 
+ * @example
+ * ```tsx
+ * <DLPNotification notifications={[
+ *   { id: '1', message: 'Copy blocked', type: 'warning', icon: <Copy /> }
+ * ]} />
+ * ```
+ */
 const DLPNotification = ({ notifications }: { notifications: NotificationType[] }) => {
     if (notifications.length === 0) return null;
 
@@ -37,6 +59,41 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
 
 
 
+/**
+ * Data Loss Prevention (DLP) Protection Component
+ * 
+ * Implements comprehensive client-side security measures to prevent unauthorized
+ * data extraction, copying, and inspection. This component provides multiple layers
+ * of protection including:
+ * 
+ * - **Copy/Paste/Cut Protection**: Blocks clipboard operations and poisons clipboard data
+ * - **Right-Click Protection**: Disables context menus to prevent "Save As" and inspect options
+ * - **Drag & Drop Protection**: Implements "lazy blocking" - allows visual drag but blocks on drop
+ * - **Text Selection Protection**: Allows selection but clears it on mouse release with notification
+ * - **Keyboard Shortcut Blocking**: Prevents Ctrl+A, Ctrl+S, Ctrl+P, Ctrl+U, F12, and DevTools shortcuts
+ * - **Screenshot Protection**: Detects PrintScreen and blacks out the screen during capture
+ * - **DevTools Detection**: Monitors for developer tools via window resize heuristics
+ * - **Console Warfare**: Displays warnings and provides infrastructure for debugger traps
+ * - **Print Protection**: Blocks print dialogs and hides content in print CSS
+ * - **Window Blur Protection**: Blacks out content when window loses focus
+ * - **Honeytoken**: Hidden link to trap bots and scrapers
+ * 
+ * @component
+ * @returns {JSX.Element} DLP protection layer with notifications and overlays
+ * 
+ * @remarks
+ * - Integrates with Zustand store to pause music during security events
+ * - Uses rate limiting to track violation count (resets after 10s)
+ * - Notifications auto-dismiss after 3 seconds
+ * - Console warnings fire every 2 seconds when DevTools might be open
+ * - The debugger trap is commented out by default to avoid disrupting legitimate development
+ * 
+ * @example
+ * ```tsx
+ * // In your root layout or app component:
+ * <DLPProtection />
+ * ```
+ */
 export function DLPProtection() {
     const [isBlur, setIsBlur] = useState(false);
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
@@ -46,6 +103,18 @@ export function DLPProtection() {
     const { isPlaying, setIsPlaying } = useStore();
     const wasPlayingRef = useRef(false);
 
+    /**
+     * Adds a new security notification and increments violation count.
+     * Notifications auto-dismiss after 3 seconds. Violation count resets after 10 seconds.
+     * 
+     * @param {string} message - The security alert message to display
+     * @param {React.ReactNode} icon - Icon component to show with the notification
+     * 
+     * @example
+     * ```tsx
+     * addNotification("Copy blocked", <Copy size={16} />);
+     * ```
+     */
     const addNotification = useCallback((message: string, icon: React.ReactNode) => {
         const id = Math.random().toString(36).substring(7);
         const newNotif: NotificationType = { id, message, type: "warning", icon };
