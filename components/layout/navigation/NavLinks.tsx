@@ -41,15 +41,15 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
                             relative px-4 py-2 rounded-xl font-medium text-sm
                             transition-all duration-300 group
                             ${isActive
-                                ? 'text-green-500 bg-green-500/10'
-                                : 'text-foreground/70 hover:text-green-500 hover:bg-green-500/5'
+                                ? 'text-blue-600 dark:text-blue-400 bg-blue-500/10'
+                                : 'text-foreground/70 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-500/5'
                             }
                         `}
                         onClick={onItemClick}
                     >
                         {link.label}
                         {isActive && (
-                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-blue-500 animate-pulse" />
                         )}
                     </Link>
                 );
