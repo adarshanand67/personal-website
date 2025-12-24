@@ -21,7 +21,7 @@ export const profileData = {
     },
     bio: {
         paragraphs: [
-            "I speak most generic advice and say that in deep voice to sound intellectual"
+            "I enjoy wrapping basic common sense in a deep voice just to see if it sounds like philosophy."
         ]
     }
 };
