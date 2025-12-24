@@ -1,7 +1,19 @@
+/**
+ * @fileoverview Music player state slice for Zustand store.
+ * Manages music playback state, volume, shuffle, and track navigation.
+ */
+
 import { StateCreator } from 'zustand';
 import { AppState, MusicState } from '../types';
 import { playlist } from '@/lib/constants';
 
+/**
+ * Creates the music player state slice.
+ * Handles all music player functionality including playback controls and track management.
+ * 
+ * @param {Function} set - Zustand set function
+ * @returns {MusicState} Music state slice
+ */
 export const createMusicSlice: StateCreator<AppState, [], [], MusicState> = (set) => ({
     showMusicPlayer: false,
     isPlaying: false,

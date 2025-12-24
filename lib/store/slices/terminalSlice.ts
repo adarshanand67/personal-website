@@ -1,6 +1,18 @@
+/**
+ * @fileoverview Terminal state slice for Zustand store.
+ * Manages terminal emulator state including lines, history, and UI state.
+ */
+
 import { StateCreator } from 'zustand';
 import { AppState, TerminalState } from '../types';
 
+/**
+ * Creates the terminal state slice.
+ * Provides state and actions for the interactive terminal component.
+ * 
+ * @param {Function} set - Zustand set function
+ * @returns {TerminalState} Terminal state slice
+ */
 export const createTerminalSlice: StateCreator<AppState, [], [], TerminalState> = (set) => ({
     lines: [],
     history: [],

@@ -1,6 +1,18 @@
+/**
+ * @fileoverview Content state slice for Zustand store.
+ * Manages content selection state for anime, books, hobbies, and search.
+ */
+
 import { StateCreator } from 'zustand';
 import { AppState, AnimeState, HobbyState, BookState, SearchState, RandomizerState } from '../types';
 
+/**
+ * Creates the content state slice.
+ * Handles state for content shelves (anime, books, hobbies) and search functionality.
+ * 
+ * @param {Function} set - Zustand set function
+ * @returns {AnimeState & HobbyState & BookState & SearchState & RandomizerState} Content state slice
+ */
 export const createContentSlice: StateCreator<AppState, [], [], AnimeState & HobbyState & BookState & SearchState & RandomizerState> = (set) => ({
     animeSelectedItem: null,
     animeSelectedTag: null,
