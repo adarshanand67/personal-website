@@ -34,80 +34,81 @@ export function Navbar() {
                 />
             </div>
             <nav
-                className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4"
+                className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
                 role="navigation"
                 aria-label="main navigation"
             >
-                <div className="w-full max-w-7xl glass rounded-2xl shadow-lg border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-xl hover:scale-[1.005]">
-                    <div className="px-4 md:px-6">
-                        <div className="flex items-center h-14">
-                            <button
-                                className={`md:hidden p-2 mr-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${isNavbarActive ? "is-active" : ""}`}
-                                aria-label="menu"
-                                aria-expanded={isNavbarActive}
-                                onClick={() => {
-                                    setIsNavbarActive(!isNavbarActive);
-                                }}
-                            >
-                                <div className="w-5 h-4 relative flex flex-col justify-between">
-                                    <span
-                                        className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isNavbarActive ? "rotate-45 translate-y-1.5" : ""}`}
-                                    />
-                                    <span
-                                        className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isNavbarActive ? "opacity-0" : ""}`}
-                                    />
-                                    <span
-                                        className={`w-full h-0.5 bg-foreground transition-all duration-300 ${isNavbarActive ? "-rotate-45 -translate-y-2" : ""}`}
-                                    />
-                                </div>
-                            </button>
+                <div className="w-full max-w-5xl glass rounded-2xl shadow-xl shadow-black/5 border border-white/20 dark:border-white/5 transition-all duration-500 hover:shadow-2xl">
+                    <div className="px-5">
+                        <div className="flex items-center h-16">
                             <Link
                                 href={routes.home}
-                                className="text-lg font-bold text-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors flex items-center gap-2 font-mono whitespace-nowrap mr-auto md:mr-0"
+                                className="text-xl font-black title-gradient tracking-tight flex items-center gap-3 mr-auto group"
                             >
-                                ~/Adarsh
+                                <div className="w-8 h-8 rounded-lg bg-green-500 flex items-center justify-center text-white rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-lg shadow-green-500/20">
+                                    ~
+                                </div>
+                                Adarsh
                             </Link>
-                            <div className="md:hidden">
-                                <ThemeToggle />
-                            </div>
-                            <div className="hidden md:flex md:items-center md:ml-auto gap-1 text-sm font-medium">
+
+                            <div className="hidden md:flex md:items-center gap-2 text-sm font-bold">
                                 <Link
                                     href={routes.articleShelf}
-                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
+                                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/5 transition-all"
                                 >
                                     Articles
                                 </Link>
                                 <Link
                                     href={routes.bookShelf}
-                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
+                                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/5 transition-all"
                                 >
                                     Books
                                 </Link>
                                 <Link
                                     href={routes.animeShelf}
-                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
+                                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/5 transition-all"
                                 >
                                     Anime
                                 </Link>
                                 <Link
                                     href={routes.hobbyShelf}
-                                    className="px-4 py-2 rounded-xl text-foreground/80 hover:bg-white/50 dark:hover:bg-gray-800/50 hover:text-green-600 dark:hover:text-green-400 transition-all font-medium"
+                                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/5 transition-all"
                                 >
                                     Hobby
                                 </Link>
-                                <div className="w-px h-5 bg-gray-200 dark:bg-gray-800 mx-2"></div>
+
+                                <div className="w-px h-6 bg-gray-200 dark:bg-white/10 mx-3 opacity-50"></div>
+
                                 <div className="flex items-center gap-2">
                                     <button
-                                        className="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-foreground/80 hover:text-green-600 dark:hover:text-green-400 transition-all"
+                                        className="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-green-500/5 text-foreground/70 hover:text-green-600 dark:hover:text-green-400 transition-all"
                                         onClick={() => {
                                             document.dispatchEvent(new Event("open-command-menu"));
                                         }}
                                         aria-label="Search"
                                     >
-                                        {isMounted ? <Search className="w-4 h-4" /> : <div className="w-4 h-4" />}
+                                        {isMounted ? <Search size={18} /> : <div className="w-4 h-4" />}
                                     </button>
                                     <ThemeToggle />
                                 </div>
+                            </div>
+
+                            <div className="md:hidden flex items-center gap-2">
+                                <button
+                                    onClick={() => {
+                                        document.dispatchEvent(new Event("open-command-menu"));
+                                    }}
+                                    className="p-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 transition-all"
+                                >
+                                    <Search size={20} />
+                                </button>
+                                <ThemeToggle />
+                                <button
+                                    className="p-2 ml-1 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
+                                    onClick={() => setIsNavbarActive(!isNavbarActive)}
+                                >
+                                    <Menu size={22} className={isNavbarActive ? "text-green-600" : ""} />
+                                </button>
                             </div>
                         </div>
                     </div>

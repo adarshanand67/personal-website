@@ -19,18 +19,20 @@ export function SectionHeader({
 }: SectionHeaderProps) {
     return (
         <div
-            className="w-full text-left group mb-3 cursor-pointer"
+            className="w-full text-left group mb-4 cursor-pointer"
             onClick={onToggle}
         >
-            <h2 className="text-2xl font-bold flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
-                {title}
-                <ChevronDown
-                    size={20}
-                    className={`transition-transform duration-300 ${isExpanded ? "rotate-0" : "-rotate-90"
-                        }`}
-                />
+            <div className="flex items-center gap-3 mb-2">
+                <div className={`h-8 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? 'scale-y-100' : 'scale-y-50 opacity-50'}`} />
+                <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                    {title}
+                    <ChevronDown
+                        size={20}
+                        className={`transition-all duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`}
+                    />
+                </h2>
                 {rightElement && <div className="ml-auto">{rightElement}</div>}
-            </h2>
+            </div>
         </div>
     );
 }
