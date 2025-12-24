@@ -2,16 +2,34 @@
 
 import React from "react";
 
+/**
+ * Error boundary state interface.
+ * @interface ErrorBoundaryState
+ * @property {boolean} hasError - Whether an error has been caught
+ * @property {Error} [error] - The caught error object
+ */
 interface ErrorBoundaryState {
   hasError: boolean;
   error?: Error;
 }
 
+/**
+ * Error boundary props interface.
+ * @interface ErrorBoundaryProps
+ * @property {React.ReactNode} children - Child components to wrap
+ * @property {React.ComponentType} [fallback] - Optional custom fallback component
+ */
 interface ErrorBoundaryProps {
   children: React.ReactNode;
   fallback?: React.ComponentType<{ error?: Error; resetError: () => void }>;
 }
 
+/**
+ * Error Boundary Component - catches React errors in child component tree.
+ * Displays fallback UI when errors occur and provides error reset functionality.
+ * @class
+ * @extends {React.Component<ErrorBoundaryProps, ErrorBoundaryState>}
+ */
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
@@ -40,6 +58,12 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   }
 }
 
+/**
+ * Default error fallback component.
+ * @param {Object} props - Component props
+ * @param {Error} [props.error] - Error object
+ * @param {Function} props.resetError - Function to reset error state
+ */
 function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError: () => void }) {
   return (
     <div className="min-h-[200px] flex items-center justify-center p-8">
@@ -62,7 +86,10 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
   );
 }
 
-// Hook version for functional components
+/**
+ * Hook for error handling in functional components.
+ * @returns {Function} Error handler function
+ */
 export function useErrorHandler() {
   return (error: Error, errorInfo?: { componentStack?: string }) => {
     console.error("Error handled:", error, errorInfo);

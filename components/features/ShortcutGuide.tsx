@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import { Command, ChevronUp, ChevronDown, CornerDownLeft, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+/**
+ * Shortcut Guide Component - displays keyboard shortcuts modal.
+ * Opens with "?" key, closes with ESC. Shows all available keyboard shortcuts.
+ * @component
+ */
 export function ShortcutGuide() {
     const [open, setOpen] = useState(false);
 
