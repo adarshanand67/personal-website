@@ -88,6 +88,7 @@ export interface AnimeItem {
   tags?: string[];
   year?: string;
   rating?: string;
+  keyLearnings?: string[];
 }
 
 export interface SkillNode {

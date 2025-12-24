@@ -469,6 +469,20 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                                     </div>
                                 )}
 
+                                {animeSelectedItem.keyLearnings && animeSelectedItem.keyLearnings.length > 0 && (
+                                    <div className="mb-8 p-6 rounded-2xl bg-green-500/5 dark:bg-green-500/10 border border-green-500/20">
+                                        <h4 className="text-[10px] font-bold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4">Key Learnings</h4>
+                                        <ul className="space-y-3">
+                                            {animeSelectedItem.keyLearnings.map((learning, i) => (
+                                                <li key={i} className="flex gap-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                                                    <span className="shrink-0 w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5" />
+                                                    {learning}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+
                                 {/* Watch Trailer Button */}
                                 <a
                                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(animeSelectedItem.title + ' trailer')}`}
