@@ -14,6 +14,7 @@ const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
     ),
 });
 
+/** Graph node representing a skill or technology. */
 interface GraphNode {
     id: string;
     group: number;
@@ -22,16 +23,23 @@ interface GraphNode {
     color?: string;
 }
 
+/** Graph link connecting two skills. */
 interface GraphLink {
     source: string;
     target: string;
 }
 
+/** Complete graph data structure. */
 interface GraphData {
     nodes: GraphNode[];
     links: GraphLink[];
 }
 
+/**
+ * Skills Graph Component - force-directed graph visualization of technical skills.
+ * Uses react-force-graph-2d for interactive skill relationship visualization.
+ * @component
+ */
 export function SkillsGraph() {
     const { theme } = useTheme();
     const isDark = theme === "dark";
