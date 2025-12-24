@@ -1,49 +1,84 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeader, SpotlightCard } from "@/components/layout/ui";
 import { useStore } from "@/lib/store/useStore";
 import { skillCategories } from "@/lib/constants";
 import { techLinks } from "@/lib/techLinks";
+import { SkillsGraph } from "./SkillsGraph";
 
 export function TechStack() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['techstack'] ?? false;
+    const [viewMode, setViewMode] = useState<'list' | 'graph'>('list');
 
     return (
         <div className="font-mono max-w-6xl mx-auto px-4 md:px-6 mb-8">
-            <SectionHeader title="Tech Stack" isExpanded={isExpanded} onToggle={() => toggleSectionExpanded('techstack')} />
+            <SectionHeader
+                title="Tech Stack"
+                isExpanded={isExpanded}
+                onToggle={() => toggleSectionExpanded('techstack')}
+                rightElement={
+                    <div className="flex bg-gray-100 dark:bg-gray-800 p-1 rounded-lg border border-gray-200 dark:border-gray-700" onClick={(e) => e.stopPropagation()}>
+                        <button
+                            onClick={() => setViewMode('list')}
+                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${viewMode === 'list'
+                                ? 'bg-white dark:bg-black text-green-600 shadow-sm'
+                                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                                }`}
+                        >
+                            List
+                        </button>
+                        <button
+                            onClick={() => setViewMode('graph')}
+                            className={`px-3 py-1 rounded-md text-xs font-medium transition-all ${viewMode === 'graph'
+                                ? 'bg-white dark:bg-black text-green-600 shadow-sm'
+                                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                                }`}
+                        >
+                            Graph
+                        </button>
+                    </div>
+                }
+            />
             <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="grid grid-cols-1 gap-4 mt-4">
-                    {Object.entries(skillCategories).map(([category, skills]) => (
-                        <SpotlightCard key={category} className="group hover:border-green-500/30 transition-all duration-300">
-                            <div className="p-5">
-                                <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
-                                    {category}
-                                    <span className="text-[10px] text-gray-400 ml-auto font-mono opacity-0 group-hover/spotlight:opacity-100 transition-opacity">{skills.length} items</span>
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {skills.map((skill) => {
-                                        const url = techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
-                                        let domain = 'google.com';
-                                        try { domain = new URL(url).hostname; } catch { }
-                                        const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
-                                        return (
-                                            <Link key={skill} href={url} target="_blank" className="flex items-center gap-2 pl-2 pr-3 py-1.5 bg-gray-50/50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400 hover:border-green-500/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
-                                                <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
-                                                    <Image src={favicon} alt={skill} width={16} height={16} className="object-contain" />
-                                                </div>
-                                                {skill}
-                                            </Link>
-                                        );
-                                    })}
+                {viewMode === 'list' ? (
+                    <div className="grid grid-cols-1 gap-4 mt-4">
+                        {Object.entries(skillCategories).map(([category, skills]) => (
+                            <SpotlightCard key={category} className="group hover:border-green-500/30 transition-all duration-300">
+                                <div className="p-5">
+                                    <h3 className="text-xs font-bold text-gray-500 mb-4 uppercase tracking-widest flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-green-500 group-hover:animate-pulse"></span>
+                                        {category}
+                                        <span className="text-[10px] text-gray-400 ml-auto font-mono opacity-0 group-hover/spotlight:opacity-100 transition-opacity">{skills.length} items</span>
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {skills.map((skill) => {
+                                            const url = techLinks[skill] || `https://www.google.com/search?q=${encodeURIComponent(skill)}`;
+                                            let domain = 'google.com';
+                                            try { domain = new URL(url).hostname; } catch { }
+                                            const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
+                                            return (
+                                                <Link key={skill} href={url} target="_blank" className="flex items-center gap-2 pl-2 pr-3 py-1.5 bg-gray-50/50 dark:bg-gray-800/30 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:text-green-600 dark:hover:text-green-400 hover:border-green-500/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+                                                    <div className="relative w-4 h-4 rounded-full overflow-hidden bg-white dark:bg-gray-900 p-0.5 shrink-0">
+                                                        <Image src={favicon} alt={skill} width={16} height={16} className="object-contain" />
+                                                    </div>
+                                                    {skill}
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
-                        </SpotlightCard>
-                    ))}
-                </div>
+                            </SpotlightCard>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="mt-4">
+                        <SkillsGraph />
+                    </div>
+                )}
             </div>
         </div>
     );

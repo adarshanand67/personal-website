@@ -21,7 +21,7 @@ export const profileData = {
     },
     bio: {
         paragraphs: [
-            "I enjoy wrapping basic common sense in a deep voice just to see if it sounds like philosophy."
+            "I enjoy wrapping basic common sense in a slow deep voice just to see if it sounds like philosophy."
         ]
     }
 };

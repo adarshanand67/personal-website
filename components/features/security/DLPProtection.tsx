@@ -40,6 +40,8 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
 export function DLPProtection() {
     const [isBlur, setIsBlur] = useState(false);
     const [notifications, setNotifications] = useState<NotificationType[]>([]);
+    const [violationCount, setViolationCount] = useState(0);
+    const violationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const { isPlaying, setIsPlaying } = useStore();
     const wasPlayingRef = useRef(false);
@@ -49,6 +51,11 @@ export function DLPProtection() {
         const newNotif: NotificationType = { id, message, type: "warning", icon };
 
         setNotifications((prev) => [...prev, newNotif]);
+
+        // Rate Limiting Logic: excessive violations trigger a stricter response
+        setViolationCount(prev => prev + 1);
+        if (violationTimeoutRef.current) clearTimeout(violationTimeoutRef.current);
+        violationTimeoutRef.current = setTimeout(() => setViolationCount(0), 10000); // Reset after 10s
 
         // Auto dismiss
         setTimeout(() => {
@@ -70,11 +77,22 @@ export function DLPProtection() {
         }
     }, [isBlur, isPlaying, setIsPlaying]);
 
+    // Violation Lockout Effect
+    useEffect(() => {
+        if (violationCount > 5) {
+            setIsBlur(true);
+            setTimeout(() => {
+                setViolationCount(0);
+                setIsBlur(false);
+            }, 5000); // 5s lockout for aggressive behavior
+        }
+    }, [violationCount]);
+
     useEffect(() => {
         // 1. Disable Right Click
         const handleContextMenu = (e: MouseEvent) => {
             e.preventDefault();
-            addNotification("Context menu is disabled for security.", <ShieldAlert size={16} />);
+            addNotification("Right-click context menu is disabled for security compliance.", <ShieldAlert size={16} />);
             e.stopPropagation(); // Stop event bubbling
             return false;
         };
@@ -91,8 +109,11 @@ export function DLPProtection() {
 
         // 3. Disable Dragging
         const handleDragStart = (e: DragEvent) => {
-            addNotification("Dragging content is disabled.", <ShieldAlert size={16} />);
+            addNotification("Dragging content (text or images) to external sources is prohibited.", <ShieldAlert size={16} />);
             e.preventDefault();
+            if (e.dataTransfer) {
+                e.dataTransfer.clearData();
+            }
             return false;
         };
 
@@ -109,6 +130,12 @@ export function DLPProtection() {
 
             // Block generic shortcuts with specific messages
             if (e.ctrlKey || e.metaKey) {
+                if (e.key === "a") {
+                    addNotification("Select All is disabled to prevent bulk data extraction.", <ShieldAlert size={16} />);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
                 if (e.key === "s") {
                     addNotification("Saving content is disabled.", <ShieldAlert size={16} />);
                     e.preventDefault();
@@ -136,10 +163,16 @@ export function DLPProtection() {
             }
 
             // Block DevTools Shortcuts (Cmd+Option+I, J, C or Ctrl+Shift+I, J, C)
+            // Block DevTools Shortcuts (Cmd+Option+I, J, C or Ctrl+Shift+I, J, C)
+            // Also blocking Cmd+Shift+Number keys (2,3,4,5) for Screenshots/Debug
             if (
                 (e.ctrlKey || e.metaKey) &&
                 e.shiftKey &&
-                (e.key === "i" || e.key === "j" || e.key === "c" || e.key === "4" || e.key === "3" || e.key === "5")
+                (
+                    e.key === "i" || e.key === "j" || e.key === "c" ||
+                    e.key === "4" || e.key === "3" || e.key === "5" || e.key === "2" ||
+                    e.code === "Digit3" || e.code === "Digit4" || e.code === "Digit5" || e.code === "Digit2"
+                )
             ) {
                 addNotification("Inspector tools are blocked.", <Terminal size={16} />);
                 e.preventDefault();
@@ -160,10 +193,10 @@ export function DLPProtection() {
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 setIsBlur(true);
-                document.title = "⚠️ SECURITY VIOLATION";
+                // document.title = "⚠️ SECURITY VIOLATION";
             } else {
                 setIsBlur(false);
-                document.title = "Adarsh Anand";
+                // document.title = "Adarsh Anand";
             }
         };
 
@@ -191,6 +224,12 @@ export function DLPProtection() {
         -ms-user-select: none;
         user-select: none;
         -webkit-touch-callout: none;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      ::-webkit-scrollbar {
+        display: none;
       }
       input, textarea, [contenteditable] {
         -webkit-user-select: text;
@@ -200,6 +239,12 @@ export function DLPProtection() {
       }
       /* Hide scrollbars during blur to prevent peeking */
       ${isBlur ? 'body { overflow: hidden !important; }' : ''}
+
+      /* Image/Media Protection - Disable interaction BUT allow events to bubble for JS trapping */
+      img, video, canvas {
+        -webkit-user-drag: none !important;
+        user-drag: none !important;
+      }
     `;
         document.head.appendChild(style);
 
@@ -251,6 +296,11 @@ export function DLPProtection() {
 
     return (
         <>
+            {/* Honeytoken for bots */}
+            <a href="/admin-trap-honeytoken" aria-hidden="true" style={{ display: 'none', visibility: 'hidden' }} rel="nofollow">
+                Admin Access Key
+            </a>
+
             <DLPNotification notifications={notifications} />
 
             {isBlur && (
@@ -264,7 +314,10 @@ export function DLPProtection() {
                         SESSION SUSPENDED
                     </h1>
                     <p className="text-gray-400 max-w-md text-lg">
-                        This window has been secured. Content is hidden while the application is in the background.
+                        {violationCount > 5
+                            ? "Suspicious activity detected. Access temporarily limited."
+                            : "This window has been secured. Content is hidden while the application is in the background."
+                        }
                     </p>
 
                     <div className="mt-12 flex gap-4 text-xs font-mono text-gray-600">
