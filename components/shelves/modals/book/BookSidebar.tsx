@@ -41,7 +41,7 @@ export function BookSidebar({ item }: BookSidebarProps) {
             )}
 
             <div className="w-full space-y-3 relative z-10">
-                <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-green-500/10 text-green-700 dark:text-green-400 rounded-xl text-xs font-bold uppercase tracking-wider border border-green-500/20">
+                <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-green-500/10 text-green-500 rounded-xl text-xs font-bold uppercase tracking-wider border border-green-500/20">
                     <BookOpen size={14} strokeWidth={3} />
                     <span>Featured Book</span>
                 </div>
@@ -58,7 +58,7 @@ export function BookSidebar({ item }: BookSidebarProps) {
                     href={item.amazonLink || `https://www.amazon.com/s?k=${encodeURIComponent(item.title + " " + item.author)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-green-500 hover:bg-green-600 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-[0_10px_20px_rgba(34,197,94,0.3)] group transition-all hover:scale-[1.02] active:scale-[0.98] border border-green-400/30"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 bg-green-500 hover:bg-green-400 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-[0_10px_20px_rgba(34,197,94,0.3)] group transition-all hover:scale-[1.02] active:scale-[0.98] border border-green-400/30"
                 >
                     <ExternalLink size={18} className="group-hover:scale-110 transition-transform" />
                     <span>Get it on Amazon</span>

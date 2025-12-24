@@ -38,7 +38,7 @@ export function SectionHeader({
         >
             <div className="flex items-center gap-3 mb-1">
                 <div className={`h-6 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? 'scale-y-100' : 'scale-y-50 opacity-50'}`} />
-                <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-500 transition-colors">
                     {title}
                     <ChevronDown
                         size={20}

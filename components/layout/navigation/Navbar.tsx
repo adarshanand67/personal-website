@@ -32,7 +32,7 @@ export function Navbar() {
         <>
             <div className="h-20" />
             <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-gray-200/20 pointer-events-none">
-                <div className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
+                <div className="h-full bg-gradient-to-r from-green-500 to-green-400 transition-all duration-150 ease-out" style={{ width: `${scrollProgress}%` }} />
             </div>
             <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4" role="navigation">
                 <div className="w-full max-w-5xl glass rounded-2xl shadow-xl border border-white/20 dark:border-white/5 transition-all duration-500 hover:shadow-2xl">
@@ -48,7 +48,7 @@ export function Navbar() {
                                 <button onClick={() => document.dispatchEvent(new Event("open-command-menu"))} className="p-2 rounded-xl text-foreground/70 transition-all"><Search size={20} /></button>
                                 <ThemeToggle />
                                 <button className="p-2 ml-1 rounded-xl hover:bg-gray-100 dark:hover:bg-white/5 transition-all" onClick={() => setIsNavbarActive(!isNavbarActive)}>
-                                    <Menu size={22} className={isNavbarActive ? "text-green-600" : ""} />
+                                    <Menu size={22} className={isNavbarActive ? "text-green-500" : ""} />
                                 </button>
                             </div>
                         </div>

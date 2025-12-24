@@ -44,16 +44,16 @@ export function Experience({ items }: ExperienceProps) {
                                     <div className="flex-1 min-w-0">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-1">
                                             <h3 className="text-lg md:text-xl font-black text-gray-900 dark:text-white tracking-tight">{exp.company}</h3>
-                                            <span className="text-[9px] font-bold px-2 py-0.5 bg-green-500/10 text-green-600 dark:text-green-400 rounded-full border border-green-500/20">{exp.duration}</span>
+                                            <span className="text-[9px] font-bold px-2 py-0.5 bg-green-500/10 text-green-500 rounded-full border border-green-500/20">{exp.duration}</span>
                                         </div>
-                                        <p className="text-sm font-bold text-green-600 dark:text-green-400 mt-0">{exp.role}</p>
+                                        <p className="text-sm font-bold text-green-500 mt-0">{exp.role}</p>
                                         <div className="flex items-center gap-2 mt-1 text-[10px] font-medium text-gray-500 dark:text-gray-400">
                                             <MapPin size={10} />
                                             <span>{exp.location}</span>
                                         </div>
                                     </div>
                                 </div>
-                                {exp.description && <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 font-medium border-l-2 border-gray-100 dark:border-white/5 pl-4 italic">{exp.description}</p>}
+                                {exp.description && <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed mb-4 font-medium border-l-2 border-green-500/20 pl-4 italic" dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }} />}
                                 {exp.highlights && (
                                     <ul className="space-y-2">
                                         {exp.highlights.map((h: string, i: number) => (

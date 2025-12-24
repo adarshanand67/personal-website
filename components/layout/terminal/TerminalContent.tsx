@@ -47,7 +47,7 @@ export function TerminalContent({
             {lines.map((line, i) => (
                 <div
                     key={i}
-                    className={`whitespace-pre leading-snug tracking-wide ${line.startsWith('$ ') ? 'text-green-600 dark:text-green-400 font-semibold' : ''}`}
+                    className={`whitespace-pre leading-snug tracking-wide ${line.startsWith('$ ') ? 'text-green-500 font-bold' : ''}`}
                 >
                     {line.includes('\x1b[') ? parseAnsi(line) : line}
                 </div>
@@ -55,7 +55,7 @@ export function TerminalContent({
 
             {isIntroDone && (
                 <div className="flex items-center">
-                    <span className="mr-2 text-green-600 dark:text-green-400 font-bold">$</span>
+                    <span className="mr-2 text-green-500 font-bold">$</span>
                     <input
                         ref={inputRef}
                         type={passwordMode ? "password" : "text"}
@@ -63,14 +63,14 @@ export function TerminalContent({
                         onBlur={onBlur}
                         onChange={onChange}
                         onKeyDown={handleKeyDown}
-                        className="bg-transparent border-none outline-none text-green-600 dark:text-green-400 flex-grow font-medium focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:outline-none"
+                        className="bg-transparent border-none outline-none text-green-500 flex-grow font-medium focus:ring-0 !focus:outline-none !focus-visible:ring-0 !focus-visible:outline-none"
                         autoFocus
                         spellCheck={false}
                         autoComplete="off"
                         placeholder={passwordMode ? "●●●●●●●●" : ""}
                     />
                     {passwordMode && input.length === 0 && (
-                        <span className="animate-pulse text-green-600 dark:text-green-400">▊</span>
+                        <span className="animate-pulse text-green-500">▊</span>
                     )}
                 </div>
             )}

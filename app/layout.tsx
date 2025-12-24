@@ -3,6 +3,7 @@ import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/structuredData";
 import { ClientLayout } from "@/components/layout/ClientLayout";
+import { DLPProvider } from "@/components/layout/security/DLPProvider";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 
@@ -85,7 +86,9 @@ export default function RootLayout({
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
         <ClientLayout>
-          {children}
+          <DLPProvider>
+            {children}
+          </DLPProvider>
         </ClientLayout>
       </body>
     </html>

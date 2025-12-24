@@ -17,7 +17,7 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
                 <Link
                     href={paper.url}
                     target="_blank"
-                    className="group/link inline-flex items-center gap-2 text-green-600 dark:text-green-400 font-bold hover:underline"
+                    className="group/link inline-flex items-center gap-2 text-green-500 font-bold hover:underline"
                 >
                     <span>{paper.title}</span>
                     <ExternalLink size={14} className="opacity-50 group-hover/link:opacity-100 transition-opacity" />

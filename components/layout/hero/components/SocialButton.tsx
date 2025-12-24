@@ -38,7 +38,7 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                     {icon}
                 </div>
                 <div className="flex flex-col text-left">
-                    <span className="text-[9px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">{label}</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500">{label}</span>
                     <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">{name}</span>
                 </div>
             </div>

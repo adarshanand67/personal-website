@@ -34,7 +34,7 @@ export function NavLinks({ className, onItemClick }: NavLinksProps) {
                 <Link
                     key={link.href}
                     href={link.href}
-                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-500/5 transition-all"
+                    className="px-4 py-2 rounded-xl text-foreground/70 hover:text-green-500 hover:bg-green-500/5 transition-all"
                     onClick={onItemClick}
                 >
                     {link.label}

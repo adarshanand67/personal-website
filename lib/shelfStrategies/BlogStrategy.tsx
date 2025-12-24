@@ -18,7 +18,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
                     <span className="text-gray-500 text-xs min-w-[80px] font-mono">{blog.date}</span>
                     <Link
                         href={`/articleshelf/${blog.slug}`}
-                        className="group/link inline-flex items-center gap-1.5 text-green-600 dark:text-green-400 font-bold hover:underline"
+                        className="group/link inline-flex items-center gap-1.5 text-green-500 font-bold hover:underline"
                     >
                         <span>{blog.title}</span>
                         <ArrowUpRight size={14} className="opacity-50 group-hover/link:opacity-100 transition-all transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />

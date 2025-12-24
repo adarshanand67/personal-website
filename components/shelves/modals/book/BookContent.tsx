@@ -66,7 +66,7 @@ export function BookContent({ item }: BookContentProps) {
                     <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 md:p-8 border border-gray-100 dark:border-white/5">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="p-2 bg-green-500/10 rounded-lg">
-                                <BookOpen size={18} className="text-green-600 dark:text-green-400" />
+                                <BookOpen size={18} className="text-green-500" />
                             </div>
                             <h3 className="text-sm font-bold text-gray-900 dark:text-white uppercase tracking-wider">
                                 Key Takeaways

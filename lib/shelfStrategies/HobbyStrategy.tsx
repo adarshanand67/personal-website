@@ -14,7 +14,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     private getIcon(iconName: string): ReactNode {
         const IconComponent = iconMap[iconName] as any;
         if (IconComponent) {
-            return <IconComponent className="w-8 h-8 text-green-600 dark:text-green-400" />;
+            return <IconComponent className="w-8 h-8 text-green-500" />;
         }
         return <span className="text-3xl">🎮</span>;
     }
