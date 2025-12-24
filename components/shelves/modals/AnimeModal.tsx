@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { X, Tv, Check, Star, Calendar, Film } from "lucide-react";
+import { X, Tv, Check, Star, Calendar, Film, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { WatchStatus } from '@/types/definitions';
 
@@ -110,6 +110,17 @@ export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
                                     {item.description}
                                 </p>
                             )}
+
+                            {/* Watch Trailer Button */}
+                            <a
+                                href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white font-medium transition-colors shadow-lg shadow-red-600/20 group transform hover:scale-105 duration-200 text-sm"
+                            >
+                                <Play size={16} className="fill-current" />
+                                Watch Trailer
+                            </a>
                         </div>
 
                         {/* Divider */}
