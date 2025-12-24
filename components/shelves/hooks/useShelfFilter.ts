@@ -18,14 +18,8 @@ export function useShelfFilter(items: unknown[], configType: ShelfType, strategy
     }, [configType, setSearchQuery, setAnimeSelectedTag]);
 
     const filteredItems = useMemo(() => {
-        let filtered = strategy.filter(items as ShelfItem[], searchQuery);
-        if (configType === ShelfType.Anime && animeSelectedTag) {
-            filtered = filtered.filter((item: any) =>
-                item.tags && item.tags.includes(animeSelectedTag)
-            );
-        }
-        return filtered;
-    }, [items, searchQuery, strategy, configType, animeSelectedTag]);
+        return strategy.filter(items as ShelfItem[], searchQuery, animeSelectedTag);
+    }, [items, searchQuery, strategy, animeSelectedTag]);
 
     const randomizerItems = useMemo(() => {
         if (configType === ShelfType.Anime) {

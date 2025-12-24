@@ -42,7 +42,7 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                     <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">{name}</span>
                 </div>
             </div>
-            {href && <ExternalLink size={14} className="text-gray-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />}
+            {href && <ExternalLink size={16} className="text-green-500/80 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5" />}
         </div>
     );
 
