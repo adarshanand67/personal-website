@@ -3,6 +3,19 @@
 import React from "react";
 import { parseAnsi } from "@/lib/terminal/ansi";
 
+/**
+ * Props for TerminalContent component.
+ * @interface TerminalContentProps
+ * @property {string[]} lines - Array of terminal output lines to display
+ * @property {boolean} isIntroDone - Whether intro animation is complete
+ * @property {boolean} passwordMode - Whether input should be masked (password mode)
+ * @property {string} input - Current input value
+ * @property {React.RefObject<HTMLDivElement|null>} containerRef - Ref to scrollable container
+ * @property {React.RefObject<HTMLInputElement|null>} inputRef - Ref to input element
+ * @property {Function} handleKeyDown - Keyboard event handler for command execution
+ * @property {Function} onChange - Input change handler
+ * @property {Function} onBlur - Input blur handler
+ */
 interface TerminalContentProps {
     lines: string[];
     isIntroDone: boolean;
@@ -15,6 +28,13 @@ interface TerminalContentProps {
     onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
+/**
+ * Terminal Content Component - scrollable terminal output and input area.
+ * Displays command history with ANSI color support and active command input.
+ * Features auto-scroll, password masking, and syntax highlighting for prompts.
+ * @component
+ * @param {TerminalContentProps} props - Component props
+ */
 export function TerminalContent({
     lines, isIntroDone, passwordMode, input,
     containerRef, inputRef, handleKeyDown, onChange, onBlur
