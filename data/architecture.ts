@@ -1,3 +1,18 @@
+/**
+ * @fileoverview Technical architecture visualization data.
+ * Defines nodes and connections for the skills architecture graph.
+ */
+
+/**
+ * Represents a node in the architecture diagram.
+ * @interface ArchNode
+ * @property {string} id - Unique identifier for the node
+ * @property {string} label - Display label
+ * @property {'frontend'|'backend'|'database'|'devops'|'core'|'security'|'language'|'system'|'ai'} type - Node category
+ * @property {number} x - X-axis position (0-100 percentage)
+ * @property {number} y - Y-axis position (0-100 percentage)
+ * @property {string} [description] - Optional tooltip description
+ */
 export interface ArchNode {
     id: string;
     label: string;
@@ -7,18 +22,32 @@ export interface ArchNode {
     description?: string;
 }
 
+/**
+ * Represents a connection between two nodes in the architecture diagram.
+ * @interface ArchConnection
+ * @property {string} source - Source node ID
+ * @property {string} target - Target node ID
+ * @property {string} [description] - Optional connection description
+ */
 export interface ArchConnection {
     source: string;
     target: string;
     description?: string;
 }
 
-// Layout Strategy:
-// Left Column: Frontend & Web (15-25% X)
-// Center Column: Languages & AI (40-50% X)
-// Right Column: Databases & DevOps (65-75% X)
-// Bottom/Wide: Systems & Security (Spread across 20-80% X, lower Y)
+/**
+ * Layout Strategy for architecture visualization:
+ * - Left Column (15-25% X): Frontend & Web technologies
+ * - Center Column (40-50% X): Languages & AI frameworks
+ * - Right Column (65-75% X): Databases & DevOps tools
+ * - Bottom/Wide (20-80% X, lower Y): Systems & Security
+ */
 
+/**
+ * Array of architecture nodes representing technical skills and tools.
+ * Positioned using percentage-based coordinates for responsive layout.
+ * @type {ArchNode[]}
+ */
 export const architectureNodes: ArchNode[] = [
     // --- Frontend & Web (Left) ---
     { id: 'nextjs', label: 'Next.js', type: 'frontend', x: 20, y: 20, description: 'App Router framework.' },
@@ -60,6 +89,11 @@ export const architectureNodes: ArchNode[] = [
     { id: 'threat', label: 'Intel', type: 'security', x: 70, y: 85, description: 'Threat Intelligence.' },
 ];
 
+/**
+ * Array of connections between architecture nodes.
+ * Defines the relationships and dependencies between different technologies.
+ * @type {ArchConnection[]}
+ */
 export const architectureConnections: ArchConnection[] = [
     // Web -> Lang
     { source: 'nextjs', target: 'react' },
