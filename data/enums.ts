@@ -1,13 +1,29 @@
+/**
+ * Company names used in experience data.
+ * @enum {string}
+ * @example
+ * ```ts
+ * const exp = { company: Company.Trellix, ... };
+ * ```
+ */
 export enum Company {
     Trellix = "Trellix",
     Intel = "Intel",
     Toastmasters = "Toastmasters International",
 }
 
+/**
+ * Geographic locations for work and education.
+ * @enum {string}
+ */
 export enum Location {
     Bengaluru = "Bengaluru, Karnataka, India",
 }
 
+/**
+ * Professional roles and positions.
+ * @enum {string}
+ */
 export enum Role {
     SDE = "Software Development Engineer",
     Intern = "Graduate Technical Intern",
@@ -15,6 +31,11 @@ export enum Role {
     Member = "Member",
 }
 
+/**
+ * Icon identifiers for hobby items.
+ * Maps to Lucide React icon component names.
+ * @enum {string}
+ */
 export enum HobbyIcon {
     Dumbbell = "Dumbbell",
     Tv = "Tv",
@@ -29,12 +50,21 @@ export enum HobbyIcon {
     Mic = "Mic",
 }
 
+/**
+ * System status labels with emoji indicators.
+ * Used in the Hero section to show current availability.
+ * @enum {string}
+ */
 export enum SystemStatusLabel {
     Available = "Available ✅",
     Coding = "Coding 💻",
     Sleeping = "Sleeping 😴",
 }
 
+/**
+ * Skill category names for tech stack organization.
+ * @enum {string}
+ */
 export enum SkillCategoryName {
     Languages = "Languages",
     SystemKernel = "System & Kernel",
@@ -45,6 +75,10 @@ export enum SkillCategoryName {
     DevOpsInfra = "DevOps & Infrastructure",
 }
 
+/**
+ * Individual skill identifiers.
+ * @enum {string}
+ */
 export enum Skill {
     Cpp = "C++",
     Python = "Python",
@@ -54,6 +88,10 @@ export enum Skill {
     IntelSGXTDX = "Intel SGX/TDX",
 }
 
+/**
+ * Professional designation labels.
+ * @enum {string}
+ */
 export enum Designation {
     SDE_Trellix = "SDE @ Trellix",
 }
