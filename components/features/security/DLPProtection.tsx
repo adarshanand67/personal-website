@@ -77,16 +77,16 @@ export function DLPProtection() {
         }
     }, [isBlur, isPlaying, setIsPlaying]);
 
-    // Violation Lockout Effect
+    // Violation Lockout Effect - Just notify now, don't lock screen
     useEffect(() => {
         if (violationCount > 5) {
-            setIsBlur(true);
-            setTimeout(() => {
+            addNotification("Warning: Excessive suspicious activity detected.", <AlertTriangle size={16} />);
+            const timer = setTimeout(() => {
                 setViolationCount(0);
-                setIsBlur(false);
-            }, 5000); // 5s lockout for aggressive behavior
+            }, 5000); // Reset count after 5s
+            return () => clearTimeout(timer);
         }
-    }, [violationCount]);
+    }, [violationCount, addNotification]);
 
     useEffect(() => {
         // 1. Disable Right Click
@@ -318,31 +318,10 @@ export function DLPProtection() {
 
             <DLPNotification notifications={notifications} />
 
+            {/* Session Suspended Overlay Removed as per user request */}
+            {/* BLACKOUT OVERLAY FOR SCREEN CAPTURE / BLUR */}
             {isBlur && (
-                <div
-                    className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-black/95 backdrop-blur-3xl backdrop-grayscale text-center p-8 transition-all duration-500"
-                >
-                    <div className="bg-red-500/10 p-6 rounded-full border border-red-500/20 mb-6 animate-pulse">
-                        <EyeOff size={64} className="text-red-500" />
-                    </div>
-                    <h1 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-4 tracking-tight">
-                        SESSION SUSPENDED
-                    </h1>
-                    <p className="text-gray-400 max-w-md text-lg">
-                        {violationCount > 5
-                            ? "Suspicious activity detected. Access temporarily limited."
-                            : "This window has been secured. Content is hidden while the application is in the background."
-                        }
-                    </p>
-
-                    <div className="mt-12 flex gap-4 text-xs font-mono text-gray-600">
-                        <span>ID: {Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
-                        <span>•</span>
-                        <span>SECURE_CONNECTION</span>
-                        <span>•</span>
-                        <span className="text-green-500 font-bold">ENCRYPTED</span>
-                    </div>
-                </div>
+                <div className="fixed inset-0 z-[99999] bg-black pointer-events-none" />
             )}
         </>
     );
