@@ -21,7 +21,7 @@ export const animeData = [
     {
         title: "Naruto",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-21",
         image: "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
         description: "An orphan leverages high-decibel vocalizing and the power of emotional resonance to become the supreme leader of a hidden militaristic society.",
@@ -38,7 +38,7 @@ export const animeData = [
         type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-9",
-        image: "https://cdn.myanimelist.net/images/anime/1506/117714.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1277/142021l.jpg",
         description: "Extraterrestrial warriors scream at various frequencies to increase their metabolic output and engage in high-impact physical discourse.",
         tags: ["Action", "Adventure"],
         year: "1989",
@@ -51,7 +51,7 @@ export const animeData = [
     {
         title: "Bleach",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-16",
         image: "https://cdn.myanimelist.net/images/anime/3/40451.jpg",
         description: "A teenager acquires the specialized visual capability to interact with the departed and engages in sword-based metaphysical conflict resolution.",
@@ -326,7 +326,7 @@ export const animeData = [
     {
         title: "Attack on Titan",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-4",
         image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
         description: "Humanity fights for survival against man-eating giants safe within massive walls.",
@@ -341,7 +341,7 @@ export const animeData = [
     {
         title: "Fullmetal Alchemist Brotherhood",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
         description: "Two brothers search for the Philosopher's Stone to restore their bodies after a failed alchemical experiment.",
@@ -356,7 +356,7 @@ export const animeData = [
     {
         title: "Hunter x Hunter",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/1305/132237l.jpg",
         description: "A young boy sets out to become a Hunter to find his father, facing dangerous trials along the way.",
@@ -371,7 +371,7 @@ export const animeData = [
     {
         title: "JoJo's Bizarre Adventure",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-6",
         image: "https://cdn.myanimelist.net/images/anime/3/40409l.jpg",
         description: "The Joestar family battles supernatural foes across generations using unique powers.",
@@ -386,7 +386,7 @@ export const animeData = [
     {
         title: "My Hero Academia",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-8",
         image: "https://cdn.myanimelist.net/images/anime/10/78745l.jpg",
         description: "A powerless boy inherits the power of the world's greatest hero and attends a high school for heroes.",
@@ -431,7 +431,7 @@ export const animeData = [
     {
         title: "One Piece",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-21",
         image: "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
         description: "A rubber-bodied pirate and his crew search for the ultimate treasure to become the Pirate King.",
@@ -446,7 +446,7 @@ export const animeData = [
     {
         title: "Fairy Tail",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-9",
         image: "https://cdn.myanimelist.net/images/anime/5/18179l.jpg",
         description: "A wizard joins a famous guild and goes on adventures with her new friends.",
@@ -461,7 +461,7 @@ export const animeData = [
     {
         title: "Sword Art Online",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-4",
         image: "https://cdn.myanimelist.net/images/anime/11/39717l.jpg",
         description: "Players are trapped in a VRMMORPG where dying in the game means dying in real life.",
@@ -476,7 +476,7 @@ export const animeData = [
     {
         title: "Frieren: Beyond Journey’s End",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg",
         description: "An elf mage reflects on her long life and the meaning of human connections after her party's journey ends.",
@@ -491,7 +491,7 @@ export const animeData = [
     {
         title: "Black Clover",
         type: AnimeType.Anime,
-        status: WatchStatus.Completed,
+        status: WatchStatus.Planning,
         seasons: "S1-4",
         image: "https://cdn.myanimelist.net/images/anime/2/88336l.jpg",
         description: "A boy with no magic strives to become the Wizard King in a world where magic is everything.",

@@ -7,7 +7,6 @@ import { SystemStatus } from "@/components/layout/ui";
 import { siteConfig } from "@/lib/config";
 import { ViewToggle } from "../ViewToggle";
 import { SocialButton } from "./SocialButton";
-import { VoiceVisualizer } from "./VoiceVisualizer";
 
 interface ProfileViewProps {
     profile: any;
@@ -79,14 +78,11 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                             className="relative"
                         >
                             <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-green-500/50 to-transparent rounded-full hidden md:block" />
-                            <div className="flex flex-col gap-4 pl-0 md:pl-6">
-                                <blockquote className="text-xl md:text-2xl font-medium text-gray-800 dark:text-zinc-200 leading-tight md:leading-snug italic max-w-2xl group/quote">
-                                    <span className="text-green-500 opacity-50 text-4xl font-serif absolute -top-4 -left-2 md:-left-4">"</span>
-                                    {profile.bio.paragraphs[0]}
-                                    <span className="text-green-500 opacity-50 text-4xl font-serif">"</span>
-                                </blockquote>
-                                <VoiceVisualizer />
-                            </div>
+                            <blockquote className="text-xl md:text-2xl font-medium text-gray-800 dark:text-zinc-200 leading-tight md:leading-snug italic max-w-2xl group/quote pl-0 md:pl-6">
+                                <span className="text-green-500 opacity-50 text-4xl font-serif absolute -top-4 -left-2 md:-left-4">"</span>
+                                {profile.bio.paragraphs[0]}
+                                <span className="text-green-500 opacity-50 text-4xl font-serif">"</span>
+                            </blockquote>
                         </motion.div>
                     </div>
                 </div>
