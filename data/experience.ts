@@ -9,11 +9,23 @@ export const experiencesData = [
         duration: "Jul 2025 - Present",
         location: Location.Bengaluru,
         logo: "/assets/logos/trellix.png",
-        description: "Philosophical Gatekeeper of Corporate Secrets || Preventing unintended knowledge migration (Windows)",
+        description: "Data Loss Prevention, Windows || Endpoint Security",
         highlights: [
-            "Manifested a Native Registry Management Module for Chrome/Edge to ensure web protection remains as injection-free as my morning green tea.",
-            "Orchestrated the integration of Boldon James classification, because even data needs a social hierarchy.",
-            "Architected a CppUnit automation infrastructure to judge my own code more harshly than I judge generic advice."
+            "Developing native registry management modules for Chrome/Edge to ensure injection-free web protection.",
+            "Integrating classification support (Boldon James) into endpoint solutions to enhance data security policies.",
+            "Designing and orchestrating CppUnit test automation frameworks to improve code quality and regression testing coverage."
+        ]
+    },
+    {
+        company: Company.Toastmasters,
+        role: Role.Secretary,
+        duration: "Dec 2025 - Present",
+        location: Location.Bengaluru,
+        logo: "/assets/logos/toastmasters.png",
+        description: "Rock The Talk Club",
+        highlights: [
+            "Secretary (Dec 2025 - Present)",
+            "Member (Jul 2025 - Dec 2025)"
         ]
     },
     {
@@ -22,15 +34,15 @@ export const experiencesData = [
         duration: "Jun 2024 - Jul 2025",
         location: Location.Bengaluru,
         logo: "/assets/logos/intel.png",
-        description: "Quantum Entangler of Secure Enclaves || Facilitating confidential truths within Silicon",
+        description: "Confidential Computing (Intel SGX/TDX) || Platform Engineering Group",
         highlights: [
-            "Whispered to Intel SGX Gramine to ensure confidential workloads feel as secure as my deep voice.",
-            "Constructed a CPU ID fuzzing harness to tickle processors until they revealed their existential vulnerabilities.",
-            "Engineered an Intel TDX Full Disk Encryption solution because unencrypted data is a lack of intellectual discipline.",
-            "Diplomatically led the CentOS Virtualization SIG attestation efforts, bringing order to the chaotic void of documentation.",
-            "Fused Post-Quantum Cryptography with SGX to prepare for a future that hasn't happened yet.",
-            "Refined LLM Adversarial Robustness because even AI needs to stop taking things personally.",
-            "Benchmarked vLLMs to quantify exactly how fast artificial intelligence can think compared to my own deliberate processing."
+            "Contributed to Intel SGX Gramine to secure confidential workloads (PyTorch, OpenVINO, MySQL, Redis), addressing memory faults and expanding distro support.",
+            "Implemented Intel SGX fuzzing framework with LLVM's clang libFuzzer and Address/Memory Sanitizers, resulting in 8+ vulnerability discoveries in Intel SGX TCB.",
+            "Engineered Intel TDX full-disk encryption (FDE) solution supporting multi-VM launch scenarios and optimizing .qcow2 encrypted image sizes by 30%.",
+            "Led creation of CentOS Virtualization SIG attestation guides for Intel TDX implementation, updating RHEL packages and fixing 10+ validation bugs.",
+            "Integrated Post-Quantum Cryptography (PQC) with Intel SGX via Crypto API Toolkit (CTK), implementing 8+ NIST-approved algorithms.",
+            "Enhanced LLM Adversarial Robustness Toolkit by integrating uv package manager and building an automated test runner that achieved 40% reduced build times.",
+            "Conducted comprehensive vLLM benchmarking comparing legacy VMs vs Intel TDX Trusted Domains with Deepseek-7B/Llama-2-70B models."
         ]
     },
     {
@@ -39,11 +51,11 @@ export const experiencesData = [
         duration: "Jun 2023 - Dec 2023",
         location: Location.Bengaluru,
         logo: "/assets/logos/intel.png",
-        description: "Initiate of the FIDO Device Onboarding Ritual || Cryptographic Modernist",
+        description: "Device Onboarding || Intel Product Security",
         highlights: [
-            "Guided lost devices through the sacred FDO onboarding journey with intellectual precision.",
-            "Transcendently migrated the architectural spirit to OpenSSL 3.0, leaving the ghosts of legacy code behind.",
-            "Instantiated a Bare Metal Onboarding POC to prove that even the most physical hardware can be tamed by a superior mind."
+            "Collaborated with FIDO Device Onboarding (FDO) team to implement robust security measures for Zero-Touch Provisioning (ZTP) of Intel Edge Devices.",
+            "Modernized cryptographic security architecture by implementing OpenSSL 3.0 migration for Service Info (SVI) modules, reducing Client SDK codebase by 15%.",
+            "Designed and implemented a Bare Metal Onboarding (BMO) POC with real-time status monitoring in React and scalable backend with CBOR/JSON REST APIs."
         ]
     }
 ];

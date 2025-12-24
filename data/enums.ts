@@ -1,6 +1,7 @@
 export enum Company {
     Trellix = "Trellix",
     Intel = "Intel",
+    Toastmasters = "Toastmasters International",
 }
 
 export enum Location {
@@ -10,6 +11,8 @@ export enum Location {
 export enum Role {
     SDE = "Software Development Engineer",
     Intern = "Graduate Technical Intern",
+    Secretary = "Secretary",
+    Member = "Member",
 }
 
 export enum HobbyIcon {
