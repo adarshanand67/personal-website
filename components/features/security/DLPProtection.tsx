@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { Copy, AlertTriangle, EyeOff, Camera, ShieldAlert, Terminal } from "lucide-react";
+import { Copy, AlertTriangle, EyeOff, Camera, ShieldAlert, Terminal, RefreshCw } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 
 // --- Notifications Component ---
@@ -16,7 +16,7 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
     if (notifications.length === 0) return null;
 
     return (
-        <div className="fixed top-4 right-4 z-[100000] flex flex-col gap-2 pointer-events-none">
+        <div className="fixed top-4 right-4 z-[2147483647] flex flex-col gap-2 pointer-events-none">
             {notifications.map((notif) => (
                 <div
                     key={notif.id}
@@ -75,23 +75,24 @@ export function DLPProtection() {
         const handleContextMenu = (e: MouseEvent) => {
             e.preventDefault();
             addNotification("Context menu is disabled for security.", <ShieldAlert size={16} />);
+            e.stopPropagation(); // Stop event bubbling
             return false;
         };
 
         // 2. Disable Copy/Cut/Paste
         const handleCopyCutPaste = (e: ClipboardEvent) => {
+            addNotification("Copy/Paste actions are blocked.", <Copy size={16} />);
             e.preventDefault();
             if (e.clipboardData) {
                 e.clipboardData.setData("text/plain", "Security Violation: Content copying is strictly prohibited.");
             }
-            addNotification("Copy/Paste actions are blocked.", <Copy size={16} />);
             return false;
         };
 
         // 3. Disable Dragging
         const handleDragStart = (e: DragEvent) => {
-            e.preventDefault();
             addNotification("Dragging content is disabled.", <ShieldAlert size={16} />);
+            e.preventDefault();
             return false;
         };
 
@@ -109,27 +110,27 @@ export function DLPProtection() {
             // Block generic shortcuts with specific messages
             if (e.ctrlKey || e.metaKey) {
                 if (e.key === "s") {
+                    addNotification("Saving content is disabled.", <ShieldAlert size={16} />);
                     e.preventDefault();
                     e.stopPropagation();
-                    addNotification("Saving content is disabled.", <ShieldAlert size={16} />);
                     return false;
                 }
                 if (e.key === "p") {
+                    addNotification("Printing is disabled.", <EyeOff size={16} />);
                     e.preventDefault();
                     e.stopPropagation();
-                    addNotification("Printing is disabled.", <EyeOff size={16} />);
                     return false;
                 }
                 if (e.key === "u") {
+                    addNotification("Viewing source is disabled.", <Terminal size={16} />);
                     e.preventDefault();
                     e.stopPropagation();
-                    addNotification("Viewing source is disabled.", <Terminal size={16} />);
                     return false;
                 }
                 if (e.key === "g") {
+                    addNotification("Search function is limited.", <ShieldAlert size={16} />);
                     e.preventDefault();
                     e.stopPropagation();
-                    addNotification("Search function is limited.", <ShieldAlert size={16} />);
                     return false;
                 }
             }
@@ -140,17 +141,17 @@ export function DLPProtection() {
                 e.shiftKey &&
                 (e.key === "i" || e.key === "j" || e.key === "c" || e.key === "4" || e.key === "3" || e.key === "5")
             ) {
+                addNotification("Inspector tools are blocked.", <Terminal size={16} />);
                 e.preventDefault();
                 e.stopPropagation();
-                addNotification("Inspector tools are blocked.", <Terminal size={16} />);
                 return false;
             }
 
             // Block F12
             if (e.key === "F12") {
+                addNotification("Developer tools are disabled.", <ShieldAlert size={16} />);
                 e.preventDefault();
                 e.stopPropagation();
-                addNotification("Developer tools are disabled.", <ShieldAlert size={16} />);
                 return false;
             }
         };
@@ -171,8 +172,8 @@ export function DLPProtection() {
 
         // 6. Print Handling
         const handleBeforePrint = (e: Event) => {
-            e.preventDefault();
             addNotification("Printing is disabled on this page.", <EyeOff size={16} />);
+            e.preventDefault();
             // Forcefully hide everything stylistically just in case
             const style = document.createElement('style');
             style.id = 'print-blocker';
@@ -265,6 +266,7 @@ export function DLPProtection() {
                     <p className="text-gray-400 max-w-md text-lg">
                         This window has been secured. Content is hidden while the application is in the background.
                     </p>
+
                     <div className="mt-12 flex gap-4 text-xs font-mono text-gray-600">
                         <span>ID: {Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
                         <span>•</span>

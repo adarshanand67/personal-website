@@ -9,7 +9,7 @@ export default async function Home() {
       <Hero profile={profile} />
       { }
       <div className="section max-w-6xl mx-auto px-6 md:px-12 mb-8 space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8">
           {/* Experience Section */}
           <ErrorBoundary>
             <div className="group relative h-full">

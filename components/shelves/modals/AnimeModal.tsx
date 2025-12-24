@@ -155,18 +155,13 @@ export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
                                         Key Takeaways
                                     </h3>
                                 </div>
-                                <div className="space-y-4">
+                                <ul className="space-y-3 list-disc pl-5 marker:text-gray-400">
                                     {item.keyLearnings.map((learning: string, idx: number) => (
-                                        <div key={idx} className="flex gap-4 items-start group">
-                                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-green-500 group-hover:border-green-500/50 transition-colors mt-0.5">
-                                                {idx + 1}
-                                            </span>
-                                            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
-                                                {learning}
-                                            </p>
-                                        </div>
+                                        <li key={idx} className="text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+                                            {learning}
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         )}
                     </div>

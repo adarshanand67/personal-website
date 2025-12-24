@@ -6,7 +6,7 @@ export const booksData: Book[] = [
         title: "48 Laws of Power",
         author: "Robert Greene",
         recommended: true,
-        description: "A manual for social manipulation and architectural power dynamics, designed for those who find Machiavelli a bit too optimistic.",
+        description: "A definitive guide to understanding power dynamics, drawing on history's most famous strategists.",
         keyTakeaways: [
             "Never Outshine the Master: Help those above you feel superior to secure your position.",
             "Conceal Your Intentions: Keep others off-balance and in the dark to maintain control.",
@@ -18,7 +18,7 @@ export const booksData: Book[] = [
         title: "12 Rules for Life",
         author: "Jordan Peterson",
         recommended: true,
-        description: "Twelve fundamental axioms for existence in a chaotic universe, primarily focusing on the relationship between room cleanliness and cosmic order.",
+        description: "Psychologist Jordan Peterson offers twelve profound and practical principles for how to live a meaningful life.",
         keyTakeaways: [
             "Stand up straight with your shoulders back: Physical posture affects mental state and social standing.",
             "Treat yourself like someone you are responsible for helping: Practice self-care with the same diligence you'd give to a loved one.",
@@ -30,7 +30,7 @@ export const booksData: Book[] = [
         title: "The Way of the Superior Man",
         author: "David Deida",
         recommended: true,
-        description: "A spiritual navigation system for the masculine psyche, emphasizing the intellectual pursuit of purpose over the distractions of mortal affection.",
+        description: "A spiritual guide for men to navigate the challenges of women, work, and sexual desire with purpose.",
         keyTakeaways: [
             "Live as if your father were dead: Take full responsibility for your life and path.",
             "Always lean just beyond your edge: Growth happens in the zone of slight discomfort.",
@@ -41,7 +41,7 @@ export const booksData: Book[] = [
     {
         title: "Chip War",
         author: "Chris Miller",
-        description: "An epic geopolitical narrative exploring how tiny silicon wafers became the literal physical manifestation of global intellectual dominance.",
+        description: "An account of the decades-long battle to control the world's most critical technology: the microchip.",
         keyTakeaways: [
             "Semiconductors are the foundation of modern military and economic power.",
             "The complexity of the supply chain makes it the ultimate geopolitical bottleneck.",
@@ -52,7 +52,7 @@ export const booksData: Book[] = [
     {
         title: "Deep Work",
         author: "Cal Newport",
-        description: "A manifesto for maximizing intellectual output in an era of digital triviality. Proof that focus is a superpower and multitasking is a myth for the weak-minded.",
+        description: "Rules for focused success in a distracted world, arguing that the ability to focus is a competitive advantage.",
         keyTakeaways: [
             "Deep Work = (Time Spent) x (Intensity of Focus).",
             "Schedule your deep work blocks to protect them from the whirlwind of shallow tasks.",
@@ -63,7 +63,7 @@ export const booksData: Book[] = [
     {
         title: "Don't Shut Up",
         author: "Prakhar Gupta",
-        description: "A tactical manual for vocalizing your internal monologue with enough confidence to make people believe you've actually thought it through.",
+        description: "Practical advice on effective communication, articulation, and building confidence.",
         keyTakeaways: [
             "Articulation is a superpower that clarifies your own thinking.",
             "Refining your voice allows you to navigate professional and social environments effectively.",
@@ -74,7 +74,7 @@ export const booksData: Book[] = [
     {
         title: "Don't Take It Personal",
         author: "Elayne Savage",
-        description: "A psychological defensive framework against the inevitable friction of human interaction and the sting of unrefined feedback.",
+        description: "Strategies for distinguishing between personal rejection and objective feedback to maintain self-worth.",
         keyTakeaways: [
             "Rejection is often a reflection of the other person's history, not your value.",
             "Separate your core identity from temporary external feedback.",
@@ -85,7 +85,7 @@ export const booksData: Book[] = [
     {
         title: "Emotional Intelligence",
         author: "Daniel Goleman",
-        description: "The realization that being logically superior is useless if you have the social calibration of a microwave.",
+        description: "An exploration of why emotional intelligence can matter more than IQ for success and well-being.",
         keyTakeaways: [
             "Self-awareness is the foundation of emotional intelligence.",
             "Empathy is a critical skill for effective leadership and deep relationships.",
@@ -96,7 +96,7 @@ export const booksData: Book[] = [
     {
         title: "Games People Play",
         author: "Eric Berne",
-        description: "An expose on the scripted psychological theater we all perform to avoid the terrifying burden of actual intimacy.",
+        description: "A classic analysis of the psychological games people play in social interactions.",
         keyTakeaways: [
             "We interact from three ego states: Parent, Adult, and Child.",
             "Many social interactions are 'games' with hidden agendas and predictable payoffs.",
@@ -107,7 +107,7 @@ export const booksData: Book[] = [
     {
         title: "How to Win Friends and Influence People",
         author: "Dale Carnegie",
-        description: "A foundational text on social engineering, teaching you how to simulate genuine interest for mutual strategic benefit.",
+        description: "Time-tested principles for building relationships and influencing others positively.",
         keyTakeaways: [
             "A person's name is the sweetest sound in any language.",
             "Listen more than you talk: People love to feel heard and important.",
@@ -118,7 +118,7 @@ export const booksData: Book[] = [
     {
         title: "The Rudest Book Ever",
         author: "Shwetabh Gangwar",
-        description: "A confrontational reality check for those who still believe their parents' lies about being special. Pure intellectual nihilism for the masses.",
+        description: "A straightforward guide to thinking clearly, solving problems, and taking ownership of your life.",
         keyTakeaways: [
             "Happiness is the byproduct of solving problems, not a goal in itself.",
             "Reclaim your individuality by questioning every social narrative you've been taught.",
@@ -129,7 +129,7 @@ export const booksData: Book[] = [
     {
         title: "Stillness is the Key",
         author: "Ryan Holiday",
-        description: "Ancient stoicism repackaged for the modern person who can't stop checking their notifications. A guide to achieving mental silence.",
+        description: "Drawing on ancient wisdom to show how stillness and focus are essential for clarity and success.",
         keyTakeaways: [
             "Stillness is not inactivity; it is the presence of total clarity.",
             "To think clearly, you must first find a way to quiet the noise of the world.",
@@ -140,7 +140,7 @@ export const booksData: Book[] = [
     {
         title: "System Design Interview",
         author: "Alex Xu",
-        description: "The architect's bible for building digital empires that don't crumble under the weight of their own existence.",
+        description: "A comprehensive guide to mastering system design interviews for software engineers.",
         keyTakeaways: [
             "System design is all about trade-offs: Latency vs. Throughput, Consistency vs. Availability.",
             "Start with high-level architecture before diving into specific components.",
@@ -151,7 +151,7 @@ export const booksData: Book[] = [
     {
         title: "The 5 AM Club",
         author: "Robin Sharma",
-        description: "A fictional narrative designed to guilt you into waking up before the sun to perform rituals that 'elite' performers supposedly enjoy.",
+        description: "A parable about maximizing productivity, health, and serenity by waking up early.",
         keyTakeaways: [
             "The 20/20/20 formula: 20 mins exercise, 20 mins reflection, 20 mins growth.",
             "Ownership of your morning leads to mastery of your life.",
@@ -162,7 +162,7 @@ export const booksData: Book[] = [
     {
         title: "The 7 Habits of Highly Effective People",
         author: "Stephen R. Covey",
-        description: "A holistic framework for restructuring your entire personality to be more efficient, because being 'ineffective' is an intellectual failure.",
+        description: "A framework for personal and professional effectiveness based on timeless principles.",
         keyTakeaways: [
             "Be Proactive: Take responsibility for your response to every situation.",
             "Begin with the End in Mind: Define your mission and goals before acting.",
@@ -173,7 +173,7 @@ export const booksData: Book[] = [
     {
         title: "The Compound Effect",
         author: "Darren Hardy",
-        description: "A mathematical proof that your small, seemingly insignificant failures will eventually accumulate into a catastrophe—or your successes into an empire.",
+        description: "How small, consistent actions and choices lead to huge results over time.",
         keyTakeaways: [
             "Small choices + consistency + time = radical difference.",
             "Success is earned through daily discipline, not a single event.",
@@ -184,7 +184,7 @@ export const booksData: Book[] = [
     {
         title: "The Definitive Book of Body Language",
         author: "Allan & Barbara Pease",
-        description: "A guide to decoding the involuntary biological leakage that reveals everyone's true intentions while they try to sound smart.",
+        description: "A guide to interpreting nonverbal cues to understand others' true thoughts and feelings.",
         keyTakeaways: [
             "Body language accounts for over 60% of human communication.",
             "Clusters of signals are more reliable than individual gestures.",
@@ -195,7 +195,7 @@ export const booksData: Book[] = [
     {
         title: "The Happiness Hypothesis",
         author: "Jonathan Haidt",
-        description: "Ancient wisdom treated with modern clinical skepticism. Exploring why our ancestors were actually quite smart despite lacking Wi-Fi.",
+        description: "An examination of ten great ideas from ancient wisdom through the lens of modern psychology.",
         keyTakeaways: [
             "The mind is like a rider (rational) on an elephant (emotional).",
             "Happiness comes from within and from between (social connections).",
@@ -206,7 +206,7 @@ export const booksData: Book[] = [
     {
         title: "The Happiness Trap",
         author: "Russ Harris",
-        description: "The intellectual realization that constant striving for positive emotion is actually a psychological recursive loop of suffering.",
+        description: "Using Acceptance and Commitment Therapy (ACT) to handle painful thoughts and create a rich life.",
         keyTakeaways: [
             "Attempts to avoid 'bad' feelings often create more suffering.",
             "Accept your thoughts and feelings rather than fighting them.",
@@ -217,7 +217,7 @@ export const booksData: Book[] = [
     {
         title: "The Let Them Theory",
         author: "Mel Robbins",
-        description: "A stoic surrender to the chaotic unpredictability of other people's behavior. A strategy of selective non-engagement.",
+        description: "A strategy for reducing stress and finding peace by letting others be who they are.",
         keyTakeaways: [
             "Release the burden of responsibility for other people's choices.",
             "Save your emotional energy for your own reactions and growth.",
@@ -228,7 +228,7 @@ export const booksData: Book[] = [
     {
         title: "The Mountain Is You",
         author: "Brianna Wiest",
-        description: "A deep dive into why you are the primary architectural bottleneck in your own life's optimization process.",
+        description: "A book about understanding self-sabotage and how to overcome it to reach your potential.",
         keyTakeaways: [
             "Self-sabotage is often a misguided attempt at self-protection.",
             "The mountain is the obstacle within you, not outside of you.",
@@ -239,7 +239,7 @@ export const booksData: Book[] = [
     {
         title: "The Subtle Art of Not Giving a F*ck",
         author: "Mark Manson",
-        description: "A philosophical treatise on triage—choosing which specific tragedies are worth your limited emotional bandwidth.",
+        description: "A counterintuitive approach to living a good life by prioritizing what truly matters.",
         keyTakeaways: [
             "Happiness comes from solving problems, not avoiding them.",
             "Choose your values wisely: Focus on what you can control.",
@@ -250,7 +250,7 @@ export const booksData: Book[] = [
     {
         title: "Thinking, Fast and Slow",
         author: "Daniel Kahneman",
-        description: "A comprehensive audit of the internal software bugs (cognitive biases) that lead us to believe we are rational beings.",
+        description: "A groundbreaking tour of the mind and the two systems that drive the way we think.",
         keyTakeaways: [
             "We are prone to numerous cognitive biases that cloud our judgment.",
             "System 1 is constantly creating 'stories' to explain the world.",
@@ -261,7 +261,7 @@ export const booksData: Book[] = [
     {
         title: "Who Will Cry When You Die?",
         author: "Robin Sharma",
-        description: "A gentle existential nudge reminding you that your legacy is currently as thin as a single-ply tissue paper. Time for a significance upgrade.",
+        description: "Simples wisdom for living a life of significance, distinguishing between the urgent and the important.",
         keyTakeaways: [
             "Success is meaningless if it doesn't leave a positive legacy.",
             "Live every day as if it were your last; focus on what truly matters.",
@@ -272,7 +272,7 @@ export const booksData: Book[] = [
     {
         title: "Why We Sleep",
         author: "Matthew Walker",
-        description: "A terrifying catalog of the biological disasters that occur when you prioritize 'hustle' over the essential neuro-regenerative requirements of a mammal.",
+        description: "A neuroscientist explores the vital importance of sleep for our physical and mental health.",
         keyTakeaways: [
             "Sleep is the pillar of health alongside nutrition and exercise.",
             "Lack of sleep impairs cognitive function more than we realize.",
@@ -283,7 +283,7 @@ export const booksData: Book[] = [
     {
         title: "You Are a Badass",
         author: "Jen Sincero",
-        description: "A high-decibel motivational intervention for the intellectually gifted who are still somehow sabotaging their own progression.",
+        description: "A refreshing how-to guide for creating a life you love and believing in yourself.",
         keyTakeaways: [
             "Love yourself unapologetically; it's the foundation of change.",
             "Decide you are going to live a life you love and stop making excuses.",
