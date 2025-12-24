@@ -1,5 +1,14 @@
+/**
+ * @fileoverview Skills categories mapping for tech stack display.
+ * Organizes technical skills into categorized groups.
+ */
 import { SkillCategoryName } from "@/data/enums";
 
+/**
+ * Skill categories object mapping category names to skill arrays.
+ * Each category contains an array of technology/skill names.
+ * @constant
+ */
 export const skillCategories = {
     [SkillCategoryName.Languages]: [
         "C", "C++", "Python", "JavaScript", "TypeScript", "Bash",
