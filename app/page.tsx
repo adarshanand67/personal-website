@@ -1,6 +1,25 @@
 import { getExperiences, getProfile } from "@/lib/api";
-import { Hero, Experience, TechStack } from "@/components/layout";
+import dynamic from "next/dynamic";
+import { Hero } from "@/components/layout";
 import { ErrorBoundary } from "@/components/features/errorBoundary";
+
+const Experience = dynamic(() => import("@/components/layout").then((mod) => mod.Experience), {
+  loading: () => (
+    <div className="w-full h-[600px] bg-gray-100 dark:bg-gray-800/50 rounded-xl animate-pulse flex items-center justify-center">
+      <span className="text-gray-400 font-mono text-sm">Loading Experience...</span>
+    </div>
+  ),
+  ssr: true,
+});
+
+const TechStack = dynamic(() => import("@/components/layout").then((mod) => mod.TechStack), {
+  loading: () => (
+    <div className="w-full h-[400px] bg-gray-100 dark:bg-gray-800/50 rounded-xl animate-pulse flex items-center justify-center">
+      <span className="text-gray-400 font-mono text-sm">Loading Tech Stack...</span>
+    </div>
+  ),
+
+});
 export default async function Home() {
   const experiences = await getExperiences();
   const profile = await getProfile();
