@@ -21,7 +21,6 @@ export const experiencesData = [
         role: Role.Secretary,
         duration: "Dec 2025 - Present",
         location: Location.Bengaluru,
-        logo: "/assets/logos/toastmasters.png",
         description: "Rock The Talk Club",
         highlights: [
             "Secretary (Dec 2025 - Present)",
