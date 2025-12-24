@@ -1,6 +1,16 @@
+/**
+ * @fileoverview Book collection data with descriptions and key takeaways.
+ * Contains recommended and general reading list with Amazon links.
+ */
 
 import { Book } from "@/types/definitions";
 
+/**
+ * Array of book objects with metadata, descriptions, and key takeaways.
+ * Books marked as `recommended: true` are highlighted in the UI.
+ * 
+ * @type {Book[]}
+ */
 export const booksData: Book[] = [
     {
         title: "48 Laws of Power",
