@@ -1,6 +1,28 @@
+/**
+ * @fileoverview Anime and movie collection data with detailed metadata.
+ * Contains completed and planning watchlists with descriptions, ratings, and key learnings.
+ */
 
 import { AnimeType, WatchStatus } from "@/types/definitions";
 
+/**
+ * Array of anime and movie objects with comprehensive metadata.
+ * Includes watch status, ratings, descriptions, tags, and key learnings from each title.
+ * 
+ * @type {Array<{
+ *   title: string,
+ *   type: AnimeType,
+ *   status: WatchStatus,
+ *   seasons?: string,
+ *   recommended?: boolean,
+ *   image?: string,
+ *   description?: string,
+ *   tags?: string[],
+ *   year?: string,
+ *   rating?: string,
+ *   keyLearnings?: string[]
+ * }>}
+ */
 export const animeData = [
     // --- COMPLETED ---
     {
