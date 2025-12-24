@@ -8,12 +8,24 @@ import { siteConfig } from "@/lib/config";
 import { ViewToggle } from "../ViewToggle";
 import { SocialButton } from "./SocialButton";
 
+/**
+ * Props for ProfileView component.
+ * @interface ProfileViewProps
+ * @property {any} profile - Profile data object
+ * @property {'profile'|'terminal'} viewMode - Current view mode
+ * @property {Function} setViewMode - Function to switch view modes
+ */
 interface ProfileViewProps {
     profile: any;
     viewMode: 'profile' | 'terminal';
     setViewMode: (mode: 'profile' | 'terminal') => void;
 }
 
+/**
+ * Profile View Component - displays user profile with avatar, bio, and social links.
+ * Features glassmorphic design with hover effects and radial gradient animations.
+ * @component
+ */
 export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps) {
     const [copied, setCopied] = useState(false);
 
