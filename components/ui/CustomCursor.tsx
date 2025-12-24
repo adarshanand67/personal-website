@@ -1,8 +1,27 @@
+/**
+ * @fileoverview Custom Cursor Component - smooth animated cursor with spring physics.
+ * Replaces default cursor with a custom design featuring smooth spring animations.
+ * Automatically hidden on touch devices.
+ */
+
 "use client";
 
 import { useEffect, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
+/**
+ * Custom Cursor Component - animated cursor with spring physics.
+ * Features smooth spring-based motion tracking, mix-blend-difference effect,
+ * and automatic hiding on touch devices. Displays white ring with green center dot.
+ * 
+ * @component
+ * @returns {JSX.Element | null} Rendered custom cursor or null on touch devices
+ * 
+ * @example
+ * ```tsx
+ * <CustomCursor />
+ * ```
+ */
 export function CustomCursor() {
     const [isVisible, setIsVisible] = useState(false);
 

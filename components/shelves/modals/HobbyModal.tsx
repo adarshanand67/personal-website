@@ -1,23 +1,68 @@
+/**
+ * @fileoverview Hobby Modal Component - compact modal for displaying hobby details.
+ * Provides a centered modal with icon, name, description, and optional external link.
+ */
+
 "use client";
 
 import { X, ExternalLink, Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
 import { motion } from "framer-motion";
 
+/**
+ * Icon mapping for hobby categories.
+ * Maps icon names to their corresponding Lucide React components.
+ * @constant
+ */
 const iconMap: Record<string, React.ElementType> = {
     Dumbbell, Tv, Book: Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
 };
 
+/**
+ * Retrieves the appropriate icon component for a hobby.
+ * Returns a fallback emoji if the icon name is not found in the map.
+ * 
+ * @param {string} iconName - Name of the icon to retrieve
+ * @returns {JSX.Element} Icon component or fallback emoji
+ */
 const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName];
     if (!IconComponent) return <span className="text-4xl mb-4">🎮</span>;
     return <IconComponent className="w-12 h-12 text-green-600 dark:text-green-400 mb-4" />;
 };
 
+/**
+ * Props for HobbyModal component.
+ * @interface HobbyModalProps
+ * @property {any} item - Hobby data object containing name, icon, description, and optional link
+ * @property {Function} onClose - Callback function to close the modal
+ */
 interface HobbyModalProps {
     item: any;
     onClose: () => void;
 }
 
+/**
+ * Hobby Modal Component - compact centered modal for hobby details.
+ * Features animated backdrop, icon display, centered content layout,
+ * and optional external link button.
+ * 
+ * @component
+ * @param {HobbyModalProps} props - Component props
+ * @returns {JSX.Element} Rendered modal with hobby details
+ * 
+ * @example
+ * ```tsx
+ * <HobbyModal 
+ *   item={{
+ *     name: "Photography",
+ *     icon: "Camera",
+ *     description: "Capturing moments through the lens",
+ *     link: "https://instagram.com/..."
+ *   }}
+ *   onClose={() => setShowModal(false)}
+ * />
+ * ```
+ */
 export function HobbyModal({ item, onClose }: HobbyModalProps) {
     return (
         <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">

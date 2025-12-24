@@ -6,6 +6,19 @@ import { useTheme } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
 import { commands } from "@/lib/terminal/commands";
 
+/**
+ * Command Executor Hook - executes terminal commands with context.
+ * Handles password mode, command history, piping, and error handling.
+ * 
+ * @returns {Object} Command executor
+ * @returns {Function} returns.executeCommand - Async command execution function
+ * 
+ * @example
+ * ```tsx
+ * const { executeCommand } = useCommandExecutor();
+ * await executeCommand("ls -la");
+ * ```
+ */
 export function useCommandExecutor() {
     const router = useRouter();
     const { setTheme } = useTheme();
@@ -39,7 +52,6 @@ export function useCommandExecutor() {
         let currentInput: string | undefined = undefined;
         const context = {
             setPasswordMode, router, setTheme,
-            toggleMatrix: useStore.getState().toggleMatrix,
             setInput, history, todos, addTodo, toggleTodo, removeTodo, clearTodos,
             setLines: setLines as any
         };

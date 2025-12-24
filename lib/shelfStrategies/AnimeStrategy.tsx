@@ -108,11 +108,18 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
         );
     }
 
-    filter(items: AnimeItem[], query: string): AnimeItem[] {
-        const watchedItems = items.filter(item => item.status === WatchStatus.Completed);
-        if (!query) return watchedItems;
+    filter(items: AnimeItem[], query: string, selectedTag?: string | null): AnimeItem[] {
+        let filtered = items.filter(item => item.status === WatchStatus.Completed);
+
+        if (selectedTag === "Recommended") {
+            filtered = filtered.filter(item => item.recommended);
+        } else if (selectedTag) {
+            filtered = filtered.filter(item => item.tags?.includes(selectedTag));
+        }
+
+        if (!query) return filtered;
         const lowerQuery = query.toLowerCase();
-        return watchedItems.filter(
+        return filtered.filter(
             (item) =>
                 item.title.toLowerCase().includes(lowerQuery) ||
                 (item.description && item.description.toLowerCase().includes(lowerQuery)) ||

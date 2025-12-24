@@ -1,12 +1,41 @@
+/**
+ * @fileoverview Anime Modal Sidebar Component - displays anime poster, status badges, and trailer link.
+ * Renders the left sidebar of the anime modal with poster image, completion/recommendation badges,
+ * and YouTube trailer link.
+ */
 
 import Image from "next/image";
 import { Tv, Check, Star, Play } from "lucide-react";
 import { WatchStatus } from "@/types/definitions";
 
+/**
+ * Props for AnimeSidebar component.
+ * @interface AnimeSidebarProps
+ * @property {any} item - Anime data object containing title, image, status, and recommendation info
+ */
 interface AnimeSidebarProps {
     item: any;
 }
 
+/**
+ * Anime Sidebar Component - displays anime poster and action buttons.
+ * Features gradient background, responsive poster display with fallback,
+ * completion/recommendation status badges, and YouTube trailer search link.
+ * 
+ * @component
+ * @param {AnimeSidebarProps} props - Component props
+ * @returns {JSX.Element} Rendered sidebar with anime poster and actions
+ * 
+ * @example
+ * ```tsx
+ * <AnimeSidebar item={{
+ *   title: "Attack on Titan",
+ *   image: "/anime/aot.jpg",
+ *   status: WatchStatus.Completed,
+ *   recommended: true
+ * }} />
+ * ```
+ */
 export function AnimeSidebar({ item }: AnimeSidebarProps) {
     return (
         <div className="md:w-[400px] bg-gray-100/50 dark:bg-white/5 p-8 md:p-10 flex flex-col items-center justify-start border-r border-gray-200/50 dark:border-white/5 relative overflow-hidden shrink-0">

@@ -6,21 +6,14 @@ import { useStore } from "@/lib/store/useStore";
 import { Book } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
 
-const bookPatterns = [
-    'bg-red-900', 'bg-blue-900', 'bg-green-900', 'bg-amber-900',
-    'bg-slate-800', 'bg-purple-900', 'bg-indigo-900', 'bg-rose-900'
-];
-
-const getBookStyle = (title: string) => {
-    let hash = 0;
-    for (let i = 0; i < title.length; i++) hash = title.charCodeAt(i) + ((hash << 5) - hash);
-    const colorIndex = Math.abs(hash) % bookPatterns.length;
-    return bookPatterns[colorIndex];
-};
+import { getBookGradient } from "@/lib/utils/color";
 
 export class BookListStrategy implements ShelfItemStrategy<Book> {
     renderItem(book: Book, index: number): ReactNode {
-        const coverColor = getBookStyle(book.title);
+        const coverGradient = getBookGradient(book.title);
+        // Extract the base color for the spine (e.g. 'red-900' from 'from-red-900 to-red-950')
+        const spineColor = coverGradient.split(' ')[0].replace('from-', 'bg-');
+
         return (
             <div
                 id={`shelf-item-${book.title}`}
@@ -35,12 +28,11 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
         `}>
                     <div className={`
              absolute top-1 left-0 w-4 h-[98%] -translate-x-3 translate-z-[-2px] rotate-y-[-90deg] origin-right
-             ${coverColor} brightness-75 rounded-l-sm
+             ${spineColor} brightness-75 rounded-l-sm
            `}></div>
 
                     <div className={`
-             absolute inset-0 flex flex-col p-4 ${coverColor} 
-             bg-gradient-to-br from-white/10 to-black/20
+             absolute inset-0 flex flex-col p-4 bg-gradient-to-br ${coverGradient}
              border-r-2 border-white/10 rounded-r-md rounded-l-sm
            `}>
                         <div className="flex-1 border-2 border-white/20 p-2 flex flex-col items-center justify-center text-center">

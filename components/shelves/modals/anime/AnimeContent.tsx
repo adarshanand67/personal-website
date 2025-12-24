@@ -1,11 +1,47 @@
+/**
+ * @fileoverview Anime Modal Content Component - displays anime details, tags, and key learnings.
+ * Renders the main content area of the anime modal including title, metadata, description,
+ * category tags, and key takeaways.
+ */
 
 import { Calendar, Star, Film, Tv } from "lucide-react";
 
+/**
+ * Props for AnimeContent component.
+ * @interface AnimeContentProps
+ * @property {any} item - Anime data object with title, year, rating, seasons, description, tags, and learnings
+ * @property {Function} onTagClick - Callback function when a category tag is clicked
+ */
 interface AnimeContentProps {
     item: any;
     onTagClick: (tag: string) => void;
 }
 
+/**
+ * Anime Content Component - displays detailed anime information and insights.
+ * Features scrollable content area with anime title, metadata badges (year, rating, seasons),
+ * description, clickable category tags, and key learnings/takeaways list.
+ * 
+ * @component
+ * @param {AnimeContentProps} props - Component props
+ * @returns {JSX.Element} Rendered content area with anime details
+ * 
+ * @example
+ * ```tsx
+ * <AnimeContent 
+ *   item={{
+ *     title: "Steins;Gate",
+ *     year: 2011,
+ *     rating: "9.1",
+ *     seasons: "1 Season",
+ *     description: "A sci-fi thriller about time travel",
+ *     tags: ["Sci-Fi", "Thriller"],
+ *     keyLearnings: ["Consequences of choices"]
+ *   }}
+ *   onTagClick={(tag) => filterByTag(tag)}
+ * />
+ * ```
+ */
 export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
     return (
         <div className="flex-1 overflow-y-auto custom-scrollbar">

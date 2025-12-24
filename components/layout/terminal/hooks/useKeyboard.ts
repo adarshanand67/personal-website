@@ -6,6 +6,20 @@ import { commands } from "@/lib/terminal/commands";
 import { directories } from "@/lib/constants";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
 
+/**
+ * Keyboard Hook - handles terminal keyboard interactions.
+ * Manages Enter (execute), Arrow Up/Down (history), and Tab (autocomplete).
+ * 
+ * @param {Function} executeCommand - Command execution function
+ * @returns {Object} Keyboard handlers
+ * @returns {Function} returns.handleKeyDown - Keyboard event handler
+ * 
+ * @example
+ * ```tsx
+ * const { handleKeyDown } = useKeyboard(executeCommand);
+ * <input onKeyDown={handleKeyDown} />
+ * ```
+ */
 export function useKeyboard(executeCommand: (cmd: string) => void) {
     const {
         input, setInput, history, historyIndex, setHistoryIndex, setLines

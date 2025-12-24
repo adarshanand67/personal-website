@@ -7,6 +7,20 @@ import { useStore } from "@/lib/store/useStore";
 import { introLines } from "@/lib/constants";
 import { commands } from "@/lib/terminal/commands";
 
+/**
+ * Terminal Hook - manages terminal state, intro animation, and drag functionality.
+ * Handles terminal initialization, intro sequence typing effect, and window dragging.
+ * 
+ * @returns {Object} Terminal utilities
+ * @returns {Function} returns.handleDragStart - Mouse down handler for drag functionality
+ * @returns {React.RefObject<HTMLInputElement>} returns.inputRef - Ref for input element
+ * @returns {React.RefObject<HTMLDivElement>} returns.containerRef - Ref for container element
+ * 
+ * @example
+ * ```tsx
+ * const { handleDragStart, inputRef, containerRef } = useTerminal();
+ * ```
+ */
 export function useTerminal() {
     const router = useRouter();
     const { setTheme } = useTheme();

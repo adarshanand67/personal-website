@@ -17,7 +17,7 @@ export interface CommandContext {
     toggleTodo: (id: string) => void;
     removeTodo: (id: string) => void;
     clearTodos: () => void;
-    toggleMatrix?: () => void;
+
 }
 
 export type CommandFn = (args: CommandArgs, context: CommandContext, input?: string) => void | Promise<void>;

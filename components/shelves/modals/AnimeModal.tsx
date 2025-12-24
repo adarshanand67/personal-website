@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Anime Modal Component - full-screen modal for displaying anime details.
+ * Provides an immersive viewing experience with animated transitions, sidebar,
+ * scrollable content area, and tag filtering support.
+ */
+
 "use client";
 
 import { X } from "lucide-react";
@@ -5,12 +11,38 @@ import { motion } from "framer-motion";
 import { AnimeSidebar } from "./anime/AnimeSidebar";
 import { AnimeContent } from "./anime/AnimeContent";
 
+/**
+ * Props for AnimeModal component.
+ * @interface AnimeModalProps
+ * @property {any} item - Anime data object to display
+ * @property {Function} onClose - Callback function to close the modal
+ * @property {Function} onTagClick - Callback function when a category tag is clicked
+ */
 interface AnimeModalProps {
     item: any;
     onClose: () => void;
     onTagClick: (tag: string) => void;
 }
 
+/**
+ * Anime Modal Component - animated full-screen modal for anime details.
+ * Features backdrop blur, spring animations, responsive layout switching between
+ * mobile (bottom sheet) and desktop (centered modal), composed sidebar/content layout,
+ * and interactive tag filtering.
+ * 
+ * @component
+ * @param {AnimeModalProps} props - Component props
+ * @returns {JSX.Element} Rendered modal with anime details
+ * 
+ * @example
+ * ```tsx
+ * <AnimeModal 
+ *   item={animeData}
+ *   onClose={() => setShowModal(false)}
+ *   onTagClick={(tag) => filterAnimeByTag(tag)}
+ * />
+ * ```
+ */
 export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
     return (
         <div className="fixed inset-0 z-[1001] flex items-end md:items-center justify-center p-0 md:p-4">

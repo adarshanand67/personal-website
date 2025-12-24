@@ -1,11 +1,41 @@
+/**
+ * @fileoverview Book Modal Header Component - displays book cover and metadata in header.
+ * Renders a gradient header section with book cover image, badges, title, author,
+ * and description quote.
+ */
 
 import Image from "next/image";
 import { BookOpen, Star, Quote } from "lucide-react";
 
+/**
+ * Props for BookHeader component.
+ * @interface BookHeaderProps
+ * @property {any} item - Book data object with cover image, title, author, and badges
+ */
 interface BookHeaderProps {
     item: any;
 }
 
+/**
+ * Book Header Component - displays book cover and primary information.
+ * Features gradient background, responsive layout, cover image with hover effect,
+ * featured/recommended badges, and description quote.
+ * 
+ * @component
+ * @param {BookHeaderProps} props - Component props
+ * @returns {JSX.Element} Rendered header with book cover and metadata
+ * 
+ * @example
+ * ```tsx
+ * <BookHeader item={{
+ *   title: "Design Patterns",
+ *   author: "Gang of Four",
+ *   image: "/books/design-patterns.jpg",
+ *   description: "Elements of reusable object-oriented software",
+ *   recommended: true
+ * }} />
+ * ```
+ */
 export function BookHeader({ item }: BookHeaderProps) {
     return (
         <div className="relative bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 p-8 md:p-12 border-b border-gray-200 dark:border-white/10">

@@ -1,8 +1,26 @@
+/**
+ * @fileoverview Shelf Header Component - displays shelf title, description, search, and actions.
+ * Provides a comprehensive header for shelf pages with title, description, item count,
+ * search input, and optional randomizer button.
+ */
+
 "use client";
 
 import { Search } from "lucide-react";
 import { RandomizerButton } from "@/components/ui";
 
+/**
+ * Props for ShelfHeader component.
+ * @interface ShelfHeaderProps
+ * @property {string} title - Shelf title to display
+ * @property {string} [description] - Optional shelf description
+ * @property {number} count - Total number of items in the shelf
+ * @property {string} searchValue - Current search query value
+ * @property {Function} onSearchChange - Callback when search input changes
+ * @property {string} [searchPlaceholder] - Optional placeholder text for search input
+ * @property {Function} [onPickRandom] - Optional callback when random item is picked
+ * @property {unknown[]} [items] - Optional array of items for randomizer
+ */
 interface ShelfHeaderProps {
     title: string;
     description?: string;
@@ -14,6 +32,29 @@ interface ShelfHeaderProps {
     items?: unknown[];
 }
 
+/**
+ * Shelf Header Component - comprehensive header for shelf pages.
+ * Features gradient title, optional description, item count badge,
+ * optional randomizer button, and search input with icon.
+ * 
+ * @component
+ * @param {ShelfHeaderProps} props - Component props
+ * @returns {JSX.Element} Rendered shelf header
+ * 
+ * @example
+ * ```tsx
+ * <ShelfHeader 
+ *   title="My Books"
+ *   description="A curated collection of books"
+ *   count={42}
+ *   searchValue={query}
+ *   onSearchChange={setQuery}
+ *   searchPlaceholder="Search books..."
+ *   items={bookList}
+ *   onPickRandom={(book) => openBook(book)}
+ * />
+ * ```
+ */
 export function ShelfHeader({
     title, description, count, searchValue,
     onSearchChange, searchPlaceholder, onPickRandom, items

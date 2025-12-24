@@ -1,9 +1,17 @@
+/**
+ * @fileoverview Terminal View Component - displays interactive terminal interface in hero section.
+ * Renders the terminal mode of the hero section with view toggle button.
+ */
+
 import { motion } from "framer-motion";
 import { Terminal } from "@/components/layout/terminal";
 import { ViewToggle } from "../ViewToggle";
 
 /**
  * Props for TerminalView component.
+ * @interface TerminalViewProps
+ * @property {'profile' | 'terminal'} viewMode - Current view mode
+ * @property {Function} setViewMode - Function to switch between profile and terminal views
  */
 interface TerminalViewProps {
     viewMode: 'profile' | 'terminal';
@@ -12,7 +20,19 @@ interface TerminalViewProps {
 
 /**
  * Terminal View Component - displays interactive terminal interface.
+ * Features animated transitions and view toggle button positioned in top-right.
+ * 
  * @component
+ * @param {TerminalViewProps} props - Component props
+ * @returns {JSX.Element} Rendered terminal view with toggle
+ * 
+ * @example
+ * ```tsx
+ * <TerminalView 
+ *   viewMode={currentView}
+ *   setViewMode={setCurrentView}
+ * />
+ * ```
  */
 export function TerminalView({ viewMode, setViewMode }: TerminalViewProps) {
     return (

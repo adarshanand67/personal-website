@@ -1,7 +1,25 @@
+/**
+ * @fileoverview Shelf Skeleton Component - loading placeholder for shelf pages.
+ * Displays animated skeleton UI while shelf content is loading.
+ */
+
 "use client";
 
 import React from "react";
 
+/**
+ * Shelf Skeleton Component - loading state placeholder.
+ * Renders animated skeleton elements mimicking the shelf layout
+ * including header, search bar, and grid of item placeholders.
+ * 
+ * @component
+ * @returns {JSX.Element} Rendered skeleton loading UI
+ * 
+ * @example
+ * ```tsx
+ * {!isLoaded ? <ShelfSkeleton /> : <ShelfContent />}
+ * ```
+ */
 export function ShelfSkeleton() {
     return (
         <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-12 font-mono">

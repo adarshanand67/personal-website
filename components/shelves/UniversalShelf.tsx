@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Universal Shelf Component - flexible shelf display using strategy pattern.
+ * Provides a unified shelf interface that adapts rendering based on content type
+ * (books, anime, hobbies, etc.) using the strategy pattern.
+ */
+
 "use client";
 
 import { useMemo, useState, useEffect } from "react";
@@ -15,11 +21,40 @@ import { HobbyModal } from "./modals/HobbyModal";
 import { BookModal } from "./modals/BookModal";
 import { AnimeModal } from "./modals/AnimeModal";
 
+/**
+ * Props for UniversalShelf component.
+ * @interface UniversalShelfProps
+ * @property {ShelfConfig} config - Shelf configuration object defining type, title, description, etc.
+ * @property {unknown[]} items - Array of items to display in the shelf
+ */
 interface UniversalShelfProps {
     config: ShelfConfig;
     items: unknown[];
 }
 
+/**
+ * Universal Shelf Component - adaptive shelf display using strategy pattern.
+ * Dynamically renders shelf content based on configuration type, with support for
+ * search filtering, tag filtering (anime), randomizer, breadcrumbs, and modals.
+ * Uses strategy pattern to delegate rendering to type-specific strategies.
+ * 
+ * @component
+ * @param {UniversalShelfProps} props - Component props
+ * @returns {JSX.Element} Rendered shelf with header, filters, content grid, and modals
+ * 
+ * @example
+ * ```tsx
+ * <UniversalShelf 
+ *   config={{
+ *     type: ShelfType.Book,
+ *     title: "My Library",
+ *     description: "Books I've read",
+ *     searchPlaceholder: "Search books..."
+ *   }}
+ *   items={bookList}
+ * />
+ * ```
+ */
 export function UniversalShelf({ config, items }: UniversalShelfProps) {
     const store = useStore();
     const strategy = useMemo(() => ShelfStrategyFactory.getStrategy(config.type), [config.type]);

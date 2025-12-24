@@ -25,7 +25,6 @@ export const help: Command = createCommand('help', 'Show available commands', (_
         '',
         'Utility:',
         '  clear         - Clear terminal',
-        '  matrix        - Toggle Matrix rain background',
         '  github        - Show GitHub statistics',
         '  haiku         - Generate a tech haiku',
         '  calc [expr]   - Evaluate math expression',
@@ -50,11 +49,4 @@ export const theme: Command = createCommand('theme', 'Switch color theme', (args
     addLine(setLines, `Theme set to ${mode} mode.`);
 }, { category: 'utility', usage: 'theme [light|dark|system]' });
 
-export const matrix: Command = createCommand('matrix', 'Toggle Matrix rain', (_, { toggleMatrix, setLines }) => {
-    if (toggleMatrix) {
-        toggleMatrix();
-        addLine(setLines, 'Toggling Matrix Rain background...');
-    } else {
-        addLine(setLines, 'Matrix Rain subsystem not found.');
-    }
-}, { category: 'utility', usage: 'matrix' });
+

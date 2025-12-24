@@ -1,5 +1,23 @@
+/**
+ * @fileoverview Voice Visualizer Component - animated audio waveform visualization.
+ * Displays animated bars simulating an audio waveform with "Deep Voice Optimized" label.
+ */
+
 import { motion } from "framer-motion";
 
+/**
+ * Voice Visualizer Component - animated audio waveform bars.
+ * Renders 12 animated bars with staggered delays to create a waveform effect.
+ * Includes "Deep Voice Optimized" label and opacity transitions on hover.
+ * 
+ * @component
+ * @returns {JSX.Element} Rendered voice visualizer with animated bars
+ * 
+ * @example
+ * ```tsx
+ * <VoiceVisualizer />
+ * ```
+ */
 export function VoiceVisualizer() {
     return (
         <div className="flex items-center gap-1 h-8 opacity-40 group-hover/container:opacity-100 transition-opacity duration-1000">

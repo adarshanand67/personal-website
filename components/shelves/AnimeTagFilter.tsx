@@ -1,8 +1,22 @@
+/**
+ * @fileoverview Anime Tag Filter Component - provides tag-based filtering for anime lists.
+ * Displays clickable tag buttons to filter anime by category, with "All" option and clear filters button.
+ */
+
 "use client";
 
 import React from "react";
 import { X } from "lucide-react";
 
+/**
+ * Props for AnimeTagFilter component.
+ * @interface AnimeTagFilterProps
+ * @property {any[]} items - Array of anime items to extract tags from
+ * @property {string | null} selectedTag - Currently selected tag filter
+ * @property {Function} onTagSelect - Callback when a tag is selected or deselected
+ * @property {boolean} showClear - Whether to show the clear filters button
+ * @property {Function} onClear - Callback when clear filters button is clicked
+ */
 interface AnimeTagFilterProps {
     items: any[];
     selectedTag: string | null;
@@ -11,10 +25,35 @@ interface AnimeTagFilterProps {
     onClear: () => void;
 }
 
+/**
+ * Anime Tag Filter Component - interactive tag filtering UI.
+ * Extracts unique tags from anime items, displays them as clickable buttons,
+ * and provides "All" option and clear filters functionality.
+ * 
+ * @component
+ * @param {AnimeTagFilterProps} props - Component props
+ * @returns {JSX.Element | null} Rendered tag filter or null if no tags exist
+ * 
+ * @example
+ * ```tsx
+ * <AnimeTagFilter 
+ *   items={animeList}
+ *   selectedTag={currentTag}
+ *   onTagSelect={(tag) => setCurrentTag(tag)}
+ *   showClear={!!currentTag}
+ *   onClear={() => resetFilters()}
+ * />
+ * ```
+ */
 export function AnimeTagFilter({ items, selectedTag, onTagSelect, showClear, onClear }: AnimeTagFilterProps) {
+    const hasRecommended = items.some(item => item.recommended);
     const allTags = Array.from(new Set(
         items.flatMap(item => item.tags || [])
     )).sort();
+
+    if (hasRecommended) {
+        allTags.unshift("Recommended");
+    }
 
     if (allTags.length === 0) return null;
 
