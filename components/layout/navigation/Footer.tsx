@@ -2,6 +2,11 @@ import Link from "next/link";
 import { Home, FileText, BookOpen, Tv, Gamepad2 } from "lucide-react";
 import { ClientGithub, ClientLinkedin, ClientMail } from "@/components/layout/theme";
 
+/**
+ * Footer Component - site footer with navigation links and branding.
+ * Features glassmorphic design with gradient backgrounds.
+ * @component
+ */
 export function Footer() {
     return (
         <footer className="relative py-16 border-t border-gray-200/50 dark:border-gray-800/50 mt-auto font-mono overflow-hidden">

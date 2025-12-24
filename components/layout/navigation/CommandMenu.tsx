@@ -6,6 +6,11 @@ import { CommandMenuInput } from "./command-menu/CommandMenuInput";
 import { CommandMenuItems } from "./command-menu/CommandMenuItems";
 import { CommandMenuFooter } from "./command-menu/CommandMenuFooter";
 
+/**
+ * Command Menu Component - keyboard-driven command palette.
+ * Features fuzzy search, keyboard navigation, and grouped commands.
+ * @component
+ */
 export function CommandMenu() {
     const {
         open, setOpen, search, setSearch, selectedIndex, runCommand, commandGroups, filteredItems
