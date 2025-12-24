@@ -7,10 +7,18 @@ import { useStore } from "@/lib/store/useStore";
 import { linkifyTech } from "@/lib/techLinks";
 import { getAssetPath } from "@/lib/utils";
 
+/**
+ * Props for Experience component.
+ */
 interface ExperienceProps {
     items: any[];
 }
 
+/**
+ * Experience Section Component - displays professional work history.
+ * Features collapsible section with spotlight cards and auto-linked technology mentions.
+ * @component
+ */
 export function Experience({ items }: ExperienceProps) {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections['experience'] ?? true;
