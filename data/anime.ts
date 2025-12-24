@@ -774,8 +774,8 @@ export const animeData = [
         year: "2015",
         rating: "7.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "In extreme adversity, brotherhood and loyalty take precedence over social conventions.",
+            "Gakuto! A man's dignity is found in his willingness to sacrifice for his friends."
         ]
     },
     {
@@ -804,8 +804,8 @@ export const animeData = [
         year: "2004",
         rating: "8.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Every life has equal value, but a single decision can lead to unforgivable consequences.",
+            "If you're going to kill, you should be prepared to be killed yourself."
         ]
     },
     {
@@ -819,8 +819,8 @@ export const animeData = [
         year: "2016",
         rating: "8.4/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Finding one's place in the world is a slow process of accepting both kindness and pain.",
+            "It's okay to rely on others; sometimes that's the only way to move forward."
         ]
     },
     {
@@ -834,8 +834,8 @@ export const animeData = [
         year: "2002",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The boundary between man and machine is as thin as the data that defines our souls.",
+            "What if there's no ghost in the engine? Identity is what you make of it."
         ]
     },
     {
@@ -849,8 +849,8 @@ export const animeData = [
         year: "2019",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Hope is the most powerful weapon against a world designed to consume you.",
+            "We will escape together. Even in a farm of demons, our intelligence is our salvation."
         ]
     },
     {
@@ -864,8 +864,8 @@ export const animeData = [
         year: "2015",
         rating: "7.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The weight of responsibility can be overwhelming, but it's what gives life meaning.",
+            "Even if I lose my memories, the feelings we shared will remain."
         ]
     },
     {
@@ -879,8 +879,8 @@ export const animeData = [
         year: "2018",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Kindness and empathy are the best cures for the 'adolescence syndrome' of loneliness.",
+            "I live my life based on whether I'll be proud of myself tomorrow."
         ]
     },
     {
@@ -894,8 +894,8 @@ export const animeData = [
         year: "2006",
         rating: "8.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "True honor isn't about the era you live in, but the soul you keep.",
+            "Zura janai, Katsura da! Life is more fun when you have friends to be stupid with."
         ]
     },
     {
@@ -909,8 +909,8 @@ export const animeData = [
         year: "2015",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Education is about teaching students how to live, not just how to kill.",
+            "Nurufufufu! A teacher's job is to prepare you for the world outside the classroom."
         ]
     },
     {
@@ -924,8 +924,8 @@ export const animeData = [
         year: "2023",
         rating: "8.7/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Revenge is a cold path that requires a heart as sharp and unyielding as a blade.",
+            "I'm not a samurai. I'm just a monster who knows how to use a sword."
         ]
     },
     {
@@ -939,8 +939,8 @@ export const animeData = [
         year: "2022",
         rating: "7.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Peace is maintained by those willing to do the dirty work in the shadows.",
+            "Sakana! Even in a café, a secret agent must always be ready for action."
         ]
     },
     {
@@ -954,8 +954,8 @@ export const animeData = [
         year: "2000",
         rating: "8.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Boxers don't fight to hit; they fight to find the meaning of strength.",
+            "What does it mean to be strong? The answer is at the end of every punch."
         ]
     },
     {
@@ -969,8 +969,8 @@ export const animeData = [
         year: "2018",
         rating: "8.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Living each day with no regrets is the most beautiful way to face the inevitable.",
+            "To live is to have a bond with others. That's what it means to be alive."
         ]
     },
     {
@@ -984,8 +984,8 @@ export const animeData = [
         year: "1988",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "War has no winners, only victims whose innocence is stolen by fire and hunger.",
+            "Why do fireflies have to die so soon? A tragic reminder of the fragility of peace."
         ]
     },
     {
@@ -999,8 +999,8 @@ export const animeData = [
         year: "2001",
         rating: "8.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Courage and hard work can break any spirit's curse or human's transformation.",
+            "Don't forget your name. It's the only thing that keeps you who you are."
         ]
     },
     {
@@ -1014,8 +1014,8 @@ export const animeData = [
         year: "2016",
         rating: "8.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The thread of fate can connect hearts across time and space if the bond is strong enough.",
+            "I'm always searching for something, someone... Your Name is etched in my heart."
         ]
     },
     {
@@ -1029,8 +1029,8 @@ export const animeData = [
         year: "2007",
         rating: "7.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Sometimes the most profound connections are the ones that drift apart silently.",
+            "The speed at which 5 centimeters per second—that's how fast cherry blossoms fall."
         ]
     },
     {
@@ -1043,8 +1043,8 @@ export const animeData = [
         tags: ["Adventure", "Fantasy", "Romance"],
         year: "2004",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "True beauty is found in the heart, and love can break the oldest of curses.",
+            "A heart is a heavy burden. But a moving castle needs a heart to walk."
         ]
     },
     {
@@ -1058,8 +1058,8 @@ export const animeData = [
         year: "1997",
         rating: "8.7/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Nature doesn't need humans, but humans cannot survive without the forest's mercy.",
+            "To see with eyes unclouded by hate. The struggle for balance is eternal."
         ]
     },
     {
@@ -1073,8 +1073,8 @@ export const animeData = [
         year: "2022",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Closing the doors of the past is necessary to prevent the disasters of the future.",
+            "I went to see my mother. The journey is about healing the scars of the land."
         ]
     },
     {
@@ -1088,8 +1088,8 @@ export const animeData = [
         year: "2019",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Even if the sky is gray, the choice to be together is what brings the sunshine.",
+            "Who cares if we never see the sun again! I want you more than any blue sky."
         ]
     },
     {
@@ -1103,8 +1103,8 @@ export const animeData = [
         year: "2016",
         rating: "8.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Redemption is a slow path of learning to hear the voice that you once silenced.",
+            "I want to tell you... that I'm sorry. Forgiveness begins with self-forgiveness."
         ]
     },
     {
@@ -1118,8 +1118,8 @@ export const animeData = [
         year: "2006",
         rating: "7.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Time is precious; using it selfishly only leads to more complicated regrets.",
+            "Time waits for no one. Cherish the present before it leaps away."
         ]
     },
     {
@@ -1133,8 +1133,8 @@ export const animeData = [
         year: "2022",
         rating: "7.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Being a leader means gathering a diverse group and turning them into a nation.",
+            "I'm a slime, not an evil slime! Unity is the strongest magic there is."
         ]
     },
     {
@@ -1148,8 +1148,8 @@ export const animeData = [
         year: "2022",
         rating: "7.7/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The most powerful Mastermind is the one who remains a myth in everyone's eyes.",
+            "I am Atomic! To rule from the shadows, one must first master the art of roleplay."
         ]
     },
     {
@@ -1163,8 +1163,8 @@ export const animeData = [
         year: "2019",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Love is a psychological battlefield where the first one to blink loses their pride.",
+            "O Kawaii Koto. Intelligence is useless when the heart is in a total state of war."
         ]
     },
     {
@@ -1178,8 +1178,8 @@ export const animeData = [
         year: "2016",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Return by Death is a curse that only the strongest will can transform into a salvation.",
+            "I will save you! No matter how many times I have to die, I won't give up on you."
         ]
     },
     {
@@ -1193,8 +1193,8 @@ export const animeData = [
         year: "2024",
         rating: "8.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Supernatural threats are easier to face when you have a partner who shares your weirdness.",
+            "Turbo Granny! The occult is terrifying, but high-speed battles are even wilder."
         ]
     },
     {
@@ -1208,8 +1208,8 @@ export const animeData = [
         year: "2021",
         rating: "8.4/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A second chance at life is a debt that must be paid by living with absolute conviction.",
+            "I'll work hard so I won't ever have to regret anything again."
         ]
     },
     {
@@ -1223,8 +1223,8 @@ export const animeData = [
         year: "2022",
         rating: "8.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "In a city that consumes everyone, the only thing that matters is the dream you leave behind.",
+            "I'm going to the moon. Even a street kid can reach for the stars in Night City."
         ]
     },
     {
@@ -1238,8 +1238,8 @@ export const animeData = [
         year: "2008",
         rating: "9.0/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The most painful losses are the ones that remind us how much we actually loved.",
+            "Dango, dango, dango... Family is the most beautiful and tragic circle of life."
         ]
     },
     {
@@ -1253,8 +1253,8 @@ export const animeData = [
         year: "2023",
         rating: "8.7/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The entertainment industry is a web of lies where the truth is the most dangerous idol.",
+            "Liars are the best idols. But a mother's love is the only lie worth keeping."
         ]
     },
     {
@@ -1268,8 +1268,8 @@ export const animeData = [
         year: "2021",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Humanity is defined by the dignity you maintain even when the world treats you as sub-human.",
+            "Fido. We pilot these machines so we can die as humans, not as drones."
         ]
     },
     {
@@ -1283,8 +1283,8 @@ export const animeData = [
         year: "2022",
         rating: "8.8/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Social anxiety can be managed when you find an instrument to speak your hidden soul.",
+            "Bocchi-chan! Rock music is the voice of the introverts who want to scream."
         ]
     },
     {
@@ -1298,8 +1298,8 @@ export const animeData = [
         year: "2011",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A childhood dream can become a lifelong passion that connects people across time.",
+            "I want to be the Queen of Karuta. The cards tell a story of effort and devotion."
         ]
     },
     {
@@ -1313,8 +1313,8 @@ export const animeData = [
         year: "2008",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Kindness to those who are different is the best way to return the names of the past.",
+            "Nyanko-sensei! Every encounter with a spirit is a lesson in human connection."
         ]
     },
     {
@@ -1328,8 +1328,8 @@ export const animeData = [
         year: "2009",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Words have weight, and the way we tell our stories defines the reality we live in.",
+            "I bit my tongue! Reality is a dialogue between the observer and the observed."
         ]
     },
     {
@@ -1343,8 +1343,8 @@ export const animeData = [
         year: "2005",
         rating: "8.7/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Life in its simplest form is neither good nor evil; it just exists and affects us.",
+            "Mushi are not monsters. They are just a different world overlapping with ours."
         ]
     },
     {
@@ -1358,8 +1358,8 @@ export const animeData = [
         year: "1999",
         rating: "8.6/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "To reach students who have given up, you must be a teacher who isn't afraid to be human.",
+            "Great Teacher Onizuka! I'll teach you that life is more than just grades."
         ]
     },
     {
@@ -1373,8 +1373,8 @@ export const animeData = [
         year: "1992",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Dying to save others is just the beginning of a duty that transcends the living world.",
+            "Ray Gun! A delinquent's spirit is the strongest shield against the supernatural."
         ]
     },
     {
@@ -1388,8 +1388,8 @@ export const animeData = [
         year: "1996",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A sword that protects is far heavier than a sword that only knows how to kill.",
+            "Oro? A wanderer's path is to ensure that no one else has to suffer as I did."
         ]
     },
     {
@@ -1403,8 +1403,8 @@ export const animeData = [
         year: "2000",
         rating: "7.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Love across ages and worlds is a journey of finding the pieces of one's own soul.",
+            "Sit, boy! The strongest jewel is the one built on trust between two worlds."
         ]
     },
     {
@@ -1418,8 +1418,8 @@ export const animeData = [
         year: "2006",
         rating: "8.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Two paths that cross in a big city can create a melody that echoes through a lifetime.",
+            "Hey, Nana... Life is a song that we compose together, even if we drift apart."
         ]
     },
     {
@@ -1433,8 +1433,8 @@ export const animeData = [
         year: "2004",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Music is the bridge between a boring life and a world filled with raw energy.",
+            "Beck. The best band is the one where everyone is playing from their heart."
         ]
     },
     {
@@ -1448,8 +1448,8 @@ export const animeData = [
         year: "2006",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "In a world where bullets are the only currency, survival is the highest form of rebellion.",
+            "Amen, Hallelujah, Peanut Butter! In this city, you're either a pirate or a ghost."
         ]
     },
     {
@@ -1463,8 +1463,8 @@ export const animeData = [
         year: "1998",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Love and peace are expensive ideals in a world that only knows how to destroy.",
+            "This world is made of Love and Peace! A pacifist gunman is the ultimate contradiction."
         ]
     },
     {
@@ -1478,8 +1478,8 @@ export const animeData = [
         year: "2006",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "True monsters are often those who claim to be fighting for the light.",
+            "Come on... Search and Destroy. A vampire's loyalty is the darkest of all."
         ]
     },
     {
@@ -1493,8 +1493,8 @@ export const animeData = [
         year: "2012",
         rating: "8.3/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A system that judges criminals before they commit crimes is a system that kills the soul.",
+            "The system is perfect. Justice is a luxury for those who can still think for themselves."
         ]
     },
     {
@@ -1508,8 +1508,8 @@ export const animeData = [
         year: "2007",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A contract with the supernatural always comes with a price paid in one's own humanity.",
+            "Contracts are for the dead. Living is the hardest mission of all."
         ]
     },
     {
@@ -1523,8 +1523,8 @@ export const animeData = [
         year: "2010",
         rating: "8.2/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "The most ordinary-looking people often have the most extraordinary secrets.",
+            "Ikebukuro is a stage, and we're all just actors in a city that never sleeps."
         ]
     },
     {
@@ -1538,8 +1538,8 @@ export const animeData = [
         year: "2014",
         rating: "8.0/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "A god without followers is just a ghost in a world that has forgotten how to pray.",
+            "I'll do it for five yen! Even a minor god can make a major difference."
         ]
     },
     {
@@ -1553,8 +1553,8 @@ export const animeData = [
         year: "2008",
         rating: "7.9/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Resonance of soul is far more powerful than any weapon or magic.",
+            "A sound soul dwells within a sound mind and a sound body."
         ]
     },
     {
@@ -1568,8 +1568,8 @@ export const animeData = [
         year: "2014",
         rating: "7.5/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "In a corrupt empire, the choice to kill is the only way to save the future.",
+            "Night Raid. We carry the burdens so that one day the world won't have to."
         ]
     },
     {
@@ -1583,8 +1583,8 @@ export const animeData = [
         year: "2014",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Games are a reflection of life where pure strategy can overcome any disadvantage.",
+            "Blank never loses. In this world, the smartest gamers are the new gods."
         ]
     },
     {
@@ -1598,8 +1598,8 @@ export const animeData = [
         year: "2016",
         rating: "8.1/10",
         keyLearnings: [
-            "Persistence and hard work eventually lead to success.",
-            "The importance of bonds and friendship in overcoming adversity."
+            "Even in a world of magic, a dysfunctional party can find its own kind of victory.",
+            "EXPLOSION! Sometimes the most useless skills are the ones that save the day."
         ]
     },
     {

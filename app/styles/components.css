@@ -1,0 +1,41 @@
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        0 4px 24px -1px rgba(0, 0, 0, 0.02),
+        0 2px 12px -1px rgba(0, 0, 0, 0.01);
+}
+
+.dark .glass {
+    box-shadow:
+        0 4px 24px -1px rgba(0, 0, 0, 0.2),
+        0 2px 8px -1px rgba(0, 0, 0, 0.1);
+}
+
+.title-gradient {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark .title-gradient {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}

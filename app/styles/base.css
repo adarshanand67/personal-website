@@ -1,0 +1,52 @@
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-assistant), sans-serif;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 100;
+    filter: contrast(120%) brightness(100%);
+}
+
+.dark body::before {
+    opacity: 0.04;
+}
+
+::selection {
+    background: var(--selection-bg);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 100px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
