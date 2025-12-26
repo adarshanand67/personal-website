@@ -43,7 +43,7 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
 
             {item.image ? (
                 <a
-                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative w-48 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group"
@@ -72,19 +72,19 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
             <div className="w-full space-y-3 relative z-10">
                 {item.status === WatchStatus.Completed && (
                     <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
-                        <Check size={12} strokeWidth={3} />
+                        <Check size={16} strokeWidth={3} />
                         <span>Completed</span>
                     </div>
                 )}
                 {item.recommended && (
                     <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
-                        <Star size={12} fill="currentColor" />
+                        <Star size={16} fill="currentColor" />
                         <span>Highly Recommended</span>
                     </div>
                 )}
 
                 <a
-                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5"
