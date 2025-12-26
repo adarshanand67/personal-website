@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
-import { skillCategories } from "@/lib/constants/skills";
+import { skillCategories } from "@/lib/constants";
 
 const ForceGraph2D = dynamic(() => import("react-force-graph-2d"), {
     ssr: false,

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ChevronDown, Maximize2 } from "lucide-react";
-import { tracks } from "@/lib/constants/music";
+import { tracks } from "@/lib/constants";
 import Link from "next/link";
 
 /**

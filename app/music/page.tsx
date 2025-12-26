@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { tracks } from "@/lib/constants/music";
+import { tracks } from "@/lib/constants";
 import { useStore } from "@/lib/store/useStore";
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
