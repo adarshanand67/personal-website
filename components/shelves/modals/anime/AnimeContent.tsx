@@ -21,14 +21,14 @@ interface AnimeContentProps {
  * Anime Content Component - displays detailed anime information and insights.
  * Features scrollable content area with anime title, metadata badges (year, rating, seasons),
  * description, clickable category tags, and key learnings/takeaways list.
- * 
+ *
  * @component
  * @param {AnimeContentProps} props - Component props
  * @returns {JSX.Element} Rendered content area with anime details
- * 
+ *
  * @example
  * ```tsx
- * <AnimeContent 
+ * <AnimeContent
  *   item={{
  *     title: "Steins;Gate",
  *     year: 2011,
@@ -83,7 +83,9 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                 {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
                     <div>
-                        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Categories</h3>
+                        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+                            Categories
+                        </h3>
                         <div className="flex flex-wrap gap-2">
                             {item.tags.map((tag: string) => (
                                 <button

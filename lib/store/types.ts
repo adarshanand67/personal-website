@@ -3,7 +3,7 @@
  * Defines all state interfaces and their methods for the application store.
  */
 
-import { AnimeItem, Hobby, Book } from '@/types/definitions';
+import { AnimeItem, Hobby, Book } from "@/types/definitions";
 
 /**
  * Terminal state interface - manages terminal emulator state.
@@ -257,4 +257,16 @@ export interface GuestbookState {
  * @extends {TodoState}
  * @extends {GuestbookState}
  */
-export interface AppState extends TerminalState, MusicState, BackToTopState, UIState, AnimeState, HobbyState, BookState, SearchState, RandomizerState, TodoState, GuestbookState { }
+export interface AppState
+    extends
+        TerminalState,
+        MusicState,
+        BackToTopState,
+        UIState,
+        AnimeState,
+        HobbyState,
+        BookState,
+        SearchState,
+        RandomizerState,
+        TodoState,
+        GuestbookState {}

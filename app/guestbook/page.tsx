@@ -1,8 +1,8 @@
 import { Guestbook } from "@/components/content";
 
 export const metadata = {
-    title: 'Guestbook | Adarsh Anand',
-    description: 'Sign my terminal-based guestbook.',
+    title: "Guestbook | Adarsh Anand",
+    description: "Sign my terminal-based guestbook.",
 };
 
 export default function GuestbookPage() {
@@ -15,7 +15,8 @@ export default function GuestbookPage() {
                         ./guestbook.sh
                     </h1>
                     <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-mono">
-                        Leave a mark in the digital log. Messages are stored locally in your browser cache.
+                        Leave a mark in the digital log. Messages are stored locally in your browser
+                        cache.
                     </p>
                 </header>
                 <Guestbook />

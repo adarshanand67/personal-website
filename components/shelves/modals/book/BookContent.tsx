@@ -19,11 +19,11 @@ interface BookContentProps {
  * Book Content Component - displays detailed book information and insights.
  * Features scrollable content area with book title, author, description quote,
  * and either key takeaways list or general notes.
- * 
+ *
  * @component
  * @param {BookContentProps} props - Component props
  * @returns {JSX.Element} Rendered content area with book details
- * 
+ *
  * @example
  * ```tsx
  * <BookContent item={{
@@ -50,7 +50,10 @@ export function BookContent({ item }: BookContentProps) {
 
                     {item.description && (
                         <div className="relative">
-                            <Quote size={24} className="absolute -left-2 -top-2 text-green-500/30" />
+                            <Quote
+                                size={24}
+                                className="absolute -left-2 -top-2 text-green-500/30"
+                            />
                             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed italic pl-6">
                                 {item.description}
                             </p>

@@ -1,13 +1,37 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { X, Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic, ExternalLink } from "lucide-react";
+import {
+    X,
+    Dumbbell,
+    Tv,
+    Book,
+    Trophy,
+    Bike,
+    Mountain,
+    Dices,
+    Plane,
+    Coffee,
+    Users,
+    Mic,
+    ExternalLink,
+} from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { hobbyData } from "@/data";
 import Link from "next/link";
 
 const iconMap: Record<string, React.ElementType> = {
-    Dumbbell, Tv, Book, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+    Dumbbell,
+    Tv,
+    Book,
+    Trophy,
+    Bike,
+    Mountain,
+    Dices,
+    Plane,
+    Coffee,
+    Users,
+    Mic,
 };
 
 export const HobbiesModal = () => {
@@ -60,8 +84,8 @@ export const HobbiesModal = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {hobbyData.map((hobby: any, index) => {
-                        const isExternal = hobby.link?.startsWith('http');
-                        const Component = isExternal ? 'a' : Link;
+                        const isExternal = hobby.link?.startsWith("http");
+                        const Component = isExternal ? "a" : Link;
                         const linkProps = isExternal
                             ? { href: hobby.link, target: "_blank", rel: "noopener noreferrer" }
                             : { href: hobby.link };
@@ -78,7 +102,12 @@ export const HobbiesModal = () => {
                                 <div className="flex-1">
                                     <h3 className="font-bold text-gray-900 dark:text-gray-100 mb-1 flex items-center gap-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                                         {hobby.name}
-                                        {isExternal && <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />}
+                                        {isExternal && (
+                                            <ExternalLink
+                                                size={14}
+                                                className="opacity-0 group-hover:opacity-100 transition-opacity"
+                                            />
+                                        )}
                                     </h3>
                                     <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-balance">
                                         {hobby.description}

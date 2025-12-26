@@ -1,2 +1,2 @@
 // Modal Components - Overlays and dialogs
-export { HobbiesModal } from './hobbiesModal';
+export { HobbiesModal } from "./hobbiesModal";

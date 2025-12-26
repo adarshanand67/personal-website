@@ -3,8 +3,14 @@
  */
 
 const bookPatterns = [
-    'bg-red-900', 'bg-blue-900', 'bg-green-900', 'bg-amber-900',
-    'bg-slate-800', 'bg-purple-900', 'bg-indigo-900', 'bg-rose-900'
+    "bg-red-900",
+    "bg-blue-900",
+    "bg-green-900",
+    "bg-amber-900",
+    "bg-slate-800",
+    "bg-purple-900",
+    "bg-indigo-900",
+    "bg-rose-900",
 ];
 
 const bookGradients = [
@@ -15,7 +21,7 @@ const bookGradients = [
     "from-slate-800 to-slate-900",
     "from-purple-900 to-purple-950",
     "from-indigo-900 to-indigo-950",
-    "from-rose-900 to-rose-950"
+    "from-rose-900 to-rose-950",
 ];
 
 /**

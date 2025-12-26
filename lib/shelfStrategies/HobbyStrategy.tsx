@@ -1,18 +1,39 @@
 "use client";
 
 import { ReactNode } from "react";
-import { Dumbbell, Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic } from "lucide-react";
+import {
+    Dumbbell,
+    Tv,
+    Trophy,
+    Bike,
+    Mountain,
+    Dices,
+    Plane,
+    Coffee,
+    Users,
+    Mic,
+} from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { Hobby } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
 
 const iconMap: Record<string, React.ElementType> = {
-    Dumbbell, Tv, Book: Tv, Trophy, Bike, Mountain, Dices, Plane, Coffee, Users, Mic
+    Dumbbell,
+    Tv,
+    Book: Tv,
+    Trophy,
+    Bike,
+    Mountain,
+    Dices,
+    Plane,
+    Coffee,
+    Users,
+    Mic,
 };
 
 export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
     private getIcon(iconName: string): ReactNode {
-        const IconComponent = iconMap[iconName] as any;
+        const IconComponent = iconMap[iconName] as React.ElementType | undefined;
         if (IconComponent) {
             return <IconComponent className="w-8 h-8 text-green-500" />;
         }
@@ -30,7 +51,9 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
                     <div className="mb-3 transform group-hover:scale-110 group-hover:-rotate-12 transition-transform duration-500 w-fit">
                         {this.getIcon(hobby.icon)}
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{hobby.name}</h3>
+                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                        {hobby.name}
+                    </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
                         {hobby.description}
                     </p>

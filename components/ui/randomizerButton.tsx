@@ -67,16 +67,14 @@ export function RandomizerButton({ items, onPick }: RandomizerButtonProps) {
                 rounded-lg font-mono text-sm font-bold
                 hover:border-green-500 transition-all duration-300
                 disabled:opacity-50 disabled:cursor-not-allowed
-                ${isRandomizing ? 'border-green-500 text-green-500' : 'text-gray-700 dark:text-gray-300'}
+                ${isRandomizing ? "border-green-500 text-green-500" : "text-gray-700 dark:text-gray-300"}
             `}
         >
             <Shuffle
                 size={16}
-                className={`transition-transform duration-500 ${isRandomizing ? 'animate-spin' : 'group-hover:rotate-12'}`}
+                className={`transition-transform duration-500 ${isRandomizing ? "animate-spin" : "group-hover:rotate-12"}`}
             />
-            <span>
-                {isRandomizing ? "Picking..." : "Pick for Me"}
-            </span>
+            <span>{isRandomizing ? "Picking..." : "Pick for Me"}</span>
             {isRandomizing && (
                 <span className="absolute -top-1 -right-1 flex h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>

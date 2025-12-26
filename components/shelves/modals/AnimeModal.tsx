@@ -29,14 +29,14 @@ interface AnimeModalProps {
  * Features backdrop blur, spring animations, responsive layout switching between
  * mobile (bottom sheet) and desktop (centered modal), composed sidebar/content layout,
  * and interactive tag filtering.
- * 
+ *
  * @component
  * @param {AnimeModalProps} props - Component props
  * @returns {JSX.Element} Rendered modal with anime details
- * 
+ *
  * @example
  * ```tsx
- * <AnimeModal 
+ * <AnimeModal
  *   item={animeData}
  *   onClose={() => setShowModal(false)}
  *   onTagClick={(tag) => filterAnimeByTag(tag)}
@@ -71,7 +71,10 @@ export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
                     onClick={onClose}
                     className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
                 >
-                    <X size={20} className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors" />
+                    <X
+                        size={20}
+                        className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors"
+                    />
                 </button>
 
                 <AnimeSidebar item={item} />

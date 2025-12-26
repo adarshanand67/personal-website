@@ -44,7 +44,11 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                             <Check size={12} className="text-green-500 flex-shrink-0" />
                         )}
                         {anime.recommended && (
-                            <Star size={12} fill="currentColor" className="text-amber-400 flex-shrink-0" />
+                            <Star
+                                size={12}
+                                fill="currentColor"
+                                className="text-amber-400 flex-shrink-0"
+                            />
                         )}
                     </h3>
                     {anime.seasons && (
@@ -74,8 +78,10 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     renderList(items: AnimeItem[]): ReactNode {
         if (items.length === 0) return null;
 
-        const series = items.filter(item => item.type === AnimeType.Anime || item.type === AnimeType.WebSeries);
-        const movies = items.filter(item => item.type === AnimeType.Movie);
+        const series = items.filter(
+            (item) => item.type === AnimeType.Anime || item.type === AnimeType.WebSeries
+        );
+        const movies = items.filter((item) => item.type === AnimeType.Movie);
 
         return (
             <div className="space-y-16">
@@ -84,7 +90,9 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                         <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
                             <span className="text-green-500/20 text-3xl font-mono">/</span>
                             Anime Series
-                            <span className="text-gray-400 text-sm font-normal">({series.length})</span>
+                            <span className="text-gray-400 text-sm font-normal">
+                                ({series.length})
+                            </span>
                         </h2>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
                             {series.map((anime, index) => this.renderItem(anime, index))}
@@ -97,7 +105,9 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                         <h2 className="text-2xl font-bold mb-6 flex items-center gap-4">
                             <span className="text-green-500/20 text-3xl font-mono">/</span>
                             Anime Movies
-                            <span className="text-gray-400 text-sm font-normal">({movies.length})</span>
+                            <span className="text-gray-400 text-sm font-normal">
+                                ({movies.length})
+                            </span>
                         </h2>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 px-4">
                             {movies.map((anime, index) => this.renderItem(anime, index))}
@@ -109,12 +119,12 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     }
 
     filter(items: AnimeItem[], query: string, selectedTag?: string | null): AnimeItem[] {
-        let filtered = items.filter(item => item.status === WatchStatus.Completed);
+        let filtered = items.filter((item) => item.status === WatchStatus.Completed);
 
         if (selectedTag === "Recommended") {
-            filtered = filtered.filter(item => item.recommended);
+            filtered = filtered.filter((item) => item.recommended);
         } else if (selectedTag) {
-            filtered = filtered.filter(item => item.tags?.includes(selectedTag));
+            filtered = filtered.filter((item) => item.tags?.includes(selectedTag));
         }
 
         if (!query) return filtered;
@@ -123,7 +133,8 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
             (item) =>
                 item.title.toLowerCase().includes(lowerQuery) ||
                 (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
-                (item.tags && item.tags.some((tag: string) => tag.toLowerCase().includes(lowerQuery)))
+                (item.tags &&
+                    item.tags.some((tag: string) => tag.toLowerCase().includes(lowerQuery)))
         );
     }
 }

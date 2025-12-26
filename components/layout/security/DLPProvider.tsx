@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 interface DLPProviderProps {
     children: React.ReactNode;
@@ -26,7 +26,7 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
         // 2. Prevent common keyboard shortcuts
         const handleKeyDown = (e: KeyboardEvent) => {
             // Prevent F12
-            if (e.key === 'F12') {
+            if (e.key === "F12") {
                 e.preventDefault();
                 return false;
             }
@@ -40,10 +40,19 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
 
             if (ctrlOrMeta) {
                 if (
-                    (shift && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j')) ||
-                    e.key === 'U' || e.key === 'u' ||
-                    e.key === 'S' || e.key === 's' ||
-                    e.key === 'P' || e.key === 'p'
+                    (shift &&
+                        (e.key === "I" ||
+                            e.key === "i" ||
+                            e.key === "C" ||
+                            e.key === "c" ||
+                            e.key === "J" ||
+                            e.key === "j")) ||
+                    e.key === "U" ||
+                    e.key === "u" ||
+                    e.key === "S" ||
+                    e.key === "s" ||
+                    e.key === "P" ||
+                    e.key === "p"
                 ) {
                     e.preventDefault();
                     return false;
@@ -62,7 +71,7 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
         const handleFocus = () => setIsBlurred(false);
 
         const handleVisibilityChange = () => {
-            if (document.visibilityState === 'hidden') {
+            if (document.visibilityState === "hidden") {
                 setIsBlurred(true);
             } else {
                 setIsBlurred(false);
@@ -70,28 +79,28 @@ export const DLPProvider: React.FC<DLPProviderProps> = ({ children }) => {
         };
 
         // Attach listeners
-        document.addEventListener('contextmenu', handleContextMenu);
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('dragstart', handleDragStart);
-        window.addEventListener('blur', handleBlur);
-        window.addEventListener('focus', handleFocus);
-        document.addEventListener('visibilitychange', handleVisibilityChange);
+        document.addEventListener("contextmenu", handleContextMenu);
+        document.addEventListener("keydown", handleKeyDown);
+        document.addEventListener("dragstart", handleDragStart);
+        window.addEventListener("blur", handleBlur);
+        window.addEventListener("focus", handleFocus);
+        document.addEventListener("visibilitychange", handleVisibilityChange);
 
         return () => {
             // Clean up
-            document.removeEventListener('contextmenu', handleContextMenu);
-            document.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('dragstart', handleDragStart);
-            window.removeEventListener('blur', handleBlur);
-            window.removeEventListener('focus', handleFocus);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener("contextmenu", handleContextMenu);
+            document.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("dragstart", handleDragStart);
+            window.removeEventListener("blur", handleBlur);
+            window.removeEventListener("focus", handleFocus);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
     }, []);
 
     return (
         <div className="relative w-full h-full">
             <div
-                className={`transition-all duration-300 w-full h-full ${isBlurred ? 'blur-[20px] select-none pointer-events-none grayscale opacity-50' : ''}`}
+                className={`transition-all duration-300 w-full h-full ${isBlurred ? "blur-[20px] select-none pointer-events-none grayscale opacity-50" : ""}`}
                 aria-hidden={isBlurred}
             >
                 {children}

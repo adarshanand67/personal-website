@@ -15,11 +15,18 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
                 className="group relative glass p-8 rounded-3xl border border-gray-100 dark:border-white/5 hover:border-green-500/30 transition-all duration-500"
             >
                 <div className="flex justify-between items-start mb-4">
-                    <Link href={project.link} target="_blank" className="group/title flex items-center gap-2">
+                    <Link
+                        href={project.link}
+                        target="_blank"
+                        className="group/title flex items-center gap-2"
+                    >
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover/title:text-green-500 transition-colors">
                             {project.title}
                         </h3>
-                        <ExternalLink size={18} className="text-gray-400 opacity-0 group-hover/title:opacity-100 transition-all transform group-hover/title:-translate-y-0.5 group-hover/title:translate-x-0.5" />
+                        <ExternalLink
+                            size={18}
+                            className="text-gray-400 opacity-0 group-hover/title:opacity-100 transition-all transform group-hover/title:-translate-y-0.5 group-hover/title:translate-x-0.5"
+                        />
                     </Link>
                     <Link
                         href={project.link}
@@ -29,7 +36,9 @@ export class ProjectListStrategy implements ShelfItemStrategy<Project> {
                         <ExternalLink size={20} />
                     </Link>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                    {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, i) => (
                         <span

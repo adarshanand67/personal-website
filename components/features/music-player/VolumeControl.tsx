@@ -21,7 +21,12 @@ interface VolumeControlProps {
  * @component
  * @param {VolumeControlProps} props - Component props
  */
-export function VolumeControl({ volume, isMuted, onVolumeChange, onToggleMute }: VolumeControlProps) {
+export function VolumeControl({
+    volume,
+    isMuted,
+    onVolumeChange,
+    onToggleMute,
+}: VolumeControlProps) {
     return (
         <div className="flex items-center gap-3 px-1 group/volume">
             <button

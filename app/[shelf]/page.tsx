@@ -1,11 +1,5 @@
 import { notFound } from "next/navigation";
-import {
-    getBooks,
-    getAnime,
-    getHobby,
-    getProjects,
-    getArticles
-} from "@/lib/api";
+import { getBooks, getAnime, getHobby, getProjects, getArticles } from "@/lib/api";
 import { UniversalShelf } from "@/components/shelves";
 import { shelfConfigs } from "@/lib/config";
 
@@ -14,7 +8,7 @@ const SHELF_MAPPING = {
     bookshelf: { api: getBooks, config: shelfConfigs.books },
     animeshelf: { api: getAnime, config: shelfConfigs.anime },
     hobbyshelf: { api: getHobby, config: shelfConfigs.hobby },
-    projectshelf: { api: getProjects, config: shelfConfigs.projects }
+    projectshelf: { api: getProjects, config: shelfConfigs.projects },
 } as const;
 
 type ShelfSlug = keyof typeof SHELF_MAPPING;

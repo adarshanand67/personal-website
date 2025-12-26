@@ -1,13 +1,13 @@
 "use client";
 
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { AppState } from './types';
-import { createTerminalSlice } from './slices/terminalSlice';
-import { createMusicSlice } from './slices/musicSlice';
-import { createUISlice } from './slices/uiSlice';
-import { createContentSlice } from './slices/contentSlice';
-import { createUtilitySlice } from './slices/utilitySlice';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { AppState } from "./types";
+import { createTerminalSlice } from "./slices/terminalSlice";
+import { createMusicSlice } from "./slices/musicSlice";
+import { createUISlice } from "./slices/uiSlice";
+import { createContentSlice } from "./slices/contentSlice";
+import { createUtilitySlice } from "./slices/utilitySlice";
 
 /**
  * @fileoverview Main Zustand store combining all application state slices.
@@ -18,9 +18,9 @@ import { createUtilitySlice } from './slices/utilitySlice';
  * Global application store hook.
  * Combines terminal, music, UI, content, and utility state slices.
  * Persists selected state to localStorage under 'adarsh-storage' key.
- * 
+ *
  * @returns {AppState} Complete application state and actions
- * 
+ *
  * @example
  * ```tsx
  * const { isPlaying, setIsPlaying, currentTrackIndex } = useStore();
@@ -36,13 +36,13 @@ export const useStore = create<AppState>()(
             ...createUtilitySlice(...a),
         }),
         {
-            name: 'adarsh-storage',
+            name: "adarsh-storage",
             partialize: (state) => ({
                 expandedSections: state.expandedSections,
                 todos: state.todos,
                 volume: state.volume,
                 isMuted: state.isMuted,
-                guestbookEntries: state.guestbookEntries
+                guestbookEntries: state.guestbookEntries,
             }),
         }
     )

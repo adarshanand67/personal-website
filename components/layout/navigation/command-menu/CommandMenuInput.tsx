@@ -17,7 +17,9 @@ export function CommandMenuInput({ value, onChange }: CommandMenuInputProps) {
                 autoFocus
             />
             <div className="flex items-center gap-1.5 ml-auto">
-                <span className="px-1.5 py-0.5 rounded border border-gray-200 dark:border-white/10 text-[10px] text-gray-400 font-mono">ESC</span>
+                <span className="px-1.5 py-0.5 rounded border border-gray-200 dark:border-white/10 text-[10px] text-gray-400 font-mono">
+                    ESC
+                </span>
             </div>
         </div>
     );

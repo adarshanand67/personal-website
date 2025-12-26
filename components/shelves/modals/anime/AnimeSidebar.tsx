@@ -21,11 +21,11 @@ interface AnimeSidebarProps {
  * Anime Sidebar Component - displays anime poster and action buttons.
  * Features gradient background, responsive poster display with fallback,
  * completion/recommendation status badges, and YouTube trailer search link.
- * 
+ *
  * @component
  * @param {AnimeSidebarProps} props - Component props
  * @returns {JSX.Element} Rendered sidebar with anime poster and actions
- * 
+ *
  * @example
  * ```tsx
  * <AnimeSidebar item={{
@@ -78,7 +78,10 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg shadow-red-600/20 group transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
-                    <Play size={16} className="fill-current group-hover:scale-110 transition-transform" />
+                    <Play
+                        size={16}
+                        className="fill-current group-hover:scale-110 transition-transform"
+                    />
                     Watch Trailer
                 </a>
             </div>

@@ -20,11 +20,11 @@ interface BookHeaderProps {
  * Book Header Component - displays book cover and primary information.
  * Features gradient background, responsive layout, cover image with hover effect,
  * featured/recommended badges, and description quote.
- * 
+ *
  * @component
  * @param {BookHeaderProps} props - Component props
  * @returns {JSX.Element} Rendered header with book cover and metadata
- * 
+ *
  * @example
  * ```tsx
  * <BookHeader item={{
@@ -82,7 +82,10 @@ export function BookHeader({ item }: BookHeaderProps) {
 
                     {item.description && (
                         <div className="relative">
-                            <Quote size={24} className="absolute -left-2 -top-2 text-green-500/30" />
+                            <Quote
+                                size={24}
+                                className="absolute -left-2 -top-2 text-green-500/30"
+                            />
                             <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed italic pl-6 max-w-2xl">
                                 {item.description}
                             </p>

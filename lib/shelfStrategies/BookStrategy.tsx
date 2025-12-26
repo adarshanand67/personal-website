@@ -12,7 +12,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     renderItem(book: Book, index: number): ReactNode {
         const coverGradient = getBookGradient(book.title);
         // Extract the base color for the spine (e.g. 'red-900' from 'from-red-900 to-red-950')
-        const spineColor = coverGradient.split(' ')[0].replace('from-', 'bg-');
+        const spineColor = coverGradient.split(" ")[0].replace("from-", "bg-");
 
         return (
             <div
@@ -21,20 +21,26 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
                 onClick={() => useStore.getState().setBookSelectedItem(book)}
                 className="group relative block w-full aspect-[2/3] perspective-1000 cursor-pointer"
             >
-                <div className={`
+                <div
+                    className={`
           relative w-full h-full transition-all duration-500 transform-style-3d 
           group-hover:rotate-y-[-20deg] group-hover:translate-x-2 group-hover:-translate-y-2
           shadow-lg group-hover:shadow-2xl
-        `}>
-                    <div className={`
+        `}
+                >
+                    <div
+                        className={`
              absolute top-1 left-0 w-4 h-[98%] -translate-x-3 translate-z-[-2px] rotate-y-[-90deg] origin-right
              ${spineColor} brightness-75 rounded-l-sm
-           `}></div>
+           `}
+                    ></div>
 
-                    <div className={`
+                    <div
+                        className={`
              absolute inset-0 flex flex-col p-4 bg-gradient-to-br ${coverGradient}
              border-r-2 border-white/10 rounded-r-md rounded-l-sm
-           `}>
+           `}
+                    >
                         <div className="flex-1 border-2 border-white/20 p-2 flex flex-col items-center justify-center text-center">
                             <h3 className="font-serif font-bold text-white text-lg leading-tight line-clamp-4 drop-shadow-md">
                                 {book.title}

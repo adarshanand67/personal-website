@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from "react";
 
 interface ExtendedHTMLAudioElement extends HTMLAudioElement {
     _sourceNode?: MediaElementAudioSourceNode;
@@ -8,20 +8,24 @@ interface ExtendedWindow extends Window {
     webkitAudioContext?: typeof AudioContext;
 }
 
-export function useVisualizer(audioRef: React.RefObject<HTMLAudioElement | null>, isPlaying: boolean) {
+export function useVisualizer(
+    audioRef: React.RefObject<HTMLAudioElement | null>,
+    _isPlaying: boolean
+) {
     const contextRef = useRef<AudioContext | null>(null);
     const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
     const analyserRef = useRef<AnalyserNode | null>(null);
 
     const initAudio = () => {
         if (!contextRef.current) {
-            const AudioContextClass = window.AudioContext || (window as ExtendedWindow).webkitAudioContext;
+            const AudioContextClass =
+                window.AudioContext || (window as ExtendedWindow).webkitAudioContext;
             if (!AudioContextClass) return null;
             contextRef.current = new AudioContextClass();
         }
 
         const ctx = contextRef.current;
-        if (ctx.state === 'suspended') ctx.resume();
+        if (ctx.state === "suspended") ctx.resume();
 
         if (!analyserRef.current) {
             analyserRef.current = ctx.createAnalyser();

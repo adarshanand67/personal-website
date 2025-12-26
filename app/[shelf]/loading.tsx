@@ -22,8 +22,18 @@ export default function ShelfLoading() {
                         <Skeleton variant="text" width="70%" />
                         <Skeleton variant="text" width="40%" />
                         <div className="flex gap-2">
-                            <Skeleton variant="rect" width={60} height={20} className="rounded-full" />
-                            <Skeleton variant="rect" width={60} height={20} className="rounded-full" />
+                            <Skeleton
+                                variant="rect"
+                                width={60}
+                                height={20}
+                                className="rounded-full"
+                            />
+                            <Skeleton
+                                variant="rect"
+                                width={60}
+                                height={20}
+                                className="rounded-full"
+                            />
                         </div>
                     </div>
                 ))}

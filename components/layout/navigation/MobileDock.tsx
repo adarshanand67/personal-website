@@ -37,7 +37,9 @@ export function MobileDock() {
                             href={item.path}
                             className="relative flex flex-col items-center gap-1 group"
                         >
-                            <div className={`p-2 rounded-xl transition-all duration-300 ${isActive ? 'bg-green-500 text-white' : 'text-gray-500 dark:text-gray-400 group-hover:text-green-500'}`}>
+                            <div
+                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-green-500 text-white" : "text-gray-500 dark:text-gray-400 group-hover:text-green-500"}`}
+                            >
                                 <item.icon size={20} />
                             </div>
                             {isActive && (

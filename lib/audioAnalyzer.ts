@@ -9,7 +9,7 @@ class AudioAnalyzer {
     private source: MediaElementAudioSourceNode | null = null;
     private initialized = false;
 
-    private constructor() { }
+    private constructor() {}
 
     static getInstance(): AudioAnalyzer {
         if (!AudioAnalyzer.instance) {
@@ -21,7 +21,9 @@ class AudioAnalyzer {
     init(audio: HTMLAudioElement) {
         if (this.initialized) return;
 
-        const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+        const AudioContextClass =
+            window.AudioContext ||
+            (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
         if (!AudioContextClass) return;
 
         this.context = new AudioContextClass();
@@ -51,7 +53,7 @@ class AudioAnalyzer {
 
     getFrequencyData(): Uint8Array | null {
         if (!this.analyser || !this.dataArray) return null;
-        this.analyser.getByteFrequencyData(this.dataArray as any);
+        this.analyser.getByteFrequencyData(this.dataArray);
         return this.dataArray;
     }
 
@@ -66,7 +68,7 @@ class AudioAnalyzer {
     }
 
     resume() {
-        if (this.context && this.context.state === 'suspended') {
+        if (this.context && this.context.state === "suspended") {
             this.context.resume();
         }
     }

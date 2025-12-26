@@ -1,9 +1,9 @@
 import { getBlogs } from "@/lib/api";
 export const dynamic = "force-static";
 export async function GET() {
-  const blogs = await getBlogs();
-  const baseUrl = "https://adarshanand.dev";
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+    const blogs = await getBlogs();
+    const baseUrl = "https://adarshanand.dev";
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Adarsh Anand - Blog</title>
@@ -13,8 +13,8 @@ export async function GET() {
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     ${blogs
-      .map(
-        (post) => `
+        .map(
+            (post) => `
     <item>
       <title><![CDATA[${post.title}]]></title>
       <link>${baseUrl}/blogshelf/${post.slug}</link>
@@ -22,14 +22,14 @@ export async function GET() {
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description><![CDATA[${post.excerpt || post.title}]]></description>
     </item>`
-      )
-      .join("")}
+        )
+        .join("")}
   </channel>
 </rss>`;
-  return new Response(rss, {
-    headers: {
-      "Content-Type": "application/xml",
-      "Cache-Control": "public, max-age=3600",
-    },
-  });
+    return new Response(rss, {
+        headers: {
+            "Content-Type": "application/xml",
+            "Cache-Control": "public, max-age=3600",
+        },
+    });
 }

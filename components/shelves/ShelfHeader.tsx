@@ -36,14 +36,14 @@ interface ShelfHeaderProps {
  * Shelf Header Component - comprehensive header for shelf pages.
  * Features gradient title, optional description, item count badge,
  * optional randomizer button, and search input with icon.
- * 
+ *
  * @component
  * @param {ShelfHeaderProps} props - Component props
  * @returns {JSX.Element} Rendered shelf header
- * 
+ *
  * @example
  * ```tsx
- * <ShelfHeader 
+ * <ShelfHeader
  *   title="My Books"
  *   description="A curated collection of books"
  *   count={42}
@@ -56,8 +56,14 @@ interface ShelfHeaderProps {
  * ```
  */
 export function ShelfHeader({
-    title, description, count, searchValue,
-    onSearchChange, searchPlaceholder, onPickRandom, items
+    title,
+    description,
+    count,
+    searchValue,
+    onSearchChange,
+    searchPlaceholder,
+    onPickRandom,
+    items,
 }: ShelfHeaderProps) {
     return (
         <div className="mb-6">
@@ -66,17 +72,26 @@ export function ShelfHeader({
                     <h1 className="text-3xl md:text-4xl font-bold mb-1 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent tracking-tight">
                         {title}
                     </h1>
-                    {description && <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">{description}</p>}
+                    {description && (
+                        <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">
+                            {description}
+                        </p>
+                    )}
                 </div>
                 <div className="flex items-center gap-3">
                     <div className="px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10 text-xs font-bold text-gray-500 uppercase tracking-widest">
-                        {count} {count === 1 ? 'Item' : 'Items'}
+                        {count} {count === 1 ? "Item" : "Items"}
                     </div>
-                    {onPickRandom && items && items.length > 0 && <RandomizerButton items={items} onPick={onPickRandom} />}
+                    {onPickRandom && items && items.length > 0 && (
+                        <RandomizerButton items={items} onPick={onPickRandom} />
+                    )}
                 </div>
             </div>
             <div className="relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-green-500 transition-colors" size={20} />
+                <Search
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-green-500 transition-colors"
+                    size={20}
+                />
                 <input
                     type="text"
                     value={searchValue}

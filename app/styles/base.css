@@ -157,7 +157,6 @@ ol {
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {

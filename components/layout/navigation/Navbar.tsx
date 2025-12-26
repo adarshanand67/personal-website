@@ -22,7 +22,8 @@ export function Navbar() {
         const updateScroll = () => {
             const currentScroll = window.scrollY;
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (scrollHeight) setScrollProgress(Number((currentScroll / scrollHeight).toFixed(2)) * 100);
+            if (scrollHeight)
+                setScrollProgress(Number((currentScroll / scrollHeight).toFixed(2)) * 100);
             setIsScrolled(currentScroll > 20);
         };
         window.addEventListener("scroll", updateScroll);
@@ -43,14 +44,24 @@ export function Navbar() {
             </div>
 
             {/* Main Navbar */}
-            <nav className="fixed top-0 left-0 right-0 z-[60] transition-all duration-300" role="navigation">
-                <div className={`mx-auto px-4 transition-all duration-500 ${isScrolled ? 'py-3' : 'py-4'}`}>
-                    <div className={`max-w-7xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-black/50 rounded-2xl border transition-all duration-500 ${isScrolled
-                            ? 'border-gray-200/50 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20'
-                            : 'border-gray-200/30 dark:border-white/5 shadow-xl shadow-black/5 dark:shadow-black/10'
-                        }`}>
+            <nav
+                className="fixed top-0 left-0 right-0 z-[60] transition-all duration-300"
+                role="navigation"
+            >
+                <div
+                    className={`mx-auto px-4 transition-all duration-500 ${isScrolled ? "py-3" : "py-4"}`}
+                >
+                    <div
+                        className={`max-w-7xl mx-auto backdrop-blur-xl bg-white/70 dark:bg-black/50 rounded-2xl border transition-all duration-500 ${
+                            isScrolled
+                                ? "border-gray-200/50 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20"
+                                : "border-gray-200/30 dark:border-white/5 shadow-xl shadow-black/5 dark:shadow-black/10"
+                        }`}
+                    >
                         <div className="px-6">
-                            <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-14' : 'h-16'}`}>
+                            <div
+                                className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-14" : "h-16"}`}
+                            >
                                 {/* Brand */}
                                 <NavBrand />
 

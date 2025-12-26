@@ -45,7 +45,10 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
                 className="p-1.5 hover:bg-green-500/10 dark:hover:bg-green-500/20 rounded-full transition-all shrink-0 hover:scale-110 active:scale-95 group"
                 aria-label="Minimize Player"
             >
-                <ChevronDown size={20} className="text-gray-900 dark:text-green-500 font-bold group-hover:scale-110 transition-transform" />
+                <ChevronDown
+                    size={20}
+                    className="text-gray-900 dark:text-green-500 font-bold group-hover:scale-110 transition-transform"
+                />
             </button>
         </div>
     );

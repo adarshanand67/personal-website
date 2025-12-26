@@ -25,19 +25,13 @@ interface SectionHeaderProps {
  * @component
  * @param {SectionHeaderProps} props - Component props
  */
-export function SectionHeader({
-    title,
-    isExpanded,
-    onToggle,
-    rightElement,
-}: SectionHeaderProps) {
+export function SectionHeader({ title, isExpanded, onToggle, rightElement }: SectionHeaderProps) {
     return (
-        <div
-            className="w-full text-left group mb-2 cursor-pointer"
-            onClick={onToggle}
-        >
+        <div className="w-full text-left group mb-2 cursor-pointer" onClick={onToggle}>
             <div className="flex items-center gap-3 mb-1">
-                <div className={`h-6 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? 'scale-y-100' : 'scale-y-50 opacity-50'}`} />
+                <div
+                    className={`h-6 w-1 rounded-full bg-green-500 transition-all duration-300 ${isExpanded ? "scale-y-100" : "scale-y-50 opacity-50"}`}
+                />
                 <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-500 transition-colors">
                     {title}
                     <ChevronDown
@@ -54,13 +48,13 @@ export function SectionHeader({
 /**
  * Spotlight Card Component - interactive card with mouse-tracking spotlight effect.
  * Creates a radial gradient that follows the mouse cursor for premium visual feedback.
- * 
+ *
  * @component
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Card content
  * @param {string} [props.className] - Additional CSS classes
  * @param {string} [props.spotlightColor] - Spotlight gradient color (default: green)
- * 
+ *
  * @example
  * ```tsx
  * <SpotlightCard className="p-6">
@@ -110,5 +104,3 @@ export const SpotlightCard = ({
         </div>
     );
 };
-
-

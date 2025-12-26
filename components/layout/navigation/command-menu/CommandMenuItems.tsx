@@ -12,17 +12,24 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
             onClick={() => onSelect(item.action)}
             className={`
                 w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200
-                ${isSelected
-                    ? 'bg-green-500 text-white shadow-lg shadow-green-500/20'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5'}
+                ${
+                    isSelected
+                        ? "bg-green-500 text-white shadow-lg shadow-green-500/20"
+                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5"
+                }
             `}
         >
             <div className="flex items-center gap-3 flex-1">
-                <item.icon size={18} className={isSelected ? 'text-white' : 'text-gray-400 dark:text-gray-500'} />
+                <item.icon
+                    size={18}
+                    className={isSelected ? "text-white" : "text-gray-400 dark:text-gray-500"}
+                />
                 <div className="flex flex-col items-start gap-0.5">
                     <span className="font-medium">{item.label}</span>
                     {item.description && (
-                        <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-gray-500 dark:text-gray-400'}`}>
+                        <span
+                            className={`text-xs ${isSelected ? "text-white/70" : "text-gray-500 dark:text-gray-400"}`}
+                        >
                             {item.description}
                         </span>
                     )}
@@ -46,7 +53,13 @@ interface CommandMenuItemsProps {
     onSelect: (action: () => void) => void;
 }
 
-export function CommandMenuItems({ groups, search, selectedIndex, filteredItems, onSelect }: CommandMenuItemsProps) {
+export function CommandMenuItems({
+    groups,
+    search,
+    selectedIndex,
+    filteredItems,
+    onSelect,
+}: CommandMenuItemsProps) {
     if (filteredItems.length === 0) {
         return (
             <div className="py-12 text-center text-gray-500 text-sm">

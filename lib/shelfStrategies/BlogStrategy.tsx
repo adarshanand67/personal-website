@@ -15,13 +15,18 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
                 className="border-l-2 border-gray-300 dark:border-gray-700 pl-4 hover:border-green-500 transition-colors"
             >
                 <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-3">
-                    <span className="text-gray-500 text-xs min-w-[80px] font-mono">{blog.date}</span>
+                    <span className="text-gray-500 text-xs min-w-[80px] font-mono">
+                        {blog.date}
+                    </span>
                     <Link
                         href={`/articleshelf/${blog.slug}`}
                         className="group/link inline-flex items-center gap-1.5 text-green-500 font-bold hover:underline"
                     >
                         <span>{blog.title}</span>
-                        <ArrowUpRight size={14} className="opacity-50 group-hover/link:opacity-100 transition-all transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                        <ArrowUpRight
+                            size={14}
+                            className="opacity-50 group-hover/link:opacity-100 transition-all transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5"
+                        />
                     </Link>
                 </div>
             </div>
@@ -30,7 +35,7 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
     renderList(items: Blog[]): ReactNode {
         const blogsByYear = items.reduce(
             (acc: Record<string, Blog[]>, blog: Blog) => {
-                const year = blog.date.split("-")[0] || 'Unknown';
+                const year = blog.date.split("-")[0] || "Unknown";
                 if (!acc[year]) acc[year] = [];
                 acc[year]!.push(blog);
                 return acc;
@@ -58,7 +63,8 @@ export class BlogListStrategy implements ShelfItemStrategy<Blog> {
         if (!query) return items;
         const lowerQuery = query.toLowerCase();
         return items.filter(
-            (blog) => blog.title.toLowerCase().includes(lowerQuery) || blog.date.includes(lowerQuery)
+            (blog) =>
+                blog.title.toLowerCase().includes(lowerQuery) || blog.date.includes(lowerQuery)
         );
     }
 }

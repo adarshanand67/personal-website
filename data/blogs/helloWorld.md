@@ -10,4 +10,4 @@ Welcome to my personal website. This is where I share my thoughts, experiences, 
 
 Stay tuned for more updates!
 
-Explore my digital garden to find more content! 
+Explore my digital garden to find more content!

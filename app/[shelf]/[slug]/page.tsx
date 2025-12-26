@@ -10,7 +10,11 @@ export async function generateStaticParams() {
     }));
 }
 
-export default async function GenericShelfItem({ params }: { params: { shelf: string; slug: string } }) {
+export default async function GenericShelfItem({
+    params,
+}: {
+    params: { shelf: string; slug: string };
+}) {
     const { shelf, slug } = await params;
 
     if (shelf !== "articleshelf") {

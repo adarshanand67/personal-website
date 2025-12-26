@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
 @import "tailwindcss";
 
 @import "./styles/tokens.css";
@@ -9,11 +9,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: #22c55e;
-  --color-primary-dark: #22c55e;
-  --color-accent: #22c55e;
-  --font-sans: var(--font-assistant);
-  --font-serif: var(--font-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: #22c55e;
+    --color-primary-dark: #22c55e;
+    --color-accent: #22c55e;
+    --font-sans: var(--font-assistant);
+    --font-serif: var(--font-mono);
 }

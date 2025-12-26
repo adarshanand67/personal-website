@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import { Copy, AlertTriangle, EyeOff, Camera, ShieldAlert, Terminal, RefreshCw } from "lucide-react";
+import {
+    Copy,
+    AlertTriangle,
+    EyeOff,
+    Camera,
+    ShieldAlert,
+    Terminal,
+    RefreshCw,
+} from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
+import Link from "next/link";
 
 /**
  * Represents a security notification displayed to the user.
@@ -22,11 +31,11 @@ type NotificationType = {
 /**
  * Renders a stack of security alert notifications in the top-right corner.
  * Notifications auto-dismiss after 3 seconds and use a high z-index to ensure visibility.
- * 
+ *
  * @param {Object} props - Component props
  * @param {NotificationType[]} props.notifications - Array of notifications to display
  * @returns {JSX.Element | null} Notification stack or null if no notifications
- * 
+ *
  * @example
  * ```tsx
  * <DLPNotification notifications={[
@@ -44,12 +53,14 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
                     key={notif.id}
                     className="bg-black/80 backdrop-blur-md border border-red-500/50 text-red-100 px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300 max-w-sm"
                 >
-                    <div className="p-2 bg-red-500/20 rounded-full shrink-0">
-                        {notif.icon}
-                    </div>
+                    <div className="p-2 bg-red-500/20 rounded-full shrink-0">{notif.icon}</div>
                     <div>
-                        <h4 className="font-bold text-sm text-red-400 uppercase tracking-wider">Security Alert</h4>
-                        <p className="text-xs text-gray-300 leading-tight mt-0.5">{notif.message}</p>
+                        <h4 className="font-bold text-sm text-red-400 uppercase tracking-wider">
+                            Security Alert
+                        </h4>
+                        <p className="text-xs text-gray-300 leading-tight mt-0.5">
+                            {notif.message}
+                        </p>
                     </div>
                 </div>
             ))}
@@ -57,15 +68,13 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
     );
 };
 
-
-
 /**
  * Data Loss Prevention (DLP) Protection Component
- * 
+ *
  * Implements comprehensive client-side security measures to prevent unauthorized
  * data extraction, copying, and inspection. This component provides multiple layers
  * of protection including:
- * 
+ *
  * - **Copy/Paste/Cut Protection**: Blocks clipboard operations and poisons clipboard data
  * - **Right-Click Protection**: Disables context menus to prevent "Save As" and inspect options
  * - **Drag & Drop Protection**: Implements "lazy blocking" - allows visual drag but blocks on drop
@@ -77,17 +86,17 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
  * - **Print Protection**: Blocks print dialogs and hides content in print CSS
  * - **Window Blur Protection**: Blacks out content when window loses focus
  * - **Honeytoken**: Hidden link to trap bots and scrapers
- * 
+ *
  * @component
  * @returns {JSX.Element} DLP protection layer with notifications and overlays
- * 
+ *
  * @remarks
  * - Integrates with Zustand store to pause music during security events
  * - Uses rate limiting to track violation count (resets after 10s)
  * - Notifications auto-dismiss after 3 seconds
  * - Console warnings fire every 2 seconds when DevTools might be open
  * - The debugger trap is commented out by default to avoid disrupting legitimate development
- * 
+ *
  * @example
  * ```tsx
  * // In your root layout or app component:
@@ -106,10 +115,10 @@ export function DLPProtection() {
     /**
      * Adds a new security notification and increments violation count.
      * Notifications auto-dismiss after 3 seconds. Violation count resets after 10 seconds.
-     * 
+     *
      * @param {string} message - The security alert message to display
      * @param {React.ReactNode} icon - Icon component to show with the notification
-     * 
+     *
      * @example
      * ```tsx
      * addNotification("Copy blocked", <Copy size={16} />);
@@ -122,7 +131,7 @@ export function DLPProtection() {
         setNotifications((prev) => [...prev, newNotif]);
 
         // Rate Limiting Logic: excessive violations trigger a stricter response
-        setViolationCount(prev => prev + 1);
+        setViolationCount((prev) => prev + 1);
         if (violationTimeoutRef.current) clearTimeout(violationTimeoutRef.current);
         violationTimeoutRef.current = setTimeout(() => setViolationCount(0), 10000); // Reset after 10s
 
@@ -161,7 +170,10 @@ export function DLPProtection() {
         // 1. Disable Right Click
         const handleContextMenu = (e: MouseEvent) => {
             e.preventDefault();
-            addNotification("Right-click context menu is disabled for security compliance.", <ShieldAlert size={16} />);
+            addNotification(
+                "Right-click context menu is disabled for security compliance.",
+                <ShieldAlert size={16} />
+            );
             e.stopPropagation(); // Stop event bubbling
             return false;
         };
@@ -171,7 +183,10 @@ export function DLPProtection() {
             addNotification("Copy/Paste actions are blocked.", <Copy size={16} />);
             e.preventDefault();
             if (e.clipboardData) {
-                e.clipboardData.setData("text/plain", "Security Violation: Content copying is strictly prohibited.");
+                e.clipboardData.setData(
+                    "text/plain",
+                    "Security Violation: Content copying is strictly prohibited."
+                );
             }
             return false;
         };
@@ -189,7 +204,10 @@ export function DLPProtection() {
 
         const handleDragEnd = (e: DragEvent) => {
             e.preventDefault();
-            addNotification("Dragging content to external sources is prohibited.", <ShieldAlert size={16} />);
+            addNotification(
+                "Dragging content to external sources is prohibited.",
+                <ShieldAlert size={16} />
+            );
         };
 
         // 3.5 Handle Selection on Mouse Up
@@ -210,14 +228,20 @@ export function DLPProtection() {
                 setIsBlur(true);
                 setTimeout(() => setIsBlur(false), 2000);
                 navigator.clipboard.writeText(""); // Clear clipboard
-                addNotification("Screen capture attempt detected and blocked.", <Camera size={16} />);
+                addNotification(
+                    "Screen capture attempt detected and blocked.",
+                    <Camera size={16} />
+                );
                 return;
             }
 
             // Block generic shortcuts with specific messages
             if (e.ctrlKey || e.metaKey) {
                 if (e.key === "a") {
-                    addNotification("Select All is disabled to prevent bulk data extraction.", <ShieldAlert size={16} />);
+                    addNotification(
+                        "Select All is disabled to prevent bulk data extraction.",
+                        <ShieldAlert size={16} />
+                    );
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
@@ -254,11 +278,17 @@ export function DLPProtection() {
             if (
                 (e.ctrlKey || e.metaKey) &&
                 e.shiftKey &&
-                (
-                    e.key === "i" || e.key === "j" || e.key === "c" ||
-                    e.key === "4" || e.key === "3" || e.key === "5" || e.key === "2" ||
-                    e.code === "Digit3" || e.code === "Digit4" || e.code === "Digit5" || e.code === "Digit2"
-                )
+                (e.key === "i" ||
+                    e.key === "j" ||
+                    e.key === "c" ||
+                    e.key === "4" ||
+                    e.key === "3" ||
+                    e.key === "5" ||
+                    e.key === "2" ||
+                    e.code === "Digit3" ||
+                    e.code === "Digit4" ||
+                    e.code === "Digit5" ||
+                    e.code === "Digit2")
             ) {
                 addNotification("Inspector tools are blocked.", <Terminal size={16} />);
                 e.preventDefault();
@@ -294,9 +324,9 @@ export function DLPProtection() {
             addNotification("Printing is disabled on this page.", <EyeOff size={16} />);
             e.preventDefault();
             // Forcefully hide everything stylistically just in case
-            const style = document.createElement('style');
-            style.id = 'print-blocker';
-            style.innerHTML = '@media print { body { display: none !important; } }';
+            const style = document.createElement("style");
+            style.id = "print-blocker";
+            style.innerHTML = "@media print { body { display: none !important; } }";
             document.head.appendChild(style);
         };
 
@@ -318,7 +348,7 @@ export function DLPProtection() {
          /* Standard behavior for inputs */
       }
       /* Hide scrollbars during blur to prevent peeking */
-      ${isBlur ? 'body { overflow: hidden !important; }' : ''}
+      ${isBlur ? "body { overflow: hidden !important; }" : ""}
 
       /* Image/Media Protection */
       img, video, canvas {
@@ -346,9 +376,13 @@ export function DLPProtection() {
         const devToolsCheck = setInterval(() => {
             // 1. Console Clearing & Warning
             // console.clear(); // Aggressive clearing
-            const warningStyle = "font-size: 24px; color: red; font-weight: bold; text-shadow: 2px 2px 0px black;";
+            const warningStyle =
+                "font-size: 24px; color: red; font-weight: bold; text-shadow: 2px 2px 0px black;";
             console.log("%cSTOP! This is a protected area.", warningStyle);
-            console.log("%cSecurity protocols are active. Actions are monitored.", "font-size: 14px; color: gray;");
+            console.log(
+                "%cSecurity protocols are active. Actions are monitored.",
+                "font-size: 14px; color: gray;"
+            );
 
             // 2. Debugger Trap (The "Halt" Mechanism)
             // This forces the browser to pause if DevTools is open and breakpoints are active.
@@ -358,8 +392,7 @@ export function DLPProtection() {
                     // Force a breakpoint
                     // debugger; // Uncomment to active the hard trap
                 })();
-            } catch (e) { }
-
+            } catch (e) {}
 
             // 3. Heuristic Check (Resize)
             const threshold = 160;
@@ -368,7 +401,10 @@ export function DLPProtection() {
 
             if ((widthDiff || heightDiff) && !isBlur) {
                 // If detected, we can trigger the trap harder or just warn
-                addNotification("Debugger environment detected. Monitoring active.", <Terminal size={16} />);
+                addNotification(
+                    "Debugger environment detected. Monitoring active.",
+                    <Terminal size={16} />
+                );
             }
         }, 2000);
 
@@ -398,17 +434,20 @@ export function DLPProtection() {
     return (
         <>
             {/* Honeytoken for bots */}
-            <a href="/admin-trap-honeytoken" aria-hidden="true" style={{ display: 'none', visibility: 'hidden' }} rel="nofollow">
+            <Link
+                href="/admin-trap-honeytoken"
+                aria-hidden="true"
+                style={{ display: "none", visibility: "hidden" }}
+                rel="nofollow"
+            >
                 Admin Access Key
-            </a>
+            </Link>
 
             <DLPNotification notifications={notifications} />
 
             {/* Session Suspended Overlay Removed as per user request */}
             {/* BLACKOUT OVERLAY FOR SCREEN CAPTURE / BLUR */}
-            {isBlur && (
-                <div className="fixed inset-0 z-[99999] bg-black pointer-events-none" />
-            )}
+            {isBlur && <div className="fixed inset-0 z-[99999] bg-black pointer-events-none" />}
         </>
     );
 }

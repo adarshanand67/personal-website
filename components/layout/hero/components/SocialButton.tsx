@@ -38,11 +38,20 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
                     {icon}
                 </div>
                 <div className="flex flex-col text-left">
-                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500">{label}</span>
-                    <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">{name}</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-green-500">
+                        {label}
+                    </span>
+                    <span className="text-sm font-bold text-gray-900 dark:text-white line-clamp-1">
+                        {name}
+                    </span>
                 </div>
             </div>
-            {href && <ExternalLink size={16} className="text-green-500/80 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5" />}
+            {href && (
+                <ExternalLink
+                    size={16}
+                    className="text-green-500/80 group-hover/item:text-green-500 transition-all transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5"
+                />
+            )}
         </div>
     );
 
@@ -53,11 +62,18 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
             transition={{ delay: 0.7 + index * 0.1 }}
         >
             {href ? (
-                <Link href={href} target="_blank" className="flex items-center gap-4 p-4 rounded-3xl bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-800 border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-lg group/item">
+                <Link
+                    href={href}
+                    target="_blank"
+                    className="flex items-center gap-4 p-4 rounded-3xl bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-800 border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-lg group/item"
+                >
                     {content}
                 </Link>
             ) : (
-                <button onClick={onClick} className="w-full flex items-center gap-4 p-4 rounded-3xl bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-800 border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-lg group/item">
+                <button
+                    onClick={onClick}
+                    className="w-full flex items-center gap-4 p-4 rounded-3xl bg-white/50 dark:bg-zinc-800/50 hover:bg-white dark:hover:bg-zinc-800 border border-white/20 dark:border-white/5 transition-all duration-300 hover:shadow-lg group/item"
+                >
                     {content}
                 </button>
             )}

@@ -6,13 +6,19 @@ import { useStore } from "@/lib/store/useStore";
 import { directoryMap } from "@/lib/constants";
 import { shelfConfigs } from "@/lib/config";
 
-const shelfIcons: Record<string, React.ElementType> = { blogs: Feather, articles: FileText, books: Book, anime: Tv, hobby: Gamepad2 };
-const shelves = (["blogs", "articles", "books", "anime", "hobby"] as const).map(key => ({
+const shelfIcons: Record<string, React.ElementType> = {
+    blogs: Feather,
+    articles: FileText,
+    books: Book,
+    anime: Tv,
+    hobby: Gamepad2,
+};
+const shelves = (["blogs", "articles", "books", "anime", "hobby"] as const).map((key) => ({
     name: key,
     path: directoryMap[key],
     description: shelfConfigs[key].description,
     icon: shelfIcons[key] as any,
-    color: "text-green-500"
+    color: "text-green-500",
 }));
 
 /**
@@ -22,38 +28,57 @@ const shelves = (["blogs", "articles", "books", "anime", "hobby"] as const).map(
  */
 export function ShelvesSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
-    const isExpanded = expandedSections['shelves'] ?? false;
+    const isExpanded = expandedSections["shelves"] ?? false;
 
     return (
         <div className="section max-w-6xl mx-auto px-4 md:px-6 mb-8 section-padding">
             <div className="group relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition duration-700"></div>
-                <div onClick={(e) => {
-                    if ((e.target as HTMLElement).closest('a')) return;
-                    toggleSectionExpanded('shelves');
-                }} className="relative glass rounded-3xl p-6 md:p-8 hover:border-green-500/30 transition-all duration-500 cursor-pointer">
+                <div
+                    onClick={(e) => {
+                        if ((e.target as HTMLElement).closest("a")) return;
+                        toggleSectionExpanded("shelves");
+                    }}
+                    className="relative glass rounded-3xl p-6 md:p-8 hover:border-green-500/30 transition-all duration-500 cursor-pointer"
+                >
                     <section className="font-mono">
                         <div className="w-full text-left group mb-6">
                             <h2 className="text-2xl md:text-3xl font-black flex items-center gap-3 tracking-tight text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors mb-2">
                                 <div className="h-8 w-1 rounded-full bg-green-500" />
                                 Directories
-                                <ChevronDown size={22} className={`transition-all duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`} />
+                                <ChevronDown
+                                    size={22}
+                                    className={`transition-all duration-500 ${isExpanded ? "rotate-180" : "-rotate-90 opacity-40"}`}
+                                />
                             </h2>
                             <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-bold ml-4">
-                                <span className="text-green-500">$</span><span>ls -F ~</span>
+                                <span className="text-green-500">$</span>
+                                <span>ls -F ~</span>
                                 <span className="animate-pulse inline-block w-2 h-4 bg-green-500 align-middle ml-1 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
                             </div>
                         </div>
-                        <div className={`transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                        <div
+                            className={`transition-all duration-500 ease-in-out ${isExpanded ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+                        >
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
                                 {shelves.map((shelf) => (
-                                    <Link key={shelf.name} href={shelf.path} className="group/item flex items-center gap-5 p-5 rounded-2xl border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-green-500/30 hover:shadow-xl hover:shadow-green-500/5 transition-all duration-500">
-                                        <div className={`p-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm ring-1 ring-gray-100 dark:ring-white/10 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500 ${shelf.color}`}>
+                                    <Link
+                                        key={shelf.name}
+                                        href={shelf.path}
+                                        className="group/item flex items-center gap-5 p-5 rounded-2xl border border-gray-100 dark:border-white/5 bg-gray-50/50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 hover:border-green-500/30 hover:shadow-xl hover:shadow-green-500/5 transition-all duration-500"
+                                    >
+                                        <div
+                                            className={`p-4 rounded-xl bg-white dark:bg-gray-800 shadow-sm ring-1 ring-gray-100 dark:ring-white/10 group-hover/item:scale-110 group-hover/item:rotate-3 transition-all duration-500 ${shelf.color}`}
+                                        >
                                             <shelf.icon size={22} />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <div className="font-black text-gray-900 dark:text-white group-hover/item:text-green-600 dark:group-hover/item:text-green-400 transition-colors tracking-tight text-lg">{shelf.name}/</div>
-                                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-bold line-clamp-1">{shelf.description}</div>
+                                            <div className="font-black text-gray-900 dark:text-white group-hover/item:text-green-600 dark:group-hover/item:text-green-400 transition-colors tracking-tight text-lg">
+                                                {shelf.name}/
+                                            </div>
+                                            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1 font-bold line-clamp-1">
+                                                {shelf.description}
+                                            </div>
                                         </div>
                                     </Link>
                                 ))}

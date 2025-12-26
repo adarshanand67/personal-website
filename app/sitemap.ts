@@ -1,7 +1,7 @@
-import { MetadataRoute } from 'next';
-import { getBlogs } from '@/lib/api';
+import { MetadataRoute } from "next";
+import { getBlogs } from "@/lib/api";
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = "https://adarshanand.dev";
@@ -13,13 +13,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     const routes = [
-        '',
-        '/articleshelf',
-        '/bookshelf',
-        '/animeshelf',
-        '/hobbyshelf',
-        '/experience',
-        '/guestbook',
+        "",
+        "/articleshelf",
+        "/bookshelf",
+        "/animeshelf",
+        "/hobbyshelf",
+        "/experience",
+        "/guestbook",
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),

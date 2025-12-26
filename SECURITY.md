@@ -11,7 +11,7 @@ Currently, only the latest version of this personal website is supported for sec
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within this project, please report it privately. 
+If you discover a security vulnerability within this project, please report it privately.
 
 **Do not open a public issue.**
 

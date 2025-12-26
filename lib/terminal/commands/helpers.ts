@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Command, CommandFn, CommandCategory } from './types';
+import { Dispatch, SetStateAction } from "react";
+import { Command, CommandFn, CommandCategory } from "./types";
 
 export const addLine = (setLines: Dispatch<SetStateAction<string[]>>, line: string) => {
     setLines((prev) => [...prev, line]);
@@ -19,7 +19,7 @@ export const createCommand = (
     description,
     execute,
     category: options?.category,
-    usage: options?.usage || name
+    usage: options?.usage || name,
 });
 
 export const createAliasCommand = (
@@ -30,6 +30,6 @@ export const createAliasCommand = (
     name,
     description,
     execute: (args, context) => getTarget().execute(args, context),
-    category: 'utility',
-    usage: name
+    category: "utility",
+    usage: name,
 });

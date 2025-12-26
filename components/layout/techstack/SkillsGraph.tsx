@@ -100,8 +100,10 @@ export function SkillsGraph() {
         const label = node.label;
         if (node.group === 2) {
             import("@/lib/techLinks").then(({ techLinks }) => {
-                const url = techLinks[label] || `https://www.google.com/search?q=${encodeURIComponent(label)}`;
-                window.open(url, '_blank');
+                const url =
+                    techLinks[label] ||
+                    `https://www.google.com/search?q=${encodeURIComponent(label)}`;
+                window.open(url, "_blank");
             });
         }
     };
@@ -126,9 +128,15 @@ export function SkillsGraph() {
                     ctx.fill();
 
                     // Draw Text
-                    ctx.textAlign = 'center';
-                    ctx.textBaseline = 'middle';
-                    ctx.fillStyle = isDark ? (node.group === 0 ? '#000' : '#fff') : (node.group === 0 ? '#fff' : '#000');
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "middle";
+                    ctx.fillStyle = isDark
+                        ? node.group === 0
+                            ? "#000"
+                            : "#fff"
+                        : node.group === 0
+                          ? "#fff"
+                          : "#000";
 
                     // Only show text if node is large enough or zoomed in enough
                     if (globalScale > 0.7 || node.group <= 1) {
@@ -139,9 +147,8 @@ export function SkillsGraph() {
                 cooldownTicks={100}
                 d3VelocityDecay={0.3}
                 d3AlphaDecay={0.02}
-
                 onNodeHover={(node: any) => {
-                    document.body.style.cursor = node ? 'pointer' : 'default';
+                    document.body.style.cursor = node ? "pointer" : "default";
                 }}
             />
             <div className="absolute bottom-4 right-4 text-xs text-gray-400 pointer-events-none">

@@ -19,12 +19,12 @@ export function NavBrand() {
 
         if (isHomePage) {
             // Already on home page - scroll to hero section
-            const heroSection = document.getElementById('hero');
+            const heroSection = document.getElementById("hero");
             if (heroSection) {
-                heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                heroSection.scrollIntoView({ behavior: "smooth", block: "start" });
             } else {
                 // Fallback: scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
         } else {
             // Navigate to home page

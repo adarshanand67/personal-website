@@ -20,7 +20,10 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
                     className="group/link inline-flex items-center gap-2 text-green-500 font-bold hover:underline"
                 >
                     <span>{paper.title}</span>
-                    <ExternalLink size={14} className="opacity-50 group-hover/link:opacity-100 transition-opacity" />
+                    <ExternalLink
+                        size={14}
+                        className="opacity-50 group-hover/link:opacity-100 transition-opacity"
+                    />
                 </Link>
             </div>
         );
@@ -28,7 +31,9 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
     renderList(items: Paper[]): ReactNode {
         if (items.length === 0) return null;
         return (
-            <div className="space-y-4">{items.map((paper, index) => this.renderItem(paper, index))}</div>
+            <div className="space-y-4">
+                {items.map((paper, index) => this.renderItem(paper, index))}
+            </div>
         );
     }
     filter(items: Paper[], query: string): Paper[] {

@@ -11,10 +11,10 @@ import { motion, useScroll, useSpring } from "framer-motion";
  * Scroll Progress Component - animated scroll position indicator.
  * Renders a fixed gradient bar at the top of the page that fills horizontally
  * as the user scrolls down. Uses spring physics for smooth animations.
- * 
+ *
  * @component
  * @returns {JSX.Element} Rendered scroll progress bar
- * 
+ *
  * @example
  * ```tsx
  * <ScrollProgress />
@@ -25,7 +25,7 @@ export function ScrollProgress() {
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
-        restDelta: 0.001
+        restDelta: 0.001,
     });
 
     return (

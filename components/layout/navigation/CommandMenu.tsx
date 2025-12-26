@@ -13,7 +13,14 @@ import { CommandMenuFooter } from "./command-menu/CommandMenuFooter";
  */
 export function CommandMenu() {
     const {
-        open, setOpen, search, setSearch, selectedIndex, runCommand, commandGroups, filteredItems
+        open,
+        setOpen,
+        search,
+        setSearch,
+        selectedIndex,
+        runCommand,
+        commandGroups,
+        filteredItems,
     } = useCommandMenu();
 
     return (

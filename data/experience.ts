@@ -7,7 +7,7 @@ import { Company, Location, Role } from "./enums";
 
 /**
  * Professional experience entries array.
- * 
+ *
  * @type {Array<{
  *   company: Company,
  *   role: Role,
@@ -17,7 +17,7 @@ import { Company, Location, Role } from "./enums";
  *   description: string,
  *   highlights: string[]
  * }>}
- * 
+ *
  * @description
  * Each experience object contains:
  * - `company`: Company name from Company enum
@@ -27,11 +27,11 @@ import { Company, Location, Role } from "./enums";
  * - `logo`: Path to company logo image in /assets/logos/
  * - `description`: Brief role description or team/focus area
  * - `highlights`: Array of key achievements and responsibilities
- * 
+ *
  * @example
  * ```tsx
  * import { experiencesData } from '@/data/experience';
- * 
+ *
  * <Experience items={experiencesData} />
  * ```
  */
@@ -46,8 +46,8 @@ export const experiencesData = [
         highlights: [
             "Developing native registry management modules for Chrome/Edge to ensure injection-free web protection.",
             "Integrating classification support (Boldon James) into endpoint solutions to enhance data security policies.",
-            "Designing and orchestrating CppUnit test automation frameworks to improve code quality and regression testing coverage."
-        ]
+            "Designing and orchestrating CppUnit test automation frameworks to improve code quality and regression testing coverage.",
+        ],
     },
 
     {
@@ -64,8 +64,8 @@ export const experiencesData = [
             "Led creation of CentOS Virtualization SIG attestation guides for Intel TDX implementation, updating RHEL packages and fixing 10+ validation bugs.",
             "Integrated Post-Quantum Cryptography (PQC) with Intel SGX via Crypto API Toolkit (CTK), implementing 8+ NIST-approved algorithms.",
             "Enhanced LLM Adversarial Robustness Toolkit by integrating uv package manager and building an automated test runner that achieved 40% reduced build times.",
-            "Conducted comprehensive vLLM benchmarking comparing legacy VMs vs Intel TDX Trusted Domains with Deepseek-7B/Llama-2-70B models."
-        ]
+            "Conducted comprehensive vLLM benchmarking comparing legacy VMs vs Intel TDX Trusted Domains with Deepseek-7B/Llama-2-70B models.",
+        ],
     },
     {
         company: Company.Intel,
@@ -77,7 +77,7 @@ export const experiencesData = [
         highlights: [
             "Collaborated with FIDO Device Onboarding (FDO) team to implement robust security measures for Zero-Touch Provisioning (ZTP) of Intel Edge Devices.",
             "Modernized cryptographic security architecture by implementing OpenSSL 3.0 migration for Service Info (SVI) modules, reducing Client SDK codebase by 15%.",
-            "Designed and implemented a Bare Metal Onboarding (BMO) POC with real-time status monitoring in React and scalable backend with CBOR/JSON REST APIs."
-        ]
-    }
+            "Designed and implemented a Bare Metal Onboarding (BMO) POC with real-time status monitoring in React and scalable backend with CBOR/JSON REST APIs.",
+        ],
+    },
 ];

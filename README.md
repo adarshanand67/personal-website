@@ -44,23 +44,23 @@ Edit **`lib/config.ts`**:
 
 ```typescript
 export const siteConfig = {
-  name: "Your Name",                    // ← Change this
-  title: "Your Name - Your Title",      // ← Change this
-  description: "Your portfolio description",
-  url: "https://yourwebsite.com",
-  
-  author: {
-    name: "Your Name",
-    email: "your.email@example.com",
-    role: "Your Role @ Company",
-    github: "yourgithub",
-    linkedin: "yourlinkedin",
-  },
-  
-  seo: {
-    keywords: ["Your", "Keywords"],
-    ogImage: "/og-image.png",
-  },
+    name: "Your Name", // ← Change this
+    title: "Your Name - Your Title", // ← Change this
+    description: "Your portfolio description",
+    url: "https://yourwebsite.com",
+
+    author: {
+        name: "Your Name",
+        email: "your.email@example.com",
+        role: "Your Role @ Company",
+        github: "yourgithub",
+        linkedin: "yourlinkedin",
+    },
+
+    seo: {
+        keywords: ["Your", "Keywords"],
+        ogImage: "/og-image.png",
+    },
 };
 ```
 
@@ -112,9 +112,11 @@ my-portfolio/
 ## 🎨 Customization
 
 ### **Change Colors**
+
 Edit `themeConfig` in `lib/config.ts`.
 
 ### **Toggle Features**
+
 Edit `featuresConfig` in `lib/config.ts`.
 
 ---
@@ -130,6 +132,7 @@ Edit `featuresConfig` in `lib/config.ts`.
 ### **GitHub Pages**
 
 The project includes a GitHub Action for automatic deployment.
+
 1. Go to Settings > Pages
 2. Source: GitHub Actions
 

@@ -36,8 +36,15 @@ interface TerminalContentProps {
  * @param {TerminalContentProps} props - Component props
  */
 export function TerminalContent({
-    lines, isIntroDone, passwordMode, input,
-    containerRef, inputRef, handleKeyDown, onChange, onBlur
+    lines,
+    isIntroDone,
+    passwordMode,
+    input,
+    containerRef,
+    inputRef,
+    handleKeyDown,
+    onChange,
+    onBlur,
 }: TerminalContentProps) {
     return (
         <div
@@ -47,9 +54,9 @@ export function TerminalContent({
             {lines.map((line, i) => (
                 <div
                     key={i}
-                    className={`whitespace-pre leading-snug tracking-wide ${line.startsWith('$ ') ? 'text-green-500 font-bold' : ''}`}
+                    className={`whitespace-pre leading-snug tracking-wide ${line.startsWith("$ ") ? "text-green-500 font-bold" : ""}`}
                 >
-                    {line.includes('\x1b[') ? parseAnsi(line) : line}
+                    {line.includes("\x1b[") ? parseAnsi(line) : line}
                 </div>
             ))}
 

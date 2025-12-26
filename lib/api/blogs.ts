@@ -25,7 +25,9 @@ export async function getBlogs() {
                         id: f,
                         slug: f.replace(/\.md$/, ""),
                         title: data.title || f.replace(/\.md$/, ""),
-                        date: data.date ? new Date(data.date).toISOString().split("T")[0] : "2024-01-01",
+                        date: data.date
+                            ? new Date(data.date).toISOString().split("T")[0]
+                            : "2024-01-01",
                         excerpt: data.excerpt || "",
                     };
                 })

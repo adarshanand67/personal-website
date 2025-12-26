@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
 interface SkeletonProps {
     className?: string;
-    variant?: 'text' | 'rect' | 'circle';
-    animation?: 'pulse' | 'wave' | 'none';
+    variant?: "text" | "rect" | "circle";
+    animation?: "pulse" | "wave" | "none";
     width?: string | number;
     height?: string | number;
 }
 
 export const Skeleton: React.FC<SkeletonProps> = ({
     className = "",
-    variant = 'rect',
-    animation = 'pulse',
+    variant = "rect",
+    animation = "pulse",
     width,
     height,
 }) => {

@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 import { useStore } from "@/lib/store/useStore";
 import { tracks } from "@/lib/constants";
 
 export function useAudio() {
-    const {
-        isPlaying, setIsPlaying, volume, isMuted, currentTrackIndex, nextTrack, isRepeat
-    } = useStore();
+    const { isPlaying, setIsPlaying, volume, isMuted, currentTrackIndex, nextTrack, isRepeat } =
+        useStore();
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [currentTime, setCurrentTime] = useState(0);
@@ -14,7 +13,7 @@ export function useAudio() {
 
     useEffect(() => {
         if (audioRef.current) audioRef.current.volume = isMuted ? 0 : volume;
-        import('@/lib/audioAnalyzer').then(({ audioAnalyzer }) => {
+        import("@/lib/audioAnalyzer").then(({ audioAnalyzer }) => {
             audioAnalyzer.setVolume(isMuted ? 0 : volume);
         });
     }, [volume, isMuted]);
@@ -46,8 +45,15 @@ export function useAudio() {
     };
 
     return {
-        audioRef, currentTime, duration, isDraggingTime, setIsDraggingTime,
-        handleTimeUpdate, handleLoadedMetadata, handleEnded, seek,
-        currentTrackSrc: tracks[currentTrackIndex]?.src || ""
+        audioRef,
+        currentTime,
+        duration,
+        isDraggingTime,
+        setIsDraggingTime,
+        handleTimeUpdate,
+        handleLoadedMetadata,
+        handleEnded,
+        seek,
+        currentTrackSrc: tracks[currentTrackIndex]?.src || "",
     };
 }

@@ -1,2 +1,1 @@
-export { GlobalEffect } from './GlobalEffect';
-
+export { GlobalEffect } from "./GlobalEffect";

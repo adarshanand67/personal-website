@@ -17,7 +17,7 @@ export function MusicToggleButton() {
             className="fixed bottom-8 right-8 z-[101] w-12 h-12 bg-green-500 hover:bg-green-400 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group"
             title="Open Music Player"
         >
-            <div className={`relative ${isPlaying ? 'animate-pulse' : ''}`}>
+            <div className={`relative ${isPlaying ? "animate-pulse" : ""}`}>
                 <Music size={22} />
                 {isPlaying && (
                     <span className="absolute -top-1 -right-1 flex h-2 w-2">

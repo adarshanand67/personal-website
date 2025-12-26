@@ -10,7 +10,12 @@ interface GuestbookFormProps {
 }
 
 export function GuestbookForm({
-    name, onNameChange, message, onMessageChange, onSubmit, isSubmitting
+    name,
+    onNameChange,
+    message,
+    onMessageChange,
+    onSubmit,
+    isSubmitting,
 }: GuestbookFormProps) {
     return (
         <div className="border-t border-green-900/50 bg-green-950/10 p-4">

@@ -1,1 +1,7 @@
-export { ThemeProvider, ThemeToggle, ClientLinkedin, ClientGithub, ClientMail } from './ThemeProvider';
+export {
+    ThemeProvider,
+    ThemeToggle,
+    ClientLinkedin,
+    ClientGithub,
+    ClientMail,
+} from "./ThemeProvider";

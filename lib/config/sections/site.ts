@@ -13,7 +13,8 @@ import { Designation, Skill } from "@/data/enums";
 export const siteConfig = {
     name: "Adarsh Anand",
     title: "Adarsh Anand - Software Engineer",
-    description: "Personal portfolio showcasing my work in software engineering, system design, and security.",
+    description:
+        "Personal portfolio showcasing my work in software engineering, system design, and security.",
     url: "https://adarshanand.dev",
     author: {
         name: "Adarsh Anand",

@@ -1,2 +1,2 @@
 // SEO Components - Search engine optimization
-export { StructuredData } from './structuredData';
+export { StructuredData } from "./structuredData";

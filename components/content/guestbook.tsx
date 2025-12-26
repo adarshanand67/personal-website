@@ -21,7 +21,7 @@ export function Guestbook() {
             addGuestbookEntry({
                 name: name.trim(),
                 message: message.trim(),
-                timestamp: new Date().toISOString()
+                timestamp: new Date().toISOString(),
             });
             setMessage("");
             setIsSubmitting(false);

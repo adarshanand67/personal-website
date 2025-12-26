@@ -20,24 +20,24 @@ export * from "./shelfStrategies/HobbyStrategy";
 export * from "./shelfStrategies/ArticleStrategy";
 
 export class ShelfStrategyFactory {
-  static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
-    switch (type) {
-      case ShelfType.Book:
-        return new BookListStrategy();
-      case ShelfType.Paper:
-        return new PaperListStrategy();
-      case ShelfType.Anime:
-        return new AnimeCardStrategy();
-      case ShelfType.Blog:
-        return new BlogListStrategy();
-      case ShelfType.Project:
-        return new ProjectListStrategy();
-      case ShelfType.Hobby:
-        return new HobbyListStrategy();
-      case ShelfType.Article:
-        return new ArticleListStrategy();
-      default:
-        throw new Error(`Unknown shelf type: ${type}`);
+    static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
+        switch (type) {
+            case ShelfType.Book:
+                return new BookListStrategy();
+            case ShelfType.Paper:
+                return new PaperListStrategy();
+            case ShelfType.Anime:
+                return new AnimeCardStrategy();
+            case ShelfType.Blog:
+                return new BlogListStrategy();
+            case ShelfType.Project:
+                return new ProjectListStrategy();
+            case ShelfType.Hobby:
+                return new HobbyListStrategy();
+            case ShelfType.Article:
+                return new ArticleListStrategy();
+            default:
+                throw new Error(`Unknown shelf type: ${type}`);
+        }
     }
-  }
 }

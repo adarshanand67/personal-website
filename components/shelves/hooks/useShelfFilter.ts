@@ -6,9 +6,7 @@ import { ShelfType, WatchStatus } from "@/types/definitions";
 import { ShelfItem } from "@/lib/shelfStrategies";
 
 export function useShelfFilter(items: unknown[], configType: ShelfType, strategy: any) {
-    const {
-        searchQuery, setSearchQuery, animeSelectedTag, setAnimeSelectedTag
-    } = useStore();
+    const { searchQuery, setSearchQuery, animeSelectedTag, setAnimeSelectedTag } = useStore();
 
     useEffect(() => {
         setSearchQuery("");
@@ -28,5 +26,12 @@ export function useShelfFilter(items: unknown[], configType: ShelfType, strategy
         return filteredItems;
     }, [filteredItems, configType]);
 
-    return { filteredItems, randomizerItems, searchQuery, setSearchQuery, animeSelectedTag, setAnimeSelectedTag };
+    return {
+        filteredItems,
+        randomizerItems,
+        searchQuery,
+        setSearchQuery,
+        animeSelectedTag,
+        setAnimeSelectedTag,
+    };
 }

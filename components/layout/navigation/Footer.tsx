@@ -12,10 +12,13 @@ export function Footer() {
         <footer className="relative py-16 border-t border-gray-200/50 dark:border-gray-800/50 mt-auto font-mono overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-green-50/30 via-transparent to-transparent dark:from-green-950/20 dark:via-transparent dark:to-transparent pointer-events-none"></div>
             <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.08] pointer-events-none">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `linear-gradient(rgba(34, 197, 94, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.2) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px'
-                }}></div>
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(34, 197, 94, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 197, 94, 0.2) 1px, transparent 1px)`,
+                        backgroundSize: "40px 40px",
+                    }}
+                ></div>
             </div>
 
             <div className="absolute top-0 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
@@ -50,7 +53,10 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-6 mt-12 mb-8">
-                    <div className="text-3xl md:text-4xl text-green-600 dark:text-green-400 opacity-80" style={{ fontFamily: "'Dancing Script', cursive" }}>
+                    <div
+                        className="text-3xl md:text-4xl text-green-600 dark:text-green-400 opacity-80"
+                        style={{ fontFamily: "'Dancing Script', cursive" }}
+                    >
                         Adarsh Anand
                     </div>
                 </div>
@@ -58,9 +64,7 @@ export function Footer() {
             <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-[10px] opacity-60 pb-8 tracking-widest uppercase">
                 <span className="mr-1">©</span>
                 {new Date().getFullYear()}
-                <span className="ml-2">
-                    All Rights Reserved
-                </span>
+                <span className="ml-2">All Rights Reserved</span>
             </p>
         </footer>
     );

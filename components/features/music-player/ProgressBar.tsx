@@ -19,7 +19,12 @@ interface ProgressBarProps {
  * @component
  * @param {ProgressBarProps} props - Component props
  */
-export function ProgressBar({ currentTime, duration, onSeek, onDragStateChange }: ProgressBarProps) {
+export function ProgressBar({
+    currentTime,
+    duration,
+    onSeek,
+    onDragStateChange,
+}: ProgressBarProps) {
     const formatTime = (time: number) => {
         if (isNaN(time)) return "0:00";
         const mins = Math.floor(time / 60);

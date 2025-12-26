@@ -11,8 +11,4 @@ import { planningMovies } from "./anime/movies";
  * Consolidated array of all anime and movie data.
  * Used by the shelf components for rendering.
  */
-export const animeData = [
-    ...completedAnime,
-    ...planningAnime,
-    ...planningMovies
-];
+export const animeData = [...completedAnime, ...planningAnime, ...planningMovies];

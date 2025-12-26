@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { BookOpen, Star, ExternalLink } from "lucide-react";
 import { getBookGradient } from "@/lib/utils/color";
@@ -23,7 +22,9 @@ export function BookSidebar({ item }: BookSidebarProps) {
                     />
                 </div>
             ) : (
-                <div className={`relative w-48 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}>
+                <div
+                    className={`relative w-48 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}
+                >
                     <div className="absolute top-1 left-0 w-4 h-[98%] -translate-x-3 bg-black/20 dark:bg-black/40 blur-[1px] rounded-l-sm" />
                     <div className="flex-1 border-2 border-white/20 p-4 flex flex-col items-center justify-center text-center">
                         <BookOpen className="text-white/40 mb-4" size={32} />
@@ -55,12 +56,18 @@ export function BookSidebar({ item }: BookSidebarProps) {
 
                 {/* Get it on Amazon Button */}
                 <a
-                    href={item.amazonLink || `https://www.amazon.com/s?k=${encodeURIComponent(item.title + " " + item.author)}`}
+                    href={
+                        item.amazonLink ||
+                        `https://www.amazon.com/s?k=${encodeURIComponent(item.title + " " + item.author)}`
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3.5 bg-green-500 hover:bg-green-400 text-white rounded-xl text-sm font-black uppercase tracking-widest shadow-[0_10px_20px_rgba(34,197,94,0.3)] group transition-all hover:scale-[1.02] active:scale-[0.98] border border-green-400/30"
                 >
-                    <ExternalLink size={18} className="group-hover:scale-110 transition-transform" />
+                    <ExternalLink
+                        size={18}
+                        className="group-hover:scale-110 transition-transform"
+                    />
                     <span>Get it on Amazon</span>
                 </a>
             </div>

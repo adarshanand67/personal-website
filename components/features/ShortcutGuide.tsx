@@ -14,7 +14,10 @@ export function ShortcutGuide() {
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "?" && !["INPUT", "TEXTAREA"].includes((e.target as HTMLElement).tagName)) {
+            if (
+                e.key === "?" &&
+                !["INPUT", "TEXTAREA"].includes((e.target as HTMLElement).tagName)
+            ) {
                 setOpen(true);
             }
             if (e.key === "Escape") {
@@ -29,7 +32,10 @@ export function ShortcutGuide() {
         { keys: [<Command key="cmd" size={12} />, "K"], label: "Open Command Menu" },
         { keys: ["?"], label: "Show Keyboard Shortcuts" },
         { keys: ["ESC"], label: "Close Modals / Menus" },
-        { keys: [<ChevronUp key="up" size={12} />, <ChevronDown key="down" size={12} />], label: "Navigate Lists" },
+        {
+            keys: [<ChevronUp key="up" size={12} />, <ChevronDown key="down" size={12} />],
+            label: "Navigate Lists",
+        },
         { keys: [<CornerDownLeft key="enter" size={12} />], label: "Select Item" },
     ];
 
@@ -51,8 +57,12 @@ export function ShortcutGuide() {
                         </button>
 
                         <div className="mb-6">
-                            <h2 className="text-xl font-bold dark:text-white mb-1">Keyboard Shortcuts</h2>
-                            <p className="text-sm text-gray-500">Master the navigation with these keys.</p>
+                            <h2 className="text-xl font-bold dark:text-white mb-1">
+                                Keyboard Shortcuts
+                            </h2>
+                            <p className="text-sm text-gray-500">
+                                Master the navigation with these keys.
+                            </p>
                         </div>
 
                         <div className="space-y-4">
