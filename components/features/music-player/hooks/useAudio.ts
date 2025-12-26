@@ -87,8 +87,24 @@ export function useAudio() {
     const handleEnded = () => {
         if (isRepeat && audioRef.current) {
             audioRef.current.currentTime = 0;
-            audioRef.current.play();
+            audioRef.current.play().catch((error) => {
+                console.error("Error replaying track:", error);
+                setIsPlaying(false);
+            });
         } else nextTrack();
+    };
+
+    const handleError = (e: any) => {
+        console.error("Audio playback error:", e);
+        setIsPlaying(false);
+
+        // Potential logic: automatically try next track if one fails
+        // but only after a delay to avoid infinite loops if all fail
+        /*
+        setTimeout(() => {
+            nextTrack();
+        }, 1000);
+        */
     };
 
     /**
@@ -97,30 +113,29 @@ export function useAudio() {
      * But since we are inside useAudio, we can just seek directly.
      */
     const seek = (time: number) => {
-        // If we are dragging locally, we update audio immediately but maybe not store yet to avoid flickering?
-        // Actually, updating store is fine.
-        if (audioRef.current) {
+        if (!audioRef.current || isNaN(time)) return;
+
+        try {
             audioRef.current.currentTime = time;
             setProgress(time, audioRef.current.duration || 0);
+        } catch (error) {
+            console.error("Error seeking audio:", error);
         }
     };
 
     // We return store values now for consumers of this hook,
-    // though consumers generally should use useStore() directly if they want global state.
-    // specific to this hook users (MusicPlayer component), we might want to pass through store values
-    // or let them use store directly.
-    // To match previous API interface roughly:
     const { currentTime, duration } = useStore();
 
     return {
         audioRef,
-        currentTime: isDraggingTime ? currentTime : currentTime, // logic simplified
+        currentTime,
         duration,
         isDraggingTime,
         setIsDraggingTime,
         handleTimeUpdate,
         handleLoadedMetadata,
         handleEnded,
+        handleError,
         seek,
         currentTrackSrc: tracks[currentTrackIndex]?.src || "",
     };

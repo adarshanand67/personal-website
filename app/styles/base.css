@@ -15,9 +15,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* DLP Vector: Disable selection */
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 /* DLP Vector: Print Protection */

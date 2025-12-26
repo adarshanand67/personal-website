@@ -77,6 +77,7 @@ export function MusicPlayer() {
         handleTimeUpdate,
         handleLoadedMetadata,
         handleEnded,
+        handleError,
         seek,
         currentTrackSrc,
     } = useAudio();
@@ -87,6 +88,9 @@ export function MusicPlayer() {
 
     if (!mounted) return null;
 
+    // Validate index
+    const safeIndex = typeof currentTrackIndex === "number" ? currentTrackIndex : 0;
+
     return (
         <>
             <audio
@@ -95,7 +99,9 @@ export function MusicPlayer() {
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
                 onEnded={handleEnded}
+                onError={handleError}
                 crossOrigin="anonymous"
+                preload="metadata"
             />
 
             <div
@@ -107,7 +113,7 @@ export function MusicPlayer() {
                     <div className="absolute -bottom-10 -right-10 w-24 h-24 bg-foreground/5 blur-[40px] rounded-full pointer-events-none" />
 
                     <div className="relative z-10 flex flex-col gap-5">
-                        <TrackInfo index={currentTrackIndex} onClose={toggleMusicPlayer} />
+                        <TrackInfo index={safeIndex} onClose={toggleMusicPlayer} />
 
                         <div className="flex flex-col gap-4">
                             <div className="space-y-4">

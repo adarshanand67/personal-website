@@ -21,10 +21,22 @@ interface TrackInfoProps {
  * @param {TrackInfoProps} props - Component props
  */
 export function TrackInfo({ index, onClose }: TrackInfoProps) {
-    const track = tracks[index];
+    const trackList = tracks || [];
+    const track = trackList[index];
 
     if (!track) {
-        return null;
+        return (
+            <div className="flex gap-4 items-center animate-pulse">
+                <div className="w-20 h-20 shrink-0 bg-foreground/5 rounded-[1.5rem]" />
+                <div className="flex flex-col gap-2 flex-1">
+                    <div className="h-4 w-24 bg-foreground/5 rounded" />
+                    <div className="h-3 w-16 bg-foreground/5 rounded" />
+                </div>
+                <button onClick={onClose} className="p-1.5">
+                    <ChevronDown size={20} className="text-foreground/20" />
+                </button>
+            </div>
+        );
     }
 
     return (

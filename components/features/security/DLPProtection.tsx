@@ -103,10 +103,10 @@ export function DLPProtection() {
     const [violationCount, setViolationCount] = useState(0);
     const violationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    // Bypass DLP on localhost
-    const isLocalhost =
-        typeof window !== "undefined" &&
-        (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    // Only enable DLP on the main production website
+    const isMainWebsite =
+        typeof window !== "undefined" && window.location.hostname === "adarshanand67.github.io";
+    const shouldDisableDLP = !isMainWebsite;
 
     const { isPlaying, setIsPlaying } = useStore();
     const wasPlayingRef = useRef(false);
@@ -141,6 +141,7 @@ export function DLPProtection() {
     }, []);
 
     useEffect(() => {
+        if (shouldDisableDLP) return;
         if (isBlur) {
             if (isPlaying) {
                 wasPlayingRef.current = true;
@@ -156,6 +157,7 @@ export function DLPProtection() {
 
     // Violation Lockout Effect - Just notify now, don't lock screen
     useEffect(() => {
+        if (shouldDisableDLP) return;
         if (violationCount > 5) {
             // addNotification("Warning: Excessive suspicious activity detected.", <AlertTriangle size={16} />); // Removed per user request
             const timer = setTimeout(() => {
@@ -166,6 +168,7 @@ export function DLPProtection() {
     }, [violationCount, addNotification]);
 
     useEffect(() => {
+        if (shouldDisableDLP) return;
         // 1. Disable Right Click
         const handleContextMenu = (e: MouseEvent) => {
             e.preventDefault();
@@ -243,99 +246,90 @@ export function DLPProtection() {
 
         // 4. Keydown Restrictions
         const handleKeyDown = (e: KeyboardEvent) => {
-            // Print Screen
-            if (e.key === "PrintScreen") {
-                setIsBlur(true);
-                setTimeout(() => setIsBlur(false), 2000);
-                navigator.clipboard.writeText(""); // Clear clipboard
-                addNotification(
-                    "Screen capture attempt detected and blocked.",
-                    <Camera size={16} />
-                );
-                return;
-            }
+            try {
+                // Print Screen
+                if (e.key === "PrintScreen") {
+                    setIsBlur(true);
+                    setTimeout(() => setIsBlur(false), 2000);
 
-            // Block generic shortcuts with specific messages - but allow in input fields
-            const target = e.target as HTMLElement;
-            const isEditable =
-                target.tagName === "INPUT" ||
-                target.tagName === "TEXTAREA" ||
-                target.isContentEditable;
+                    if (typeof navigator !== "undefined" && navigator.clipboard) {
+                        navigator.clipboard.writeText("").catch(() => {});
+                    }
 
-            if (e.ctrlKey || e.metaKey) {
-                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X in editable fields
-                if (
-                    isEditable &&
-                    (e.key === "a" || e.key === "c" || e.key === "v" || e.key === "x")
-                ) {
-                    return; // Allow normal behavior in input fields
-                }
-
-                if (e.key === "a" && !isEditable) {
                     addNotification(
-                        "Select All is disabled to prevent bulk data extraction.",
-                        <ShieldAlert size={16} />
+                        "Screen capture attempt detected and blocked.",
+                        <Camera size={16} />
                     );
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
+                    return;
                 }
-                if (e.key === "s") {
-                    addNotification("Saving content is disabled.", <ShieldAlert size={16} />);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-                if (e.key === "p") {
-                    addNotification("Printing is disabled.", <EyeOff size={16} />);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-                if (e.key === "u") {
-                    addNotification("Viewing source is disabled.", <Terminal size={16} />);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-                if (e.key === "g") {
-                    addNotification("Search function is limited.", <ShieldAlert size={16} />);
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-            }
 
-            // Block DevTools Shortcuts (Cmd+Option+I, J, C or Ctrl+Shift+I, J, C)
-            // Block DevTools Shortcuts (Cmd+Option+I, J, C or Ctrl+Shift+I, J, C)
-            // Also blocking Cmd+Shift+Number keys (2,3,4,5) for Screenshots/Debug
-            if (
-                (e.ctrlKey || e.metaKey) &&
-                e.shiftKey &&
-                (e.key === "i" ||
-                    e.key === "j" ||
-                    e.key === "c" ||
-                    e.key === "4" ||
-                    e.key === "3" ||
-                    e.key === "5" ||
-                    e.key === "2" ||
-                    e.code === "Digit3" ||
-                    e.code === "Digit4" ||
-                    e.code === "Digit5" ||
-                    e.code === "Digit2")
-            ) {
-                addNotification("Inspector tools are blocked.", <Terminal size={16} />);
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
-            }
+                // Block generic shortcuts with specific messages - but allow in input fields
+                const target = e.target as HTMLElement;
+                const isEditable =
+                    target &&
+                    (target.tagName === "INPUT" ||
+                        target.tagName === "TEXTAREA" ||
+                        target.isContentEditable);
 
-            // Block F12
-            if (e.key === "F12") {
-                addNotification("Developer tools are disabled.", <ShieldAlert size={16} />);
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
+                if (e.ctrlKey || e.metaKey) {
+                    // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X in editable fields
+                    if (
+                        isEditable &&
+                        (e.key === "a" || e.key === "c" || e.key === "v" || e.key === "x")
+                    ) {
+                        return; // Allow normal behavior in input fields
+                    }
+
+                    if (e.key === "a" && !isEditable) {
+                        addNotification(
+                            "Select All is disabled to prevent bulk data extraction.",
+                            <ShieldAlert size={16} />
+                        );
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    if (e.key === "s") {
+                        addNotification("Saving content is disabled.", <ShieldAlert size={16} />);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    if (e.key === "p") {
+                        addNotification("Printing is disabled.", <EyeOff size={16} />);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                    if (e.key === "u") {
+                        addNotification("Viewing source is disabled.", <Terminal size={16} />);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+
+                // Block DevTools Shortcuts (Cmd+Option+I, J, C or Ctrl+Shift+I, J, C)
+                if (
+                    (e.ctrlKey || e.metaKey) &&
+                    e.shiftKey &&
+                    ["i", "j", "c", "4", "3", "5", "2"].includes(e.key.toLowerCase())
+                ) {
+                    addNotification("Inspector tools are blocked.", <Terminal size={16} />);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+
+                // Block F12
+                if (e.key === "F12") {
+                    addNotification("Developer tools are disabled.", <ShieldAlert size={16} />);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            } catch (error) {
+                console.warn("Error in keyboard protection:", error);
             }
         };
 
@@ -351,13 +345,19 @@ export function DLPProtection() {
 
         // 6. Print Handling
         const handleBeforePrint = (e: Event) => {
-            addNotification("Printing is disabled on this page.", <EyeOff size={16} />);
-            e.preventDefault();
-            // Forcefully hide everything stylistically just in case
-            const style = document.createElement("style");
-            style.id = "print-blocker";
-            style.innerHTML = "@media print { body { display: none !important; } }";
-            document.head.appendChild(style);
+            try {
+                addNotification("Printing is disabled on this page.", <EyeOff size={16} />);
+                e.preventDefault();
+                // Forcefully hide everything stylistically just in case
+                if (!document.getElementById("print-blocker")) {
+                    const style = document.createElement("style");
+                    style.id = "print-blocker";
+                    style.innerHTML = "@media print { body { display: none !important; } }";
+                    document.head.appendChild(style);
+                }
+            } catch (error) {
+                console.warn("Error in print protection:", error);
+            }
         };
 
         // Inject CSS for user-select: none
@@ -388,7 +388,6 @@ export function DLPProtection() {
         document.head.appendChild(style);
 
         // Listeners
-        // Listeners
         document.addEventListener("contextmenu", handleContextMenu);
         document.addEventListener("copy", handleCopyCutPaste);
         document.addEventListener("cut", handleCopyCutPaste);
@@ -403,34 +402,30 @@ export function DLPProtection() {
         window.addEventListener("beforeprint", handleBeforePrint);
 
         // DevTools Detection & Console Warfare
+        let lastConsoleLog = 0;
         const devToolsCheck = setInterval(() => {
-            // 1. Console Clearing & Warning
-            // console.clear(); // Aggressive clearing
-            const warningStyle =
-                "font-size: 24px; color: red; font-weight: bold; text-shadow: 2px 2px 0px black;";
-            console.log("%cSTOP! This is a protected area.", warningStyle);
-            console.log(
-                "%cSecurity protocols are active. Actions are monitored.",
-                "font-size: 14px; color: gray;"
-            );
+            const now = Date.now();
+            if (now - lastConsoleLog > 10000) {
+                // Log every 10s to keep console somewhat clean
+                const warningStyle =
+                    "font-size: 24px; color: red; font-weight: bold; text-shadow: 2px 2px 0px black;";
+                console.log("%cSTOP! This is a protected area.", warningStyle);
+                console.log(
+                    "%cSecurity protocols are active. Actions are monitored.",
+                    "font-size: 14px; color: gray;"
+                );
+                lastConsoleLog = now;
+            }
 
-            // 2. Debugger Trap (The "Halt" Mechanism)
-            // This forces the browser to pause if DevTools is open and breakpoints are active.
-            // It makes inspection extremely annoying/impossible.
-            try {
-                (function antiDebug() {
-                    // Force a breakpoint
-                    // debugger; // Uncomment to active the hard trap
-                })();
-            } catch (e) {}
+            // Heuristic Check (Resize)
+            if (typeof window !== "undefined") {
+                const threshold = 160;
+                const widthDiff = window.outerWidth - window.innerWidth > threshold;
+                const heightDiff = window.outerHeight - window.innerHeight > threshold;
 
-            // 3. Heuristic Check (Resize)
-            const threshold = 160;
-            const widthDiff = window.outerWidth - window.innerWidth > threshold;
-            const heightDiff = window.outerHeight - window.innerHeight > threshold;
-
-            if ((widthDiff || heightDiff) && !isBlur) {
-                // Silently monitor - removed notification per user request
+                if ((widthDiff || heightDiff) && !isBlur) {
+                    // Silently monitor - could add logic here later
+                }
             }
         }, 2000);
 
@@ -456,6 +451,8 @@ export function DLPProtection() {
             clearInterval(devToolsCheck);
         };
     }, [addNotification, isBlur]);
+
+    if (shouldDisableDLP) return null;
 
     return (
         <>
