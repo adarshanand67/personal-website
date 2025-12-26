@@ -13,6 +13,7 @@ import { BackToTop } from "@/components/layout/navigation/BackToTop";
 import { MobileDock } from "@/components/layout/navigation/MobileDock";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { DLPProtection } from "@/components/features/security/DLPProtection";
+import { TerminalPreloader } from "@/components/layout/terminal/TerminalPreloader";
 
 /**
  * Client Layout Component - wraps all client-side providers and global components.
@@ -31,6 +32,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
             storageKey="theme"
         >
             <DLPProtection />
+            <TerminalPreloader />
             <PWARegistration />
             <ScrollProgress />
             <div className="page-glow" />
