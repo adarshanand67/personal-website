@@ -23,6 +23,8 @@ export const createTerminalSlice: StateCreator<AppState, [], [], TerminalState> 
     isExpanded: true,
     position: { x: 0, y: 0 },
     isDragging: false,
+    files: {}, // Will be initialized by the component or elsewhere if needed
+    currentDir: "/home/portfolio",
     setLines: (lines) =>
         set((state) => ({
             lines: typeof lines === "function" ? lines(state.lines) : lines,
@@ -41,4 +43,9 @@ export const createTerminalSlice: StateCreator<AppState, [], [], TerminalState> 
     setIsExpanded: (expanded) => set({ isExpanded: expanded }),
     setPosition: (pos) => set({ position: pos }),
     setIsDragging: (dragging) => set({ isDragging: dragging }),
+    setFiles: (files) =>
+        set((state) => ({
+            files: typeof files === "function" ? files(state.files) : files,
+        })),
+    setCurrentDir: (currentDir) => set({ currentDir }),
 });

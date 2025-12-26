@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useStore } from "@/lib/store/useStore";
 import { introLines } from "@/lib/constants";
+import { mockFiles } from "@/lib/terminal/mockFileSystem";
 
 /**
  * Terminal Hook - manages terminal state, intro animation, and drag functionality.
@@ -28,7 +29,15 @@ export function useTerminal() {
         setPosition,
         isDragging,
         setIsDragging,
+        files,
+        setFiles,
     } = useStore();
+
+    useEffect(() => {
+        if (Object.keys(files).length === 0) {
+            setFiles(mockFiles);
+        }
+    }, [files, setFiles]);
 
     const dragStartRef = useRef({ x: 0, y: 0 });
     const initialPosRef = useRef({ x: 0, y: 0 });

@@ -279,7 +279,7 @@ export default function MusicPage() {
                 >
                     <ArrowLeft className="w-6 h-6" />
                 </Link>
-                <span className="font-semibold text-sm tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 mt-2 md:mt-0">
+                <span className="font-semibold text-sm tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-400 mt-2 md:mt-0">
                     NOW PLAYING
                 </span>
                 <button className="absolute right-4 p-2 -mr-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors pt-6 md:pt-2">
@@ -299,14 +299,13 @@ export default function MusicPage() {
                     {/* Album Art Section */}
                     <div
                         className={cn(
-                            "w-full max-w-md mx-auto mb-8 transition-all duration-500 ease-out",
+                            "w-full max-w-md mx-auto mb-8 transition-all duration-500 ease-out relative",
                             isMaximized ? "lg:max-w-2xl" : "lg:max-w-lg"
                         )}
                     >
-                        {/* Glow Effect */}
                         <div
                             className={cn(
-                                "absolute inset-0 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000",
+                                "absolute inset-0 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000 pointer-events-none",
                                 isPlaying ? "opacity-100" : "opacity-30"
                             )}
                         />
@@ -334,7 +333,7 @@ export default function MusicPage() {
                             <div className="flex-1 min-w-0 mr-4">
                                 <h1
                                     className={cn(
-                                        "font-bold mb-2 text-gray-900 dark:text-gray-50 truncate tracking-tight transition-all",
+                                        "font-bold mb-2 text-black dark:text-gray-50 truncate tracking-tight transition-all",
                                         isMaximized
                                             ? "text-3xl lg:text-4xl"
                                             : "text-2xl lg:text-3xl"
@@ -351,7 +350,7 @@ export default function MusicPage() {
                                     {currentTrack?.artist}
                                 </p>
                             </div>
-                            <button className="p-3 bg-gray-100 dark:bg-white/10 rounded-full text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 active:scale-95 transition-all">
+                            <button className="p-3 bg-white/10 dark:bg-white/10 rounded-full text-white/50 hover:text-pink-500 hover:bg-pink-500/10 active:scale-95 transition-all">
                                 <Heart
                                     className={cn(
                                         "transition-all",
@@ -383,9 +382,7 @@ export default function MusicPage() {
                                 onClick={toggleShuffle}
                                 className={cn(
                                     "p-2 transition-colors",
-                                    isShuffle
-                                        ? "text-pink-500"
-                                        : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
+                                    isShuffle ? "text-pink-500" : "text-white/40 hover:text-white"
                                 )}
                             >
                                 <Shuffle className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -400,6 +397,7 @@ export default function MusicPage() {
                                         "fill-current",
                                         isMaximized ? "w-11 h-11" : "w-10 h-10"
                                     )}
+                                    strokeWidth={0}
                                 />
                             </button>
 
@@ -436,6 +434,7 @@ export default function MusicPage() {
                                         "fill-current",
                                         isMaximized ? "w-11 h-11" : "w-10 h-10"
                                     )}
+                                    strokeWidth={0}
                                 />
                             </button>
 
@@ -443,9 +442,7 @@ export default function MusicPage() {
                                 onClick={toggleRepeat}
                                 className={cn(
                                     "p-2 transition-colors",
-                                    isRepeat
-                                        ? "text-pink-500"
-                                        : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
+                                    isRepeat ? "text-pink-500" : "text-white/40 hover:text-white"
                                 )}
                             >
                                 <Repeat className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -483,7 +480,7 @@ export default function MusicPage() {
                         )}
                     />
 
-                    <div className="flex items-center gap-2 mb-6 text-gray-900 dark:text-white sticky top-0 bg-gray-50 dark:bg-white/5 pb-4 z-10">
+                    <div className="flex items-center gap-2 mb-6 text-black dark:text-white sticky top-0 bg-gray-50 dark:bg-white/5 pb-4 z-10">
                         <ListMusic className="w-5 h-5" />
                         <h2 className="text-lg font-bold">Up Next</h2>
                         <span className="text-sm text-gray-500 dark:text-gray-400 ml-auto">
@@ -528,7 +525,7 @@ export default function MusicPage() {
                                                 "font-semibold truncate text-base",
                                                 isCurrent
                                                     ? "text-pink-500 dark:text-pink-400"
-                                                    : "text-gray-900 dark:text-white"
+                                                    : "text-black dark:text-white"
                                             )}
                                         >
                                             {track.title}

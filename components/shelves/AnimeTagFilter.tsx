@@ -50,7 +50,6 @@ export function AnimeTagFilter({ items, selectedTag, onTagSelect }: AnimeTagFilt
                         key={tag}
                         label={tag}
                         selected={selectedTag === tag}
-                        dimmed={selectedTag !== tag}
                         onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
                         variant="filter"
                     />

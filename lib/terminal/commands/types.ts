@@ -18,6 +18,12 @@ export interface CommandContext {
     toggleTodo: (id: string) => void;
     removeTodo: (id: string) => void;
     clearTodos: () => void;
+    files: Record<string, string>;
+    setFiles: (
+        files: Record<string, string> | ((prev: Record<string, string>) => Record<string, string>)
+    ) => void;
+    currentDir: string;
+    setCurrentDir: (dir: string) => void;
 }
 
 export type CommandFn = (

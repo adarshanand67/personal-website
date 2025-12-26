@@ -40,6 +40,8 @@ export interface TerminalState {
     isExpanded: boolean;
     position: { x: number; y: number };
     isDragging: boolean;
+    files: Record<string, string>;
+    currentDir: string;
     setLines: (lines: string[] | ((prev: string[]) => string[])) => void;
     addLine: (line: string) => void;
     clearLines: () => void;
@@ -52,6 +54,10 @@ export interface TerminalState {
     setIsExpanded: (expanded: boolean) => void;
     setPosition: (pos: { x: number; y: number }) => void;
     setIsDragging: (dragging: boolean) => void;
+    setFiles: (
+        files: Record<string, string> | ((prev: Record<string, string>) => Record<string, string>)
+    ) => void;
+    setCurrentDir: (dir: string) => void;
 }
 
 /**
@@ -179,7 +185,9 @@ export interface SearchState {
  */
 export interface BookState {
     bookSelectedItem: Book | null;
+    bookSelectedTag: string | null;
     setBookSelectedItem: (item: Book | null) => void;
+    setBookSelectedTag: (tag: string | null) => void;
 }
 
 /**

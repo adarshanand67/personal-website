@@ -35,6 +35,10 @@ export function useCommandExecutor() {
         toggleTodo,
         removeTodo,
         clearTodos,
+        files,
+        setFiles,
+        currentDir,
+        setCurrentDir,
     } = useStore();
 
     const executeCommand = useCallback(
@@ -78,6 +82,10 @@ export function useCommandExecutor() {
                 removeTodo,
                 clearTodos,
                 setLines: setLines as any,
+                files,
+                setFiles,
+                currentDir,
+                setCurrentDir,
             };
 
             try {
@@ -114,6 +122,10 @@ export function useCommandExecutor() {
             toggleTodo,
             removeTodo,
             clearTodos,
+            files,
+            setFiles,
+            currentDir,
+            setCurrentDir,
         ]
     );
 

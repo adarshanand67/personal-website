@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface CommandMenuItemProps {
     item: any;
@@ -15,7 +16,7 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                 ${
                     isSelected
                         ? "text-gray-900 dark:text-white"
-                        : "text-gray-400 dark:text-gray-500 opacity-40 hover:opacity-70"
+                        : "text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5"
                 }
             `}
         >
@@ -25,7 +26,7 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                     className={`transition-colors duration-300 ${
                         isSelected
                             ? "text-gray-900 dark:text-white"
-                            : "text-gray-400 dark:text-gray-600"
+                            : "text-gray-400 dark:text-gray-400"
                     }`}
                 />
                 <div className="flex flex-col items-start gap-0.5">
@@ -41,7 +42,7 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                             className={`text-xs transition-colors duration-300 ${
                                 isSelected
                                     ? "text-gray-500 dark:text-gray-400"
-                                    : "text-gray-400/60 dark:text-gray-500/60"
+                                    : "text-gray-500 dark:text-gray-400"
                             }`}
                         >
                             {item.description}

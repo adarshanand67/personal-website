@@ -35,14 +35,14 @@ export function MobileDock() {
                             className="relative flex flex-col items-center gap-1 group"
                         >
                             <div
-                                className={`p-2 rounded-xl transition-all duration-300 ${isActive ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md" : "text-black dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-200"}`}
+                                className={`p-2 transition-all duration-300 ${isActive ? "text-slate-900 dark:text-white scale-125" : "text-slate-400 dark:text-gray-500 opacity-60 hover:opacity-100"}`}
                             >
-                                <item.icon size={20} />
+                                <item.icon size={20} strokeWidth={isActive ? 3 : 2} />
                             </div>
                             {isActive && (
                                 <motion.div
                                     layoutId="dock-dot"
-                                    className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
+                                    className="absolute -bottom-1 w-1 h-1 bg-slate-900 dark:bg-white rounded-full shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                                 />
                             )}
                         </Link>
@@ -54,14 +54,14 @@ export function MobileDock() {
                     className="relative flex flex-col items-center gap-1 group"
                 >
                     <div
-                        className={`p-2 rounded-xl transition-all duration-300 ${pathname === routes.music ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-md" : "text-black dark:text-gray-400 hover:text-black dark:hover:text-gray-200"}`}
+                        className={`p-2 transition-all duration-300 ${pathname === routes.music ? "text-slate-900 dark:text-white scale-125" : "text-slate-400 dark:text-gray-500 opacity-60 hover:opacity-100"}`}
                     >
-                        <Music size={20} />
+                        <Music size={20} strokeWidth={pathname === routes.music ? 3 : 2} />
                     </div>
                     {pathname === routes.music && (
                         <motion.div
                             layoutId="dock-dot"
-                            className="absolute -bottom-1 w-1 h-1 bg-foreground rounded-full"
+                            className="absolute -bottom-1 w-1 h-1 bg-slate-900 dark:bg-white rounded-full shadow-[0_0_8px_rgba(0,0,0,0.5)] dark:shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                         />
                     )}
                 </Link>

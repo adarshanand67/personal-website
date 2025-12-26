@@ -11,29 +11,23 @@ import React from "react";
 interface PillTagProps {
     label: string;
     selected?: boolean;
-    dimmed?: boolean;
     onClick?: () => void;
-    variant?: "default" | "filter";
 }
 
 /**
  * Pill Tag Component - clean black/white pill-shaped tag button.
  */
-export function PillTag({ label, selected = false, dimmed = false, onClick }: PillTagProps) {
+export function PillTag({ label, selected = false, onClick }: PillTagProps) {
     const displayLabel = label || "Tag";
 
     // Base styles
     const baseClasses =
-        "px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 whitespace-nowrap";
+        "px-4 py-2 rounded-full text-xs transition-all duration-300 whitespace-nowrap";
 
     // Light mode: black text, Dark mode: white text
     const variantClasses = selected
-        ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105 opacity-100"
-        : `${
-              dimmed
-                  ? "bg-gray-100/40 dark:bg-gray-800/40 text-black/60 dark:text-white/60"
-                  : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-          } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
+        ? "text-black dark:text-white scale-110 font-black"
+        : "text-black/50 dark:text-white/40 font-bold hover:text-black dark:hover:text-white hover:scale-105";
 
     const classes = `${baseClasses} ${variantClasses}`;
 
