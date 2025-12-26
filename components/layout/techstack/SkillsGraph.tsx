@@ -129,8 +129,8 @@ export function SkillsGraph() {
                             ? "#000"
                             : "#fff"
                         : node.group === 0
-                            ? "#fff"
-                            : "#000";
+                          ? "#fff"
+                          : "#000";
 
                     // Only show text if node is large enough or zoomed in enough
                     if (globalScale > 0.7 || node.group <= 1) {

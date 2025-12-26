@@ -15,7 +15,6 @@ describe("Anime Data Layer", () => {
         }
     });
 
-
     it("should have consistent data structures", () => {
         animeData.forEach((item) => {
             expect(item.title).toBeDefined();

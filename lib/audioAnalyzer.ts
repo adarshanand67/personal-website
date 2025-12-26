@@ -23,7 +23,7 @@ class AudioAnalyzer {
     private source: MediaElementAudioSourceNode | null = null;
     private initialized = false;
 
-    private constructor() { }
+    private constructor() {}
 
     /**
      * Get the singleton instance of AudioAnalyzer.
