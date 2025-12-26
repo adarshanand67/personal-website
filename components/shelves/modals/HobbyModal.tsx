@@ -87,6 +87,13 @@ interface HobbyModalProps {
  * ```
  */
 export function HobbyModal({ item, onClose }: HobbyModalProps) {
+    // Validate item prop
+    if (!item || typeof item !== "object") {
+        console.error("Invalid hobby item passed to HobbyModal:", item);
+        onClose();
+        return null;
+    }
+
     return (
         <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
             <motion.div
@@ -97,7 +104,7 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                 onClick={onClose}
             />
             <motion.div
-                layoutId={`hobby-${item.name}`}
+                layoutId={`hobby-${item.name || "unknown"}`}
                 className="bg-white dark:bg-zinc-900 w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden relative z-10 border border-gray-200 dark:border-white/10"
             >
                 <button
@@ -107,10 +114,12 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                     <X size={20} />
                 </button>
                 <div className="p-10 flex flex-col items-center text-center">
-                    {getIcon(item.icon)}
-                    <h2 className="text-2xl font-bold mb-3 font-mono">{item.name}</h2>
+                    {getIcon(item.icon || "")}
+                    <h2 className="text-2xl font-bold mb-3 font-mono">
+                        {item.name || "Unknown Hobby"}
+                    </h2>
                     <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base mb-6 font-mono">
-                        {item.description}
+                        {item.description || "No description available"}
                     </p>
                     {item.link && (
                         <a

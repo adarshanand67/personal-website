@@ -23,10 +23,10 @@ export function PillTag({ label, selected = false, onClick, variant = "default" 
     const baseClasses =
         "px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap";
 
-    // Proper contrast: dark bg with light text when unselected, light bg with dark text when selected
+    // Light mode: black text, Dark mode: white text
     const variantClasses = selected
-        ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 shadow-md scale-105"
-        : "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200";
+        ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105"
+        : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700";
 
     const classes = `${baseClasses} ${variantClasses}`;
 
