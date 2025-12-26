@@ -60,7 +60,7 @@ export function SocialButton({ label, name, icon, href, onClick, index }: Social
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 + index * 0.1 }}
-            className="w-full"
+            className="w-full md:flex-1 min-w-0"
         >
             {href ? (
                 <Link
