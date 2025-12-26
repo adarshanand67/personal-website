@@ -71,12 +71,11 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                     </div>
                 )}
 
-                {/* Watch Trailer Button */}
                 <a
                     href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3 bg-foreground text-white dark:text-black hover:bg-foreground/90 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-foreground/10 group transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5"
                 >
                     <Play
                         size={16}

@@ -108,8 +108,8 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                 </button>
                 <div className="p-10 flex flex-col items-center text-center">
                     {getIcon(item.icon)}
-                    <h2 className="text-3xl font-bold mb-3">{item.name}</h2>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg mb-6">
+                    <h2 className="text-2xl font-bold mb-3 font-mono">{item.name}</h2>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-base mb-6 font-mono">
                         {item.description}
                     </p>
                     {item.link && (
@@ -117,9 +117,9 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                             href={item.link}
                             target={item.link?.startsWith("http") ? "_blank" : undefined}
                             rel={item.link?.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-2 px-6 py-3 dark:text-black font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="inline-flex items-center gap-2 px-6 py-3 border border-foreground/10 hover:border-foreground hover:bg-foreground/5 text-foreground/60 hover:text-foreground font-black text-xs rounded-full transition-all duration-300 hover:scale-105 uppercase tracking-widest"
                         >
-                            <ExternalLink size={16} /> Explore More
+                            <ExternalLink size={14} /> Explore More
                         </a>
                     )}
                 </div>

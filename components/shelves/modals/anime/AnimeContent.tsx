@@ -25,22 +25,6 @@ interface AnimeContentProps {
  * @component
  * @param {AnimeContentProps} props - Component props
  * @returns {JSX.Element} Rendered content area with anime details
- *
- * @example
- * ```tsx
- * <AnimeContent
- *   item={{
- *     title: "Steins;Gate",
- *     year: 2011,
- *     rating: "9.1",
- *     seasons: "1 Season",
- *     description: "A sci-fi thriller about time travel",
- *     tags: ["Sci-Fi", "Thriller"],
- *     keyLearnings: ["Consequences of choices"]
- *   }}
- *   onTagClick={(tag) => filterByTag(tag)}
- * />
- * ```
  */
 export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
     return (
@@ -50,28 +34,28 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                 <div>
                     <div className="flex flex-wrap gap-3 mb-4">
                         {item.year && (
-                            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
+                            <span className="flex items-center gap-1.5 text-[9px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
                                 <Calendar size={10} /> {item.year}
                             </span>
                         )}
                         {item.rating && (
-                            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
+                            <span className="flex items-center gap-1.5 text-[9px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
                                 <Star size={10} /> {item.rating}
                             </span>
                         )}
                         {item.seasons && (
-                            <span className="flex items-center gap-1.5 text-[10px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
+                            <span className="flex items-center gap-1.5 text-[9px] font-black uppercase text-foreground/50 bg-foreground/5 px-2.5 py-1 rounded-full border border-foreground/10 tracking-widest">
                                 <Film size={10} /> {item.seasons}
                             </span>
                         )}
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">
+                    <h2 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight leading-tight">
                         {item.title}
                     </h2>
 
                     {item.description && (
-                        <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+                        <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
                             {item.description}
                         </p>
                     )}
@@ -83,7 +67,7 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                 {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
                     <div>
-                        <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+                        <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">
                             Categories
                         </h3>
                         <div className="flex flex-wrap gap-2">
@@ -91,7 +75,7 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                                 <button
                                     key={tag}
                                     onClick={() => onTagClick(tag)}
-                                    className="px-5 py-2.5 bg-transparent border-2 border-foreground/10 rounded-full text-[11px] font-black text-foreground/40 hover:border-foreground/60 hover:text-foreground transition-all uppercase tracking-widest hover:scale-105 shadow-sm active:scale-95"
+                                    className="px-4 py-2 bg-transparent border-2 border-foreground/10 rounded-full text-[10px] font-black text-foreground/40 hover:border-foreground/60 hover:text-foreground transition-all uppercase tracking-widest hover:scale-105 shadow-sm active:scale-95"
                                 >
                                     {tag}
                                 </button>
@@ -105,9 +89,9 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                     <div className="bg-foreground/[0.02] rounded-3xl p-8 border border-foreground/10">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="p-2 bg-foreground/5 rounded-lg border border-foreground/10">
-                                <Tv size={18} className="text-foreground/60" />
+                                <Tv size={16} className="text-foreground/60" />
                             </div>
-                            <h3 className="text-[10px] font-black text-foreground/80 uppercase tracking-widest">
+                            <h3 className="text-[9px] font-black text-foreground/80 uppercase tracking-widest">
                                 Key Takeaways
                             </h3>
                         </div>

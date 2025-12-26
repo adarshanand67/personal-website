@@ -44,11 +44,6 @@ export function BookSidebar({ item }: BookSidebarProps) {
             )}
 
             <div className="w-full space-y-3 relative z-10">
-                <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
-                    <BookOpen size={12} strokeWidth={3} />
-                    <span>Featured Book</span>
-                </div>
-
                 {item.recommended && (
                     <div className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground/5 text-foreground/80 rounded-xl text-[10px] font-black uppercase tracking-widest border border-foreground/10">
                         <Star size={12} fill="currentColor" />
@@ -64,10 +59,10 @@ export function BookSidebar({ item }: BookSidebarProps) {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-white dark:text-black hover:bg-foreground/90 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl shadow-foreground/20 group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10"
+                    className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5 shadow-sm"
                 >
                     <ExternalLink
-                        size={18}
+                        size={14}
                         className="group-hover:scale-110 transition-transform"
                     />
                     <span>Get it on Amazon</span>
