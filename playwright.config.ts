@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
  * Playwright configuration for end-to-end testing.
  */
 export default defineConfig({
-    testDir: "./test/e2e",
+    testMatch: "**/test/e2e/*.e2e.ts",
     fullyParallel: true,
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? 2 : 0,
