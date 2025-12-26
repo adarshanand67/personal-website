@@ -446,6 +446,84 @@ export const uname: Command = createCommand(
     { category: "utility", usage: "uname [-a|-s|-m]" }
 );
 
+export const skills: Command = createCommand(
+    "skills",
+    "List technical skills",
+    (_, { setLines }) => {
+        addLines(setLines, [
+            "Languages:  TypeScript, JavaScript, Python, Java, C++, SQL",
+            "Frontend:   React, Next.js, TailwindCSS, Framer Motion, Redux",
+            "Backend:    Node.js, Express, PostgreSQL, MongoDB, Redis",
+            "DevOps:     Docker, Kubernetes, AWS, CI/CD, Git",
+        ]);
+    },
+    { category: "utility", usage: "skills" }
+);
+
+export const contact: Command = createCommand(
+    "contact",
+    "Show contact info",
+    (_, { setLines }) => {
+        addLines(setLines, [
+            "Email:      adarsh.anand.dev@gmail.com",
+            "GitHub:     github.com/adarshanand67",
+            "LinkedIn:   linkedin.com/in/adarshanand67",
+            "Twitter:    @adarshanand67",
+        ]);
+    },
+    { category: "utility", usage: "contact" }
+);
+
+export const history: Command = createCommand(
+    "history",
+    "Show command history",
+    (_, { setLines, setHistory }) => {
+        setHistory((prev) => {
+            const histWithIndex = prev.map((cmd, i) => `${i + 1}  ${cmd}`);
+            addLines(setLines, histWithIndex);
+            return prev;
+        });
+    },
+    { category: "utility", usage: "history" }
+);
+
+export const cowsay: Command = createCommand(
+    "cowsay",
+    "Talking cow",
+    (args, { setLines }) => {
+        const text = args.join(" ") || "Moo!";
+        const len = text.length + 2;
+        const top = " " + "_".repeat(len);
+        const bottom = " " + "-".repeat(len);
+        const cow = [
+            top,
+            `< ${text} >`,
+            bottom,
+            "        \\   ^__^",
+            "         \\  (oo)\\_______",
+            "            (__)\\       )\\/\\",
+            "                ||----w |",
+            "                ||     ||",
+        ];
+        addLines(setLines, cow);
+    },
+    { category: "fun", usage: "cowsay [text]" }
+);
+
+export const matrix: Command = createCommand(
+    "matrix",
+    "Enter the matrix",
+    (_, { setLines }) => {
+        addLines(setLines, [
+            "Wake up, Neo...",
+            "The Matrix has you...",
+            "Follow the white rabbit.",
+            "Knock, knock, Neo.",
+        ]);
+    },
+    { category: "fun", usage: "matrix" }
+);
+
 // --- UTILITY COMMANDS ---
 
 export const git: Command = createCommand(
@@ -623,6 +701,11 @@ export const commands: Record<string, Command> = {
     uptime,
     df,
     free,
+    skills,
+    contact,
+    history,
+    cowsay,
+    matrix,
     git,
     date,
     ping,
