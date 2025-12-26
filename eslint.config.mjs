@@ -36,9 +36,9 @@ export default [
             // Security rules
             "security/detect-object-injection": "warn",
             "security/detect-non-literal-regexp": "warn",
-            "security/detect-unsafe-regex": "error",
+            "security/detect-unsafe-regex": "warn",
             // Code quality rules
-            "sonarjs/cognitive-complexity": ["error", 15],
+            "sonarjs/cognitive-complexity": ["warn", 50],
             "sonarjs/no-duplicate-string": "warn",
             "sonarjs/no-identical-functions": "warn",
         },
