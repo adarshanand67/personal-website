@@ -461,6 +461,7 @@ export const completedAnime = [
             "The weight of a memory is inversely proportional to the time you have left to share it.",
             "Understanding humanity is a quest that requires more patience than any high-level mana manipulation.",
         ],
+    },
     {
         title: "Berserk",
         type: AnimeType.Anime,

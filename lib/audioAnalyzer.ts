@@ -111,7 +111,7 @@ class AudioAnalyzer {
      */
     getFrequencyData(): Uint8Array | null {
         if (!this.analyser || !this.dataArray) return null;
-        this.analyser.getByteFrequencyData(this.dataArray);
+        this.analyser.getByteFrequencyData(this.dataArray as any);
         return this.dataArray;
     }
 
