@@ -95,7 +95,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     </div>
                 </div>
 
-                <div className="w-full flex flex-col gap-4 mt-12">
+                <div className="w-full flex flex-col md:flex-row gap-4 mt-8 md:mt-10">
                     <SocialButton
                         index={0}
                         label="LinkedIn"
