@@ -109,13 +109,16 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                                 Key Takeaways
                             </h3>
                         </div>
-                        <ul className="space-y-3 list-disc pl-5 marker:text-gray-400">
+                        <div className="space-y-4">
                             {item.keyLearnings.map((learning: string, idx: number) => (
-                                <li key={idx} className="text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
-                                    {learning}
-                                </li>
+                                <div key={idx} className="flex gap-4">
+                                    <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                                    <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed font-normal">
+                                        {learning}
+                                    </p>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 )}
             </div>

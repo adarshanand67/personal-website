@@ -453,7 +453,7 @@ export const animeData = [
         status: WatchStatus.Completed,
         seasons: "S1",
         recommended: true,
-        image: "https://cdn.myanimelist.net/images/anime/1015/138062l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1015/138006l.webp",
         description: "An elven mage and her companions defeat the Demon King. After the war, she must face the challenges of time and loss as her human friends age and pass away.",
         tags: ["Adventure", "Drama", "Fantasy"],
         year: "2023",
@@ -466,553 +466,553 @@ export const animeData = [
     },
 
     // --- PLANNING ---
-    { 
-        title: "Naruto", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-5 + Shippuden S1-21", 
-        image: "https://cdn.myanimelist.net/images/anime/13/17405l.jpg", 
-        description: "A nuanced socio-political commentary on the cycle of hatred, disguised as a story about a loud kid who wants to be village president.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Naruto",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-5 + Shippuden S1-21",
+        image: "https://cdn.myanimelist.net/images/anime/13/17405l.jpg",
+        description: "A nuanced socio-political commentary on the cycle of hatred, disguised as a story about a loud kid who wants to be village president.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2002",
         rating: "8.0/10",
         keyLearnings: [
             "Persistence is the only viable counter to being socially ostracized.",
             "Talk-no-jutsu is statistically more effective than high-level elemental magic.",
             "The bonds of friendship are often forged in the fires of mutual trauma."
-        ] 
+        ]
     },
-    { 
-        title: "Attack on Titan", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-4", 
-        image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg", 
-        description: "A grim examination of freedom, nationalism, and the inevitable entropy of human conflict when giants are involved.", 
-        tags: ["Action", "Drama", "Suspense"], 
+    {
+        title: "Attack on Titan",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-4",
+        image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+        description: "A grim examination of freedom, nationalism, and the inevitable entropy of human conflict when giants are involved.",
+        tags: ["Action", "Drama", "Suspense"],
         year: "2013",
         rating: "8.6/10",
         keyLearnings: [
             "The definition of 'hero' is purely a matter of perspective and geographic location.",
             "Walls are fundamentally temporary solutions to psychological problems.",
             "One man's freedom fighter is another man's genocidal titan."
-        ] 
+        ]
     },
-    { 
-        title: "Fullmetal Alchemist Brotherhood", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1223/96541l.jpg", 
-        description: "A masterclass in law of equivalent exchange, proving that chemistry is just magic with more consequences.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Fullmetal Alchemist Brotherhood",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1223/96541l.jpg",
+        description: "A masterclass in law of equivalent exchange, proving that chemistry is just magic with more consequences.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2009",
         rating: "9.1/10",
         keyLearnings: [
             "Humanity cannot gain anything without first giving something in return.",
             "A heart of steel is only useful if it's protecting a soul of gold.",
             "The pursuit of godhood usually ends in a very personal meeting with Truth."
-        ] 
+        ]
     },
-    { 
-        title: "Hunter x Hunter", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1337/99013l.jpg", 
-        description: "A deconstruction of the shounen genre where the power of friendship is regularly overshadowed by brutal strategic planning and existential dread.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Hunter x Hunter",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1818/126435l.webp",
+        description: "A deconstruction of the shounen genre where the power of friendship is regularly overshadowed by brutal strategic planning and existential dread.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2011",
         rating: "9.0/10",
         keyLearnings: [
             "You should enjoy the little detours to the utmost. Because that's where you'll find the things more important than what you want.",
             "Nen is basically just weaponized willpower and psychological hang-ups.",
             "Never underestimate a child with a fishing rod and a complete lack of self-preservation."
-        ] 
+        ]
     },
-    { 
-        title: "JoJo's Bizarre Adventure", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-5", 
-        image: "https://cdn.myanimelist.net/images/anime/3/40391l.jpg", 
-        description: "A multi-generational saga of flamboyant poses, musical references, and the most creative ways to use ghosts to punch people.", 
-        tags: ["Action", "Adventure", "Supernatural"], 
+    {
+        title: "JoJo's Bizarre Adventure",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-5",
+        image: "https://cdn.myanimelist.net/images/anime/3/40391l.jpg",
+        description: "A multi-generational saga of flamboyant poses, musical references, and the most creative ways to use ghosts to punch people.",
+        tags: ["Action", "Adventure", "Supernatural"],
         year: "2012",
         rating: "7.9/10",
         keyLearnings: [
             "Fashion is a weapon, and confidence is the ultimate stand power.",
             "There is no situation too dire that it cannot be improved by a dramatic monologue.",
             "The Joestar lineage is basically a magnet for ancient vampires and divine intervention."
-        ] 
+        ]
     },
-    { 
-        title: "My Hero Academia", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-7", 
-        image: "https://cdn.myanimelist.net/images/anime/10/78745l.jpg", 
-        description: "A world where superpowers are a commodity, following a boy who proves that self-sacrifice is the ultimate quirk.", 
-        tags: ["Action", "Sci-Fi"], 
+    {
+        title: "My Hero Academia",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-7",
+        image: "https://cdn.myanimelist.net/images/anime/1880/118484l.webp",
+        description: "A world where superpowers are a commodity, following a boy who proves that self-sacrifice is the ultimate quirk.",
+        tags: ["Action", "Sci-Fi"],
         year: "2016",
         rating: "7.9/10",
         keyLearnings: [
             "A hero is someone who breaks through their own limits and the limits of others.",
             "Go Beyond! Plus Ultra! (A philosophy for both training and life).",
             "Societal structures built on single icons are inherently fragile."
-        ] 
+        ]
     },
-    { 
-        title: "Bleach", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "16+ seasons", 
-        image: "https://cdn.myanimelist.net/images/anime/3/40451l.jpg", 
-        description: "A stylish exploration of the afterlife, featuring oversized swords, poetic transformations, and a soundtrack that goes unnecessarily hard.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Bleach",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "16+ seasons",
+        image: "https://cdn.myanimelist.net/images/anime/3/40451l.jpg",
+        description: "A stylish exploration of the afterlife, featuring oversized swords, poetic transformations, and a soundtrack that goes unnecessarily hard.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2004",
         rating: "8.0/10",
         keyLearnings: [
             "If you scale your sword correctly, your problems seem smaller in comparison.",
             "The soul is a weapon, and its edge is sharpened by the desire to protect.",
             "Sometimes the coolest way to solve a problem is to just stand in the air and look unimpressed."
-        ] 
+        ]
     },
-    { 
-        title: "Kaiju No 8", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/1376/141888l.jpg", 
-        description: "A 32-year-old underachiever gets a literal monster upgrade/mid-life crisis and decides to fulfill his childhood dream.", 
-        tags: ["Action", "Sci-Fi"], 
+    {
+        title: "Kaiju No 8",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/1376/141888l.jpg",
+        description: "A 32-year-old underachiever gets a literal monster upgrade/mid-life crisis and decides to fulfill his childhood dream.",
+        tags: ["Action", "Sci-Fi"],
         year: "2024",
         rating: "8.2/10",
         keyLearnings: [
             "It's never too late for a career change, even if it involves becoming a biological weapon.",
             "Cleaning up kaiju guts is surprisingly good preparation for fighting them.",
             "Friendship survives even when one of you is 20 feet tall and breathes lightning."
-        ] 
+        ]
     },
-    { 
-        title: "One Piece", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "20+", 
-        image: "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg", 
-        description: "The ultimate Odyssey about a rubber boy chasing a dream for 25 years, proving that the real treasure is—well, we still don't know.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "One Piece",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "20+",
+        image: "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg",
+        description: "The ultimate Odyssey about a rubber boy chasing a dream for 25 years, proving that the real treasure is—well, we still don't know.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "1999",
         rating: "8.7/10",
         keyLearnings: [
             "Inherited Will, The Destiny of the Age, and The Dreams of the People. These are things that will not be stopped.",
             "A man's dream will never die! (Even if his pacing does).",
             "Found family is the strongest defense against a corrupt global government."
-        ] 
+        ]
     },
-    { 
-        title: "Fairy Tail", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-9", 
-        image: "https://cdn.myanimelist.net/images/anime/5/18171l.jpg", 
-        description: "A guild of wizards who solve every problem through the power of friendship and large-scale property damage.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Fairy Tail",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-9",
+        image: "https://cdn.myanimelist.net/images/anime/5/18171l.jpg",
+        description: "A guild of wizards who solve every problem through the power of friendship and large-scale property damage.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2009",
         rating: "7.6/10",
         keyLearnings: [
             "Friendship is an infinite mana source.",
             "If you shout loud enough, the plot armor becomes impenetrable.",
             "The warmth of a guild is the only antidote to a frozen heart."
-        ] 
+        ]
     },
-    { 
-        title: "Sword Art Online", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-4", 
-        image: "https://cdn.myanimelist.net/images/anime/11/39717l.jpg", 
-        description: "The definitive 'stuck in a game' experience that launched a thousand isekais and made everyone terrified of VR headsets.", 
-        tags: ["Action", "Adventure", "Fantasy", "Romance"], 
+    {
+        title: "Sword Art Online",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-4",
+        image: "https://cdn.myanimelist.net/images/anime/11/39717l.jpg",
+        description: "The definitive 'stuck in a game' experience that launched a thousand isekais and made everyone terrified of VR headsets.",
+        tags: ["Action", "Adventure", "Fantasy", "Romance"],
         year: "2012",
         rating: "7.2/10",
         keyLearnings: [
             "A world in a game is still a world if its consequences are real.",
             "Being 'The Black Swordsman' is 10% skill and 90% aesthetic commitment.",
             "Dual wielding is the ultimate solution to systemic oppression."
-        ] 
+        ]
     },
-    { 
-        title: "Black Clover", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-4 + Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/2/88336l.jpg", 
-        description: "A loud boy without magic decides to become the Wizard King by sheer volume and a very large, anti-magic slab of iron.", 
-        tags: ["Action", "Comedy", "Fantasy"], 
+    {
+        title: "Black Clover",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-4 + Movie",
+        image: "https://cdn.myanimelist.net/images/anime/2/88336l.jpg",
+        description: "A loud boy without magic decides to become the Wizard King by sheer volume and a very large, anti-magic slab of iron.",
+        tags: ["Action", "Comedy", "Fantasy"],
         year: "2017",
         rating: "8.2/10",
         keyLearnings: [
             "My magic is never giving up! (And screaming. Lots of screaming).",
             "Anti-magic is the ultimate great equalizer in a meritocracy built on mana.",
             "True strength is found in the outcasts who refuse to stay down."
-        ] 
+        ]
     },
-    { 
-        title: "Berserk", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/10/79314l.jpg", 
-        description: "A grimdark masterpiece about a man struggling against a predetermined fate and a person he once considered a friend.", 
-        tags: ["Action", "Adventure", "Drama", "Fantasy", "Horror"], 
+    {
+        title: "Berserk",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/10/79314l.jpg",
+        description: "A grimdark masterpiece about a man struggling against a predetermined fate and a person he once considered a friend.",
+        tags: ["Action", "Adventure", "Drama", "Fantasy", "Horror"],
         year: "1997",
         rating: "8.5/10",
         keyLearnings: [
             "The world is a cold, indifferent place, but the struggle to survive is what makes us human.",
             "Ambition, when unchecked by morality, is the most destructive force in existence.",
             "Sometimes you are the one holding the sword, and sometimes the sword is just an extension of your trauma."
-        ] 
+        ]
     },
-    { 
-        title: "Made in Abyss", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/13/86359l.jpg", 
-        description: "A deceptively cute-looking descent into a biological hellscape where every layer down is a new way to question your sanity.", 
-        tags: ["Adventure", "Drama", "Fantasy", "Mystery", "Sci-Fi"], 
+    {
+        title: "Made in Abyss",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/13/86359l.jpg",
+        description: "A deceptively cute-looking descent into a biological hellscape where every layer down is a new way to question your sanity.",
+        tags: ["Adventure", "Drama", "Fantasy", "Mystery", "Sci-Fi"],
         year: "2017",
         rating: "8.6/10",
         keyLearnings: [
             "Curiosity is a drive more powerful and dangerous than basic survival instincts.",
             "The deeper you go, the more you have to leave behind—literally and metaphorically.",
             "Beauty and horror are often two sides of the same ancient, abyssal coin."
-        ] 
+        ]
     },
-    { 
-        title: "Ping Pong the Animation", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/10/58041l.jpg", 
-        description: "A visually unique exploration of passion, talent, and whether being a 'hero' in sports actually matters in the long run.", 
-        tags: ["Sports", "Drama"], 
+    {
+        title: "Ping Pong the Animation",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/10/58041l.jpg",
+        description: "A visually unique exploration of passion, talent, and whether being a 'hero' in sports actually matters in the long run.",
+        tags: ["Sports", "Drama"],
         year: "2014",
         rating: "8.6/10",
         keyLearnings: [
             "The blood tastes like iron. (The physical cost of obsession).",
             "Talent is just the starting line; the race is won by those who can handle the solitude of the top.",
             "Sports are just a playground for psychological growth and ego destruction."
-        ] 
+        ]
     },
-    { 
-        title: "Spy x Family", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg", 
-        description: "A heartwarming comedy about a fake family consisting of a spy, an assassin, and a telepath who are all surprisingly bad at communicating.", 
-        tags: ["Action", "Comedy"], 
+    {
+        title: "Spy x Family",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/1441/122795l.jpg",
+        description: "A heartwarming comedy about a fake family consisting of a spy, an assassin, and a telepath who are all surprisingly bad at communicating.",
+        tags: ["Action", "Comedy"],
         year: "2022",
         rating: "8.5/10",
         keyLearnings: [
             "A house built on secrets can still be a home if the foundation is affection.",
             "Peanuts are the ultimate currency for information... if you're four years old.",
             "World peace is a noble goal, but sometimes winning an elementary school dodgeball match is more stressful."
-        ] 
+        ]
     },
-    { 
-        title: "The Seven Deadly Sins", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-5", 
-        image: "", 
-        description: "", 
-        tags: [], 
-        keyLearnings: [] 
+    {
+        title: "The Seven Deadly Sins",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-5",
+        image: "",
+        description: "",
+        tags: [],
+        keyLearnings: []
     },
-    { 
-        title: "Hell's Paradise", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1795/134423l.jpg", 
-        description: "Death-row convicts sent to a beautiful island of horrors to find an elixir of immortality they probably won't get to use.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Hell's Paradise",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1795/134423l.jpg",
+        description: "Death-row convicts sent to a beautiful island of horrors to find an elixir of immortality they probably won't get to use.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2023",
         rating: "8.1/10",
         keyLearnings: [
             "The line between a monk and a monster is often just a matter of which one is hungry.",
             "Emotions are not weaknesses; they are the anchors that keep a shinobi from drifting into hollowness.",
             "Immortality is a burden disguised as a prize."
-        ] 
+        ]
     },
-    { 
-        title: "Summer Time Rendering", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1162/121081l.jpg", 
-        description: "A high-stakes time-loop thriller on a remote island where your shadow might actually be trying to kill you.", 
-        tags: ["Mystery", "Supernatural", "Suspense"], 
+    {
+        title: "Summer Time Rendering",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1162/121081l.jpg",
+        description: "A high-stakes time-loop thriller on a remote island where your shadow might actually be trying to kill you.",
+        tags: ["Mystery", "Supernatural", "Suspense"],
         year: "2022",
         rating: "8.5/10",
         keyLearnings: [
             "Information is the only resource that persists across loops.",
             "To beat an enemy who knows the future, you must be willing to sacrifice the present.",
             "Home is where the shadows are darkest."
-        ] 
+        ]
     },
-    { 
-        title: "To Your Eternity", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/1157/111352l.jpg", 
-        description: "An immortal entity learns what it means to be human by reflecting the life and pain of everyone it encounters.", 
-        tags: ["Adventure", "Drama", "Fantasy"], 
+    {
+        title: "To Your Eternity",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/1157/111352l.jpg",
+        description: "An immortal entity learns what it means to be human by reflecting the life and pain of everyone it encounters.",
+        tags: ["Adventure", "Drama", "Fantasy"],
         year: "2021",
         rating: "8.4/10",
         keyLearnings: [
             "Living is the act of accumulating scars from those we loved.",
             "The essence of humanity is not in the form, but in the ripple's impact on others.",
             "To be eternal is to endure an infinite sequence of goodbyes."
-        ] 
+        ]
     },
-    { 
-        title: "Neon Genesis Evangelion", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1314/108922l.jpg", 
-        description: "A psychological breakdown featuring giant robots, religious symbolism, and a protagonist who just really needs a hug and some therapy.", 
-        tags: ["Action", "Drama", "Sci-Fi", "Suspense"], 
+    {
+        title: "Neon Genesis Evangelion",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1314/108922l.jpg",
+        description: "A psychological breakdown featuring giant robots, religious symbolism, and a protagonist who just really needs a hug and some therapy.",
+        tags: ["Action", "Drama", "Sci-Fi", "Suspense"],
         year: "1995",
         rating: "8.4/10",
         keyLearnings: [
             "Escapism is a temporary fix for a fundamental sense of isolation.",
             "The AT Field is just a metaphor for the psychological barriers we build around ourselves.",
             "Congratulating someone is the most confusing way to end a world-scale crisis."
-        ] 
+        ]
     },
-    { 
-        title: "Gurren Lagann", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/4/5123l.jpg", 
-        description: "An explosive celebration of human willpower where the only limit is the size of your drill and the scale of your sunglasses.", 
-        tags: ["Action", "Adventure", "Sci-Fi"], 
+    {
+        title: "Gurren Lagann",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/4/5123l.jpg",
+        description: "An explosive celebration of human willpower where the only limit is the size of your drill and the scale of your sunglasses.",
+        tags: ["Action", "Adventure", "Sci-Fi"],
         year: "2007",
         rating: "8.6/10",
         keyLearnings: [
             "Believe in the me that believes in you! (The ultimate recursive confidence loop).",
             "Logic is for people who can't pierce the heavens.",
             "Evolution is a drill; it only moves in one direction."
-        ] 
+        ]
     },
-    { 
-        title: "Parasyte: The Maxim", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/3/73178l.jpg", 
-        description: "A biological thriller about a boy whose right hand becomes a sentient alien philosopher with a penchant for calculated violence.", 
-        tags: ["Action", "Horror", "Sci-Fi", "Suspense"], 
+    {
+        title: "Parasyte: The Maxim",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/3/73178l.jpg",
+        description: "A biological thriller about a boy whose right hand becomes a sentient alien philosopher with a penchant for calculated violence.",
+        tags: ["Action", "Horror", "Sci-Fi", "Suspense"],
         year: "2014",
         rating: "8.3/10",
         keyLearnings: [
             "Humanity is defined by its selective empathy.",
             "Migi is the rational voice in a room full of emotional chaos.",
             "When your hand has a mind of its own, every handshake is a negotiation."
-        ] 
+        ]
     },
-    { 
-        title: "Fate/Zero", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/2/73249l.jpg", 
-        description: "A high-stakes battle royale between historical legends and modern mages, serving as a bleak preamble to a world of endless spin-offs.", 
-        tags: ["Action", "Fantasy"], 
+    {
+        title: "Fate/Zero",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/2/73249l.jpg",
+        description: "A high-stakes battle royale between historical legends and modern mages, serving as a bleak preamble to a world of endless spin-offs.",
+        tags: ["Action", "Fantasy"],
         year: "2011",
         rating: "8.3/10",
         keyLearnings: [
             "Being a 'hero of justice' usually requires an unacceptable amount of collateral damage.",
             "The Holy Grail is basically a wish-granting monkey's paw with an unlimited mana budget.",
             "Kingship is a lonely, bloody throne."
-        ] 
+        ]
     },
-    { 
-        title: "Violet Evergarden", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1792/90956l.jpg", 
-        description: "A visually stunning tear-jerker about an ex-soldier learning to translate human complex emotions into letters she can't quite feel yet.", 
-        tags: ["Drama", "Fantasy", "Slice of Life"], 
+    {
+        title: "Violet Evergarden",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1792/90956l.jpg",
+        description: "A visually stunning tear-jerker about an ex-soldier learning to translate human complex emotions into letters she can't quite feel yet.",
+        tags: ["Drama", "Fantasy", "Slice of Life"],
         year: "2018",
         rating: "8.7/10",
         keyLearnings: [
             "Words are the only bridges we have between our internal solitudes.",
             "Scars on the heart are harder to see than prosthetic arms but take much longer to calibrate.",
             "I want to know what 'I love you' means."
-        ] 
+        ]
     },
-    { 
-        title: "Your lie in April", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/3/67177l.jpg", 
-        description: "A colorful, music-themed tragedy that makes you feel bad about your lack of piano practice and your fragile emotional state.", 
-        tags: ["Drama", "Romance"], 
+    {
+        title: "Your lie in April",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/3/67177l.jpg",
+        description: "A colorful, music-themed tragedy that makes you feel bad about your lack of piano practice and your fragile emotional state.",
+        tags: ["Drama", "Romance"],
         year: "2014",
         rating: "8.7/10",
         keyLearnings: [
             "Spring is when the lies are most colorful.",
             "Music is the language you use when you realize you're running out of time.",
             "A single encounter can change the frequency of your entire life."
-        ] 
+        ]
     },
-    { 
-        title: "Hyouka", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "", 
-        description: "", 
-        tags: [], 
-        keyLearnings: [] 
+    {
+        title: "Hyouka",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "",
+        description: "",
+        tags: [],
+        keyLearnings: []
     },
     { title: "Prison School", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Grand Blue", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
-    { 
-        title: "Monster", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/10/18793l.jpg", 
-        description: "A slow-burn psychological masterpiece about a doctor chasing a sociopathic 'monster' he inadvertently saved, questioning the value of every human life.", 
-        tags: ["Drama", "Mystery", "Suspense"], 
+    {
+        title: "Monster",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/10/18793l.jpg",
+        description: "A slow-burn psychological masterpiece about a doctor chasing a sociopathic 'monster' he inadvertently saved, questioning the value of every human life.",
+        tags: ["Drama", "Mystery", "Suspense"],
         year: "2004",
         rating: "8.9/10",
         keyLearnings: [
             "Saving a life can sometimes be the most destructive act possible.",
             "The monster is not under the bed; it's the one looking back at you in the mirror.",
             "Fear is a universal language, but kindness is a choice that usually lacks a direct incentive."
-        ] 
+        ]
     },
-    { 
-        title: "March comes in like a Lion", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/3/82399l.jpg", 
-        description: "A gentle yet heavy exploration of depression, family, and professional Shogi that feels like a warm hug in a freezing storm.", 
-        tags: ["Drama", "Slice of Life"], 
+    {
+        title: "March comes in like a Lion",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/3/82399l.jpg",
+        description: "A gentle yet heavy exploration of depression, family, and professional Shogi that feels like a warm hug in a freezing storm.",
+        tags: ["Drama", "Slice of Life"],
         year: "2016",
         rating: "8.4/10",
         keyLearnings: [
             "Eating together is a form of healing that doesn't require a prescription.",
             "Loneliness is a room you can only leave if someone else knocks on the door.",
             "You don't have to be a 'lion' every day to survive the winter."
-        ] 
+        ]
     },
-    { 
-        title: "Ghost in the Shell", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/10/75574l.jpg", 
-        description: "The gold standard for cyberpunk philosophy, asking if you're still you when your brain is mostly silicon and your body is corporate property.", 
-        tags: ["Action", "Sci-Fi", "Suspense"], 
+    {
+        title: "Ghost in the Shell",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/10/75574l.jpg",
+        description: "The gold standard for cyberpunk philosophy, asking if you're still you when your brain is mostly silicon and your body is corporate property.",
+        tags: ["Action", "Sci-Fi", "Suspense"],
         year: "2002",
         rating: "8.4/10",
         keyLearnings: [
             "Individual identity is a data packet in a vast, interconnected digital ghost.",
             "The line between human and machine is purely a matter of firmware updates.",
             "The net is vast and infinite, but so is the potential for existential dread."
-        ] 
+        ]
     },
-    { 
-        title: "The Promised Neverland", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1125/96929l.jpg", 
-        description: "A dark thriller about orphans realizing they're free-range livestock and attempting a prison break against a mother they once loved.", 
-        tags: ["Mystery", "Sci-Fi", "Suspense"], 
+    {
+        title: "The Promised Neverland",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1125/96929l.jpg",
+        description: "A dark thriller about orphans realizing they're free-range livestock and attempting a prison break against a mother they once loved.",
+        tags: ["Mystery", "Sci-Fi", "Suspense"],
         year: "2019",
         rating: "8.5/10",
         keyLearnings: [
             "Truth is a bitter pill when the lie was sweet and safe.",
             "Intelligence is the only weapon that can't be confiscated.",
             "Survival is a team sport played against impossible odds."
-        ] 
+        ]
     },
     { title: "Charlotte", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Rascal Does Not Dream", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
-    { 
-        title: "Gintama", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-9", 
-        image: "https://cdn.myanimelist.net/images/anime/10/73274l.jpg", 
-        description: "The ultimate meta-comedy that makes fun of every other anime on this list while occasionally delivering the most brutal emotional gut-punches in the medium.", 
-        tags: ["Action", "Comedy", "Sci-Fi"], 
+    {
+        title: "Gintama",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-9",
+        image: "https://cdn.myanimelist.net/images/anime/10/73274l.jpg",
+        description: "The ultimate meta-comedy that makes fun of every other anime on this list while occasionally delivering the most brutal emotional gut-punches in the medium.",
+        tags: ["Action", "Comedy", "Sci-Fi"],
         year: "2006",
         rating: "8.9/10",
         keyLearnings: [
             "A wooden sword is enough if your spirit is sharp enough.",
             "Life is like a strawberry milk; sweet but occasionally expired.",
             "The easiest way to stay relevant is to just mock the competition until they notice you."
-        ] 
+        ]
     },
-    { 
-        title: "Assassination Classroom", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "", 
-        description: "", 
-        tags: [], 
-        keyLearnings: [] 
+    {
+        title: "Assassination Classroom",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "",
+        description: "",
+        tags: [],
+        keyLearnings: []
     },
     { title: "Blue Eye Samurai", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Lycoris Recoil", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
-    { 
-        title: "Kaguya-sama", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/1295/106551l.jpg", 
-        description: "A high-intellect battle of wits where two geniuses try to trick each other into confessing their love, often failing due to their own massive egos.", 
-        tags: ["Comedy", "Romance"], 
+    {
+        title: "Kaguya-sama",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/1295/106551l.jpg",
+        description: "A high-intellect battle of wits where two geniuses try to trick each other into confessing their love, often failing due to their own massive egos.",
+        tags: ["Comedy", "Romance"],
         year: "2019",
         rating: "8.4/10",
         keyLearnings: [
             "In the war of love, the one who falls in love first is the loser.",
             "Over-analysis is the most sophisticated form of self-sabotage.",
             "A simple 'I love you' is harder to execute than a global military strategy."
-        ] 
+        ]
     },
-    { 
-        title: "Re:Zero", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/11/79410l.jpg", 
-        description: "An isekai that treats its protagonist with zero mercy, forcing him to die repeatedly just to earn the right to fail slightly less each time.", 
-        tags: ["Drama", "Fantasy", "Suspense"], 
+    {
+        title: "Re:Zero",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/11/79410l.jpg",
+        description: "An isekai that treats its protagonist with zero mercy, forcing him to die repeatedly just to earn the right to fail slightly less each time.",
+        tags: ["Drama", "Fantasy", "Suspense"],
         year: "2016",
         rating: "8.2/10",
         keyLearnings: [
             "Return by Death is not a power; it's a traumatic psychological loop.",
             "The first step to saving others is admitting you're completely out of your depth.",
             "Who is Rem? (The ultimate existential question of 2016)."
-        ] 
+        ]
     },
     { title: "Dandadan", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1", image: "", description: "", tags: [], keyLearnings: [] },
     { title: "Jobless Reincarnation", type: AnimeType.Anime, status: WatchStatus.Planning, seasons: "S1-2", image: "", description: "", tags: [], keyLearnings: [] },
@@ -1086,470 +1086,470 @@ export const animeData = [
             "Wisdom is knowing when to leave nature to its own complex, often brutal, devices."
         ]
     },
-    { 
-        title: "Yu Yu Hakusho", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/11/40445l.jpg", 
-        description: "A street brawler becomes a Spirit Detective, discovering that being dead is actually a lot more bureaucratic than he expected.", 
-        tags: ["Action", "Adventure", "Supernatural"], 
+    {
+        title: "Yu Yu Hakusho",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/11/40445l.jpg",
+        description: "A street brawler becomes a Spirit Detective, discovering that being dead is actually a lot more bureaucratic than he expected.",
+        tags: ["Action", "Adventure", "Supernatural"],
         year: "1992",
         rating: "8.6/10",
         keyLearnings: [
             "Being a delinquent is bad, but being a Spirit Detective is a full-time commitment to weirdness.",
             "Death is just a career shift.",
             "The strongest bond is formed through mutual fist-fighting and existential crises."
-        ] 
+        ]
     },
-    { 
-        title: "Rurouni Kenshin", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/10/73259l.jpg", 
-        description: "A former assassin vows never to kill again, carrying a reverse-blade sword to solve problems while staying morally superior.", 
-        tags: ["Action", "Adventure", "Drama"], 
+    {
+        title: "Rurouni Kenshin",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/10/73259l.jpg",
+        description: "A former assassin vows never to kill again, carrying a reverse-blade sword to solve problems while staying morally superior.",
+        tags: ["Action", "Adventure", "Drama"],
         year: "1996",
         rating: "8.3/10",
         keyLearnings: [
             "Redemption is a journey that requires a very specific type of cutlery.",
             "The past is a weight that only lightens when you stop swinging it as a weapon.",
             "Gentleness is the ultimate form of strength in a world that only understands sharp edges."
-        ] 
+        ]
     },
-    { 
-        title: "Inuyasha", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/7/3739l.jpg", 
-        description: "A girl falls down a well into feudal Japan and ends up on a scavenger hunt with a dog-demon who has serious trust issues.", 
-        tags: ["Action", "Adventure", "Fantasy", "Romance"], 
+    {
+        title: "Inuyasha",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/7/3739l.jpg",
+        description: "A girl falls down a well into feudal Japan and ends up on a scavenger hunt with a dog-demon who has serious trust issues.",
+        tags: ["Action", "Adventure", "Fantasy", "Romance"],
         year: "2000",
         rating: "7.9/10",
         keyLearnings: [
             "Time travel is less about physics and more about finding a better boyfriend.",
             "Collecting soul shards is basically an extreme version of a loyalty card program.",
             "The heart is a more complex battlefield than any demonic wasteland."
-        ] 
+        ]
     },
-    { 
-        title: "Nana", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/2/11232l.jpg", 
-        description: "Two girls with the same name share an apartment and a lot of emotional baggage in a punk-rock exploration of adult life.", 
-        tags: ["Drama", "Romance", "Slice of Life"], 
+    {
+        title: "Nana",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/2/11232l.jpg",
+        description: "Two girls with the same name share an apartment and a lot of emotional baggage in a punk-rock exploration of adult life.",
+        tags: ["Drama", "Romance", "Slice of Life"],
         year: "2006",
         rating: "8.5/10",
         keyLearnings: [
             "Adulthood is just realizing that everyone else is also pretending to know what they're doing.",
             "Music is a heartbeat you share with people you might eventually lose.",
             "A name is a common thing; the life you build with it is unique and often messy."
-        ] 
+        ]
     },
-    { 
-        title: "Beck", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/3/11316l.jpg", 
-        description: "A boy discovers the power of rock music and the stress of being in a band, featuring a dog that looks like it was assembled from spare parts.", 
-        tags: ["Comedy", "Drama", "Slice of Life"], 
+    {
+        title: "Beck",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/3/11316l.jpg",
+        description: "A boy discovers the power of rock music and the stress of being in a band, featuring a dog that looks like it was assembled from spare parts.",
+        tags: ["Comedy", "Drama", "Slice of Life"],
         year: "2004",
         rating: "8.2/10",
         keyLearnings: [
             "Great music requires more than talent; it requires a certain level of desperation.",
             "The stage is the only place where awkwardness becomes Charisma.",
             "Guitars are better companions than most humans."
-        ] 
+        ]
     },
-    { 
-        title: "Black Lagoon", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/1106/133919l.jpg", 
-        description: "An office worker gets kidnapped by mercenaries and decides the criminal underworld is better than corporate middle management. Honestly, same.", 
-        tags: ["Action"], 
+    {
+        title: "Black Lagoon",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/1106/133919l.jpg",
+        description: "An office worker gets kidnapped by mercenaries and decides the criminal underworld is better than corporate middle management. Honestly, same.",
+        tags: ["Action"],
         year: "2006",
         rating: "8.1/10",
         keyLearnings: [
             "The world is not defined by justice, but by whoever has the most ammunition.",
             "Morality is a luxury for people who don't live on a torpedo boat.",
             "Business casual is less effective than dual-wielding Berettas in a negotiation."
-        ] 
+        ]
     },
-    { 
-        title: "Trigun", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/7/20310l.jpg", 
-        description: "The 'Humanoid Typhoon' wanders a desert planet trying to spread love and peace while being chased by every bounty hunter in existence.", 
-        tags: ["Action", "Adventure", "Sci-Fi"], 
+    {
+        title: "Trigun",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/7/20310l.jpg",
+        description: "The 'Humanoid Typhoon' wanders a desert planet trying to spread love and peace while being chased by every bounty hunter in existence.",
+        tags: ["Action", "Adventure", "Sci-Fi"],
         year: "1998",
         rating: "8.2/10",
         keyLearnings: [
             "Love and peace! (A mantra easier to say than to maintain while being shot at).",
             "A pacifist with a gun is a walking irony, but also a symbol of hope.",
             "Doughnuts are the only universal currency of joy."
-        ] 
+        ]
     },
-    { 
-        title: "Hellsing Ultimate", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/6/7333l.jpg", 
-        description: "A secret organization uses the world's most powerful vampire to hunt down other vampires who are slightly more annoying.", 
-        tags: ["Action", "Horror", "Supernatural"], 
+    {
+        title: "Hellsing Ultimate",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/6/7333l.jpg",
+        description: "A secret organization uses the world's most powerful vampire to hunt down other vampires who are slightly more annoying.",
+        tags: ["Action", "Horror", "Supernatural"],
         year: "2006",
         rating: "8.4/10",
         keyLearnings: [
             "To fight monsters, you need a monster that likes you slightly more than the others.",
             "A walk in the night is only pleasant if you're the one everyone is running from.",
             "Violence is an art form best performed with very large silver bullets."
-        ] 
+        ]
     },
-    { 
-        title: "Psycho-Pass", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/11/43209l.jpg", 
-        description: "A dystopian thriller about a system that judges your criminal potential before you even think about it. Pre-crime is a bad mood away.", 
-        tags: ["Action", "Sci-Fi", "Suspense"], 
+    {
+        title: "Psycho-Pass",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/11/43209l.jpg",
+        description: "A dystopian thriller about a system that judges your criminal potential before you even think about it. Pre-crime is a bad mood away.",
+        tags: ["Action", "Sci-Fi", "Suspense"],
         year: "2012",
         rating: "8.3/10",
         keyLearnings: [
             "The law doesn't protect people; people protect the law.",
             "A clear hue is no guarantee of a clean conscience.",
             "The Sibyl System is just a very high-stakes AI with a lot of baggage."
-        ] 
+        ]
     },
-    { 
-        title: "Darker than Black", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/10/7279l.jpg", 
-        description: "Contractors with cold logic and weird prices for their powers navigate a world where the stars are fake and the stakes are too real.", 
-        tags: ["Action", "Sci-Fi", "Mystery"], 
+    {
+        title: "Darker than Black",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/10/7279l.jpg",
+        description: "Contractors with cold logic and weird prices for their powers navigate a world where the stars are fake and the stakes are too real.",
+        tags: ["Action", "Sci-Fi", "Mystery"],
         year: "2007",
         rating: "8.1/10",
         keyLearnings: [
             "Every power comes with a price tag you can't always afford.",
             "Stars falling is just a cosmic way of saying someone failed their contract.",
             "Logic is a defense mechanism against the chaos of human emotion."
-        ] 
+        ]
     },
-    { 
-        title: "Durarara!!", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-4", 
-        image: "https://cdn.myanimelist.net/images/anime/10/21537l.jpg", 
-        description: "The chaotic intersections of a headless rider, an underground doctor, and a vending-machine-throwing bartender in Ikebukuro.", 
-        tags: ["Action", "Mystery", "Supernatural"], 
+    {
+        title: "Durarara!!",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-4",
+        image: "https://cdn.myanimelist.net/images/anime/10/21537l.jpg",
+        description: "The chaotic intersections of a headless rider, an underground doctor, and a vending-machine-throwing bartender in Ikebukuro.",
+        tags: ["Action", "Mystery", "Supernatural"],
         year: "2010",
         rating: "8.1/10",
         keyLearnings: [
             "The city is a living thing, and its heartbeat is made of gossip and urban legends.",
             "A headless rider is the most normal person in Tokyo.",
             "Chaos is the natural state of a group that refuses to share their secrets."
-        ] 
+        ]
     },
-    { 
-        title: "Noragami", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-2", 
-        image: "https://cdn.myanimelist.net/images/anime/9/77809l.jpg", 
-        description: "A minor god is willing to do any job for 5 yen, dreaming of his own shrine while living on the streets of the human world.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Noragami",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/9/77809l.jpg",
+        description: "A minor god is willing to do any job for 5 yen, dreaming of his own shrine while living on the streets of the human world.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2014",
         rating: "8.0/10",
         keyLearnings: [
             "Gods only exist as long as people remember them.",
             "A single coin is a bond that can bridge two worlds.",
             "Stray gods have the best stories because they're the only ones still listening."
-        ] 
+        ]
     },
-    { 
-        title: "Soul Eater", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg", 
-        description: "Students at a special academy learn to turn into weapons and collect souls to keep the world from going completely insane.", 
-        tags: ["Action", "Comedy", "Fantasy", "Supernatural"], 
+    {
+        title: "Soul Eater",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
+        description: "Students at a special academy learn to turn into weapons and collect souls to keep the world from going completely insane.",
+        tags: ["Action", "Comedy", "Fantasy", "Supernatural"],
         year: "2008",
         rating: "7.8/10",
         keyLearnings: [
             "A sound soul dwells within a sound mind and a sound body.",
             "Symmetry is important, but a little chaos is necessary to keep things interesting.",
             "Resonating with others is the ultimate hack for power."
-        ] 
+        ]
     },
-    { 
-        title: "Akame ga Kill!", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1429/101202l.jpg", 
-        description: "A group of assassins fights a corrupt empire with legendary weapons, proving that the good guys don't always have plot armor.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Akame ga Kill!",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1429/101202l.jpg",
+        description: "A group of assassins fights a corrupt empire with legendary weapons, proving that the good guys don't always have plot armor.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "2014",
         rating: "7.5/10",
         keyLearnings: [
             "The revolutionary path is paved with the names of the fallen.",
             "A weapon is only as sharp as the resolve of the one holding it.",
             "Imperial Arms are just cursed items with a marketing department."
-        ] 
+        ]
     },
-    { 
-        title: "No Game No Life", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/5/65187l.jpg", 
-        description: "Two genius shut-in siblings are transported to a world where everything—even national borders—is decided by playing games.", 
-        tags: ["Comedy", "Fantasy"], 
+    {
+        title: "No Game No Life",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/5/65187l.jpg",
+        description: "Two genius shut-in siblings are transported to a world where everything—even national borders—is decided by playing games.",
+        tags: ["Comedy", "Fantasy"],
         year: "2014",
         rating: "8.1/10",
         keyLearnings: [
             "Blank never loses. (The ultimate gamer's arrogance).",
             "In a world of games, intelligence is the only unfair advantage that matters.",
             "The only way to win a fixed game is to rewrite the rules while your opponent is looking at their hand."
-        ] 
+        ]
     },
-    { 
-        title: "KonoSuba", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1-3", 
-        image: "https://cdn.myanimelist.net/images/anime/1922/119163l.jpg", 
-        description: "A NEET dies a pathetic death and is reincarnated into a fantasy world with a useless goddess, a masochistic knight, and an obsessive mage.", 
-        tags: ["Adventure", "Comedy", "Fantasy"], 
+    {
+        title: "KonoSuba",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/1922/119163l.jpg",
+        description: "A NEET dies a pathetic death and is reincarnated into a fantasy world with a useless goddess, a masochistic knight, and an obsessive mage.",
+        tags: ["Adventure", "Comedy", "Fantasy"],
         year: "2016",
         rating: "8.1/10",
         keyLearnings: [
             "High stats are useless if your luck is E-rank and your teammates are disasters.",
             "Explosion magic is the only magic worth having once a day.",
             "Godhood is apparently just a desk job for people with very poor interpersonal skills."
-        ] 
+        ]
     },
-    { 
-        title: "Toradora!", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/13/22128l.jpg", 
-        description: "A boy looks like a delinquent but is actually a domestic saint; a girl looks like a doll but is basically a tiger in a dress. Romcom chaos ensues.", 
-        tags: ["Comedy", "Romance"], 
+    {
+        title: "Toradora!",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/13/22128l.jpg",
+        description: "A boy looks like a delinquent but is actually a domestic saint; a girl looks like a doll but is basically a tiger in a dress. Romcom chaos ensues.",
+        tags: ["Comedy", "Romance"],
         year: "2008",
         rating: "8.1/10",
         keyLearnings: [
             "Love is something that exists where you least expect to find it.",
             "The fiercest tigers are usually just scared and hungry.",
             "Being a 'dragon' means you're strong enough to protect those who only see the 'tiger'."
-        ] 
+        ]
     },
-    { 
-        title: "Angel Beats!", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/1381/141443l.jpg", 
-        description: "High school in the afterlife where rebels fight against God/a quiet girl with a flute, dealing with the trauma they couldn't process while alive.", 
-        tags: ["Action", "Comedy", "Drama", "Supernatural"], 
+    {
+        title: "Angel Beats!",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1584/143719l.webp",
+        description: "High school in the afterlife where rebels fight against God/a quiet girl with a flute, dealing with the trauma they couldn't process while alive.",
+        tags: ["Action", "Comedy", "Drama", "Supernatural"],
         year: "2010",
         rating: "8.1/10",
         keyLearnings: [
             "Acceptance is the only way to graduate from your own regrets.",
             "Life is short; the afterlife is also apparently structured like a mid-range high school.",
             "Harmony is the goal, but the music is found in the discord."
-        ] 
+        ]
     },
-    { 
-        title: "Anohana", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/5/79623l.jpg", 
-        description: "A group of estranged childhood friends reunites to fulfill the last wish of a ghost they all still miss.", 
-        tags: ["Drama", "Supernatural"], 
+    {
+        title: "Anohana",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/5/79623l.jpg",
+        description: "A group of estranged childhood friends reunites to fulfill the last wish of a ghost they all still miss.",
+        tags: ["Drama", "Supernatural"],
         year: "2011",
         rating: "8.3/10",
         keyLearnings: [
             "Grief is a ghost that won't leave until you acknowledge its presence.",
             "We still don't know the name of the flower we saw that day.",
             "Forgiveness is a team effort."
-        ] 
+        ]
     },
-    { 
-        title: "Another", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/4/75509l.jpg", 
-        description: "A cursed classroom where students die in increasingly creative and horrifying ways, all because of an extra person who shouldn't be there.", 
-        tags: ["Horror", "Mystery", "Suspense"], 
+    {
+        title: "Another",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/4/75509l.jpg",
+        description: "A cursed classroom where students die in increasingly creative and horrifying ways, all because of an extra person who shouldn't be there.",
+        tags: ["Horror", "Mystery", "Suspense"],
         year: "2012",
         rating: "7.4/10",
         keyLearnings: [
             "Umbrellas are statistically the most dangerous objects in school.",
             "Being invisible is a survival strategy, not just a social status.",
             "The dead don't stay dead; they just become the 'extra' in the background."
-        ] 
+        ]
     },
-    { 
-        title: "Mirai Nikki", 
-        type: AnimeType.Anime, 
-        status: WatchStatus.Planning, 
-        seasons: "S1", 
-        image: "https://cdn.myanimelist.net/images/anime/13/33465l.jpg", 
-        description: "A survival game where your phone predicts the future, following a wimpy protagonist and his over-attached, yandere stalker.", 
-        tags: ["Action", "Suspense", "Supernatural"], 
+    {
+        title: "Mirai Nikki",
+        type: AnimeType.Anime,
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/13/33465l.jpg",
+        description: "A survival game where your phone predicts the future, following a wimpy protagonist and his over-attached, yandere stalker.",
+        tags: ["Action", "Suspense", "Supernatural"],
         year: "2011",
         rating: "7.4/10",
         keyLearnings: [
             "A diary is a weapon, but the one holding it is the true variable.",
             "Love can be dangerous when it's accompanied by a hatchet and a god complex.",
             "The future is written, but you can always change the font."
-        ] 
+        ]
     },
 
     // Movies Planning
-    { 
-        title: "5 Centimeters Per Second", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/10/79213l.jpg", 
-        description: "A visually breathtaking exploration of distance, time, and the inevitable entropy of childhood connections, featuring enough lonely trains to power a small nation.", 
-        tags: ["Drama", "Romance"], 
+    {
+        title: "5 Centimeters Per Second",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1410/112994l.webp",
+        description: "A visually breathtaking exploration of distance, time, and the inevitable entropy of childhood connections, featuring enough lonely trains to power a small nation.",
+        tags: ["Drama", "Romance"],
         year: "2007",
         rating: "7.6/10",
         keyLearnings: [
             "Distance is measured in heartbeats, not kilometers.",
             "The speed at which cherry blossoms fall is also the speed at which hearts drift apart.",
             "Moving on is a series of small, painful steps away from a past that no longer exists."
-        ] 
+        ]
     },
-    { 
-        title: "Howl’s Moving Castle", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/7/75701l.jpg", 
-        description: "A magical anti-war odyssey featuring a vain wizard, a cursed hatmaker, and a fire demon who is basically the emotional support of the entire operation.", 
-        tags: ["Adventure", "Drama", "Fantasy", "Romance"], 
+    {
+        title: "Howl’s Moving Castle",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1470/138723l.webp",
+        description: "A magical anti-war odyssey featuring a vain wizard, a cursed hatmaker, and a fire demon who is basically the emotional support of the entire operation.",
+        tags: ["Adventure", "Drama", "Fantasy", "Romance"],
         year: "2004",
         rating: "8.7/10",
         keyLearnings: [
             "Beauty is skin deep, but a moving castle requires a lot of emotional interior design.",
             "Aging is a state of mind, especially when you're cursed by a jealous witch.",
             "True strength is found in the willingness to protect someone else's heart."
-        ] 
+        ]
     },
-    { 
-        title: "Princess Mononoke", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/7/75919l.jpg", 
-        description: "A brutal and beautiful ecological epic where there are no clear villains, only conflicting needs between human progress and a dying natural world.", 
-        tags: ["Action", "Adventure", "Fantasy"], 
+    {
+        title: "Princess Mononoke",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/7/75919l.jpg",
+        description: "A brutal and beautiful ecological epic where there are no clear villains, only conflicting needs between human progress and a dying natural world.",
+        tags: ["Action", "Adventure", "Fantasy"],
         year: "1997",
         rating: "8.7/10",
         keyLearnings: [
             "Nature doesn't need humans, but humans are completely dependent on the mercy of the Forest Spirit.",
             "Hate is a physical curse that rots you from the inside out.",
             "Coexistence is a bloody, difficult negotiation that never truly ends."
-        ] 
+        ]
     },
-    { 
-        title: "Suzume", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/1848/131649l.jpg", 
-        description: "A girl and a sentient three-legged chair travel across Japan to close literal portals to a supernatural worm-dimension. It's more emotional than it sounds.", 
-        tags: ["Adventure", "Fantasy"], 
+    {
+        title: "Suzume",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1598/128450l.webp",
+        description: "A girl and a sentient three-legged chair travel across Japan to close literal portals to a supernatural worm-dimension. It's more emotional than it sounds.",
+        tags: ["Adventure", "Fantasy"],
         year: "2022",
         rating: "8.3/10",
         keyLearnings: [
             "Grief is a door that needs to be closed before it consumes the landscape.",
             "A chair can be a hero if it has enough heart and a motivated teenager.",
             "The infrastructure of the past is the anchor for the miracles of the future."
-        ] 
+        ]
     },
-    { 
-        title: "Weathering With You", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg", 
-        description: "A boy and a sunshine-girl decide that their personal happiness is worth more than a stable climate for Tokyo. A very relatable gen-z sentiment.", 
-        tags: ["Drama", "Romance", "Supernatural"], 
+    {
+        title: "Weathering With You",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1880/101146l.jpg",
+        description: "A boy and a sunshine-girl decide that their personal happiness is worth more than a stable climate for Tokyo. A very relatable gen-z sentiment.",
+        tags: ["Drama", "Romance", "Supernatural"],
         year: "2019",
         rating: "8.3/10",
         keyLearnings: [
             "Weather is a mood, but love is a climate shift.",
             "Sometimes the world doesn't need to be saved; it just needs to be experienced together.",
             "A blue sky is a luxury we only appreciate when it's drowning in rain."
-        ] 
+        ]
     },
-    { 
-        title: "The Girl Who Leapt Through Time", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/1169/135930l.jpg", 
-        description: "A teenager uses time-leaps to avoid awkward social situations, gradually realizing that every rewind has a bill that eventually comes due.", 
-        tags: ["Drama", "Romance", "Sci-Fi"], 
+    {
+        title: "The Girl Who Leapt Through Time",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1/2432l.webp",
+        description: "A teenager uses time-leaps to avoid awkward social situations, gradually realizing that every rewind has a bill that eventually comes due.",
+        tags: ["Drama", "Romance", "Sci-Fi"],
         year: "2006",
         rating: "8.2/10",
         keyLearnings: [
             "Time waits for no one, even if you can jump through its loops.",
             "A second chance is just an opportunity to make a more interesting mistake.",
             "The future is waiting, and you can't run toward it if you're always back-pedaling."
-        ] 
+        ]
     },
-    { 
-        title: "That Time I Got Reincarnated as a Slime", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/1665/129188l.jpg", 
-        description: "A slime-king builds a nation of monsters, proving that political diplomacy and high-level magic are the best ways to spend a second life.", 
-        tags: ["Action", "Adventure", "Comedy", "Fantasy"], 
+    {
+        title: "That Time I Got Reincarnated as a Slime",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1069/123309l.webp",
+        description: "A slime-king builds a nation of monsters, proving that political diplomacy and high-level magic are the best ways to spend a second life.",
+        tags: ["Action", "Adventure", "Comedy", "Fantasy"],
         year: "2022",
         rating: "7.7/10",
         keyLearnings: [
             "Diplomacy is just a conversation backed by overwhelming magical power.",
             "A nation is built on the diversity of its monsters.",
             "Being a slime is the ultimate versatile career choice."
-        ] 
+        ]
     },
-    { 
-        title: "The Eminence in Shadow", 
-        type: AnimeType.Movie, 
-        status: WatchStatus.Planning, 
-        seasons: "Movie", 
-        image: "https://cdn.myanimelist.net/images/anime/1865/140226l.jpg", 
-        description: "A boy is so obsessed with being a 'shadow eminence' that he accidentally starts a global conflict, thinking it's all just a very high-budget game of pretend.", 
-        tags: ["Action", "Comedy", "Fantasy"], 
+    {
+        title: "The Eminence in Shadow",
+        type: AnimeType.Movie,
+        status: WatchStatus.Planning,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1091/128729l.webp",
+        description: "A boy is so obsessed with being a 'shadow eminence' that he accidentally starts a global conflict, thinking it's all just a very high-budget game of pretend.",
+        tags: ["Action", "Comedy", "Fantasy"],
         year: "2025",
         rating: "N/A", // Upcoming or just released
         keyLearnings: [
             "Delusion is a perfectly viable strategy for world domination.",
             "The coolest way to say 'I am atomic' is with absolute, unearned confidence.",
             "Reality is just a backdrop for your own cinematic ambitions."
-        ] 
+        ]
     }
 ];

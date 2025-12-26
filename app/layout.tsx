@@ -18,6 +18,7 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 export const metadata: Metadata = {
+  referrer: 'no-referrer',
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
