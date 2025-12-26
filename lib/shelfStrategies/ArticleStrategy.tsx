@@ -29,9 +29,10 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
             const blogs = items.filter((i): i is Blog => i && "slug" in i);
 
             return (
-                <div className="space-y-24 py-8">
-                    {papers.length > 0 && (
-                        <div>
+                <div className="py-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+                        {/* Research Papers Column */}
+                        <div className="flex flex-col">
                             <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
                                 <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
                                     01
@@ -39,21 +40,33 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
                                 Research Papers
                             </h2>
                             <div className="space-y-4">
-                                {new PaperListStrategy().renderList(papers)}
+                                {papers.length > 0 ? (
+                                    new PaperListStrategy().renderList(papers)
+                                ) : (
+                                    <p className="text-gray-500 italic">
+                                        No research papers found.
+                                    </p>
+                                )}
                             </div>
                         </div>
-                    )}
-                    {blogs.length > 0 && (
-                        <div>
+
+                        {/* Blogs Column */}
+                        <div className="flex flex-col">
                             <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
                                 <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
-                                    {papers.length > 0 ? "02" : "01"}
+                                    02
                                 </span>
                                 Blogs
                             </h2>
-                            {new BlogListStrategy().renderList(blogs)}
+                            <div className="space-y-4">
+                                {blogs.length > 0 ? (
+                                    new BlogListStrategy().renderList(blogs)
+                                ) : (
+                                    <p className="text-gray-500 italic">No blogs found.</p>
+                                )}
+                            </div>
                         </div>
-                    )}
+                    </div>
                 </div>
             );
         } catch (error) {

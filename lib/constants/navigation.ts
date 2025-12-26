@@ -12,6 +12,8 @@ export const directories = ["blogs", "papers", "books", "anime", "hobby"] as con
 export const routes = {
     home: "/",
     articleShelf: "/articleshelf",
+    papers: "/articleshelf/papers",
+    blogs: "/articleshelf/blogs",
     bookShelf: "/bookshelf",
     animeShelf: "/animeshelf",
     hobbyShelf: "/hobbyshelf",

@@ -56,6 +56,13 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
         searchPlaceholder: "Search blogs...",
         type: ShelfType.Blog,
     },
+    papers: {
+        title: "Research Papers",
+        description: "Published research and technical papers.",
+        command: "ls ~/papers",
+        searchPlaceholder: "Search papers...",
+        type: ShelfType.Paper,
+    },
     hobby: {
         title: "HobbyShelf",
         description: "What I do when I'm not coding.",
