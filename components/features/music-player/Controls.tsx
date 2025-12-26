@@ -46,7 +46,7 @@ export function Controls({
                 className={`p-1 transition-all duration-300 hover:scale-110 active:scale-95 ${
                     isShuffle
                         ? "text-pink-500 opacity-100"
-                        : "text-black/20 dark:text-white/20 hover:text-black/40 dark:hover:text-white/40"
+                        : "text-black dark:text-white hover:opacity-70"
                 }`}
                 title="Shuffle"
             >
@@ -56,7 +56,7 @@ export function Controls({
             <div className="flex items-center gap-6">
                 <button
                     onClick={onPrev}
-                    className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white hover:scale-110 active:scale-90 transition-all duration-300"
+                    className="text-black dark:text-white hover:scale-110 active:scale-90 transition-all duration-300 hover:opacity-70"
                     title="Previous"
                 >
                     <SkipBack size={18} fill="currentColor" strokeWidth={0} />
@@ -64,20 +64,20 @@ export function Controls({
 
                 <button
                     onClick={onTogglePlay}
-                    className="w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full"
+                    className="w-10 h-10 flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-300 group bg-black dark:bg-white rounded-full shadow-lg"
                     title={isPlaying ? "Pause" : "Play"}
                 >
                     {isPlaying ? (
                         <Pause
                             size={20}
-                            className="text-black dark:text-white"
+                            className="text-white dark:text-black"
                             fill="currentColor"
                             strokeWidth={0}
                         />
                     ) : (
                         <Play
                             size={20}
-                            className="text-black dark:text-white ml-0.5"
+                            className="text-white dark:text-black ml-0.5"
                             fill="currentColor"
                             strokeWidth={0}
                         />
@@ -86,7 +86,7 @@ export function Controls({
 
                 <button
                     onClick={onNext}
-                    className="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white hover:scale-110 active:scale-90 transition-all duration-300"
+                    className="text-black dark:text-white hover:scale-110 active:scale-90 transition-all duration-300 hover:opacity-70"
                     title="Next"
                 >
                     <SkipForward size={18} fill="currentColor" strokeWidth={0} />
@@ -98,7 +98,7 @@ export function Controls({
                 className={`p-1 transition-all duration-300 hover:scale-110 active:scale-95 relative ${
                     isRepeat
                         ? "text-pink-500 opacity-100"
-                        : "text-black/20 dark:text-white/20 hover:text-black/40 dark:hover:text-white/40"
+                        : "text-black dark:text-white hover:opacity-70"
                 }`}
                 title="Repeat"
             >

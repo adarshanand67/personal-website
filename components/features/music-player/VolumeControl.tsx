@@ -31,7 +31,7 @@ export function VolumeControl({
         <div className="flex items-center gap-3 px-1 group/volume">
             <button
                 onClick={onToggleMute}
-                className="text-black/20 dark:text-white/20 hover:text-black dark:hover:text-white transition-colors shrink-0"
+                className="text-black dark:text-white hover:opacity-70 transition-colors shrink-0"
                 title={isMuted ? "Unmute" : "Mute"}
             >
                 {isMuted || volume === 0 ? <VolumeX size={14} /> : <Volume1 size={14} />}
@@ -53,7 +53,7 @@ export function VolumeControl({
                 />
             </div>
 
-            <div className="text-black/20 dark:text-white/20 shrink-0">
+            <div className="text-black dark:text-white shrink-0">
                 <Volume2 size={14} />
             </div>
         </div>

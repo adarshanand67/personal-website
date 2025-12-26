@@ -20,35 +20,6 @@ export { MusicToggleButton } from "./music-player/MusicToggleButton";
  * A fully-featured audio player with playback controls, progress tracking, volume control,
  * and playlist management. Integrates with Zustand store for global state management and
  * provides a glassmorphic UI that appears in the bottom-right corner.
- *
- * @component
- * @returns {JSX.Element | null} Music player UI or null if not mounted (SSR safety)
- *
- * @remarks
- * **Features:**
- * - Play/Pause/Next/Previous track controls
- * - Shuffle and repeat modes
- * - Volume control with mute toggle
- * - Seekable progress bar with time display
- * - Track metadata display (title, artist, album art)
- * - Smooth show/hide animations
- * - Cross-origin audio support for external sources
- *
- * **State Management:**
- * - Uses Zustand store for: playback state, volume, track index, shuffle/repeat modes
- * - Uses custom `useAudio` hook for: audio element ref, time tracking, playback events
- *
- * **Architecture:**
- * - Composed of sub-components: TrackInfo, ProgressBar, Controls, VolumeControl
- * - Hidden audio element handles actual playback
- * - Visibility controlled by `showMusicPlayer` state from store
- *
- * @example
- * ```tsx
- * // In your root layout:
- * <MusicPlayer />
- * <MusicToggleButton />
- * ```
  */
 export function MusicPlayer() {
     const {

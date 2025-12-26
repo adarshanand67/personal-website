@@ -66,7 +66,7 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
                 >
                     <Maximize2
                         size={20}
-                        className="text-foreground/20 group-hover/maximize:text-foreground transition-colors"
+                        className="text-foreground group-hover/maximize:text-foreground/70 transition-colors"
                     />
                 </Link>
                 <button
@@ -76,7 +76,7 @@ export function TrackInfo({ index, onClose }: TrackInfoProps) {
                 >
                     <ChevronDown
                         size={20}
-                        className="text-foreground/20 group-hover/close:text-foreground transition-colors"
+                        className="text-foreground group-hover/close:text-foreground/70 transition-colors"
                     />
                 </button>
             </div>

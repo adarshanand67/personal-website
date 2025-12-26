@@ -6,7 +6,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { X, BookOpen, Star, ExternalLink, Quote } from "lucide-react";
+import { X, BookOpen, Star, Youtube, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { Book } from "@/types/definitions";
 import { getBookGradient } from "@/lib/utils/color";
@@ -21,7 +21,12 @@ function BookSidebar({ item }: { item: Book }) {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
 
             {item.image ? (
-                <div className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500">
+                <a
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " book review")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer block"
+                >
                     <Image
                         src={item.image}
                         alt={item.title}
@@ -29,10 +34,13 @@ function BookSidebar({ item }: { item: Book }) {
                         className="object-cover"
                         priority
                     />
-                </div>
+                </a>
             ) : (
-                <div
-                    className={`relative w-40 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-6 md:mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}
+                <a
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " book review")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative w-40 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-6 md:mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer block group`}
                 >
                     <div className="absolute top-1 left-0 w-4 h-[98%] -translate-x-3 bg-black/20 dark:bg-black/40 blur-[1px] rounded-l-sm" />
                     <div className="flex-1 border-2 border-white/20 p-4 flex flex-col items-center justify-center text-center">
@@ -47,7 +55,12 @@ function BookSidebar({ item }: { item: Book }) {
                         </p>
                     </div>
                     <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
-                </div>
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <Youtube className="text-white drop-shadow-lg" size={48} />
+                    </div>
+                </a>
             )}
 
             <div className="w-full space-y-3 relative z-10">
@@ -58,19 +71,13 @@ function BookSidebar({ item }: { item: Book }) {
                     </div>
                 )}
                 <a
-                    href={
-                        item.amazonLink ||
-                        `https://www.amazon.com/s?k=${encodeURIComponent(item.title + " " + item.author)}`
-                    }
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " book review")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5 shadow-sm"
+                    className="w-full flex items-center justify-center gap-2 py-3 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-red-500/10 hover:border-red-500/20 hover:bg-red-500/5 shadow-sm"
                 >
-                    <ExternalLink
-                        size={14}
-                        className="group-hover:scale-110 transition-transform"
-                    />
-                    <span>Get it on Amazon</span>
+                    <Youtube size={14} className="group-hover:scale-110 transition-transform" />
+                    <span>Watch Reviews</span>
                 </a>
             </div>
         </div>

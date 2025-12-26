@@ -384,7 +384,7 @@ export default function MusicPage() {
                                     "p-2 transition-colors",
                                     isShuffle
                                         ? "text-pink-500"
-                                        : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
+                                        : "text-black dark:text-white hover:opacity-70"
                                 )}
                             >
                                 <Shuffle className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -446,7 +446,7 @@ export default function MusicPage() {
                                     "p-2 transition-colors",
                                     isRepeat
                                         ? "text-pink-500"
-                                        : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
+                                        : "text-black dark:text-white hover:opacity-70"
                                 )}
                             >
                                 <Repeat className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -455,7 +455,7 @@ export default function MusicPage() {
 
                         {/* Volume Slider - iOS Style */}
                         <div className="flex items-center gap-4 px-2 mb-8">
-                            <Volume2 className="w-5 h-5 text-black/40 dark:text-white/40" />
+                            <Volume2 className="w-5 h-5 text-black dark:text-white" />
                             <Slider
                                 value={[volume * 100]}
                                 min={0}

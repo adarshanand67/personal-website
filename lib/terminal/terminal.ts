@@ -1,7 +1,60 @@
 import { introLines, systemStats, whoamiInfo } from "@/lib/constants";
-import { Command, CommandContext, CommandArgs } from "./commands/types";
-import { addLine, addLines, createCommand } from "./commands/helpers";
 import { directoryMap } from "@/lib/constants";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+
+// --- TYPES ---
+
+export type CommandCategory = "navigation" | "utility" | "filesystem" | "fun" | "system";
+
+export interface CommandContext {
+    setLines: (lines: string[] | ((prev: string[]) => string[])) => void;
+    setHistory: (history: string[] | ((prev: string[]) => string[])) => void;
+    setInput: (input: string) => void;
+    setTheme?: (theme: "light" | "dark" | "system") => void;
+    router?: AppRouterInstance;
+    files: Record<string, string>;
+    setFiles: (
+        files: Record<string, string> | ((prev: Record<string, string>) => Record<string, string>)
+    ) => void;
+    currentDir: string;
+    setCurrentDir: (dir: string) => void;
+}
+
+export type CommandArgs = string[];
+
+export interface Command {
+    execute: (args: CommandArgs, context: CommandContext) => void;
+    description: string;
+    usage?: string;
+    category?: CommandCategory;
+}
+
+// --- HELPERS ---
+
+export const addLine = (
+    setLines: (lines: string[] | ((prev: string[]) => string[])) => void,
+    line: string
+) => {
+    setLines((prev) => [...prev, line]);
+};
+
+export const addLines = (
+    setLines: (lines: string[] | ((prev: string[]) => string[])) => void,
+    lines: readonly string[] | string[]
+) => {
+    setLines((prev) => [...prev, ...lines]);
+};
+
+export const createCommand = (
+    name: string,
+    description: string,
+    execute: (args: CommandArgs, context: CommandContext) => void,
+    options: { usage?: string; category?: CommandCategory } = {}
+): Command => ({
+    description,
+    execute,
+    ...options,
+});
 
 /**
  * @fileoverview Consolidated terminal commands for the emulation environment.
