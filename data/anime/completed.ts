@@ -467,7 +467,7 @@ export const completedAnime = [
         type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
-        image: "https://cdn.myanimelist.net/images/anime/5/18179l.webp",
+        image: "https://cdn.myanimelist.net/images/anime/1384/119988l.jpg",
         description:
             "A grimdark masterpiece about a man struggling against a predetermined fate and a person he once considered a friend.",
         tags: ["Action", "Adventure", "Drama", "Fantasy", "Horror"],
