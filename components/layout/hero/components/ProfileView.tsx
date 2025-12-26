@@ -46,9 +46,9 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
 
                 <div className="flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left relative z-10">
                     <TiltWrapper intensity={15}>
-                        <div className="relative group/avatar hidden md:block">
+                        <div className="relative group/avatar mb-6 md:mb-0">
                             <div className="absolute -inset-4 bg-gradient-to-tr from-foreground/5 to-transparent rounded-[3.5rem] blur-2xl opacity-0 group-hover/avatar:opacity-100 transition-all duration-700" />
-                            <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-[3.5rem] overflow-hidden border-2 border-foreground/10 shadow-2xl">
+                            <div className="relative w-32 h-32 md:w-52 md:h-52 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden border-2 border-foreground/10 shadow-2xl">
                                 <Image
                                     src={profile.avatar || ""}
                                     alt={profile.name}
@@ -73,7 +73,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                             <ViewToggle viewMode={viewMode} setViewMode={setViewMode} />
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-4 flex flex-col items-center md:items-start gap-2">
                             <SystemStatus />
                         </div>
 
@@ -95,7 +95,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     </div>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
+                <div className="w-full flex flex-col gap-4 mt-12">
                     <SocialButton
                         index={0}
                         label="LinkedIn"

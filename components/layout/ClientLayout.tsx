@@ -9,7 +9,7 @@ import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlaye
 import { PWARegistration } from "@/components/features/serviceWorker";
 import { HobbiesModal } from "@/components/modals/hobbiesModal";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
-import { BackToTop } from "@/components/layout/navigation/BackToTop";
+
 import { MobileDock } from "@/components/layout/navigation/MobileDock";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { DLPProtection } from "@/components/features/security/DLPProtection";
@@ -43,7 +43,6 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
             {children}
 
             <ShortcutGuide />
-            <BackToTop />
             <MobileDock />
             <MusicPlayer />
             <MusicToggleButton />

@@ -60,7 +60,7 @@ export function Experience({ items }: ExperienceProps) {
                                             <h3 className="text-lg md:text-xl font-black text-gray-900 dark:text-white tracking-tight">
                                                 {exp.company}
                                             </h3>
-                                            <span className="text-[9px] font-bold px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full border border-gray-200 dark:border-zinc-700">
+                                            <span className="text-xs font-bold text-gray-400 dark:text-gray-500">
                                                 {exp.duration}
                                             </span>
                                         </div>

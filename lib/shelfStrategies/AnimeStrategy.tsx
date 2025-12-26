@@ -41,11 +41,15 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                     <h3 className="text-foreground font-black text-sm leading-tight group-hover:text-foreground transition-colors line-clamp-2 mb-1.5 flex items-center justify-center gap-1.5 uppercase tracking-tighter">
                         {anime.title}
                         {anime.status === WatchStatus.Completed && (
-                            <Check size={12} className="text-foreground flex-shrink-0" />
+                            <Check
+                                size={16}
+                                strokeWidth={3}
+                                className="text-foreground flex-shrink-0"
+                            />
                         )}
                         {anime.recommended && (
                             <Star
-                                size={12}
+                                size={16}
                                 fill="currentColor"
                                 className="text-foreground/60 flex-shrink-0"
                             />
@@ -64,7 +68,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                                     e.stopPropagation();
                                     useStore.getState().setAnimeSelectedTag(tag);
                                 }}
-                                className="text-[9px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all cursor-pointer"
+                                className="text-[10px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all cursor-pointer"
                             >
                                 {tag}
                             </button>

@@ -3,7 +3,7 @@
  * Provides async functions to retrieve profile, experiences, papers, books, anime, and articles.
  */
 
-import { profileData, experiencesData, papersData, booksData, animeData, hobbyData } from "@/data";
+import { profileData, experiencesData, papersData, booksData, anime, hobbyData } from "@/data";
 import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 import { getBlogs } from "./blogs";
 
@@ -30,7 +30,7 @@ export const getHobby = async () => hobbyData;
  * @returns {Promise<AnimeItem[]>} Array of anime items
  */
 export const getAnime = async (): Promise<AnimeItem[]> =>
-    (animeData as AnimeItem[]).map((item) => ({
+    (anime as AnimeItem[]).map((item) => ({
         ...item,
         type: item.type as AnimeType,
         status: item.status as WatchStatus,

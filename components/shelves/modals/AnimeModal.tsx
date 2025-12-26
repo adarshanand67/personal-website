@@ -34,6 +34,14 @@ interface AnimeModalProps {
  * @returns {JSX.Element} Rendered modal with anime details
  */
 export function AnimeModal({ item, onClose, onTagClick }: AnimeModalProps) {
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [onClose]);
+
     return (
         <div className="fixed inset-0 z-[1001] flex items-center justify-center p-4">
             <motion.div
