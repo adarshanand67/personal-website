@@ -19,7 +19,7 @@ import { tracks } from "@/lib/constants/music";
 import { useStore } from "@/lib/store/useStore";
 import { cn } from "@/lib/utils";
 import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MusicPage() {
     const {
@@ -38,6 +38,8 @@ export default function MusicPage() {
         currentTime,
         duration,
         requestSeek,
+        showMusicPlayer,
+        toggleMusicPlayer,
     } = useStore();
 
     // Calculate progress percentage
@@ -54,7 +56,7 @@ export default function MusicPage() {
         if (!time || isNaN(time)) return "0:00";
         const mins = Math.floor(time / 60);
         const secs = Math.floor(time % 60);
-        return `${mins}:${secs < 10 ? "0" : ""}${secs} `;
+        return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
     };
 
     // Local state for volume slider to separate from immediate store updates if needed
@@ -74,13 +76,40 @@ export default function MusicPage() {
 
     const currentTrack = tracks[currentTrackIndex];
 
+    // Close floating widget when this page loads
+    useEffect(() => {
+        if (showMusicPlayer) {
+            toggleMusicPlayer();
+        }
+    }, []);
+
+    // Keyboard shortcuts
+    useEffect(() => {
+        const handleKeyPress = (e: KeyboardEvent) => {
+            // Ignore if user is typing in an input field
+            if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+                return;
+            }
+
+            // Spacebar - Play/Pause
+            if (e.code === "Space") {
+                e.preventDefault();
+                setIsPlaying(!isPlaying);
+            }
+
+            // M key - Toggle maximize
+            if (e.key === "m" || e.key === "M") {
+                e.preventDefault();
+                setIsMaximized(!isMaximized);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyPress);
+        return () => window.removeEventListener("keydown", handleKeyPress);
+    }, [isPlaying, isMaximized, setIsPlaying]);
+
     return (
-        <div
-            className={cn(
-                "min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans transition-all duration-500 ease-in-out",
-                isMaximized ? "pb-0" : "pb-32 md:pb-0"
-            )}
-        >
+        <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans">
             {/* Desktop Maximize/Minimize Toggle */}
             <div className="hidden sm:flex fixed top-6 right-6 z-50">
                 <button
@@ -126,8 +155,8 @@ export default function MusicPage() {
                 </button>
             </div>
 
-            {/* Mobile Header - iOS Style - Increased Top Padding */}
-            <div className="sticky top-0 z-20 bg-white/80 dark:bg-black/80 backdrop-blur-xl p-4 pt-8 md:pt-4 flex items-center justify-center md:hidden border-b border-black/5 dark:border-white/5">
+            {/* Mobile Header - iOS Style */}
+            <div className="sticky top-0 z-20 bg-white/80 dark:bg-black/80 backdrop-blur-xl p-4 pt-8 md:pt-4 flex items-center justify-center lg:hidden border-b border-black/5 dark:border-white/5">
                 <div className="w-12 h-1 bg-gray-300 dark:bg-gray-700 rounded-full absolute top-2" />
                 <Link
                     href="/"
@@ -143,247 +172,263 @@ export default function MusicPage() {
                 </button>
             </div>
 
-            {/* Main Player Content - Responsive Layout */}
-            <div
-                className={cn(
-                    "transition-all duration-500 ease-in-out",
-                    isMaximized
-                        ? "px-8 pt-6 flex flex-col h-full max-w-7xl mx-auto md:grid md:grid-cols-2 md:gap-24 md:px-16 md:items-center md:h-screen md:pt-0"
-                        : "px-8 pt-6 flex flex-col h-full max-w-lg mx-auto md:gap-12 md:px-12 md:items-center md:pt-20"
-                )}
-            >
-                {/* Album Art Section */}
+            {/* Main Content - Apple Music Style: Left Player, Right Playlist */}
+            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden pt-20 lg:pt-24">
+                {/* LEFT SIDE - Music Player */}
                 <div
                     className={cn(
-                        "w-full relative aspect-square mb-10 md:mb-0 transition-transform duration-500 ease-out",
-                        isMaximized ? "md:scale-100" : "md:scale-95"
+                        "flex flex-col justify-center transition-all duration-500 ease-in-out pb-32 lg:pb-0",
+                        isMaximized
+                            ? "lg:w-2/3 px-8 pt-6 lg:px-16 lg:py-12"
+                            : "lg:w-1/2 px-8 pt-6 lg:px-12 lg:py-8"
                     )}
-                    style={{ transform: isPlaying ? "scale(1)" : "scale(0.9)" }}
                 >
-                    {/* Glow Effect */}
+                    {/* Album Art Section */}
                     <div
                         className={cn(
-                            "absolute inset-4 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000",
-                            isPlaying ? "opacity-100" : "opacity-30"
+                            "w-full max-w-md mx-auto relative aspect-square mb-8 transition-transform duration-500 ease-out",
+                            isMaximized ? "lg:max-w-2xl" : "lg:max-w-lg"
                         )}
-                    />
-
-                    {/* Album Art Container */}
-                    <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1)] border border-black/5 dark:border-white/5">
-                        {currentTrack?.image && (
-                            <Image
-                                src={currentTrack.image}
-                                alt={currentTrack.title}
-                                fill
-                                className="object-cover"
-                                priority
-                                unoptimized
-                            />
-                        )}
-                    </div>
-                </div>
-
-                {/* Controls & Details Section */}
-                <div className="flex flex-col justify-center w-full">
-                    {/* Track Info */}
-                    <div className="flex items-center justify-between mb-8">
-                        <div className="flex-1 min-w-0 mr-4">
-                            <h1
-                                className={cn(
-                                    "font-bold mb-2 text-gray-900 dark:text-gray-50 truncate tracking-tight transition-all",
-                                    isMaximized ? "text-4xl md:text-5xl" : "text-3xl"
-                                )}
-                            >
-                                {currentTrack?.title}
-                            </h1>
-                            <p
-                                className={cn(
-                                    "text-pink-500 dark:text-pink-400 font-medium truncate",
-                                    isMaximized ? "text-2xl" : "text-xl"
-                                )}
-                            >
-                                {currentTrack?.artist}
-                            </p>
-                        </div>
-                        <button className="p-3 bg-gray-100 dark:bg-white/10 rounded-full text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 active:scale-95 transition-all">
-                            <Heart
-                                className={cn(
-                                    "transition-all",
-                                    isMaximized ? "w-8 h-8" : "w-6 h-6"
-                                )}
-                            />
-                        </button>
-                    </div>
-
-                    {/* Progress Slider */}
-                    <div className="mb-8 group w-full">
-                        <Slider
-                            value={[progress]}
-                            min={0}
-                            max={100}
-                            step={0.1}
-                            onValueChange={handleSeek}
-                            className="cursor-pointer py-4"
+                        style={{ transform: isPlaying ? "scale(1)" : "scale(0.95)" }}
+                    >
+                        {/* Glow Effect */}
+                        <div
+                            className={cn(
+                                "absolute inset-4 rounded-[2rem] bg-black/20 dark:bg-white/10 blur-3xl translate-y-4 transition-opacity duration-1000",
+                                isPlaying ? "opacity-100" : "opacity-30"
+                            )}
                         />
-                        <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-[-6px] font-medium font-mono">
-                            <span>{formatTime(currentTime)}</span>
-                            <span>{formatTime(duration)}</span>
+
+                        {/* Album Art Container */}
+                        <div className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1)] border border-black/5 dark:border-white/5">
+                            {currentTrack?.image && (
+                                <Image
+                                    src={currentTrack.image}
+                                    alt={currentTrack.title}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                    unoptimized
+                                />
+                            )}
                         </div>
                     </div>
 
-                    {/* Main Controls - iOS Style */}
-                    <div className="flex items-center justify-between mb-10 px-2 lg:px-8">
-                        <button
-                            onClick={toggleShuffle}
-                            className={cn(
-                                "p-2 transition-colors",
-                                isShuffle
-                                    ? "text-pink-500"
-                                    : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
-                            )}
-                        >
-                            <Shuffle className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
-                        </button>
+                    {/* Controls & Details Section */}
+                    <div className="flex flex-col justify-center w-full max-w-md lg:max-w-lg mx-auto">
+                        {/* Track Info */}
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex-1 min-w-0 mr-4">
+                                <h1
+                                    className={cn(
+                                        "font-bold mb-2 text-gray-900 dark:text-gray-50 truncate tracking-tight transition-all",
+                                        isMaximized
+                                            ? "text-3xl lg:text-4xl"
+                                            : "text-2xl lg:text-3xl"
+                                    )}
+                                >
+                                    {currentTrack?.title}
+                                </h1>
+                                <p
+                                    className={cn(
+                                        "text-pink-500 dark:text-pink-400 font-medium truncate",
+                                        isMaximized ? "text-xl lg:text-2xl" : "text-lg lg:text-xl"
+                                    )}
+                                >
+                                    {currentTrack?.artist}
+                                </p>
+                            </div>
+                            <button className="p-3 bg-gray-100 dark:bg-white/10 rounded-full text-gray-400 hover:text-pink-500 hover:bg-pink-50 dark:hover:bg-pink-900/20 active:scale-95 transition-all">
+                                <Heart
+                                    className={cn(
+                                        "transition-all",
+                                        isMaximized ? "w-7 h-7" : "w-6 h-6"
+                                    )}
+                                />
+                            </button>
+                        </div>
 
-                        <button
-                            onClick={prevTrack}
-                            className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
-                        >
-                            <SkipBack
-                                className={cn(
-                                    "fill-current",
-                                    isMaximized ? "w-12 h-12" : "w-10 h-10"
-                                )}
+                        {/* Progress Slider */}
+                        <div className="mb-6 group w-full">
+                            <Slider
+                                value={[progress]}
+                                min={0}
+                                max={100}
+                                step={0.1}
+                                onValueChange={handleSeek}
+                                className="cursor-pointer py-4"
                             />
-                        </button>
+                            <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 mt-[-6px] font-medium font-mono">
+                                <span>{formatTime(currentTime)}</span>
+                                <span>{formatTime(duration)}</span>
+                            </div>
+                        </div>
 
-                        <button
-                            onClick={handlePlayPause}
-                            className={cn(
-                                "bg-gray-100 dark:bg-white text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.2)]",
-                                isMaximized ? "w-24 h-24" : "w-20 h-20"
-                            )}
-                        >
-                            {isPlaying ? (
-                                <Pause
+                        {/* Main Controls - iOS Style */}
+                        <div className="flex items-center justify-between mb-8 px-2">
+                            <button
+                                onClick={toggleShuffle}
+                                className={cn(
+                                    "p-2 transition-colors",
+                                    isShuffle
+                                        ? "text-pink-500"
+                                        : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
+                                )}
+                            >
+                                <Shuffle className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
+                            </button>
+
+                            <button
+                                onClick={prevTrack}
+                                className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
+                            >
+                                <SkipBack
                                     className={cn(
                                         "fill-current",
-                                        isMaximized ? "w-12 h-12" : "w-10 h-10"
+                                        isMaximized ? "w-11 h-11" : "w-10 h-10"
                                     )}
                                 />
-                            ) : (
-                                <Play
-                                    className={cn(
-                                        "fill-current ml-1",
-                                        isMaximized ? "w-12 h-12" : "w-10 h-10"
-                                    )}
-                                />
-                            )}
-                        </button>
+                            </button>
 
-                        <button
-                            onClick={nextTrack}
-                            className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
-                        >
-                            <SkipForward
+                            <button
+                                onClick={handlePlayPause}
                                 className={cn(
-                                    "fill-current",
-                                    isMaximized ? "w-12 h-12" : "w-10 h-10"
-                                )}
-                            />
-                        </button>
-
-                        <button
-                            onClick={toggleRepeat}
-                            className={cn(
-                                "p-2 transition-colors",
-                                isRepeat
-                                    ? "text-pink-500"
-                                    : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
-                            )}
-                        >
-                            <Repeat className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
-                        </button>
-                    </div>
-
-                    {/* Volume Slider - iOS Style */}
-                    <div className="flex items-center gap-4 px-2 mb-8 lg:px-6">
-                        <Volume2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
-                        <Slider
-                            value={[volume * 100]}
-                            min={0}
-                            max={100}
-                            step={1}
-                            onValueChange={(val) => handleVolumeChange([val[0] / 100])}
-                            className="cursor-pointer"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Playlist Sheet / Next Up - Only show if NOT maximized relative to view height or standard layout */}
-            <div
-                className={cn(
-                    "px-6 pb-6 md:px-12 transition-all duration-500",
-                    isMaximized ? "opacity-0 h-0 overflow-hidden" : "opacity-100"
-                )}
-            >
-                <div className="flex items-center gap-2 mb-6 text-gray-900 dark:text-white">
-                    <ListMusic className="w-5 h-5" />
-                    <h2 className="text-lg font-bold">Up Next</h2>
-                </div>
-
-                <div className="bg-gray-50 dark:bg-white/5 rounded-3xl p-4 space-y-2">
-                    {tracks.map((track, index) => {
-                        const isCurrent = currentTrackIndex === index;
-                        return (
-                            <div
-                                key={track.src}
-                                onClick={() => setCurrentTrack(index)}
-                                className={cn(
-                                    "flex items-center gap-4 p-3 rounded-xl transition-all cursor-pointer group",
-                                    isCurrent
-                                        ? "bg-white dark:bg-white/10 shadow-sm"
-                                        : "hover:bg-gray-100 dark:hover:bg-white/5 active:scale-[0.98]"
+                                    "bg-gray-100 dark:bg-white text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.2)]",
+                                    isMaximized ? "w-20 h-20" : "w-16 h-16"
                                 )}
                             >
-                                <div className="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 shadow-sm">
-                                    <Image
-                                        src={track.image}
-                                        alt={track.title}
-                                        fill
-                                        className="object-cover"
-                                        unoptimized
-                                    />
-                                    {isCurrent && isPlaying && (
-                                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center gap-[3px]">
-                                            <div className="w-[3px] h-3 bg-white animate-music-bar-1" />
-                                            <div className="w-[3px] h-5 bg-white animate-music-bar-2" />
-                                            <div className="w-[3px] h-2 bg-white animate-music-bar-3" />
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <h3
+                                {isPlaying ? (
+                                    <Pause
                                         className={cn(
-                                            "font-semibold truncate text-base",
+                                            "fill-current",
+                                            isMaximized ? "w-10 h-10" : "w-8 h-8"
+                                        )}
+                                    />
+                                ) : (
+                                    <Play
+                                        className={cn(
+                                            "fill-current ml-1",
+                                            isMaximized ? "w-10 h-10" : "w-8 h-8"
+                                        )}
+                                    />
+                                )}
+                            </button>
+
+                            <button
+                                onClick={nextTrack}
+                                className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
+                            >
+                                <SkipForward
+                                    className={cn(
+                                        "fill-current",
+                                        isMaximized ? "w-11 h-11" : "w-10 h-10"
+                                    )}
+                                />
+                            </button>
+
+                            <button
+                                onClick={toggleRepeat}
+                                className={cn(
+                                    "p-2 transition-colors",
+                                    isRepeat
+                                        ? "text-pink-500"
+                                        : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
+                                )}
+                            >
+                                <Repeat className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
+                            </button>
+                        </div>
+
+                        {/* Volume Slider - iOS Style */}
+                        <div className="flex items-center gap-4 px-2 mb-8">
+                            <Volume2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+                            <Slider
+                                value={[volume * 100]}
+                                min={0}
+                                max={100}
+                                step={1}
+                                onValueChange={(val) => handleVolumeChange([val[0] / 100])}
+                                className="cursor-pointer"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                {/* RIGHT SIDE - Playlist */}
+                <div
+                    className={cn(
+                        "flex flex-col transition-all duration-500 bg-gray-50 dark:bg-white/5 lg:border-l border-black/5 dark:border-white/5",
+                        isMaximized ? "lg:w-1/3 lg:overflow-y-auto" : "lg:w-1/2 lg:overflow-y-auto",
+                        "px-6 py-6 lg:px-8 lg:py-8"
+                    )}
+                >
+                    <div className="flex items-center gap-2 mb-6 text-gray-900 dark:text-white sticky top-0 bg-gray-50 dark:bg-white/5 pb-4 z-10">
+                        <ListMusic className="w-5 h-5" />
+                        <h2 className="text-lg font-bold">Up Next</h2>
+                        <span className="text-sm text-gray-500 dark:text-gray-400 ml-auto">
+                            {tracks.length} songs
+                        </span>
+                    </div>
+
+                    <div className="space-y-1">
+                        {tracks.map((track, index) => {
+                            const isCurrent = currentTrackIndex === index;
+                            return (
+                                <div
+                                    key={track.src}
+                                    onClick={() => setCurrentTrack(index)}
+                                    className={cn(
+                                        "flex items-center gap-4 p-3 rounded-xl transition-all cursor-pointer group",
+                                        isCurrent
+                                            ? "bg-white dark:bg-white/10 shadow-sm"
+                                            : "hover:bg-white/50 dark:hover:bg-white/5 active:scale-[0.98]"
+                                    )}
+                                >
+                                    <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0 shadow-sm">
+                                        <Image
+                                            src={track.image}
+                                            alt={track.title}
+                                            fill
+                                            className="object-cover"
+                                            unoptimized
+                                        />
+                                        {isCurrent && isPlaying && (
+                                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center gap-[3px]">
+                                                <div className="w-[3px] h-3 bg-white animate-music-bar-1" />
+                                                <div className="w-[3px] h-5 bg-white animate-music-bar-2" />
+                                                <div className="w-[3px] h-2 bg-white animate-music-bar-3" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3
+                                            className={cn(
+                                                "font-semibold truncate text-base",
+                                                isCurrent
+                                                    ? "text-pink-500 dark:text-pink-400"
+                                                    : "text-gray-900 dark:text-white"
+                                            )}
+                                        >
+                                            {track.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                                            {track.artist}
+                                        </p>
+                                    </div>
+                                    <div
+                                        className={cn(
+                                            "transition-opacity",
                                             isCurrent
-                                                ? "text-pink-500 dark:text-pink-400"
-                                                : "text-gray-900 dark:text-white"
+                                                ? "opacity-100"
+                                                : "opacity-0 group-hover:opacity-100"
                                         )}
                                     >
-                                        {track.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
-                                        {track.artist}
-                                    </p>
+                                        <Play className="w-5 h-5 fill-current text-gray-400 dark:text-gray-500" />
+                                    </div>
                                 </div>
-                                <div className="text-gray-300 dark:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <Play className="w-5 h-5 fill-current" />
-                                </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </div>

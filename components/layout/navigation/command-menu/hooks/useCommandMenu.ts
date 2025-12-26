@@ -21,6 +21,7 @@ import {
     Music,
     Terminal,
     Maximize2,
+    Maximize,
     Link2,
     RefreshCw,
     Printer,
@@ -263,7 +264,7 @@ export function useCommandMenu() {
                 group: "View Controls",
                 items: [
                     {
-                        icon: Maximize2,
+                        icon: Maximize,
                         label: "Enter Fullscreen",
                         description: "View in fullscreen mode",
                         action: () => document.documentElement.requestFullscreen(),
