@@ -21,7 +21,7 @@ export function Visualizer({ audioRef, isPlaying }: VisualizerProps) {
         const render = () => {
             if (!canvasRef.current || !analyserRef.current || !dataArray) return;
 
-            analyserRef.current.getByteFrequencyData(dataArray);
+            analyserRef.current.getByteFrequencyData(dataArray as any);
 
             const canvas = canvasRef.current;
             const ctx = canvas.getContext("2d");
