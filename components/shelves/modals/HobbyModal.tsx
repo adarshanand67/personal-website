@@ -117,7 +117,7 @@ export function HobbyModal({ item, onClose }: HobbyModalProps) {
                             href={item.link}
                             target={item.link?.startsWith("http") ? "_blank" : undefined}
                             rel={item.link?.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground hover:bg-foreground/90 text-background font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground hover:bg-foreground/90 text-white dark:text-black font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                         >
                             <ExternalLink size={16} /> Explore More
                         </a>

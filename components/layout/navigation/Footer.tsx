@@ -44,13 +44,6 @@ export function Footer() {
                         <NavLinks />
                     </div>
                 </div>
-
-                <div
-                    className="text-4xl md:text-5xl text-foreground opacity-90 mb-12"
-                    style={{ fontFamily: "'Dancing Script', cursive" }}
-                >
-                    Adarsh Anand
-                </div>
             </div>
             <p className="text-gray-500 dark:text-gray-400 font-medium text-center text-[10px] opacity-60 pb-8 tracking-widest uppercase">
                 <span className="mr-1">©</span>

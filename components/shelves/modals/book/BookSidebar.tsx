@@ -64,7 +64,7 @@ export function BookSidebar({ item }: BookSidebarProps) {
                     }
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-background hover:bg-foreground/90 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl shadow-foreground/20 group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10"
+                    className="w-full flex items-center justify-center gap-2 py-4 bg-foreground text-white dark:text-black hover:bg-foreground/90 rounded-2xl text-[11px] font-black uppercase tracking-widest shadow-2xl shadow-foreground/20 group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10"
                 >
                     <ExternalLink
                         size={18}

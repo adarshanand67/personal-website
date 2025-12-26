@@ -47,7 +47,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                             <Star
                                 size={12}
                                 fill="currentColor"
-                                className="text-amber-400 flex-shrink-0"
+                                className="text-foreground/60 flex-shrink-0"
                             />
                         )}
                     </h3>
