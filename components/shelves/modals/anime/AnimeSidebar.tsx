@@ -42,7 +42,12 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
 
             {item.image ? (
-                <div className="relative w-48 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-8 transform hover:scale-[1.02] transition-transform duration-500">
+                <a
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " trailer")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative w-48 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group"
+                >
                     <Image
                         src={item.image}
                         alt={item.title}
@@ -50,7 +55,14 @@ export function AnimeSidebar({ item }: AnimeSidebarProps) {
                         className="object-cover"
                         priority
                     />
-                </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <Play
+                            size={48}
+                            className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg"
+                            fill="currentColor"
+                        />
+                    </div>
+                </a>
             ) : (
                 <div className="w-48 md:w-64 aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
                     <Tv className="text-gray-400" size={56} />

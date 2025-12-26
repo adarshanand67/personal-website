@@ -100,6 +100,11 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 searchPlaceholder={config.searchPlaceholder}
                 items={randomizerItems}
                 onPickRandom={handlePickRandom}
+                showClear={config.type === ShelfType.Anime && !!(searchQuery || animeSelectedTag)}
+                onClear={() => {
+                    setSearchQuery("");
+                    setAnimeSelectedTag(null);
+                }}
             />
 
             {config.type === ShelfType.Anime && (
@@ -107,11 +112,6 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                     items={items}
                     selectedTag={animeSelectedTag}
                     onTagSelect={setAnimeSelectedTag}
-                    showClear={!!(searchQuery || animeSelectedTag)}
-                    onClear={() => {
-                        setSearchQuery("");
-                        setAnimeSelectedTag(null);
-                    }}
                 />
             )}
 

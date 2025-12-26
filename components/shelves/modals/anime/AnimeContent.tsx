@@ -75,7 +75,7 @@ export function AnimeContent({ item, onTagClick }: AnimeContentProps) {
                                 <button
                                     key={tag}
                                     onClick={() => onTagClick(tag)}
-                                    className="px-4 py-2 bg-transparent border-2 border-foreground/10 rounded-full text-[10px] font-black text-foreground/40 hover:border-foreground/60 hover:text-foreground transition-all uppercase tracking-widest hover:scale-105 shadow-sm active:scale-95"
+                                    className="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-full text-[10px] font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all uppercase tracking-wider"
                                 >
                                     {tag}
                                 </button>

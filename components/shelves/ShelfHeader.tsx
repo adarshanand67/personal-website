@@ -30,6 +30,8 @@ interface ShelfHeaderProps {
     searchPlaceholder?: string;
     onPickRandom?: (item: unknown) => void;
     items?: unknown[];
+    showClear?: boolean;
+    onClear?: () => void;
 }
 
 /**
@@ -64,6 +66,8 @@ export function ShelfHeader({
     searchPlaceholder,
     onPickRandom,
     items,
+    showClear,
+    onClear,
 }: ShelfHeaderProps) {
     return (
         <div className="mb-6">
@@ -79,6 +83,14 @@ export function ShelfHeader({
                     )}
                 </div>
                 <div className="flex items-center gap-3">
+                    {showClear && onClear && (
+                        <button
+                            onClick={onClear}
+                            className="px-4 py-2 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-bold text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all uppercase tracking-wider"
+                        >
+                            Clear Filters
+                        </button>
+                    )}
                     <div className="px-4 py-2 bg-gray-100 dark:bg-white/5 rounded-full border border-gray-200 dark:border-white/10 text-xs font-bold text-gray-500 uppercase tracking-widest">
                         {count} {count === 1 ? "Item" : "Items"}
                     </div>
