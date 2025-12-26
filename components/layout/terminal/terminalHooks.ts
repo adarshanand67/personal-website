@@ -4,7 +4,7 @@ import { useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
-import { commands } from "@/lib/terminal/commands";
+import { commands } from "@/lib/terminal/terminal";
 import { introLines, directories } from "@/lib/constants";
 import { mockFiles } from "@/lib/terminal/mockFileSystem";
 
