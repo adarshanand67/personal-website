@@ -57,11 +57,23 @@ export function useAudio() {
         });
     }, [volume, isMuted]);
 
+    // Ensure valid index
+    const safeTrackIndex = Math.max(0, Math.min(currentTrackIndex || 0, (tracks?.length || 1) - 1));
+
     useEffect(() => {
         if (!audioRef.current) return;
-        if (isPlaying) audioRef.current.play().catch(() => setIsPlaying(false));
-        else audioRef.current.pause();
-    }, [isPlaying, setIsPlaying, currentTrackIndex]);
+        if (isPlaying) {
+            const playPromise = audioRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise.catch((error) => {
+                    console.error("Playback failed:", error);
+                    setIsPlaying(false);
+                });
+            }
+        } else {
+            audioRef.current.pause();
+        }
+    }, [isPlaying, setIsPlaying, safeTrackIndex]);
 
     // Handle external seek requests (e.g. from Music Page)
     useEffect(() => {
@@ -80,7 +92,7 @@ export function useAudio() {
 
     const handleLoadedMetadata = () => {
         if (audioRef.current) {
-            setProgress(audioRef.current.currentTime, audioRef.current.duration);
+            setProgress(audioRef.current.currentTime, audioRef.current.duration || 0);
         }
     };
 
@@ -91,20 +103,14 @@ export function useAudio() {
                 console.error("Error replaying track:", error);
                 setIsPlaying(false);
             });
-        } else nextTrack();
+        } else {
+            nextTrack();
+        }
     };
 
     const handleError = (e: any) => {
         console.error("Audio playback error:", e);
         setIsPlaying(false);
-
-        // Potential logic: automatically try next track if one fails
-        // but only after a delay to avoid infinite loops if all fail
-        /*
-        setTimeout(() => {
-            nextTrack();
-        }, 1000);
-        */
     };
 
     /**
@@ -137,6 +143,6 @@ export function useAudio() {
         handleEnded,
         handleError,
         seek,
-        currentTrackSrc: tracks[currentTrackIndex]?.src || "",
+        currentTrackSrc: tracks[safeTrackIndex]?.src || "",
     };
 }

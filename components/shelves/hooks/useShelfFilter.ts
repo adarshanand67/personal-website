@@ -39,18 +39,29 @@ interface FilterStrategy {
  * ```
  */
 export function useShelfFilter(items: unknown[], configType: ShelfType, strategy: FilterStrategy) {
-    const { searchQuery, setSearchQuery, animeSelectedTag, setAnimeSelectedTag } = useStore();
+    const {
+        searchQuery,
+        setSearchQuery,
+        animeSelectedTag,
+        setAnimeSelectedTag,
+        bookSelectedTag,
+        setBookSelectedTag,
+    } = useStore();
 
     useEffect(() => {
         setSearchQuery("");
         if (configType === ShelfType.Anime) {
             setAnimeSelectedTag(null);
         }
-    }, [configType, setSearchQuery, setAnimeSelectedTag]);
+        if (configType === ShelfType.Book) {
+            setBookSelectedTag(null);
+        }
+    }, [configType, setSearchQuery, setAnimeSelectedTag, setBookSelectedTag]);
 
     const filteredItems = useMemo(() => {
-        return strategy.filter(items as ShelfItem[], searchQuery, animeSelectedTag);
-    }, [items, searchQuery, strategy, animeSelectedTag]);
+        const tag = configType === ShelfType.Anime ? animeSelectedTag : bookSelectedTag;
+        return strategy.filter(items as ShelfItem[], searchQuery, tag);
+    }, [items, searchQuery, strategy, animeSelectedTag, bookSelectedTag, configType]);
 
     const randomizerItems = useMemo(() => {
         if (configType === ShelfType.Anime) {
@@ -68,5 +79,7 @@ export function useShelfFilter(items: unknown[], configType: ShelfType, strategy
         setSearchQuery,
         animeSelectedTag,
         setAnimeSelectedTag,
+        bookSelectedTag,
+        setBookSelectedTag,
     };
 }

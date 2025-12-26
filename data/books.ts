@@ -18,6 +18,7 @@ export const booksData: Book[] = [
         recommended: true,
         description:
             "A definitive guide to understanding power dynamics, drawing on history's most famous strategists.",
+        tags: ["Psychology", "Strategy", "Philosophy"],
         keyTakeaways: [
             "Never Outshine the Master: Help those above you feel superior to secure your position.",
             "Conceal Your Intentions: Keep others off-balance and in the dark to maintain control.",
@@ -31,6 +32,7 @@ export const booksData: Book[] = [
         recommended: true,
         description:
             "Psychologist Jordan Peterson offers twelve profound and practical principles for how to live a meaningful life.",
+        tags: ["Psychology", "Self-Help", "Philosophy"],
         keyTakeaways: [
             "Stand up straight with your shoulders back: Physical posture affects mental state and social standing.",
             "Treat yourself like someone you are responsible for helping: Practice self-care with the same diligence you'd give to a loved one.",
@@ -44,6 +46,7 @@ export const booksData: Book[] = [
         recommended: true,
         description:
             "A spiritual guide for men to navigate the challenges of women, work, and sexual desire with purpose.",
+        tags: ["Spirituality", "Self-Help", "Philosophy"],
         keyTakeaways: [
             "Live as if your father were dead: Take full responsibility for your life and path.",
             "Always lean just beyond your edge: Growth happens in the zone of slight discomfort.",
@@ -56,6 +59,7 @@ export const booksData: Book[] = [
         author: "Chris Miller",
         description:
             "An account of the decades-long battle to control the world's most critical technology: the microchip.",
+        tags: ["Tech", "History", "Geopolitics"],
         keyTakeaways: [
             "Semiconductors are the foundation of modern military and economic power.",
             "The complexity of the supply chain makes it the ultimate geopolitical bottleneck.",
@@ -68,6 +72,7 @@ export const booksData: Book[] = [
         author: "Cal Newport",
         description:
             "Rules for focused success in a distracted world, arguing that the ability to focus is a competitive advantage.",
+        tags: ["Productivity", "Self-Help"],
         keyTakeaways: [
             "Deep Work = (Time Spent) x (Intensity of Focus).",
             "Schedule your deep work blocks to protect them from the whirlwind of shallow tasks.",
@@ -80,6 +85,7 @@ export const booksData: Book[] = [
         author: "Prakhar Gupta",
         description:
             "Practical advice on effective communication, articulation, and building confidence.",
+        tags: ["Communication", "Self-Help"],
         keyTakeaways: [
             "Articulation is a superpower that clarifies your own thinking.",
             "Refining your voice allows you to navigate professional and social environments effectively.",
@@ -92,6 +98,7 @@ export const booksData: Book[] = [
         author: "Elayne Savage",
         description:
             "Strategies for distinguishing between personal rejection and objective feedback to maintain self-worth.",
+        tags: ["Psychology", "Self-Help"],
         keyTakeaways: [
             "Rejection is often a reflection of the other person's history, not your value.",
             "Separate your core identity from temporary external feedback.",
@@ -104,6 +111,7 @@ export const booksData: Book[] = [
         author: "Daniel Goleman",
         description:
             "An exploration of why emotional intelligence can matter more than IQ for success and well-being.",
+        tags: ["Psychology", "Self-Help"],
         keyTakeaways: [
             "Self-awareness is the foundation of emotional intelligence.",
             "Empathy is a critical skill for effective leadership and deep relationships.",
@@ -117,6 +125,7 @@ export const booksData: Book[] = [
         author: "Eric Berne",
         description:
             "A classic analysis of the psychological games people play in social interactions.",
+        tags: ["Psychology", "Communication"],
         keyTakeaways: [
             "We interact from three ego states: Parent, Adult, and Child.",
             "Many social interactions are 'games' with hidden agendas and predictable payoffs.",
@@ -130,6 +139,7 @@ export const booksData: Book[] = [
         author: "Dale Carnegie",
         description:
             "Time-tested principles for building relationships and influencing others positively.",
+        tags: ["Communication", "Psychology", "Self-Help"],
         keyTakeaways: [
             "A person's name is the sweetest sound in any language.",
             "Listen more than you talk: People love to feel heard and important.",
@@ -142,6 +152,7 @@ export const booksData: Book[] = [
         author: "Shwetabh Gangwar",
         description:
             "A straightforward guide to thinking clearly, solving problems, and taking ownership of your life.",
+        tags: ["Self-Help", "Philosophy"],
         keyTakeaways: [
             "Happiness is the byproduct of solving problems, not a goal in itself.",
             "Reclaim your individuality by questioning every social narrative you've been taught.",
@@ -154,6 +165,7 @@ export const booksData: Book[] = [
         author: "Ryan Holiday",
         description:
             "Drawing on ancient wisdom to show how stillness and focus are essential for clarity and success.",
+        tags: ["Philosophy", "Productivity", "Self-Help"],
         keyTakeaways: [
             "Stillness is not inactivity; it is the presence of total clarity.",
             "To think clearly, you must first find a way to quiet the noise of the world.",
@@ -166,6 +178,7 @@ export const booksData: Book[] = [
         author: "Alex Xu",
         description:
             "A comprehensive guide to mastering system design interviews for software engineers.",
+        tags: ["Tech", "Engineering"],
         keyTakeaways: [
             "System design is all about trade-offs: Latency vs. Throughput, Consistency vs. Availability.",
             "Start with high-level architecture before diving into specific components.",
@@ -178,6 +191,7 @@ export const booksData: Book[] = [
         author: "Robin Sharma",
         description:
             "A parable about maximizing productivity, health, and serenity by waking up early.",
+        tags: ["Productivity", "Self-Help"],
         keyTakeaways: [
             "The 20/20/20 formula: 20 mins exercise, 20 mins reflection, 20 mins growth.",
             "Ownership of your morning leads to mastery of your life.",
@@ -190,6 +204,7 @@ export const booksData: Book[] = [
         author: "Stephen R. Covey",
         description:
             "A framework for personal and professional effectiveness based on timeless principles.",
+        tags: ["Productivity", "Self-Help"],
         keyTakeaways: [
             "Be Proactive: Take responsibility for your response to every situation.",
             "Begin with the End in Mind: Define your mission and goals before acting.",
@@ -201,6 +216,7 @@ export const booksData: Book[] = [
         title: "The Compound Effect",
         author: "Darren Hardy",
         description: "How small, consistent actions and choices lead to huge results over time.",
+        tags: ["Productivity", "Self-Help"],
         keyTakeaways: [
             "Small choices + consistency + time = radical difference.",
             "Success is earned through daily discipline, not a single event.",
@@ -213,6 +229,7 @@ export const booksData: Book[] = [
         author: "Allan & Barbara Pease",
         description:
             "A guide to interpreting nonverbal cues to understand others' true thoughts and feelings.",
+        tags: ["Communication", "Psychology"],
         keyTakeaways: [
             "Body language accounts for over 60% of human communication.",
             "Clusters of signals are more reliable than individual gestures.",
@@ -225,6 +242,7 @@ export const booksData: Book[] = [
         author: "Jonathan Haidt",
         description:
             "An examination of ten great ideas from ancient wisdom through the lens of modern psychology.",
+        tags: ["Psychology", "Philosophy"],
         keyTakeaways: [
             "The mind is like a rider (rational) on an elephant (emotional).",
             "Happiness comes from within and from between (social connections).",
@@ -238,6 +256,7 @@ export const booksData: Book[] = [
         author: "Russ Harris",
         description:
             "Using Acceptance and Commitment Therapy (ACT) to handle painful thoughts and create a rich life.",
+        tags: ["Psychology", "Self-Help"],
         keyTakeaways: [
             "Attempts to avoid 'bad' feelings often create more suffering.",
             "Accept your thoughts and feelings rather than fighting them.",
@@ -250,6 +269,7 @@ export const booksData: Book[] = [
         author: "Mel Robbins",
         description:
             "A strategy for reducing stress and finding peace by letting others be who they are.",
+        tags: ["Philosophy", "Self-Help"],
         keyTakeaways: [
             "Release the burden of responsibility for other people's choices.",
             "Save your emotional energy for your own reactions and growth.",
@@ -263,6 +283,7 @@ export const booksData: Book[] = [
         author: "Brianna Wiest",
         description:
             "A book about understanding self-sabotage and how to overcome it to reach your potential.",
+        tags: ["Psychology", "Self-Help"],
         keyTakeaways: [
             "Self-sabotage is often a misguided attempt at self-protection.",
             "The mountain is the obstacle within you, not outside of you.",
@@ -276,6 +297,7 @@ export const booksData: Book[] = [
         author: "Mark Manson",
         description:
             "A counterintuitive approach to living a good life by prioritizing what truly matters.",
+        tags: ["Philosophy", "Self-Help"],
         keyTakeaways: [
             "Happiness comes from solving problems, not avoiding them.",
             "Choose your values wisely: Focus on what you can control.",
@@ -288,6 +310,7 @@ export const booksData: Book[] = [
         author: "Daniel Kahneman",
         description:
             "A groundbreaking tour of the mind and the two systems that drive the way we think.",
+        tags: ["Psychology", "Logic"],
         keyTakeaways: [
             "We are prone to numerous cognitive biases that cloud our judgment.",
             "System 1 is constantly creating 'stories' to explain the world.",
@@ -300,6 +323,7 @@ export const booksData: Book[] = [
         author: "Robin Sharma",
         description:
             "Simples wisdom for living a life of significance, distinguishing between the urgent and the important.",
+        tags: ["Philosophy", "Self-Help"],
         keyTakeaways: [
             "Success is meaningless if it doesn't leave a positive legacy.",
             "Live every day as if it were your last; focus on what truly matters.",
@@ -312,6 +336,7 @@ export const booksData: Book[] = [
         author: "Matthew Walker",
         description:
             "A neuroscientist explores the vital importance of sleep for our physical and mental health.",
+        tags: ["Biology", "Health"],
         keyTakeaways: [
             "Sleep is the pillar of health alongside nutrition and exercise.",
             "Lack of sleep impairs cognitive function more than we realize.",
@@ -324,6 +349,7 @@ export const booksData: Book[] = [
         author: "Jen Sincero",
         description:
             "A refreshing how-to guide for creating a life you love and believing in yourself.",
+        tags: ["Self-Help", "Productivity"],
         keyTakeaways: [
             "Love yourself unapologetically; it's the foundation of change.",
             "Decide you are going to live a life you love and stop making excuses.",

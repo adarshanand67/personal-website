@@ -11,7 +11,9 @@ import React from "react";
 interface PillTagProps {
     label: string;
     selected?: boolean;
-    onClick?: () => void;
+    dimmed?: boolean;
+    onClick?: (e: React.MouseEvent) => void;
+    variant?: "default" | "filter";
 }
 
 /**
@@ -27,16 +29,16 @@ export function PillTag({ label, selected = false, onClick }: PillTagProps) {
     // Light mode: black text, Dark mode: white text
     const variantClasses = selected
         ? "text-black dark:text-white scale-110 font-black"
-        : "text-black/50 dark:text-white/40 font-bold hover:text-black dark:hover:text-white hover:scale-105";
+        : "text-black/80 dark:text-white/80 font-bold hover:text-black dark:hover:text-white hover:scale-105 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5";
 
     const classes = `${baseClasses} ${variantClasses}`;
 
     if (onClick) {
         return (
             <button
-                onClick={() => {
+                onClick={(e) => {
                     try {
-                        onClick();
+                        onClick(e);
                     } catch (error) {
                         console.error("Error clicking PillTag:", error);
                     }

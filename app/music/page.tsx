@@ -382,7 +382,9 @@ export default function MusicPage() {
                                 onClick={toggleShuffle}
                                 className={cn(
                                     "p-2 transition-colors",
-                                    isShuffle ? "text-pink-500" : "text-white/40 hover:text-white"
+                                    isShuffle
+                                        ? "text-pink-500"
+                                        : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
                                 )}
                             >
                                 <Shuffle className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -390,7 +392,7 @@ export default function MusicPage() {
 
                             <button
                                 onClick={prevTrack}
-                                className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
+                                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all active:scale-90 p-4 rounded-full hover:bg-black/5 dark:hover:bg-white/5"
                             >
                                 <SkipBack
                                     className={cn(
@@ -404,7 +406,7 @@ export default function MusicPage() {
                             <button
                                 onClick={handlePlayPause}
                                 className={cn(
-                                    "bg-gray-100 dark:bg-white text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.2)]",
+                                    "bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl dark:shadow-[0_0_30px_rgba(255,255,255,0.2)]",
                                     isMaximized ? "w-20 h-20" : "w-16 h-16"
                                 )}
                             >
@@ -427,7 +429,7 @@ export default function MusicPage() {
 
                             <button
                                 onClick={nextTrack}
-                                className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-transform active:scale-90"
+                                className="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-all active:scale-90 p-4 rounded-full hover:bg-black/5 dark:hover:bg-white/5"
                             >
                                 <SkipForward
                                     className={cn(
@@ -442,7 +444,9 @@ export default function MusicPage() {
                                 onClick={toggleRepeat}
                                 className={cn(
                                     "p-2 transition-colors",
-                                    isRepeat ? "text-pink-500" : "text-white/40 hover:text-white"
+                                    isRepeat
+                                        ? "text-pink-500"
+                                        : "text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
                                 )}
                             >
                                 <Repeat className={cn(isMaximized ? "w-6 h-6" : "w-5 h-5")} />
@@ -451,7 +455,7 @@ export default function MusicPage() {
 
                         {/* Volume Slider - iOS Style */}
                         <div className="flex items-center gap-4 px-2 mb-8">
-                            <Volume2 className="w-5 h-5 text-gray-400 dark:text-gray-500" />
+                            <Volume2 className="w-5 h-5 text-black/40 dark:text-white/40" />
                             <Slider
                                 value={[volume * 100]}
                                 min={0}
@@ -542,7 +546,7 @@ export default function MusicPage() {
                                                 : "opacity-0 group-hover:opacity-100"
                                         )}
                                     >
-                                        <Play className="w-5 h-5 fill-current text-gray-400 dark:text-gray-500" />
+                                        <Play className="w-5 h-5 fill-current text-black/40 dark:text-white/40" />
                                     </div>
                                 </div>
                             );

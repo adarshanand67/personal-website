@@ -18,11 +18,11 @@ export function MusicToggleButton() {
             title="Open Music Player"
         >
             <div className={`relative ${isPlaying ? "animate-pulse" : ""}`}>
-                <Music size={22} className="text-black dark:text-gray-400" />
+                <Music size={22} className="text-black dark:text-white" />
                 {isPlaying && (
                     <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black dark:bg-gray-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black dark:bg-gray-400"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black dark:bg-white opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black dark:bg-white"></span>
                     </span>
                 )}
             </div>

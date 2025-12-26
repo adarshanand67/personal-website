@@ -3,11 +3,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { AppState } from "./types";
-import { createTerminalSlice } from "./slices/terminalSlice";
-import { createMusicSlice } from "./slices/musicSlice";
-import { createUISlice } from "./slices/uiSlice";
-import { createContentSlice } from "./slices/contentSlice";
-import { createUtilitySlice } from "./slices/utilitySlice";
+import {
+    createTerminalSlice,
+    createMusicSlice,
+    createUISlice,
+    createContentSlice,
+    createUtilitySlice,
+} from "./slices";
 
 /**
  * @fileoverview Main Zustand store combining all application state slices.

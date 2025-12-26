@@ -16,6 +16,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ShelfHeader } from "./ShelfHeader";
 import { ShelfSkeleton } from "./ShelfSkeleton";
 import { AnimeTagFilter } from "./AnimeTagFilter";
+import { BookTagFilter } from "./BookTagFilter";
 import { useShelfFilter } from "./hooks/useShelfFilter";
 import { HobbyModal } from "./modals/HobbyModal";
 import { BookModal } from "./modals/BookModal";
@@ -84,6 +85,8 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
         setSearchQuery,
         animeSelectedTag,
         setAnimeSelectedTag,
+        bookSelectedTag,
+        setBookSelectedTag,
     } = useShelfFilter(isValidItems ? items : [], config?.type, strategy);
 
     const handlePickRandom = (item: any) => {
@@ -143,10 +146,14 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                 searchPlaceholder={config.searchPlaceholder}
                 items={randomizerItems}
                 onPickRandom={handlePickRandom}
-                showClear={config.type === ShelfType.Anime && !!(searchQuery || animeSelectedTag)}
+                showClear={
+                    (config.type === ShelfType.Anime && !!(searchQuery || animeSelectedTag)) ||
+                    (config.type === ShelfType.Book && !!(searchQuery || bookSelectedTag))
+                }
                 onClear={() => {
                     setSearchQuery("");
                     setAnimeSelectedTag(null);
+                    setBookSelectedTag(null);
                 }}
             />
 
@@ -155,6 +162,14 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                     items={isValidItems ? items : []}
                     selectedTag={animeSelectedTag}
                     onTagSelect={setAnimeSelectedTag}
+                />
+            )}
+
+            {config.type === ShelfType.Book && (
+                <BookTagFilter
+                    items={isValidItems ? (items as any[]) : []}
+                    selectedTag={bookSelectedTag}
+                    onTagSelect={setBookSelectedTag}
                 />
             )}
 
@@ -181,12 +196,6 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                         onClose={() => store.setHobbySelectedItem(null)}
                     />
                 )}
-                {store.bookSelectedItem && (
-                    <BookModal
-                        item={store.bookSelectedItem}
-                        onClose={() => store.setBookSelectedItem(null)}
-                    />
-                )}
                 {store.animeSelectedItem && (
                     <AnimeModal
                         item={store.animeSelectedItem}
@@ -194,6 +203,16 @@ export function UniversalShelf({ config, items }: UniversalShelfProps) {
                         onTagClick={(tag) => {
                             setAnimeSelectedTag(tag);
                             store.setAnimeSelectedItem(null);
+                        }}
+                    />
+                )}
+                {store.bookSelectedItem && (
+                    <BookModal
+                        item={store.bookSelectedItem}
+                        onClose={() => store.setBookSelectedItem(null)}
+                        onTagClick={(tag) => {
+                            setBookSelectedTag(tag);
+                            store.setBookSelectedItem(null);
                         }}
                     />
                 )}

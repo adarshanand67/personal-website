@@ -1,4 +1,4 @@
-import { introLines } from "@/lib/constants";
+import { introLines, systemStats, whoamiInfo } from "@/lib/constants";
 import { Command, CommandContext, CommandArgs } from "./commands/types";
 import { addLine, addLines, createCommand } from "./commands/helpers";
 import { directoryMap } from "@/lib/constants";
@@ -359,11 +359,7 @@ export const whoami: Command = createCommand(
     "whoami",
     "Display user info",
     (_, { setLines }) => {
-        addLines(setLines, [
-            "user: Adarsh Anand",
-            "role: Software Development Engineer",
-            "host: portfolio-sh",
-        ]);
+        addLines(setLines, [...whoamiInfo]);
     },
     { category: "utility", usage: "whoami" }
 );
@@ -372,20 +368,29 @@ export const neofetch: Command = createCommand(
     "neofetch",
     "System snapshot",
     (_, { setLines }) => {
-        addLines(setLines, [
-            "\x1b[32m       .,ok00OO00kxoc,.       \x1b[0m user@portfolio",
-            "\x1b[32m     .x00OkxxxxxxxxxkO00x.    \x1b[0m --------------",
-            "\x1b[32m    .00kxxxxxxxxxxxxxxxk00.   \x1b[0m OS: Portfolio OS v1.0",
-            "\x1b[32m    d0kxxxxxxxxxxxxxxxxk0d   \x1b[0m Host: Next.js Website",
-            "\x1b[32m    O0xxxxxxxxxxxxxxxxxx0O   \x1b[0m Kernel: React 19.0.0",
-            "\x1b[32m    k0xxxxxxxxxxxxxxxxxx0k   \x1b[0m Uptime: 2 hours, 42 mins",
-            "\x1b[32m    d0kxxxxxxxxxxxxxxxxk0d   \x1b[0m Packages: 42 (npm)",
-            "\x1b[32m    .00kxxxxxxxxxxxxxxxk00.   \x1b[0m Shell: zsh 5.8",
-            "\x1b[32m     .x00OkxxxxxxxxxkO00x.    \x1b[0m Resolution: 1920x1080",
-            "\x1b[32m       .,ok00OO00kxoc,.       \x1b[0m WM: Framer Motion",
-        ]);
+        addLines(setLines, [...systemStats()]);
     },
     { category: "utility", usage: "neofetch" }
+);
+
+export const uname: Command = createCommand(
+    "uname",
+    "Display system information",
+    (args, { setLines }) => {
+        if (args.includes("-a")) {
+            addLine(
+                setLines,
+                "Darwin portfolio-sh 23.0.0 Darwin Kernel Version 23.0.0: Fri Sep 15 14:41:43 PDT 2023; root:xnu-10002.1.13~1/RELEASE_ARM64_T6030 arm64"
+            );
+        } else if (args.includes("-s")) {
+            addLine(setLines, "Darwin");
+        } else if (args.includes("-m")) {
+            addLine(setLines, "arm64");
+        } else {
+            addLine(setLines, "Darwin");
+        }
+    },
+    { category: "utility", usage: "uname [-a|-s|-m]" }
 );
 
 // --- UTILITY COMMANDS ---
@@ -509,6 +514,39 @@ export const tail: Command = createCommand(
     { category: "utility", usage: "tail [file]" }
 );
 
+export const uptime: Command = createCommand(
+    "uptime",
+    "Display system uptime",
+    (_, { setLines }) => {
+        addLine(setLines, " 01:50:42 up 2:45, 1 user, load averages: 2.34 2.12 1.98");
+    },
+    { category: "utility", usage: "uptime" }
+);
+
+export const df: Command = createCommand(
+    "df",
+    "Disk free space",
+    (_, { setLines }) => {
+        addLines(setLines, [
+            "Filesystem   Size   Used  Avail Capacity iused      ifree %iused  Mounted on",
+            "/dev/disk3s1 932Gi  234Gi  698Gi    26% 1423456 731234512    0%   /",
+        ]);
+    },
+    { category: "utility", usage: "df" }
+);
+
+export const free: Command = createCommand(
+    "free",
+    "Memory usage",
+    (_, { setLines }) => {
+        addLines(setLines, [
+            "              total        used        free      shared  buff/cache   available",
+            "Mem:       65536MiB    24576MiB    40960MiB     1024MiB     2048MiB    40960MiB",
+        ]);
+    },
+    { category: "utility", usage: "free" }
+);
+
 // --- AGGREGATED EXPORT ---
 
 export const commands: Record<string, Command> = {
@@ -528,6 +566,10 @@ export const commands: Record<string, Command> = {
     vi,
     whoami,
     neofetch,
+    uname,
+    uptime,
+    df,
+    free,
     git,
     date,
     ping,
