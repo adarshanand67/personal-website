@@ -119,8 +119,23 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     }
 
     filter(items: AnimeItem[], query: string, selectedTag?: string | null): AnimeItem[] {
-        // First, only show completed/watched anime
-        let filtered = items.filter((item) => item.status === WatchStatus.Completed);
+        let filtered = [...items];
+
+        // If there's a search query, search across ALL anime
+        // If no search query, only show completed/watched anime
+        if (query) {
+            const lowerQuery = query.toLowerCase();
+            filtered = filtered.filter(
+                (item) =>
+                    item.title.toLowerCase().includes(lowerQuery) ||
+                    (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
+                    (item.tags &&
+                        item.tags.some((tag: string) => tag.toLowerCase().includes(lowerQuery)))
+            );
+        } else {
+            // No search query - only show completed anime
+            filtered = filtered.filter((item) => item.status === WatchStatus.Completed);
+        }
 
         // Then apply tag filter
         if (selectedTag === "Recommended") {
@@ -129,15 +144,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
             filtered = filtered.filter((item) => item.tags?.some((tag) => tag === selectedTag));
         }
 
-        // Finally apply search query
-        if (!query) return filtered;
-        const lowerQuery = query.toLowerCase();
-        return filtered.filter(
-            (item) =>
-                item.title.toLowerCase().includes(lowerQuery) ||
-                (item.description && item.description.toLowerCase().includes(lowerQuery)) ||
-                (item.tags &&
-                    item.tags.some((tag: string) => tag.toLowerCase().includes(lowerQuery)))
-        );
+        return filtered;
     }
 }
