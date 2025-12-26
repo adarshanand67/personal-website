@@ -2,8 +2,10 @@ import Image from "next/image";
 import { BookOpen, Star, ExternalLink } from "lucide-react";
 import { getBookGradient } from "@/lib/utils/color";
 
+import { Book } from "@/types/definitions";
+
 interface BookSidebarProps {
-    item: any;
+    item: Book;
 }
 
 export function BookSidebar({ item }: BookSidebarProps) {
