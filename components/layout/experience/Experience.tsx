@@ -90,10 +90,14 @@ export function Experience({ items }: ExperienceProps) {
                                             <li
                                                 key={i}
                                                 className="flex gap-3 text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-medium group/item"
-                                                dangerouslySetInnerHTML={{
-                                                    __html: `<div class="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-foreground/20 dark:bg-foreground/10 group-hover/item:bg-foreground transition-colors"></div><span>${linkifyTech(h)}</span>`,
-                                                }}
-                                            />
+                                            >
+                                                <div className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700 group-hover/item:bg-blue-600 dark:group-hover/item:bg-blue-400 group-focus-within/item:bg-blue-600 dark:group-focus-within/item:bg-blue-400 group-hover/item:scale-125 group-focus-within/item:scale-125 group-hover/item:rounded-sm group-focus-within/item:rounded-sm transition-all duration-300 origin-center" />
+                                                <span
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: linkifyTech(h),
+                                                    }}
+                                                />
+                                            </li>
                                         ))}
                                     </ul>
                                 )}
