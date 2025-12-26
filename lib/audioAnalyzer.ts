@@ -23,7 +23,7 @@ class AudioAnalyzer {
     private source: MediaElementAudioSourceNode | null = null;
     private initialized = false;
 
-    private constructor() {}
+    private constructor() { }
 
     /**
      * Get the singleton instance of AudioAnalyzer.
@@ -111,7 +111,7 @@ class AudioAnalyzer {
      */
     getFrequencyData(): Uint8Array | null {
         if (!this.analyser || !this.dataArray) return null;
-        this.analyser.getByteFrequencyData(this.dataArray as any);
+        this.analyser.getByteFrequencyData(this.dataArray);
         return this.dataArray;
     }
 

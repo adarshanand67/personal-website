@@ -86,7 +86,7 @@ export function SkillsGraph() {
         return { nodes, links };
     }, [isDark]);
 
-    const handleNodeClick = (node: any) => {
+    const handleNodeClick = (node: { id?: string | number; label?: string; group?: number }) => {
         if (node.group === 0) return; // Don't do anything for root
 
         // For categories (group 1), maybe we expand/collapse? But simpler to just do nothing or zoom.
@@ -129,8 +129,8 @@ export function SkillsGraph() {
                             ? "#000"
                             : "#fff"
                         : node.group === 0
-                          ? "#fff"
-                          : "#000";
+                            ? "#fff"
+                            : "#000";
 
                     // Only show text if node is large enough or zoomed in enough
                     if (globalScale > 0.7 || node.group <= 1) {

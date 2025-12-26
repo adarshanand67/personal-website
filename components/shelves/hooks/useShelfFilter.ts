@@ -54,7 +54,9 @@ export function useShelfFilter(items: unknown[], configType: ShelfType, strategy
 
     const randomizerItems = useMemo(() => {
         if (configType === ShelfType.Anime) {
-            return filteredItems.filter((item: any) => item.status === WatchStatus.Completed);
+            return filteredItems.filter((item: ShelfItem) => {
+                return "status" in item && item.status === WatchStatus.Completed;
+            });
         }
         return filteredItems;
     }, [filteredItems, configType]);
