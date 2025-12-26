@@ -95,6 +95,7 @@ export function TechStack() {
                                                             width={16}
                                                             height={16}
                                                             className="object-contain"
+                                                            loading="eager"
                                                         />
                                                     </div>
                                                     {skill}

@@ -64,7 +64,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                                     e.stopPropagation();
                                     useStore.getState().setAnimeSelectedTag(tag);
                                 }}
-                                className="text-[9px] font-black uppercase tracking-widest text-foreground/40 bg-foreground/5 px-2 py-1 rounded-full border border-foreground/10 hover:bg-foreground hover:text-background hover:border-foreground transition-all cursor-pointer"
+                                className="text-[9px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2.5 py-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all cursor-pointer"
                             >
                                 {tag}
                             </button>
