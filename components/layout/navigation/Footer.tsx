@@ -9,7 +9,7 @@ import { NavLinks } from "./NavLinks";
  */
 export function Footer() {
     return (
-        <footer className="relative py-16 border-t border-foreground/5 mt-auto font-mono overflow-hidden">
+        <footer className="hidden md:block relative py-16 border-t border-foreground/5 mt-auto font-mono overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-t from-foreground/[0.02] via-transparent to-transparent pointer-events-none"></div>
             <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
                 <div

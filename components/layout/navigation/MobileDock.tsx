@@ -27,7 +27,7 @@ export function MobileDock() {
     };
 
     return (
-        <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-[400px]">
+        <div className="md:hidden fixed bottom-2 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-[400px]">
             <div className="glass-apple dark:bg-black/80 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-3xl shadow-2xl px-6 py-3 flex items-center justify-between">
                 {navItems.map((item) => {
                     const isActive = pathname === item.path;

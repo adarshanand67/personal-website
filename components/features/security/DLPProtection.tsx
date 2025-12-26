@@ -390,11 +390,7 @@ export function DLPProtection() {
             const heightDiff = window.outerHeight - window.innerHeight > threshold;
 
             if ((widthDiff || heightDiff) && !isBlur) {
-                // If detected, we can trigger the trap harder or just warn
-                addNotification(
-                    "Debugger environment detected. Monitoring active.",
-                    <Terminal size={16} />
-                );
+                // Silently monitor - removed notification per user request
             }
         }, 2000);
 

@@ -46,7 +46,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
 
                 <div className="flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left relative z-10">
                     <TiltWrapper intensity={15}>
-                        <div className="relative group/avatar">
+                        <div className="relative group/avatar hidden md:block">
                             <div className="absolute -inset-4 bg-gradient-to-tr from-foreground/5 to-transparent rounded-[3.5rem] blur-2xl opacity-0 group-hover/avatar:opacity-100 transition-all duration-700" />
                             <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-[3.5rem] overflow-hidden border-2 border-foreground/10 shadow-2xl">
                                 <Image
@@ -98,8 +98,8 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                 <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
                     <SocialButton
                         index={0}
-                        label="Connect"
-                        name="LinkedIn"
+                        label="LinkedIn"
+                        name="Connect"
                         href={`https://${siteConfig.contact.linkedin}`}
                         icon={
                             <svg
@@ -113,8 +113,8 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     />
                     <SocialButton
                         index={1}
-                        label="Say Hello"
-                        name={siteConfig.contact.email}
+                        label="Email"
+                        name="Say Hello"
                         href={`mailto:${siteConfig.contact.email}`}
                         icon={
                             <svg
@@ -134,8 +134,8 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                     />
                     <SocialButton
                         index={2}
-                        label="Codebase"
-                        name="GitHub"
+                        label="GitHub"
+                        name="Codebase"
                         href={`https://${siteConfig.contact.github}`}
                         icon={
                             <svg

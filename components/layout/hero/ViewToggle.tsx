@@ -20,7 +20,7 @@ interface ViewToggleProps {
  * @param {ViewToggleProps} props - Component props
  */
 export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (
-    <div className="flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
+    <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
         <button
             onClick={() => setViewMode("profile")}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
