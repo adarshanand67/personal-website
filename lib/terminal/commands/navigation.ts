@@ -6,15 +6,32 @@ export const ls: Command = createCommand(
     "ls",
     "List directories",
     (args, { setLines }) => {
-        const showAll = args.includes("-a") || args.includes("-la");
+        const showAll = args.some((arg) => arg.includes("a"));
+        const showLong = args.some((arg) => arg.includes("l"));
+
         const dirs = Object.keys(directoryMap);
-        const files = showAll ? [...dirs, ".secret.txt", ".config"] : dirs;
-        addLines(
-            setLines,
-            files.map((d) => `  ${d}${dirs.includes(d) ? "/" : ""}`)
-        );
+        const files = showAll
+            ? [...dirs, ".secret.txt", ".config", ".ctf_hint.txt", ".root_flag"]
+            : dirs;
+
+        if (showLong) {
+            const output = files.map((name) => {
+                const isDir = dirs.includes(name);
+                const perms = isDir ? "drwxr-xr-x" : "-rw-r--r--";
+                const owner = "user user";
+                const size = isDir ? "4096" : (name.length * 42).toString(); // Mock size
+                const date = "Dec 27 00:00";
+                return `${perms} 1 ${owner} ${size.padStart(5)} ${date} ${name}${isDir ? "/" : ""}`;
+            });
+            addLines(setLines, output);
+        } else {
+            addLines(
+                setLines,
+                files.map((d) => `  ${d}${dirs.includes(d) ? "/" : ""}`)
+            );
+        }
     },
-    { category: "navigation", usage: "ls [-a]" }
+    { category: "navigation", usage: "ls [-a] [-l]" }
 );
 
 export const cd: Command = createCommand(

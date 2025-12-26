@@ -19,13 +19,7 @@ interface PillTagProps {
 /**
  * Pill Tag Component - clean black/white pill-shaped tag button.
  */
-export function PillTag({
-    label,
-    selected = false,
-    dimmed = false,
-    onClick,
-    variant = "default",
-}: PillTagProps) {
+export function PillTag({ label, selected = false, dimmed = false, onClick }: PillTagProps) {
     const displayLabel = label || "Tag";
 
     // Base styles
@@ -37,7 +31,7 @@ export function PillTag({
         ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105 opacity-100"
         : `${
               dimmed
-                  ? "bg-gray-100/60 dark:bg-gray-800/60 text-black/40 dark:text-white/40 opacity-70"
+                  ? "bg-gray-100/40 dark:bg-gray-800/40 text-black/60 dark:text-white/60"
                   : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
           } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
 
@@ -46,7 +40,7 @@ export function PillTag({
     if (onClick) {
         return (
             <button
-                onClick={(e) => {
+                onClick={() => {
                     try {
                         onClick();
                     } catch (error) {

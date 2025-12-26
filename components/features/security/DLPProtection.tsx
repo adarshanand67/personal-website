@@ -333,13 +333,17 @@ export function DLPProtection() {
             }
         };
 
-        // 5. Blur on Window Focus Loss - DISABLED per user request
+        // 5. Blur on Window Focus Loss - RE-ENABLED for privacy/dimming
         const handleVisibilityChange = () => {
-            // Logic removed to allow tab switching without blur
+            if (document.visibilityState === "hidden") {
+                setIsBlur(true);
+            } else {
+                setIsBlur(false);
+            }
         };
 
         const handleWindowBlur = () => {
-            // Logic removed
+            setIsBlur(true);
         };
         const handleWindowFocus = () => setIsBlur(false);
 
@@ -468,9 +472,17 @@ export function DLPProtection() {
 
             <DLPNotification notifications={notifications} />
 
-            {/* Session Suspended Overlay Removed as per user request */}
-            {/* BLACKOUT OVERLAY FOR SCREEN CAPTURE / BLUR */}
-            {isBlur && <div className="fixed inset-0 z-[99999] bg-black pointer-events-none" />}
+            {/* BLACKOUT/DIMMING OVERLAY FOR SCREEN CAPTURE / BLUR */}
+            {isBlur && (
+                <div className="fixed inset-0 z-[2147483647] bg-white/40 dark:bg-black/40 backdrop-blur-3xl pointer-events-none animate-in fade-in duration-700 flex items-center justify-center">
+                    <div className="flex flex-col items-center gap-4 text-foreground/40">
+                        <ShieldAlert size={64} strokeWidth={1} />
+                        <span className="text-xs font-black uppercase tracking-[0.3em]">
+                            Session Suspended
+                        </span>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

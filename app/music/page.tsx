@@ -470,11 +470,19 @@ export default function MusicPage() {
                 {/* RIGHT SIDE - Playlist */}
                 <div
                     className={cn(
-                        "flex flex-col transition-all duration-500 bg-gray-50 dark:bg-white/5 lg:border-l border-black/5 dark:border-white/5 lg:rounded-2xl lg:m-4",
+                        "flex flex-col transition-all duration-500 bg-gray-50 dark:bg-white/5 lg:border-l border-black/5 dark:border-white/5 lg:rounded-2xl lg:m-4 relative",
                         isMaximized ? "lg:w-1/3 lg:overflow-y-auto" : "lg:w-1/2 lg:overflow-y-auto",
                         "px-6 py-6 lg:px-8 lg:py-8"
                     )}
                 >
+                    {/* Dimming Overlay when Maximized */}
+                    <div
+                        className={cn(
+                            "absolute inset-0 z-20 bg-white/40 dark:bg-black/40 backdrop-blur-[2px] transition-opacity duration-500 pointer-events-none lg:rounded-2xl",
+                            isMaximized ? "opacity-100" : "opacity-0"
+                        )}
+                    />
+
                     <div className="flex items-center gap-2 mb-6 text-gray-900 dark:text-white sticky top-0 bg-gray-50 dark:bg-white/5 pb-4 z-10">
                         <ListMusic className="w-5 h-5" />
                         <h2 className="text-lg font-bold">Up Next</h2>

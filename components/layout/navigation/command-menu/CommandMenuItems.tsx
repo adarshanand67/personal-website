@@ -11,28 +11,38 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
         <button
             onClick={() => onSelect(item.action)}
             className={`
-                w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-200
+                w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all duration-300
                 ${
                     isSelected
-                        ? "bg-gray-900 text-white dark:bg-white dark:text-black shadow-lg shadow-black/10"
-                        : "text-gray-900 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/5"
+                        ? "text-gray-900 dark:text-white"
+                        : "text-gray-400 dark:text-gray-500 opacity-40 hover:opacity-70"
                 }
             `}
         >
             <div className="flex items-center gap-3 flex-1">
                 <item.icon
                     size={18}
-                    className={
+                    className={`transition-colors duration-300 ${
                         isSelected
-                            ? "text-white dark:text-black"
-                            : "text-gray-500 dark:text-gray-500"
-                    }
+                            ? "text-gray-900 dark:text-white"
+                            : "text-gray-400 dark:text-gray-600"
+                    }`}
                 />
                 <div className="flex flex-col items-start gap-0.5">
-                    <span className="font-medium">{item.label}</span>
+                    <span
+                        className={`transition-all duration-300 ${
+                            isSelected ? "font-bold scale-[1.02] origin-left" : "font-medium"
+                        }`}
+                    >
+                        {item.label}
+                    </span>
                     {item.description && (
                         <span
-                            className={`text-xs ${isSelected ? "text-white/90 dark:text-black/90" : "text-gray-700 dark:text-gray-300"}`}
+                            className={`text-xs transition-colors duration-300 ${
+                                isSelected
+                                    ? "text-gray-500 dark:text-gray-400"
+                                    : "text-gray-400/60 dark:text-gray-500/60"
+                            }`}
                         >
                             {item.description}
                         </span>
@@ -40,10 +50,14 @@ export function CommandMenuItem({ item, isSelected, onSelect }: CommandMenuItemP
                 </div>
             </div>
             {isSelected && (
-                <div className="flex items-center gap-1.5 opacity-80">
+                <motion.div
+                    initial={{ opacity: 0, x: -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-1.5 text-gray-400 dark:text-gray-500"
+                >
                     <span className="text-[10px] font-mono">Enter</span>
                     <ArrowRight size={14} />
-                </div>
+                </motion.div>
             )}
         </button>
     );
@@ -82,7 +96,7 @@ export function CommandMenuItems({
 
                 return (
                     <div key={group.group} className="space-y-1">
-                        <div className="px-3 py-1 text-[10px] font-bold text-gray-500 dark:text-gray-500 uppercase tracking-widest">
+                        <div className="px-3 py-1 text-[10px] font-bold text-gray-400 dark:text-gray-400 uppercase tracking-widest">
                             {group.group}
                         </div>
                         {groupFiltered.map((item: any) => (
