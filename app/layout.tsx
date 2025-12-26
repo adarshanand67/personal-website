@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/seo/structuredData";
@@ -6,6 +6,8 @@ import { ClientLayout } from "@/components/layout/ClientLayout";
 import { DLPProvider } from "@/components/layout/security/DLPProvider";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
+import { RegisterSW } from "@/components/pwa/RegisterSW";
+import { GlobalErrorBoundary } from "@/components/error/GlobalErrorBoundary";
 
 const assistant = Assistant({
     variable: "--font-assistant",
@@ -26,6 +28,7 @@ export const metadata: Metadata = {
     },
     description: siteConfig.description,
     keywords: [...siteConfig.seo.keywords],
+    manifest: "/manifest.json",
     authors: [{ name: siteConfig.author.name }],
     creator: siteConfig.author.name,
     openGraph: {
@@ -72,6 +75,11 @@ export const metadata: Metadata = {
         title: siteConfig.name,
     },
 };
+
+export const viewport: Viewport = {
+    themeColor: "#22c55e",
+};
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -79,16 +87,22 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#22c55e" />
+            </head>
             <body
                 className={`${assistant.variable} ${jetbrains.variable} antialiased`}
                 suppressHydrationWarning
             >
-                {}
+                <RegisterSW />
                 <StructuredData data={generatePersonSchema()} />
                 <StructuredData data={generateWebSiteSchema()} />
-                <ClientLayout>
-                    <DLPProvider>{children}</DLPProvider>
-                </ClientLayout>
+                <GlobalErrorBoundary>
+                    <ClientLayout>
+                        <DLPProvider>{children}</DLPProvider>
+                    </ClientLayout>
+                </GlobalErrorBoundary>
             </body>
         </html>
     );

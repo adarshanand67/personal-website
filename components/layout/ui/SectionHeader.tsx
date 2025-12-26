@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 

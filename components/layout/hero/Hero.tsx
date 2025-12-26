@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ProfileView } from "./components/ProfileView";
 import { TerminalView } from "./components/TerminalView";
+import { Profile } from "@/types/definitions";
 
 /**
  * Props for the Hero component.
  * @interface HeroProps
- * @property {any} profile - Profile data containing name, avatar, bio, and other personal information
+ * @property {Profile} profile - Profile data containing name, avatar, bio, and other personal information
  */
 interface HeroProps {
-    profile: any;
+    profile: Profile;
 }
 
 /**

@@ -35,17 +35,10 @@ import {
     QrCode,
     Calculator,
     Hash,
-    Clipboard,
     FileJson,
-    Image as ImageIcon,
     Palette,
     Ruler,
     Globe,
-    Wifi,
-    WifiOff,
-    Battery,
-    Volume2,
-    VolumeX,
 } from "lucide-react";
 
 export function useCommandMenu() {

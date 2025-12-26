@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { useState } from "react";
-import { Check, Copy } from "lucide-react";
 import { motion } from "framer-motion";
 import { TiltWrapper } from "@/components/ui/TiltWrapper";
 import { SystemStatus } from "@/components/layout/ui";
@@ -8,15 +6,17 @@ import { siteConfig } from "@/lib/config";
 import { ViewToggle } from "../ViewToggle";
 import { SocialButton } from "./SocialButton";
 
+import { Profile } from "@/types/definitions";
+
 /**
  * Props for ProfileView component.
  * @interface ProfileViewProps
- * @property {any} profile - Profile data object
+ * @property {Profile} profile - Profile data object
  * @property {'profile'|'terminal'} viewMode - Current view mode
  * @property {Function} setViewMode - Function to switch view modes
  */
 interface ProfileViewProps {
-    profile: any;
+    profile: Profile;
     viewMode: "profile" | "terminal";
     setViewMode: (mode: "profile" | "terminal") => void;
 }
@@ -27,8 +27,6 @@ interface ProfileViewProps {
  * @component
  */
 export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps) {
-    const [copied, setCopied] = useState(false);
-
     return (
         <motion.div
             key="profile"
@@ -52,7 +50,7 @@ export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps
                             <div className="absolute -inset-4 bg-gradient-to-tr from-green-500/20 to-emerald-500/0 rounded-full blur-2xl opacity-0 group-hover/avatar:opacity-100 transition-all duration-700" />
                             <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-[3rem] overflow-hidden border-2 border-white/20 dark:border-white/10 shadow-2xl">
                                 <Image
-                                    src={profile.avatar}
+                                    src={profile.avatar || ""}
                                     alt={profile.name}
                                     fill
                                     className="object-cover scale-105 group-hover/avatar:scale-110 transition-transform duration-1000"

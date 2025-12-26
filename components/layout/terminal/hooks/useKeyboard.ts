@@ -21,7 +21,7 @@ import { mockFiles } from "@/lib/terminal/mockFileSystem";
  * ```
  */
 export function useKeyboard(executeCommand: (cmd: string) => void) {
-    const { input, setInput, history, historyIndex, setHistoryIndex, setLines } = useStore();
+    const { input, setInput, history, historyIndex, setHistoryIndex } = useStore();
 
     const handleKeyDown = useCallback(
         (e: React.KeyboardEvent<HTMLInputElement>) => {

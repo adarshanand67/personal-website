@@ -1,24 +1,12 @@
-/**
- * @fileoverview Personal profile data including bio, education, and social links.
- */
-
 import { Location } from "./enums";
+import { Profile } from "@/types/definitions";
 
 /**
  * Profile data object containing personal information.
  *
- * @type {{
- *   name: string,
- *   title: string,
- *   pronouns: string,
- *   location: Location,
- *   avatar: string,
- *   education: { university: string, degree: string, years: string, grade: string },
- *   socials: { linkedin: string, github: string, email: string },
- *   bio: { paragraphs: string[] }
- * }}
+ * @type {Profile}
  */
-export const profileData = {
+export const profileData: Profile = {
     name: "Adarsh Anand",
     title: "Adarsh Anand",
     pronouns: "He/Him",
@@ -36,6 +24,7 @@ export const profileData = {
         email: "adarshan20302@gmail.com",
     },
     bio: {
+        short: "I enjoy wrapping basic common sense in a slow deep voice just to see if it sounds like philosophy.",
         paragraphs: [
             "I enjoy wrapping basic common sense in a slow deep voice just to see if it sounds like philosophy.",
         ],

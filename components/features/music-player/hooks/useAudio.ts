@@ -2,6 +2,32 @@ import { useState, useRef, useEffect } from "react";
 import { useStore } from "@/lib/store/useStore";
 import { tracks } from "@/lib/constants";
 
+/**
+ * Custom hook for managing audio playback functionality.
+ * Handles audio element lifecycle, playback controls, volume, and time tracking.
+ * Integrates with global store for playback state and audio analyzer for visualization.
+ *
+ * @returns {Object} Audio control utilities and state
+ * @returns {React.RefObject<HTMLAudioElement>} returns.audioRef - Reference to audio element
+ * @returns {number} returns.currentTime - Current playback time in seconds
+ * @returns {number} returns.duration - Total track duration in seconds
+ * @returns {boolean} returns.isDraggingTime - Whether user is dragging time slider
+ * @returns {Function} returns.setIsDraggingTime - Set dragging state
+ * @returns {Function} returns.handleTimeUpdate - Audio timeupdate event handler
+ * @returns {Function} returns.handleLoadedMetadata - Audio loadedmetadata event handler
+ * @returns {Function} returns.handleEnded - Audio ended event handler
+ * @returns {Function} returns.seek - Seek to specific time
+ * @returns {string} returns.currentTrackSrc - Current track source URL
+ *
+ * @example
+ * ```tsx
+ * const { audioRef, currentTime, duration, seek } = useAudio();
+ *
+ * return (
+ *   <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
+ * );
+ * ```
+ */
 export function useAudio() {
     const { isPlaying, setIsPlaying, volume, isMuted, currentTrackIndex, nextTrack, isRepeat } =
         useStore();
@@ -39,6 +65,11 @@ export function useAudio() {
         } else nextTrack();
     };
 
+    /**
+     * Seek to a specific time in the current track.
+     *
+     * @param {number} time - Time in seconds to seek to
+     */
     const seek = (time: number) => {
         setCurrentTime(time);
         if (audioRef.current) audioRef.current.currentTime = time;

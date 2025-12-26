@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Home, FileText, BookOpen, Tv, Gamepad2 } from "lucide-react";
-import { ClientGithub, ClientLinkedin, ClientMail } from "@/components/layout/theme";
+import { Home } from "lucide-react";
 
 /**
  * Footer Component - site footer with navigation links and branding.

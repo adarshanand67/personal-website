@@ -11,6 +11,12 @@
         "test:e2e:ui": "playwright test --ui",
         "test:coverage": "vitest run --coverage -c vitest.config.ts",
         "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "audit": "npm audit --production",
+        "audit:fix": "npm audit fix",
+        "analyze": "ANALYZE=true next build",
         "prepare": "husky"
     },
     "dependencies": {
@@ -28,6 +34,7 @@
         "zustand": "^5.0.9"
     },
     "devDependencies": {
+        "@next/bundle-analyzer": "^16.1.1",
         "@playwright/test": "^1.57.0",
         "@tailwindcss/postcss": "^4",
         "@testing-library/jest-dom": "^6.9.1",
@@ -43,6 +50,8 @@
         "eslint-config-next": "^16.1.1",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.4",
+        "eslint-plugin-security": "^3.0.1",
+        "eslint-plugin-sonarjs": "^3.0.5",
         "husky": "^9.1.7",
         "jsdom": "^27.3.0",
         "lint-staged": "^16.2.7",

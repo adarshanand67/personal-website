@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ArrowUp } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { motion, AnimatePresence } from "framer-motion";

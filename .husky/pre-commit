@@ -1,1 +1,8 @@
-bunx lint-staged
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run lint-staged (formatting + linting)
+npx lint-staged
+
+# Run security audit (non-blocking warning)
+npm audit --audit-level=high || echo "⚠️  Security vulnerabilities detected. Run 'npm audit' for details."

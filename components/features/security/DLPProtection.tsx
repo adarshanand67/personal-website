@@ -1,15 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
-import {
-    Copy,
-    AlertTriangle,
-    EyeOff,
-    Camera,
-    ShieldAlert,
-    Terminal,
-    RefreshCw,
-} from "lucide-react";
+import { Copy, EyeOff, Camera, ShieldAlert, Terminal } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import Link from "next/link";
 

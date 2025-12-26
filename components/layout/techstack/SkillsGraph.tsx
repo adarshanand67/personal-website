@@ -29,12 +29,6 @@ interface GraphLink {
     target: string;
 }
 
-/** Complete graph data structure. */
-interface GraphData {
-    nodes: GraphNode[];
-    links: GraphLink[];
-}
-
 /**
  * Skills Graph Component - force-directed graph visualization of technical skills.
  * Uses react-force-graph-2d for interactive skill relationship visualization.
@@ -57,7 +51,7 @@ export function SkillsGraph() {
             color: "#22c55e", // green-500
         });
 
-        Object.entries(skillCategories).forEach(([category, skills], catIndex) => {
+        Object.entries(skillCategories).forEach(([category, skills]) => {
             // Category Nodes
             nodes.push({
                 id: category,

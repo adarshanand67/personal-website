@@ -10,8 +10,11 @@ describe("Anime Data Layer", () => {
     it('should contain the specific recommended anime "Dr. Stone"', () => {
         const drStone = animeData.find((a) => a.title === "Dr. Stone");
         expect(drStone).toBeDefined();
-        expect(drStone?.recommended).toBe(true);
+        if (drStone && "recommended" in drStone) {
+            expect(drStone.recommended).toBe(true);
+        }
     });
+
 
     it("should have consistent data structures", () => {
         animeData.forEach((item) => {

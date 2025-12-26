@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
 import { useStore } from "@/lib/store/useStore";
 import { introLines } from "@/lib/constants";
-import { commands } from "@/lib/terminal/commands";
 
 /**
  * Terminal Hook - manages terminal state, intro animation, and drag functionality.
@@ -22,30 +19,15 @@ import { commands } from "@/lib/terminal/commands";
  * ```
  */
 export function useTerminal() {
-    const router = useRouter();
-    const { setTheme } = useTheme();
     const {
         setLines,
         isIntroDone,
         setIsIntroDone,
-        input,
-        setInput,
-        history,
-        setHistory,
-        historyIndex,
-        setHistoryIndex,
-        passwordMode,
-        setPasswordMode,
         isExpanded,
         position,
         setPosition,
         isDragging,
         setIsDragging,
-        todos,
-        addTodo,
-        toggleTodo,
-        removeTodo,
-        clearTodos,
     } = useStore();
 
     const dragStartRef = useRef({ x: 0, y: 0 });
