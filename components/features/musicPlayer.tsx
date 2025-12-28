@@ -21,7 +21,7 @@ export { MusicToggleButton } from "./music-player/MusicToggleButton";
  * and playlist management. Integrates with Zustand store for global state management and
  * provides a glassmorphic UI that appears in the bottom-right corner.
  *
- * @component
+
  * @returns {JSX.Element | null} Music player UI or null if not mounted (SSR safety)
  *
  * @remarks

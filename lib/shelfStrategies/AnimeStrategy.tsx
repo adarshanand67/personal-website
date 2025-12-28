@@ -103,7 +103,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 
         try {
             const watched = items.filter((item) => item?.status === WatchStatus.Completed);
-            const others = items.filter((item) => item?.status !== WatchStatus.Completed);
 
             const watchedSeries = watched.filter(
                 (item) => item?.type === AnimeType.Anime || item?.type === AnimeType.WebSeries
@@ -157,39 +156,6 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
                                     globalIndex++;
                                     return item;
                                 })}
-                            </div>
-                        </div>
-                    )}
-
-                    {others.length > 0 && (
-                        <div>
-                            <h2 className="text-2xl font-black mb-6 flex items-center gap-4 uppercase tracking-tighter px-4">
-                                <span className="text-foreground/20 text-3xl font-mono">/</span>
-                                All Other
-                                <span className="text-gray-400 text-sm font-normal">
-                                    ({others.length})
-                                </span>
-                            </h2>
-
-                            {/* Mobile: Linear Horizontal Scroll | Desktop: Grid */}
-                            <div className="hidden md:grid md:grid-cols-4 gap-8 px-4">
-                                {others.map((anime, index) => {
-                                    const item = this.renderItemWithPriority(
-                                        anime,
-                                        index,
-                                        globalIndex < 4
-                                    );
-                                    globalIndex++;
-                                    return item;
-                                })}
-                            </div>
-
-                            <div className="md:hidden flex overflow-x-auto gap-4 px-4 pb-4 no-scrollbar">
-                                {others.map((anime, index) => (
-                                    <div key={index} className="flex-shrink-0 w-[140px]">
-                                        {this.renderItemWithPriority(anime, index, false)}
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     )}

@@ -11,7 +11,7 @@ import { RandomizerButton } from "@/components/ui";
 
 /**
  * Props for ShelfHeader component.
- * @interface ShelfHeaderProps
+
  * @property {string} title - Shelf title to display
  * @property {string} [description] - Optional shelf description
  * @property {number} count - Total number of items in the shelf
@@ -39,7 +39,7 @@ interface ShelfHeaderProps {
  * Features gradient title, optional description, item count badge,
  * optional randomizer button, and search input with icon.
  *
- * @component
+
  * @param {ShelfHeaderProps} props - Component props
  * @returns {JSX.Element} Rendered shelf header
  *

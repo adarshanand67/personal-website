@@ -2,7 +2,7 @@ import { Volume1, Volume2, VolumeX } from "lucide-react";
 
 /**
  * Props for VolumeControl component.
- * @interface VolumeControlProps
+
  * @property {number} volume - Current volume level (0-1)
  * @property {boolean} isMuted - Whether audio is muted
  * @property {Function} onVolumeChange - Callback when volume changes
@@ -18,7 +18,7 @@ interface VolumeControlProps {
 /**
  * Volume Control Component - adjustable volume slider with an Apple Music aesthetic.
  * Features a thin slider with speaker icons at both ends.
- * @component
+
  * @param {VolumeControlProps} props - Component props
  */
 export function VolumeControl({

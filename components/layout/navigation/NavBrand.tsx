@@ -8,7 +8,7 @@ import { useStore } from "@/lib/store/useStore";
  * Navigation Brand Component - displays logo and site name in navbar.
  * Features animated tilde icon with rotation effect on hover.
  * Scrolls to hero section when on home page and switches to profile view.
- * @component
+
  */
 export function NavBrand() {
     const pathname = usePathname();

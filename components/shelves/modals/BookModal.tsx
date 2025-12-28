@@ -14,7 +14,7 @@ import { BookContent } from "./book/BookContent";
 
 /**
  * Props for BookModal component.
- * @interface BookModalProps
+
  * @property {any} item - Book data object to display
  * @property {Function} onClose - Callback function to close the modal
  */
@@ -28,7 +28,7 @@ interface BookModalProps {
  * Features backdrop blur, spring animations, responsive layout switching between
  * mobile (single scrollable view) and desktop (sidebar + content).
  *
- * @component
+
  * @param {BookModalProps} props - Component props
  * @returns {JSX.Element} Rendered modal with book details
  */

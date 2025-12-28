@@ -8,7 +8,7 @@ import { BookOpen, Quote } from "lucide-react";
 
 /**
  * Props for BookContent component.
- * @interface BookContentProps
+
  * @property {any} item - Book data object with title, author, description, keyTakeaways, and notes
  */
 interface BookContentProps {
@@ -20,7 +20,7 @@ interface BookContentProps {
  * Features scrollable content area with book title, author, description quote,
  * and either key takeaways list or general notes.
  *
- * @component
+
  * @param {BookContentProps} props - Component props
  * @returns {JSX.Element} Rendered content area with book details
  *

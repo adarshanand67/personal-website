@@ -10,7 +10,7 @@ import { Profile } from "@/types/definitions";
 
 /**
  * Props for ProfileView component.
- * @interface ProfileViewProps
+
  * @property {Profile} profile - Profile data object
  * @property {'profile'|'terminal'} viewMode - Current view mode
  * @property {Function} setViewMode - Function to switch view modes
@@ -24,7 +24,7 @@ interface ProfileViewProps {
 /**
  * Profile View Component - displays user profile with avatar, bio, and social links.
  * Features glassmorphic design with hover effects and radial gradient animations.
- * @component
+
  */
 export function ProfileView({ profile, viewMode, setViewMode }: ProfileViewProps) {
     return (

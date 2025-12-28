@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
  * Renders 12 animated bars with staggered delays to create a waveform effect.
  * Includes "Deep Voice Optimized" label and opacity transitions on hover.
  *
- * @component
+
  * @returns {JSX.Element} Rendered voice visualizer with animated bars
  *
  * @example

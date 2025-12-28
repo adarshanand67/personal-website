@@ -7,7 +7,7 @@ import { AnimeItem, Hobby, Book } from "@/types/definitions";
 
 /**
  * Terminal state interface - manages terminal emulator state.
- * @interface TerminalState
+
  * @property {string[]} lines - Array of terminal output lines
  * @property {string[]} history - Command history array
  * @property {number} historyIndex - Current position in command history
@@ -56,7 +56,7 @@ export interface TerminalState {
 
 /**
  * Music player state interface.
- * @interface MusicState
+
  * @property {boolean} showMusicPlayer - Whether music player is visible
  * @property {boolean} isPlaying - Whether music is currently playing
  * @property {number} volume - Volume level (0-1)
@@ -100,7 +100,7 @@ export interface MusicState {
 
 /**
  * Back to top button state interface.
- * @interface BackToTopState
+
  * @property {boolean} isBackToTopVisible - Whether back-to-top button is visible
  * @property {Function} setIsBackToTopVisible - Set button visibility
  */
@@ -111,7 +111,7 @@ export interface BackToTopState {
 
 /**
  * UI state interface - manages general UI state.
- * @interface UIState
+
  * @property {boolean} isMounted - Whether component is mounted (SSR safety)
  * @property {boolean} showHobbiesModal - Whether hobbies modal is visible
  * @property {boolean} isNavbarActive - Whether mobile navbar is active
@@ -136,7 +136,7 @@ export interface UIState {
 
 /**
  * Anime shelf state interface.
- * @interface AnimeState
+
  * @property {AnimeItem|null} animeSelectedItem - Currently selected anime item
  * @property {string|null} animeSelectedTag - Currently selected filter tag
  * @property {Function} setAnimeSelectedItem - Set selected anime item
@@ -151,7 +151,7 @@ export interface AnimeState {
 
 /**
  * Hobby shelf state interface.
- * @interface HobbyState
+
  * @property {Hobby|null} hobbySelectedItem - Currently selected hobby item
  * @property {Function} setHobbySelectedItem - Set selected hobby item
  */
@@ -162,7 +162,7 @@ export interface HobbyState {
 
 /**
  * Search state interface.
- * @interface SearchState
+
  * @property {string} searchQuery - Current search query string
  * @property {Function} setSearchQuery - Set search query
  */
@@ -173,7 +173,7 @@ export interface SearchState {
 
 /**
  * Book shelf state interface.
- * @interface BookState
+
  * @property {Book|null} bookSelectedItem - Currently selected book item
  * @property {Function} setBookSelectedItem - Set selected book item
  */
@@ -184,7 +184,7 @@ export interface BookState {
 
 /**
  * Randomizer state interface - for random item selection.
- * @interface RandomizerState
+
  * @property {number|null} randomItemIndex - Index of randomly selected item
  * @property {boolean} isRandomizing - Whether randomization animation is active
  * @property {Function} setRandomItemIndex - Set random item index
@@ -199,7 +199,7 @@ export interface RandomizerState {
 
 /**
  * Todo item type.
- * @interface TodoItem
+
  * @property {string} id - Unique todo ID
  * @property {string} text - Todo text content
  * @property {boolean} completed - Whether todo is completed
@@ -212,7 +212,7 @@ export interface TodoItem {
 
 /**
  * Todo list state interface.
- * @interface TodoState
+
  * @property {TodoItem[]} todos - Array of todo items
  * @property {Function} addTodo - Add new todo
  * @property {Function} toggleTodo - Toggle todo completion status
@@ -229,7 +229,7 @@ export interface TodoState {
 
 /**
  * Guestbook entry type.
- * @interface GuestbookEntry
+
  * @property {string} name - Visitor name
  * @property {string} message - Guestbook message
  * @property {string} timestamp - ISO timestamp string
@@ -242,7 +242,7 @@ export interface GuestbookEntry {
 
 /**
  * Guestbook state interface.
- * @interface GuestbookState
+
  * @property {GuestbookEntry[]} guestbookEntries - Array of guestbook entries
  * @property {Function} addGuestbookEntry - Add new guestbook entry
  */
@@ -253,7 +253,7 @@ export interface GuestbookState {
 
 /**
  * Combined application state - merges all state slices.
- * @interface AppState
+
  * @extends {TerminalState}
  * @extends {MusicState}
  * @extends {BackToTopState}

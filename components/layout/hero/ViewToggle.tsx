@@ -4,7 +4,7 @@ import { User, Terminal as TerminalIcon } from "lucide-react";
 
 /**
  * Props for ViewToggle component.
- * @interface ViewToggleProps
+
  * @property {'profile'|'terminal'} viewMode - Current active view mode
  * @property {Function} setViewMode - Callback to switch between view modes
  */
@@ -16,7 +16,7 @@ interface ViewToggleProps {
 /**
  * View Toggle Component - switches between profile and terminal views in Hero section.
  * Features subtle toggle design with icon and text labels.
- * @component
+
  * @param {ViewToggleProps} props - Component props
  */
 export const ViewToggle = ({ viewMode, setViewMode }: ViewToggleProps) => (

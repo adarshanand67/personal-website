@@ -5,7 +5,7 @@ import { ExternalLink } from "lucide-react";
 
 /**
  * Props for SocialButton component.
- * @interface SocialButtonProps
+
  * @property {string} label - Small label text (e.g., "EMAIL", "LINKEDIN")
  * @property {string} name - Display name/value (e.g., email address, username)
  * @property {ReactNode} icon - Icon component to display
@@ -26,7 +26,7 @@ interface SocialButtonProps {
  * Social Button Component - animated card for social links or actions.
  * Renders as either a link or button with icon, label, and name.
  * Features staggered fade-in animation and hover effects.
- * @component
+
  * @param {SocialButtonProps} props - Component props
  */
 

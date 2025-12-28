@@ -7,7 +7,7 @@ import { useStore } from "@/lib/store/useStore";
  * Music Toggle Button Component - floating action button to open music player.
  * Features animated pulse effect when music is playing and ping indicator.
  * Fixed position in bottom-right corner with scale animations on hover/click.
- * @component
+
  */
 export function MusicToggleButton() {
     const { toggleMusicPlayer, isPlaying } = useStore();

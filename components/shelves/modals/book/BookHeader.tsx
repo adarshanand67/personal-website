@@ -11,7 +11,7 @@ import { Book } from "@/types/definitions";
 
 /**
  * Props for BookHeader component.
- * @interface BookHeaderProps
+
  * @property {Book} item - Book data object with cover image, title, author, and badges
  */
 interface BookHeaderProps {
@@ -23,7 +23,7 @@ interface BookHeaderProps {
  * Features gradient background, responsive layout, cover image with hover effect,
  * featured/recommended badges, and description quote.
  *
- * @component
+
  * @param {BookHeaderProps} props - Component props
  * @returns {JSX.Element} Rendered header with book cover and metadata
  *

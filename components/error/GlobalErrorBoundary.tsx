@@ -7,7 +7,7 @@ import { ErrorFallback } from "./ErrorFallback";
 /**
  * Props for GlobalErrorBoundary component.
  *
- * @interface GlobalErrorBoundaryProps
+
  */
 interface GlobalErrorBoundaryProps {
     /** Child components to wrap with error boundary */
@@ -17,7 +17,7 @@ interface GlobalErrorBoundaryProps {
 /**
  * State for GlobalErrorBoundary component.
  *
- * @interface GlobalErrorBoundaryState
+
  */
 interface GlobalErrorBoundaryState {
     /** Whether an error has been caught */
@@ -31,7 +31,7 @@ interface GlobalErrorBoundaryState {
  * Displays user-friendly error UI and logs errors for debugging.
  * Wraps the entire application to catch any unhandled errors.
  *
- * @component
+
  * @class
  *
  * @example

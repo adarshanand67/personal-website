@@ -7,7 +7,7 @@ import { ShelfType } from "@/types/definitions";
 
 /**
  * Configuration interface for a content shelf.
- * @interface ShelfConfig
+
  * @property {string} title - Display title for the shelf
  * @property {string} description - Shelf description
  * @property {string} command - Terminal-style command representation

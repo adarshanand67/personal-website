@@ -9,7 +9,7 @@ import { ViewToggle } from "../ViewToggle";
 
 /**
  * Props for TerminalView component.
- * @interface TerminalViewProps
+
  * @property {'profile' | 'terminal'} viewMode - Current view mode
  * @property {Function} setViewMode - Function to switch between profile and terminal views
  */
@@ -22,7 +22,7 @@ interface TerminalViewProps {
  * Terminal View Component - displays interactive terminal interface.
  * Features animated transitions and view toggle button positioned in top-right.
  *
- * @component
+
  * @param {TerminalViewProps} props - Component props
  * @returns {JSX.Element} Rendered terminal view with toggle
  *

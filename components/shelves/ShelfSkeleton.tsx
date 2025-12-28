@@ -12,7 +12,7 @@ import React from "react";
  * Renders animated skeleton elements mimicking the shelf layout
  * including header, search bar, and grid of item placeholders.
  *
- * @component
+
  * @returns {JSX.Element} Rendered skeleton loading UI
  *
  * @example

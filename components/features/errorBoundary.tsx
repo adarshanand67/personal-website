@@ -4,7 +4,7 @@ import React from "react";
 
 /**
  * Error boundary state interface.
- * @interface ErrorBoundaryState
+
  * @property {boolean} hasError - Whether an error has been caught
  * @property {Error} [error] - The caught error object
  */
@@ -15,7 +15,7 @@ interface ErrorBoundaryState {
 
 /**
  * Error boundary props interface.
- * @interface ErrorBoundaryProps
+
  * @property {React.ReactNode} children - Child components to wrap
  * @property {React.ComponentType} [fallback] - Optional custom fallback component
  */

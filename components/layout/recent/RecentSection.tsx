@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store/useStore";
 
 /**
  * Props for RecentSection component.
- * @interface RecentSectionProps
+
  * @property {string} title - Section title
  * @property {string} command - Terminal command representation
  * @property {any[]} items - Array of recent items to display
@@ -24,7 +24,7 @@ interface RecentSectionProps {
 /**
  * Recent Section Component - collapsible section showing recent items.
  * Features terminal-style command display and expandable item list.
- * @component
+
  * @param {RecentSectionProps} props - Component props
  */
 export function RecentSection({ title, command, items, linkText, linkUrl }: RecentSectionProps) {

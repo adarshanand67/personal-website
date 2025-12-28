@@ -12,7 +12,7 @@ import { SystemStatusLabel } from "@/data/enums";
  * - 9:00-18:00: Coding 💻
  * - Other times: Available ✅
  *
- * @component
+
  * @returns {JSX.Element} Animated status badges showing time, activity, and location
  */
 export function SystemStatus() {

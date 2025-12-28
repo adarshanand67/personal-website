@@ -10,7 +10,7 @@ import { WatchStatus } from "@/types/definitions";
 
 /**
  * Props for AnimeSidebar component.
- * @interface AnimeSidebarProps
+
  * @property {any} item - Anime data object containing title, image, status, and recommendation info
  */
 interface AnimeSidebarProps {
@@ -22,7 +22,7 @@ interface AnimeSidebarProps {
  * Features gradient background, responsive poster display with fallback,
  * completion/recommendation status badges, and YouTube trailer search link.
  *
- * @component
+
  * @param {AnimeSidebarProps} props - Component props
  * @returns {JSX.Element} Rendered sidebar with anime poster and actions
  *

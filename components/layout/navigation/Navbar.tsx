@@ -10,7 +10,7 @@ import { NavActions } from "./NavActions";
 /**
  * Modern Navigation Bar Component - sleek floating navbar with blur effect.
  * Features responsive design, smooth animations, and modern glassmorphism.
- * @component
+
  */
 export function Navbar() {
     const { isNavbarActive, setIsNavbarActive, isMounted, setIsMounted } = useStore();

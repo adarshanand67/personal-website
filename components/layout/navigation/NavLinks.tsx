@@ -7,7 +7,7 @@ import { FileText, Book, MonitorPlay, Palette } from "lucide-react";
 
 /**
  * Props for NavLinks component.
- * @interface NavLinksProps
+
  * @property {string} [className] - Optional CSS classes
  * @property {Function} [onItemClick] - Optional callback when link is clicked
  */
@@ -18,7 +18,7 @@ interface NavLinksProps {
 
 /**
  * Modern Navigation Links Component with active state indicators.
- * @component
+
  */
 export function NavLinks({ className, onItemClick }: NavLinksProps) {
     const pathname = usePathname();

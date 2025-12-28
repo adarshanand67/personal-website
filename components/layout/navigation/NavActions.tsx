@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/layout/theme";
 
 /**
  * Props for NavActions component.
- * @interface NavActionsProps
+
  * @property {boolean} isMounted - Whether component is mounted (for SSR safety)
  */
 interface NavActionsProps {
@@ -15,7 +15,7 @@ interface NavActionsProps {
 /**
  * Navigation Actions Component - search button and theme toggle.
  * Displays action buttons in the navbar (search, theme switcher).
- * @component
+
  * @param {NavActionsProps} props - Component props
  */
 export function NavActions({ isMounted }: NavActionsProps) {

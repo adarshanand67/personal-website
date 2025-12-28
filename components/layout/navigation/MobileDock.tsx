@@ -19,7 +19,7 @@ const navItems = [
  * Mobile Dock Component - floating bottom navigation for mobile devices.
  * Features glassmorphic design with active state indicators and search button.
  * Only visible on mobile screens (md breakpoint and below).
- * @component
+
  */
 export function MobileDock() {
     const pathname = usePathname();

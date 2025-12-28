@@ -2,7 +2,7 @@ import { Play, Pause, SkipBack, SkipForward, Repeat, Shuffle } from "lucide-reac
 
 /**
  * Props for music player Controls component.
- * @interface ControlsProps
+
  * @property {boolean} isPlaying - Whether music is currently playing
  * @property {Function} onTogglePlay - Callback to toggle play/pause
  * @property {Function} onNext - Callback to skip to next track
@@ -26,7 +26,7 @@ interface ControlsProps {
 /**
  * Music Player Controls Component - playback control buttons.
  * Features play/pause, skip, shuffle, and repeat controls with an Apple Music aesthetic.
- * @component
+
  * @param {ControlsProps} props - Component props
  */
 export function Controls({

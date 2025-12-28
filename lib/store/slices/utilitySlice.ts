@@ -1,18 +1,9 @@
-/**
- * @fileoverview Utility state slice for Zustand store.
- * Manages todos and guestbook entries.
- */
+/** Utility state slice - manages todos and guestbook entries. */
 
 import { StateCreator } from "zustand";
 import { AppState, TodoState, GuestbookState } from "../types";
 
-/**
- * Creates the utility state slice.
- * Handles todo list and guestbook functionality.
- *
- * @param {Function} set - Zustand set function
- * @returns {TodoState & GuestbookState} Utility state slice
- */
+/** Creates the utility state slice for todos and guestbook. */
 export const createUtilitySlice: StateCreator<AppState, [], [], TodoState & GuestbookState> = (
     set
 ) => ({

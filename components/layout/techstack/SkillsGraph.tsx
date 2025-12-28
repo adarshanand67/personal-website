@@ -32,7 +32,7 @@ interface GraphLink {
 /**
  * Skills Graph Component - force-directed graph visualization of technical skills.
  * Uses react-force-graph-2d for interactive skill relationship visualization.
- * @component
+
  */
 export function SkillsGraph() {
     const { theme } = useTheme();

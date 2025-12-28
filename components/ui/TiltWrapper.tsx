@@ -10,7 +10,7 @@ import { motion, useSpring, useTransform } from "framer-motion";
 
 /**
  * Props for TiltWrapper component.
- * @interface TiltWrapperProps
+
  * @property {React.ReactNode} children - Content to wrap with tilt effect
  * @property {string} [className] - Optional CSS classes
  * @property {number} [intensity=15] - Tilt intensity in degrees (default: 15)
@@ -26,7 +26,7 @@ interface TiltWrapperProps {
  * Applies smooth 3D rotation to children based on mouse position.
  * Uses spring physics for natural motion and resets on mouse leave.
  *
- * @component
+
  * @param {TiltWrapperProps} props - Component props
  * @returns {JSX.Element} Wrapped content with tilt effect
  *

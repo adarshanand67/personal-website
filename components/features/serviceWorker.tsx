@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /**
  * PWA Registration Component - registers service worker for Progressive Web App.
  * Only registers in production environment. Runs once on mount.
- * @component
+
  */
 export function PWARegistration() {
     useEffect(() => {

@@ -14,7 +14,7 @@ import { motion, useSpring } from "framer-motion";
  * Features smooth spring-based motion tracking, mix-blend-difference effect,
  * and automatic hiding on touch devices.
  *
- * @component
+
  * @returns {JSX.Element | null} Rendered custom cursor or null on touch devices
  *
  * @example

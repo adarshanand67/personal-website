@@ -14,7 +14,7 @@ import { AnimeContent } from "./anime/AnimeContent";
 
 /**
  * Props for AnimeModal component.
- * @interface AnimeModalProps
+
  * @property {any} item - Anime data object to display
  * @property {Function} onClose - Callback function to close the modal
  * @property {Function} onTagClick - Callback function when a category tag is clicked
@@ -30,7 +30,7 @@ interface AnimeModalProps {
  * Features backdrop blur, spring animations, responsive layout switching between
  * mobile (single scrollable view) and desktop (sidebar + content), and interactive tag filtering.
  *
- * @component
+
  * @param {AnimeModalProps} props - Component props
  * @returns {JSX.Element} Rendered modal with anime details
  */

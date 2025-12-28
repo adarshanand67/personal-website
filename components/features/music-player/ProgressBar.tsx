@@ -1,6 +1,6 @@
 /**
  * Props for ProgressBar component.
- * @interface ProgressBarProps
+
  * @property {number} currentTime - Current playback time in seconds
  * @property {number} duration - Total track duration in seconds
  * @property {Function} onSeek - Callback when user seeks to a new position
@@ -16,7 +16,7 @@ interface ProgressBarProps {
 /**
  * Progress Bar Component - seekable playback progress indicator.
  * Displays current time, total duration, and allows seeking via slider with an Apple Music style.
- * @component
+
  * @param {ProgressBarProps} props - Component props
  */
 export function ProgressBar({

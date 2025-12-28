@@ -5,7 +5,7 @@ import Link from "next/link";
 
 /**
  * Props for TrackInfo component.
- * @interface TrackInfoProps
+
  * @property {number} index - Current track index in playlist
  * @property {Function} onClose - Callback to close/minimize music player
  */
@@ -17,7 +17,7 @@ interface TrackInfoProps {
 /**
  * Track Info Component - displays current track metadata and album art.
  * Shows track name, artist, and album artwork with maximize and close buttons.
- * @component
+
  * @param {TrackInfoProps} props - Component props
  */
 export function TrackInfo({ index, onClose }: TrackInfoProps) {

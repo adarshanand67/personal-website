@@ -22,7 +22,7 @@ interface MusicPlayerErrorBoundaryState {
  * Error boundary specifically for the music player component.
  * Catches errors in audio playback and provides graceful fallback.
  *
- * @component
+
  * @class
  */
 export class MusicPlayerErrorBoundary extends React.Component<

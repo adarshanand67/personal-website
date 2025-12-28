@@ -18,7 +18,7 @@ import { TerminalPreloader } from "@/components/layout/terminal/TerminalPreloade
 /**
  * Client Layout Component - wraps all client-side providers and global components.
  * Provides theme, state management, navigation, modals, and feature components.
- * @component
+
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Page content
  */

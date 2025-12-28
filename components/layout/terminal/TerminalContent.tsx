@@ -5,7 +5,7 @@ import { parseAnsi } from "@/lib/terminal/ansi";
 
 /**
  * Props for TerminalContent component.
- * @interface TerminalContentProps
+
  * @property {string[]} lines - Array of terminal output lines to display
  * @property {boolean} isIntroDone - Whether intro animation is complete
  * @property {boolean} passwordMode - Whether input should be masked (password mode)
@@ -32,7 +32,7 @@ interface TerminalContentProps {
  * Terminal Content Component - scrollable terminal output and input area.
  * Displays command history with ANSI color support and active command input.
  * Features auto-scroll, password masking, and syntax highlighting for prompts.
- * @component
+
  * @param {TerminalContentProps} props - Component props
  */
 export function TerminalContent({

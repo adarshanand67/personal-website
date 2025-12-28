@@ -12,7 +12,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
  * Renders a fixed gradient bar at the top of the page that fills horizontally
  * as the user scrolls down. Uses spring physics for smooth animations.
  *
- * @component
+
  * @returns {JSX.Element} Rendered scroll progress bar
  *
  * @example

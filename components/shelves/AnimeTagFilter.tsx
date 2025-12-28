@@ -10,7 +10,7 @@ import { PillTag } from "@/components/ui/PillTag";
 
 /**
  * Props for AnimeTagFilter component.
- * @interface AnimeTagFilterProps
+
  * @property {any[]} items - Array of anime items to extract tags from
  * @property {string | null} selectedTag - Currently selected tag filter
  * @property {Function} onTagSelect - Callback when a tag is selected or deselected
@@ -25,7 +25,7 @@ interface AnimeTagFilterProps {
  * Anime Tag Filter Component - interactive tag filtering UI.
  * Extracts unique tags from anime items and displays them as clickable pill buttons.
  *
- * @component
+
  * @param {AnimeTagFilterProps} props - Component props
  * @returns {JSX.Element | null} Rendered tag filter or null if no tags exist
  */

@@ -2,7 +2,7 @@
 
 /**
  * Props for TerminalHeader component.
- * @interface TerminalHeaderProps
+
  * @property {Function} onMouseDown - Mouse down handler for drag functionality
  */
 interface TerminalHeaderProps {
@@ -13,7 +13,7 @@ interface TerminalHeaderProps {
  * Terminal Header Component - macOS-style terminal window header.
  * Features colored window control buttons and username@host display.
  * Supports drag functionality for repositioning the terminal window.
- * @component
+
  * @param {TerminalHeaderProps} props - Component props
  */
 export function TerminalHeader({ onMouseDown }: TerminalHeaderProps) {

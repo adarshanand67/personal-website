@@ -12,7 +12,7 @@ import { TerminalContent } from "./TerminalContent";
 /**
  * Terminal Component - interactive command-line interface.
  * Features draggable window, command execution, and password mode.
- * @component
+
  */
 export function Terminal() {
     const {

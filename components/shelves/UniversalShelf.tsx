@@ -23,7 +23,7 @@ import { AnimeModal } from "./modals/AnimeModal";
 
 /**
  * Props for UniversalShelf component.
- * @interface UniversalShelfProps
+
  * @property {ShelfConfig} config - Shelf configuration object defining type, title, description, etc.
  * @property {unknown[]} items - Array of items to display in the shelf
  */
@@ -38,7 +38,7 @@ interface UniversalShelfProps {
  * search filtering, tag filtering (anime), randomizer, breadcrumbs, and modals.
  * Uses strategy pattern to delegate rendering to type-specific strategies.
  *
- * @component
+
  * @param {UniversalShelfProps} props - Component props
  * @returns {JSX.Element} Rendered shelf with header, filters, content grid, and modals
  *

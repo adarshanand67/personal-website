@@ -9,7 +9,7 @@ import { CommandMenuFooter } from "./command-menu/CommandMenuFooter";
 /**
  * Command Menu Component - keyboard-driven command palette.
  * Features fuzzy search, keyboard navigation, and grouped commands.
- * @component
+
  */
 export function CommandMenu() {
     const {

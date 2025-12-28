@@ -12,7 +12,7 @@ import { SkillsGraph } from "./SkillsGraph";
 /**
  * Tech Stack Section Component - displays technical skills in list or graph view.
  * Features collapsible section with view mode toggle and auto-linked technology names.
- * @component
+
  */
 export function TechStack() {
     const { expandedSections, toggleSectionExpanded } = useStore();

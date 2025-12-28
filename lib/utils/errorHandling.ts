@@ -1,11 +1,6 @@
-/**
- * @fileoverview Error handling utilities and helpers.
- * Provides consistent error handling patterns across the application.
- */
+/** Error handling utilities and helpers. */
 
-/**
- * Custom error class for application-specific errors.
- */
+/** Custom error class for application-specific errors. */
 export class AppError extends Error {
     constructor(
         message: string,
@@ -17,24 +12,7 @@ export class AppError extends Error {
     }
 }
 
-/**
- * Safely executes an async function with error handling.
- * Returns [data, error] tuple similar to Go's error handling pattern.
- *
- * @template T - The return type of the async function
- * @param {Promise<T>} promise - The promise to execute
- * @returns {Promise<[T | null, Error | null]>} Tuple of [data, error]
- *
- * @example
- * ```ts
- * const [data, error] = await safeAsync(fetchData());
- * if (error) {
- *   console.error(error);
- *   return;
- * }
- * // Use data safely
- * ```
- */
+/** Safely executes an async function, returns [data, error] tuple. */
 export async function safeAsync<T>(promise: Promise<T>): Promise<[T | null, Error | null]> {
     try {
         const data = await promise;
@@ -44,24 +22,7 @@ export async function safeAsync<T>(promise: Promise<T>): Promise<[T | null, Erro
     }
 }
 
-/**
- * Safely executes a synchronous function with error handling.
- * Returns [data, error] tuple.
- *
- * @template T - The return type of the function
- * @param {() => T} fn - The function to execute
- * @returns {[T | null, Error | null]} Tuple of [data, error]
- *
- * @example
- * ```ts
- * const [result, error] = safeSync(() => JSON.parse(jsonString));
- * if (error) {
- *   console.error('Parse error:', error);
- *   return defaultValue;
- * }
- * return result;
- * ```
- */
+/** Safely executes a synchronous function, returns [data, error] tuple. */
 export function safeSync<T>(fn: () => T): [T | null, Error | null] {
     try {
         const data = fn();
@@ -71,22 +32,7 @@ export function safeSync<T>(fn: () => T): [T | null, Error | null] {
     }
 }
 
-/**
- * Validates that a value is not null or undefined.
- * Throws an error if validation fails.
- *
- * @template T
- * @param {T | null | undefined} value - Value to validate
- * @param {string} fieldName - Name of the field for error message
- * @returns {T} The validated value
- * @throws {AppError} If value is null or undefined
- *
- * @example
- * ```ts
- * const user = assertNotNull(maybeUser, 'user');
- * // user is guaranteed to be non-null here
- * ```
- */
+/** Validates that a value is not null or undefined. */
 export function assertNotNull<T>(value: T | null | undefined, fieldName: string): T {
     if (value === null || value === undefined) {
         throw new AppError(`${fieldName} is required but was ${value}`, "NULL_VALUE");
@@ -94,19 +40,7 @@ export function assertNotNull<T>(value: T | null | undefined, fieldName: string)
     return value;
 }
 
-/**
- * Safely accesses a nested property with a fallback value.
- *
- * @template T
- * @param {() => T} accessor - Function that accesses the property
- * @param {T} fallback - Fallback value if access fails
- * @returns {T} The accessed value or fallback
- *
- * @example
- * ```ts
- * const name = safeAccess(() => user.profile.name, 'Unknown');
- * ```
- */
+/** Safely accesses a nested property with a fallback value. */
 export function safeAccess<T>(accessor: () => T, fallback: T): T {
     try {
         return accessor() ?? fallback;
@@ -115,13 +49,7 @@ export function safeAccess<T>(accessor: () => T, fallback: T): T {
     }
 }
 
-/**
- * Logs an error with context information.
- * In production, this could send to an error tracking service.
- *
- * @param {Error} error - The error to log
- * @param {Record<string, any>} context - Additional context
- */
+/** Logs an error with context information. */
 export function logError(error: Error, context?: Record<string, any>): void {
     if (process.env.NODE_ENV === "development") {
         console.error("Error:", error);
@@ -129,19 +57,11 @@ export function logError(error: Error, context?: Record<string, any>): void {
             console.error("Context:", context);
         }
     } else {
-        // In production, send to error tracking service (e.g., Sentry)
-        // Example: Sentry.captureException(error, { extra: context });
         console.error(error.message);
     }
 }
 
-/**
- * Creates a user-friendly error message from an error object.
- *
- * @param {unknown} error - The error object
- * @param {string} fallback - Fallback message
- * @returns {string} User-friendly error message
- */
+/** Creates a user-friendly error message from an error object. */
 export function getErrorMessage(error: unknown, fallback = "An error occurred"): string {
     if (error instanceof AppError) {
         return error.message;
@@ -155,15 +75,7 @@ export function getErrorMessage(error: unknown, fallback = "An error occurred"):
     return fallback;
 }
 
-/**
- * Retry a function with exponential backoff.
- *
- * @template T
- * @param {() => Promise<T>} fn - Function to retry
- * @param {number} maxRetries - Maximum number of retries
- * @param {number} delayMs - Initial delay in milliseconds
- * @returns {Promise<T>} Result of the function
- */
+/** Retry a function with exponential backoff. */
 export async function retryWithBackoff<T>(
     fn: () => Promise<T>,
     maxRetries = 3,
@@ -187,3 +99,4 @@ export async function retryWithBackoff<T>(
 
     throw lastError || new Error("Max retries exceeded");
 }
+

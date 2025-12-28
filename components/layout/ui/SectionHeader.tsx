@@ -6,7 +6,7 @@ import { useStore } from "@/lib/store/useStore";
 
 /**
  * Props for SectionHeader component.
- * @interface SectionHeaderProps
+
  * @property {string} title - Section title text
  * @property {boolean} isExpanded - Whether section is expanded
  * @property {Function} onToggle - Callback when header is clicked
@@ -21,7 +21,7 @@ interface SectionHeaderProps {
 
 /**
  * Section Header Component - collapsible section header with animated chevron.
- * @component
+
  * @param {SectionHeaderProps} props - Component props
  */
 export function SectionHeader({ title, isExpanded, onToggle, rightElement }: SectionHeaderProps) {
@@ -48,7 +48,7 @@ export function SectionHeader({ title, isExpanded, onToggle, rightElement }: Sec
  * Spotlight Card Component - interactive card with mouse-tracking spotlight effect.
  * Creates a radial gradient that follows the mouse cursor for premium visual feedback.
  *
- * @component
+
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Card content
  * @param {string} [props.className] - Additional CSS classes

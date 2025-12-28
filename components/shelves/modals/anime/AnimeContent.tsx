@@ -9,7 +9,7 @@ import { PillTag } from "@/components/ui/PillTag";
 
 /**
  * Props for AnimeContent component.
- * @interface AnimeContentProps
+
  * @property {any} item - Anime data object with title, year, rating, seasons, description, tags, and learnings
  * @property {Function} onTagClick - Callback function when a category tag is clicked
  */
@@ -23,7 +23,7 @@ interface AnimeContentProps {
  * Features scrollable content area with anime title, metadata badges (year, rating, seasons),
  * description, clickable category tags, and key learnings/takeaways list.
  *
- * @component
+
  * @param {AnimeContentProps} props - Component props
  * @returns {JSX.Element} Rendered content area with anime details
  */

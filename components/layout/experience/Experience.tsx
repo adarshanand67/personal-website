@@ -17,7 +17,7 @@ interface ExperienceProps {
 /**
  * Experience Section Component - displays professional work history.
  * Features collapsible section with spotlight cards and auto-linked technology mentions.
- * @component
+
  */
 export function Experience({ items }: ExperienceProps) {
     const { expandedSections, toggleSectionExpanded } = useStore();

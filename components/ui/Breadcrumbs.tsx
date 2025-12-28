@@ -10,7 +10,7 @@ import { ChevronRight, Home } from "lucide-react";
 
 /**
  * Props for Breadcrumbs component.
- * @interface BreadcrumbsProps
+
  * @property {Array<{label: string, href?: string}>} items - Array of breadcrumb items
  */
 interface BreadcrumbsProps {
@@ -25,7 +25,7 @@ interface BreadcrumbsProps {
  * Displays home icon followed by breadcrumb items separated by chevrons.
  * Items can be links or plain text for the current page.
  *
- * @component
+
  * @param {BreadcrumbsProps} props - Component props
  * @returns {JSX.Element} Rendered breadcrumb navigation
  *

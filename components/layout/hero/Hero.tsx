@@ -8,7 +8,7 @@ import { useStore } from "@/lib/store/useStore";
 
 /**
  * Props for the Hero component.
- * @interface HeroProps
+
  * @property {Profile} profile - Profile data containing name, avatar, bio, and other personal information
  */
 interface HeroProps {
@@ -22,7 +22,7 @@ interface HeroProps {
  * - **Profile View**: Displays personal information, avatar, bio, and social links
  * - **Terminal View**: Interactive terminal interface for command-based navigation
  *
- * @component
+
  * @param {HeroProps} props - Component props
  * @param {any} props.profile - Profile data object containing personal information
  * @returns {JSX.Element} Hero section with animated view transitions

@@ -7,7 +7,7 @@ import { introLines } from "@/lib/constants";
 /**
  * Terminal Preloader Component - preloads terminal content on app initialization.
  * Runs once on mount to populate terminal lines before user switches to terminal view.
- * @component
+
  */
 export function TerminalPreloader() {
     const { isIntroDone, setLines, setIsIntroDone } = useStore();

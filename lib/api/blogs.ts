@@ -1,18 +1,11 @@
-/**
- * @fileoverview Blogs API - functions for reading and parsing blog posts.
- * Handles markdown file reading, frontmatter parsing, and blog listing.
- */
+/** Blogs API - functions for reading and parsing blog posts. */
 
 import { promises as fs } from "fs";
 import path from "path";
 import { parseFrontmatter } from "./markdown";
 import { logError, AppError, safeAsync } from "@/lib/utils/errorHandling";
 
-/**
- * Fetches all blog posts from the data/blogs directory.
- * Reads markdown files, parses frontmatter, and sorts by date (newest first).
- * @returns {Promise<Array>} Array of blog post metadata
- */
+/** Fetches all blog posts from the data/blogs directory. */
 export async function getBlogs() {
     try {
         const dir = path.join(process.cwd(), "data", "blogs");
@@ -85,11 +78,7 @@ export async function getBlogs() {
     }
 }
 
-/**
- * Fetches a single blog post content by slug.
- * @param {string} slug - Blog post slug (filename without .md extension)
- * @returns {Promise<string|null>} Blog post markdown content or null if not found
- */
+/** Fetches a single blog post content by slug. */
 export async function getPost(slug: string) {
     try {
         // Validate slug

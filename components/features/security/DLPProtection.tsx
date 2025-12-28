@@ -81,7 +81,7 @@ const DLPNotification = ({ notifications }: { notifications: NotificationType[] 
  * - **Window Blur Protection**: Blacks out content when window loses focus
  * - **Honeytoken**: Hidden link to trap bots and scrapers
  *
- * @component
+
  * @returns {JSX.Element} DLP protection layer with notifications and overlays
  *
  * @remarks

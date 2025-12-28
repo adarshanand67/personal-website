@@ -55,7 +55,7 @@ const getIcon = (iconName: string) => {
 
 /**
  * Props for HobbyModal component.
- * @interface HobbyModalProps
+
  * @property {any} item - Hobby data object containing name, icon, description, and optional link
  * @property {Function} onClose - Callback function to close the modal
  */
@@ -69,7 +69,7 @@ interface HobbyModalProps {
  * Features animated backdrop, icon display, centered content layout,
  * and optional external link button.
  *
- * @component
+
  * @param {HobbyModalProps} props - Component props
  * @returns {JSX.Element} Rendered modal with hobby details
  *

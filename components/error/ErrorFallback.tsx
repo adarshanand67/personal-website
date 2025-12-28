@@ -23,7 +23,7 @@ interface ErrorFallbackProps {
  * ErrorFallback Component - displays a user-friendly error message.
  * Used by error boundaries and error pages throughout the application.
  *
- * @component
+
  * @example
  * ```tsx
  * <ErrorFallback

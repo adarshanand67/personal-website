@@ -5,7 +5,7 @@ import { NavLinks } from "./NavLinks";
 /**
  * Footer Component - site footer with navigation links and branding.
  * Features glassmorphic design with gradient backgrounds.
- * @component
+
  */
 export function Footer() {
     return (
