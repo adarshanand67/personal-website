@@ -288,11 +288,11 @@ export default function MusicPage() {
             </div>
 
             {/* Main Content - Apple Music Style: Left Player, Right Playlist */}
-            <div className="flex flex-col lg:flex-row h-full lg:h-[calc(100vh-8rem)] lg:overflow-hidden pt-12 lg:pt-20 px-4 lg:px-8 max-w-[1800px] mx-auto">
+            <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] lg:overflow-hidden pt-4 lg:pt-8 px-4 lg:px-8 max-w-[1800px] mx-auto">
                 {/* LEFT SIDE - Music Player */}
                 <div
                     className={cn(
-                        "flex flex-col justify-center transition-all duration-500 ease-in-out pb-32 lg:pb-0",
+                        "flex flex-col justify-start lg:justify-center transition-all duration-500 ease-in-out pb-8 lg:pb-0 lg:overflow-y-auto",
                         isMaximized ? "lg:w-2/3 px-4 lg:px-12" : "lg:w-1/2 px-4 lg:px-8"
                     )}
                 >
@@ -328,7 +328,7 @@ export default function MusicPage() {
                     </div>
 
                     {/* Controls & Details Section */}
-                    <div className="flex flex-col justify-center w-full max-w-md lg:max-w-lg mx-auto">
+                    <div className="flex flex-col justify-center w-full max-w-md lg:max-w-lg mx-auto pb-4">
                         {/* Track Info */}
                         <div className="flex items-center justify-between mb-6">
                             <div className="flex-1 min-w-0 mr-4">
