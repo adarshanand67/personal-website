@@ -9,11 +9,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --color-primary: var(--foreground);
-    --color-primary-dark: var(--foreground);
-    --color-accent: var(--foreground);
-    --font-sans: var(--font-assistant);
-    --font-serif: var(--font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--foreground);
+  --color-primary-dark: var(--foreground);
+  --color-accent: var(--foreground);
+  --font-sans: var(--font-assistant);
+  --font-serif: var(--font-mono);
 }

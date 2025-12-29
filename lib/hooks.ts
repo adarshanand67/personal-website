@@ -1,15 +1,11 @@
-/**
- * @fileoverview Consolidated hooks module
- */
-
 import { useState, useEffect } from "react";
 
 export function useMounted() {
-    const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    return mounted;
+  return mounted;
 }

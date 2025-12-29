@@ -1,112 +1,112 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-assistant), sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-assistant), sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* DLP Vector: Print Protection */
 @media print {
-    body {
-        display: none !important;
-    }
+  body {
+    display: none !important;
+  }
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 100;
-    filter: contrast(120%) brightness(100%);
+  content: "";
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 100;
+  filter: contrast(120%) brightness(100%);
 }
 
 .dark body::before {
-    opacity: 0.04;
+  opacity: 0.04;
 }
 
 ::selection {
-    background: var(--selection-bg);
-    color: white;
+  background: var(--selection-bg);
+  color: white;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 100px;
-    transition: background 0.2s ease;
+  background: #cbd5e1;
+  border-radius: 100px;
+  transition: background 0.2s ease;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-    background: #334155;
+  background: #334155;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+  background: var(--primary);
 }
 
 /* Remove common outlines */
 input:focus,
 textarea:focus,
 select:focus {
-    outline: none !important;
-    box-shadow: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Smooth transitions for theme changes */
 * {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 /* Disable transitions during theme change */
 .no-transition * {
-    transition: none !important;
+  transition: none !important;
 }
 
 /* Improved link styles */
 a {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 700;
 }
 
 a:hover {
-    opacity: 0.8;
-    text-decoration: none;
+  opacity: 0.8;
+  text-decoration: none;
 }
 
 /* Better image rendering */
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Smooth font rendering */
@@ -116,49 +116,49 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 /* Improved button base */
 button {
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
 }
 
 button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Form elements */
 input,
 textarea,
 select {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Remove default styles */
 ul,
 ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

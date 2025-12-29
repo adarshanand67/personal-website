@@ -44,23 +44,23 @@ Edit **`lib/config.ts`**:
 
 ```typescript
 export const siteConfig = {
-    name: "Your Name", // ← Change this
-    title: "Your Name - Your Title", // ← Change this
-    description: "Your portfolio description",
-    url: "https://yourwebsite.com",
+  name: "Your Name", // ← Change this
+  title: "Your Name - Your Title", // ← Change this
+  description: "Your portfolio description",
+  url: "https://yourwebsite.com",
 
-    author: {
-        name: "Your Name",
-        email: "your.email@example.com",
-        role: "Your Role @ Company",
-        github: "yourgithub",
-        linkedin: "yourlinkedin",
-    },
+  author: {
+    name: "Your Name",
+    email: "your.email@example.com",
+    role: "Your Role @ Company",
+    github: "yourgithub",
+    linkedin: "yourlinkedin",
+  },
 
-    seo: {
-        keywords: ["Your", "Keywords"],
-        ogImage: "/og-image.png",
-    },
+  seo: {
+    keywords: ["Your", "Keywords"],
+    ogImage: "/og-image.png",
+  },
 };
 ```
 
