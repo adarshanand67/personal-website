@@ -16,10 +16,8 @@ import { Breadcrumbs } from "@/components/ui";
 import { ShelfHeader } from "./ShelfHeader";
 import { ShelfSkeleton } from "./ShelfSkeleton";
 import { AnimeTagFilter } from "./AnimeTagFilter";
-import { useShelfFilter } from "./hooks/useShelfFilter";
-import { HobbyModal } from "./modals/HobbyModal";
-import { BookModal } from "./modals/BookModal";
-import { AnimeModal } from "./modals/AnimeModal";
+import { useShelfFilter } from "./useShelfFilter";
+import { HobbyModal, BookModal, AnimeModal } from "./shelfModals";
 
 /**
  * Props for UniversalShelf component.
