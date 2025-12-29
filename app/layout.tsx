@@ -7,7 +7,7 @@ import { DLPProvider } from "@/components/layout/security/DLPProvider";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo/schemas";
 import { RegisterSW } from "@/components/pwa/RegisterSW";
-import { GlobalErrorBoundary } from "@/components/error/GlobalErrorBoundary";
+import { GlobalErrorBoundary } from "@/components/error";
 
 const assistant = Assistant({
     variable: "--font-assistant",
