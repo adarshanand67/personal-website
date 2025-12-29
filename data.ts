@@ -234,15 +234,15 @@ export interface ArchNode {
   id: string;
   label: string;
   type:
-    | "frontend"
-    | "backend"
-    | "database"
-    | "devops"
-    | "core"
-    | "security"
-    | "language"
-    | "system"
-    | "ai";
+  | "frontend"
+  | "backend"
+  | "database"
+  | "devops"
+  | "core"
+  | "security"
+  | "language"
+  | "system"
+  | "ai";
   x: number;
   y: number;
   description?: string;
@@ -1389,9 +1389,43 @@ export const anime = [
     ],
   },
   {
+    title: "The Promised Neverland",
+    type: AnimeType.Anime,
+    status: WatchStatus.Completed,
+    seasons: "S1,2",
+    image: "https://cdn.myanimelist.net/images/anime/1125/96929l.jpg",
+    description:
+      "Orphans at Grace Field House discover they are raised as livestock for demons and plan an escape.",
+    tags: ["Sci-Fi", "Mystery", "Horror", "Psychological"],
+    year: "2019",
+    rating: "8.5/10",
+    keyLearnings: [
+      "Freedom is worth any price.",
+      "Strategic thinking can overcome superior strength.",
+      "Family is not just blood, it's those you fight for.",
+    ],
+  },
+  {
+    title: "Monster",
+    type: AnimeType.Anime,
+    status: WatchStatus.Completed,
+    seasons: "S1 (74 episodes)",
+    image: "https://cdn.myanimelist.net/images/anime/10/18793l.jpg",
+    description:
+      "Dr. Kenzou Tenma saves a young boy's life, only to find out years later he is a monster.",
+    tags: ["Drama", "Mystery", "Suspense", "Psychological"],
+    year: "2004",
+    rating: "8.9/10",
+    keyLearnings: [
+      "All life is equal.",
+      "The true monster is often the one within.",
+      "Doing the right thing can sometimes lead to terrible consequences.",
+    ],
+  },
+  {
     title: "Fruits Basket",
     type: AnimeType.Anime,
-    status: WatchStatus.Planning,
+    status: WatchStatus.Completed,
     seasons: "S1-3",
     image: "https://cdn.myanimelist.net/images/anime/1447/99827l.jpg",
     description:
