@@ -23,7 +23,7 @@ class AudioAnalyzer {
   private source: MediaElementAudioSourceNode | null = null;
   private initialized = false;
 
-  private constructor() { }
+  private constructor() {}
 
   /**
    * Get the singleton instance of AudioAnalyzer.
@@ -56,7 +56,8 @@ class AudioAnalyzer {
 
     const AudioContextClass =
       window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext;
     if (!AudioContextClass) return;
 
     this.context = new AudioContextClass();
@@ -91,7 +92,11 @@ class AudioAnalyzer {
    */
   setVolume(volume: number) {
     if (this.gainNode) {
-      this.gainNode.gain.setTargetAtTime(volume, this.context!.currentTime, 0.01);
+      this.gainNode.gain.setTargetAtTime(
+        volume,
+        this.context!.currentTime,
+        0.01,
+      );
     }
   }
 

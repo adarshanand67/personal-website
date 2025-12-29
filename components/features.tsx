@@ -181,7 +181,7 @@ export function DLPProtection() {
         setIsBlur(true);
         setTimeout(() => setIsBlur(false), 2000);
         if (typeof navigator !== "undefined" && navigator.clipboard)
-          navigator.clipboard.writeText("").catch(() => { });
+          navigator.clipboard.writeText("").catch(() => {});
         addNotification(
           "Screen capture attempt detected and blocked.",
           <Camera size={16} />,

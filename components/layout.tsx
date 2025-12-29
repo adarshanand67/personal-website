@@ -1400,19 +1400,21 @@ export const ViewToggle = ({
   <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
     <button
       onClick={() => setViewMode("profile")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "profile"
-        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-        }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+        viewMode === "profile"
+          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+      }`}
     >
       <User size={14} /> <span>Profile</span>
     </button>
     <button
       onClick={() => setViewMode("terminal")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "terminal"
-        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-        }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
+        viewMode === "terminal"
+          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+      }`}
     >
       <TerminalIcon size={14} /> <span>Terminal</span>
     </button>
@@ -1686,9 +1688,13 @@ export function TechStack() {
                           let domain = "";
                           try {
                             if (url) domain = new URL(url).hostname;
-                          } catch (e) { console.error(e); }
+                          } catch (e) {
+                            console.error(e);
+                          }
 
-                          const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32` : null;
+                          const faviconUrl = domain
+                            ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32`
+                            : null;
                           const Icon = getTechIcon(skill);
 
                           return (
@@ -1708,7 +1714,9 @@ export function TechStack() {
                                   unoptimized
                                 />
                               ) : (
-                                Icon && <Icon size={14} className="opacity-50" />
+                                Icon && (
+                                  <Icon size={14} className="opacity-50" />
+                                )
                               )}
                               {skill}
                             </Link>

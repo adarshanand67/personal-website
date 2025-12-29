@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && next-image-export-optimizer",
     "postbuild": "node scripts/generate-sw.js",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@radix-ui/react-slider": "^1.3.6",
