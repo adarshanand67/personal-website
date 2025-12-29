@@ -235,13 +235,13 @@ function BookSidebar({ item }: BookSidebarProps) {
                     </div>
                 )}
                 <a
-                    href={item.amazonLink || `https://www.amazon.com/s?k=${encodeURIComponent(item.title + " " + item.author)}`}
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " " + item.author + " book review")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3 text-foreground/60 hover:text-foreground rounded-xl text-[10px] font-black uppercase tracking-widest group transition-all hover:scale-[1.02] active:scale-[0.98] border border-foreground/10 hover:border-foreground hover:bg-foreground/5 shadow-sm"
                 >
-                    <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
-                    <span>Get it on Amazon</span>
+                    <Play size={14} className="group-hover:scale-110 transition-transform fill-current" />
+                    <span>Watch Book Review</span>
                 </a>
             </div>
         </div>
