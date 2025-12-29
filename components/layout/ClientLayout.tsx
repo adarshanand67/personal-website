@@ -5,7 +5,7 @@ import {
     MobileDock, TerminalPreloader
 } from "@/components/layout";
 import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlayer";
-import { PWARegistration } from "@/components/features/serviceWorker";
+
 import { HobbiesModal } from "@/components/modals";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -25,7 +25,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         >
             <DLPProtection />
             <TerminalPreloader />
-            <PWARegistration />
+
             <ScrollProgress />
             <div className="page-glow" />
             <GlobalEffect />
