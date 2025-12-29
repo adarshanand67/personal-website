@@ -210,11 +210,24 @@ function BookSidebar({ item }: BookSidebarProps) {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
 
             {item.image ? (
-                <div className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500">
+                <a
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " " + item.author + " book review")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group flex-shrink-0"
+                >
                     <Image src={item.image} alt={item.title} fill className="object-cover" priority />
-                </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                        <Play size={48} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" fill="currentColor" />
+                    </div>
+                </a>
             ) : (
-                <div className={`relative w-40 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-6 md:mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500`}>
+                <a
+                    href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " " + item.author + " book review")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative w-40 md:w-64 aspect-[2/3] bg-gradient-to-br ${getBookGradient(item.title)} rounded-r-md rounded-l-sm flex flex-col p-6 mb-6 md:mb-8 shadow-2xl ring-1 ring-black/5 dark:ring-white/10 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group`}
+                >
                     <div className="absolute top-1 left-0 w-4 h-[98%] -translate-x-3 bg-black/20 dark:bg-black/40 blur-[1px] rounded-l-sm" />
                     <div className="flex-1 border-2 border-white/20 p-4 flex flex-col items-center justify-center text-center">
                         <BookOpen className="text-white/40 mb-4" size={32} />
@@ -224,7 +237,10 @@ function BookSidebar({ item }: BookSidebarProps) {
                         <p className="text-xs text-white/80 font-mono uppercase tracking-widest truncate">{item.author}</p>
                     </div>
                     <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay"></div>
-                </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center rounded-r-md rounded-l-sm">
+                        <Play size={48} className="text-white opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" fill="currentColor" />
+                    </div>
+                </a>
             )}
 
             <div className="w-full space-y-3 relative z-10">

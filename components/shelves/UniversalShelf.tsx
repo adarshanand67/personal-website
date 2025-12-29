@@ -13,9 +13,7 @@ import { ShelfType } from "@/types/definitions";
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory } from "@/lib/shelfStrategies";
 import { Breadcrumbs } from "@/components/ui";
-import { ShelfHeader } from "./ShelfHeader";
-import { ShelfSkeleton } from "./ShelfSkeleton";
-import { AnimeTagFilter } from "./AnimeTagFilter";
+import { ShelfHeader, ShelfSkeleton, AnimeTagFilter } from "./shelfUtils";
 import { useShelfFilter } from "./useShelfFilter";
 import { HobbyModal, BookModal, AnimeModal } from "./shelfModals";
 

@@ -1,26 +1,58 @@
 /**
- * @fileoverview Shelf Header Component - displays shelf title, description, search, and actions.
- * Provides a comprehensive header for shelf pages with title, description, item count,
- * search input, and optional randomizer button.
+ * @fileoverview Consolidated shelf utility components - header, skeleton, and tag filter.
  */
 
 "use client";
 
+import React from "react";
 import { Search } from "lucide-react";
-import { RandomizerButton } from "@/components/ui";
+import { PillTag, RandomizerButton } from "@/components/ui";
 
-/**
- * Props for ShelfHeader component.
+// ============================================================================
+// AnimeTagFilter
+// ============================================================================
 
- * @property {string} title - Shelf title to display
- * @property {string} [description] - Optional shelf description
- * @property {number} count - Total number of items in the shelf
- * @property {string} searchValue - Current search query value
- * @property {Function} onSearchChange - Callback when search input changes
- * @property {string} [searchPlaceholder] - Optional placeholder text for search input
- * @property {Function} [onPickRandom] - Optional callback when random item is picked
- * @property {unknown[]} [items] - Optional array of items for randomizer
- */
+interface AnimeTagFilterProps {
+    items: any[];
+    selectedTag: string | null;
+    onTagSelect: (tag: string | null) => void;
+}
+
+export function AnimeTagFilter({ items, selectedTag, onTagSelect }: AnimeTagFilterProps) {
+    const hasRecommended = items.some((item) => item.recommended);
+    const allTags = Array.from(new Set(items.flatMap((item) => item.tags || []))).sort();
+
+    if (hasRecommended) {
+        allTags.unshift("Recommended");
+    }
+
+    if (allTags.length === 0) return null;
+
+    return (
+        <div className="mb-8">
+            <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
+                Filter by Tag
+            </h4>
+            <div className="flex flex-wrap gap-2">
+                {allTags.map((tag) => (
+                    <PillTag
+                        key={tag}
+                        label={tag}
+                        selected={selectedTag === tag}
+                        dimmed={selectedTag !== tag}
+                        onClick={() => onTagSelect(selectedTag === tag ? null : tag)}
+                        variant="filter"
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// ShelfHeader
+// ============================================================================
+
 interface ShelfHeaderProps {
     title: string;
     description?: string;
@@ -34,29 +66,6 @@ interface ShelfHeaderProps {
     onClear?: () => void;
 }
 
-/**
- * Shelf Header Component - comprehensive header for shelf pages.
- * Features gradient title, optional description, item count badge,
- * optional randomizer button, and search input with icon.
- *
-
- * @param {ShelfHeaderProps} props - Component props
- * @returns {JSX.Element} Rendered shelf header
- *
- * @example
- * ```tsx
- * <ShelfHeader
- *   title="My Books"
- *   description="A curated collection of books"
- *   count={42}
- *   searchValue={query}
- *   onSearchChange={setQuery}
- *   searchPlaceholder="Search books..."
- *   items={bookList}
- *   onPickRandom={(book) => openBook(book)}
- * />
- * ```
- */
 export function ShelfHeader({
     title,
     description,
@@ -114,6 +123,30 @@ export function ShelfHeader({
                     placeholder={searchPlaceholder || "Search..."}
                     className="w-full bg-white dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-2xl py-2.5 pl-12 pr-4 text-base focus:outline-none focus:ring-2 focus:ring-foreground/20 focus:border-foreground/30 transition-all shadow-sm group-hover:shadow-md"
                 />
+            </div>
+        </div>
+    );
+}
+
+// ============================================================================
+// ShelfSkeleton
+// ============================================================================
+
+export function ShelfSkeleton() {
+    return (
+        <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-12 font-mono">
+            <div className="h-4 w-32 bg-gray-200 dark:bg-gray-800 rounded animate-pulse mb-8" />
+            <div className="space-y-4 mb-12">
+                <div className="h-12 w-64 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+                <div className="h-6 w-full max-w-2xl bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                    <div
+                        key={i}
+                        className="aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse"
+                    />
+                ))}
             </div>
         </div>
     );

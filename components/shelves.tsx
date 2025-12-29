@@ -1,5 +1,4 @@
 "use client";
 
-export { ShelfHeader } from "./shelves/ShelfHeader";
+export { ShelfHeader, ShelfSkeleton, AnimeTagFilter } from "./shelves/shelfUtils";
 export { UniversalShelf } from "./shelves/UniversalShelf";
-export { ShelfSkeleton } from "./shelves/ShelfSkeleton";
