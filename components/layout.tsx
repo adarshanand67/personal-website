@@ -61,6 +61,7 @@ import {
     Ruler,
     Globe,
     Command as CommandIcon,
+    Package,
 } from "lucide-react";
 
 import { useStore } from "@/lib/store";
@@ -74,15 +75,15 @@ import {
 import { siteConfig, shelfConfigs } from "@/lib/config";
 import { getAssetPath } from "@/lib/utils";
 import { linkifyTech, techLinks } from "@/lib/techLinks";
-import { SystemStatusLabel } from "@/data/enums";
+import { SystemStatusLabel } from "@/data";
 import { useMounted } from "@/lib/hooks";
 import { commands, mockFiles, parseAnsi } from "@/lib/terminal";
 import { Profile } from "@/types/definitions";
-import { DLPProtection } from "@/components/features/DLPProtection";
+import { DLPProtection } from "@/components/features";
 import { HobbiesModal } from "@/components/modals";
-import { ShortcutGuide } from "@/components/features/ShortcutGuide";
+import { ShortcutGuide } from "@/components/features";
 import { ScrollProgress, TiltWrapper } from "@/components/ui";
-import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlayer";
+import { MusicPlayer, MusicToggleButton } from "@/components/features";
 
 // ============================================================================
 // Shared Components & UI Elements
@@ -256,6 +257,25 @@ function createClientIcon(Icon: React.ComponentType<{ className?: string }>) {
 export const ClientLinkedin = createClientIcon(Linkedin);
 export const ClientGithub = createClientIcon(Github);
 export const ClientMail = createClientIcon(Mail);
+
+function getTechIcon(name: string) {
+    const icons: Record<string, any> = {
+        "C": Code, "C++": Code, "Python": Code, "JavaScript": Code, "TypeScript": Code, "Bash": TerminalIcon,
+        "Intel SGX/TDX": Activity, "Gramine": FileJson, "System Programming": Laptop, "Windows Internals": Laptop,
+        "Ubuntu": Globe, "CentOS": Globe, "RHEL": Globe,
+        "Data Loss Prevention": Check, "Trellix ePO": Activity, "Endpoint Security": Check, "EDR": Activity, "XDR": Activity,
+        "PowerShell": TerminalIcon, "Boldon James": Bookmark, "Full-Disk Encryption": Copy, "Hashicorp Vault": Keyboard,
+        "OpenSSL": Keyboard, "Post-Quantum Cryptography": Keyboard, "libFuzzer": Activity, "RESTler": Activity,
+        "SIEM": Activity, "Threat Intelligence": Activity, "Address Sanitizer": Activity, "Memory Sanitizer": Activity,
+        "FIDO Device Onboarding": User,
+        "vLLM": Activity, "PyTorch": Activity, "OpenVINO": Activity, "NumPy": Activity, "Pandas": Activity,
+        "Jupyter": Activity, "CUDA": Activity, "ONNX": Activity, "MLflow": Activity,
+        "Redis": FileJson, "MySQL": FileJson,
+        "Next.js": Home, "React": Home, "Tailwind CSS": Palette, "Framer Motion": RefreshCw, "Three.js": Palette, "Zustand": FileJson,
+        "Docker": Package, "Kubernetes": Package, "GitHub Actions": Github, "AWS": Globe, "Jenkins": RefreshCw
+    };
+    return icons[name] || null;
+}
 
 export const GlobalEffect = () => {
     const { setIsMounted } = useStore();
@@ -1086,13 +1106,27 @@ export function Experience({ items }: { items: any[] }) {
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="grid grid-cols-1 gap-4 pt-1 overflow-hidden">
                         {items.map((exp, i) => (
                             <SpotlightCard key={i}>
-                                <div className="p-4 md:p-6 flex flex-col md:flex-row gap-4">
-                                    {exp.logo && <div className="shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-gray-800 p-1.5 border border-foreground/5"><Image src={getAssetPath(exp.logo)} alt={exp.company} width={48} height={48} className="w-full h-full object-contain" /></div>}
-                                    <div className="flex-1">
-                                        <div className="flex justify-between items-start"><h3 className="text-lg font-black">{exp.company}</h3><span className="text-xs font-bold opacity-40">{exp.duration}</span></div>
-                                        <p className="text-sm font-bold text-foreground/70">{exp.role}</p>
-                                        <div className="flex items-center gap-1 text-[10px] opacity-40 mt-1"><MapPin size={10} /><span>{exp.location}</span></div>
-                                        <p className="text-xs mt-4 pl-4 border-l-2 border-foreground/10 italic text-foreground/60" dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }} />
+                                <div className="p-4 md:p-6 flex flex-col md:row-gap-4">
+                                    <div className="flex flex-col md:flex-row gap-4">
+                                        {exp.logo && <div className="shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-gray-800 p-1.5 border border-foreground/5 shadow-sm"><Image src={getAssetPath(exp.logo)} alt={exp.company} width={48} height={48} className="w-full h-full object-contain" /></div>}
+                                        <div className="flex-1">
+                                            <div className="flex justify-between items-start"><h3 className="text-lg font-black">{exp.company}</h3><span className="text-xs font-bold opacity-40">{exp.duration}</span></div>
+                                            <p className="text-sm font-bold text-foreground/70">{exp.role}</p>
+                                            <div className="flex items-center gap-1 text-[10px] opacity-40 mt-1"><MapPin size={10} /><span>{exp.location}</span></div>
+                                        </div>
+                                    </div>
+                                    <div className="mt-4">
+                                        <p className="text-xs pl-4 border-l-2 border-foreground/10 italic text-foreground/60 mb-4" dangerouslySetInnerHTML={{ __html: linkifyTech(exp.description) }} />
+                                        {exp.highlights && exp.highlights.length > 0 && (
+                                            <ul className="space-y-2 list-none text-[11px] text-foreground/70">
+                                                {exp.highlights.map((h: string, idx: number) => (
+                                                    <li key={idx} className="flex gap-2 group/item">
+                                                        <span className="text-foreground/30 group-hover/item:text-foreground/60 transition-colors">↳</span>
+                                                        <span dangerouslySetInnerHTML={{ __html: linkifyTech(h) }} />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
                                 </div>
                             </SpotlightCard>
@@ -1134,11 +1168,15 @@ export function TechStack() {
                                     <SpotlightCard key={cat}><div className="p-3">
                                         <h3 className="text-[10px] font-black opacity-40 uppercase tracking-widest mb-2">{cat}</h3>
                                         <div className="flex flex-wrap gap-2">
-                                            {skills.map(skill => (
-                                                <Link key={skill} href={techLinks[skill] || "#"} target="_blank" className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all">
-                                                    {skill}
-                                                </Link>
-                                            ))}
+                                            {skills.map(skill => {
+                                                const Icon = getTechIcon(skill);
+                                                return (
+                                                    <Link key={skill} href={techLinks[skill] || "#"} target="_blank" className="flex items-center gap-2 px-3 py-1.5 bg-foreground/5 border border-foreground/10 rounded-full text-xs font-bold hover:bg-foreground/10 transition-all">
+                                                        {Icon && <Icon size={12} className="opacity-50" />}
+                                                        {skill}
+                                                    </Link>
+                                                );
+                                            })}
                                         </div>
                                     </div></SpotlightCard>
                                 ))}

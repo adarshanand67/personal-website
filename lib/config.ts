@@ -1,4 +1,4 @@
-import { Designation, Skill } from "@/data/enums";
+import { Designation, Skill } from "@/data";
 import { ShelfType } from "@/types/definitions";
 
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";

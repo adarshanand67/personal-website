@@ -17,7 +17,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useStore } from "@/lib/store";
-import { hobbyData } from "@/data/hobbies";
+import { hobbyData } from "@/data";
 import Link from "next/link";
 
 const iconMap: Record<string, React.ElementType> = {

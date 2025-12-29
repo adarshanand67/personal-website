@@ -1,11 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { profileData } from "@/data/profile";
-import { experiencesData } from "@/data/experience";
-import { papersData } from "@/data/papers";
-import { booksData } from "@/data/books";
-import { anime } from "@/data/anime";
-import { hobbyData } from "@/data/hobbies";
+import {
+  profileData,
+  experiencesData,
+  papersData,
+  booksData,
+  anime,
+  hobbyData
+} from "@/data";
 import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
 import { logError, AppError, safeAsync } from "@/lib/utils";
 
