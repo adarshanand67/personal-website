@@ -9,7 +9,7 @@ import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlaye
 import { HobbiesModal } from "@/components/modals";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
 import { ScrollProgress } from "@/components/ui";
-import { DLPProtection } from "@/components/features/security/DLPProtection";
+import { DLPProtection } from "@/components/features/DLPProtection";
 
 /**
  * Client Layout Component - wraps all client-side providers and global components.
