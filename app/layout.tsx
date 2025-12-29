@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { StructuredData } from "@/components/seo/structuredData";
+import { StructuredData } from "@/components/seo";
 import { ClientLayout } from "@/components/layout/ClientLayout";
 import { DLPProvider } from "@/components/layout/security/DLPProvider";
 import { siteConfig } from "@/lib/config";
