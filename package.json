@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --no-lint && next-image-export-optimizer",
+    "build": "next build && next-image-export-optimizer",
     "postbuild": "node scripts/generate-sw.js",
     "analyze": "ANALYZE=true next build"
   },
