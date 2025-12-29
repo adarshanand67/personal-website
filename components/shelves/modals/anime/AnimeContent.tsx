@@ -5,7 +5,7 @@
  */
 
 import { Calendar, Star, Film, Tv } from "lucide-react";
-import { PillTag } from "@/components/ui/PillTag";
+import { PillTag } from "@/components/ui";
 
 /**
  * Props for AnimeContent component.

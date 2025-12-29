@@ -18,7 +18,7 @@ import Link from "next/link";
 import { tracks } from "@/lib/constants";
 import { useStore } from "@/lib/store/useStore";
 import { cn } from "@/lib/utils";
-import { Slider } from "@/components/ui/slider";
+import { Slider } from "@/components/ui";
 import { useState, useEffect } from "react";
 
 export default function MusicPage() {

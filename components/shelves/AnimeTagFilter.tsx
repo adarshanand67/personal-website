@@ -6,7 +6,7 @@
 "use client";
 
 import React from "react";
-import { PillTag } from "@/components/ui/PillTag";
+import { PillTag } from "@/components/ui";
 
 /**
  * Props for AnimeTagFilter component.

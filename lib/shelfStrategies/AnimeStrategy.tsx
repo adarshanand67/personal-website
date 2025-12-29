@@ -6,7 +6,7 @@ import { Tv, Check, Star } from "lucide-react";
 import { useStore } from "@/lib/store/useStore";
 import { AnimeItem, WatchStatus, AnimeType } from "@/types/definitions";
 import { ShelfItemStrategy } from "./types";
-import { PillTag } from "@/components/ui/PillTag";
+import { PillTag } from "@/components/ui";
 
 export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
     renderItem(anime: AnimeItem, index: number): ReactNode {

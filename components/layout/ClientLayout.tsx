@@ -8,7 +8,7 @@ import { MusicPlayer, MusicToggleButton } from "@/components/features/musicPlaye
 
 import { HobbiesModal } from "@/components/modals";
 import { ShortcutGuide } from "@/components/features/ShortcutGuide";
-import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ScrollProgress } from "@/components/ui";
 import { DLPProtection } from "@/components/features/security/DLPProtection";
 
 /**

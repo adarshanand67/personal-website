@@ -12,7 +12,7 @@ import { useStore } from "@/lib/store/useStore";
 import { ShelfType } from "@/types/definitions";
 import { ShelfConfig } from "@/lib/config";
 import { ShelfStrategyFactory } from "@/lib/shelfStrategies";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Breadcrumbs } from "@/components/ui";
 import { ShelfHeader } from "./ShelfHeader";
 import { ShelfSkeleton } from "./ShelfSkeleton";
 import { AnimeTagFilter } from "./AnimeTagFilter";
