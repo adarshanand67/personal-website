@@ -43,6 +43,7 @@ export interface Book {
   description?: string;
   keyTakeaways?: string[];
   amazonLink?: string;
+  tags?: string[];
 }
 export interface Paper {
   title: string;

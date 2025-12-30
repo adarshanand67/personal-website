@@ -40,7 +40,7 @@ export const profileData: Profile = {
   title: "Adarsh Anand",
   pronouns: "He/Him",
   location: Location.Bengaluru,
-  avatar: "/dp.jpeg",
+  avatar: "/images/dp.jpeg",
   education: {
     university: "Indian Institute of Technology (IIT) Goa",
     degree: "B.Tech, CSE",
@@ -71,7 +71,7 @@ export const experiencesData = [
     role: Role.SDE,
     duration: "Jul 2025 - Present",
     location: Location.Bengaluru,
-    logo: "/assets/logos/trellix.png",
+    logo: "/images/logos/trellix.png",
     description: "Data Loss Prevention, Windows || Endpoint Security",
     highlights: [
       "Developing native registry management modules for Chrome/Edge to ensure injection-free web protection.",
@@ -84,7 +84,7 @@ export const experiencesData = [
     role: Role.SDE,
     duration: "Jun 2024 - Jul 2025",
     location: Location.Bengaluru,
-    logo: "/assets/logos/intel.png",
+    logo: "/images/logos/intel.png",
     description:
       "Confidential Computing (Intel SGX/TDX) || Platform Engineering Group",
     highlights: [
@@ -102,7 +102,7 @@ export const experiencesData = [
     role: Role.Intern,
     duration: "Jun 2023 - Dec 2023",
     location: Location.Bengaluru,
-    logo: "/assets/logos/intel.png",
+    logo: "/images/logos/intel.png",
     description: "Device Onboarding || Intel Product Security",
     highlights: [
       "Strengthened Intel Edge Device security by implementing Zero-Touch Provisioning (ZTP) protocols in collaboration with the FIDO Device Onboarding (FDO) team, automating secure device identity assignment and eliminating manual configuration vulnerabilities.",
@@ -505,6 +505,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/48-Laws-Power-Robert-Greene/dp/0140280197",
+    tags: ["Psychology", "Philosophy"],
   },
   {
     title: "12 Rules for Life",
@@ -519,6 +520,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021",
+    tags: ["Psychology", "Self-Improvement"],
   },
   {
     title: "The Way of the Superior Man",
@@ -533,6 +535,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Way-Superior-Man-Spiritual-Challenges/dp/1622036040",
+    tags: ["Spirituality", "Relationships"],
   },
   {
     title: "Chip War",
@@ -546,6 +549,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Chip-War-Fight-Critical-Technology/dp/1982172002",
+    tags: ["Technology", "History", "Business"],
   },
   {
     title: "Deep Work",
@@ -559,6 +563,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692",
+    tags: ["Productivity", "Self-Improvement"],
   },
   {
     title: "Don't Shut Up",
@@ -572,6 +577,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Dont-Shut-Up-Prakhar-Gupta/dp/9390166266",
+    tags: ["Communication", "Self-Help"],
   },
   {
     title: "Don't Take It Personal",
@@ -585,6 +591,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Dont-Take-Personal-Sting-Rejection/dp/1572242485",
+    tags: ["Psychology", "Self-Help"],
   },
   {
     title: "Emotional Intelligence",
@@ -598,6 +605,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Emotional-Intelligence-Why-Matter-Special/dp/055338371X",
+    tags: ["Psychology", "Self-Improvement"],
   },
   {
     title: "Games People Play",

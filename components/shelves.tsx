@@ -56,19 +56,17 @@ export function useShelfFilter(
   configType: ShelfType,
   strategy: FilterStrategy,
 ) {
-  const { searchQuery, setSearchQuery, animeSelectedTag, setAnimeSelectedTag } =
+  const { searchQuery, setSearchQuery, shelfSelectedTag, setShelfSelectedTag } =
     useStore();
 
   useEffect(() => {
     setSearchQuery("");
-    if (configType === ShelfType.Anime) {
-      setAnimeSelectedTag(null);
-    }
-  }, [configType, setSearchQuery, setAnimeSelectedTag]);
+    setShelfSelectedTag(null);
+  }, [configType, setSearchQuery, setShelfSelectedTag]);
 
   const filteredItems = useMemo(() => {
-    return strategy.filter(items as ShelfItem[], searchQuery, animeSelectedTag);
-  }, [items, searchQuery, strategy, animeSelectedTag]);
+    return strategy.filter(items as ShelfItem[], searchQuery, shelfSelectedTag);
+  }, [items, searchQuery, strategy, shelfSelectedTag]);
 
   const randomizerItems = useMemo(() => {
     if (configType === ShelfType.Anime) {
@@ -84,8 +82,8 @@ export function useShelfFilter(
     randomizerItems,
     searchQuery,
     setSearchQuery,
-    animeSelectedTag,
-    setAnimeSelectedTag,
+    shelfSelectedTag,
+    setShelfSelectedTag,
   };
 }
 
@@ -93,7 +91,7 @@ export function useShelfFilter(
 // Utils & Shared Components
 // ============================================================================
 
-export function AnimeTagFilter({
+export function ShelfTagFilter({
   items,
   selectedTag,
   onTagSelect,
@@ -163,7 +161,7 @@ export function ShelfHeader({
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold mb-1 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent tracking-tight">
-            {title || "Shelf"}
+            {title || "Collection"}
           </h1>
           {description && (
             <p className="text-gray-500 dark:text-gray-400 text-lg max-w-2xl leading-relaxed font-medium">
@@ -511,7 +509,13 @@ function BookSidebar({ item }: { item: Book }) {
   );
 }
 
-function BookContent({ item }: { item: any }) {
+function BookContent({
+  item,
+  onTagClick,
+}: {
+  item: any;
+  onTagClick: (tag: string) => void;
+}) {
   return (
     <div className="flex-1 md:overflow-y-auto custom-scrollbar">
       <div className="p-6 md:p-10 space-y-6 md:space-y-8">
@@ -535,6 +539,20 @@ function BookContent({ item }: { item: any }) {
           )}
         </div>
         <div className="h-px w-full bg-gray-100 dark:bg-white/5" />
+        {item.tags && item.tags.length > 0 && (
+          <div>
+            <h3 className="text-xs font-bold text-gray-400 mb-4">Categories</h3>
+            <div className="flex flex-wrap gap-2">
+              {item.tags.map((tag: string) => (
+                <PillTag
+                  key={tag}
+                  label={tag}
+                  onClick={() => onTagClick(tag)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
         {item.keyTakeaways && item.keyTakeaways.length > 0 && (
           <div className="bg-foreground/[0.02] rounded-3xl p-8 border border-foreground/10">
             <div className="flex items-center gap-3 mb-6">
@@ -566,9 +584,11 @@ function BookContent({ item }: { item: any }) {
 export function BookModal({
   item,
   onClose,
+  onTagClick,
 }: {
   item: any;
   onClose: () => void;
+  onTagClick: (tag: string) => void;
 }) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -609,12 +629,12 @@ export function BookModal({
         <div className="md:hidden flex-1 overflow-y-auto custom-scrollbar bg-[#fafafa] dark:bg-[#09090b]">
           <div className="flex flex-col">
             <BookSidebar item={item} />
-            <BookContent item={item} />
+            <BookContent item={item} onTagClick={onTagClick} />
           </div>
         </div>
         <div className="hidden md:flex md:flex-row flex-1 overflow-hidden">
           <BookSidebar item={item} />
-          <BookContent item={item} />
+          <BookContent item={item} onTagClick={onTagClick} />
         </div>
       </motion.div>
     </div>
@@ -732,8 +752,8 @@ export function UniversalShelf({
     randomizerItems,
     searchQuery,
     setSearchQuery,
-    animeSelectedTag,
-    setAnimeSelectedTag,
+    shelfSelectedTag,
+    setShelfSelectedTag,
   } = useShelfFilter(
     isValidItems ? items : [],
     config?.type,
@@ -771,9 +791,9 @@ export function UniversalShelf({
   if (!isValidConfig || !strategy) {
     return (
       <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-24 font-mono text-center py-24">
-        <h1 className="text-2xl font-bold mb-4">Shelf Configuration Error</h1>
+        <h1 className="text-2xl font-bold mb-4">Collection Configuration Error</h1>
         <p className="text-gray-500">
-          The shelf could not be loaded due to an invalid configuration.
+          The collection could not be loaded due to an invalid configuration.
         </p>
         <Link
           href="/"
@@ -787,9 +807,9 @@ export function UniversalShelf({
 
   return (
     <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-24 font-mono relative">
-      <Breadcrumbs items={[{ label: config.title || "Shelf" }]} />
+      <Breadcrumbs items={[{ label: config.title || "Collection" }]} />
       <ShelfHeader
-        title={config.title || "Shelf"}
+        title={config.title || "Collection"}
         description={config.description}
         count={filteredItems?.length || 0}
         searchValue={searchQuery}
@@ -798,19 +818,20 @@ export function UniversalShelf({
         items={randomizerItems}
         onPickRandom={handlePickRandom}
         showClear={
-          config.type === ShelfType.Anime && !!(searchQuery || animeSelectedTag)
+          (config.type === ShelfType.Anime || config.type === ShelfType.Book) &&
+          !!(searchQuery || shelfSelectedTag)
         }
         onClear={() => {
           setSearchQuery("");
-          setAnimeSelectedTag(null);
+          setShelfSelectedTag(null);
         }}
       />
 
-      {config.type === ShelfType.Anime && (
-        <AnimeTagFilter
+      {(config.type === ShelfType.Anime || config.type === ShelfType.Book) && (
+        <ShelfTagFilter
           items={isValidItems ? items : []}
-          selectedTag={animeSelectedTag}
-          onTagSelect={setAnimeSelectedTag}
+          selectedTag={shelfSelectedTag}
+          onTagSelect={setShelfSelectedTag}
         />
       )}
 
@@ -818,7 +839,7 @@ export function UniversalShelf({
         <div className="py-24 text-center text-gray-500">
           {searchQuery
             ? `No items found matching "${searchQuery}"`
-            : "No items available in this shelf."}
+            : "No items available in this collection."}
         </div>
       ) : (
         <motion.div
@@ -841,6 +862,10 @@ export function UniversalShelf({
           <BookModal
             item={store.bookSelectedItem}
             onClose={() => store.setBookSelectedItem(null)}
+            onTagClick={(tag) => {
+              setShelfSelectedTag(tag);
+              store.setBookSelectedItem(null);
+            }}
           />
         )}
         {store.animeSelectedItem && (
@@ -848,7 +873,7 @@ export function UniversalShelf({
             item={store.animeSelectedItem}
             onClose={() => store.setAnimeSelectedItem(null)}
             onTagClick={(tag) => {
-              setAnimeSelectedTag(tag);
+              setShelfSelectedTag(tag);
               store.setAnimeSelectedItem(null);
             }}
           />

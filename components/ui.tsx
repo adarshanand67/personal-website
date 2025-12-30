@@ -129,15 +129,14 @@ export function PillTag({
 }: PillTagProps) {
   const displayLabel = label || "Tag";
   const baseClasses =
-    "px-4 py-2 rounded-full text-xs font-bold transition-all duration-300 whitespace-nowrap";
+    "px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 whitespace-nowrap";
 
   const variantClasses = selected
-    ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105 opacity-100"
-    : `${
-        dimmed
-          ? "bg-gray-100/60 dark:bg-gray-800/60 text-black/40 dark:text-white/40 opacity-70"
-          : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-      } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
+    ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105 opacity-100 font-bold"
+    : `${dimmed
+      ? "bg-gray-100/60 dark:bg-gray-800/60 text-black/40 dark:text-white/40 opacity-70"
+      : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+    } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
 
   const classes = `${baseClasses} ${variantClasses}`;
 

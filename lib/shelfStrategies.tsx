@@ -239,34 +239,52 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
         id={`shelf-item-${book.title}`}
         key={index}
         onClick={() => useStore.getState().setBookSelectedItem(book)}
-        className="group relative block w-full aspect-[2/3] perspective-1000 cursor-pointer"
+        className="group flex flex-col gap-4 cursor-pointer"
       >
-        <div className="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-[-20deg] group-hover:translate-x-2 group-hover:-translate-y-2 shadow-lg group-hover:shadow-2xl">
-          <div
-            className={`absolute top-1 left-0 w-4 h-[98%] -translate-x-3 translate-z-[-2px] rotate-y-[-90deg] origin-right ${spineColor} brightness-75 rounded-l-sm`}
-          />
-          <div
-            className={`absolute inset-0 flex flex-col p-3 md:p-4 bg-gradient-to-br ${coverGradient} border-r-2 border-white/10 rounded-r-md rounded-l-sm`}
-          >
-            <div className="flex-1 border-2 border-white/20 p-2 flex flex-col items-center justify-center text-center">
-              <h3 className="font-serif font-bold text-white text-lg leading-tight line-clamp-4 drop-shadow-md">
-                {book.title}
-              </h3>
-            </div>
-            <div className="mt-4 text-center">
-              <p className="text-xs text-white/80 font-mono truncate max-w-full">
-                {book.author}
-              </p>
-            </div>
-            {book.recommended && (
-              <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 p-1.5 rounded-full shadow-lg transform rotate-12 group-hover:scale-110 transition-transform">
-                <Star size={12} fill="currentColor" />
+        <div className="relative block w-full aspect-[2/3] perspective-1000">
+          <div className="relative w-full h-full transition-all duration-500 transform-style-3d group-hover:rotate-y-[-20deg] group-hover:translate-x-2 group-hover:-translate-y-2 shadow-lg group-hover:shadow-2xl">
+            <div
+              className={`absolute top-1 left-0 w-4 h-[98%] -translate-x-3 translate-z-[-2px] rotate-y-[-90deg] origin-right ${spineColor} brightness-75 rounded-l-sm`}
+            />
+            <div
+              className={`absolute inset-0 flex flex-col p-3 md:p-4 bg-gradient-to-br ${coverGradient} border-r-2 border-white/10 rounded-r-md rounded-l-sm`}
+            >
+              <div className="flex-1 border-2 border-white/20 p-2 flex flex-col items-center justify-center text-center">
+                <h3 className="font-serif font-bold text-white text-lg leading-tight line-clamp-4 drop-shadow-md">
+                  {book.title}
+                </h3>
               </div>
-            )}
-            <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay" />
-            <div className="absolute top-0 left-2 bottom-0 w-1 bg-black/20 blur-[1px]" />
+              <div className="mt-4 text-center">
+                <p className="text-xs text-white/80 font-mono truncate max-w-full">
+                  {book.author}
+                </p>
+              </div>
+              {book.recommended && (
+                <div className="absolute -top-2 -right-2 bg-yellow-400 text-yellow-900 p-1.5 rounded-full shadow-lg transform rotate-12 group-hover:scale-110 transition-transform">
+                  <Star size={12} fill="currentColor" />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay" />
+              <div className="absolute top-0 left-2 bottom-0 w-1 bg-black/20 blur-[1px]" />
+            </div>
           </div>
         </div>
+
+        {book.tags && book.tags.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-1.5 mt-auto px-2">
+            {book.tags.slice(0, 3).map((tag, i) => (
+              <PillTag
+                key={i}
+                label={tag}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  useStore.getState().setShelfSelectedTag(tag);
+                }}
+                variant="filter"
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
@@ -280,14 +298,23 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
     );
   }
 
-  filter(items: Book[], query: string): Book[] {
-    if (!query) return items;
-    const lowerQuery = query.toLowerCase();
-    return items.filter(
-      (book) =>
-        book.title.toLowerCase().includes(lowerQuery) ||
-        book.author.toLowerCase().includes(lowerQuery),
-    );
+  filter(items: Book[], query: string, selectedTag?: string | null): Book[] {
+    let filtered = items;
+    if (query) {
+      const lowerQuery = query.toLowerCase();
+      filtered = filtered.filter(
+        (book) =>
+          book.title.toLowerCase().includes(lowerQuery) ||
+          book.author.toLowerCase().includes(lowerQuery) ||
+          book.tags?.some((tag) => tag.toLowerCase().includes(lowerQuery)),
+      );
+    }
+    if (selectedTag === "Recommended") {
+      filtered = filtered.filter((book) => book.recommended);
+    } else if (selectedTag) {
+      filtered = filtered.filter((book) => book.tags?.includes(selectedTag));
+    }
+    return filtered;
   }
 }
 

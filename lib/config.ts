@@ -26,7 +26,7 @@ export const siteConfig = {
       "Full Stack Developer",
       "Backend Engineer",
     ],
-    ogImage: "/ogImage.png",
+    ogImage: "/images/ogImage.png",
     twitterHandle: "@adarshanand67",
   },
   contact: {
@@ -83,7 +83,7 @@ export interface ShelfConfig {
 
 export const shelfConfigs: Record<string, ShelfConfig> = {
   books: {
-    title: "Bookshelf",
+    title: "Books",
     description: "A curated collection of books I've read and recommend.",
     command: "ls ~/books",
     searchPlaceholder: "Search books...",
@@ -97,21 +97,21 @@ export const shelfConfigs: Record<string, ShelfConfig> = {
     type: ShelfType.Article,
   },
   anime: {
-    title: "Animeshelf",
+    title: "Anime",
     description: "Anime series I've watched and enjoyed.",
     command: "ls ~/anime",
     searchPlaceholder: "Search anime & movies...",
     type: ShelfType.Anime,
   },
   blogs: {
-    title: "Blogshelf",
+    title: "Blogs",
     description: "Thoughts, tutorials, and insights on technology.",
     command: 'find ~/blog -type f -name "*.md"',
     searchPlaceholder: "Search blogs...",
     type: ShelfType.Blog,
   },
   hobby: {
-    title: "HobbyShelf",
+    title: "Hobbies",
     description: "What I do when I'm not coding.",
     command: "ls -la ~/freetime",
     searchPlaceholder: "Search hobby...",
