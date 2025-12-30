@@ -577,7 +577,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Dont-Shut-Up-Prakhar-Gupta/dp/9390166266",
-    tags: ["Communication", "Self-Help"],
+    tags: ["Communication", "Self-Improvement"],
   },
   {
     title: "Don't Take It Personal",
@@ -591,7 +591,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Dont-Take-Personal-Sting-Rejection/dp/1572242485",
-    tags: ["Psychology", "Self-Help"],
+    tags: ["Psychology", "Self-Improvement"],
   },
   {
     title: "Emotional Intelligence",
@@ -619,6 +619,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Games-People-Play-Psychology-Relationships/dp/0345410033",
+    tags: ["Psychology", "Relationships"],
   },
   {
     title: "How to Win Friends and Influence People",
@@ -632,6 +633,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034",
+    tags: ["Communication", "Relationships"],
   },
   {
     title: "The Rudest Book Ever",
@@ -645,6 +647,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Rudest-Book-Ever-Gangwar-Shwetabh/dp/9388754432",
+    tags: ["Self-Improvement", "Philosophy"],
   },
   {
     title: "Stillness is the Key",
@@ -658,6 +661,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Stillness-Key-Ryan-Holiday/dp/0525538585",
+    tags: ["Philosophy", "Self-Improvement"],
   },
   {
     title: "System Design Interview",
@@ -671,6 +675,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/System-Design-Interview-Insiders-Guide/dp/1736049119",
+    tags: ["Technology", "System Design"],
   },
   {
     title: "The 5 AM Club",
@@ -684,6 +689,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/AM-Club-Morning-Elevate-Life/dp/1443456624",
+    tags: ["Productivity", "Self-Improvement"],
   },
   {
     title: "The 7 Habits of Highly Effective People",
@@ -697,6 +703,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/0743273562",
+    tags: ["Productivity", "Self-Improvement", "Business"],
   },
   {
     title: "The Compound Effect",
@@ -710,6 +717,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Compound-Effect-Darren-Hardy/dp/159315724X",
+    tags: ["Productivity", "Self-Improvement"],
   },
   {
     title: "The Definitive Book of Body Language",
@@ -723,6 +731,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Definitive-Book-Body-Language-Pease/dp/0553804715",
+    tags: ["Communication", "Psychology"],
   },
   {
     title: "The Happiness Hypothesis",
@@ -736,6 +745,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Happiness-Hypothesis-Finding-Ancient-Science/dp/0465028020",
+    tags: ["Psychology", "Philosophy"],
   },
   {
     title: "The Happiness Trap",
@@ -749,6 +759,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Happiness-Trap-Struggling-Start-Living/dp/1590305841",
+    tags: ["Psychology", "Self-Improvement"],
   },
   {
     title: "The Let Them Theory",
@@ -762,6 +773,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/theory-let-them-theory-mel-robbins/s?k=theory+let+them+theory+mel+robbins",
+    tags: ["Self-Improvement", "Psychology"],
   },
   {
     title: "The Mountain Is You",
@@ -775,6 +787,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Mountain-You-Transforming-Self-Sabotage-Self-Mastery/dp/1949759229",
+    tags: ["Self-Improvement", "Psychology"],
   },
   {
     title: "The Subtle Art of Not Giving a F*ck",
@@ -788,6 +801,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Subtle-Art-Not-Giving-Fck/dp/0062457713",
+    tags: ["Self-Improvement", "Philosophy"],
   },
   {
     title: "Thinking, Fast and Slow",
@@ -801,6 +815,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman/dp/0374533555",
+    tags: ["Psychology", "Science"],
   },
   {
     title: "Who Will Cry When You Die?",
@@ -813,6 +828,7 @@ export const booksData: Book[] = [
       "The quality of your life is determined by the quality of your thoughts.",
     ],
     amazonLink: "https://www.amazon.com/Who-Will-Cry-When-Die/dp/8172247651",
+    tags: ["Self-Improvement", "Philosophy"],
   },
   {
     title: "Why We Sleep",
@@ -826,6 +842,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/Why-We-Sleep-Unlocking-Dreams/dp/1501144324",
+    tags: ["Health", "Science", "Psychology"],
   },
   {
     title: "You Are a Badass",
@@ -839,6 +856,7 @@ export const booksData: Book[] = [
     ],
     amazonLink:
       "https://www.amazon.com/You-Are-Badass-Doubting-Greatness/dp/0762447699",
+    tags: ["Self-Improvement"],
   },
 ];
 
