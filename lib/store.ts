@@ -76,11 +76,11 @@ export interface UIState {
   toggleSectionExpanded: (section: string) => void;
 }
 
-export interface ShelfState {
+export interface CollectionState {
   animeSelectedItem: AnimeItem | null;
-  shelfSelectedTag: string | null;
+  collectionSelectedTag: string | null;
   setAnimeSelectedItem: (item: AnimeItem | null) => void;
-  setShelfSelectedTag: (tag: string | null) => void;
+  setCollectionSelectedTag: (tag: string | null) => void;
 }
 
 export interface HobbyState {
@@ -136,7 +136,7 @@ export interface AppState
   MusicState,
   BackToTopState,
   UIState,
-  ShelfState,
+  CollectionState,
   HobbyState,
   BookState,
   SearchState,
@@ -250,12 +250,12 @@ const createContentSlice: StateCreator<
   AppState,
   [],
   [],
-  ShelfState & HobbyState & BookState & SearchState & RandomizerState
+  CollectionState & HobbyState & BookState & SearchState & RandomizerState
 > = (set) => ({
   animeSelectedItem: null,
-  shelfSelectedTag: null,
+  collectionSelectedTag: null,
   setAnimeSelectedItem: (item) => set({ animeSelectedItem: item }),
-  setShelfSelectedTag: (tag) => set({ shelfSelectedTag: tag }),
+  setCollectionSelectedTag: (tag) => set({ collectionSelectedTag: tag }),
   hobbySelectedItem: null,
   setHobbySelectedItem: (item) => set({ hobbySelectedItem: item }),
   searchQuery: "",

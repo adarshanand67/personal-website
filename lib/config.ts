@@ -1,5 +1,5 @@
 import { Designation, Skill } from "@/data";
-import { ShelfType } from "@/types/definitions";
+import { CollectionType } from "@/types/definitions";
 
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -73,49 +73,49 @@ export function isFeatureEnabled(feature: keyof FeaturesConfig): boolean {
   return featuresConfig[feature];
 }
 
-export interface ShelfConfig {
+export interface CollectionConfig {
   title: string;
   description: string;
   command: string;
   searchPlaceholder: string;
-  type: ShelfType;
+  type: CollectionType;
 }
 
-export const shelfConfigs: Record<string, ShelfConfig> = {
+export const collectionConfigs: Record<string, CollectionConfig> = {
   books: {
     title: "Books",
     description: "A curated collection of books I've read and recommend.",
     command: "ls ~/books",
     searchPlaceholder: "Search books...",
-    type: ShelfType.Book,
+    type: CollectionType.Book,
   },
   articles: {
     title: "Articles",
     description: "Research papers and thoughts on technology.",
     command: "ls ~/articles",
     searchPlaceholder: "Search articles...",
-    type: ShelfType.Article,
+    type: CollectionType.Article,
   },
   anime: {
     title: "Anime",
     description: "Anime series I've watched and enjoyed.",
     command: "ls ~/anime",
     searchPlaceholder: "Search anime & movies...",
-    type: ShelfType.Anime,
+    type: CollectionType.Anime,
   },
   blogs: {
     title: "Blogs",
     description: "Thoughts, tutorials, and insights on technology.",
     command: 'find ~/blog -type f -name "*.md"',
     searchPlaceholder: "Search blogs...",
-    type: ShelfType.Blog,
+    type: CollectionType.Blog,
   },
   hobby: {
     title: "Hobbies",
     description: "What I do when I'm not coding.",
     command: "ls -la ~/freetime",
     searchPlaceholder: "Search hobby...",
-    type: ShelfType.Hobby,
+    type: CollectionType.Hobby,
   },
 };
 

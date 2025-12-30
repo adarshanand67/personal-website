@@ -72,7 +72,7 @@ import {
   skillCategories,
   directoryMap,
 } from "@/lib/constants";
-import { siteConfig, shelfConfigs } from "@/lib/config";
+import { siteConfig, collectionConfigs } from "@/lib/config";
 import { getAssetPath } from "@/lib/utils";
 import { linkifyTech, techLinks } from "@/lib/techLinks";
 import { SystemStatusLabel } from "@/data";
@@ -421,25 +421,25 @@ export function useCommandMenu() {
             icon: FileText,
             label: "Articles",
             description: "Browse technical articles",
-            action: () => router.push("/articleshelf"),
+            action: () => router.push(routes.articles),
           },
           {
             icon: MonitorPlay,
             label: "Anime",
             description: "View anime watchlist",
-            action: () => router.push("/animeshelf"),
+            action: () => router.push(routes.anime),
           },
           {
             icon: Book,
             label: "Books",
             description: "Explore reading list",
-            action: () => router.push("/bookshelf"),
+            action: () => router.push(routes.books),
           },
           {
             icon: GamepadIcon,
             label: "Hobbies",
             description: "Discover hobbies & interests",
-            action: () => router.push("/hobbyshelf"),
+            action: () => router.push(routes.hobbies),
           },
         ],
       },
@@ -635,10 +635,10 @@ export function NavLinks({
 }) {
   const pathname = usePathname();
   const links = [
-    { href: routes.articleShelf, label: "Articles", icon: FileText },
-    { href: routes.bookShelf, label: "Books", icon: Book },
-    { href: routes.animeShelf, label: "Anime", icon: MonitorPlay },
-    { href: routes.hobbyShelf, label: "Hobby", icon: Palette },
+    { href: routes.articles, label: "Articles", icon: FileText },
+    { href: routes.books, label: "Books", icon: Book },
+    { href: routes.anime, label: "Anime", icon: MonitorPlay },
+    { href: routes.hobbies, label: "Hobby", icon: Palette },
   ];
   return (
     <div className={`flex items-center gap-1 md:gap-2 ${className || ""}`}>
@@ -699,10 +699,10 @@ export function MobileDock() {
   const pathname = usePathname();
   const navItems = [
     { icon: Home, label: "Home", path: routes.home },
-    { icon: FileText, label: "Articles", path: routes.articleShelf },
-    { icon: BookOpen, label: "Books", path: routes.bookShelf },
-    { icon: Tv, label: "Anime", path: routes.animeShelf },
-    { icon: Gamepad2, label: "Hobbies", path: routes.hobbyShelf },
+    { icon: FileText, label: "Articles", path: routes.articles },
+    { icon: BookOpen, label: "Books", path: routes.books },
+    { icon: Tv, label: "Anime", path: routes.anime },
+    { icon: Gamepad2, label: "Hobbies", path: routes.hobbies },
   ];
   return (
     <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-1/2 z-[100] w-full max-w-[420px]">
@@ -1400,21 +1400,19 @@ export const ViewToggle = ({
   <div className="hidden md:flex bg-zinc-100 dark:bg-zinc-900 backdrop-blur-md p-1 rounded-xl border border-zinc-200 dark:border-zinc-800 ml-auto pointer-events-auto shadow-sm gap-1">
     <button
       onClick={() => setViewMode("profile")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "profile"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "profile"
+        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+        }`}
     >
       <User size={14} /> <span>Profile</span>
     </button>
     <button
       onClick={() => setViewMode("terminal")}
-      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
-        viewMode === "terminal"
-          ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
-      }`}
+      className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all ${viewMode === "terminal"
+        ? "bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm"
+        : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+        }`}
     >
       <TerminalIcon size={14} /> <span>Terminal</span>
     </button>

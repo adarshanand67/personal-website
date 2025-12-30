@@ -29,7 +29,8 @@ import {
   AnimeItem,
   Blog,
   Hobby,
-  ShelfType,
+  Hobby,
+  CollectionType,
   WatchStatus,
   AnimeType,
 } from "@/types/definitions";
@@ -40,9 +41,9 @@ import { AppError, getBookGradient } from "@/lib/utils";
 // Types
 // ============================================================================
 
-export type ShelfItem = Book | Paper | AnimeItem | Blog | Hobby;
+export type CollectionItem = Book | Paper | AnimeItem | Blog | Hobby;
 
-export interface ShelfItemStrategy<T> {
+export interface CollectionItemStrategy<T> {
   renderItem(item: T, index: number): ReactNode;
   renderList(items: T[]): ReactNode;
   filter(items: T[], query: string, selectedTag?: string | null): T[];
@@ -52,7 +53,7 @@ export interface ShelfItemStrategy<T> {
 // Anime Strategy
 // ============================================================================
 
-export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
+export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem> {
   private renderItemWithPriority(
     anime: AnimeItem,
     index: number,
@@ -62,7 +63,7 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 
     return (
       <div
-        id={`shelf-item-${anime.title}`}
+        id={`collection-item-${anime.title}`}
         key={index}
         onClick={() => useStore.getState().setAnimeSelectedItem(anime)}
         className="group flex flex-col gap-3 cursor-pointer relative"
@@ -229,14 +230,14 @@ export class AnimeCardStrategy implements ShelfItemStrategy<AnimeItem> {
 // Book Strategy
 // ============================================================================
 
-export class BookListStrategy implements ShelfItemStrategy<Book> {
+export class BookCollectionStrategy implements CollectionItemStrategy<Book> {
   renderItem(book: Book, index: number): ReactNode {
     const coverGradient = getBookGradient(book.title);
     const spineColor = coverGradient.split(" ")[0].replace("from-", "bg-");
 
     return (
       <div
-        id={`shelf-item-${book.title}`}
+        id={`collection-item-${book.title}`}
         key={index}
         onClick={() => useStore.getState().setBookSelectedItem(book)}
         className="group flex flex-col gap-4 cursor-pointer"
@@ -278,7 +279,7 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
                 label={tag}
                 onClick={(e) => {
                   e.stopPropagation();
-                  useStore.getState().setShelfSelectedTag(tag);
+                  useStore.getState().setCollectionSelectedTag(tag);
                 }}
                 variant="filter"
               />
@@ -322,11 +323,11 @@ export class BookListStrategy implements ShelfItemStrategy<Book> {
 // Paper Strategy
 // ============================================================================
 
-export class PaperListStrategy implements ShelfItemStrategy<Paper> {
+export class PaperCollectionStrategy implements CollectionItemStrategy<Paper> {
   renderItem(paper: Paper, index: number): ReactNode {
     return (
       <div
-        id={`shelf-item-${paper.title}`}
+        id={`collection-item-${paper.title}`}
         key={index}
         className="border-l-2 border-foreground/10 pl-4 hover:border-foreground/30 transition-colors"
       >
@@ -363,11 +364,11 @@ export class PaperListStrategy implements ShelfItemStrategy<Paper> {
 // Blog Strategy
 // ============================================================================
 
-export class BlogListStrategy implements ShelfItemStrategy<Blog> {
+export class BlogCollectionStrategy implements CollectionItemStrategy<Blog> {
   renderItem(blog: Blog): ReactNode {
     return (
       <div
-        id={`shelf-item-${blog.title}`}
+        id={`collection-item-${blog.title}`}
         key={blog.slug}
         className="border-l-2 border-foreground/10 pl-4 hover:border-foreground/30 transition-colors"
       >
@@ -441,7 +442,7 @@ const iconMap: Record<string, any> = {
   Mic,
 };
 
-export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
+export class HobbyCollectionStrategy implements CollectionItemStrategy<Hobby> {
   private getIcon(iconName: string): ReactNode {
     const Icon = iconMap[iconName] || iconMap.Tv;
     return <Icon className="w-8 h-8 text-foreground" />;
@@ -449,7 +450,7 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
   renderItem(hobby: Hobby, index: number): ReactNode {
     return (
       <div
-        id={`shelf-item-${hobby.name}`}
+        id={`collection-item-${hobby.name}`}
         key={index}
         onClick={() => useStore.getState().setHobbySelectedItem(hobby)}
         className="group p-5 glass rounded-2xl border border-gray-100 dark:border-white/5 hover:border-foreground/30 transition-all duration-500 cursor-pointer overflow-hidden relative flex flex-col items-center text-center"
@@ -491,11 +492,11 @@ export class HobbyListStrategy implements ShelfItemStrategy<Hobby> {
 // Article Strategy
 // ============================================================================
 
-export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
+export class ArticleCollectionStrategy implements CollectionItemStrategy<Blog | Paper> {
   renderItem(item: Blog | Paper, index: number): ReactNode {
     if ("url" in item)
-      return new PaperListStrategy().renderItem(item as Paper, index);
-    return new BlogListStrategy().renderItem(item as Blog);
+      return new PaperCollectionStrategy().renderItem(item as Paper, index);
+    return new BlogCollectionStrategy().renderItem(item as Blog);
   }
   renderList(items: (Blog | Paper)[]): ReactNode {
     if (!items.length) return null;
@@ -512,7 +513,7 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
               Research Papers
             </h2>
             <div className="space-y-4">
-              {new PaperListStrategy().renderList(papers)}
+              {new PaperCollectionStrategy().renderList(papers)}
             </div>
           </div>
         )}
@@ -524,7 +525,7 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
               </span>
               Blogs
             </h2>
-            {new BlogListStrategy().renderList(blogs)}
+            {new BlogCollectionStrategy().renderList(blogs)}
           </div>
         )}
       </div>
@@ -535,8 +536,8 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
     const papers = items.filter((i): i is Paper => "url" in i);
     const blogs = items.filter((i): i is Blog => "slug" in i);
     return [
-      ...new PaperListStrategy().filter(papers, query),
-      ...new BlogListStrategy().filter(blogs, query),
+      ...new PaperCollectionStrategy().filter(papers, query),
+      ...new BlogCollectionStrategy().filter(blogs, query),
     ];
   }
 }
@@ -545,25 +546,25 @@ export class ArticleListStrategy implements ShelfItemStrategy<Blog | Paper> {
 // Factory
 // ============================================================================
 
-export class ShelfStrategyFactory {
-  static getStrategy(type: ShelfType): ShelfItemStrategy<ShelfItem> {
+export class CollectionStrategyFactory {
+  static getStrategy(type: CollectionType): CollectionItemStrategy<CollectionItem> {
     if (!type)
-      throw new AppError("Shelf type is required", "MISSING_SHELF_TYPE");
+      throw new AppError("Collection type is required", "MISSING_COLLECTION_TYPE");
     switch (type) {
-      case ShelfType.Book:
-        return new BookListStrategy();
-      case ShelfType.Paper:
-        return new PaperListStrategy();
-      case ShelfType.Anime:
-        return new AnimeCardStrategy();
-      case ShelfType.Blog:
-        return new BlogListStrategy();
-      case ShelfType.Hobby:
-        return new HobbyListStrategy();
-      case ShelfType.Article:
-        return new ArticleListStrategy();
+      case CollectionType.Book:
+        return new BookCollectionStrategy();
+      case CollectionType.Paper:
+        return new PaperCollectionStrategy();
+      case CollectionType.Anime:
+        return new AnimeCollectionStrategy();
+      case CollectionType.Blog:
+        return new BlogCollectionStrategy();
+      case CollectionType.Hobby:
+        return new HobbyCollectionStrategy();
+      case CollectionType.Article:
+        return new ArticleCollectionStrategy();
       default:
-        throw new AppError(`Unknown shelf type: ${type}`, "UNKNOWN_SHELF_TYPE");
+        throw new AppError(`Unknown collection type: ${type}`, "UNKNOWN_COLLECTION_TYPE");
     }
   }
 }

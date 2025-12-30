@@ -8,16 +8,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogs = await getBlogs();
 
   const blogUrls = blogs.map((post) => ({
-    url: `${baseUrl}/articleshelf/${post.slug}`,
+    url: `${baseUrl}/articles/${post.slug}`,
     lastModified: new Date(post.date),
   }));
 
   const routes = [
     "",
-    "/articleshelf",
-    "/bookshelf",
-    "/animeshelf",
-    "/hobbyshelf",
+    "/articles",
+    "/books",
+    "/anime",
+    "/hobbies",
     "/experience",
     "/guestbook",
   ].map((route) => ({

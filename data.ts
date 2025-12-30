@@ -3,7 +3,7 @@ import {
   AnimeType,
   WatchStatus,
   Book,
-  ShelfType,
+  CollectionType,
 } from "@/types/definitions";
 import {
   Company,

@@ -47,10 +47,10 @@ export function generateBlogPostSchema(post: {
       name: siteConfig.author.name,
       url: siteConfig.url,
     },
-    url: `${siteConfig.url}/blogshelf/${post.slug}`,
+    url: `${siteConfig.url}/articles/${post.slug}`,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.url}/blogshelf/${post.slug}`,
+      "@id": `${siteConfig.url}/articles/${post.slug}`,
     },
   };
 }

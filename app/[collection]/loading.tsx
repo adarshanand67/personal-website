@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui";
 
-export default function ShelfLoading() {
+export default function CollectionLoading() {
   return (
     <div className="section max-w-7xl mx-auto px-4 mt-12 mb-12 font-mono">
       {/* Header Skeleton */}

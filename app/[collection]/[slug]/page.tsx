@@ -5,19 +5,19 @@ import { getPost, getBlogs } from "@/lib/api";
 export async function generateStaticParams() {
   const blogs = await getBlogs();
   return blogs.map((post) => ({
-    shelf: "articleshelf",
+    collection: "articles",
     slug: post.slug,
   }));
 }
 
-export default async function GenericShelfItem({
+export default async function GenericCollectionItem({
   params,
 }: {
-  params: { shelf: string; slug: string };
+  params: { collection: string; slug: string };
 }) {
-  const { shelf, slug } = await params;
+  const { collection, slug } = await params;
 
-  if (shelf !== "articleshelf") {
+  if (collection !== "articles") {
     notFound();
   }
 

@@ -37,9 +37,9 @@ import {
   CornerDownLeft,
 } from "lucide-react";
 import { useStore } from "@/lib/store";
-import { ShelfType, WatchStatus, Book } from "@/types/definitions";
-import { ShelfConfig } from "@/lib/config";
-import { ShelfStrategyFactory, ShelfItem } from "@/lib/shelfStrategies";
+import { CollectionType, WatchStatus, Book } from "@/types/definitions";
+import { CollectionConfig } from "@/lib/config";
+import { CollectionStrategyFactory, CollectionItem } from "@/lib/collectionStrategies";
 import { Breadcrumbs, PillTag, RandomizerButton } from "@/components/ui";
 import { getBookGradient } from "@/lib/utils";
 
@@ -48,29 +48,29 @@ import { getBookGradient } from "@/lib/utils";
 // ============================================================================
 
 interface FilterStrategy {
-  filter(items: ShelfItem[], query: string, tag: string | null): ShelfItem[];
+  filter(items: CollectionItem[], query: string, tag: string | null): CollectionItem[];
 }
 
-export function useShelfFilter(
+export function useCollectionFilter(
   items: unknown[],
-  configType: ShelfType,
+  configType: CollectionType,
   strategy: FilterStrategy,
 ) {
-  const { searchQuery, setSearchQuery, shelfSelectedTag, setShelfSelectedTag } =
+  const { searchQuery, setSearchQuery, collectionSelectedTag, setCollectionSelectedTag } =
     useStore();
 
   useEffect(() => {
     setSearchQuery("");
-    setShelfSelectedTag(null);
-  }, [configType, setSearchQuery, setShelfSelectedTag]);
+    setCollectionSelectedTag(null);
+  }, [configType, setSearchQuery, setCollectionSelectedTag]);
 
   const filteredItems = useMemo(() => {
-    return strategy.filter(items as ShelfItem[], searchQuery, shelfSelectedTag);
-  }, [items, searchQuery, strategy, shelfSelectedTag]);
+    return strategy.filter(items as CollectionItem[], searchQuery, collectionSelectedTag);
+  }, [items, searchQuery, strategy, collectionSelectedTag]);
 
   const randomizerItems = useMemo(() => {
-    if (configType === ShelfType.Anime) {
-      return filteredItems.filter((item: ShelfItem) => {
+    if (configType === CollectionType.Anime) {
+      return filteredItems.filter((item: CollectionItem) => {
         return "status" in item && item.status === WatchStatus.Completed;
       });
     }
@@ -82,8 +82,8 @@ export function useShelfFilter(
     randomizerItems,
     searchQuery,
     setSearchQuery,
-    shelfSelectedTag,
-    setShelfSelectedTag,
+    collectionSelectedTag,
+    setCollectionSelectedTag,
   };
 }
 
@@ -91,7 +91,7 @@ export function useShelfFilter(
 // Utils & Shared Components
 // ============================================================================
 
-export function ShelfTagFilter({
+export function CollectionTagFilter({
   items,
   selectedTag,
   onTagSelect,
@@ -130,7 +130,7 @@ export function ShelfTagFilter({
   );
 }
 
-export function ShelfHeader({
+export function CollectionHeader({
   title,
   description,
   count,
@@ -716,15 +716,35 @@ export function HobbyModal({
   );
 }
 
+export function CollectionSkeleton() {
+  return (
+    <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-12 font-mono">
+      <div className="h-4 w-32 bg-gray-200 dark:bg-gray-800 rounded animate-pulse mb-8" />
+      <div className="space-y-4 mb-12">
+        <div className="h-12 w-64 bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+        <div className="h-6 w-full max-w-2xl bg-gray-200 dark:bg-gray-800 rounded animate-pulse" />
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <div
+            key={i}
+            className="aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ============================================================================
-// UniversalShelf
+// UniversalCollection
 // ============================================================================
 
-export function UniversalShelf({
+export function UniversalCollection({
   config,
   items,
 }: {
-  config: ShelfConfig;
+  config: CollectionConfig;
   items: unknown[];
 }) {
   const store = useStore();
@@ -736,9 +756,9 @@ export function UniversalShelf({
   const strategy = useMemo(() => {
     try {
       if (!isValidConfig) return null;
-      return ShelfStrategyFactory.getStrategy(config.type);
+      return CollectionStrategyFactory.getStrategy(config.type);
     } catch (error) {
-      console.error("Failed to get shelf strategy:", error);
+      console.error("Failed to get collection strategy:", error);
       return null;
     }
   }, [config?.type, isValidConfig]);
@@ -752,9 +772,9 @@ export function UniversalShelf({
     randomizerItems,
     searchQuery,
     setSearchQuery,
-    shelfSelectedTag,
-    setShelfSelectedTag,
-  } = useShelfFilter(
+    collectionSelectedTag,
+    setCollectionSelectedTag,
+  } = useCollectionFilter(
     isValidItems ? items : [],
     config?.type,
     strategy as FilterStrategy,
@@ -763,14 +783,14 @@ export function UniversalShelf({
   const handlePickRandom = (item: any) => {
     if (!item) return;
     try {
-      if (config.type === ShelfType.Anime) store.setAnimeSelectedItem(item);
-      else if (config.type === ShelfType.Hobby)
+      if (config.type === CollectionType.Anime) store.setAnimeSelectedItem(item);
+      else if (config.type === CollectionType.Hobby)
         store.setHobbySelectedItem(item);
-      else if (config.type === ShelfType.Book) store.setBookSelectedItem(item);
+      else if (config.type === CollectionType.Book) store.setBookSelectedItem(item);
       else {
         const title = item.title || item.name;
         if (title) {
-          const element = document.getElementById(`shelf-item-${title}`);
+          const element = document.getElementById(`collection-item-${title}`);
           if (element) {
             element.scrollIntoView({ behavior: "smooth", block: "center" });
             element.classList.add("ring-2", "ring-foreground");
@@ -786,7 +806,7 @@ export function UniversalShelf({
     }
   };
 
-  if (!mounted) return <ShelfSkeleton />;
+  if (!mounted) return <CollectionSkeleton />;
 
   if (!isValidConfig || !strategy) {
     return (
@@ -808,7 +828,7 @@ export function UniversalShelf({
   return (
     <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-24 font-mono relative">
       <Breadcrumbs items={[{ label: config.title || "Collection" }]} />
-      <ShelfHeader
+      <CollectionHeader
         title={config.title || "Collection"}
         description={config.description}
         count={filteredItems?.length || 0}
@@ -818,20 +838,20 @@ export function UniversalShelf({
         items={randomizerItems}
         onPickRandom={handlePickRandom}
         showClear={
-          (config.type === ShelfType.Anime || config.type === ShelfType.Book) &&
-          !!(searchQuery || shelfSelectedTag)
+          (config.type === CollectionType.Anime || config.type === CollectionType.Book) &&
+          !!(searchQuery || collectionSelectedTag)
         }
         onClear={() => {
           setSearchQuery("");
-          setShelfSelectedTag(null);
+          setCollectionSelectedTag(null);
         }}
       />
 
-      {(config.type === ShelfType.Anime || config.type === ShelfType.Book) && (
-        <ShelfTagFilter
+      {(config.type === CollectionType.Anime || config.type === CollectionType.Book) && (
+        <CollectionTagFilter
           items={isValidItems ? items : []}
-          selectedTag={shelfSelectedTag}
-          onTagSelect={setShelfSelectedTag}
+          selectedTag={collectionSelectedTag}
+          onTagSelect={setCollectionSelectedTag}
         />
       )}
 
@@ -863,7 +883,7 @@ export function UniversalShelf({
             item={store.bookSelectedItem}
             onClose={() => store.setBookSelectedItem(null)}
             onTagClick={(tag) => {
-              setShelfSelectedTag(tag);
+              setCollectionSelectedTag(tag);
               store.setBookSelectedItem(null);
             }}
           />
@@ -873,7 +893,7 @@ export function UniversalShelf({
             item={store.animeSelectedItem}
             onClose={() => store.setAnimeSelectedItem(null)}
             onTagClick={(tag) => {
-              setShelfSelectedTag(tag);
+              setCollectionSelectedTag(tag);
               store.setAnimeSelectedItem(null);
             }}
           />

@@ -64,7 +64,7 @@ export enum WatchStatus {
   Completed = "Completed",
   Planning = "Planning",
 }
-export enum ShelfType {
+export enum CollectionType {
   Book = "book",
   Paper = "paper",
   Anime = "anime",
