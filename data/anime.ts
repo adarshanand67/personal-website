@@ -1,26 +1,8 @@
-import { AnimeType, WatchStatus } from "@/types/definitions";
+import { WatchStatus } from "@/types/definitions";
 
 export const anime = [
     {
-        title: "Kaiju No. 8",
-        type: AnimeType.Anime,
-        status: WatchStatus.Completed,
-        seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1144/136701l.jpg",
-        description:
-            "Kafka Hibino, a 32-year-old sweeper, chases his childhood dream of joining the Defense Force after gaining the power to turn into a Kaiju.",
-        tags: ["Action", "Sci-Fi", "Shounen"],
-        year: "2024",
-        rating: "8.5/10",
-        keyLearnings: [
-            "It's never too late to chase your dreams, even if you feel left behind.",
-            "True strength comes from protecting those who cannot protect themselves.",
-            "Your past failures do not define your future potential.",
-        ],
-    },
-    {
         title: "Pokémon",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-20+",
         image: "https://cdn.myanimelist.net/images/anime/1405/117456l.jpg",
@@ -37,7 +19,6 @@ export const anime = [
     },
     {
         title: "Death Note",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
@@ -54,7 +35,6 @@ export const anime = [
     },
     {
         title: "One Punch Man",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         image: "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
@@ -71,7 +51,6 @@ export const anime = [
     },
     {
         title: "Haikyuu!!",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-4 + Dumpster Battle",
         recommended: true,
@@ -89,7 +68,6 @@ export const anime = [
     },
     {
         title: "Code Geass: Lelouch of the Rebellion",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         recommended: true,
@@ -107,7 +85,6 @@ export const anime = [
     },
     {
         title: "Cowboy Bebop",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/4/19644l.jpg",
@@ -124,7 +101,6 @@ export const anime = [
     },
     {
         title: "Steins;Gate",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1 + 0",
         recommended: true,
@@ -142,7 +118,6 @@ export const anime = [
     },
     {
         title: "Mob Psycho 100",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-3",
         recommended: true,
@@ -160,7 +135,6 @@ export const anime = [
     },
     {
         title: "Jujutsu Kaisen",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2 + Movie 0",
         image: "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
@@ -177,7 +151,6 @@ export const anime = [
     },
     {
         title: "Blue Lock",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         recommended: true,
@@ -195,7 +168,6 @@ export const anime = [
     },
     {
         title: "Solo Leveling",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         recommended: true,
@@ -213,7 +185,6 @@ export const anime = [
     },
     {
         title: "Demon Slayer",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-5 + Mugen Train",
         image: "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
@@ -230,7 +201,6 @@ export const anime = [
     },
     {
         title: "Tokyo Ghoul",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-4",
         image: "https://cdn.myanimelist.net/images/anime/1498/134443l.jpg",
@@ -247,7 +217,6 @@ export const anime = [
     },
     {
         title: "Aoashi",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/1731/120871l.jpg",
@@ -264,7 +233,6 @@ export const anime = [
     },
     {
         title: "Chainsaw Man",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/1806/126216l.jpg",
@@ -281,7 +249,6 @@ export const anime = [
     },
     {
         title: "Erased",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/10/77957l.jpg",
@@ -298,7 +265,6 @@ export const anime = [
     },
     {
         title: "Dr. Stone",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-4",
         recommended: true,
@@ -316,7 +282,6 @@ export const anime = [
     },
     {
         title: "Vinland Saga",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         image: "https://cdn.myanimelist.net/images/anime/1500/103005l.jpg",
@@ -333,7 +298,6 @@ export const anime = [
     },
     {
         title: "Hajime no Ippo",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-3",
         image: "https://cdn.myanimelist.net/images/anime/4/86334l.jpg",
@@ -350,7 +314,6 @@ export const anime = [
     },
     {
         title: "Great Teacher Onizuka",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         image: "https://cdn.myanimelist.net/images/anime/13/11460.jpg",
@@ -367,7 +330,6 @@ export const anime = [
     },
     {
         title: "Kuroko no Basket",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-3",
         image: "https://cdn.myanimelist.net/images/anime/11/50453l.jpg",
@@ -383,93 +345,7 @@ export const anime = [
         ],
     },
     {
-        title: "I want to eat your pancreas",
-        type: AnimeType.Movie,
-        status: WatchStatus.Completed,
-        seasons: "Movie",
-        image: "https://cdn.myanimelist.net/images/anime/1768/93291l.jpg",
-        description:
-            "An emotional story about a high school boy who discovers his classmate has a terminal illness.",
-        tags: ["Drama", "Romance"],
-        year: "2018",
-        rating: "8.6/10",
-        keyLearnings: [
-            "Living each day with no regrets.",
-            "To live is to have a bond with others.",
-            "I want to become part of you, so that I may live on within you.",
-        ],
-    },
-    {
-        title: "Grave of the Fireflies",
-        type: AnimeType.Movie,
-        status: WatchStatus.Completed,
-        seasons: "Movie",
-        image: "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg",
-        description:
-            "Two siblings struggle to survive in Japan during the final months of World War II.",
-        tags: ["Drama", "War"],
-        year: "1988",
-        rating: "8.5/10",
-        keyLearnings: [
-            "War has no winners, only victims.",
-            "Why do fireflies have to die so soon?",
-            "Pride can be fatal when survival is at stake.",
-        ],
-    },
-    {
-        title: "Spirited Away",
-        type: AnimeType.Movie,
-        status: WatchStatus.Completed,
-        seasons: "Movie",
-        image: "https://cdn.myanimelist.net/images/anime/6/79597l.jpg",
-        description:
-            "A young girl wanders into a world ruled by gods, witches, and spirits.",
-        tags: ["Fantasy", "Adventure"],
-        year: "2001",
-        rating: "8.8/10",
-        keyLearnings: [
-            "Courage can break any curse.",
-            "Don't forget your name.",
-            "Greed turns humans into pigs. Generosity and kindness are the only true magic.",
-        ],
-    },
-    {
-        title: "Your Name",
-        type: AnimeType.Movie,
-        status: WatchStatus.Completed,
-        seasons: "Movie",
-        image: "https://cdn.myanimelist.net/images/anime/5/87048l.jpg",
-        description:
-            "Two teenagers share a profound connection after discovering they are swapping bodies.",
-        tags: ["Romance", "Supernatural"],
-        year: "2016",
-        rating: "8.9/10",
-        keyLearnings: [
-            "The thread of fate connects hearts.",
-            "I'm always searching for someone.",
-            "Twilight is the time when worlds blur, and miracles can happen.",
-        ],
-    },
-    {
-        title: "A Silent Voice",
-        type: AnimeType.Movie,
-        status: WatchStatus.Completed,
-        seasons: "Movie",
-        image: "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg",
-        description:
-            "A young man seeks redemption for bullying a deaf girl in elementary school.",
-        tags: ["Drama"],
-        year: "2016",
-        rating: "8.9/10",
-        keyLearnings: [
-            "Redemption starts with listening.",
-            "Forgiveness begins with self-forgiveness.",
-            "Look people in the eye. The world is beautiful if you choose to see it.",
-        ],
-    },
-    {
         title: "Frieren: Beyond Journey's End",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1",
         recommended: true,
@@ -487,7 +363,6 @@ export const anime = [
     },
     {
         title: "Berserk",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-2",
         image: "https://cdn.myanimelist.net/images/anime/1384/119988l.jpg",
@@ -504,7 +379,6 @@ export const anime = [
     },
     {
         title: "Kaguya-sama: Love Is War",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-4",
         recommended: true,
@@ -521,73 +395,7 @@ export const anime = [
         ],
     },
     {
-        title: "Naruto",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1-5 + Shippuden S1-21",
-        image: "https://cdn.myanimelist.net/images/anime/13/17405l.jpg",
-        description: "A nuanced socio-political commentary on the cycle of hatred.",
-        tags: ["Action", "Adventure", "Fantasy"],
-        year: "2002",
-        rating: "8.0/10",
-        keyLearnings: [
-            "Persistence is the only counter to ostracization.",
-            "Talk-no-jutsu is effective magic.",
-            "Bonds are forged in mutual trauma.",
-        ],
-    },
-    {
-        title: "Attack on Titan",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1-4",
-        image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
-        description: "A grim examination of freedom, nationalism, and conflict.",
-        tags: ["Action", "Drama", "Suspense"],
-        year: "2013",
-        rating: "8.6/10",
-        keyLearnings: [
-            "Heroism is a matter of perspective.",
-            "Walls are temporary solutions.",
-            "One man's freedom fighter is another's genocidal titan.",
-        ],
-    },
-    {
-        title: "Fullmetal Alchemist Brotherhood",
-        type: AnimeType.Anime,
-        status: WatchStatus.Completed,
-        seasons: "S1 (64 episodes)",
-        image: "https://cdn.myanimelist.net/images/anime/1223/96541l.jpg",
-        description: "A masterclass in law of equivalent exchange.",
-        tags: ["Action", "Adventure", "Fantasy"],
-        year: "2009",
-        rating: "9.1/10",
-        keyLearnings: [
-            "Humanity cannot gain without giving.",
-            "A heart of steel protects a soul of gold.",
-            "Pursuit of godhood ends with meeting Truth.",
-        ],
-    },
-    {
-        title: "Hunter x Hunter",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1818/126435l.webp",
-        description:
-            "A deconstruction of the shounen genre with existential dread.",
-        tags: ["Action", "Adventure", "Fantasy"],
-        year: "2011",
-        rating: "9.0/10",
-        keyLearnings: [
-            "Enjoy the little detours.",
-            "Nen is weaponized willpower.",
-            "Never underestimate a child with a fishing rod.",
-        ],
-    },
-    {
         title: "The Promised Neverland",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1,2",
         image: "https://cdn.myanimelist.net/images/anime/1125/96929l.jpg",
@@ -603,8 +411,22 @@ export const anime = [
         ],
     },
     {
+        title: "Fullmetal Alchemist Brotherhood",
+        status: WatchStatus.Completed,
+        seasons: "S1 (64 episodes)",
+        image: "https://cdn.myanimelist.net/images/anime/1223/96541l.jpg",
+        description: "A masterclass in law of equivalent exchange.",
+        tags: ["Action", "Adventure", "Fantasy"],
+        year: "2009",
+        rating: "9.1/10",
+        keyLearnings: [
+            "Humanity cannot gain without giving.",
+            "A heart of steel protects a soul of gold.",
+            "Pursuit of godhood ends with meeting Truth.",
+        ],
+    },
+    {
         title: "Monster",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1 (74 episodes)",
         image: "https://cdn.myanimelist.net/images/anime/10/18793l.jpg",
@@ -620,8 +442,39 @@ export const anime = [
         ],
     },
     {
+        title: "Assassination Classroom",
+        status: WatchStatus.Completed,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/5/75639l.jpg",
+        description:
+            "A powerful creature claims that within a year he will destroy Earth, but offers mankind a chance by becoming a homeroom teacher where he teaches his students about how to kill him.",
+        tags: ["Action", "Comedy", "School"],
+        year: "2015",
+        rating: "8.1/10",
+        keyLearnings: [
+            "A good teacher helps you find your own answer.",
+            "Failure is just another step towards success.",
+            "Use what you have, even your weaknesses, as a weapon.",
+        ],
+    },
+    {
+        title: "Kaiju No. 8",
+        status: WatchStatus.Completed,
+        seasons: "S1",
+        image: "/images/anime/kaiju8.jpg",
+        description:
+            "Kafka Hibino, a 32-year-old sweeper, chases his childhood dream of joining the Defense Force after gaining the power to turn into a Kaiju.",
+        tags: ["Action", "Sci-Fi", "Shounen"],
+        year: "2024",
+        rating: "8.5/10",
+        keyLearnings: [
+            "It's never too late to chase your dreams, even if you feel left behind.",
+            "True strength comes from protecting those who cannot protect themselves.",
+            "Your past failures do not define your future potential.",
+        ],
+    },
+    {
         title: "Fruits Basket",
-        type: AnimeType.Anime,
         status: WatchStatus.Completed,
         seasons: "S1-3",
         image: "https://cdn.myanimelist.net/images/anime/1447/99827l.jpg",
@@ -637,8 +490,168 @@ export const anime = [
         ],
     },
     {
+        title: "Attack on Titan",
+        status: WatchStatus.Planning,
+        seasons: "S1-4",
+        image: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+        description: "A grim examination of freedom, nationalism, and conflict.",
+        tags: ["Action", "Drama", "Suspense"],
+        year: "2013",
+        rating: "8.6/10",
+        keyLearnings: [
+            "Heroism is a matter of perspective.",
+            "Walls are temporary solutions.",
+            "One man's freedom fighter is another's genocidal titan.",
+        ],
+    },
+    {
+        title: "Hunter x Hunter",
+        status: WatchStatus.Planning,
+        seasons: "S1",
+        image: "https://cdn.myanimelist.net/images/anime/1818/126435l.webp",
+        description:
+            "A deconstruction of the shounen genre with existential dread.",
+        tags: ["Action", "Adventure", "Fantasy"],
+        year: "2011",
+        rating: "9.0/10",
+        keyLearnings: [
+            "Enjoy the little detours.",
+            "Nen is weaponized willpower.",
+            "Never underestimate a child with a fishing rod.",
+        ],
+    },
+    {
+        title: "Naruto",
+        status: WatchStatus.Planning,
+        seasons: "S1-5 + Shippuden S1-21",
+        image: "https://cdn.myanimelist.net/images/anime/13/17405l.jpg",
+        description: "A nuanced socio-political commentary on the cycle of hatred.",
+        tags: ["Action", "Adventure", "Fantasy"],
+        year: "2002",
+        rating: "8.0/10",
+        keyLearnings: [
+            "Persistence is the only counter to ostracization.",
+            "Talk-no-jutsu is effective magic.",
+            "Bonds are forged in mutual trauma.",
+        ],
+    },
+    {
+        title: "That Time I Got Reincarnated as a Slime",
+        status: WatchStatus.Planning,
+        seasons: "S1-3",
+        image: "https://cdn.myanimelist.net/images/anime/1069/123309l.jpg",
+        description:
+            "A corporate worker is murdered and reborn as a slime in a fantasy world, where he gathers allies to build a nation of monsters.",
+        tags: ["Fantasy", "Isekai", "Action"],
+        year: "2018",
+        rating: "8.7/10",
+        keyLearnings: [
+            "Benevolence can build a stronger kingdom than fear.",
+            "Even the weakest creature can become the strongest with the right mindset.",
+            "Unity across differences creates true power.",
+        ],
+    },
+    {
+        title: "The Eminence in Shadow",
+        status: WatchStatus.Planning,
+        seasons: "S1-2",
+        image: "https://cdn.myanimelist.net/images/anime/1277/117155l.jpg",
+        description:
+            "A boy who dreams of being a mastermind operating in the shadows is reincarnated in a fantasy world where his delusions might just be reality.",
+        tags: ["Action", "Comedy", "Fantasy", "Isekai"],
+        year: "2022",
+        rating: "8.5/10",
+        keyLearnings: [
+            "Sometimes the role we play becomes who we are.",
+            "Hidden power is the most satisfying kind.",
+            "Navigating the line between delusion and reality requires immense confidence.",
+        ],
+    },
+];
+
+export const movies = [
+    {
+        title: "I want to eat your pancreas",
+        status: WatchStatus.Completed,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1768/93291l.jpg",
+        description:
+            "An emotional story about a high school boy who discovers his classmate has a terminal illness.",
+        tags: ["Drama", "Romance"],
+        year: "2018",
+        rating: "8.6/10",
+        keyLearnings: [
+            "Living each day with no regrets.",
+            "To live is to have a bond with others.",
+            "I want to become part of you, so that I may live on within you.",
+        ],
+    },
+    {
+        title: "Grave of the Fireflies",
+        status: WatchStatus.Completed,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1485/141208l.jpg",
+        description:
+            "Two siblings struggle to survive in Japan during the final months of World War II.",
+        tags: ["Drama", "War"],
+        year: "1988",
+        rating: "8.5/10",
+        keyLearnings: [
+            "War has no winners, only victims.",
+            "Why do fireflies have to die so soon?",
+            "Pride can be fatal when survival is at stake.",
+        ],
+    },
+    {
+        title: "Spirited Away",
+        status: WatchStatus.Completed,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/6/79597l.jpg",
+        description:
+            "A young girl wanders into a world ruled by gods, witches, and spirits.",
+        tags: ["Fantasy", "Adventure"],
+        year: "2001",
+        rating: "8.8/10",
+        keyLearnings: [
+            "Courage can break any curse.",
+            "Don't forget your name.",
+            "Greed turns humans into pigs. Generosity and kindness are the only true magic.",
+        ],
+    },
+    {
+        title: "Your Name",
+        status: WatchStatus.Completed,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/5/87048l.jpg",
+        description:
+            "Two teenagers share a profound connection after discovering they are swapping bodies.",
+        tags: ["Romance", "Supernatural"],
+        year: "2016",
+        rating: "8.9/10",
+        keyLearnings: [
+            "The thread of fate connects hearts.",
+            "I'm always searching for someone.",
+            "Twilight is the time when worlds blur, and miracles can happen.",
+        ],
+    },
+    {
+        title: "A Silent Voice",
+        status: WatchStatus.Completed,
+        seasons: "Movie",
+        image: "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg",
+        description:
+            "A young man seeks redemption for bullying a deaf girl in elementary school.",
+        tags: ["Drama"],
+        year: "2016",
+        rating: "8.9/10",
+        keyLearnings: [
+            "Redemption starts with listening.",
+            "Forgiveness begins with self-forgiveness.",
+            "Look people in the eye. The world is beautiful if you choose to see it.",
+        ],
+    },
+    {
         title: "Howl's Moving Castle",
-        type: AnimeType.Movie,
         status: WatchStatus.Completed,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1470/138723l.jpg",
@@ -655,7 +668,6 @@ export const anime = [
     },
     {
         title: "5 Centimeters Per Second",
-        type: AnimeType.Movie,
         status: WatchStatus.Planning,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1410/112994l.jpg",
@@ -672,7 +684,6 @@ export const anime = [
     },
     {
         title: "Princess Mononoke",
-        type: AnimeType.Movie,
         status: WatchStatus.Planning,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1355/147277l.jpg",
@@ -689,7 +700,6 @@ export const anime = [
     },
     {
         title: "Suzume",
-        type: AnimeType.Movie,
         status: WatchStatus.Planning,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1598/128450l.jpg",
@@ -706,7 +716,6 @@ export const anime = [
     },
     {
         title: "Weathering With You",
-        type: AnimeType.Movie,
         status: WatchStatus.Planning,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1985/97357l.jpg",
@@ -723,7 +732,6 @@ export const anime = [
     },
     {
         title: "The Girl Who Leapt Through Time",
-        type: AnimeType.Movie,
         status: WatchStatus.Planning,
         seasons: "Movie",
         image: "https://cdn.myanimelist.net/images/anime/1/2432l.jpg",
@@ -736,57 +744,6 @@ export const anime = [
             "Time waits for no one.",
             "Running from your problems only makes them harder to face.",
             "Cherish the present, for you can never truly relive it.",
-        ],
-    },
-    {
-        title: "That Time I Got Reincarnated as a Slime",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1-3",
-        image: "https://cdn.myanimelist.net/images/anime/1069/123309l.jpg",
-        description:
-            "A corporate worker is murdered and reborn as a slime in a fantasy world, where he gathers allies to build a nation of monsters.",
-        tags: ["Fantasy", "Isekai", "Action"],
-        year: "2018",
-        rating: "8.7/10",
-        keyLearnings: [
-            "Benevolence can build a stronger kingdom than fear.",
-            "Even the weakest creature can become the strongest with the right mindset.",
-            "Unity across differences creates true power.",
-        ],
-    },
-    {
-        title: "Assassination Classroom",
-        type: AnimeType.Anime,
-        status: WatchStatus.Completed,
-        seasons: "S1-2",
-        image: "https://cdn.myanimelist.net/images/anime/5/75639l.jpg",
-        description:
-            "A powerful creature claims that within a year he will destroy Earth, but offers mankind a chance by becoming a homeroom teacher where he teaches his students about how to kill him.",
-        tags: ["Action", "Comedy", "School"],
-        year: "2015",
-        rating: "8.1/10",
-        keyLearnings: [
-            "A good teacher helps you find your own answer.",
-            "Failure is just another step towards success.",
-            "Use what you have, even your weaknesses, as a weapon.",
-        ],
-    },
-    {
-        title: "The Eminence in Shadow",
-        type: AnimeType.Anime,
-        status: WatchStatus.Planning,
-        seasons: "S1-2",
-        image: "https://cdn.myanimelist.net/images/anime/1277/117155l.jpg",
-        description:
-            "A boy who dreams of being a mastermind operating in the shadows is reincarnated in a fantasy world where his delusions might just be reality.",
-        tags: ["Action", "Comedy", "Fantasy", "Isekai"],
-        year: "2022",
-        rating: "8.5/10",
-        keyLearnings: [
-            "Sometimes the role we play becomes who we are.",
-            "Hidden power is the most satisfying kind.",
-            "Navigating the line between delusion and reality requires immense confidence.",
         ],
     },
 ];

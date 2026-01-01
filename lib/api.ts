@@ -6,9 +6,10 @@ import {
   papersData,
   booksData,
   anime,
+  movies,
   hobbyData,
 } from "@/data";
-import { AnimeItem, AnimeType, WatchStatus } from "@/types/definitions";
+import { AnimeItem, WatchStatus } from "@/types/definitions";
 import { logError, AppError, safeAsync } from "@/lib/utils";
 
 // ============================================================================
@@ -180,10 +181,14 @@ export const getHobby = async () => {
 };
 
 export const getAnime = async (): Promise<AnimeItem[]> => {
-  if (!anime || !Array.isArray(anime))
+  const animeData = (anime || []).map((item) => ({ ...item, isMovie: false }));
+  const movieData = (movies || []).map((item) => ({ ...item, isMovie: true }));
+  const allAnime = [...animeData, ...movieData] as unknown as AnimeItem[];
+
+  if (!allAnime || allAnime.length === 0)
     throw new AppError("Anime data not found", "ANIME_NOT_FOUND");
 
-  return (anime as AnimeItem[]).map((item, index) => {
+  return allAnime.map((item, index) => {
     if (!item || typeof item !== "object")
       throw new AppError(
         `Invalid anime item at index ${index}`,
@@ -191,7 +196,6 @@ export const getAnime = async (): Promise<AnimeItem[]> => {
       );
     return {
       ...item,
-      type: item.type as AnimeType,
       status: item.status as WatchStatus,
       image: item.image || "/placeholder.png",
       seasons: item.seasons,
@@ -200,6 +204,7 @@ export const getAnime = async (): Promise<AnimeItem[]> => {
       tags: item.tags || [],
       year: item.year,
       rating: item.rating,
+      isMovie: item.isMovie,
     };
   });
 };

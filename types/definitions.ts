@@ -55,11 +55,6 @@ export interface Blog {
   slug: string;
   excerpt?: string;
 }
-export enum AnimeType {
-  Anime = "Anime",
-  Movie = "Movie",
-  WebSeries = "Web Series",
-}
 export enum WatchStatus {
   Completed = "Completed",
   Planning = "Planning",
@@ -74,7 +69,7 @@ export enum CollectionType {
 }
 export interface AnimeItem {
   title: string;
-  type: AnimeType;
+  isMovie?: boolean;
   status: WatchStatus;
   seasons?: string;
   image?: string;

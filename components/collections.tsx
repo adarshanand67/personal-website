@@ -41,7 +41,7 @@ import { CollectionType, WatchStatus, Book } from "@/types/definitions";
 import { CollectionConfig } from "@/lib/config";
 import { CollectionStrategyFactory, CollectionItem } from "@/components/CollectionStrategies";
 import { Breadcrumbs, PillTag, RandomizerButton } from "@/components/ui";
-import { getBookGradient } from "@/lib/utils";
+import { getBookGradient, getAssetPath } from "@/lib/utils";
 
 // ============================================================================
 // Hooks
@@ -224,11 +224,12 @@ function AnimeSidebar({ item }: { item: any }) {
           className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group flex-shrink-0"
         >
           <Image
-            src={item.image}
+            src={getAssetPath(item.image)}
             alt={item.title}
             fill
             className="object-cover"
             priority
+            unoptimized
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
             <Play
@@ -424,11 +425,12 @@ function BookSidebar({ item }: { item: Book }) {
           className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group flex-shrink-0"
         >
           <Image
-            src={item.image}
+            src={getAssetPath(item.image)}
             alt={item.title}
             fill
             className="object-cover"
             priority
+            unoptimized
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
             <Play

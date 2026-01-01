@@ -29,12 +29,11 @@ import {
   AnimeItem,
   Blog,
   Hobby,
-  CollectionType,
   WatchStatus,
-  AnimeType,
+  CollectionType,
 } from "@/types/definitions";
 import { PillTag } from "@/components/ui";
-import { AppError, getBookGradient } from "@/lib/utils";
+import { AppError, getBookGradient, getAssetPath } from "@/lib/utils";
 
 // ============================================================================
 // Types
@@ -70,7 +69,7 @@ export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem
         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm group-hover:shadow-xl transition-all duration-500 group-hover:-translate-y-2">
           {anime.image ? (
             <Image
-              src={anime.image}
+              src={getAssetPath(anime.image)}
               alt={anime.title}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -120,7 +119,7 @@ export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem
                 label={tag}
                 onClick={(e) => {
                   e.stopPropagation();
-                  useStore.getState().setAnimeSelectedTag(tag);
+                  useStore.getState().setCollectionSelectedTag(tag);
                 }}
                 variant="filter"
               />
@@ -141,11 +140,10 @@ export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem
       (item) => item?.status === WatchStatus.Completed,
     );
     const watchedSeries = watched.filter(
-      (item) =>
-        item?.type === AnimeType.Anime || item?.type === AnimeType.WebSeries,
+      (item) => !item.isMovie,
     );
     const watchedMovies = watched.filter(
-      (item) => item?.type === AnimeType.Movie,
+      (item) => item.isMovie,
     );
 
     let globalIndex = 0;
@@ -264,7 +262,7 @@ export class BookCollectionStrategy implements CollectionItemStrategy<Book> {
                   <Star size={12} fill="currentColor" />
                 </div>
               )}
-              <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none mix-blend-overlay" />
+
               <div className="absolute top-0 left-2 bottom-0 w-1 bg-black/20 blur-[1px]" />
             </div>
           </div>
