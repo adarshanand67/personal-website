@@ -32,7 +32,7 @@ export function ExperienceSection({ items }: { items: any[] }) {
                         className="grid grid-cols-1 gap-4 pt-1 overflow-hidden"
                     >
                         {items.map((exp, i) => (
-                            <SpotlightCard key={i}>
+                            <div key={i} className="group relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300 overflow-hidden">
                                 <div className="p-4 md:p-6 flex flex-col md:row-gap-4">
                                     <div className="flex flex-col md:flex-row gap-4">
                                         {exp.logo && (
@@ -43,6 +43,7 @@ export function ExperienceSection({ items }: { items: any[] }) {
                                                     width={48}
                                                     height={48}
                                                     className="w-full h-full object-contain"
+                                                    unoptimized
                                                 />
                                             </div>
                                         )}
@@ -87,7 +88,7 @@ export function ExperienceSection({ items }: { items: any[] }) {
                                         )}
                                     </div>
                                 </div>
-                            </SpotlightCard>
+                            </div>
                         ))}
                     </motion.div>
                 )}

@@ -53,7 +53,7 @@ export function TechStackSection() {
                         {viewMode === "list" ? (
                             <div className="grid grid-cols-1 gap-2 mt-2">
                                 {Object.entries(skillCategories).map(([cat, skills]) => (
-                                    <SpotlightCard key={cat}>
+                                    <div key={cat} className="group relative bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-800 hover:border-foreground/20 transition-colors duration-300 overflow-hidden">
                                         <div className="p-3">
                                             <h3 className="text-[10px] font-black opacity-40 uppercase tracking-widest mb-2">
                                                 {cat}
@@ -100,7 +100,7 @@ export function TechStackSection() {
                                                 })}
                                             </div>
                                         </div>
-                                    </SpotlightCard>
+                                    </div>
                                 ))}
                             </div>
                         ) : (

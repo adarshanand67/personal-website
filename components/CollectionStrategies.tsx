@@ -500,11 +500,11 @@ export class ArticleCollectionStrategy implements CollectionItemStrategy<Blog | 
     const papers = items.filter((i): i is Paper => "url" in i);
     const blogs = items.filter((i): i is Blog => "slug" in i);
     return (
-      <div className="space-y-24 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 py-8 items-start">
         {papers.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
-              <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
+            <h2 className="text-2xl font-bold mb-8 flex items-center gap-4 text-foreground/90">
+              <span className="text-foreground/10 text-3xl font-mono tracking-tighter">
                 01
               </span>
               Research Papers
@@ -516,8 +516,8 @@ export class ArticleCollectionStrategy implements CollectionItemStrategy<Blog | 
         )}
         {blogs.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 text-foreground/90">
-              <span className="text-foreground/10 text-4xl font-mono tracking-tighter">
+            <h2 className="text-2xl font-bold mb-8 flex items-center gap-4 text-foreground/90">
+              <span className="text-foreground/10 text-3xl font-mono tracking-tighter">
                 {papers.length > 0 ? "02" : "01"}
               </span>
               Blogs

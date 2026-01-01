@@ -237,14 +237,18 @@ function TerminalHeader({
     return (
         <div
             onMouseDown={onMouseDown}
-            className="bg-white/50 dark:bg-white/5 px-4 h-8 flex items-center gap-2 border-b border-white/20 dark:border-white/10 cursor-grab active:cursor-grabbing select-none"
+            className="bg-zinc-100/90 dark:bg-zinc-900/90 px-4 h-8 flex items-center gap-2 border-b border-zinc-200/50 dark:border-white/5 cursor-grab active:cursor-grabbing select-none rounded-t-xl"
         >
-            <div className="w-3 h-3 rounded-full bg-foreground/10 shadow-sm border border-foreground/5" />
-            <div className="w-3 h-3 rounded-full bg-foreground/10 shadow-sm border border-foreground/5" />
-            <div className="w-3 h-3 rounded-full bg-foreground/10 shadow-sm border border-foreground/5" />
-            <span className="ml-2 text-gray-600 dark:text-gray-400 text-xs font-medium opacity-80">
-                adarsh@linux:~
-            </span>
+            <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] hover:brightness-90 transition-all shadow-sm" />
+                <div className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] hover:brightness-90 transition-all shadow-sm" />
+                <div className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29] hover:brightness-90 transition-all shadow-sm" />
+            </div>
+            <div className="flex-1 text-center pr-12">
+                <span className="text-zinc-500 dark:text-zinc-400 text-xs font-semibold font-mono opacity-80 flex items-center justify-center gap-1.5">
+                    <span className="w-3 h-3">📁</span> adarsh — -zsh
+                </span>
+            </div>
         </div>
     );
 }
@@ -263,19 +267,30 @@ function TerminalContent({
     return (
         <div
             ref={containerRef}
-            className="p-4 text-gray-800 dark:text-gray-300 h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+            className="p-6 text-gray-800 dark:text-gray-200 h-[400px] overflow-y-auto overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent font-mono text-sm"
         >
             {lines.map((line: string, i: number) => (
                 <div
                     key={i}
-                    className={`whitespace-pre leading-snug tracking-wide ${line.startsWith("$ ") ? "text-foreground font-bold" : ""}`}
+                    className={`whitespace-pre leading-relaxed tracking-wide ${line.startsWith("$ ") ? "text-foreground font-bold" : ""}`}
                 >
-                    {line.includes("\x1b[") ? parseAnsi(line) : line}
+                    {line.startsWith("$ ") ? (
+                        <div className="flex items-center gap-2">
+                            <span className="text-green-500 font-bold">➜</span>
+                            <span className="text-cyan-500 font-bold">~</span>
+                            <span className="text-foreground">{line.substring(2)}</span>
+                        </div>
+                    ) : (
+                        <div className={`${line.includes("Error") ? "text-red-400" : "opacity-90"}`}>
+                            {line.includes("\x1b[") ? parseAnsi(line) : line}
+                        </div>
+                    )}
                 </div>
             ))}
             {isIntroDone && (
-                <div className="flex items-center">
-                    <span className="mr-2 text-foreground font-bold">$</span>
+                <div className="flex items-center gap-2 mt-1">
+                    <span className="text-green-500 font-bold">➜</span>
+                    <span className="text-cyan-500 font-bold">~</span>
                     <input
                         ref={inputRef}
                         type={passwordMode ? "password" : "text"}
@@ -283,7 +298,7 @@ function TerminalContent({
                         onBlur={onBlur}
                         onChange={onChange}
                         onKeyDown={handleKeyDown}
-                        className="bg-transparent border-none outline-none text-foreground flex-grow font-medium focus:ring-0"
+                        className="bg-transparent border-none outline-none text-foreground flex-grow font-bold focus:ring-0 p-0 ml-1"
                         autoFocus
                         spellCheck={false}
                         autoComplete="off"

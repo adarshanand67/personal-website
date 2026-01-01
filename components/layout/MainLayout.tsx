@@ -155,31 +155,7 @@ export function ClientLayout({
 
               <TechStackSection />
 
-              {isFeatureEnabled("enableProjects") && (
-                <RecentSection
-                  title="Featured Projects"
-                  command="ls -la ~/projects"
-                  items={projects.slice(0, 3)}
-                  linkText="View all projects"
-                  linkUrl={routes.hobbies} // Assuming projects map there or we need a route
-                />
-              )}
-
-              {isFeatureEnabled("enableBlog") && (
-                <RecentSection
-                  title="Recent Writing"
-                  command="ls -la ~/blog --sort=date | head -3"
-                  items={recentPosts.map((post) => ({
-                    title: post.title,
-                    url: `/articles/${post.slug}`,
-                    date: post.date,
-                  }))}
-                  linkText="Read all articles"
-                  linkUrl={routes.articles}
-                />
-              )}
-
-              <ContactSection />
+              {/* Sections removed as requested */}
             </div>
           </>
         ) : (
