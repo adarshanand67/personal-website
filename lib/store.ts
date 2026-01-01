@@ -119,17 +119,6 @@ export interface TodoState {
   clearTodos: () => void;
 }
 
-export interface GuestbookEntry {
-  name: string;
-  message: string;
-  timestamp: string;
-}
-
-export interface GuestbookState {
-  guestbookEntries: GuestbookEntry[];
-  addGuestbookEntry: (entry: GuestbookEntry) => void;
-}
-
 export interface AppState
   extends
   TerminalState,
@@ -141,8 +130,7 @@ export interface AppState
   BookState,
   SearchState,
   RandomizerState,
-  TodoState,
-  GuestbookState { }
+  TodoState { }
 
 // ============================================================================
 // State Creators
@@ -272,7 +260,7 @@ const createUtilitySlice: StateCreator<
   AppState,
   [],
   [],
-  TodoState & GuestbookState
+  TodoState
 > = (set) => ({
   todos: [],
   addTodo: (text) =>
@@ -293,11 +281,6 @@ const createUtilitySlice: StateCreator<
       todos: state.todos.filter((t) => t.id !== id),
     })),
   clearTodos: () => set({ todos: [] }),
-  guestbookEntries: [],
-  addGuestbookEntry: (entry) =>
-    set((state) => ({
-      guestbookEntries: [entry, ...state.guestbookEntries],
-    })),
 });
 
 // ============================================================================
@@ -320,7 +303,6 @@ export const useStore = create<AppState>()(
         todos: state.todos,
         volume: state.volume,
         isMuted: state.isMuted,
-        guestbookEntries: state.guestbookEntries,
       }),
     },
   ),

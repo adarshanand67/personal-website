@@ -39,7 +39,7 @@ import {
 import { useStore } from "@/lib/store";
 import { CollectionType, WatchStatus, Book } from "@/types/definitions";
 import { CollectionConfig } from "@/lib/config";
-import { CollectionStrategyFactory, CollectionItem } from "@/lib/collectionStrategies";
+import { CollectionStrategyFactory, CollectionItem } from "@/components/CollectionStrategies";
 import { Breadcrumbs, PillTag, RandomizerButton } from "@/components/ui";
 import { getBookGradient } from "@/lib/utils";
 

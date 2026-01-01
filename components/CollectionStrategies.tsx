@@ -29,7 +29,6 @@ import {
   AnimeItem,
   Blog,
   Hobby,
-  Hobby,
   CollectionType,
   WatchStatus,
   AnimeType,

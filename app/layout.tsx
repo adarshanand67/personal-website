@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Assistant, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/seo";
-import { ClientLayout, DLPProvider } from "@/components/layout";
+import { ClientLayout } from "@/components/layout";
 import { siteConfig } from "@/lib/config";
 import { generatePersonSchema, generateWebSiteSchema } from "@/lib/seo";
+import { getProfile, getBlogs, getProjects, getExperiences } from "@/lib/api";
 
 const assistant = Assistant({
   variable: "--font-assistant",
@@ -72,11 +73,18 @@ export const viewport: Viewport = {
   themeColor: "#000000",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [profile, recentPosts, projects, experience] = await Promise.all([
+    getProfile(),
+    getBlogs().then((blogs) => blogs.slice(0, 3)), // Get recent posts
+    getProjects(),
+    getExperiences(),
+  ]);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -88,8 +96,13 @@ export default function RootLayout({
       >
         <StructuredData data={generatePersonSchema()} />
         <StructuredData data={generateWebSiteSchema()} />
-        <ClientLayout>
-          <DLPProvider>{children}</DLPProvider>
+        <ClientLayout
+          profile={profile}
+          recentPosts={recentPosts}
+          projects={projects}
+          experience={experience}
+        >
+          {children}
         </ClientLayout>
       </body>
     </html>
