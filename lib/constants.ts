@@ -1,5 +1,5 @@
 import { siteConfig, basePath as configBasePath } from "@/lib/config";
-import { SkillCategoryName } from "@/data";
+import { SkillCategoryName } from "@/types/definitions";
 
 export const basePath = configBasePath;
 

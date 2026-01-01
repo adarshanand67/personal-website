@@ -176,6 +176,31 @@ export function linkifyTech(text: string): string {
 }
 
 export function parseAnsi(text: string) {
-  // eslint-disable-next-line no-control-regex
-  return text.replace(/\x1B\[\d+m/g, "");
+  if (!text) return text;
+
+  // ANSI code to Tailwind color map
+  const colors: Record<string, string> = {
+    "30": "text-black dark:text-gray-900",
+    "31": "text-red-500",
+    "32": "text-green-500",
+    "33": "text-yellow-500",
+    "34": "text-blue-500",
+    "35": "text-purple-500",
+    "36": "text-cyan-500",
+    "37": "text-white dark:text-gray-100",
+    "90": "text-gray-500", // bright black
+    "1": "font-bold",
+  };
+
+  let html = text
+    // Handle specific color codes
+    .replace(/\x1b\[(\d+)m/g, (match, code) => {
+      if (code === "0") return "</span>";
+      if (colors[code]) return `<span class="${colors[code]}">`;
+      return "";
+    })
+    // Remove any remaining unsupported ANSI codes
+    .replace(/\x1b\[.*?m/g, "");
+
+  return html;
 }

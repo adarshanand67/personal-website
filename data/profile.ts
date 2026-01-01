@@ -1,5 +1,5 @@
 import { Profile } from "@/types/definitions";
-import { Location } from "./enums";
+import { Location } from "@/types/definitions";
 
 export const profileData: Profile = {
     name: "Adarsh Anand",

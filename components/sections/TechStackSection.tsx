@@ -19,6 +19,29 @@ export function TechStackSection() {
     const { expandedSections, toggleSectionExpanded } = useStore();
     const isExpanded = expandedSections["techstack"] ?? false;
     const [viewMode, setViewMode] = useState<"list" | "graph">("list");
+
+    const graphData = React.useMemo(() => {
+        const nodes: any[] = [];
+        const links: any[] = [];
+
+        // Center Node
+        nodes.push({ id: "Adarsh", group: 0, val: 20 });
+
+        Object.entries(skillCategories).forEach(([category, skills], catIndex) => {
+            // Category Node
+            nodes.push({ id: category, group: 1, val: 10 });
+            links.push({ source: "Adarsh", target: category });
+
+            skills.forEach((skill) => {
+                // Skill Node
+                nodes.push({ id: skill, group: 2, val: 5 });
+                links.push({ source: category, target: skill });
+            });
+        });
+
+        return { nodes, links };
+    }, []);
+
     return (
         <div className="font-mono max-w-6xl mx-auto px-4 md:px-6 mb-4">
             <SectionHeader
@@ -104,8 +127,21 @@ export function TechStackSection() {
                                 ))}
                             </div>
                         ) : (
-                            <div className="h-[500px] mt-4 rounded-xl border border-foreground/10 overflow-hidden">
-                                <ForceGraph2D graphData={{ nodes: [], links: [] }} />
+                            <div className="h-[500px] mt-4 rounded-xl border border-foreground/10 overflow-hidden bg-black/5 dark:bg-black/20 relative">
+                                <ForceGraph2D
+                                    graphData={graphData}
+                                    nodeLabel="id"
+                                    nodeColor={(node: any) =>
+                                        node.group === 0
+                                            ? "#ff5f56"
+                                            : node.group === 1
+                                                ? "#3b82f6"
+                                                : "#10b981"
+                                    }
+                                    nodeVal={(node: any) => node.val}
+                                    linkColor={() => "rgba(100,100,100,0.2)"}
+                                    backgroundColor="transparent"
+                                />
                             </div>
                         )}
                     </motion.div>

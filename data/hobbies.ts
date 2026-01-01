@@ -1,4 +1,4 @@
-import { HobbyIcon } from "./enums";
+import { HobbyIcon } from "@/types/definitions";
 
 export const hobbyData = [
     {

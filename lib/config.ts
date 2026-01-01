@@ -1,4 +1,4 @@
-import { Designation, Skill } from "@/data";
+import { Designation, Skill } from "@/types/definitions";
 import { CollectionType } from "@/types/definitions";
 
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";

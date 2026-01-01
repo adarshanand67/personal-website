@@ -281,8 +281,15 @@ function TerminalContent({
                             <span className="text-foreground">{line.substring(2)}</span>
                         </div>
                     ) : (
-                        <div className={`${line.includes("Error") ? "text-red-400" : "opacity-90"}`}>
-                            {line.includes("\x1b[") ? parseAnsi(line) : line}
+                        <div
+                            className={`${line.includes("Error") ? "text-red-400" : "opacity-90"}`}
+                            dangerouslySetInnerHTML={
+                                line.includes("\x1b[")
+                                    ? { __html: parseAnsi(line) }
+                                    : undefined
+                            }
+                        >
+                            {!line.includes("\x1b[") && line}
                         </div>
                     )}
                 </div>

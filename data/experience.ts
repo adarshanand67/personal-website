@@ -1,4 +1,4 @@
-import { Company, Role, Location } from "./enums";
+import { Company, Role, Location } from "@/types/definitions";
 
 export const experiencesData = [
     {
