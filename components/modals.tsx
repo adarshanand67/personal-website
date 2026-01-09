@@ -15,6 +15,7 @@ import {
   Users,
   Mic,
   ExternalLink,
+  Pen,
 } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { hobbyData } from "@/data";
@@ -32,6 +33,7 @@ const iconMap: Record<string, React.ElementType> = {
   Coffee,
   Users,
   Mic,
+  Pen,
 };
 
 export const HobbiesModal = () => {
