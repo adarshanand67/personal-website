@@ -619,7 +619,7 @@ export const anime = [
         title: "Golden Boy",
         status: WatchStatus.Completed,
         seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/13/50361l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1409/142267l.jpg",
         description:
             "A wandering student takes on various odd jobs while pursuing knowledge and women.",
         tags: ["Comedy", "Slice of Life"],
@@ -667,7 +667,7 @@ export const anime = [
         title: "Samurai Champloo",
         status: WatchStatus.Completed,
         seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1543/146153l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
         description:
             "Two samurai and a girl search for a mysterious samurai who smells of sunflowers.",
         tags: ["Action", "Adventure", "Historical"],
@@ -683,7 +683,7 @@ export const anime = [
         title: "Dororo",
         status: WatchStatus.Completed,
         seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1180/95018l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/1794/99478l.jpg",
         description:
             "A young man reclaims his body parts from demons that stole them at birth.",
         tags: ["Action", "Adventure", "Historical", "Supernatural"],
