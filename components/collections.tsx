@@ -245,21 +245,7 @@ function AnimeButtons({ item }: { item: any }) {
 
 function AnimeSidebar({ item }: { item: any }) {
   return (
-    <div className="w-full md:w-[350px] bg-foreground/[0.02] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
-      {/* Blurred Background Image */}
-      {item.image && (
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={getAssetPath(item.image)}
-            alt=""
-            fill
-            className="object-cover blur-2xl opacity-20 scale-110"
-            unoptimized
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background dark:via-[#09090b]/50 dark:to-[#09090b]" />
-        </div>
-      )}
-
+    <div className="w-full md:w-[350px] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none z-[1]" />
 
       {item.image ? (
@@ -305,8 +291,8 @@ function AnimeContent({
   onTagClick: (tag: string) => void;
 }) {
   return (
-    <div className="flex-1 md:overflow-y-auto custom-scrollbar">
-      <div className="p-6 md:p-10 space-y-6 md:space-y-8">
+    <div className="flex-1 md:overflow-y-auto custom-scrollbar relative z-10">
+      <div className="p-6 md:p-10 space-y-6 md:space-y-8 bg-transparent">
         <div>
           <div className="flex flex-wrap gap-3 mb-4">
             {item.year && (
@@ -413,8 +399,22 @@ export function AnimeModal({
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "100%", opacity: 0 }}
         transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-        className="bg-[#fafafa] dark:bg-[#09090b] w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden"
+        className="bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-3xl w-[92%] md:w-full max-w-5xl max-h-[85vh] rounded-[24px] md:rounded-[32px] shadow-2xl relative z-10 border border-white/20 dark:border-white/10 flex flex-col md:flex-row overflow-hidden"
       >
+        {/* Full Modal Blurred Background Image */}
+        {item.image && (
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={getAssetPath(item.image)}
+              alt=""
+              fill
+              className="object-cover blur-3xl opacity-30 scale-110"
+              unoptimized
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20 dark:from-white/5 dark:via-transparent dark:to-black/30" />
+          </div>
+        )}
+
         <button
           onClick={onClose}
           className="absolute top-4 right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-all z-30 backdrop-blur-sm group"
@@ -424,13 +424,13 @@ export function AnimeModal({
             className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors"
           />
         </button>
-        <div className="md:hidden flex-1 overflow-y-auto custom-scrollbar bg-[#fafafa] dark:bg-[#09090b]">
+        <div className="md:hidden flex-1 overflow-y-auto custom-scrollbar relative z-10">
           <div className="flex flex-col">
             <AnimeSidebar item={item} />
             <AnimeContent item={item} onTagClick={onTagClick} />
           </div>
         </div>
-        <div className="hidden md:flex md:flex-row flex-1 overflow-hidden">
+        <div className="hidden md:flex md:flex-row flex-1 overflow-hidden relative z-10">
           <AnimeSidebar item={item} />
           <AnimeContent item={item} onTagClick={onTagClick} />
         </div>
