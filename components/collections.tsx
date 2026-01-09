@@ -244,16 +244,30 @@ function AnimeButtons({ item }: { item: any }) {
 }
 
 function AnimeSidebar({ item }: { item: any }) {
-
   return (
     <div className="w-full md:w-[350px] bg-foreground/[0.02] p-6 md:p-8 flex flex-col items-center justify-start border-b md:border-b-0 md:border-r border-foreground/10 relative overflow-hidden shrink-0">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none" />
+      {/* Blurred Background Image */}
+      {item.image && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={getAssetPath(item.image)}
+            alt=""
+            fill
+            className="object-cover blur-2xl opacity-20 scale-110"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background dark:via-[#09090b]/50 dark:to-[#09090b]" />
+        </div>
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-foreground/[0.02] pointer-events-none z-[1]" />
+
       {item.image ? (
         <a
           href={`https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + " anime official trailer")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative w-40 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group flex-shrink-0"
+          className="relative w-56 md:w-64 aspect-[2/3] shadow-2xl rounded-2xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10 mb-6 md:mb-8 transform hover:scale-[1.02] transition-transform duration-500 cursor-pointer group flex-shrink-0 z-10"
         >
           <Image
             src={getAssetPath(item.image)}
@@ -272,11 +286,11 @@ function AnimeSidebar({ item }: { item: any }) {
           </div>
         </a>
       ) : (
-        <div className="w-48 md:w-64 aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+        <div className="w-56 md:w-64 aspect-[2/3] bg-gray-200 dark:bg-gray-800 rounded-2xl flex items-center justify-center mb-8 shadow-inner z-10">
           <Tv className="text-gray-400" size={56} />
         </div>
       )}
-      <div className="hidden md:block w-full">
+      <div className="hidden md:block w-full z-10">
         <AnimeButtons item={item} />
       </div>
     </div>
