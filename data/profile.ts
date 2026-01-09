@@ -19,8 +19,7 @@ export const profileData: Profile = {
         email: "adarshan20302@gmail.com",
     },
     bio: {
-        short:
-            "I enjoy wrapping basic common sense in a slow, monotone voice just to see if it sounds like philosophy.",
+        short: "Philosopher of the mundane.",
         paragraphs: [
             "I enjoy wrapping basic common sense in a slow, monotone voice just to see if it sounds like philosophy.",
         ],

@@ -9,7 +9,8 @@ export function StructuredData({ data }: StructuredDataProps) {
     <Script
       id="structured-data"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    >
+      {JSON.stringify(data)}
+    </Script>
   );
 }

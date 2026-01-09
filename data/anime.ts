@@ -619,7 +619,7 @@ export const anime = [
         title: "Golden Boy",
         status: WatchStatus.Completed,
         seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1409/142267l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/5/50361l.jpg",
         description:
             "A wandering student takes on various odd jobs while pursuing knowledge and women.",
         tags: ["Comedy", "Slice of Life"],
@@ -683,7 +683,7 @@ export const anime = [
         title: "Dororo",
         status: WatchStatus.Completed,
         seasons: "S1",
-        image: "https://cdn.myanimelist.net/images/anime/1794/99478l.jpg",
+        image: "https://cdn.myanimelist.net/images/anime/6/95018l.jpg",
         description:
             "A young man reclaims his body parts from demons that stole them at birth.",
         tags: ["Action", "Adventure", "Historical", "Supernatural"],
