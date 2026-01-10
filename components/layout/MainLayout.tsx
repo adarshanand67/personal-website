@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
-import {
-  MapPin,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
+import { MapPin, ChevronDown, ChevronRight } from "lucide-react";
 
 import { useStore } from "@/lib/store";
 import { Profile, BlogPost, Project } from "@/types/definitions";
@@ -30,7 +32,8 @@ import { getTechIcon } from "@/lib/icons";
 
 // Dynamic Imports
 const CommandMenu = dynamic(
-  () => import("@/components/layout/CommandMenu").then((mod) => mod.CommandMenu),
+  () =>
+    import("@/components/layout/CommandMenu").then((mod) => mod.CommandMenu),
   { ssr: false },
 );
 const MusicToggleButton = dynamic(
@@ -42,7 +45,10 @@ const MobileDock = dynamic(
   { ssr: false },
 );
 const TerminalPreloader = dynamic(
-  () => import("@/components/layout/TerminalPreloader").then((mod) => mod.TerminalPreloader),
+  () =>
+    import("@/components/layout/TerminalPreloader").then(
+      (mod) => mod.TerminalPreloader,
+    ),
   { ssr: false },
 );
 const DLPProtection = dynamic(
@@ -79,8 +85,13 @@ import { SpotlightCard } from "@/components/ui";
 
 // Mock Files & Commands (Keep these or move to a data file if they grow)
 /* ... (MockFS and Commands logic can be moved to lib/terminal/ if desired later) ... */
-import { mockFiles, directoryStructure, commands, directories } from "@/lib/terminal/data"; // Assuming we might move this, but for now we'll keep it simple or inline if it's small. 
-// actually let's keep the terminal hooks here for now or extract them if urged. 
+import {
+  mockFiles,
+  directoryStructure,
+  commands,
+  directories,
+} from "@/lib/terminal/data"; // Assuming we might move this, but for now we'll keep it simple or inline if it's small.
+// actually let's keep the terminal hooks here for now or extract them if urged.
 // Given the massive refactor, let's keep the Hooks specific to Layout inline if they are not used elsewhere, OR better, let's just keep the necessary imports and logic.
 
 // ... (Rest of the logic from original layout.tsx, but simplified)
@@ -119,7 +130,9 @@ export function ClientLayout({
   // Command Menu Event Listener
   useEffect(() => {
     const handleOpenCommandMenu = () => {
-      document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }));
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "k", metaKey: true }),
+      );
     };
     // ... logic ...
   }, []);
@@ -130,7 +143,6 @@ export function ClientLayout({
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300 selection:bg-foreground/20 selection:text-foreground">
       {/* Background Effects */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-
         <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] mix-blend-screen animate-pulse" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[100px] mix-blend-screen animate-pulse delay-1000" />
       </div>

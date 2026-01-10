@@ -1,5 +1,9 @@
 import { getExperiences, getProfile } from "@/lib/api";
-import { Hero, ExperienceSection, TechStackSection } from "@/components/sections";
+import {
+  Hero,
+  ExperienceSection,
+  TechStackSection,
+} from "@/components/sections";
 import dynamic from "next/dynamic";
 
 export default async function Home() {

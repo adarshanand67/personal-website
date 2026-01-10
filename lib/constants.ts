@@ -226,9 +226,12 @@ export const techLinks: Record<string, string> = {
   SQL: "https://www.iso.org/standard/63555.html",
 
   // System & Kernel
-  "Intel SGX/TDX": "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html",
-  "Intel SGX": "https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html",
-  "Intel TDX": "https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html",
+  "Intel SGX/TDX":
+    "https://www.intel.com/content/www/us/en/developer/articles/technical/intel-trust-domain-extensions.html",
+  "Intel SGX":
+    "https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html",
+  "Intel TDX":
+    "https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html",
   "Kernel Development": "https://www.kernel.org/",
   "System Programming": "https://man7.org/linux/man-pages/",
   "Windows Internals": "https://learn.microsoft.com/en-us/sysinternals/",
@@ -249,10 +252,12 @@ export const techLinks: Record<string, string> = {
   XDR: "https://www.trellix.com/platform/xdr/",
   PowerShell: "https://learn.microsoft.com/en-us/powershell/",
   "Boldon James": "https://www.boldonjames.com/",
-  "Full-Disk Encryption": "https://en.wikipedia.org/wiki/Hardware-based_full_disk_encryption",
+  "Full-Disk Encryption":
+    "https://en.wikipedia.org/wiki/Hardware-based_full_disk_encryption",
   "Hashicorp Vault": "https://www.vaultproject.io/",
   OpenSSL: "https://www.openssl.org/",
-  "Post-Quantum Cryptography": "https://csrc.nist.gov/projects/post-quantum-cryptography",
+  "Post-Quantum Cryptography":
+    "https://csrc.nist.gov/projects/post-quantum-cryptography",
   libFuzzer: "https://llvm.org/docs/LibFuzzer.html",
   RESTler: "https://github.com/microsoft/restler-fuzzer",
   SIEM: "https://www.ibm.com/topics/siem",
@@ -328,7 +333,8 @@ export const techLinks: Record<string, string> = {
 
   // Misc
   Gramine: "https://gramineproject.io/",
-  "Intel Xeon": "https://www.intel.com/content/www/us/en/products/details/processors/xeon.html",
+  "Intel Xeon":
+    "https://www.intel.com/content/www/us/en/products/details/processors/xeon.html",
   Chrome: "https://www.google.com/chrome/",
   Edge: "https://www.microsoft.com/en-us/edge",
   "Trellix DLP Endpoint": "https://www.trellix.com/products/dlp-endpoint/",

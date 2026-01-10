@@ -22,6 +22,7 @@ A modern, customizable portfolio website built with **Next.js 16**, **React 19**
 - **Feature Toggles**: Enable/disable components easily
 
 ## Quick Start
+
 1. **Clone & Install**
    ```bash
    git clone https://github.com/adarshanand67/adarshanand67.github.io.git my-portfolio
@@ -31,7 +32,7 @@ A modern, customizable portfolio website built with **Next.js 16**, **React 19**
 2. **Customize Config**
    Edit **`lib/config.ts`** to update site details, author info, and feature toggles.
 3. **Update Data**
-   Edit **`data.ts`** to update your profile, projects, collections, and experiences.
+   Edit files in **`data/`** directory to update your profile, projects, collections, and experiences.
 4. **Run Locally**
    ```bash
    npm run dev
@@ -39,13 +40,20 @@ A modern, customizable portfolio website built with **Next.js 16**, **React 19**
    Visit **http://localhost:3000**
 
 ## Project Structure
+
 ```
 my-portfolio/
-├── lib/                       # CORE CONFIG & DATA
+├── data/                      # DATA MODULES
+│   ├── blogs/                 # Blog markdown files
+│   ├── profile.ts             # Profile information
+│   ├── experience.ts          # Work experience
+│   └── index.ts               # Data exports
+├── lib/                       # CORE CONFIG & UTILS
 │   ├── config.ts              # Site, theme, and feature config
-│   ├── data.ts                # Profile, projects, blogs, etc.
 │   ├── constants.ts           # Route definitions music tracks
 │   ├── api.ts                 # Data fetching utilities
+│   ├── hooks.ts               # Custom React hooks
+│   ├── utils.ts               # Utility functions
 │   └── store.ts               # State management (Zustand)
 ├── components/                # UI Components
 │   ├── features/              # Feature components (Terminal, Music, etc.)
@@ -58,6 +66,7 @@ my-portfolio/
 ```
 
 ## Tech Stack
+
 - **Framework:** Next.js 16 (App Router)
 - **UI Library:** React 19, Tailwind CSS 4
 - **Language:** TypeScript 5
@@ -66,6 +75,7 @@ my-portfolio/
 - **Fonts:** Google Fonts (Assistant, JetBrains Mono)
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 **Made by [Adarsh Anand](https://github.com/adarshanand67)**

@@ -121,7 +121,7 @@ export enum HobbyIcon {
   Coffee = "Coffee",
   Users = "Users",
   Mic = "Mic",
-  Pen = "Pen"
+  Pen = "Pen",
 }
 
 export enum SystemStatusLabel {

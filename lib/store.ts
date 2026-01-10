@@ -120,17 +120,16 @@ export interface TodoState {
 }
 
 export interface AppState
-  extends
-  TerminalState,
-  MusicState,
-  BackToTopState,
-  UIState,
-  CollectionState,
-  HobbyState,
-  BookState,
-  SearchState,
-  RandomizerState,
-  TodoState { }
+  extends TerminalState,
+    MusicState,
+    BackToTopState,
+    UIState,
+    CollectionState,
+    HobbyState,
+    BookState,
+    SearchState,
+    RandomizerState,
+    TodoState {}
 
 // ============================================================================
 // State Creators
@@ -256,12 +255,9 @@ const createContentSlice: StateCreator<
   setIsRandomizing: (isRandomizing) => set({ isRandomizing }),
 });
 
-const createUtilitySlice: StateCreator<
-  AppState,
-  [],
-  [],
-  TodoState
-> = (set) => ({
+const createUtilitySlice: StateCreator<AppState, [], [], TodoState> = (
+  set,
+) => ({
   todos: [],
   addTodo: (text) =>
     set((state) => ({

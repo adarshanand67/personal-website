@@ -51,7 +51,9 @@ export interface CollectionItemStrategy<T> {
 // Anime Strategy
 // ============================================================================
 
-export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem> {
+export class AnimeCollectionStrategy
+  implements CollectionItemStrategy<AnimeItem>
+{
   private renderItemWithPriority(
     anime: AnimeItem,
     index: number,
@@ -139,12 +141,8 @@ export class AnimeCollectionStrategy implements CollectionItemStrategy<AnimeItem
     const watched = items.filter(
       (item) => item?.status === WatchStatus.Completed,
     );
-    const watchedSeries = watched.filter(
-      (item) => !item.isMovie,
-    );
-    const watchedMovies = watched.filter(
-      (item) => item.isMovie,
-    );
+    const watchedSeries = watched.filter((item) => !item.isMovie);
+    const watchedMovies = watched.filter((item) => item.isMovie);
 
     let globalIndex = 0;
     return (
@@ -489,7 +487,9 @@ export class HobbyCollectionStrategy implements CollectionItemStrategy<Hobby> {
 // Article Strategy
 // ============================================================================
 
-export class ArticleCollectionStrategy implements CollectionItemStrategy<Blog | Paper> {
+export class ArticleCollectionStrategy
+  implements CollectionItemStrategy<Blog | Paper>
+{
   renderItem(item: Blog | Paper, index: number): ReactNode {
     if ("url" in item)
       return new PaperCollectionStrategy().renderItem(item as Paper, index);
@@ -544,9 +544,14 @@ export class ArticleCollectionStrategy implements CollectionItemStrategy<Blog | 
 // ============================================================================
 
 export class CollectionStrategyFactory {
-  static getStrategy(type: CollectionType): CollectionItemStrategy<CollectionItem> {
+  static getStrategy(
+    type: CollectionType,
+  ): CollectionItemStrategy<CollectionItem> {
     if (!type)
-      throw new AppError("Collection type is required", "MISSING_COLLECTION_TYPE");
+      throw new AppError(
+        "Collection type is required",
+        "MISSING_COLLECTION_TYPE",
+      );
     switch (type) {
       case CollectionType.Book:
         return new BookCollectionStrategy();
@@ -561,7 +566,10 @@ export class CollectionStrategyFactory {
       case CollectionType.Article:
         return new ArticleCollectionStrategy();
       default:
-        throw new AppError(`Unknown collection type: ${type}`, "UNKNOWN_COLLECTION_TYPE");
+        throw new AppError(
+          `Unknown collection type: ${type}`,
+          "UNKNOWN_COLLECTION_TYPE",
+        );
     }
   }
 }

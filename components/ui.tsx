@@ -54,8 +54,6 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
   );
 }
 
-
-
 // ============================================================================
 // PillTag Component
 // ============================================================================
@@ -80,10 +78,11 @@ export function PillTag({
 
   const variantClasses = selected
     ? "bg-gray-200 dark:bg-gray-700 text-black dark:text-white shadow-md scale-105 opacity-100 font-bold"
-    : `${dimmed
-      ? "bg-gray-100/60 dark:bg-gray-800/60 text-black/40 dark:text-white/40 opacity-70"
-      : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
-    } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
+    : `${
+        dimmed
+          ? "bg-gray-100/60 dark:bg-gray-800/60 text-black/40 dark:text-white/40 opacity-70"
+          : "bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
+      } hover:bg-gray-200 dark:hover:bg-gray-700 hover:opacity-100 hover:scale-102`;
 
   const classes = `${baseClasses} ${variantClasses}`;
 

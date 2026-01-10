@@ -39,7 +39,10 @@ import {
 import { useStore } from "@/lib/store";
 import { CollectionType, WatchStatus, Book } from "@/types/definitions";
 import { CollectionConfig } from "@/lib/config";
-import { CollectionStrategyFactory, CollectionItem } from "@/components/CollectionStrategies";
+import {
+  CollectionStrategyFactory,
+  CollectionItem,
+} from "@/components/CollectionStrategies";
 import { Breadcrumbs, PillTag, RandomizerButton } from "@/components/ui";
 import { getBookGradient, getAssetPath } from "@/lib/utils";
 
@@ -48,7 +51,11 @@ import { getBookGradient, getAssetPath } from "@/lib/utils";
 // ============================================================================
 
 interface FilterStrategy {
-  filter(items: CollectionItem[], query: string, tag: string | null): CollectionItem[];
+  filter(
+    items: CollectionItem[],
+    query: string,
+    tag: string | null,
+  ): CollectionItem[];
 }
 
 export function useCollectionFilter(
@@ -56,8 +63,12 @@ export function useCollectionFilter(
   configType: CollectionType,
   strategy: FilterStrategy,
 ) {
-  const { searchQuery, setSearchQuery, collectionSelectedTag, setCollectionSelectedTag } =
-    useStore();
+  const {
+    searchQuery,
+    setSearchQuery,
+    collectionSelectedTag,
+    setCollectionSelectedTag,
+  } = useStore();
 
   useEffect(() => {
     setSearchQuery("");
@@ -65,7 +76,11 @@ export function useCollectionFilter(
   }, [configType, setSearchQuery, setCollectionSelectedTag]);
 
   const filteredItems = useMemo(() => {
-    return strategy.filter(items as CollectionItem[], searchQuery, collectionSelectedTag);
+    return strategy.filter(
+      items as CollectionItem[],
+      searchQuery,
+      collectionSelectedTag,
+    );
   }, [items, searchQuery, strategy, collectionSelectedTag]);
 
   const randomizerItems = useMemo(() => {
@@ -205,8 +220,6 @@ export function CollectionHeader({
     </div>
   );
 }
-
-
 
 // ============================================================================
 // Modals
@@ -793,10 +806,12 @@ export function UniversalCollection({
   const handlePickRandom = (item: any) => {
     if (!item) return;
     try {
-      if (config.type === CollectionType.Anime) store.setAnimeSelectedItem(item);
+      if (config.type === CollectionType.Anime)
+        store.setAnimeSelectedItem(item);
       else if (config.type === CollectionType.Hobby)
         store.setHobbySelectedItem(item);
-      else if (config.type === CollectionType.Book) store.setBookSelectedItem(item);
+      else if (config.type === CollectionType.Book)
+        store.setBookSelectedItem(item);
       else {
         const title = item.title || item.name;
         if (title) {
@@ -821,7 +836,9 @@ export function UniversalCollection({
   if (!isValidConfig || !strategy) {
     return (
       <div className="section max-w-6xl mx-auto px-6 md:px-12 mt-12 mb-24 font-mono text-center py-24">
-        <h1 className="text-2xl font-bold mb-4">Collection Configuration Error</h1>
+        <h1 className="text-2xl font-bold mb-4">
+          Collection Configuration Error
+        </h1>
         <p className="text-gray-500">
           The collection could not be loaded due to an invalid configuration.
         </p>
@@ -848,7 +865,8 @@ export function UniversalCollection({
         items={randomizerItems}
         onPickRandom={handlePickRandom}
         showClear={
-          (config.type === CollectionType.Anime || config.type === CollectionType.Book) &&
+          (config.type === CollectionType.Anime ||
+            config.type === CollectionType.Book) &&
           !!(searchQuery || collectionSelectedTag)
         }
         onClear={() => {
@@ -857,7 +875,8 @@ export function UniversalCollection({
         }}
       />
 
-      {(config.type === CollectionType.Anime || config.type === CollectionType.Book) && (
+      {(config.type === CollectionType.Anime ||
+        config.type === CollectionType.Book) && (
         <CollectionTagFilter
           items={isValidItems ? items : []}
           selectedTag={collectionSelectedTag}
